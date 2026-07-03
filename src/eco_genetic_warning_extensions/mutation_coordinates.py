@@ -36,12 +36,12 @@ class MutationCoordinates:
 
     @property
     def low_to_high(self) -> float:
-        """Directional rate \(u_{L\to H}=\kappa_\mu p_\mu^\ast\)."""
+        """Return directional rate u_LH = kappa_mu * p_star."""
         return self.kappa_mu * self.p_star
 
     @property
     def high_to_low(self) -> float:
-        """Directional rate \(u_{H\to L}=\kappa_\mu(1-p_\mu^\ast)\)."""
+        """Return directional rate u_HL = kappa_mu * (1 - p_star)."""
         return self.kappa_mu * (1.0 - self.p_star)
 
     @property
@@ -59,14 +59,14 @@ class MutationCoordinates:
         return AsymmetricMutation(self.low_to_high, self.high_to_low)
 
     def apply(self, frequency: float) -> float:
-        """Apply \(M(p)=\kappa_\mu p_\mu^\ast+(1-\kappa_\mu)p\)."""
+        """Apply M(p) = kappa_mu * p_star + (1 - kappa_mu) * p."""
         return self.mutation().apply(frequency)
 
     def expected_flux(self, frequency: float) -> float:
-        """Expected per-allele mutation flux at a current high-allele frequency.
+        """Return J(p) = u_LH * (1 - p) + u_HL * p at the current frequency.
 
-        \(J(p)=u_{L\to H}(1-p)+u_{H\to L}p\). This is allowed to vary
-        across directionality coordinates even when ``kappa_mu`` is fixed.
+        This is allowed to vary across directionality coordinates even when
+        ``kappa_mu`` is fixed.
         """
         p = float(frequency)
         if not 0.0 <= p <= 1.0:
@@ -74,7 +74,7 @@ class MutationCoordinates:
         return self.low_to_high * (1.0 - p) + self.high_to_low * p
 
     def pre_mutation_threshold(self, post_mutation_threshold: float) -> float:
-        """Return \(p\) needed for \(M(p)\ge p_c\), for \(kappa_mu < 1\)."""
+        """Return p needed for M(p) >= p_c, for ``kappa_mu < 1``."""
         threshold = float(post_mutation_threshold)
         if not 0.0 <= threshold <= 1.0:
             raise ValueError("post_mutation_threshold must lie in [0, 1]")
@@ -86,12 +86,10 @@ class MutationCoordinates:
     def from_directional_rates(cls, *, low_to_high: float, high_to_low: float) -> "MutationCoordinates":
         """Recover phase coordinates from an admissible non-identity operator."""
         operator = AsymmetricMutation(low_to_high, high_to_low)
-        if operator.total_pressure == 0.0:
+        equilibrium = operator.mutation_only_equilibrium
+        if equilibrium is None:
             raise ValueError("the identity mutation operator has no identifiable p_star")
-        return cls(
-            kappa_mu=operator.total_pressure,
-            p_star=operator.mutation_only_equilibrium,  # type: ignore[arg-type]
-        )
+        return cls(kappa_mu=operator.total_pressure, p_star=equilibrium)
 
 
 PRIMARY_KAPPA_MU = (0.05, 0.20, 0.35)
