@@ -1,60 +1,87 @@
 # Eco-genetic warning extensions
 
-Independent, predeclared biological closures for testing the robustness and limits of finite eco-genetic early-warning results.
+Independent, predeclared biological closures for submitting and testing new
+finite eco-genetic hypotheses.
 
-## Why this is a new repository
+## Why this is a separate repository
 
 `eco-genetic-criticality` closed a finite-model campaign with three canonical
-results:
+questions: interaction-conditioned high-trait viability (H1), fragmentation and
+migration effects (H3), and a conditional relative-diversity warning result
+(H2-R). Its numerical results are bounded by its declared symmetric mutation,
+trait-recruitment, source-transfer, and deterioration closures.
 
-- H1: mutation-conditioned interaction memory was supported as finite Type S evidence;
-- H3: equal isolation reduced interaction, local effective size, and realised high-trait mass conditional on full-state transfer;
-- H2-R: baseline-relative diversity decline preceded observed realised trait loss in one calibration-selected deterioration configuration.
+This repository does **not** finish, broaden, or rewrite that campaign. It uses
+identified boundary conditions to pose new biological mechanisms and new dynamic
+hypotheses. No numerical output from the predecessor is evidence for this
+repository.
 
-That result is deliberately **not** treated as a universal law. Its symmetric
-allele-mutation closure, finite trait-recruitment closure, and selected
-ramp-and-hold deterioration path are all part of the claim's boundary.
+## Paper program: mutation direction and eco-genetic warning
 
-This repository starts from a clean protocol for testing what changes when a
-biological closure changes. It does not silently broaden, replace, or rewrite
-the completed evidence ledger in `eco-genetic-criticality`.
+Paper 001 asks whether direction-specific recurrent mutation changes the
+persistence boundary of a high-trait state, the realised trait-loss hazard, and
+the reliability of relative genetic warnings.
 
-## First project: asymmetric recurrent mutation
-
-Protocol 001 tests whether the conditional H2-R ordering is robust when the
-symmetric allele-mutation operator is replaced by an allele-direction-specific
-recurrent mutation operator:
+The recurrent mutation operator is
 
 \[
 p_{t+1}^{\mathrm{mut}}
-= u_{L\to H} + (1-u_{L\to H}-u_{H\to L})p_t.
+= u_{L\to H}+(1-u_{L\to H}-u_{H\to L})p_t.
 \]
 
-Here \(p_t\) is the frequency of the allele contributing to the high-trait
-recruitment kernel. The former symmetric closure is recovered only when
-\(u_{L\to H}=u_{H\to L}\).
+For the main campaign, it is parameterised as
 
-The protocol is intentionally staged:
+\[
+\kappa_\mu=u_{L\to H}+u_{H\to L},\qquad
+p_\mu^\ast=\frac{u_{L\to H}}{\kappa_\mu},
+\]
+
+where \(\kappa_\mu\) controls mutation-map relaxation strength and
+\(p_\mu^\ast\) controls its directionality. A fixed \(\kappa_\mu\) does not
+imply fixed frequency-dependent mutation flux; that distinction is an explicit
+part of the biological mechanism.
+
+The principal paper question is therefore not “is the old H2-R result robust?”
+It is:
+
+> At fixed mutation relaxation strength, how does mutation direction alter
+> high-trait persistence, realised trait loss, and genetic-warning reliability?
+
+## Protocols
+
+- **Protocol 001 — asymmetric recurrent mutation:** a three-anchor bridge/pilot
+  (`SYM`, `UP`, `DOWN`) that locks the directional operator and verifies the
+  exact symmetric bridge.
+- **Protocol 002 — mutation-direction phase diagram:** the primary Paper 001
+  campaign across 15 predeclared \((\kappa_\mu,p_\mu^\ast)\) coordinates, with
+  independent source reconstruction, trait-loss-only calibration, and fresh-seed
+  validation.
+
+Both protocols preserve the same stage separation:
 
 ```text
-new mutation closure
--> H1 source reconstruction
+new closure
+-> independent H1 source reconstruction
 -> trait-loss-only deterioration calibration
--> freeze selected domain
--> fresh-seed H2-R relative-warning validation
--> fixed-threshold H2-A secondary audit
+-> domain freeze
+-> fresh-seed warning validation
+-> fixed-threshold secondary audit
 ```
 
 No genetic-warning value is used while selecting a deterioration schedule.
 
 ## Status
 
-**Protocol stage. No new simulation result exists yet.**
+**Design and invariant-test stage. No new simulation result exists yet.**
 
 See:
 
 - [`docs/PROJECT_BOUNDARY.md`](docs/PROJECT_BOUNDARY.md)
+- [`docs/HYPOTHESIS_PROGRAM.md`](docs/HYPOTHESIS_PROGRAM.md)
+- [`docs/PAPER_001_MUTATION_DIRECTION_PHASE_DIAGRAM.md`](docs/PAPER_001_MUTATION_DIRECTION_PHASE_DIAGRAM.md)
 - [`docs/PROTOCOL_001_ASYMMETRIC_MUTATION.md`](docs/PROTOCOL_001_ASYMMETRIC_MUTATION.md)
+- [`docs/PROTOCOL_002_MUTATION_DIRECTION_PHASE_DIAGRAM.md`](docs/PROTOCOL_002_MUTATION_DIRECTION_PHASE_DIAGRAM.md)
+- [`docs/NOVELTY_REVIEW_PROTOCOL.md`](docs/NOVELTY_REVIEW_PROTOCOL.md)
 - [`docs/DECISION_LOG.md`](docs/DECISION_LOG.md)
 
 ## Evidence labels
