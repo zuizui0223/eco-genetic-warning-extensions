@@ -21,6 +21,9 @@ LIFECYCLE_MUTATION_POSITION = "after_selection_and_migration__before_finite_drif
 
 def coordinate_certificate(coordinate: MutationCoordinates) -> dict[str, float | bool]:
     """Return auditable invariants for one directional-mutation coordinate."""
+    equilibrium = coordinate.mutation().mutation_only_equilibrium
+    if equilibrium is None:  # MutationCoordinates excludes the identity operator.
+        raise RuntimeError("non-identity mutation coordinates must have an equilibrium")
     flux_at_zero = coordinate.expected_flux(0.0)
     flux_at_half = coordinate.expected_flux(0.5)
     flux_at_one = coordinate.expected_flux(1.0)
@@ -31,7 +34,7 @@ def coordinate_certificate(coordinate: MutationCoordinates) -> dict[str, float |
         "u_high_to_low": coordinate.high_to_low,
         "rate_sum": coordinate.low_to_high + coordinate.high_to_low,
         "contraction_factor": coordinate.contraction_factor,
-        "mutation_only_equilibrium": coordinate.mutation().mutation_only_equilibrium,
+        "mutation_only_equilibrium": equilibrium,
         "symmetric": coordinate.is_symmetric,
         "maps_zero_into_unit_interval": 0.0 <= coordinate.apply(0.0) <= 1.0,
         "maps_half_into_unit_interval": 0.0 <= coordinate.apply(0.5) <= 1.0,
