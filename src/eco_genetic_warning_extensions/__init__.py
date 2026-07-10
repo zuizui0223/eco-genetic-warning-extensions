@@ -13,6 +13,13 @@ from .protocol002_mutation_slot_fixture import (
     protocol002_mutation_slot_trajectory,
     symmetric_slot_bridge_differences,
 )
+from .protocol002_source_skeleton import (
+    Protocol002SourceCoordinate,
+    SourceAttemptRecord,
+    SourceAttemptStatus,
+    SourceSkeletonManifest,
+    skeleton_record,
+)
 from .protocol002_stage0 import stage0_certificate, write_stage0_certificate
 from .protocol002_upstream_adapter import (
     PINNED_UPSTREAM_LIFECYCLE,
@@ -28,6 +35,10 @@ __all__ = [
     "MutationCoordinates",
     "MutationSlotFixture",
     "PINNED_UPSTREAM_LIFECYCLE",
+    "Protocol002SourceCoordinate",
+    "SourceAttemptRecord",
+    "SourceAttemptStatus",
+    "SourceSkeletonManifest",
     "apply_protocol002_mutation",
     "apply_symmetric_bridge",
     "mutate_frequency",
@@ -35,6 +46,7 @@ __all__ = [
     "protocol002_mutation_slot_trajectory",
     "run_protocol002_minimal_life_cycle",
     "select_protocol_001_domain",
+    "skeleton_record",
     "stage0_certificate",
     "symmetric_bridge_coordinate",
     "symmetric_minimal_life_cycle_differences",
