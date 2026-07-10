@@ -1,0 +1,34 @@
+{
+  "record_count": 1,
+  "records": [
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": false,
+      "reason": "source reconstruction not run in skeleton stage",
+      "replicate": 0,
+      "source_prepared": false,
+      "source_supported": false,
+      "stage_generations": 30,
+      "status": "not_run"
+    }
+  ],
+  "simulation_result_present": false,
+  "stage": "Protocol 002 Stage I source-runner skeleton",
+  "status_counts": {
+    "not_run": 1,
+    "preparation_failed": 0,
+    "projection_failed": 0,
+    "source_support_failed": 0,
+    "success": 0
+  },
+  "upstream": {
+    "commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "repository": "zuizui0223/eco-genetic-criticality"
+  }
+}
