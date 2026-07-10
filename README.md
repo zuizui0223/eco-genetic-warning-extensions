@@ -70,6 +70,20 @@ new closure
 
 No genetic-warning value is used while selecting a deterioration schedule.
 
+## Stage 0 certificate
+
+Protocol 002 begins with an algebraic, no-simulation certificate for the 15
+predeclared mutation coordinates:
+
+```bash
+protocol002 write-stage0 --output artifacts/protocol002/stage0_operator_certificate.json --force
+```
+
+The command records directional rates, contraction factors, mutation-only
+equilibria, SYM bridge status, and expected mutation flux at \(p=0,0.5,1\). It
+does not run source reconstruction, deterioration calibration, or warning
+validation.
+
 ## Status
 
 **Design and invariant-test stage. No new simulation result exists yet.**
