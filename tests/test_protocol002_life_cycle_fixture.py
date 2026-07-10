@@ -46,7 +46,8 @@ def test_protocol002_minimal_life_cycle_applies_mutation_between_migration_and_d
 def test_symmetric_minimal_life_cycle_matches_upstream_with_noop_selection_migration_drift() -> None:
     fixture = MinimalLifeCycleFixture(initial_frequency=0.73, generations=10)
     differences = symmetric_minimal_life_cycle_differences(fixture, symmetric_mutation_rate=0.10)
-    assert differences == pytest.approx(((0.0, 0.0, 0.0, 0.0, 0.0),) * 10)
+    for row in differences:
+        assert row == pytest.approx((0.0, 0.0, 0.0, 0.0, 0.0))
 
 
 def test_symmetric_minimal_life_cycle_matches_upstream_with_shared_deterministic_transforms() -> None:
@@ -68,12 +69,14 @@ def test_symmetric_minimal_life_cycle_matches_upstream_with_shared_deterministic
         migration=migration,
         drift=drift,
     )
-    assert [step.as_tuple() for step in protocol] == pytest.approx([step.as_tuple() for step in upstream])
+    assert len(protocol) == len(upstream)
+    for protocol_step, upstream_step in zip(protocol, upstream, strict=True):
+        assert protocol_step.as_tuple() == pytest.approx(upstream_step.as_tuple())
 
 
 def test_minimal_life_cycle_validates_state_after_each_transform() -> None:
     fixture = MinimalLifeCycleFixture(initial_frequency=0.95, generations=1)
-    with pytest.raises(ValueError, match="\[0, 1\]"):
+    with pytest.raises(ValueError, match=r"\[0, 1\]"):
         run_minimal_life_cycle(
             fixture,
             selection=lambda value: value,
