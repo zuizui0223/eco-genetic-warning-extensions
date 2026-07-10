@@ -13,6 +13,10 @@ from .protocol002_mutation_slot_fixture import (
     protocol002_mutation_slot_trajectory,
     symmetric_slot_bridge_differences,
 )
+from .protocol002_source_example import (
+    example_source_skeleton_artifact,
+    write_source_skeleton_example,
+)
 from .protocol002_source_skeleton import (
     Protocol002SourceCoordinate,
     SourceAttemptRecord,
@@ -41,6 +45,7 @@ __all__ = [
     "SourceSkeletonManifest",
     "apply_protocol002_mutation",
     "apply_symmetric_bridge",
+    "example_source_skeleton_artifact",
     "mutate_frequency",
     "primary_phase_grid",
     "protocol002_mutation_slot_trajectory",
@@ -51,5 +56,6 @@ __all__ = [
     "symmetric_bridge_coordinate",
     "symmetric_minimal_life_cycle_differences",
     "symmetric_slot_bridge_differences",
+    "write_source_skeleton_example",
     "write_stage0_certificate",
 ]
