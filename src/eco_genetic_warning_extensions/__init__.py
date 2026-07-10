@@ -19,8 +19,10 @@ from .protocol002_source_example import (
 )
 from .protocol002_source_grid import (
     planned_source_grid_artifact,
+    planned_source_grid_lock_artifact,
     protocol002_source_grid,
     write_planned_source_grid,
+    write_planned_source_grid_lock,
 )
 from .protocol002_source_skeleton import (
     Protocol002SourceCoordinate,
@@ -53,6 +55,7 @@ __all__ = [
     "example_source_skeleton_artifact",
     "mutate_frequency",
     "planned_source_grid_artifact",
+    "planned_source_grid_lock_artifact",
     "primary_phase_grid",
     "protocol002_mutation_slot_trajectory",
     "protocol002_source_grid",
@@ -64,6 +67,7 @@ __all__ = [
     "symmetric_minimal_life_cycle_differences",
     "symmetric_slot_bridge_differences",
     "write_planned_source_grid",
+    "write_planned_source_grid_lock",
     "write_source_skeleton_example",
     "write_stage0_certificate",
 ]
