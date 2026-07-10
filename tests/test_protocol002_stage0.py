@@ -1,5 +1,7 @@
 import json
 
+import pytest
+
 from eco_genetic_warning_extensions.mutation_coordinates import MutationCoordinates
 from eco_genetic_warning_extensions.protocol002_stage0 import (
     LIFECYCLE_MUTATION_POSITION,
@@ -12,12 +14,12 @@ from eco_genetic_warning_extensions.protocol002_stage0 import (
 
 def test_coordinate_certificate_records_operator_and_flux_invariants() -> None:
     record = coordinate_certificate(MutationCoordinates(kappa_mu=0.20, p_star=0.75))
-    assert record["rate_sum"] == 0.20
-    assert record["contraction_factor"] == 0.80
-    assert record["mutation_only_equilibrium"] == 0.75
-    assert record["expected_flux_at_p0"] == 0.15
-    assert record["expected_flux_at_p05"] == 0.10
-    assert record["expected_flux_at_p1"] == 0.05
+    assert record["rate_sum"] == pytest.approx(0.20)
+    assert record["contraction_factor"] == pytest.approx(0.80)
+    assert record["mutation_only_equilibrium"] == pytest.approx(0.75)
+    assert record["expected_flux_at_p0"] == pytest.approx(0.15)
+    assert record["expected_flux_at_p05"] == pytest.approx(0.10)
+    assert record["expected_flux_at_p1"] == pytest.approx(0.05)
     assert all(record[key] for key in ("maps_zero_into_unit_interval", "maps_half_into_unit_interval", "maps_one_into_unit_interval"))
 
 
