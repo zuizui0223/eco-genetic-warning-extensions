@@ -24,6 +24,13 @@ from .protocol002_source_grid import (
     write_planned_source_grid,
     write_planned_source_grid_lock,
 )
+from .protocol002_source_runner import (
+    SourceAttemptEvaluation,
+    deterministic_fixture_source_artifact,
+    deterministic_fixture_source_manifest,
+    evaluate_source_attempts,
+    not_run_evaluator,
+)
 from .protocol002_source_skeleton import (
     Protocol002SourceCoordinate,
     SourceAttemptRecord,
@@ -47,13 +54,18 @@ __all__ = [
     "MutationSlotFixture",
     "PINNED_UPSTREAM_LIFECYCLE",
     "Protocol002SourceCoordinate",
+    "SourceAttemptEvaluation",
     "SourceAttemptRecord",
     "SourceAttemptStatus",
     "SourceSkeletonManifest",
     "apply_protocol002_mutation",
     "apply_symmetric_bridge",
+    "deterministic_fixture_source_artifact",
+    "deterministic_fixture_source_manifest",
+    "evaluate_source_attempts",
     "example_source_skeleton_artifact",
     "mutate_frequency",
+    "not_run_evaluator",
     "planned_source_grid_artifact",
     "planned_source_grid_lock_artifact",
     "primary_phase_grid",
