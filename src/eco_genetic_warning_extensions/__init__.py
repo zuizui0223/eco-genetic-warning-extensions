@@ -3,6 +3,11 @@
 from .asymmetric_mutation import AsymmetricMutation, mutate_frequency
 from .mutation_coordinates import MutationCoordinates, primary_phase_grid
 from .protocol001 import CalibrationCandidate, select_protocol_001_domain
+from .protocol002_life_cycle_fixture import (
+    MinimalLifeCycleFixture,
+    run_protocol002_minimal_life_cycle,
+    symmetric_minimal_life_cycle_differences,
+)
 from .protocol002_mutation_slot_fixture import (
     MutationSlotFixture,
     protocol002_mutation_slot_trajectory,
@@ -19,6 +24,7 @@ from .protocol002_upstream_adapter import (
 __all__ = [
     "AsymmetricMutation",
     "CalibrationCandidate",
+    "MinimalLifeCycleFixture",
     "MutationCoordinates",
     "MutationSlotFixture",
     "PINNED_UPSTREAM_LIFECYCLE",
@@ -27,9 +33,11 @@ __all__ = [
     "mutate_frequency",
     "primary_phase_grid",
     "protocol002_mutation_slot_trajectory",
+    "run_protocol002_minimal_life_cycle",
     "select_protocol_001_domain",
     "stage0_certificate",
     "symmetric_bridge_coordinate",
+    "symmetric_minimal_life_cycle_differences",
     "symmetric_slot_bridge_differences",
     "write_stage0_certificate",
 ]
