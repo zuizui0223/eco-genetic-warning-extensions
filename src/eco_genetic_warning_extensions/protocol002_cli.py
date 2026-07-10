@@ -18,9 +18,12 @@ from .protocol002_source_example import (
     write_source_skeleton_example,
 )
 from .protocol002_source_grid import (
+    DEFAULT_SOURCE_GRID_LOCK_PATH,
     DEFAULT_SOURCE_GRID_PATH,
     planned_source_grid_artifact,
+    planned_source_grid_lock_artifact,
     write_planned_source_grid,
+    write_planned_source_grid_lock,
 )
 from .protocol002_stage0 import stage0_certificate, write_stage0_certificate
 
@@ -82,6 +85,16 @@ def build_parser() -> argparse.ArgumentParser:
         default=DEFAULT_SOURCE_GRID_PATH,
         stdout_help="print the planned source-grid manifest JSON to stdout instead of writing a file",
     )
+
+    write_source_grid_lock = subparsers.add_parser(
+        "write-source-grid-lock",
+        help="write the deterministic lightweight lock for the planned source-grid manifest",
+    )
+    _add_output_arguments(
+        write_source_grid_lock,
+        default=DEFAULT_SOURCE_GRID_LOCK_PATH,
+        stdout_help="print the planned source-grid lock JSON to stdout instead of writing a file",
+    )
     return parser
 
 
@@ -126,6 +139,18 @@ def _write_source_grid_plan(args: argparse.Namespace) -> int:
     return 0
 
 
+def _write_source_grid_lock(args: argparse.Namespace) -> int:
+    if args.stdout:
+        sys.stdout.write(json.dumps(planned_source_grid_lock_artifact(), indent=2, sort_keys=True) + "\n")
+        return 0
+
+    output: Path = args.output
+    _refuse_overwrite_without_force(output, force=args.force)
+    write_planned_source_grid_lock(output)
+    print(f"wrote Protocol 002 planned source-grid lock: {output}")
+    return 0
+
+
 def main(argv: Sequence[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
@@ -135,6 +160,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _write_source_skeleton_example(args)
     if args.command == "write-source-grid-plan":
         return _write_source_grid_plan(args)
+    if args.command == "write-source-grid-lock":
+        return _write_source_grid_lock(args)
     parser.error(f"unknown command: {args.command}")
     return 2
 

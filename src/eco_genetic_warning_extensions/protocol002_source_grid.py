@@ -5,9 +5,11 @@ reconstruction or produce Type S ecological evidence.
 """
 from __future__ import annotations
 
+import hashlib
 import json
 from collections.abc import Iterable
 from pathlib import Path
+from typing import Any
 
 from .mutation_coordinates import MutationCoordinates, primary_phase_grid
 from .protocol002_source_skeleton import (
@@ -25,6 +27,7 @@ SOURCE_STAGE_GENERATIONS: int = 30
 SOURCE_HOLD_GENERATIONS: int = 30
 
 DEFAULT_SOURCE_GRID_PATH = Path("artifacts/protocol002/source_grid_planned_manifest.json")
+DEFAULT_SOURCE_GRID_LOCK_PATH = Path("artifacts/protocol002/source_grid_planned_lock.json")
 
 
 def protocol002_source_grid(
@@ -79,12 +82,62 @@ def planned_source_grid_artifact() -> dict:
     return planned_source_grid_manifest().to_artifact()
 
 
+def artifact_sha256(artifact: dict[str, Any]) -> str:
+    """Return a deterministic SHA-256 digest for JSON-serializable artifact content."""
+    payload = json.dumps(artifact, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(payload.encode("utf-8")).hexdigest()
+
+
+def planned_source_grid_lock_artifact() -> dict[str, Any]:
+    """Return a lightweight lock for the full planned-grid manifest.
+
+    The full planned manifest has 10,125 retained rows. This lock avoids
+    committing the multi-megabyte JSON while still detecting any deterministic
+    change to the generated full manifest.
+    """
+    artifact = planned_source_grid_artifact()
+    return {
+        "artifact": "Protocol 002 Stage I planned source-grid manifest lock",
+        "full_manifest_path": str(DEFAULT_SOURCE_GRID_PATH),
+        "full_manifest_sha256": artifact_sha256(artifact),
+        "record_count": artifact["record_count"],
+        "simulation_result_present": artifact["simulation_result_present"],
+        "status_counts": artifact["status_counts"],
+        "grid": {
+            "mutation_coordinate_count": len(primary_phase_grid()),
+            "area_references": list(SOURCE_AREA_REFERENCES),
+            "kappas": list(SOURCE_KAPPAS),
+            "nested_barrier_grids": list(SOURCE_NESTED_BARRIER_GRIDS),
+            "master_seeds": list(SOURCE_MASTER_SEEDS),
+            "replicates_per_cell": SOURCE_REPLICATES_PER_CELL,
+            "stage_generations": SOURCE_STAGE_GENERATIONS,
+            "hold_generations": SOURCE_HOLD_GENERATIONS,
+        },
+        "interpretation": {
+            "planned_rows_only": True,
+            "source_reconstruction_run": False,
+            "type_s_result_present": False,
+        },
+    }
+
+
 def write_planned_source_grid(path: str | Path = DEFAULT_SOURCE_GRID_PATH) -> Path:
     """Write the no-simulation planned source grid manifest."""
     destination = Path(path)
     destination.parent.mkdir(parents=True, exist_ok=True)
     destination.write_text(
         json.dumps(planned_source_grid_artifact(), indent=2, sort_keys=True) + "\n",
+        encoding="utf-8",
+    )
+    return destination
+
+
+def write_planned_source_grid_lock(path: str | Path = DEFAULT_SOURCE_GRID_LOCK_PATH) -> Path:
+    """Write the lightweight lock for the planned source grid manifest."""
+    destination = Path(path)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    destination.write_text(
+        json.dumps(planned_source_grid_lock_artifact(), indent=2, sort_keys=True) + "\n",
         encoding="utf-8",
     )
     return destination
