@@ -17,9 +17,33 @@ from .protocol002_source_example import (
     example_source_skeleton_artifact,
     write_source_skeleton_example,
 )
+from .protocol002_source_grid import (
+    DEFAULT_SOURCE_GRID_PATH,
+    planned_source_grid_artifact,
+    write_planned_source_grid,
+)
 from .protocol002_stage0 import stage0_certificate, write_stage0_certificate
 
 DEFAULT_STAGE0_PATH = Path("artifacts/protocol002/stage0_operator_certificate.json")
+
+
+def _add_output_arguments(parser: argparse.ArgumentParser, *, default: Path, stdout_help: str) -> None:
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=default,
+        help=f"output JSON path; default: {default}",
+    )
+    parser.add_argument(
+        "--stdout",
+        action="store_true",
+        help=stdout_help,
+    )
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="overwrite an existing output file",
+    )
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -33,44 +57,37 @@ def build_parser() -> argparse.ArgumentParser:
         "write-stage0",
         help="write the deterministic Stage 0 operator certificate JSON",
     )
-    write_stage0.add_argument(
-        "--output",
-        type=Path,
+    _add_output_arguments(
+        write_stage0,
         default=DEFAULT_STAGE0_PATH,
-        help=f"output JSON path; default: {DEFAULT_STAGE0_PATH}",
-    )
-    write_stage0.add_argument(
-        "--stdout",
-        action="store_true",
-        help="print the certificate JSON to stdout instead of writing a file",
-    )
-    write_stage0.add_argument(
-        "--force",
-        action="store_true",
-        help="overwrite an existing output file",
+        stdout_help="print the certificate JSON to stdout instead of writing a file",
     )
 
     write_source_example = subparsers.add_parser(
         "write-source-skeleton-example",
         help="write the deterministic no-simulation source-skeleton example manifest",
     )
-    write_source_example.add_argument(
-        "--output",
-        type=Path,
+    _add_output_arguments(
+        write_source_example,
         default=DEFAULT_SOURCE_EXAMPLE_PATH,
-        help=f"output JSON path; default: {DEFAULT_SOURCE_EXAMPLE_PATH}",
+        stdout_help="print the source-skeleton example manifest JSON to stdout instead of writing a file",
     )
-    write_source_example.add_argument(
-        "--stdout",
-        action="store_true",
-        help="print the source-skeleton example manifest JSON to stdout instead of writing a file",
+
+    write_source_grid = subparsers.add_parser(
+        "write-source-grid-plan",
+        help="write the deterministic no-simulation planned source-grid manifest",
     )
-    write_source_example.add_argument(
-        "--force",
-        action="store_true",
-        help="overwrite an existing output file",
+    _add_output_arguments(
+        write_source_grid,
+        default=DEFAULT_SOURCE_GRID_PATH,
+        stdout_help="print the planned source-grid manifest JSON to stdout instead of writing a file",
     )
     return parser
+
+
+def _refuse_overwrite_without_force(output: Path, *, force: bool) -> None:
+    if output.exists() and not force:
+        raise SystemExit(f"refusing to overwrite existing file without --force: {output}")
 
 
 def _write_stage0(args: argparse.Namespace) -> int:
@@ -79,8 +96,7 @@ def _write_stage0(args: argparse.Namespace) -> int:
         return 0
 
     output: Path = args.output
-    if output.exists() and not args.force:
-        raise SystemExit(f"refusing to overwrite existing file without --force: {output}")
+    _refuse_overwrite_without_force(output, force=args.force)
     write_stage0_certificate(output)
     print(f"wrote Protocol 002 Stage 0 certificate: {output}")
     return 0
@@ -92,10 +108,21 @@ def _write_source_skeleton_example(args: argparse.Namespace) -> int:
         return 0
 
     output: Path = args.output
-    if output.exists() and not args.force:
-        raise SystemExit(f"refusing to overwrite existing file without --force: {output}")
+    _refuse_overwrite_without_force(output, force=args.force)
     write_source_skeleton_example(output)
     print(f"wrote Protocol 002 source-skeleton example manifest: {output}")
+    return 0
+
+
+def _write_source_grid_plan(args: argparse.Namespace) -> int:
+    if args.stdout:
+        sys.stdout.write(json.dumps(planned_source_grid_artifact(), indent=2, sort_keys=True) + "\n")
+        return 0
+
+    output: Path = args.output
+    _refuse_overwrite_without_force(output, force=args.force)
+    write_planned_source_grid(output)
+    print(f"wrote Protocol 002 planned source-grid manifest: {output}")
     return 0
 
 
@@ -106,6 +133,8 @@ def main(argv: Sequence[str] | None = None) -> int:
         return _write_stage0(args)
     if args.command == "write-source-skeleton-example":
         return _write_source_skeleton_example(args)
+    if args.command == "write-source-grid-plan":
+        return _write_source_grid_plan(args)
     parser.error(f"unknown command: {args.command}")
     return 2
 
