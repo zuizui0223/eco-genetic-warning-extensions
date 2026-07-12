@@ -13,11 +13,7 @@ from dataclasses import replace
 from pathlib import Path
 from typing import Any
 
-from .protocol002_source_grid import (
-    SOURCE_HOLD_GENERATIONS,
-    SOURCE_NESTED_BARRIER_GRIDS,
-    SOURCE_STAGE_GENERATIONS,
-)
+from .protocol002_source_grid import SOURCE_HOLD_GENERATIONS, SOURCE_NESTED_BARRIER_GRIDS, SOURCE_STAGE_GENERATIONS
 from .protocol002_stage0 import UPSTREAM_COMMIT, UPSTREAM_REPOSITORY
 from .protocol002_stage1_pilot import (
     PILOT_AREA_REFERENCE,
@@ -35,14 +31,11 @@ from .protocol002_upstream_h1_asym_smoke import (
     patched_protocol002_mutation_runner,
 )
 
-UPSTREAM_CHAIN_MODULE = "causal_model.mutation_primary_h1_h2_h3_chain"
-DEFAULT_STAGE1_PROJECTION_PILOT_PATH = Path(
-    "artifacts/protocol002/stage1_source_projection_pilot.json"
-)
+UPSTREAM_CHAIN_RUNTIME_MODULE = "causal_model.mutation_primary_h1_h2_h3_runtime"
+DEFAULT_STAGE1_PROJECTION_PILOT_PATH = Path("artifacts/protocol002/stage1_source_projection_pilot.json")
 
 
 def run_stage1_source_projection_pilot(upstream_checkout: str | Path) -> dict[str, Any]:
-    """Run source support, full-state preparation, and projection for six attempts."""
     checkout = Path(upstream_checkout)
     if not checkout.exists():
         raise FileNotFoundError(f"upstream checkout does not exist: {checkout}")
@@ -52,8 +45,8 @@ def run_stage1_source_projection_pilot(upstream_checkout: str | Path) -> dict[st
         audit = importlib.import_module(UPSTREAM_H1_MODULE)
         experiments = importlib.import_module(UPSTREAM_EXPERIMENT_MODULE)
         mutation = importlib.import_module(UPSTREAM_MUTATION_MODULE)
-        chain = importlib.import_module(UPSTREAM_CHAIN_MODULE)
-
+        runtime = importlib.import_module(UPSTREAM_CHAIN_RUNTIME_MODULE)
+        chain = runtime.chain
         scenario_ids = (
             experiments.SCENARIO_ONE_LARGE,
             experiments.SCENARIO_EQUAL_ISOLATED,
@@ -116,17 +109,14 @@ def run_stage1_source_projection_pilot(upstream_checkout: str | Path) -> dict[st
                     "source_support": support,
                     "source_status": _support_status(support),
                 }
-
                 if prepared is None:
-                    base.update(
-                        {
-                            "source_prepared": False,
-                            "source_preparation_status": "preparation_failed_or_not_eligible",
-                            "anchor_barrier": None,
-                            "projection_status": "not_run",
-                            "projections": None,
-                        }
-                    )
+                    base.update({
+                        "source_prepared": False,
+                        "source_preparation_status": "preparation_failed_or_not_eligible",
+                        "anchor_barrier": None,
+                        "projection_status": "not_run",
+                        "projections": None,
+                    })
                     attempts.append(base)
                     continue
 
@@ -144,36 +134,27 @@ def run_stage1_source_projection_pilot(upstream_checkout: str | Path) -> dict[st
                     _projected, invariant = chain.project_full_state(source, template)
                     projections[scenario_id] = invariant.as_dict()
 
-                all_supported = all(
-                    bool(value["projection_supported"]) for value in projections.values()
-                )
-                base.update(
-                    {
-                        "source_prepared": True,
-                        "source_preparation_status": "prepared",
-                        "anchor_barrier": anchor,
-                        "projection_status": "projection_supported" if all_supported else "projection_failed",
-                        "projections": projections,
-                    }
-                )
+                all_supported = all(bool(value["projection_supported"]) for value in projections.values())
+                base.update({
+                    "source_prepared": True,
+                    "source_preparation_status": "prepared",
+                    "anchor_barrier": anchor,
+                    "projection_status": "projection_supported" if all_supported else "projection_failed",
+                    "projections": projections,
+                })
                 attempts.append(base)
 
     return _artifact(attempts)
 
 
 def _artifact(attempts: list[dict[str, Any]]) -> dict[str, Any]:
-    source_supported = sum(item["source_support"] is True for item in attempts)
-    source_prepared = sum(item["source_prepared"] is True for item in attempts)
-    projection_supported = sum(item["projection_status"] == "projection_supported" for item in attempts)
-    projection_failed = sum(item["projection_status"] == "projection_failed" for item in attempts)
-    projection_not_run = sum(item["projection_status"] == "not_run" for item in attempts)
     return {
         "stage": "Protocol 002 Stage I source preparation and projection pilot",
         "upstream": {
             "repository": UPSTREAM_REPOSITORY,
             "commit": UPSTREAM_COMMIT,
             "h1_module": UPSTREAM_H1_MODULE,
-            "chain_module": UPSTREAM_CHAIN_MODULE,
+            "chain_runtime_module": UPSTREAM_CHAIN_RUNTIME_MODULE,
         },
         "design": {
             "coordinate_count": len(PILOT_COORDINATES),
@@ -187,11 +168,11 @@ def _artifact(attempts: list[dict[str, Any]]) -> dict[str, Any]:
             "projection_scenarios": ["one_large", "equal_isolated", "equal_migrating"],
         },
         "status_counts": {
-            "source_supported": source_supported,
-            "source_prepared": source_prepared,
-            "projection_supported": projection_supported,
-            "projection_failed": projection_failed,
-            "projection_not_run": projection_not_run,
+            "source_supported": sum(item["source_support"] is True for item in attempts),
+            "source_prepared": sum(item["source_prepared"] is True for item in attempts),
+            "projection_supported": sum(item["projection_status"] == "projection_supported" for item in attempts),
+            "projection_failed": sum(item["projection_status"] == "projection_failed" for item in attempts),
+            "projection_not_run": sum(item["projection_status"] == "not_run" for item in attempts),
         },
         "attempts": attempts,
         "real_h1_source_support_run_present": True,
@@ -209,8 +190,5 @@ def write_stage1_source_projection_pilot(
 ) -> Path:
     target = Path(output)
     target.parent.mkdir(parents=True, exist_ok=True)
-    target.write_text(
-        json.dumps(run_stage1_source_projection_pilot(upstream_checkout), indent=2, sort_keys=True) + "\n",
-        encoding="utf-8",
-    )
+    target.write_text(json.dumps(run_stage1_source_projection_pilot(upstream_checkout), indent=2, sort_keys=True) + "\n", encoding="utf-8")
     return target
