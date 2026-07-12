@@ -2,6 +2,12 @@ name: Protocol 002 upstream H1 SYM smoke
 
 on:
   workflow_dispatch:
+  push:
+    branches: ["feat/protocol-002-upstream-h1-sym-smoke"]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_upstream_h1_smoke.py"
+      - "scripts/run_protocol002_upstream_h1_sym_smoke.py"
+      - ".github/workflows/protocol-002-upstream-h1-smoke.yml"
   pull_request:
     branches: [main]
     paths:
