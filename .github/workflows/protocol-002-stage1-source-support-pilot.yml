@@ -1,0 +1,70 @@
+name: Protocol 002 Stage I source-support pilot
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["feat/protocol-002-stage1-pilot"]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_source_grid.py"
+      - "src/eco_genetic_warning_extensions/protocol002_stage1_pilot.py"
+      - "scripts/run_protocol002_stage1_source_support_pilot.py"
+      - "tests/test_protocol002_source_grid.py"
+      - "tests/test_protocol002_stage1_pilot.py"
+      - ".github/workflows/protocol-002-stage1-source-support-pilot.yml"
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-pilot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install extension package and pytest
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+
+      - name: Run pilot contract tests
+        working-directory: extension
+        run: |
+          python -m pytest -q \
+            tests/test_protocol002_stage1_pilot.py \
+            tests/test_protocol002_source_grid.py
+
+      - name: Run real Stage I source-support pilot
+        working-directory: extension
+        run: |
+          python scripts/run_protocol002_stage1_source_support_pilot.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/protocol002/stage1_source_support_pilot.json
+
+      - name: Show pilot artifact
+        working-directory: extension
+        run: cat artifacts/protocol002/stage1_source_support_pilot.json
+
+      - name: Upload pilot artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage1-source-support-pilot
+          path: extension/artifacts/protocol002/stage1_source_support_pilot.json
+          if-no-files-found: error
+          retention-days: 90
