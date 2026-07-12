@@ -14,6 +14,13 @@ on:
       - "scripts/run_protocol002_stage1_batch.py"
       - "tests/test_protocol002_stage1_batch.py"
       - ".github/workflows/protocol-002-stage1-batch.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage1_batch.py"
+      - "scripts/run_protocol002_stage1_batch.py"
+      - "tests/test_protocol002_stage1_batch.py"
+      - ".github/workflows/protocol-002-stage1-batch.yml"
 
 permissions:
   contents: read
