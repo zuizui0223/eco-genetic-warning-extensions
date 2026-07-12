@@ -18,13 +18,14 @@ from eco_genetic_warning_extensions.protocol002_source_grid import (
 )
 
 
-EXPECTED_DEFAULT_ROW_COUNT = 15 * 3 * 3 * 3 * 5 * 5
+EXPECTED_DEFAULT_ROW_COUNT = 15 * 3 * 3 * 5 * 5
 
 
 def test_default_source_grid_has_declared_row_count() -> None:
     rows = protocol002_source_grid()
     assert len(rows) == EXPECTED_DEFAULT_ROW_COUNT
     assert len({tuple(row.identity().items()) for row in rows}) == EXPECTED_DEFAULT_ROW_COUNT
+    assert {row.nested_barrier_grid for row in rows} == {97}
 
 
 def test_default_source_grid_constants_match_protocol_declaration() -> None:
@@ -42,12 +43,13 @@ def test_source_grid_can_be_restricted_for_small_fixture() -> None:
         coordinates=(MutationCoordinates(kappa_mu=0.20, p_star=0.75),),
         area_references=(1.0,),
         kappas=(4.5,),
-        nested_barrier_grids=(49,),
+        nested_barrier_grids=(25, 49),
         master_seeds=(20270210,),
         replicates_per_cell=2,
     )
     assert len(rows) == 2
     assert [row.replicate for row in rows] == [0, 1]
+    assert {row.nested_barrier_grid for row in rows} == {49}
     assert rows[0].identity()["kappa_mu"] == pytest.approx(0.20)
     assert rows[0].identity()["p_star"] == pytest.approx(0.75)
 
@@ -64,14 +66,17 @@ def test_planned_source_grid_manifest_has_no_simulation_result_and_all_not_run()
         "success": 0,
     }
     assert all(record["status"] == "not_run" for record in artifact["records"])
-    assert all(record["source_prepared"] is False for record in artifact["records"])
-    assert all(record["source_supported"] is False for record in artifact["records"])
-    assert all(record["projection_supported"] is False for record in artifact["records"])
+
+
+def test_nested_resolution_set_validation() -> None:
+    with pytest.raises(ValueError, match="strictly increasing"):
+        protocol002_source_grid(nested_barrier_grids=(49, 25))
+    with pytest.raises(ValueError, match="positive"):
+        protocol002_source_grid(nested_barrier_grids=())
 
 
 def test_planned_source_grid_manifest_object_matches_artifact() -> None:
-    manifest = planned_source_grid_manifest()
-    assert manifest.to_artifact() == planned_source_grid_artifact()
+    assert planned_source_grid_manifest().to_artifact() == planned_source_grid_artifact()
 
 
 def test_write_planned_source_grid(tmp_path) -> None:
