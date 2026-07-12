@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import sys
 from contextlib import contextmanager
 from dataclasses import replace
 from pathlib import Path
@@ -16,14 +17,28 @@ from typing import Any, Iterator
 
 from .mutation_coordinates import MutationCoordinates
 from .protocol002_stage0 import UPSTREAM_COMMIT, UPSTREAM_REPOSITORY
-from .protocol002_upstream_h1_smoke import (
-    UPSTREAM_EXPERIMENT_MODULE,
-    UPSTREAM_H1_MODULE,
-    UPSTREAM_MUTATION_MODULE,
-    _upstream_import_path,
-)
 
+UPSTREAM_H1_MODULE = "causal_model.finite_h1_boundary_resolution_audit"
+UPSTREAM_EXPERIMENT_MODULE = "causal_model.multipatch_criticality_experiments"
+UPSTREAM_MUTATION_MODULE = "causal_model.symmetric_allele_mutation_closure"
 DEFAULT_UPSTREAM_H1_ASYM_SMOKE_PATH = Path("artifacts/protocol002/upstream_h1_asym_smoke.json")
+
+
+@contextmanager
+def _upstream_import_path(checkout: str | Path) -> Iterator[None]:
+    """Temporarily prepend a pinned upstream checkout to ``sys.path``."""
+    path = str(Path(checkout).resolve())
+    sys.path.insert(0, path)
+    try:
+        yield
+    finally:
+        if sys.path and sys.path[0] == path:
+            sys.path.pop(0)
+        else:
+            try:
+                sys.path.remove(path)
+            except ValueError:
+                pass
 
 
 @contextmanager
