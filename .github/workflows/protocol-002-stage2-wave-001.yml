@@ -1,0 +1,60 @@
+name: Protocol 002 Stage II wave 001
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage2_batch.py"
+      - "scripts/run_protocol002_stage2_batch.py"
+      - "tests/test_protocol002_stage2_batch.py"
+      - ".github/workflows/protocol-002-stage2-wave-001.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage2-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        batch_index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+      - name: Run batch partition tests
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_stage2_batch.py
+      - name: Run Stage II batch
+        working-directory: extension
+        run: |
+          INDEX="${{ matrix.batch_index }}"
+          OUTPUT="artifacts/protocol002/stage2_batches/batch_$(printf '%03d' "$INDEX").json"
+          python scripts/run_protocol002_stage2_batch.py \
+            --upstream-checkout ../upstream \
+            --batch-index "$INDEX" \
+            --output "$OUTPUT"
+      - name: Upload Stage II batch artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage2-batch-${{ matrix.batch_index }}
+          path: extension/artifacts/protocol002/stage2_batches/*.json
+          if-no-files-found: error
