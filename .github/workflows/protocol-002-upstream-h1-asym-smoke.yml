@@ -46,9 +46,21 @@ jobs:
           python -m pip install --upgrade pip pytest
           python -m pip install -e extension
 
-      - name: Run asymmetric adapter unit tests
+      - name: Test mutation-transform replacement and restoration
         working-directory: extension
-        run: python -m pytest tests/test_protocol002_upstream_h1_asym_smoke.py
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_replaces_only_mutation_transform_and_restores_it
+
+      - name: Test driver-rate boundary
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_rejects_driver_rate_at_half
+
+      - name: Test symmetric-coordinate rejection
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_asymmetric_h1_smoke_rejects_symmetric_coordinate
+
+      - name: Test missing-upstream rejection
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_asymmetric_h1_smoke_rejects_missing_checkout
 
       - name: Run pinned upstream H1 asymmetric smoke panel
         working-directory: extension
