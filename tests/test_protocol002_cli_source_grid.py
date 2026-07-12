@@ -18,8 +18,8 @@ def test_protocol002_cli_source_grid_plan_stdout(capsys) -> None:
     assert main(["write-source-grid-plan", "--stdout"]) == 0
     captured = capsys.readouterr()
     payload = json.loads(captured.out)
-    assert payload["record_count"] == 10125
-    assert payload["status_counts"]["not_run"] == 10125
+    assert payload["record_count"] == 3375
+    assert payload["status_counts"]["not_run"] == 3375
     assert payload["simulation_result_present"] is False
 
 
@@ -35,5 +35,5 @@ def test_protocol002_cli_source_grid_plan_force_overwrites(tmp_path) -> None:
     output.write_text("{}\n", encoding="utf-8")
     assert main(["write-source-grid-plan", "--output", str(output), "--force"]) == 0
     payload = json.loads(output.read_text(encoding="utf-8"))
-    assert payload["record_count"] == 10125
+    assert payload["record_count"] == 3375
     assert payload["status_counts"]["success"] == 0

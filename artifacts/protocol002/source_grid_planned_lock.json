@@ -1,7 +1,7 @@
 {
   "artifact": "Protocol 002 Stage I planned source-grid manifest lock",
   "full_manifest_path": "artifacts/protocol002/source_grid_planned_manifest.json",
-  "full_manifest_sha256": "72c8f06ebe413efcca48653dc75abb3fa185d15406ded66d098d7e62e6ac519e",
+  "full_manifest_sha256": "8dfbf05afde76ccfb92c0ece6caec30c8ae87b9991a9061a4b26f617a4660188",
   "grid": {
     "area_references": [
       0.8,
@@ -27,6 +27,7 @@
       49,
       97
     ],
+    "nested_barrier_grids_form_one_resolution_set": true,
     "replicates_per_cell": 5,
     "stage_generations": 30
   },
@@ -35,10 +36,10 @@
     "source_reconstruction_run": false,
     "type_s_result_present": false
   },
-  "record_count": 10125,
+  "record_count": 3375,
   "simulation_result_present": false,
   "status_counts": {
-    "not_run": 10125,
+    "not_run": 3375,
     "preparation_failed": 0,
     "projection_failed": 0,
     "source_support_failed": 0,
