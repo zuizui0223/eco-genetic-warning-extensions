@@ -1,6 +1,14 @@
 name: Protocol 002 Stage II wave 001
 
 on:
+  push:
+    branches:
+      - feat/protocol-002-stage2-batches
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage2_batch.py"
+      - "scripts/run_protocol002_stage2_batch.py"
+      - "tests/test_protocol002_stage2_batch.py"
+      - ".github/workflows/protocol-002-stage2-wave-001.yml"
   pull_request:
     branches: [main]
     paths:
