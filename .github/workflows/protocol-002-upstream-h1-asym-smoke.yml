@@ -46,9 +46,17 @@ jobs:
           python -m pip install --upgrade pip pytest
           python -m pip install -e extension
 
-      - name: Test mutation-transform replacement and restoration
+      - name: Test driver-rate activation
         working-directory: extension
-        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_replaces_only_mutation_transform_and_restores_it
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_uses_half_kappa_as_driver_rate
+
+      - name: Test Protocol 002 mutation value
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_applies_coordinate_transform
+
+      - name: Test transform restoration
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_upstream_h1_asym_smoke.py::test_protocol002_patch_restores_original_transform
 
       - name: Test driver-rate boundary
         working-directory: extension
