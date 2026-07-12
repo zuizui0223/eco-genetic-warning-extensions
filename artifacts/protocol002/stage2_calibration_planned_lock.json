@@ -1,0 +1,46 @@
+{
+  "artifact": "Protocol 002 Stage II calibration grid lock",
+  "attempt_count": 20250,
+  "attempts_per_candidate_cell": 25,
+  "candidate_cell_count": 810,
+  "full_manifest_path": "artifacts/protocol002/stage2_calibration_planned_manifest.json",
+  "full_manifest_sha256": "d3fc57e728f23b9aa1faac4ba6926f2461b1ea1464e3c668b672e26b4fa836d1",
+  "grid": {
+    "area_references": [
+      0.8,
+      1.0,
+      1.2
+    ],
+    "hold_generations": [
+      90,
+      210
+    ],
+    "kappas": [
+      3.0,
+      4.5,
+      6.0
+    ],
+    "master_seeds": [
+      20270310,
+      20270311,
+      20270312,
+      20270313,
+      20270314
+    ],
+    "mutation_coordinate_count": 15,
+    "normalised_barrier_increases": [
+      0.15,
+      0.3,
+      0.45
+    ],
+    "ramp_generations": 30,
+    "replicates_per_cell": 5
+  },
+  "interpretation": {
+    "domain_selected": false,
+    "planned_rows_only": true,
+    "simulation_result_present": false,
+    "trait_loss_only": true,
+    "warning_fields_present": false
+  }
+}
