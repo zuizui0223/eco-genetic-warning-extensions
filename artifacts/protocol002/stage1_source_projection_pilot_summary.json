@@ -1,0 +1,16 @@
+{
+  "all_prepared_sources_projected_to_all_scenarios": true,
+  "attempts": [
+    {"anchor_barrier": 0.9949955041899614, "calibration_seed": 1452848259, "kappa_mu": 0.2, "master_seed": 20270210, "p_star": 0.25, "projection_status": "projection_supported", "replicate": 0, "source_preparation_status": "prepared", "source_prepared": true, "source_status": "source_supported"},
+    {"anchor_barrier": null, "calibration_seed": 731468766, "kappa_mu": 0.2, "master_seed": 20270211, "p_star": 0.25, "projection_status": "not_run", "replicate": 0, "source_preparation_status": "preparation_failed_or_not_eligible", "source_prepared": false, "source_status": "source_support_failed"},
+    {"anchor_barrier": null, "calibration_seed": 1452848259, "kappa_mu": 0.2, "master_seed": 20270210, "p_star": 0.5, "projection_status": "not_run", "replicate": 0, "source_preparation_status": "preparation_failed_or_not_eligible", "source_prepared": false, "source_status": "source_support_failed"},
+    {"anchor_barrier": 1.186424931963302, "calibration_seed": 731468766, "kappa_mu": 0.2, "master_seed": 20270211, "p_star": 0.5, "projection_status": "projection_supported", "replicate": 0, "source_preparation_status": "prepared", "source_prepared": true, "source_status": "source_supported"},
+    {"anchor_barrier": 1.4257117166799778, "calibration_seed": 1452848259, "kappa_mu": 0.2, "master_seed": 20270210, "p_star": 0.75, "projection_status": "projection_supported", "replicate": 0, "source_preparation_status": "prepared", "source_prepared": true, "source_status": "source_supported"},
+    {"anchor_barrier": 1.4257117166799778, "calibration_seed": 731468766, "kappa_mu": 0.2, "master_seed": 20270211, "p_star": 0.75, "projection_status": "projection_supported", "replicate": 0, "source_preparation_status": "prepared", "source_prepared": true, "source_status": "source_supported"}
+  ],
+  "design": {"area_reference": 1.0, "attempt_count": 6, "coordinate_count": 3, "hold_generations": 30, "kappa": 4.5, "master_seeds": [20270210, 20270211], "nested_barrier_grids": [25, 49, 97], "projection_scenarios": ["one_large", "equal_isolated", "equal_migrating"], "stage_generations": 30},
+  "stage": "Protocol 002 Stage I source preparation and projection pilot",
+  "status_counts": {"projection_failed": 0, "projection_not_run": 2, "projection_supported": 4, "source_prepared": 4, "source_supported": 4},
+  "type_s_result_claimed": false,
+  "upstream": {"chain_runtime_module": "causal_model.mutation_primary_h1_h2_h3_runtime", "commit": "dd8ee379d0d3518194c767d16402042525bc00dc", "h1_module": "causal_model.finite_h1_boundary_resolution_audit", "repository": "zuizui0223/eco-genetic-criticality"}
+}
