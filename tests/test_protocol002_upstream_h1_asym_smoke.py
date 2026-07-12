@@ -1,5 +1,4 @@
 from pathlib import Path
-from types import SimpleNamespace
 
 import pytest
 
@@ -17,7 +16,6 @@ class DummyPatch:
 
     def patched_h1_mutation_runner(self, rate):
         self.entered_rate = rate
-        module = self
 
         class Context:
             def __enter__(self):
@@ -39,10 +37,10 @@ def test_protocol002_patch_replaces_only_mutation_transform_and_restores_it() ->
     assert module.apply_symmetric_allele_mutation is original
 
 
-def test_protocol002_patch_rejects_zero_relaxation() -> None:
+def test_protocol002_patch_rejects_driver_rate_at_half() -> None:
     module = DummyPatch()
     with pytest.raises(ValueError, match="0 < kappa_mu < 1"):
-        with patched_protocol002_mutation_runner(module, MutationCoordinates(kappa_mu=0.0, p_star=0.75)):
+        with patched_protocol002_mutation_runner(module, MutationCoordinates(kappa_mu=1.0, p_star=0.75)):
             pass
 
 
