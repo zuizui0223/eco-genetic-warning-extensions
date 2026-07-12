@@ -1,0 +1,69 @@
+name: Protocol 002 upstream H1 asymmetric smoke
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["feat/protocol-002-upstream-h1-asym-smoke"]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_upstream_h1_asym_smoke.py"
+      - "scripts/run_protocol002_upstream_h1_asym_smoke.py"
+      - "tests/test_protocol002_upstream_h1_asym_smoke.py"
+      - ".github/workflows/protocol-002-upstream-h1-asym-smoke.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_upstream_h1_asym_smoke.py"
+      - "scripts/run_protocol002_upstream_h1_asym_smoke.py"
+      - "tests/test_protocol002_upstream_h1_asym_smoke.py"
+      - ".github/workflows/protocol-002-upstream-h1-asym-smoke.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  upstream-h1-asym-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install extension package and pytest
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+
+      - name: Run asymmetric adapter unit tests
+        working-directory: extension
+        run: python -m pytest tests/test_protocol002_upstream_h1_asym_smoke.py
+
+      - name: Run pinned upstream H1 asymmetric smoke panel
+        working-directory: extension
+        run: |
+          python scripts/run_protocol002_upstream_h1_asym_smoke.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/protocol002/upstream_h1_asym_smoke.json
+
+      - name: Show smoke artifact
+        working-directory: extension
+        run: cat artifacts/protocol002/upstream_h1_asym_smoke.json
+
+      - name: Upload smoke artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-upstream-h1-asym-smoke
+          path: extension/artifacts/protocol002/upstream_h1_asym_smoke.json
+          if-no-files-found: error
