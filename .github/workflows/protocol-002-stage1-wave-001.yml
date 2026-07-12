@@ -1,8 +1,9 @@
 name: Protocol 002 Stage I wave 001
 
 on:
-  push:
-    branches: ["feat/protocol-002-stage1-batch-campaign"]
+  pull_request:
+    branches: ["main"]
+    types: [synchronize]
     paths:
       - ".github/workflows/protocol-002-stage1-wave-001.yml"
   workflow_dispatch:
@@ -14,7 +15,7 @@ jobs:
   stage1-wave:
     strategy:
       fail-fast: false
-      max-parallel: 9
+      max-parallel: 8
       matrix:
         batch_index: [1, 2, 3, 4, 5, 6, 7, 8]
     runs-on: ubuntu-latest
