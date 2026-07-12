@@ -3,6 +3,12 @@
 from .asymmetric_mutation import AsymmetricMutation, mutate_frequency
 from .mutation_coordinates import MutationCoordinates, primary_phase_grid
 from .protocol001 import CalibrationCandidate, select_protocol_001_domain
+from .protocol002_calibration import (
+    Protocol002CalibrationCandidate,
+    assert_protocol002_blind_calibration_columns,
+    protocol002_calibration_candidate_from_row,
+    select_protocol002_calibration_domain,
+)
 from .protocol002_life_cycle_fixture import (
     MinimalLifeCycleFixture,
     run_protocol002_minimal_life_cycle,
@@ -53,6 +59,7 @@ __all__ = [
     "MutationCoordinates",
     "MutationSlotFixture",
     "PINNED_UPSTREAM_LIFECYCLE",
+    "Protocol002CalibrationCandidate",
     "Protocol002SourceCoordinate",
     "SourceAttemptEvaluation",
     "SourceAttemptRecord",
@@ -60,6 +67,7 @@ __all__ = [
     "SourceSkeletonManifest",
     "apply_protocol002_mutation",
     "apply_symmetric_bridge",
+    "assert_protocol002_blind_calibration_columns",
     "deterministic_fixture_source_artifact",
     "deterministic_fixture_source_manifest",
     "evaluate_source_attempts",
@@ -69,10 +77,12 @@ __all__ = [
     "planned_source_grid_artifact",
     "planned_source_grid_lock_artifact",
     "primary_phase_grid",
+    "protocol002_calibration_candidate_from_row",
     "protocol002_mutation_slot_trajectory",
     "protocol002_source_grid",
     "run_protocol002_minimal_life_cycle",
     "select_protocol_001_domain",
+    "select_protocol002_calibration_domain",
     "skeleton_record",
     "stage0_certificate",
     "symmetric_bridge_coordinate",
