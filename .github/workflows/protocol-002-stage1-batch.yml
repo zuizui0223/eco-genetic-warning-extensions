@@ -1,0 +1,62 @@
+name: Protocol 002 Stage I batch
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_index:
+        description: "Stage I batch index (0-134)"
+        required: true
+        default: "0"
+  push:
+    branches: ["feat/protocol-002-stage1-batch-campaign"]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage1_batch.py"
+      - "scripts/run_protocol002_stage1_batch.py"
+      - "tests/test_protocol002_stage1_batch.py"
+      - ".github/workflows/protocol-002-stage1-batch.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-batch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    env:
+      BATCH_INDEX: ${{ github.event.inputs.batch_index || '0' }}
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+      - name: Run batch partition tests
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_stage1_batch.py
+      - name: Run Stage I batch
+        working-directory: extension
+        run: |
+          OUTPUT="artifacts/protocol002/stage1_batches/batch_$(printf '%03d' "$BATCH_INDEX").json"
+          python scripts/run_protocol002_stage1_batch.py \
+            --upstream-checkout ../upstream \
+            --batch-index "$BATCH_INDEX" \
+            --output "$OUTPUT"
+          cat "$OUTPUT"
+      - name: Upload Stage I batch artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage1-batch-${{ env.BATCH_INDEX }}
+          path: extension/artifacts/protocol002/stage1_batches/*.json
+          if-no-files-found: error
