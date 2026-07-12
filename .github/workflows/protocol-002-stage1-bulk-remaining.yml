@@ -1,0 +1,59 @@
+name: Protocol 002 Stage I bulk remaining
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/protocol-002-stage1-bulk-remaining.yml"
+      - "artifacts/protocol002/stage1_campaign/bulk_remaining.plan.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage1-bulk:
+    strategy:
+      fail-fast: false
+      max-parallel: 20
+      matrix:
+        batch_index: [36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134]
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+      - name: Run batch partition tests
+        working-directory: extension
+        run: python -m pytest -q tests/test_protocol002_stage1_batch.py
+      - name: Run Stage I batch
+        working-directory: extension
+        env:
+          BATCH_INDEX: ${{ matrix.batch_index }}
+        run: |
+          OUTPUT="artifacts/protocol002/stage1_batches/batch_$(printf '%03d' "$BATCH_INDEX").json"
+          python scripts/run_protocol002_stage1_batch.py \
+            --upstream-checkout ../upstream \
+            --batch-index "$BATCH_INDEX" \
+            --output "$OUTPUT"
+      - name: Upload Stage I batch artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage1-batch-${{ matrix.batch_index }}
+          path: extension/artifacts/protocol002/stage1_batches/*.json
+          if-no-files-found: error
