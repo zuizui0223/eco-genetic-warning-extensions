@@ -1,0 +1,98 @@
+{
+  "record_count": 5,
+  "records": [
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": true,
+      "reason": "deterministic fixture success",
+      "replicate": 0,
+      "source_prepared": true,
+      "source_supported": true,
+      "stage_generations": 30,
+      "status": "success"
+    },
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": false,
+      "reason": "deterministic fixture preparation failure",
+      "replicate": 1,
+      "source_prepared": false,
+      "source_supported": false,
+      "stage_generations": 30,
+      "status": "preparation_failed"
+    },
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": false,
+      "reason": "deterministic fixture source support failure",
+      "replicate": 2,
+      "source_prepared": true,
+      "source_supported": false,
+      "stage_generations": 30,
+      "status": "source_support_failed"
+    },
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": false,
+      "reason": "deterministic fixture projection failure",
+      "replicate": 3,
+      "source_prepared": true,
+      "source_supported": true,
+      "stage_generations": 30,
+      "status": "projection_failed"
+    },
+    {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "kappa_mu": 0.2,
+      "master_seed": 20270210,
+      "nested_barrier_grid": 49,
+      "p_star": 0.75,
+      "projection_supported": false,
+      "reason": "deterministic fixture not run",
+      "replicate": 4,
+      "source_prepared": false,
+      "source_supported": false,
+      "stage_generations": 30,
+      "status": "not_run"
+    }
+  ],
+  "simulation_result_present": false,
+  "stage": "Protocol 002 Stage I source-runner skeleton",
+  "status_counts": {
+    "not_run": 1,
+    "preparation_failed": 1,
+    "projection_failed": 1,
+    "source_support_failed": 1,
+    "success": 1
+  },
+  "upstream": {
+    "commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "repository": "zuizui0223/eco-genetic-criticality"
+  }
+}
