@@ -1,0 +1,26 @@
+{
+  "wave": 1,
+  "batch_indices": [1, 2, 3, 4, 5, 6, 7, 8],
+  "workflow_run_id": 29186610167,
+  "workflow_conclusion": "success",
+  "artifact_digests": {
+    "1": "sha256:bda909b247ebc5a0a10ee2d6c70eb9f08482aa35ee8561b8afdd54f1fd808a73",
+    "2": "sha256:26a02c216a56b14741d0971a477df667cf4c4609a8c643e929ee6d2859ee1c65",
+    "3": "sha256:07b55df751bb0991f436f5550fce6976fbace51fbfb8ae0ecf784f58c9c471ec",
+    "4": "sha256:02e9736d53b5de8938babc8db30e6c99a602adcc2ceb5825ceb547161ffcfb93",
+    "5": "sha256:0d94517cfe969b5584721a59dfbdaccb670eb78c5d8326cf12ceaf02f816ecdb",
+    "6": "sha256:008e01868ff31afec07c919bab79d01d36f57f81a491339709602465fe4bdd76",
+    "7": "sha256:79ab8779afefc01e19c7c3e4be52e7264ae8a08b1ad29624a187126ce35552f0",
+    "8": "sha256:17fdc739d35c0a347656967ea1cdcce1bb40695e0331eeebeae21c3d91d53770"
+  },
+  "completed_batch_count": 8,
+  "completed_attempt_count": 200,
+  "campaign_completed_attempt_count_including_batch_0": 225,
+  "campaign_total_attempt_count": 3375,
+  "campaign_completion_fraction": 0.06666666666666667,
+  "interpretation": {
+    "all_wave_jobs_succeeded": true,
+    "raw_batch_artifacts_retained_in_github_actions": true,
+    "full_stage_i_campaign_complete": false
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "wave": 2,
+  "batch_indices": [9, 10, 11, 12, 13, 14, 15, 16, 17],
+  "planned_batch_count": 9,
+  "planned_attempt_count": 225,
+  "campaign_completed_attempt_count_before_wave": 225,
+  "campaign_expected_attempt_count_after_success": 450,
+  "campaign_total_attempt_count": 3375,
+  "full_stage_i_campaign_complete": false
+}
