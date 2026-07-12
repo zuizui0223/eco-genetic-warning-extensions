@@ -47,9 +47,11 @@ jobs:
             --upstream-checkout ../upstream \
             --output artifacts/protocol002/stage1_source_projection_pilot.json
       - name: Show pilot artifact
+        if: ${{ always() }}
         working-directory: extension
-        run: cat artifacts/protocol002/stage1_source_projection_pilot.json
+        run: cat artifacts/protocol002/stage1_source_projection_pilot.json || true
       - name: Upload pilot artifact
+        if: ${{ always() }}
         uses: actions/upload-artifact@v4
         with:
           name: protocol002-stage1-source-projection-pilot
