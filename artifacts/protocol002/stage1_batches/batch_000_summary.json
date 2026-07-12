@@ -1,0 +1,78 @@
+{
+  "artifact": "Protocol 002 Stage I batch 000 retained summary",
+  "batch": {
+    "area_reference": 0.8,
+    "batch_index": 0,
+    "kappa": 3.0,
+    "kappa_mu": 0.05,
+    "p_star": 0.1
+  },
+  "campaign": {
+    "attempts_per_batch": 25,
+    "batch_count": 135,
+    "full_campaign_attempt_count": 3375,
+    "resumable_unit": "one mutation coordinate x one area_reference x one kappa"
+  },
+  "execution": {
+    "workflow_run_id": 29177214259,
+    "workflow_artifact_id": 8255281132,
+    "workflow_artifact_name": "protocol002-stage1-batch-0",
+    "workflow_artifact_zip_digest": "sha256:61a092a05dd3832360a9a119cb31756b3d563ab82185c964c1365e9501b9793b",
+    "raw_batch_json_sha256": "9a83f1747a8380d49648a2c273be6c1ab4871a6459c1dd7695659598b7fe024f",
+    "upstream_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "status_counts": {
+    "projection_failed": 0,
+    "projection_not_run": 18,
+    "projection_supported": 7,
+    "source_prepared": 7,
+    "source_supported": 7
+  },
+  "seed_blocks": {
+    "20270210": {
+      "attempts": 5,
+      "projection_supported": 2,
+      "source_prepared": 2,
+      "source_supported": 2
+    },
+    "20270211": {
+      "attempts": 5,
+      "projection_supported": 1,
+      "source_prepared": 1,
+      "source_supported": 1
+    },
+    "20270212": {
+      "attempts": 5,
+      "projection_supported": 1,
+      "source_prepared": 1,
+      "source_supported": 1
+    },
+    "20270213": {
+      "attempts": 5,
+      "projection_supported": 1,
+      "source_prepared": 1,
+      "source_supported": 1
+    },
+    "20270214": {
+      "attempts": 5,
+      "projection_supported": 2,
+      "source_prepared": 2,
+      "source_supported": 2
+    }
+  },
+  "anchor_barriers_for_prepared_sources": [
+    1.3194441545737925,
+    1.3194441545737925,
+    1.3731057839113472,
+    1.2657825252362376,
+    1.2121208958986827,
+    1.2657825252362376,
+    1.3731057839113472
+  ],
+  "interpretation": {
+    "full_stage_i_campaign_complete": false,
+    "h2_h3_horizon_run_present": false,
+    "projection_run_present": true,
+    "type_s_result_claimed": false
+  }
+}
