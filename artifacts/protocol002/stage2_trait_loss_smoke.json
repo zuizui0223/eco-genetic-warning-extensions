@@ -1,0 +1,54 @@
+{
+  "anchor_barrier": 1.4257117166799778,
+  "asymmetric_protocol002_mutation_present": true,
+  "barrier_at_hold": 1.770284686671991,
+  "barrier_first_generation": 1.4371974823463782,
+  "baseline_realised_high_trait_present": true,
+  "canonical_interval_width": 2.2971531332800876,
+  "design": {
+    "calibration": {
+      "hold_generations": 90,
+      "horizon": 120,
+      "master_seed": 20270310,
+      "normalised_barrier_increase": 0.15,
+      "projection_scenario": "equal_isolated",
+      "ramp_generations": 30
+    },
+    "protocol002_coordinate": {
+      "high_to_low": 0.05,
+      "kappa_mu": 0.2,
+      "low_to_high": 0.15,
+      "p_star": 0.75
+    },
+    "source": {
+      "area_reference": 1.0,
+      "hold_generations": 30,
+      "kappa": 4.5,
+      "master_seed": 20270210,
+      "nested_barrier_grids": [
+        25,
+        49,
+        97
+      ],
+      "replicates": 1,
+      "stage_generations": 30
+    }
+  },
+  "domain_selected": false,
+  "eligible_for_trait_loss_denominator": true,
+  "projection_supported": true,
+  "simulation_run_present": true,
+  "source_prepared": true,
+  "source_support": true,
+  "stage": "Protocol 002 Stage II trait-loss-only smoke",
+  "status": "completed",
+  "trait_loss_observed_post_baseline": false,
+  "trait_loss_only": true,
+  "trait_loss_time_post_baseline": null,
+  "type_s_result_claimed": false,
+  "upstream": {
+    "calibration_module": "causal_model.h2r_ramp_hold_trait_loss_calibration",
+    "commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "repository": "zuizui0223/eco-genetic-criticality"
+  }
+}
