@@ -8,10 +8,20 @@ from eco_genetic_warning_extensions.protocol002_stage1_batch import (
 )
 
 
-def test_stage1_campaign_has_135_stable_batches() -> None:
+def test_stage1_campaign_has_135_stable_unique_batches() -> None:
     cells = stage1_batch_cells()
     assert len(cells) == 135
     assert [cell.batch_index for cell in cells] == list(range(135))
+    identities = {
+        (
+            cell.coordinate.kappa_mu,
+            cell.coordinate.p_star,
+            cell.area_reference,
+            cell.kappa,
+        )
+        for cell in cells
+    }
+    assert len(identities) == 135
 
 
 def test_stage1_batch_zero_is_first_declared_phase_cell() -> None:
