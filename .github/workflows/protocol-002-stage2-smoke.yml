@@ -1,0 +1,59 @@
+name: Protocol 002 Stage II trait-loss-only smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/protocol-002-stage2-smoke.yml"
+      - "src/eco_genetic_warning_extensions/protocol002_stage2_smoke.py"
+      - "src/eco_genetic_warning_extensions/protocol002_calibration_grid.py"
+      - "scripts/run_protocol002_stage2_smoke.py"
+      - "tests/test_protocol002_stage2_smoke.py"
+      - "tests/test_protocol002_calibration_grid.py"
+      - "artifacts/protocol002/stage2_calibration_planned_lock.json"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage2-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout pinned upstream repo
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e extension
+      - name: Run Stage II contract tests
+        working-directory: extension
+        run: |
+          python -m pytest -q \
+            tests/test_protocol002_calibration.py \
+            tests/test_protocol002_calibration_grid.py \
+            tests/test_protocol002_stage2_smoke.py
+      - name: Run real Stage II trait-loss-only smoke
+        working-directory: extension
+        run: |
+          python scripts/run_protocol002_stage2_smoke.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/protocol002/stage2_trait_loss_smoke.json
+      - name: Upload Stage II smoke artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage2-trait-loss-smoke
+          path: extension/artifacts/protocol002/stage2_trait_loss_smoke.json
+          if-no-files-found: error
