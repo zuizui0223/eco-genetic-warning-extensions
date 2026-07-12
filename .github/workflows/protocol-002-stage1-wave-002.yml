@@ -5,6 +5,10 @@ on:
     branches: ["feat/protocol-002-stage1-wave-002"]
     paths:
       - ".github/workflows/protocol-002-stage1-wave-002.yml"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/protocol-002-stage1-wave-002.yml"
   workflow_dispatch:
 
 permissions:
@@ -56,5 +60,3 @@ jobs:
           name: protocol002-stage1-batch-${{ matrix.batch_index }}
           path: extension/artifacts/protocol002/stage1_batches/*.json
           if-no-files-found: error
-
-# Wave 002 launch trigger.
