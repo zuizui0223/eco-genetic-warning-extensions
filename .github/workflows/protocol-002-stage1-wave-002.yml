@@ -56,3 +56,5 @@ jobs:
           name: protocol002-stage1-batch-${{ matrix.batch_index }}
           path: extension/artifacts/protocol002/stage1_batches/*.json
           if-no-files-found: error
+
+# Wave 002 launch trigger.
