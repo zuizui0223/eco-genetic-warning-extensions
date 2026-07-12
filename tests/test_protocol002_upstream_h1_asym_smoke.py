@@ -27,13 +27,26 @@ class DummyPatch:
         return Context()
 
 
-def test_protocol002_patch_replaces_only_mutation_transform_and_restores_it() -> None:
+def test_protocol002_patch_uses_half_kappa_as_driver_rate() -> None:
+    module = DummyPatch()
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.75)
+    with patched_protocol002_mutation_runner(module, coordinate):
+        assert module.entered_rate == pytest.approx(0.10)
+
+
+def test_protocol002_patch_applies_coordinate_transform() -> None:
+    module = DummyPatch()
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.75)
+    with patched_protocol002_mutation_runner(module, coordinate):
+        assert module.apply_symmetric_allele_mutation(0.40, 0.10) == pytest.approx(coordinate.apply(0.40))
+
+
+def test_protocol002_patch_restores_original_transform() -> None:
     module = DummyPatch()
     original = module.apply_symmetric_allele_mutation
     coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.75)
     with patched_protocol002_mutation_runner(module, coordinate):
-        assert module.entered_rate == pytest.approx(0.10)
-        assert module.apply_symmetric_allele_mutation(0.40, 0.10) == pytest.approx(coordinate.apply(0.40))
+        pass
     assert module.apply_symmetric_allele_mutation is original
 
 
