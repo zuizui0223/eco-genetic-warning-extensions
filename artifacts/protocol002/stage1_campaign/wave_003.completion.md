@@ -1,0 +1,23 @@
+# Protocol 002 Stage I — Wave 003 completion lock
+
+- workflow run: `29188748077`
+- head SHA: `cfcaa488925d7e7a83a5c62a965f0614f8745efc`
+- conclusion: `success`
+- batches: `18–26`
+- attempts: `225`
+
+## Artifact digests
+
+| Batch | Artifact ID | SHA-256 digest |
+|---:|---:|---|
+| 18 | 8258842319 | `sha256:35266cd06a008b3d72598c68ba79a9766d00c210aa5774e047909b8221827fa7` |
+| 19 | 8258842967 | `sha256:7d2fbe1a2e3c970db68846c2bb48256ebcd1e41c00454942f937c12967ce9c5f` |
+| 20 | 8258840473 | `sha256:76fc8a454b5bbcdf92d44b0ff5eb6b5f7f41eca73b1b660ccb01f4bd8c756535` |
+| 21 | 8258840799 | `sha256:12d68e71e1fa3ed1e80ba509684a23c8ca4092fbd59a9a05629cdf866efa6edf` |
+| 22 | 8258842874 | `sha256:d86a6dc0cf47f24421618ce21a2a1983ebbaa8e265d136737153307f511e6167` |
+| 23 | 8258843061 | `sha256:9494cfda88933416b74f49ab532047268bea25a8f38f60e4e7e760f104688f86` |
+| 24 | 8258841399 | `sha256:5d52d5c9b85c9ea1c701a5c252cfe80b2dbbe9850b838e84748b6242e8fb1690` |
+| 25 | 8258842392 | `sha256:746223a8253060e2d2d03eca3e8d44763d745f20c9430e98a6fbb5025ddf59b8` |
+| 26 | 8258842444 | `sha256:d0800abf87ceaf013bd652a3c067e59a33a257eeb51d5f098237dc70036179e9` |
+
+Wave 003 is counted as complete only by this successful run and these immutable artifact digests.
