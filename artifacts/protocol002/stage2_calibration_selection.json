@@ -1,0 +1,14 @@
+{
+  "attempt_count": 20250,
+  "batch_count": 810,
+  "candidate_count_with_complete_seed_blocks": 648,
+  "diversity_fields_inspected": false,
+  "eligible_candidate_count": 0,
+  "no_domain_selected_count": 15,
+  "selected_domain_count": 0,
+  "selected_domains": [],
+  "selection_rule": "min(|pooled_rate-0.50|, horizon, barrier_increase, A_ref, kappa) among candidates with every seed-block rate in [0.30, 0.70]",
+  "stage": "Protocol 002 Stage II calibration domain selection",
+  "warning_fields_inspected": false,
+  "workflow_artifact_digest": "sha256:3e18b13b59f5888ca23dd2449f8fb96cdab22a899c6d6dd5b4a6f2aa70c422e3"
+}
