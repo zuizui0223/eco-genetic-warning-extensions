@@ -1,0 +1,51 @@
+name: Protocol 002 Stage II no-domain audit
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage2_no_domain_audit.py"
+      - "scripts/audit_protocol002_stage2_no_domain.py"
+      - "artifacts/protocol002/stage2_calibration_selection.json"
+      - ".github/workflows/protocol-002-stage2-no-domain-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit-no-domain:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WAVE001_RUN_ID: "29192237756"
+      BULK_RUN_ID: "29192711417"
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: python -m pip install -e .
+      - name: Download all Stage II batch artifacts
+        run: |
+          mkdir -p collected/wave001 collected/bulk
+          gh run download "$WAVE001_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/wave001
+          gh run download "$BULK_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/bulk
+          test "$(find collected -name 'batch_*.json' | wc -l)" -eq 810
+      - name: Audit no-domain result
+        run: |
+          python scripts/audit_protocol002_stage2_no_domain.py \
+            --batch-root collected \
+            --output artifacts/protocol002/stage2_no_domain_audit.json
+          cat artifacts/protocol002/stage2_no_domain_audit.json
+      - name: Upload Stage II no-domain audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage2-no-domain-audit
+          path: artifacts/protocol002/stage2_no_domain_audit.json
+          if-no-files-found: error
+          retention-days: 90
