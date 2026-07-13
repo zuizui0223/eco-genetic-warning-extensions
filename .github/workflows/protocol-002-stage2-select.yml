@@ -1,0 +1,53 @@
+name: Protocol 002 Stage II select domains
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_stage2_selection.py"
+      - "scripts/select_protocol002_stage2_domains.py"
+      - "tests/test_protocol002_stage2_selection.py"
+      - ".github/workflows/protocol-002-stage2-select.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  select-domains:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WAVE001_RUN_ID: "29192237756"
+      BULK_RUN_ID: "29192711417"
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: python -m pip install -e . pytest
+      - name: Run selection unit tests
+        run: python -m pytest -q tests/test_protocol002_stage2_selection.py
+      - name: Download all Stage II batch artifacts
+        run: |
+          mkdir -p collected/wave001 collected/bulk
+          gh run download "$WAVE001_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/wave001
+          gh run download "$BULK_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/bulk
+          test "$(find collected -name 'batch_*.json' | wc -l)" -eq 810
+      - name: Select calibration domains
+        run: |
+          python scripts/select_protocol002_stage2_domains.py \
+            --batch-root collected \
+            --output artifacts/protocol002/stage2_calibration_selection.json
+          cat artifacts/protocol002/stage2_calibration_selection.json
+      - name: Upload Stage II selection artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-stage2-calibration-selection
+          path: artifacts/protocol002/stage2_calibration_selection.json
+          if-no-files-found: error
+          retention-days: 90
