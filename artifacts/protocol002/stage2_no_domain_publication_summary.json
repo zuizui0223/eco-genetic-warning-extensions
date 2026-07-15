@@ -1,0 +1,27 @@
+{
+  "artifact_source": {
+    "name": "protocol002-stage2-no-domain-audit",
+    "workflow_run_id": 29253066194,
+    "artifact_id": 8281298885,
+    "sha256": "58255f3facb8eede8bdd9ec2ff2bb6ab7b45e6a8a29ccf613a4a4e08c03e6fcf"
+  },
+  "stage": "Protocol 002 publication-facing no-domain summary",
+  "batch_count": 810,
+  "attempt_count": 20250,
+  "coordinate_count": 15,
+  "complete_five_seed_candidate_count": 648,
+  "eligible_candidate_count": 0,
+  "selected_coordinate_count": 0,
+  "no_domain_selected_coordinate_count": 15,
+  "eligibility_band": [0.3, 0.7],
+  "complete_candidate_pattern_counts": {
+    "all_above_band": 322,
+    "all_below_band": 242,
+    "mixed_across_band": 84
+  },
+  "warning_fields_inspected": false,
+  "diversity_fields_inspected": false,
+  "selection_rule_changed": false,
+  "stage3_run": false,
+  "interpretation": "Mutation direction partitions the declared finite system into rapid-loss, persistent, and seed-heterogeneous calibration regimes. No claim about warning lead or lag is made."
+}
