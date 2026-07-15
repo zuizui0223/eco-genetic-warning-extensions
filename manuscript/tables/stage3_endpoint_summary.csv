@@ -1,0 +1,13 @@
+domain,endpoint,attempted,completed,valid_pairs,lead,tie,lag,baseline_ineligible,warning_censored,trait_loss_censored,both_censored,median_positive_lead_time,lead_fraction_valid
+symmetric_bridge,H_alpha_0.05,100,82,54,54,0,0,0,0,28,0,112,1.0
+symmetric_bridge,H_alpha_0.10,100,82,54,54,0,0,0,0,28,0,110,1.0
+symmetric_bridge,H_alpha_0.20,100,82,54,54,0,0,0,0,28,0,109,1.0
+symmetric_bridge,H_gamma_0.05,100,82,54,54,0,0,0,0,28,0,112,1.0
+symmetric_bridge,H_gamma_0.10,100,82,54,54,0,0,0,0,28,0,106,1.0
+symmetric_bridge,H_gamma_0.20,100,82,54,53,1,0,0,0,28,0,106,0.9814814815
+transition,H_alpha_0.05,100,91,38,35,1,2,10,14,21,8,77,0.9210526316
+transition,H_alpha_0.10,100,91,37,35,1,1,10,15,21,8,76,0.9459459459
+transition,H_alpha_0.20,100,91,35,34,0,1,10,17,19,10,76,0.9714285714
+transition,H_gamma_0.05,100,91,32,28,2,2,10,20,14,15,74,0.875
+transition,H_gamma_0.10,100,91,31,28,1,2,10,21,14,15,74,0.9032258065
+transition,H_gamma_0.20,100,91,28,24,0,4,10,24,13,16,81,0.8571428571
