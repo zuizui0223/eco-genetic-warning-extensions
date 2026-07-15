@@ -1,0 +1,57 @@
+name: Protocol 003 confirmation calibration
+
+on:
+  pull_request:
+    paths:
+      - 'src/eco_genetic_warning_extensions/protocol003_confirmation_calibration.py'
+      - 'scripts/run_protocol003_confirmation_cell.py'
+      - 'tests/test_protocol003_confirmation_calibration.py'
+      - '.github/workflows/protocol-003-confirmation-calibration.yml'
+      - 'docs/PROTOCOL_003_AMENDMENT_002.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  confirmation-cell:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        cell_index: [0, 1]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned upstream
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install extension and test dependency
+        run: python -m pip install -e . pytest
+
+      - name: Check locked confirmation design
+        run: python -m pytest -q tests/test_protocol003_confirmation_calibration.py
+
+      - name: Run trait-loss-only confirmation cell
+        run: |
+          python scripts/run_protocol003_confirmation_cell.py \
+            upstream \
+            "${{ matrix.cell_index }}" \
+            "artifacts/protocol003/confirmation_cell_${{ matrix.cell_index }}.json"
+
+      - name: Upload confirmation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol003-confirmation-cell-${{ matrix.cell_index }}
+          path: artifacts/protocol003/confirmation_cell_${{ matrix.cell_index }}.json
