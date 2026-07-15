@@ -1,0 +1,39 @@
+{
+  "domains": [
+    {
+      "aggregate_ordering_across_six_endpoints": {"lag": 0, "lead": 323, "tie": 1, "valid_pairs": 324},
+      "attempted": 100,
+      "completed": 82,
+      "domain": {"area_reference": 0.8, "cell_index": 0, "high_to_low": 0.1, "hold_generations": 210, "horizon": 240, "kappa": 6.0, "kappa_mu": 0.2, "label": "symmetric_bridge", "low_to_high": 0.1, "normalised_barrier_increase": 0.2, "p_star": 0.5, "ramp_generations": 30},
+      "endpoint_summary": {
+        "H_alpha_0.05": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 54, "tie": 0, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 112, "valid_pairs": 54},
+        "H_alpha_0.10": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 54, "tie": 0, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 110, "valid_pairs": 54},
+        "H_alpha_0.20": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 54, "tie": 0, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 109, "valid_pairs": 54},
+        "H_gamma_0.05": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 54, "tie": 0, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 112, "valid_pairs": 54},
+        "H_gamma_0.10": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 54, "tie": 0, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 106, "valid_pairs": 54},
+        "H_gamma_0.20": {"counts": {"baseline_ineligible": 0, "both_censored": 0, "lag": 0, "lead": 53, "tie": 1, "trait_loss_censored": 28, "warning_censored": 0}, "median_positive_lead_time": 106, "valid_pairs": 54}
+      }
+    },
+    {
+      "aggregate_ordering_across_six_endpoints": {"lag": 12, "lead": 184, "tie": 5, "valid_pairs": 201},
+      "attempted": 100,
+      "completed": 91,
+      "domain": {"area_reference": 1.0, "cell_index": 1, "high_to_low": 0.005, "hold_generations": 90, "horizon": 120, "kappa": 4.5, "kappa_mu": 0.05, "label": "transition", "low_to_high": 0.045, "normalised_barrier_increase": 0.1, "p_star": 0.9, "ramp_generations": 30},
+      "endpoint_summary": {
+        "H_alpha_0.05": {"counts": {"baseline_ineligible": 10, "both_censored": 8, "lag": 2, "lead": 35, "tie": 1, "trait_loss_censored": 21, "warning_censored": 14}, "median_positive_lead_time": 77, "valid_pairs": 38},
+        "H_alpha_0.10": {"counts": {"baseline_ineligible": 10, "both_censored": 8, "lag": 1, "lead": 35, "tie": 1, "trait_loss_censored": 21, "warning_censored": 15}, "median_positive_lead_time": 76, "valid_pairs": 37},
+        "H_alpha_0.20": {"counts": {"baseline_ineligible": 10, "both_censored": 10, "lag": 1, "lead": 34, "tie": 0, "trait_loss_censored": 19, "warning_censored": 17}, "median_positive_lead_time": 76, "valid_pairs": 35},
+        "H_gamma_0.05": {"counts": {"baseline_ineligible": 10, "both_censored": 15, "lag": 2, "lead": 28, "tie": 2, "trait_loss_censored": 14, "warning_censored": 20}, "median_positive_lead_time": 74, "valid_pairs": 32},
+        "H_gamma_0.10": {"counts": {"baseline_ineligible": 10, "both_censored": 15, "lag": 2, "lead": 28, "tie": 1, "trait_loss_censored": 14, "warning_censored": 21}, "median_positive_lead_time": 74, "valid_pairs": 31},
+        "H_gamma_0.20": {"counts": {"baseline_ineligible": 10, "both_censored": 16, "lag": 4, "lead": 24, "tie": 0, "trait_loss_censored": 13, "warning_censored": 24}, "median_positive_lead_time": 81, "valid_pairs": 28}
+      }
+    }
+  ],
+  "evidence_label": "finite Type S evidence for the declared closure",
+  "source_artifacts": [
+    {"artifact_id": 8343958766, "digest": "sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58", "domain_index": 0},
+    {"artifact_id": 8343922879, "digest": "sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8", "domain_index": 1}
+  ],
+  "source_workflow_run_id": 29417632137,
+  "stage": "Protocol 003 Stage III relative-warning validation summary"
+}
