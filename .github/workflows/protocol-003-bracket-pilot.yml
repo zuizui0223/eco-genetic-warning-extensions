@@ -1,0 +1,53 @@
+name: Protocol 003 blind bracket pilot
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol003_bracket_pilot.py"
+      - "scripts/run_protocol003_bracket_cell.py"
+      - "tests/test_protocol003_bracket_pilot.py"
+      - ".github/workflows/protocol-003-bracket-pilot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  bracket-cell:
+    strategy:
+      fail-fast: false
+      max-parallel: 16
+      matrix:
+        cell_index: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+      - name: Checkout pinned upstream
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension
+        run: python -m pip install -e . pytest
+      - name: Check bracket design
+        run: python -m pytest -q tests/test_protocol003_bracket_pilot.py
+      - name: Run blind bracket cell
+        run: |
+          python scripts/run_protocol003_bracket_cell.py \
+            --upstream-checkout upstream \
+            --cell-index "${{ matrix.cell_index }}" \
+            --output "artifacts/protocol003/bracket_pilot/cell_${{ matrix.cell_index }}.json"
+      - name: Upload bracket artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol003-bracket-cell-${{ matrix.cell_index }}
+          path: artifacts/protocol003/bracket_pilot/cell_${{ matrix.cell_index }}.json
+          if-no-files-found: error
+          retention-days: 90
