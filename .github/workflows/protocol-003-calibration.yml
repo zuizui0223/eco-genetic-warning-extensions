@@ -37,8 +37,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install extension
-        run: python -m pip install -e .
+      - name: Install extension and test runner
+        run: python -m pip install -e . pytest
 
       - name: Check locked calibration design
         run: python -m pytest -q tests/test_protocol003_calibration.py
