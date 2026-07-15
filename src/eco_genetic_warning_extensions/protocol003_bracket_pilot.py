@@ -251,8 +251,7 @@ def run_protocol003_bracket_cell(
         "design": {
             "master_seeds": list(BRACKET_MASTER_SEEDS),
             "replicates_per_seed": BRACKET_REPLICATES_PER_CELL,
-            "trait_loss_only": True,
-            "warning_fields_present": False,
+            "endpoint_contract": "trait_loss_only",
             "domain_selected": False,
         },
         "status_counts": {
