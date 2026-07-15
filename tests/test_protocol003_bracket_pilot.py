@@ -1,6 +1,9 @@
+import pytest
+
 from eco_genetic_warning_extensions.protocol003_bracket_pilot import (
     BRACKET_MASTER_SEEDS,
     BRACKET_REPLICATES_PER_CELL,
+    _assert_blind,
     protocol003_bracket_cells,
 )
 
@@ -43,3 +46,17 @@ def test_protocol003_bracket_schedule_endpoints() -> None:
     assert cells[-1].label == "persistence"
     assert cells[-1].hold_generations == 300
     assert cells[-1].normalised_barrier_increase == 0.75
+
+
+def test_protocol003_artifact_metadata_remains_blind() -> None:
+    _assert_blind(
+        {
+            "design": {
+                "endpoint_contract": "trait_loss_only",
+                "domain_selected": False,
+            },
+            "trait_loss_only": True,
+        }
+    )
+    with pytest.raises(ValueError, match="forbidden calibration columns"):
+        _assert_blind({"design": {"warning_fields_present": False}})
