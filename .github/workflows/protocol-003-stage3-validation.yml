@@ -1,0 +1,56 @@
+name: Protocol 003 Stage III warning validation
+
+on:
+  pull_request:
+    paths:
+      - 'src/eco_genetic_warning_extensions/protocol003_stage3_validation.py'
+      - 'scripts/run_protocol003_stage3_validation.py'
+      - 'tests/test_protocol003_stage3_validation.py'
+      - '.github/workflows/protocol-003-stage3-validation.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-domain:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        domain_index: [0, 1]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned upstream
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install extension and tests
+        run: python -m pip install -e . pytest
+
+      - name: Check locked Stage III design
+        run: python -m pytest -q tests/test_protocol003_stage3_validation.py
+
+      - name: Run fresh-seed warning validation
+        run: |
+          python scripts/run_protocol003_stage3_validation.py \
+            upstream \
+            "${{ matrix.domain_index }}" \
+            "artifacts/protocol003/stage3_validation_domain_${{ matrix.domain_index }}.json"
+
+      - name: Upload validation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol003-stage3-validation-domain-${{ matrix.domain_index }}
+          path: artifacts/protocol003/stage3_validation_domain_${{ matrix.domain_index }}.json
