@@ -1,0 +1,60 @@
+name: Paper completion sprint
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "manuscript/**"
+      - "scripts/build_submission_bundle.py"
+      - ".github/workflows/paper-completion-sprint.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  build-submission-package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Download locked publication outputs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p locked/stage1 locked/stage2
+          gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
+          gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
+      - name: Build complete submission bundle
+        run: |
+          python scripts/build_submission_bundle.py \
+            --stage1-dir locked/stage1 \
+            --stage2-dir locked/stage2 \
+            --repo-root . \
+            --output submission_bundle
+      - name: Validate package contents
+        run: |
+          test -f submission_bundle/manifest.json
+          test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 4
+          grep -q '2,269' submission_bundle/manuscript/main_text.md
+          grep -q '323' submission_bundle/manuscript/main_text.md
+          grep -q '184' submission_bundle/manuscript/main_text.md
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path('submission_bundle/tables/stage1_publication_summary.json').read_text())
+          assert data['attempt_count']==3375
+          assert data['totals']['projection_supported']==2269
+          assert data['totals']['projection_failed']==0
+          PY
+      - name: Upload submission bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco-genetic-warning-submission-bundle
+          path: submission_bundle
+          if-no-files-found: error
