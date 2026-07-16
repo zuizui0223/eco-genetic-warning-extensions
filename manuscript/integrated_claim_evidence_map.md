@@ -2,7 +2,7 @@
 
 | ID | Main-text claim | Evidence source | Evidence boundary |
 |---|---|---|---|
-| I1 | Interaction feedback and fragmentation can alter high-trait-state stability, local effective size, and realised high-trait mass. | `eco-genetic-criticality` H1 and H3 final evidence ledger. | Declared finite ecological and genetic closure; not universal. |
+| I1 | Interaction feedback and fragmentation can alter high-trait-state stability, local effective size, and realised high-trait mass. | `eco-genetic-criticality` H1 and H3 final evidence ledger. | Declared finite ecological and genetic closure; not a universal ecological rule. |
 | I2 | Relative diversity erosion can precede realised trait loss. | Predecessor H2-R independent validation: 35 trait-loss events, six endpoints, all lead. | One independently calibrated symmetric configuration; non-events remain censored. |
 | I3 | Mutation direction changes the feasibility of reconstructing and projecting a high-trait source. | Extension Stage I: 3,375 independent attempts; 2,269 supported; 44.89–86.67% among coordinates. | Fifteen declared coordinates and inherited ecological life cycle. |
 | I4 | Mutation direction partitions the declared system into rapid-loss, persistence, and seed-heterogeneous regimes. | Extension Stage II: 20,250 warning-blind attempts; 648 complete candidates; 322 above, 242 below, 84 mixed. | Protocol 002 candidate family and eligibility rule. |
