@@ -57,7 +57,8 @@ def test_main_text_uses_closure_first_identity() -> None:
     assert "### Stage I" not in text
     assert "### Stage II" not in text
     assert "### Stage III" not in text
-    assert "not a portable property" in text
+    assert "portable property of a diversity statistic" in text
+    assert "emergent property of the eco-genetic closure" in text
 
 
 def test_workspace_does_not_present_mutation_direction_as_sole_novelty() -> None:
