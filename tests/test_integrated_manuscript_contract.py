@@ -27,8 +27,8 @@ def test_integrated_story_contains_locked_headline_results() -> None:
 
 
 def test_integrated_claims_preserve_parent_extension_boundary() -> None:
-    text = _read("manuscript/integrated_claim_evidence_map.md")
-    assert "not a universal" in text.lower()
+    text = _read("manuscript/integrated_claim_evidence_map.md").lower()
+    assert "not a universal" in text
     assert "not evidence that warning failed" in text
     assert "endpoint counts correlated within trajectories" in text
     assert "retrospective modification" in text
