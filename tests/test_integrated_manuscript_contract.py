@@ -97,7 +97,34 @@ def test_main_text_contains_load_bearing_citation_roles() -> None:
         "Soulé et al. 2005",
         "Gomulkiewicz & Holt 1995",
         "Stoltzfus & McCandlish 2017",
-        "References to verify and format before submission",
+        "manuscript/references.md",
     )
     for token in required:
         assert token in text
+
+
+def test_verified_reference_list_covers_every_citation_family() -> None:
+    references = _read("manuscript/references.md")
+    required = (
+        "doi:10.1038/nature08227",
+        "doi:10.1890/05-0386",
+        "doi:10.1016/j.tree.2006.08.009",
+        "doi:10.1111/ecog.02537",
+        "doi:10.1111/1365-2435.13241",
+        "doi:10.1098/rstb.2018.0238",
+        "doi:10.1146/annurev-ecolsys-110316-023011",
+    )
+    for token in required:
+        assert token in references
+
+
+def test_table_captions_lock_statistical_units_and_numbering() -> None:
+    builder = _read("scripts/build_submission_bundle.py")
+    captions = _read("manuscript/table_captions.md")
+    assert "references.md" in builder
+    assert "table_captions.md" in builder
+    for label in ("Table 1.", "Table 2.", "Table S1.", "Table S2.", "Table S3."):
+        assert label in captions
+    assert "statistical unit is the simulated trajectory" in captions
+    assert "not independent biological replicates" in captions
+    assert "not a test of warning performance" in captions
