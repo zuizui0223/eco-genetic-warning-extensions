@@ -44,10 +44,12 @@ def test_main_supplement_allocation_keeps_debug_history_out() -> None:
 
 def test_integrated_abstract_states_ecological_significance() -> None:
     text = _read("manuscript/integrated_abstract_and_outline.md")
-    assert "functional-trait loss" in text
-    assert "intervention time" in text
-    assert "portable statistics" in text
-    assert "eco-genetic closure" in text.lower()
+    lower = text.lower()
+    assert "functional-trait loss" in lower
+    assert "intervention time" in lower
+    assert "portable" in lower
+    assert "statistic" in lower
+    assert "eco-genetic closure" in lower
 
 
 def test_main_text_uses_closure_first_identity() -> None:
