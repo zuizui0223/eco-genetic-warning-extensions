@@ -23,7 +23,8 @@
 - [x] Discussion generalizes to monitoring, calibration, functional loss, and evolutionary rescue.
 - [x] Finite Type S limitations and effective-transition interpretation are explicit.
 - [x] Relationship to the predecessor is explicit and ledger boundaries are preserved.
-- [ ] In-text citations and reference list are formatted for the selected venue.
+- [x] In-text citation families have matching verified bibliography records and DOI identifiers.
+- [ ] Final punctuation and author-display rules are rendered with the selected venue style.
 - [ ] Author list, affiliations, acknowledgements, funding, author contributions, data statement, and conflicts are supplied.
 - [ ] Final venue word, display-item, title-length, abstract-length, and data-policy limits are verified against current author guidance.
 
@@ -32,15 +33,17 @@
 - [x] Main text retains only the minimum predecessor mechanism and symmetric benchmark.
 - [x] Main text reports coordinate ranges and representative regime cells rather than every candidate.
 - [x] Full parameter grids, calibration diagnostics, trajectory-level endpoints, censoring tables, and provenance remain supplementary.
-- [ ] Supplementary figure and table numbering is synchronized with final main-text citations.
-- [ ] Statistical-unit language is repeated in every endpoint table caption.
+- [x] Main and supplementary table numbering is fixed as Tables 1–2 and Tables S1–S3.
+- [x] Statistical-unit language is repeated in every endpoint table caption.
+- [ ] Every final main-text and supplementary display call is checked after journal-template conversion.
 
 ## Figures and tables
 
 - [x] Figure 1 is a closure-first conceptual diagram.
 - [x] Source-feasibility, regime, ordering, and lead-time figures are generated reproducibly.
 - [x] Machine-readable source, regime, and endpoint tables are included.
-- [ ] Figure captions are rewritten in venue prose and define every symbol without requiring Methods lookup.
+- [x] Figure captions are written in biological prose and define the interpretation boundaries.
+- [x] Table captions define numbering, statistical units, censoring, and the no-domain interpretation.
 - [ ] Accessibility review covers panel labels, font size, contrast, colour-blind interpretation, and grayscale legibility.
 - [ ] Final figure count and main-versus-supplement allocation comply with the selected article type.
 
@@ -49,6 +52,7 @@
 - [x] Pinned upstream commit recorded.
 - [x] Immutable completion locks retained.
 - [x] Submission bundle built in CI from locked artifacts.
+- [x] Bundle builder includes the manuscript, bibliography, figure captions, and table captions.
 - [ ] Clean bundle is rebuilt from the merged manuscript head.
 - [ ] DOI/archive release is created after manuscript freeze.
 - [ ] Repository landing pages point to the archived release and cite both evidence ledgers correctly.
