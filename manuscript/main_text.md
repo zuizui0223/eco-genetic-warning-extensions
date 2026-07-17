@@ -99,6 +99,6 @@ The predecessor and extension remain separate evidence ledgers. The predecessor 
 
 Model code, protocols, immutable grid locks, calibration decisions, validation summaries, figure builders, workflow identifiers, and artifact digests are maintained in this repository and its pinned predecessor.
 
-## References to verify and format before submission
+## References
 
-The author–year citations above follow `manuscript/core_reference_map.md`. Titles, author order, journal metadata, page ranges or article numbers, and DOI values must be verified against Crossref or publisher records before submission. The first verification pass confirmed Scheffer et al. (2009), *Early-warning signals for critical transitions*, Nature 461:53–59, doi:10.1038/nature08227, and Stoltzfus & McCandlish (2017), *Mutational Biases Influence Parallel Adaptation*, Molecular Biology and Evolution 34:2163–2172, doi:10.1093/molbev/msx180.
+The verified reference list is provided in `manuscript/references.md` and is included in the reproducible submission bundle.
