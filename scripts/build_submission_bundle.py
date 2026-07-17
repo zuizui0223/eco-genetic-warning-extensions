@@ -119,7 +119,7 @@ def main() -> int:
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
     _figure4(stage2 / 'stage2_coordinate_regimes.csv', out / 'figures/figure4_trait_loss_regime_composition.svg')
 
-    for name in ('main_text.md', 'supplementary_methods.md', 'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md'):
+    for name in ('main_text.md', 'figure_captions.md', 'supplementary_methods.md', 'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md'):
         shutil.copy2(root / 'manuscript' / name, out / 'manuscript')
 
     manifest = {'files': {}}

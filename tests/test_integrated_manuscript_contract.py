@@ -76,3 +76,28 @@ def test_submission_figure_one_is_closure_first() -> None:
     assert "figure1_eco_genetic_closure.svg" in text
     assert "figure1_mutation_coordinates.svg" not in text
     assert "Stage II candidate-regime composition" not in text
+
+
+def test_submission_bundle_includes_biological_figure_captions() -> None:
+    builder = _read("scripts/build_submission_bundle.py")
+    captions = _read("manuscript/figure_captions.md")
+    assert "figure_captions.md" in builder
+    for number in range(1, 7):
+        assert f"## Figure {number}." in captions
+    assert "not evidence that warning failed" in captions
+    assert "not independent biological replicates" in captions
+    assert "do not represent the entire 15-coordinate map" in captions
+
+
+def test_main_text_contains_load_bearing_citation_roles() -> None:
+    text = _read("manuscript/main_text.md")
+    required = (
+        "Scheffer et al. 2009",
+        "Schwartz et al. 2007",
+        "Soulé et al. 2005",
+        "Gomulkiewicz & Holt 1995",
+        "Stoltzfus & McCandlish 2017",
+        "References to verify and format before submission",
+    )
+    for token in required:
+        assert token in text
