@@ -16,6 +16,7 @@
 
 - [x] Title foregrounds the conceptual advance: eco-genetic closure.
 - [x] Abstract opens with functional-trait loss rather than mutation direction.
+- [x] Abstract is at or below the Ecology Letters Letter limit of 150 words.
 - [x] Abstract retains the principal denominators, regime result, ordering result, and intervention-time contrast.
 - [x] Introduction follows function loss → warning → closure → test logic.
 - [x] Biological Results headings contain no Stage labels.
@@ -24,16 +25,19 @@
 - [x] Finite Type S limitations and effective-transition interpretation are explicit.
 - [x] Relationship to the predecessor is explicit and ledger boundaries are preserved.
 - [x] In-text citation families have matching verified bibliography records and DOI identifiers.
+- [x] Article type is fixed as Letter.
+- [x] Running title and ten keywords are prepared.
 - [ ] Final punctuation and author-display rules are rendered with the selected venue style.
 - [ ] Author list, affiliations, acknowledgements, funding, author contributions, data statement, and conflicts are supplied.
-- [ ] Final venue word, display-item, title-length, abstract-length, and data-policy limits are verified against current author guidance.
+- [ ] Final Word or LaTeX file confirms the automated main-text word count.
 
 ## Main versus supplement
 
 - [x] Main text retains only the minimum predecessor mechanism and symmetric benchmark.
 - [x] Main text reports coordinate ranges and representative regime cells rather than every candidate.
 - [x] Full parameter grids, calibration diagnostics, trajectory-level endpoints, censoring tables, and provenance remain supplementary.
-- [x] Main and supplementary table numbering is fixed as Tables 1–2 and Tables S1–S3.
+- [x] Main display allocation is fixed at Figures 1–6, with no main tables or text boxes.
+- [x] All tables are supplementary and numbered Tables S1–S5.
 - [x] Statistical-unit language is repeated in every endpoint table caption.
 - [ ] Every final main-text and supplementary display call is checked after journal-template conversion.
 
@@ -44,8 +48,9 @@
 - [x] Machine-readable source, regime, and endpoint tables are included.
 - [x] Figure captions are written in biological prose and define the interpretation boundaries.
 - [x] Table captions define numbering, statistical units, censoring, and the no-domain interpretation.
-- [ ] Accessibility review covers panel labels, font size, contrast, colour-blind interpretation, and grayscale legibility.
-- [ ] Final figure count and main-versus-supplement allocation comply with the selected article type.
+- [x] Six-item Letter display ceiling is respected.
+- [ ] Imported Figures 2, 3, 5, and 6 pass final-width colour, grayscale, label, and font-size inspection.
+- [ ] Graphical abstract asset and ≤500-character summary are prepared at major or minor revision.
 
 ## Reproducibility and release
 
@@ -59,8 +64,9 @@
 
 ## Editorial gate before submission
 
+- [x] Cover-letter draft centres the ecological and conceptual advance rather than a model sensitivity analysis.
 - [ ] A reader can state the central claim after the title, abstract, and Figure 1 alone.
 - [ ] Mutation direction is consistently presented as one mechanism reshaping closure, not the sole conceptual novelty.
 - [ ] `no_domain_selected` is consistently described as an event-regime result, not a failed simulation.
 - [ ] No sentence implies a universal warning theorem, empirical mutation-rate estimate, or independent endpoint replication.
-- [ ] Cover letter explains why the advance is ecological and conceptual rather than a model sensitivity analysis.
+- [ ] Author-dependent cover-letter placeholders are replaced and approved.
