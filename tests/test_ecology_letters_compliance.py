@@ -24,7 +24,7 @@ def test_cover_letter_centres_ecological_contribution() -> None:
     assert "eco-genetic closure" in text
     assert "functional-trait loss" in text
     assert "not an intrinsic property of the diversity statistic" in text
-    assert "sensitivity-analysis paper" in text
+    assert "ecological and conceptual rather than a model sensitivity analysis" in text
     assert "[AUTHOR CONFIRMATION:" in text
 
 
