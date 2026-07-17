@@ -123,8 +123,10 @@ def test_table_captions_lock_statistical_units_and_numbering() -> None:
     captions = _read("manuscript/table_captions.md")
     assert "references.md" in builder
     assert "table_captions.md" in builder
-    for label in ("Table 1.", "Table 2.", "Table S1.", "Table S2.", "Table S3."):
+    for label in ("Table S1.", "Table S2.", "Table S3.", "Table S4.", "Table S5."):
         assert label in captions
+    assert "Table 1." not in captions
+    assert "Table 2." not in captions
     assert "statistical unit is the simulated trajectory" in captions
     assert "not independent biological replicates" in captions
     assert "not a test of warning performance" in captions
