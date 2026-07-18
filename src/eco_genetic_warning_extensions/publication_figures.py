@@ -1,7 +1,8 @@
-"""Publication-facing Stage I aggregation and Stage III figure generation."""
+"""Publication-facing source aggregation and validation figure generation."""
 from __future__ import annotations
 
 import csv
+import html
 import json
 from collections import defaultdict
 from pathlib import Path
@@ -100,78 +101,111 @@ def write_stage3_figures(summary_path: str | Path, output_dir: str | Path) -> No
     (out / "figure6_stage3_lead_time.svg").write_text(_stage3_lead_time_svg(summary["domains"]), encoding="utf-8")
 
 
-def _svg_header(width: int, height: int, title: str) -> list[str]:
-    return [f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}">', '<rect width="100%" height="100%" fill="white"/>', f'<text x="30" y="34" font-family="sans-serif" font-size="20" font-weight="bold">{title}</text>']
+def _svg_header(width: int, height: int, title: str, description: str, identifier: str) -> list[str]:
+    safe_title = html.escape(title)
+    safe_description = html.escape(description)
+    return [
+        f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}" role="img" aria-labelledby="{identifier}-title {identifier}-desc">',
+        f'<title id="{identifier}-title">{safe_title}</title>',
+        f'<desc id="{identifier}-desc">{safe_description}</desc>',
+        '<rect width="100%" height="100%" fill="white"/>',
+        f'<text x="30" y="36" font-family="sans-serif" font-size="20" font-weight="bold">{safe_title}</text>',
+    ]
 
 
 def _stage1_svg(rows: Iterable[dict[str, Any]]) -> str:
     rows = list(rows)
-    width, height = 760, 390
-    parts = _svg_header(width, height, "Stage I source-feasibility map")
+    width, height = 820, 420
+    parts = _svg_header(
+        width,
+        height,
+        "Source feasibility across transition coordinates",
+        "A fifteen-cell map of projection-supported source fractions. Every cell prints both the fraction and supported-attempt count, so values do not depend on colour.",
+        "figure2",
+    )
     p_values = sorted({row["p_star"] for row in rows})
     k_values = sorted({row["kappa_mu"] for row in rows})
     lookup = {(row["kappa_mu"], row["p_star"]): row for row in rows}
-    cell_w, cell_h = 105, 82
-    x0, y0 = 150, 70
+    cell_w, cell_h = 112, 88
+    x0, y0 = 170, 82
     for j, p in enumerate(p_values):
-        parts.append(f'<text x="{x0 + j*cell_w + 40}" y="60" text-anchor="middle" font-family="sans-serif" font-size="13">p*={p:.2f}</text>')
+        parts.append(f'<text x="{x0 + j*cell_w + 48}" y="68" text-anchor="middle" font-family="sans-serif" font-size="14">p*={p:.2f}</text>')
     for i, k in enumerate(k_values):
-        parts.append(f'<text x="135" y="{y0 + i*cell_h + 35}" text-anchor="end" font-family="sans-serif" font-size="13">κμ={k:.2f}</text>')
+        parts.append(f'<text x="152" y="{y0 + i*cell_h + 38}" text-anchor="end" font-family="sans-serif" font-size="14">κμ={k:.2f}</text>')
         for j, p in enumerate(p_values):
             row = lookup[(k, p)]
             rate = float(row["projection_supported_rate"])
             shade = int(245 - 170 * rate)
             fill = f'rgb({shade},{shade},{255})'
             x, y = x0 + j*cell_w, y0 + i*cell_h
-            parts.append(f'<rect x="{x}" y="{y}" width="95" height="70" fill="{fill}" stroke="#333"/>')
-            parts.append(f'<text x="{x+47}" y="{y+30}" text-anchor="middle" font-family="sans-serif" font-size="16">{rate:.2f}</text>')
-            parts.append(f'<text x="{x+47}" y="{y+50}" text-anchor="middle" font-family="sans-serif" font-size="11">{row["projection_supported"]}/{row["attempted"]}</text>')
-    parts.append('<text x="380" y="365" text-anchor="middle" font-family="sans-serif" font-size="12">Cell value: projection-supported fraction across 225 attempts</text>')
+            parts.append(f'<rect x="{x}" y="{y}" width="100" height="74" fill="{fill}" stroke="#222" stroke-width="1.5"/>')
+            parts.append(f'<text x="{x+50}" y="{y+31}" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="bold">{rate:.2f}</text>')
+            parts.append(f'<text x="{x+50}" y="{y+54}" text-anchor="middle" font-family="sans-serif" font-size="12">{row["projection_supported"]}/{row["attempted"]}</text>')
+    parts.append('<text x="410" y="392" text-anchor="middle" font-family="sans-serif" font-size="13">Printed values give projection-supported fraction and supported/planned attempts.</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 
 
 def _stage3_ordering_svg(domains: list[dict[str, Any]]) -> str:
-    width, height = 820, 390
-    parts = _svg_header(width, height, "Stage III warning ordering across six endpoints")
+    width, height = 860, 410
+    parts = _svg_header(
+        width,
+        height,
+        "Warning ordering in calibrated domains",
+        "Stacked bars compare lead, tie, and lag counts in the symmetric bridge and directional transition. Every segment is directly labelled with its category and count.",
+        "figure5",
+    )
     colors = {"lead": "#4c78a8", "tie": "#f2cf5b", "lag": "#e45756"}
     for i, domain in enumerate(domains):
         agg = domain["aggregate_ordering_across_six_endpoints"]
         total = agg["valid_pairs"]
-        x, y, bar_w = 230, 100 + i*125, 500
-        parts.append(f'<text x="210" y="{y+24}" text-anchor="end" font-family="sans-serif" font-size="14">{domain["domain"]["label"]}</text>')
+        x, y, bar_w = 250, 105 + i*130, 520
+        label = html.escape(str(domain["domain"]["label"]))
+        parts.append(f'<text x="230" y="{y+25}" text-anchor="end" font-family="sans-serif" font-size="15">{label}</text>')
         cursor = x
         for name in ("lead", "tie", "lag"):
             value = agg[name]
             w = bar_w * value / total if total else 0
-            parts.append(f'<rect x="{cursor}" y="{y}" width="{w}" height="38" fill="{colors[name]}"/>')
+            parts.append(f'<rect x="{cursor}" y="{y}" width="{w}" height="40" fill="{colors[name]}" stroke="#222" stroke-width="0.8"/>')
             if value:
-                parts.append(f'<text x="{cursor+w/2}" y="{y+25}" text-anchor="middle" font-family="sans-serif" font-size="12">{name} {value}</text>')
+                text_fill = "#111" if name == "tie" else "white"
+                parts.append(f'<text x="{cursor+w/2}" y="{y+26}" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="{text_fill}">{name} {value}</text>')
             cursor += w
-        parts.append(f'<text x="{x}" y="{y+58}" font-family="sans-serif" font-size="12">valid endpoint comparisons = {total}</text>')
-    parts.append('<text x="410" y="355" text-anchor="middle" font-family="sans-serif" font-size="12">Endpoint comparisons are correlated within trajectories; bars are descriptive Type S evidence.</text>')
+        parts.append(f'<text x="{x}" y="{y+63}" font-family="sans-serif" font-size="13">valid endpoint comparisons = {total}</text>')
+    parts.append('<text x="430" y="380" text-anchor="middle" font-family="sans-serif" font-size="13">Endpoint comparisons are correlated within trajectories; bars are descriptive Type S evidence.</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 
 
 def _stage3_lead_time_svg(domains: list[dict[str, Any]]) -> str:
-    width, height = 900, 450
-    parts = _svg_header(width, height, "Stage III median positive lead time")
+    width, height = 980, 500
+    parts = _svg_header(
+        width,
+        height,
+        "Median positive warning lead time",
+        "Paired bars compare median positive lead time across six diversity endpoints. Each bar is directly marked S for symmetric bridge or D for directional transition and labelled with its value.",
+        "figure6",
+    )
     endpoints = ["H_alpha_0.05", "H_alpha_0.10", "H_alpha_0.20", "H_gamma_0.05", "H_gamma_0.10", "H_gamma_0.20"]
     max_value = max(domain["endpoint_summary"][endpoint]["median_positive_lead_time"] for domain in domains for endpoint in endpoints)
     colors = ["#4c78a8", "#f58518"]
-    x0, y0, group_w, plot_h = 110, 80, 120, 280
+    codes = ["S", "D"]
+    x0, y0, group_w, plot_h = 105, 110, 135, 285
     for j, endpoint in enumerate(endpoints):
         x = x0 + j*group_w
-        parts.append(f'<text x="{x+42}" y="390" text-anchor="middle" font-family="sans-serif" font-size="11" transform="rotate(25 {x+42} 390)">{endpoint}</text>')
+        endpoint_label = html.escape(endpoint.replace("H_alpha", "Hα").replace("H_gamma", "Hγ"))
+        parts.append(f'<text x="{x+42}" y="438" text-anchor="middle" font-family="sans-serif" font-size="12" transform="rotate(25 {x+42} 438)">{endpoint_label}</text>')
         for i, domain in enumerate(domains):
             value = domain["endpoint_summary"][endpoint]["median_positive_lead_time"]
             h = plot_h * value / max_value
-            bx = x + i*38
+            bx = x + i*42
             by = y0 + plot_h - h
-            parts.append(f'<rect x="{bx}" y="{by}" width="32" height="{h}" fill="{colors[i]}"/>')
-            parts.append(f'<text x="{bx+16}" y="{by-5}" text-anchor="middle" font-family="sans-serif" font-size="10">{value}</text>')
+            parts.append(f'<rect x="{bx}" y="{by}" width="36" height="{h}" fill="{colors[i]}" stroke="#222" stroke-width="0.8"/>')
+            parts.append(f'<text x="{bx+18}" y="{by-7}" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold">{value}</text>')
+            parts.append(f'<text x="{bx+18}" y="{y0+plot_h-8}" text-anchor="middle" font-family="sans-serif" font-size="12" font-weight="bold" fill="white">{codes[i]}</text>')
+    legend_y = 66
     for i, domain in enumerate(domains):
-        parts.append(f'<rect x="{650+i*0}" y="{55+i*22}" width="16" height="16" fill="{colors[i]}"/><text x="674" y="{68+i*22}" font-family="sans-serif" font-size="12">{domain["domain"]["label"]}</text>')
+        label = html.escape(str(domain["domain"]["label"]))
+        parts.append(f'<rect x="650" y="{legend_y+i*24}" width="18" height="18" fill="{colors[i]}" stroke="#222"/><text x="676" y="{legend_y+14+i*24}" font-family="sans-serif" font-size="13">{codes[i]} — {label}</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
