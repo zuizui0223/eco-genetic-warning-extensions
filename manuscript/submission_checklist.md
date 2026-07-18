@@ -49,7 +49,10 @@
 - [x] Figure captions are written in biological prose and define the interpretation boundaries.
 - [x] Table captions define numbering, statistical units, censoring, and the no-domain interpretation.
 - [x] Six-item Letter display ceiling is respected.
-- [ ] Imported Figures 2, 3, 5, and 6 pass final-width colour, grayscale, label, and font-size inspection.
+- [x] Publication generators for Figures 2, 3, 5, and 6 use biological titles rather than internal Stage labels.
+- [x] Figures 1–6 have generator-level SVG title, description, and image-role metadata.
+- [x] Every colour encoding has direct text redundancy.
+- [ ] Regenerated merged-head Figures 1–6 pass final-width colour and grayscale inspection.
 - [ ] Graphical abstract asset and ≤500-character summary are prepared at major or minor revision.
 
 ## Reproducibility and release
