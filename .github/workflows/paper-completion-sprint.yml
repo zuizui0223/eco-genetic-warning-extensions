@@ -6,6 +6,9 @@ on:
     paths:
       - "manuscript/**"
       - "scripts/build_submission_bundle.py"
+      - "src/eco_genetic_warning_extensions/publication_figures.py"
+      - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
+      - "artifacts/protocol003/stage3_validation_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   workflow_dispatch:
 
@@ -22,7 +25,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-      - name: Download locked publication outputs
+      - name: Install current figure generators
+        run: python -m pip install -e .
+      - name: Download locked publication data
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
@@ -36,7 +41,7 @@ jobs:
             --stage2-dir locked/stage2 \
             --repo-root . \
             --output submission_bundle
-      - name: Validate package contents
+      - name: Validate package contents and current figure generation
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
@@ -44,6 +49,11 @@ jobs:
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q '323' submission_bundle/manuscript/main_text.md
           grep -q '184' submission_bundle/manuscript/main_text.md
+          grep -q 'Source feasibility across transition coordinates' submission_bundle/figures/figure2_stage1_source_feasibility.svg
+          grep -q 'Functional-loss regimes across transition coordinates' submission_bundle/figures/figure3_stage2_coordinate_regimes.svg
+          grep -q 'Warning ordering in calibrated domains' submission_bundle/figures/figure5_stage3_ordering.svg
+          grep -q 'Median positive warning lead time' submission_bundle/figures/figure6_stage3_lead_time.svg
+          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes' submission_bundle/figures
           python - <<'PY'
           import json
           from pathlib import Path
@@ -51,6 +61,11 @@ jobs:
           assert data['attempt_count']==3375
           assert data['totals']['projection_supported']==2269
           assert data['totals']['projection_failed']==0
+          for path in sorted(Path('submission_bundle/figures').glob('*.svg')):
+              text=path.read_text(encoding='utf-8')
+              assert 'role="img"' in text, path
+              assert '<title ' in text or '<title>' in text, path
+              assert '<desc ' in text or '<desc>' in text, path
           PY
       - name: Upload submission bundle
         uses: actions/upload-artifact@v4
