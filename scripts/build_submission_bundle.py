@@ -8,6 +8,13 @@ import shutil
 from pathlib import Path
 from xml.sax.saxutils import escape
 
+from eco_genetic_warning_extensions.protocol002_publication_outputs import write_regime_svg
+from eco_genetic_warning_extensions.publication_figures import (
+    _stage1_svg,
+    _stage3_lead_time_svg,
+    _stage3_ordering_svg,
+)
+
 
 def _figure1(path: Path) -> None:
     lines = [
@@ -98,6 +105,39 @@ def _figure4(stage2_csv: Path, path: Path) -> None:
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
+def _read_stage1_rows(path: Path) -> list[dict[str, object]]:
+    rows: list[dict[str, object]] = []
+    with path.open(encoding='utf-8', newline='') as handle:
+        for raw in csv.DictReader(handle):
+            row: dict[str, object] = dict(raw)
+            for name in ('kappa_mu', 'p_star', 'projection_supported_rate'):
+                row[name] = float(raw[name])
+            for name in ('projection_supported', 'attempted'):
+                row[name] = int(raw[name])
+            rows.append(row)
+    return rows
+
+
+def _regenerate_publication_figures(stage1: Path, stage2: Path, root: Path, out: Path) -> None:
+    stage1_rows = _read_stage1_rows(stage1 / 'stage1_coordinate_summary.csv')
+    stage2_rows = list(csv.DictReader((stage2 / 'stage2_coordinate_regimes.csv').open(encoding='utf-8')))
+    stage3_summary_path = root / 'artifacts/protocol003/stage3_validation_summary.json'
+    if not stage3_summary_path.exists():
+        raise FileNotFoundError(stage3_summary_path)
+    stage3 = json.loads(stage3_summary_path.read_text(encoding='utf-8'))
+
+    (out / 'figures/figure2_stage1_source_feasibility.svg').write_text(
+        _stage1_svg(stage1_rows), encoding='utf-8'
+    )
+    write_regime_svg(stage2_rows, out / 'figures/figure3_stage2_coordinate_regimes.svg')
+    (out / 'figures/figure5_stage3_ordering.svg').write_text(
+        _stage3_ordering_svg(stage3['domains']), encoding='utf-8'
+    )
+    (out / 'figures/figure6_stage3_lead_time.svg').write_text(
+        _stage3_lead_time_svg(stage3['domains']), encoding='utf-8'
+    )
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--stage1-dir', required=True)
@@ -115,8 +155,8 @@ def main() -> int:
     (out / 'tables').mkdir(parents=True)
     (out / 'manuscript').mkdir(parents=True)
 
-    required_stage1 = ['stage1_publication_summary.json', 'stage1_coordinate_summary.csv', 'figure2_stage1_source_feasibility.svg', 'figure5_stage3_ordering.svg', 'figure6_stage3_lead_time.svg']
-    required_stage2 = ['stage2_coordinate_regimes.csv', 'figure_stage2_coordinate_regimes.svg']
+    required_stage1 = ['stage1_publication_summary.json', 'stage1_coordinate_summary.csv']
+    required_stage2 = ['stage2_coordinate_regimes.csv']
     for name in required_stage1:
         if not (stage1 / name).exists():
             raise FileNotFoundError(stage1 / name)
@@ -128,11 +168,9 @@ def main() -> int:
     shutil.copy2(stage1 / 'stage1_coordinate_summary.csv', out / 'tables')
     shutil.copy2(stage2 / 'stage2_coordinate_regimes.csv', out / 'tables')
     shutil.copy2(root / 'manuscript/tables/stage3_endpoint_summary.csv', out / 'tables')
-    shutil.copy2(stage1 / 'figure2_stage1_source_feasibility.svg', out / 'figures/figure2_stage1_source_feasibility.svg')
-    shutil.copy2(stage2 / 'figure_stage2_coordinate_regimes.svg', out / 'figures/figure3_stage2_coordinate_regimes.svg')
-    shutil.copy2(stage1 / 'figure5_stage3_ordering.svg', out / 'figures')
-    shutil.copy2(stage1 / 'figure6_stage3_lead_time.svg', out / 'figures')
+
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
+    _regenerate_publication_figures(stage1, stage2, root, out)
     _figure4(stage2 / 'stage2_coordinate_regimes.csv', out / 'figures/figure4_trait_loss_regime_composition.svg')
 
     manuscript_files = (
