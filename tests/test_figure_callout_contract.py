@@ -10,8 +10,14 @@ def _read(path: str) -> str:
 
 def test_main_text_calls_every_main_figure() -> None:
     text = _read("manuscript/main_text.md")
-    for number in range(1, 7):
-        assert f"Figure {number}" in text or f"Figures {number}" in text
+    required_callouts = (
+        "Figure 1",
+        "Figure 2",
+        "Figures 3 and 4",
+        "Figures 5 and 6",
+    )
+    for callout in required_callouts:
+        assert callout in text
 
 
 def test_display_allocation_matches_current_figure_captions() -> None:
