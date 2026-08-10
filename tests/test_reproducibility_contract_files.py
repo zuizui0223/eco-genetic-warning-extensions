@@ -51,7 +51,7 @@ def test_readme_is_submission_facing_not_pre_simulation() -> None:
     assert "184 leads" in readme
 
 
-def test_submission_bundle_adds_both_software_packages() -> None:
+def test_submission_bundle_adds_both_packages_and_source_archives() -> None:
     assembler = (ROOT / "scripts/assemble_software_bundle.py").read_text(
         encoding="utf-8"
     )
@@ -59,12 +59,17 @@ def test_submission_bundle_adds_both_software_packages() -> None:
         encoding="utf-8"
     )
     assert 'for role in ("parent", "extension")' in assembler
-    assert 'software / "parent"' not in assembler  # roles are handled uniformly
     assert "provenance / \"parent\"" in assembler
+    assert "no wheel found" in assembler
+    assert "no source archive found" in assembler
     assert "--upstream upstream" in workflow
     assert "software_dist/parent" in workflow
     assert "software_dist/extension" in workflow
     assert "assemble_software_bundle.py" in workflow
+    assert "git -C upstream archive" in workflow
+    assert "git archive" in workflow
+    assert "scientific-dd8ee379.tar.gz" in workflow
+    assert "repository-$(git rev-parse --short=8 HEAD).tar.gz" in workflow
 
 
 def test_reproducibility_guide_retains_protocol_boundaries() -> None:
