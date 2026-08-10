@@ -1,0 +1,66 @@
+{
+  "schema_version": 1,
+  "repository": "zuizui0223/eco-genetic-warning-extensions",
+  "role": "independent_extension_and_submission_orchestrator",
+  "extension_base_commit": "5ef4e9dd0105a00ed76fc079e48d290c8682e119",
+  "package": {
+    "name": "eco-genetic-warning-extensions",
+    "version": "0.1.0",
+    "python": ">=3.11"
+  },
+  "upstream": {
+    "repository": "zuizui0223/eco-genetic-criticality",
+    "scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "required_blobs": {
+      "README.md": "22ed61ff7f694a3ac8e6c2b62a2a334259a52f3e",
+      "pyproject.toml": "2ff564d033105909dce71c4b127f8386ca50cef2",
+      "docs/eco_genetic_hypothesis_program.md": "e8b4311611b6c47913a29c82277511ef38ad3b7e",
+      "docs/final_evidence_ledger.md": "5ce338bf1989fa03b81ce30a1515eb851c1aa70a",
+      "manuscript/claim_evidence_map.md": "5aaa2bee9dd7faedd9ca2229045c9ddbdcd49b9e",
+      "causal_model/symmetric_allele_mutation_closure.py": "95a11414856326dc886d3ee4c05fe931945c31b2"
+    }
+  },
+  "locked_publication_inputs": {
+    "stage1": {
+      "workflow_runs": [29177214259, 29186610167, 29188592519, 29188748077, 29190149319, 29190149344],
+      "publication_run": 29422431944,
+      "artifact_id": 8345805712,
+      "digest": "sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9",
+      "attempts": 3375,
+      "projection_supported": 2269
+    },
+    "stage2": {
+      "publication_run": 29399936061,
+      "artifact_id": 8336631530,
+      "digest": "sha256:3c7f63b5bc054c37012bb448ad1dc5e9bf45a4ec79737520390b576079ccc8f7",
+      "attempts": 20250,
+      "complete_candidates": 648,
+      "selected_domains": 0
+    },
+    "stage3": {
+      "workflow_run": 29417632137,
+      "summary_path": "artifacts/protocol003/stage3_validation_summary.json",
+      "summary_blob": "2a46fba6c9ed23c0870781976f6cefefd4463428",
+      "attempted": 200,
+      "source_artifacts": [
+        {
+          "artifact_id": 8343958766,
+          "digest": "sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"
+        },
+        {
+          "artifact_id": 8343922879,
+          "digest": "sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"
+        }
+      ],
+      "symmetric_ordering": {"lead": 323, "tie": 1, "lag": 0, "valid_pairs": 324},
+      "directional_ordering": {"lead": 184, "tie": 5, "lag": 12, "valid_pairs": 201}
+    }
+  },
+  "evidence_rules": [
+    "parent and extension trajectories remain separate",
+    "Protocol 002 remains closed with no selected domain",
+    "Protocol 003 remains separately declared",
+    "endpoint summaries within trajectories are correlated",
+    "all numerical outcomes remain finite Type S evidence"
+  ]
+}
