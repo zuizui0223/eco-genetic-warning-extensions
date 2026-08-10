@@ -74,7 +74,7 @@ jobs:
           PY
 
       - name: Write distribution checksums
-        run: find software_dist -type f -print0 | sort -z | xargs -0 sha256sum > software_dist/MANIFEST.sha256
+        run: find software_dist -type f ! -name 'MANIFEST.sha256' -print0 | sort -z | xargs -0 sha256sum > software_dist/MANIFEST.sha256
 
       - name: Upload reproducibility package
         uses: actions/upload-artifact@v4
