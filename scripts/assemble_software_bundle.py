@@ -74,6 +74,10 @@ def main() -> int:
         distributions = sorted(path for path in source.iterdir() if path.is_file())
         if not distributions:
             raise RuntimeError(f"no distributions found in {source}")
+        if not any(path.suffix == ".whl" for path in distributions):
+            raise RuntimeError(f"no wheel found in {source}")
+        if not any(path.name.endswith(".tar.gz") for path in distributions):
+            raise RuntimeError(f"no source archive found in {source}")
         for distribution in distributions:
             shutil.copy2(distribution, destination / distribution.name)
 
@@ -118,9 +122,12 @@ def main() -> int:
 
     (software / "README.md").write_text(
         "# Bundled software\n\n"
-        "Install the parent wheel first, followed by the extension wheel. The parent "
-        "distribution was built from the exact scientific commit recorded in "
+        "The bundle contains a wheel, Python source distribution, and full tracked "
+        "repository archive for each provenance unit. The parent archive is built "
+        "from the exact scientific commit recorded in "
         "`../provenance/extension/reproducibility/upstream-lock.json`.\n\n"
+        "## Install the executable packages\n\n"
+        "Install the parent wheel first, followed by the extension wheel.\n\n"
         "```bash\n"
         "python -m venv .venv\n"
         "source .venv/bin/activate  # Windows: .venv\\Scripts\\activate\n"
@@ -128,9 +135,18 @@ def main() -> int:
         "python -m pip install parent/*.whl\n"
         "python -m pip install extension/*.whl\n"
         "```\n\n"
-        "The wheels provide the executable model and protocol code. Manuscript, "
-        "evidence, workflow, and artifact provenance remain in the adjacent bundle "
-        "directories.\n",
+        "## Re-run checkout-based protocols\n\n"
+        "Some extension runners accept an upstream checkout path so that the exact "
+        "parent life-cycle modules can be loaded and audited. Extract the full parent "
+        "scientific archive and pass the extracted directory as that upstream path.\n\n"
+        "```bash\n"
+        "mkdir parent-source\n"
+        "tar -xzf parent/*scientific-*.tar.gz -C parent-source\n"
+        "# Example: python <extension runner> parent-source <other arguments>\n"
+        "```\n\n"
+        "The full repository archives preserve tracked scripts, workflows, protocol "
+        "documents, and tests. The wheels provide importable model code. Evidence and "
+        "artifact provenance remain in the adjacent bundle directories.\n",
         encoding="utf-8",
     )
 
