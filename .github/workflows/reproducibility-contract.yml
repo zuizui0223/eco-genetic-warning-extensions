@@ -1,0 +1,87 @@
+name: Two-repository reproducibility contract
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "REPRODUCIBILITY.md"
+      - "pyproject.toml"
+      - "src/**"
+      - "scripts/verify_reproducibility_contract.py"
+      - "scripts/assemble_software_bundle.py"
+      - "reproducibility/**"
+      - "artifacts/protocol003/stage3_validation_summary.json"
+      - "manuscript/**"
+      - ".github/workflows/reproducibility-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout extension with history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install both packages and tooling
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e '.[dev,reproducibility]'
+
+      - name: Run invariant and manuscript tests
+        run: python -m pytest
+
+      - name: Verify repository and evidence locks
+        run: python scripts/verify_reproducibility_contract.py --upstream upstream
+
+      - name: Build both software distributions
+        run: |
+          mkdir -p software_dist/parent software_dist/extension
+          python -m build upstream --outdir software_dist/parent
+          python -m build . --outdir software_dist/extension
+
+      - name: Smoke-test wheels in a clean environment
+        run: |
+          python -m venv .wheel-test
+          . .wheel-test/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install software_dist/parent/*.whl
+          python -m pip install software_dist/extension/*.whl
+          python - <<'PY'
+          import causal_model
+          import eco_genetic_warning_extensions
+          from eco_genetic_warning_extensions.protocol002_stage0 import UPSTREAM_COMMIT
+          assert UPSTREAM_COMMIT == "dd8ee379d0d3518194c767d16402042525bc00dc"
+          print(causal_model.__name__, eco_genetic_warning_extensions.__name__)
+          PY
+
+      - name: Write distribution checksums
+        run: find software_dist -type f -print0 | sort -z | xargs -0 sha256sum > software_dist/MANIFEST.sha256
+
+      - name: Upload reproducibility package
+        uses: actions/upload-artifact@v4
+        with:
+          name: eco-genetic-two-repository-software
+          path: |
+            software_dist
+            reproducibility/upstream-lock.json
+            REPRODUCIBILITY.md
+          if-no-files-found: error
