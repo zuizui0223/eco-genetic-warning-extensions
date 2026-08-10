@@ -1,6 +1,19 @@
 name: Two-repository reproducibility contract
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "REPRODUCIBILITY.md"
+      - "pyproject.toml"
+      - "src/**"
+      - "scripts/verify_reproducibility_contract.py"
+      - "scripts/assemble_software_bundle.py"
+      - "reproducibility/**"
+      - "artifacts/protocol003/stage3_validation_summary.json"
+      - "manuscript/**"
+      - ".github/workflows/reproducibility-contract.yml"
   pull_request:
     branches: [main]
     paths:

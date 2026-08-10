@@ -1,6 +1,21 @@
 name: Paper completion sprint
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - "README.md"
+      - "REPRODUCIBILITY.md"
+      - "pyproject.toml"
+      - "manuscript/**"
+      - "reproducibility/**"
+      - "scripts/build_submission_bundle.py"
+      - "scripts/assemble_software_bundle.py"
+      - "scripts/verify_reproducibility_contract.py"
+      - "src/eco_genetic_warning_extensions/publication_figures.py"
+      - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
+      - "artifacts/protocol003/stage3_validation_summary.json"
+      - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
     paths:
