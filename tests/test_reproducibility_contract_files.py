@@ -75,7 +75,8 @@ def test_submission_bundle_adds_both_packages_and_source_archives() -> None:
 def test_reproducibility_guide_retains_protocol_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
     for statement in (
-        "parent and extension trajectories are separate evidence",
+        "parent trajectories and extension trajectories",
+        "separate evidence",
         "Protocol 002 remains closed with 15/15 `no_domain_selected`",
         "Protocol 003 is a separately declared calibration and validation campaign",
         "finite Type S evidence",
