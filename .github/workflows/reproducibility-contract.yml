@@ -52,11 +52,19 @@ jobs:
       - name: Verify repository and evidence locks
         run: python scripts/verify_reproducibility_contract.py --upstream upstream
 
-      - name: Build both software distributions
+      - name: Build both distributions and exact source archives
         run: |
           mkdir -p software_dist/parent software_dist/extension
           python -m build upstream --outdir software_dist/parent
           python -m build . --outdir software_dist/extension
+          git -C upstream archive \
+            --format=tar.gz \
+            --output="$(pwd)/software_dist/parent/eco-genetic-criticality-scientific-dd8ee379.tar.gz" \
+            HEAD
+          git archive \
+            --format=tar.gz \
+            --output="software_dist/extension/eco-genetic-warning-extensions-repository-$(git rev-parse --short=8 HEAD).tar.gz" \
+            HEAD
 
       - name: Smoke-test wheels in a clean environment
         run: |
