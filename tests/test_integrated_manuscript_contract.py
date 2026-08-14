@@ -31,13 +31,12 @@ def test_main_supplement_allocation_keeps_debug_history_out() -> None:
 
 
 def test_integrated_abstract_states_ecological_significance() -> None:
-    text = _read("manuscript/integrated_abstract_and_outline.md")
-    lower = text.lower()
-    assert "functional-trait loss" in lower
-    assert "intervention time" in lower
-    assert "portable" in lower
-    assert "eco-genetic" in lower
-    assert "eco-genetic closure" in lower
+    lower = _read("manuscript/integrated_abstract_and_outline.md").lower()
+    for token in (
+        "functional-trait loss", "portable", "eco-genetic closure",
+        "horizon-normalized", "calibrated domains",
+    ):
+        assert token in lower
 
 
 def test_main_text_uses_closure_first_identity() -> None:
@@ -56,6 +55,7 @@ def test_workspace_does_not_present_mutation_direction_as_sole_novelty() -> None
     assert "Genetic-warning reliability is not a portable property" in text
     assert "one mechanism that reshapes this closure" in text
     assert "Mutation direction governs genetic early-warning reliability" not in text
+    assert "Stage III does not identify the isolated causal effect" in text
 
 
 def test_submission_figure_one_is_closure_first() -> None:
