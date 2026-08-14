@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib
 import json
+import statistics
 from dataclasses import replace
 from pathlib import Path
 from typing import Any
@@ -148,7 +149,7 @@ def run_protocol003_validation_domain(upstream_checkout: str | Path, domain_inde
             items = [c for r in completed for c in r["comparisons"] if c["definition"]["diversity_id"] == diversity_id and c["definition"]["relative_decline_fraction"] == fraction]
             counts = {name: sum(c["ordering"] == name for c in items) for name in ("lead","tie","lag","warning_censored","trait_loss_censored","both_censored","baseline_ineligible")}
             lead_times = [c["lead_time_trait_minus_warning"] for c in items if c["ordering"] == "lead"]
-            summary[key] = {"counts": counts, "valid_pairs": counts["lead"]+counts["tie"]+counts["lag"], "median_positive_lead_time": None if not lead_times else sorted(lead_times)[len(lead_times)//2]}
+            summary[key] = {"counts": counts, "valid_pairs": counts["lead"]+counts["tie"]+counts["lag"], "median_positive_lead_time": None if not lead_times else statistics.median(lead_times)}
     return {
         "stage": "Protocol 003 Stage III fresh-seed warning validation",
         "upstream": {"repository": UPSTREAM_REPOSITORY, "commit": UPSTREAM_COMMIT},
