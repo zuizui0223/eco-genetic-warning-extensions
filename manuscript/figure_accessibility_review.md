@@ -2,44 +2,35 @@
 
 ## Scope
 
-This review covers the six reader-facing figures in the submission bundle. The first rendered bundle was inspected at a common 1,400-pixel review width, after which the source generators for Figures 2, 3, 5, and 6 were revised. The final inspection must be repeated on the regenerated merged-head bundle because the manifest changes whenever a figure changes.
+This review covers the six reader-facing figures in the submission bundle after the identification and censoring revision. Figures 3–6 were redesigned so the main visual encodings match the revised claims.
 
 ## Global requirements
 
 - Every figure must remain interpretable without colour alone.
 - Every symbol, abbreviation, line type, fill, and threshold must be defined in the caption or figure.
 - Text must remain legible at final single- or double-column size.
-- Panel labels must follow one sequence and appear in the same position.
-- Grayscale export must preserve category separation.
 - Every repository-generated SVG must contain a machine-readable title, description, and image role.
-- Publication-facing titles must use biological language rather than internal protocol-stage labels.
+- Publication-facing labels must use biological language rather than internal Stage/Protocol identifiers.
+- Valid-pair displays must not hide source failure, baseline ineligibility, or censoring by normalising every bar to the valid-pair denominator.
 
-## Figure-by-figure status
+## Figure-by-figure design
 
-| Figure | Primary encoding | Non-colour encoding | Repository status | Final merged-bundle action |
-|---|---|---|---|---|
-| Figure 1 | boxes, arrows, position | labels and causal ordering | SVG title, description, and image role present | confirm smallest explanatory text at journal width |
-| Figure 2 | source-feasibility map | printed fraction and supported/planned count in every cell | biological title, larger cells and labels, SVG metadata added | regenerate and inspect numeric labels in grayscale |
-| Figure 3 | loss-regime map | direct R/H/P code, regime name, pooled frequency, and candidate count | biological title, larger cells, SVG metadata, high-contrast text added | regenerate and confirm the heterogeneous-cell text remains legible |
-| Figure 4 | stacked regime composition | in-bar R/H/P labels plus legend | SVG title, description, and image role present | confirm narrow segments do not obscure labels |
-| Figure 5 | lead, tie, lag ordering | category name and count printed in every non-zero segment | biological title, larger text, outlines, SVG metadata added | regenerate and inspect the narrow tie and lag segments |
-| Figure 6 | intervention time | direct S/D code and value on every paired bar | biological title, larger canvas, relocated legend, SVG metadata added | regenerate and confirm rightmost values do not approach the legend |
+| Figure | Primary encoding | Non-colour redundancy | Revision purpose |
+|---|---|---|---|
+| Figure 1 | boxes, arrows, causal position | direct labels and ordering | compact conceptual architecture; no overlapping arrows |
+| Figure 2 | source-feasibility cells | printed fraction and supported/planned count | common-grid transition-direction evidence |
+| Figure 3 | regime cells + candidate-count bars | R/H/P codes, pooled frequency, counts | merges former Figures 3 and 4 and frees one display slot |
+| Figure 4 | four cumulative-incidence panels | line style, direct axis labels, thresholds | retains administrative censoring and shows event availability over each calibrated horizon |
+| Figure 5 | full 100-attempt horizontal bars | SF/BI/BC/WC/TC/Lead/Tie/Lag codes and counts | makes availability and censoring visible rather than plotting only valid pairs |
+| Figure 6 | points + 95% interval whiskers | domain-specific shapes, `n` labels, explicit axes | shows absolute and horizon-normalized timing and avoids legend/data overlap |
 
-## Findings from the first rendered bundle
+## Identification safeguards visible in figures
 
-1. Figures 2, 5, and 6 retained internal `Stage I` or `Stage III` titles; these were removed from the publication generators.
-2. Figures 2, 3, 5, and 6 lacked SVG `<title>`, `<desc>`, and `role="img"`; these were added at the source-generator level.
-3. Figure 6 placed the legend close to the rightmost value labels; the canvas and legend position were revised.
-4. Figure 3 contained dense small-cell text; the canvas, cells, and minimum cell-label size were increased.
-5. Colour categories were already accompanied by some text, but the revised generators now make redundancy explicit: numeric values for Figure 2, R/H/P for Figure 3, direct category names for Figure 5, and S/D codes for Figure 6.
-
-## Implemented repository-level safeguards
-
-1. Figures 1–6 now have generator-level machine-readable titles and descriptions.
-2. Every colour encoding has direct text redundancy.
-3. Regression tests reject internal protocol-stage titles in publication figures.
-4. Regression tests require accessible metadata for all six SVGs.
-5. Captions define the six warning endpoints and state that endpoint summaries are correlated within trajectories.
+1. Stage III domains are labelled **Recalibrated symmetric domain** and **Directional calibrated domain**; raw code labels `symmetric_bridge` and `transition` are not reader-facing names.
+2. Figure 4 labels the calibrated horizons (240 and 120 generations).
+3. Figure 5 retains the attempted denominator of 100 for every endpoint.
+4. Figure 6 has separate panels for generations and fraction of calibrated horizon.
+5. Figure 6 states that its intervals come from trajectory resampling and that the absolute timing comparison is not a single-factor transition-direction effect.
 
 ## Final visual inspection protocol
 
@@ -49,6 +40,7 @@ For the frozen submission bundle:
 2. export one colour PDF and one grayscale PDF;
 3. confirm all labels at 100% view without zoom;
 4. confirm that no category identification depends on hue alone;
-5. confirm consistency between figure numbering, file names, captions, and main-text calls;
-6. verify every file against `manifest.json`;
-7. record the inspected artifact digest and manifest SHA-256 in the release notes.
+5. inspect Figure 3 heterogeneous-cell text, Figure 5 narrow tie/lag segments, and Figure 6 interval/n labels for overlap;
+6. confirm consistency between figure numbering, file names, captions, and main-text calls;
+7. verify every file against `manifest.json`;
+8. record the inspected artifact digest and manifest SHA-256 in the release notes.
