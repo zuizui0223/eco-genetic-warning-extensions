@@ -15,6 +15,8 @@ on:
       - "src/eco_genetic_warning_extensions/publication_figures.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
+      - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
@@ -30,6 +32,8 @@ on:
       - "src/eco_genetic_warning_extensions/publication_figures.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
+      - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - ".github/workflows/paper-completion-sprint.yml"
   workflow_dispatch:
 
@@ -71,9 +75,11 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p locked/stage1 locked/stage2
+          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1
           gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
           gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D locked/stage3/domain0
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D locked/stage3/domain1
 
       - name: Build both distributions and exact source archives
         run: |
@@ -94,6 +100,8 @@ jobs:
           python scripts/build_submission_bundle.py \
             --stage1-dir locked/stage1 \
             --stage2-dir locked/stage2 \
+            --stage3-domain0 locked/stage3/domain0/stage3_validation_domain_0.json \
+            --stage3-domain1 locked/stage3/domain1/stage3_validation_domain_1.json \
             --repo-root . \
             --output submission_bundle
 
@@ -109,7 +117,7 @@ jobs:
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 4
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 8
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
@@ -119,11 +127,19 @@ jobs:
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q '323' submission_bundle/manuscript/main_text.md
           grep -q '184' submission_bundle/manuscript/main_text.md
+          grep -q '0.540' submission_bundle/manuscript/main_text.md
+          grep -q '0.335' submission_bundle/manuscript/main_text.md
+          grep -q 'horizon-normalized' submission_bundle/manuscript/main_text.md
+          test -f submission_bundle/tables/stage3_review_audit.json
+          test -f submission_bundle/tables/stage3_review_summary.csv
+          test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
+          test -f submission_bundle/tables/inherited_h3_effect_summary.csv
           grep -q 'Source feasibility across transition coordinates' submission_bundle/figures/figure2_stage1_source_feasibility.svg
           grep -q 'Functional-loss regimes across transition coordinates' submission_bundle/figures/figure3_stage2_coordinate_regimes.svg
-          grep -q 'Warning ordering in calibrated domains' submission_bundle/figures/figure5_stage3_ordering.svg
-          grep -q 'Median positive warning lead time' submission_bundle/figures/figure6_stage3_lead_time.svg
-          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes' submission_bundle/figures
+          grep -q 'Cumulative warning and functional-loss incidence' submission_bundle/figures/figure4_stage3_cumulative_incidence.svg
+          grep -q 'Warning availability, censoring and ordering' submission_bundle/figures/figure5_stage3_availability_ordering.svg
+          grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/figures/figure6_stage3_lead_time_normalized.svg
+          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes|Directional transition shortens usable intervention time' submission_bundle/figures
           python - <<'PY'
           import hashlib
           import json
