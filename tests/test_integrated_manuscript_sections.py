@@ -8,14 +8,15 @@ def _read(path: str) -> str:
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_introduction_states_gap_and_nonportable_warning_claim() -> None:
+def test_introduction_states_gap_and_identification_boundary() -> None:
     text = _read("manuscript/integrated_introduction.md")
     required = (
-        "functional persistence",
-        "same trajectory",
-        "independent seed families",
+        "functional-trait loss",
+        "warning portability across calibrated eco-genetic domains",
+        "15/15 `no_domain_selected`",
+        "candidate schedules",
+        "not a matched single-factor experiment",
         "genetic-warning reliability is an emergent property",
-        "not portable statistics",
     )
     for token in required:
         assert token in text
