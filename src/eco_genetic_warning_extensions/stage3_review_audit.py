@@ -137,7 +137,7 @@ def write_outputs(audit_result:dict[str,Any],json_path:str|Path,csv_path:str|Pat
             ci=domain_data["endpoint_bootstrap_95_ci"][endpoint]; counts=endpoint_data["counts"]
             rows.append({"domain":domain,"endpoint":endpoint,"attempted":endpoint_data["attempted"],"positive_leads":endpoint_data["positive_leads"],"valid_pairs":endpoint_data["valid_pairs"],"lead":counts["lead"],"tie":counts["tie"],"lag":counts["lag"],"source_preparation_failed":counts["source_preparation_failed"],"baseline_ineligible":counts["baseline_ineligible"],"both_censored":counts["both_censored"],"warning_censored":counts["warning_censored"],"trait_loss_censored":counts["trait_loss_censored"],"median_positive_lead_time":endpoint_data["median_positive_lead_time"],"median_positive_lead_time_ci_lower":ci["median_positive_lead_time"]["lower"],"median_positive_lead_time_ci_upper":ci["median_positive_lead_time"]["upper"],"median_positive_lead_fraction_of_horizon":endpoint_data["median_positive_lead_fraction_of_horizon"],"median_positive_lead_fraction_of_horizon_ci_lower":ci["median_positive_lead_fraction_of_horizon"]["lower"],"median_positive_lead_fraction_of_horizon_ci_upper":ci["median_positive_lead_fraction_of_horizon"]["upper"]})
     with Path(csv_path).open("w",newline="",encoding="utf-8") as handle:
-        writer=csv.DictWriter(handle,fieldnames=fields); writer.writeheader(); writer.writerows(rows)
+        writer=csv.DictWriter(handle,fieldnames=fields,lineterminator="\n"); writer.writeheader(); writer.writerows(rows)
 
 
 def main()->int:
