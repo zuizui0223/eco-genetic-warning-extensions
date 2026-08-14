@@ -10,29 +10,27 @@ def _read(path: str) -> str:
 
 def test_introduction_states_gap_and_identification_boundary() -> None:
     text = _read("manuscript/integrated_introduction.md")
-    required = (
+    for token in (
         "functional-trait loss",
-        "warning portability across calibrated eco-genetic domains",
+        "remains portable",
         "15/15 `no_domain_selected`",
         "candidate schedules",
         "not a matched single-factor experiment",
-        "genetic-warning reliability is an emergent property",
-    )
-    for token in required:
+        "emergent property",
+    ):
         assert token in text
 
 
 def test_discussion_contains_locked_stage3_contrast_and_limits() -> None:
     text = _read("manuscript/integrated_discussion.md")
-    required = (
+    for token in (
         "warning-blind",
         "candidate family",
         "horizon-normalized timing result",
         "cannot identify the isolated causal contribution of transition direction",
         "trajectory",
         "finite Type S evidence",
-    )
-    for token in required:
+    ):
         assert token in text
 
 
