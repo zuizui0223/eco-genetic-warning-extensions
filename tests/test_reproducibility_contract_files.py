@@ -72,6 +72,23 @@ def test_submission_bundle_adds_both_packages_and_source_archives() -> None:
     assert "repository-$(git rev-parse --short=8 HEAD).tar.gz" in workflow
 
 
+def test_secondary_audit_lock_preserves_source_artifact_provenance() -> None:
+    lock = json.loads((ROOT / "reproducibility/upstream-lock.json").read_text(encoding="utf-8"))
+    review = lock["secondary_review_audit"]
+    assert review["bootstrap"] == {
+        "interval": "percentile 95%",
+        "replicates": 20000,
+        "seed": 20260814,
+        "unit": "whole attempted trajectory",
+    }
+    assert review["source_workflow_run"] == 29417632137
+    assert [row["artifact_id"] for row in review["source_artifacts"]] == [8343958766, 8343922879]
+    workflow = (ROOT / ".github/workflows/paper-completion-sprint.yml").read_text(encoding="utf-8")
+    assert "protocol003-stage3-validation-domain-0" in workflow
+    assert "protocol003-stage3-validation-domain-1" in workflow
+    assert "--stage3-domain0" in workflow and "--stage3-domain1" in workflow
+
+
 def test_reproducibility_guide_retains_protocol_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
     for statement in (
