@@ -58,6 +58,13 @@ jobs:
           ref: dd8ee379d0d3518194c767d16402042525bc00dc
           path: upstream
 
+      - name: Checkout versioned parent gradient supplement
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: 076ab3e28078cfd7cbe1b67ab544c8d1e9066c54
+          path: upstream_gradient
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -75,18 +82,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1 locked/h3_gradient
+          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1
           gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
           gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
           gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D locked/stage3/domain0
           gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D locked/stage3/domain1
-          curl -L --fail --retry 3 \
-            -H 'Accept: application/vnd.github+json' \
-            -H 'X-GitHub-Api-Version: 2026-03-10' \
-            https://api.github.com/repos/zuizui0223/eco-genetic-criticality/actions/artifacts/9261157020/zip \
-            -o locked/h3_gradient.zip
-          echo '424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c  locked/h3_gradient.zip' | sha256sum -c -
-          unzip -q locked/h3_gradient.zip -d locked/h3_gradient
+          cd upstream_gradient/artifacts/h3_fragmentation_gradient
+          sha256sum -c MANIFEST.sha256
 
       - name: Build both distributions and exact source archives
         run: |
@@ -96,6 +98,10 @@ jobs:
           git -C upstream archive \
             --format=tar.gz \
             --output="$(pwd)/software_dist/parent/eco-genetic-criticality-scientific-dd8ee379.tar.gz" \
+            HEAD
+          git -C upstream_gradient archive \
+            --format=tar.gz \
+            --output="$(pwd)/software_dist/parent/eco-genetic-criticality-postreview-gradient-076ab3e2.tar.gz" \
             HEAD
           git archive \
             --format=tar.gz \
@@ -109,7 +115,7 @@ jobs:
             --stage2-dir locked/stage2 \
             --stage3-domain0 locked/stage3/domain0/stage3_validation_domain_0.json \
             --stage3-domain1 locked/stage3/domain1/stage3_validation_domain_1.json \
-            --h3-gradient-dir locked/h3_gradient \
+            --h3-gradient-dir upstream_gradient/artifacts/h3_fragmentation_gradient \
             --repo-root . \
             --output submission_bundle
 
@@ -130,6 +136,7 @@ jobs:
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
+          test "$(find submission_bundle/software/parent -name '*postreview-gradient-*.tar.gz' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*repository-*.tar.gz' | wc -l)" -eq 1
           test -f submission_bundle/provenance/build_context.json
           test -f submission_bundle/provenance/extension/reproducibility/upstream-lock.json
