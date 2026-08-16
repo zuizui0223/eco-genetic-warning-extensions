@@ -79,12 +79,47 @@ def _regenerate_publication_figures(stage1: Path, stage2: Path, stage3_audit_pat
     write_stage3_figures(stage3_audit_path, out / 'figures')
 
 
+def _copy_h3_gradient(gradient: Path, out: Path) -> None:
+    required = (
+        'h3_fragmentation_gradient_records.csv',
+        'h3_fragmentation_gradient_cell_summary.csv',
+        'h3_fragmentation_gradient_pooled_summary.csv',
+        'h3_fragmentation_gradient_metadata.json',
+        'figure_s_fragmentation_gradient.svg',
+        'MANIFEST.sha256',
+    )
+    missing = [name for name in required if not (gradient / name).exists()]
+    if missing:
+        raise FileNotFoundError('missing H3 gradient files: ' + ', '.join(missing))
+
+    metadata = json.loads((gradient / 'h3_fragmentation_gradient_metadata.json').read_text(encoding='utf-8'))
+    if metadata.get('attempted_source_replicates') != 1200:
+        raise RuntimeError('H3 gradient attempted-source denominator drifted')
+    if metadata.get('patch_counts') != [1, 2, 3, 4, 6, 8, 12, 16]:
+        raise RuntimeError('H3 gradient patch-count contract drifted')
+    if metadata.get('warning_endpoints_evaluated') is not False:
+        raise RuntimeError('H3 gradient must remain warning-free')
+
+    (out / 'supplement').mkdir(parents=True, exist_ok=True)
+    (out / 'provenance/h3_fragmentation_gradient').mkdir(parents=True, exist_ok=True)
+    shutil.copy2(gradient / 'figure_s_fragmentation_gradient.svg', out / 'supplement/figure_s1_fragmentation_gradient.svg')
+    for name in (
+        'h3_fragmentation_gradient_records.csv',
+        'h3_fragmentation_gradient_cell_summary.csv',
+        'h3_fragmentation_gradient_pooled_summary.csv',
+    ):
+        shutil.copy2(gradient / name, out / 'tables' / name)
+    shutil.copy2(gradient / 'h3_fragmentation_gradient_metadata.json', out / 'provenance/h3_fragmentation_gradient/metadata.json')
+    shutil.copy2(gradient / 'MANIFEST.sha256', out / 'provenance/h3_fragmentation_gradient/source_MANIFEST.sha256')
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--stage1-dir', required=True)
     parser.add_argument('--stage2-dir', required=True)
     parser.add_argument('--stage3-domain0', required=True)
     parser.add_argument('--stage3-domain1', required=True)
+    parser.add_argument('--h3-gradient-dir', required=True)
     parser.add_argument('--repo-root', default='.')
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
@@ -93,6 +128,7 @@ def main() -> int:
     stage2 = Path(args.stage2_dir)
     stage3_domain0 = Path(args.stage3_domain0)
     stage3_domain1 = Path(args.stage3_domain1)
+    h3_gradient = Path(args.h3_gradient_dir)
     out = Path(args.output)
     if out.exists():
         shutil.rmtree(out)
@@ -132,6 +168,7 @@ def main() -> int:
 
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
     _regenerate_publication_figures(stage1, stage2, audit_path, out)
+    _copy_h3_gradient(h3_gradient, out)
 
     manuscript_files = (
         'main_text.md', 'references.md', 'figure_captions.md', 'figure_accessibility_review.md',
