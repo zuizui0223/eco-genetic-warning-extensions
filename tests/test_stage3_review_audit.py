@@ -13,6 +13,11 @@ def _rows():
         return list(csv.DictReader(handle))
 
 
+def _differences():
+    with (ROOT / "manuscript/tables/stage3_between_domain_differences.csv").open(encoding="utf-8", newline="") as handle:
+        return list(csv.DictReader(handle))
+
+
 def test_secondary_audit_locks_domain_differences_and_uncertainty() -> None:
     lock = json.loads((ROOT / "reproducibility/upstream-lock.json").read_text(encoding="utf-8"))
     review = lock["secondary_review_audit"]
@@ -20,7 +25,6 @@ def test_secondary_audit_locks_domain_differences_and_uncertainty() -> None:
     directional = review["corrected_publication_timing"]["directional_calibrated_domain"]
     assert sym["horizon"] == 240
     assert directional["horizon"] == 120
-    assert max(sym["median_positive_lead_fraction_horizon_range"]) < min(directional["median_positive_lead_fraction_horizon_range"])
     rows = _rows()
     assert len(rows) == 12
     sym_rows = [r for r in rows if r["domain"] == "recalibrated_symmetric_domain"]
@@ -37,7 +41,29 @@ def test_historical_even_n_median_is_corrected_in_secondary_summary() -> None:
     assert statistics.median([107, 108]) == 107.5
 
 
-def test_manuscript_discloses_identification_boundary() -> None:
+def test_direct_between_domain_bootstrap_is_reported_without_interval_overlap_heuristic() -> None:
+    rows = {row["endpoint"]: row for row in _differences()}
+    assert set(rows) == {
+        "H_alpha_0.05", "H_alpha_0.10", "H_alpha_0.20",
+        "H_gamma_0.05", "H_gamma_0.10", "H_gamma_0.20",
+    }
+    separated_absolute = {
+        endpoint
+        for endpoint, row in rows.items()
+        if row["absolute_generations_ci_includes_zero"] == "False"
+    }
+    assert separated_absolute == {"H_alpha_0.05", "H_alpha_0.10"}
+    assert all(
+        row["horizon_fraction_ci_includes_zero"] == "True"
+        for row in rows.values()
+    )
+    assert all(
+        float(row["horizon_fraction_difference_directional_minus_symmetric"]) > 0
+        for row in rows.values()
+    )
+
+
+def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
     text = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8")
     forbidden = (
         "altered only recurrent transition direction",
@@ -49,6 +75,7 @@ def test_manuscript_discloses_identification_boundary() -> None:
     for required in (
         "portability", "210-generation hold", "90-generation hold",
         "four of five seed-block", "weaker directional schedule",
-        "0.540", "0.335", "horizon-normalized",
+        "0.540", "0.335", "directional-minus-symmetric",
+        "all six", "41 of 81", "event-regime feasibility precedes warning comparison",
     ):
         assert required in text
