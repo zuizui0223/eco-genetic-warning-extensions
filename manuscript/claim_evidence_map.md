@@ -26,8 +26,9 @@
 | S4 | Protocol 003 used a separately declared, warning-blind amendment that expanded the candidate family and replaced the Protocol 002 all-seed gate before warning values were calculated. | `PROTOCOL_003_AMENDMENT_001.md` and `PROTOCOL_003_AMENDMENT_002.md`. | documented design fact |
 | S5 | The two Stage III validation domains differ in recurrent-transition parameters, `A_ref`, interaction-feedback `kappa`, barrier increase, and calibrated horizon. | Locked confirmation cells and Stage III domain identities. | documented design fact |
 | S6 | Warning availability and ordering differ between the recalibrated symmetric domain and directional calibrated domain. | Locked Stage III trajectories plus trajectory-cluster secondary audit. | supported as a calibrated-domain portability result |
-| S7 | The Stage III absolute lead-time contrast is schedule-dependent and cannot be attributed to recurrent-transition direction alone. | Corrected conventional medians and horizon-normalized secondary audit. | supported boundary / identification statement |
+| S7 | Stage III timing point estimates are schedule-dependent; direct between-domain bootstrap differences are endpoint-dependent for absolute time and include zero for all six full-horizon-normalized contrasts. | Immutable Stage III trajectories, conventional-median audit, and `stage3_between_domain_differences.csv`. | supported uncertainty / identification statement |
 | S8 | Censoring and warning availability are part of the finite ecological outcome rather than discarded missing data. | Full 100-attempt endpoint denominators and cumulative event-incidence summaries. | supported as bounded interpretation |
+| S9 | Under the strict common deterioration family, no matched validation domain was available at any of the 15 coordinates; coordinate-specific recalibration restored evaluability at the cost of single-factor identification. | Protocol 002 no-domain audit plus separately declared Protocol 003 amendments. | supported design/biology boundary |
 
 ## Locked and corrected numerical facts
 
@@ -59,14 +60,20 @@
 | directional lag fraction | 0.060 [0.016, 0.112] |
 | conventional median positive lead-time range | 106–109 vs 72.5–77.5 generations |
 | median positive lead fraction of calibrated horizon | 0.442–0.454 vs 0.604–0.646 |
+| absolute D−S 95% difference intervals exclude zero | H-alpha 5% and H-alpha 10% only |
+| horizon-normalized D−S 95% difference intervals include zero | all six endpoints |
+| directional H-gamma 20% final warning / trait-loss incidence | 41/81 (0.506) / 52/81 (0.642) |
 | Stage III calibrated horizons | 240 vs 120 generations |
 
-The original Stage III source artifacts used the upper middle order statistic for even `n` while calling it a median. The source artifacts remain immutable; publication timing values come from the post-review secondary audit, which uses the conventional median.
+The historical Stage III source artifacts used the upper middle order statistic for even `n` while calling it a median. The source artifacts remain immutable; publication timing values come from the post-review secondary audit, which uses the conventional median. Repository-wide inspection found the historical definition only in that Stage III timing-summary path. The paired fragmentation reductions were calculated separately from locked parent outcomes and are not affected by this correction.
 
 ## Prohibited claims
 
 - Recurrent-transition direction alone caused the Stage III warning-ordering difference.
-- Recurrent-transition direction alone shortened intervention time.
+- Recurrent-transition direction alone shortened or lengthened intervention time.
+- The horizon-normalized Stage III timing difference is separated at any of the six endpoints.
+- All six absolute Stage III timing contrasts are separated.
+- Overlap or non-overlap of marginal bootstrap intervals is a test of the between-domain difference.
 - Stage III changed only one biological parameter.
 - The Stage III domains are matched except for `p_star`.
 - Protocol 003 retained the Protocol 002 eligibility rule unchanged.
@@ -85,9 +92,9 @@ The original Stage III source artifacts used the upper middle order statistic fo
 |---|---|---|
 | Figure 1 | integrated fragmentation-to-warning causal architecture | conceptual mechanism; no numerical effect size |
 | Figure 2 | common-grid source feasibility | S1 |
-| Figure 3 | common-grid loss regimes plus 648-candidate composition | S2, S3 |
+| Figure 3 | common-grid loss regimes plus 648-candidate composition | S2, S3, S9 |
 | Figure 4 | cumulative warning and functional-loss incidence with administrative censoring | S6, S8 |
 | Figure 5 | full attempted denominator: source failure, ineligibility, censoring, lead/tie/lag | S6, S8 |
 | Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7 |
 
-Every finite numerical caption must state, or be read with the manuscript statement, that results are finite Type S evidence for declared model closures.
+Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures.
