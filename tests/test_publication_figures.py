@@ -66,3 +66,6 @@ def test_stage3_figures_from_secondary_audit(tmp_path: Path) -> None:
     assert "fraction of calibrated horizon" in fig6
     assert "Recalibrated symmetric domain" in fig6
     assert "Directional calibrated domain" in fig6
+    assert ">50<" in fig6 and ">100<" in fig6 and ">150<" in fig6
+    assert ">37<" not in fig6 and ">74<" not in fig6
+    assert "all six horizon-normalized 95% intervals include 0" in fig6
