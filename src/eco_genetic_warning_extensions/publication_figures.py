@@ -296,17 +296,17 @@ def _stage3_lead_time_svg(domains: dict[str, Any]) -> str:
         "directional_calibrated_domain": "#ea580c",
     }
     panel_specs = (
-        ("A", "median_positive_lead_time", "generations", 0.0, 185.0, 85),
+        ("A", "median_positive_lead_time", "generations", 0.0, 180.0, 85),
         ("B", "median_positive_lead_fraction_of_horizon", "fraction of calibrated horizon", 0.0, 0.82, 690),
     )
     top, plot_w, plot_h = 100, 500, 500
     for panel, metric, ylabel, ymin, ymax, left in panel_specs:
         parts.append(f'<text x="{left-48}" y="{top-28}" font-family="sans-serif" font-size="16" font-weight="bold">{panel}</text>')
         parts.append(f'<rect x="{left}" y="{top}" width="{plot_w}" height="{plot_h}" fill="white" stroke="#444"/>')
-        for tick in range(6):
-            frac = tick / 5
+        tick_values = (0.0, 50.0, 100.0, 150.0) if metric == "median_positive_lead_time" else (0.0, 0.2, 0.4, 0.6, 0.8)
+        for value in tick_values:
+            frac = (value-ymin)/(ymax-ymin)
             y = top + plot_h - frac * plot_h
-            value = ymin + frac * (ymax-ymin)
             label = f"{value:.1f}" if metric.endswith("horizon") else f"{value:.0f}"
             parts.append(f'<line x1="{left-6}" y1="{y}" x2="{left}" y2="{y}" stroke="#333"/><text x="{left-10}" y="{y+4}" text-anchor="end" font-family="sans-serif" font-size="11">{label}</text>')
         parts.append(f'<text x="{left-60}" y="{top+plot_h/2}" text-anchor="middle" font-family="sans-serif" font-size="12" transform="rotate(-90 {left-60} {top+plot_h/2})">{html.escape(ylabel)}</text>')
@@ -333,7 +333,7 @@ def _stage3_lead_time_svg(domains: dict[str, Any]) -> str:
 
     parts.append(f'<circle cx="180" cy="700" r="6" fill="{colors[DOMAIN_ORDER[0]]}" stroke="#111"/><text x="195" y="704" font-family="sans-serif" font-size="12">Recalibrated symmetric domain: 240 generations (30 + 210)</text>')
     parts.append(f'<rect x="174" y="724" width="12" height="12" fill="{colors[DOMAIN_ORDER[1]]}" stroke="#111"/><text x="195" y="735" font-family="sans-serif" font-size="12">Directional calibrated domain: 120 generations (30 + 90)</text>')
-    parts.append('<text x="640" y="785" text-anchor="middle" font-family="sans-serif" font-size="11">95% intervals resample whole trajectories; the absolute timing contrast is not a single-factor transition-direction effect.</text>')
+    parts.append('<text x="640" y="785" text-anchor="middle" font-family="sans-serif" font-size="11">Direct D−S bootstrap: all six horizon-normalized 95% intervals include 0; absolute intervals exclude 0 only for Hα 5% and 10%.</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 
