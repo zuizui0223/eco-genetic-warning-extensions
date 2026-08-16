@@ -13,6 +13,7 @@
     "h3_fragmentation_gradient": {
       "artifact_id": 9261157020,
       "artifact_name": "h3-fragmentation-gradient-publication",
+      "archive_commit": "076ab3e28078cfd7cbe1b67ab544c8d1e9066c54",
       "attempted_sources": 1200,
       "digest": "sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c",
       "fresh_master_seeds": [20260820,20260821,20260822,20260823,20260824],
@@ -21,14 +22,14 @@
       "run_head_commit": "2e1b98b05346342062f6e6e233d791036dcc97cc",
       "workflow_run": 31937210601,
       "n2_paired_median_reductions": {
-        "final_interaction": 0.9982562028568333,
-        "local_effective_size": 0.7786885245901639,
-        "realised_high_trait_mass": 0.7170818505338078
+        "final_interaction": 0.998255569246587,
+        "local_effective_size": 0.778688524590164,
+        "realised_high_trait_mass": 0.7170819101198848
       },
       "n4_paired_median_reductions": {
-        "final_interaction": 0.998553,
+        "final_interaction": 0.9985533722090489,
         "local_effective_size": 0.8872950819672131,
-        "realised_high_trait_mass": 0.6981996726677578
+        "realised_high_trait_mass": 0.6981998264893001
       },
       "evidence_boundary": "new post-review supplementary finite Type S sensitivity; historical H1/H3 evidence ledger unchanged"
     },
