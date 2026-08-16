@@ -5,10 +5,33 @@
     "Protocol 003 remains separately declared",
     "endpoint summaries within trajectories are correlated",
     "between-domain timing contrasts use direct whole-trajectory difference bootstrap rather than marginal interval overlap",
+    "the post-review H3 fragmentation gradient is supplementary Type S evidence and does not overwrite the historical H1/H3 ledger",
     "all numerical outcomes remain finite Type S evidence"
   ],
   "extension_base_commit": "5ef4e9dd0105a00ed76fc079e48d290c8682e119",
   "locked_publication_inputs": {
+    "h3_fragmentation_gradient": {
+      "artifact_id": 9261157020,
+      "artifact_name": "h3-fragmentation-gradient-publication",
+      "attempted_sources": 1200,
+      "digest": "sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c",
+      "fresh_master_seeds": [20260820,20260821,20260822,20260823,20260824],
+      "patch_counts": [1,2,3,4,6,8,12,16],
+      "prepared_sources": 1037,
+      "run_head_commit": "2e1b98b05346342062f6e6e233d791036dcc97cc",
+      "workflow_run": 31937210601,
+      "n2_paired_median_reductions": {
+        "final_interaction": 0.9982562028568333,
+        "local_effective_size": 0.7786885245901639,
+        "realised_high_trait_mass": 0.7170818505338078
+      },
+      "n4_paired_median_reductions": {
+        "final_interaction": 0.998553,
+        "local_effective_size": 0.8872950819672131,
+        "realised_high_trait_mass": 0.6981996726677578
+      },
+      "evidence_boundary": "new post-review supplementary finite Type S sensitivity; historical H1/H3 evidence ledger unchanged"
+    },
     "stage1": {
       "artifact_id": 8345805712,
       "attempts": 3375,
