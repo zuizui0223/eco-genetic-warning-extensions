@@ -37,7 +37,13 @@ def main() -> int:
     audit_result = stage3_review_audit(records, bootstrap_replicates=args.bootstrap_replicates)
     audit_path = out / "stage3_review_audit.json"
     summary_path = out / "stage3_review_summary.csv"
-    write_stage3_review_outputs(audit_result, audit_path, summary_path)
+    difference_path = out / "stage3_between_domain_differences.csv"
+    write_stage3_review_outputs(
+        audit_result,
+        audit_path,
+        summary_path,
+        difference_path,
+    )
     write_stage3_figures(audit_path, out)
 
     (out / "publication_build_summary.json").write_text(
@@ -48,6 +54,7 @@ def main() -> int:
                     "records": str(records_path),
                     "audit": str(audit_path),
                     "summary": str(summary_path),
+                    "between_domain_differences": str(difference_path),
                     "bootstrap_replicates": args.bootstrap_replicates,
                 },
             },
