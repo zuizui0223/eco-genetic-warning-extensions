@@ -1,83 +1,23 @@
-# Genetic warning emerges from eco-genetic closure in fragmented systems
+# Eco-genetic regimes govern when genetic early warning can be validated
 
 ## Integrated paper identity
 
-This manuscript synthesizes the central evidence from `zuizui0223/eco-genetic-criticality` and `zuizui0223/eco-genetic-warning-extensions` without merging their code bases or rewriting either closed evidence ledger. The predecessor supplies the theorem-guided ecological mechanism and the symmetric-closure warning benchmark. The extension supplies independently declared directional-transition tests, the regime map, and the fresh-seed warning comparison.
+This manuscript is one study implemented in two computational provenance phases. The first phase establishes the theorem-guided interaction/fragmentation mechanism and an inherited symmetric warning benchmark. The second phase tests recurrent-transition coordinates on a common grid, asks whether that biological closure supplies a comparable event regime for warning validation, and only then evaluates warning portability in two separately warning-blind recalibrated domains.
 
-## One-sentence claim
+## Logical sequence
 
-Genetic warning before realised functional-trait loss is not a portable property of a diversity statistic; its availability, ordering, and usable lead time emerge from the eco-genetic closure linking fragmentation, interaction dynamics, demography, recurrent state turnover, and observation.
+1. Positive interaction feedback can create distinct low- and high-interaction states under the specified canonical map.
+2. In the finite closure, equal isolation of the same prepared high state lowers interaction, local effective size, and realised high-trait mass. Across 1,055 qualified paired projections, the median reductions were approximately 99.86%, 88.73%, and 68.87%, respectively.
+3. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available; 35 experienced functional-trait loss, and all 35 relative-warning event pairs led. Fixed absolute thresholds produced both leads and lags.
+4. The extension reconstructs sources independently over 15 recurrent-transition coordinates. Of 3,375 attempts, 2,269 supported projection, with coordinate support spanning 44.89% to 86.67%.
+5. Warning-blind common-family calibration completed 20,250 attempts. Among 648 complete candidates, 322 were rapid-loss-side, 242 persistence-side, and 84 seed-heterogeneous; all 15 coordinates ended as `no_domain_selected` under the strict Protocol 002 gate.
+6. This no-domain result is the strongest identified extension result: before any warning outcome was available, recurrent-transition coordinates had reorganised the system strongly enough to remove a common intermediate-risk regime in which warning performance could be compared.
+7. Protocol 003 was separately declared before warning inspection. Amendment 001 expanded the candidate family and used a pooled + four-of-five seed-block event-risk gate; Amendment 002 retained that gate and increased replication after the first independent calibration failed.
+8. The resulting recalibrated symmetric and directional calibrated domains differ in ecological parameters, recurrent-transition coordinates, and deterioration schedules. Their validation therefore tests warning portability across calibrated domains, not an isolated transition-direction effect.
+9. Full-denominator valid-pair availability was 0.540 versus 0.335. Across valid endpoint comparisons, the recalibrated symmetric domain contained 323 leads, one tie and no lags, while the directional calibrated domain contained 184 leads, five ties and 12 lags.
+10. Timing point estimates were schedule-dependent. Absolute medians were lower in the directional calibrated domain, but direct directional-minus-symmetric 95% intervals excluded zero only for the H-alpha 5% and 10% endpoints. Full-horizon-normalized point estimates reversed the ordering, but all six normalized difference intervals included zero.
+11. The matched-schedule common-family experiment cannot simply be promoted to Stage III: under that shared deterioration family no coordinate satisfied the strict event-risk gate. Coordinate-specific recalibration restored evaluability at the cost of single-factor identification.
 
-## Novelty
+## Biological conclusion
 
-The novelty is not simply that genetic diversity can decline before trait loss, nor simply that mutation bias changes allele frequencies. The combined result connects four levels that are usually analysed separately:
-
-1. habitat fragmentation changes interaction intensity and the stability of a high-trait ecological state;
-2. ecological-state change alters local effective size and genetic diversity;
-3. relative diversity erosion can precede realised trait loss under an independently calibrated symmetric closure;
-4. changing only recurrent-transition direction changes source feasibility, trait-loss regimes, warning availability, lead/lag ordering, and intervention time.
-
-Mutation direction is therefore evidence for a broader conceptual advance: **warning reliability is an emergent property of the full eco-genetic closure**.
-
-## Ecological significance
-
-The work distinguishes population persistence, allele persistence, genetic diversity, interaction state, and realised trait occupancy. This matters because ecological function can disappear while the population and relevant alleles remain present. In conservation monitoring, a genetic signal is useful only when the biological system produces comparable loss events and when the signal appears early enough to support intervention.
-
-Effective state-transition direction changes that monitoring problem in three ways:
-
-- low-trait-directed transitions create rapid-loss regimes in which warning may be too compressed to be useful;
-- high-trait-directed transitions create persistence regimes with too few loss events for reliable validation;
-- intermediate directional regimes can increase seed dependence, censoring, lags, and uncertainty in warning availability.
-
-The ecological implication is that a warning threshold calibrated in one species, trait architecture, or transition regime should not be transferred to another without evidence of comparable ecological feedback, state turnover, deterioration timescale, baseline eligibility, and censoring.
-
-## Main-text results
-
-### Result 1 — fragmentation establishes an eco-genetic route to warning
-
-Retain the predecessor's theorem-guided causal chain:
-
-`patch size -> interaction intensity -> high-trait-state stability -> local effective size -> genetic diversity -> realised functional-trait loss`.
-
-Use only the minimum H1 and H3 evidence needed to establish that interaction feedback can maintain a high-trait state and that equal isolation lowers interaction, local effective size, and realised high-trait mass relative to one large patch.
-
-### Result 2 — the symmetric closure supplies a conditional benchmark
-
-Use the predecessor's independently calibrated H2-R domain as the benchmark. Of 100 attempted sources, 83 produced available trajectories and 35 had post-baseline trait loss. For all six preregistered relative-diversity endpoints, all 35 valid event pairs had warning before trait loss, with zero ties and zero lags.
-
-Present this result as a conditional benchmark, not a universal warning rule.
-
-### Result 3 — transition direction separates eco-genetic regimes
-
-Use the extension's complete source-reconstruction and warning-blind calibration campaigns.
-
-- Source reconstruction: 3,375 attempts; 2,269 source-prepared and projection-supported attempts; coordinate-specific support rates 44.89–86.67%; zero projection failures after successful preparation.
-- Warning-blind calibration: 20,250 trait-loss calibration attempts; 648 complete candidates; 322 entirely above the eligibility band, 242 entirely below it, and 84 mixed across seed blocks; zero Protocol 002 eligible domains across all 15 coordinates.
-
-This is the primary phase-separation result: recurrent-transition direction changes not only trait persistence but whether a comparable warning-validation regime exists.
-
-### Result 4 — warning reliability emerges from two calibrated closures
-
-Use the separately declared fresh-seed comparison.
-
-- symmetric bridge: 323 leads, 1 tie, 0 lags across 324 valid endpoint comparisons; median positive lead time 106–112 generations;
-- directional transition: 184 leads, 5 ties, 12 lags across 201 valid comparisons; median positive lead time 74–81 generations, with greater warning censoring and baseline ineligibility.
-
-The conclusion is not that directional transition eliminates warning. It reduces its availability and consistency and shortens the useful intervention window in the tested closure.
-
-## Main discussion points
-
-1. **Warning is conditional, not universal.** Relative diversity erosion can be highly reliable in one closure and less available or less ordered in another.
-2. **Event-regime feasibility is part of early-warning biology.** Rapid loss, persistence, and seed-heterogeneous regimes determine whether warning performance can be assessed.
-3. **Functional-trait loss can precede population extinction.** Monitoring population size or allele presence alone can miss ecological-function loss.
-4. **Transition direction is one ecological boundary condition.** `p_mu*` is an effective transition equilibrium, not an empirical mutation-rate estimate, but it can represent gain/loss asymmetry, epimutation, switching, or recurrent mutation.
-5. **Conservation thresholds require biological calibration.** A warning rule should be calibrated to species- and trait-specific interaction feedback, state turnover, deterioration rate, and censoring structure.
-
-## Claims not made
-
-- No universal theorem of genetic early warning is claimed.
-- The finite results are Type S evidence for declared closures.
-- `p_mu*` is not interpreted as an estimated biological mutation rate.
-- Endpoint counts are correlated within trajectories and are not independent replicates.
-- The directional comparison domain is not presented as representative of every directional regime.
-- The parent evidence ledger remains unchanged and extension results are not retroactively assigned to the parent protocol.
+The study identifies two ordered questions. First, does the eco-genetic system generate a comparable event regime in which warning can be evaluated at all? Second, conditional on such a domain, is the warning observable and does it precede functional loss? Recurrent-transition direction is identified as reorganising source feasibility and event regimes on the common grid. The later calibrated-domain comparison shows that warning availability and ordering need not transfer cleanly across systems, while its timing contrasts remain endpoint- and schedule-dependent. **Event-regime feasibility therefore precedes warning performance as a biological question.**

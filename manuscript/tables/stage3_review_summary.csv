@@ -1,0 +1,13 @@
+domain,endpoint,attempted,positive_leads,valid_pairs,lead,tie,lag,source_preparation_failed,baseline_ineligible,both_censored,warning_censored,trait_loss_censored,median_positive_lead_time,median_positive_lead_time_ci_lower,median_positive_lead_time_ci_upper,median_positive_lead_fraction_of_horizon,median_positive_lead_fraction_of_horizon_ci_lower,median_positive_lead_fraction_of_horizon_ci_upper
+recalibrated_symmetric_domain,H_alpha_0.05,100,54,54,54,0,0,18,0,0,0,28,109.0,78.0,172.0,0.45416666666666666,0.325,0.7166666666666667
+recalibrated_symmetric_domain,H_alpha_0.10,100,54,54,54,0,0,18,0,0,0,28,108.0,78.0,171.0,0.44999999999999996,0.325,0.7125
+recalibrated_symmetric_domain,H_alpha_0.20,100,54,54,54,0,0,18,0,0,0,28,107.5,72.5,162.5,0.44791666666666663,0.30208333333333337,0.6770833333333334
+recalibrated_symmetric_domain,H_gamma_0.05,100,54,54,54,0,0,18,0,0,0,28,109.0,74.0,168.0,0.45416666666666666,0.30833333333333335,0.7
+recalibrated_symmetric_domain,H_gamma_0.10,100,54,54,54,0,0,18,0,0,0,28,106.0,73.5,162.5,0.44166666666666665,0.30625,0.6770833333333334
+recalibrated_symmetric_domain,H_gamma_0.20,100,53,54,53,1,0,18,0,0,0,28,106.0,71.0,156.0,0.44166666666666665,0.29583333333333334,0.65
+directional_calibrated_domain,H_alpha_0.05,100,35,38,35,1,2,9,10,8,14,21,77.0,69.0,89.0,0.6416666666666667,0.575,0.7416666666666667
+directional_calibrated_domain,H_alpha_0.10,100,35,37,35,1,1,9,10,8,15,21,76.0,68.0,86.0,0.6333333333333333,0.5666666666666667,0.7166666666666667
+directional_calibrated_domain,H_alpha_0.20,100,34,35,34,0,1,9,10,10,17,19,76.0,63.0,89.0,0.6333333333333333,0.525,0.7416666666666667
+directional_calibrated_domain,H_gamma_0.05,100,28,32,28,2,2,9,10,15,20,14,72.5,62.0,89.0,0.6041666666666667,0.5166666666666666,0.7416666666666667
+directional_calibrated_domain,H_gamma_0.10,100,28,31,28,1,2,9,10,15,21,14,72.5,62.0,89.0,0.6041666666666667,0.5166666666666666,0.7416666666666667
+directional_calibrated_domain,H_gamma_0.20,100,24,28,24,0,4,9,10,16,24,13,77.5,60.0,89.0,0.6458333333333334,0.5,0.7416666666666667

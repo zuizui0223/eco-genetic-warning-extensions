@@ -6,14 +6,14 @@ import hashlib
 import json
 import shutil
 from pathlib import Path
-from xml.sax.saxutils import escape
 
 from eco_genetic_warning_extensions.protocol002_publication_outputs import write_regime_svg
 from eco_genetic_warning_extensions.publication_figures import (
     _stage1_svg,
-    _stage3_lead_time_svg,
-    _stage3_ordering_svg,
+    write_stage3_figures,
 )
+from eco_genetic_warning_extensions.stage3_trajectory_records import build_records, write_records
+from eco_genetic_warning_extensions.stage3_review_audit import audit as stage3_review_audit, write_outputs as write_stage3_review_outputs
 
 
 def _figure1(path: Path) -> None:
@@ -58,46 +58,6 @@ def _figure1(path: Path) -> None:
     path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
 
 
-def _figure4(stage2_csv: Path, path: Path) -> None:
-    rows = list(csv.DictReader(stage2_csv.open(encoding='utf-8')))
-    lines = [
-        '<svg xmlns="http://www.w3.org/2000/svg" width="900" height="540" viewBox="0 0 900 540" role="img" aria-labelledby="figure4-title figure4-desc">',
-        '<title id="figure4-title">Trait-loss regime composition across transition coordinates</title>',
-        '<desc id="figure4-desc">Stacked bars show rapid-loss, seed-heterogeneous, and persistence candidate counts for each transition coordinate. Direct labels R, H, and P provide a non-colour encoding.</desc>',
-        '<rect width="100%" height="100%" fill="white"/>',
-        '<text x="30" y="34" font-family="sans-serif" font-size="20" font-weight="bold">Trait-loss regime composition across transition coordinates</text>',
-    ]
-    x0, y0, barw, gap = 210, 60, 600, 30
-    categories = (
-        ('R', 'rapid loss', '#d95f02'),
-        ('H', 'seed heterogeneous', '#7570b3'),
-        ('P', 'persistence', '#1b9e77'),
-    )
-    for i, row in enumerate(rows):
-        values = (
-            int(row['rapid_loss_candidate_count']),
-            int(row['seed_heterogeneous_candidate_count']),
-            int(row['persistence_candidate_count']),
-        )
-        total = max(1, sum(values))
-        y = y0 + i * gap
-        label = f"κ={float(row['kappa_mu']):.2f}, p*={float(row['p_star']):.2f}"
-        lines.append(f'<text x="195" y="{y+13}" text-anchor="end" font-family="sans-serif" font-size="11">{escape(label)}</text>')
-        cursor = x0
-        for value, (code, _name, fill) in zip(values, categories):
-            width = barw * value / total
-            lines.append(f'<rect x="{cursor:.2f}" y="{y}" width="{width:.2f}" height="18" fill="{fill}" stroke="white" stroke-width="0.5"/>')
-            if width >= 22:
-                lines.append(f'<text x="{cursor + width/2:.2f}" y="{y+13}" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="bold" fill="white">{code}</text>')
-            cursor += width
-    legend_x = (245, 405, 600)
-    for x, (code, name, fill) in zip(legend_x, categories):
-        lines.append(f'<rect x="{x}" y="510" width="16" height="12" fill="{fill}" stroke="#333" stroke-width="0.5"/>')
-        lines.append(f'<text x="{x+22}" y="521" font-family="sans-serif" font-size="12">{code} — {escape(name)}</text>')
-    lines.append('</svg>')
-    path.write_text('\n'.join(lines) + '\n', encoding='utf-8')
-
-
 def _read_stage1_rows(path: Path) -> list[dict[str, object]]:
     rows: list[dict[str, object]] = []
     with path.open(encoding='utf-8', newline='') as handle:
@@ -111,36 +71,64 @@ def _read_stage1_rows(path: Path) -> list[dict[str, object]]:
     return rows
 
 
-def _regenerate_publication_figures(stage1: Path, stage2: Path, root: Path, out: Path) -> None:
+def _regenerate_publication_figures(stage1: Path, stage2: Path, stage3_audit_path: Path, out: Path) -> None:
     stage1_rows = _read_stage1_rows(stage1 / 'stage1_coordinate_summary.csv')
     stage2_rows = list(csv.DictReader((stage2 / 'stage2_coordinate_regimes.csv').open(encoding='utf-8')))
-    stage3_summary_path = root / 'artifacts/protocol003/stage3_validation_summary.json'
-    if not stage3_summary_path.exists():
-        raise FileNotFoundError(stage3_summary_path)
-    stage3 = json.loads(stage3_summary_path.read_text(encoding='utf-8'))
-
-    (out / 'figures/figure2_stage1_source_feasibility.svg').write_text(
-        _stage1_svg(stage1_rows), encoding='utf-8'
-    )
+    (out / 'figures/figure2_stage1_source_feasibility.svg').write_text(_stage1_svg(stage1_rows), encoding='utf-8')
     write_regime_svg(stage2_rows, out / 'figures/figure3_stage2_coordinate_regimes.svg')
-    (out / 'figures/figure5_stage3_ordering.svg').write_text(
-        _stage3_ordering_svg(stage3['domains']), encoding='utf-8'
+    write_stage3_figures(stage3_audit_path, out / 'figures')
+
+
+def _copy_h3_gradient(gradient: Path, out: Path) -> None:
+    required = (
+        'h3_fragmentation_gradient_records.csv',
+        'h3_fragmentation_gradient_cell_summary.csv',
+        'h3_fragmentation_gradient_pooled_summary.csv',
+        'h3_fragmentation_gradient_metadata.json',
+        'figure_s_fragmentation_gradient.svg',
+        'MANIFEST.sha256',
     )
-    (out / 'figures/figure6_stage3_lead_time.svg').write_text(
-        _stage3_lead_time_svg(stage3['domains']), encoding='utf-8'
-    )
+    missing = [name for name in required if not (gradient / name).exists()]
+    if missing:
+        raise FileNotFoundError('missing H3 gradient files: ' + ', '.join(missing))
+
+    metadata = json.loads((gradient / 'h3_fragmentation_gradient_metadata.json').read_text(encoding='utf-8'))
+    if metadata.get('attempted_source_replicates') != 1200:
+        raise RuntimeError('H3 gradient attempted-source denominator drifted')
+    if metadata.get('patch_counts') != [1, 2, 3, 4, 6, 8, 12, 16]:
+        raise RuntimeError('H3 gradient patch-count contract drifted')
+    if metadata.get('warning_endpoints_evaluated') is not False:
+        raise RuntimeError('H3 gradient must remain warning-free')
+
+    (out / 'supplement').mkdir(parents=True, exist_ok=True)
+    (out / 'provenance/h3_fragmentation_gradient').mkdir(parents=True, exist_ok=True)
+    shutil.copy2(gradient / 'figure_s_fragmentation_gradient.svg', out / 'supplement/figure_s1_fragmentation_gradient.svg')
+    for name in (
+        'h3_fragmentation_gradient_records.csv',
+        'h3_fragmentation_gradient_cell_summary.csv',
+        'h3_fragmentation_gradient_pooled_summary.csv',
+    ):
+        shutil.copy2(gradient / name, out / 'tables' / name)
+    shutil.copy2(gradient / 'h3_fragmentation_gradient_metadata.json', out / 'provenance/h3_fragmentation_gradient/metadata.json')
+    shutil.copy2(gradient / 'MANIFEST.sha256', out / 'provenance/h3_fragmentation_gradient/source_MANIFEST.sha256')
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--stage1-dir', required=True)
     parser.add_argument('--stage2-dir', required=True)
+    parser.add_argument('--stage3-domain0', required=True)
+    parser.add_argument('--stage3-domain1', required=True)
+    parser.add_argument('--h3-gradient-dir', required=True)
     parser.add_argument('--repo-root', default='.')
     parser.add_argument('--output', required=True)
     args = parser.parse_args()
     root = Path(args.repo_root)
     stage1 = Path(args.stage1_dir)
     stage2 = Path(args.stage2_dir)
+    stage3_domain0 = Path(args.stage3_domain0)
+    stage3_domain1 = Path(args.stage3_domain1)
+    h3_gradient = Path(args.h3_gradient_dir)
     out = Path(args.output)
     if out.exists():
         shutil.rmtree(out)
@@ -161,22 +149,31 @@ def main() -> int:
     shutil.copy2(stage1 / 'stage1_coordinate_summary.csv', out / 'tables')
     shutil.copy2(stage2 / 'stage2_coordinate_regimes.csv', out / 'tables')
     shutil.copy2(root / 'manuscript/tables/stage3_endpoint_summary.csv', out / 'tables')
+    shutil.copy2(root / 'manuscript/tables/inherited_h3_effect_summary.csv', out / 'tables')
+
+    records = build_records([stage3_domain0, stage3_domain1])
+    write_records(records, out / 'tables/stage3_trajectory_endpoint_records.csv')
+    audit_result = stage3_review_audit(records)
+    audit_path = out / 'tables/stage3_review_audit.json'
+    review_csv = out / 'tables/stage3_review_summary.csv'
+    difference_csv = out / 'tables/stage3_between_domain_differences.csv'
+    write_stage3_review_outputs(audit_result, audit_path, review_csv, difference_csv)
+
+    committed_review_csv = root / 'manuscript/tables/stage3_review_summary.csv'
+    if review_csv.read_bytes() != committed_review_csv.read_bytes():
+        raise RuntimeError('generated Stage III review summary differs from committed publication summary')
+    committed_difference_csv = root / 'manuscript/tables/stage3_between_domain_differences.csv'
+    if difference_csv.read_bytes() != committed_difference_csv.read_bytes():
+        raise RuntimeError('generated Stage III difference bootstrap differs from committed publication summary')
 
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
-    _regenerate_publication_figures(stage1, stage2, root, out)
-    _figure4(stage2 / 'stage2_coordinate_regimes.csv', out / 'figures/figure4_trait_loss_regime_composition.svg')
+    _regenerate_publication_figures(stage1, stage2, audit_path, out)
+    _copy_h3_gradient(h3_gradient, out)
 
     manuscript_files = (
-        'main_text.md',
-        'references.md',
-        'figure_captions.md',
-        'figure_accessibility_review.md',
-        'table_captions.md',
-        'supplementary_methods.md',
-        'submission_metadata.md',
-        'claim_evidence_map.md',
-        'artifact_index.md',
-        'submission_checklist.md',
+        'main_text.md', 'references.md', 'figure_captions.md', 'figure_accessibility_review.md',
+        'table_captions.md', 'supplementary_methods.md', 'submission_metadata.md',
+        'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md',
     )
     for name in manuscript_files:
         shutil.copy2(root / 'manuscript' / name, out / 'manuscript')

@@ -102,6 +102,9 @@ def main() -> int:
             "reproducibility/upstream-lock.json",
             "manuscript/artifact_index.md",
             "manuscript/claim_evidence_map.md",
+            "manuscript/tables/stage3_review_summary.csv",
+            "docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md",
+            "docs/INHERITED_H3_EFFECT_SIZE_AUDIT.md",
         ),
     )
 

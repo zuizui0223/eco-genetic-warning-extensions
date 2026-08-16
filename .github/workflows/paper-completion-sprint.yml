@@ -15,6 +15,8 @@ on:
       - "src/eco_genetic_warning_extensions/publication_figures.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
+      - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
@@ -30,6 +32,8 @@ on:
       - "src/eco_genetic_warning_extensions/publication_figures.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
+      - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - ".github/workflows/paper-completion-sprint.yml"
   workflow_dispatch:
 
@@ -54,6 +58,13 @@ jobs:
           ref: dd8ee379d0d3518194c767d16402042525bc00dc
           path: upstream
 
+      - name: Checkout versioned parent gradient supplement
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: 076ab3e28078cfd7cbe1b67ab544c8d1e9066c54
+          path: upstream_gradient
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -71,9 +82,13 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p locked/stage1 locked/stage2
+          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1
           gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
           gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D locked/stage3/domain0
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D locked/stage3/domain1
+          cd upstream_gradient/artifacts/h3_fragmentation_gradient
+          sha256sum -c MANIFEST.sha256
 
       - name: Build both distributions and exact source archives
         run: |
@@ -83,6 +98,10 @@ jobs:
           git -C upstream archive \
             --format=tar.gz \
             --output="$(pwd)/software_dist/parent/eco-genetic-criticality-scientific-dd8ee379.tar.gz" \
+            HEAD
+          git -C upstream_gradient archive \
+            --format=tar.gz \
+            --output="$(pwd)/software_dist/parent/eco-genetic-criticality-postreview-gradient-076ab3e2.tar.gz" \
             HEAD
           git archive \
             --format=tar.gz \
@@ -94,6 +113,9 @@ jobs:
           python scripts/build_submission_bundle.py \
             --stage1-dir locked/stage1 \
             --stage2-dir locked/stage2 \
+            --stage3-domain0 locked/stage3/domain0/stage3_validation_domain_0.json \
+            --stage3-domain1 locked/stage3/domain1/stage3_validation_domain_1.json \
+            --h3-gradient-dir upstream_gradient/artifacts/h3_fragmentation_gradient \
             --repo-root . \
             --output submission_bundle
 
@@ -109,22 +131,38 @@ jobs:
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 4
+          test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 1
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 11
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
+          test "$(find submission_bundle/software/parent -name '*postreview-gradient-*.tar.gz' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*repository-*.tar.gz' | wc -l)" -eq 1
           test -f submission_bundle/provenance/build_context.json
           test -f submission_bundle/provenance/extension/reproducibility/upstream-lock.json
+          test -f submission_bundle/provenance/h3_fragmentation_gradient/metadata.json
+          test -f submission_bundle/tables/h3_fragmentation_gradient_records.csv
+          test -f submission_bundle/tables/h3_fragmentation_gradient_cell_summary.csv
+          test -f submission_bundle/tables/h3_fragmentation_gradient_pooled_summary.csv
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q '323' submission_bundle/manuscript/main_text.md
           grep -q '184' submission_bundle/manuscript/main_text.md
+          grep -q '0.540' submission_bundle/manuscript/main_text.md
+          grep -q '0.335' submission_bundle/manuscript/main_text.md
+          grep -q '1,037' submission_bundle/manuscript/main_text.md
+          test -f submission_bundle/tables/stage3_review_audit.json
+          test -f submission_bundle/tables/stage3_review_summary.csv
+          test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
+          test -f submission_bundle/tables/inherited_h3_effect_summary.csv
           grep -q 'Source feasibility across transition coordinates' submission_bundle/figures/figure2_stage1_source_feasibility.svg
           grep -q 'Functional-loss regimes across transition coordinates' submission_bundle/figures/figure3_stage2_coordinate_regimes.svg
-          grep -q 'Warning ordering in calibrated domains' submission_bundle/figures/figure5_stage3_ordering.svg
-          grep -q 'Median positive warning lead time' submission_bundle/figures/figure6_stage3_lead_time.svg
-          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes' submission_bundle/figures
+          grep -q 'Cumulative warning and functional-loss incidence' submission_bundle/figures/figure4_stage3_cumulative_incidence.svg
+          grep -q 'Warning availability, censoring and ordering' submission_bundle/figures/figure5_stage3_availability_ordering.svg
+          grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/figures/figure6_stage3_lead_time_normalized.svg
+          grep -q 'Fixed-area fragmentation gradient from paired H1-prepared sources' submission_bundle/supplement/figure_s1_fragmentation_gradient.svg
+          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes|Directional transition shortens usable intervention time' submission_bundle/figures
           python - <<'PY'
+          import csv
           import hashlib
           import json
           from pathlib import Path
@@ -134,7 +172,21 @@ jobs:
           assert data['attempt_count']==3375
           assert data['totals']['projection_supported']==2269
           assert data['totals']['projection_failed']==0
-          for path in sorted((bundle / 'figures').glob('*.svg')):
+
+          gradient=list(csv.DictReader((bundle/'tables/h3_fragmentation_gradient_pooled_summary.csv').open(encoding='utf-8')))
+          assert len(gradient)==8
+          n2=next(row for row in gradient if int(row['patch_count'])==2)
+          n4=next(row for row in gradient if int(row['patch_count'])==4)
+          assert abs(float(n2['final_interaction_mean_reduction_from_n1_median'])-0.998255569246587) < 1e-15
+          assert abs(float(n2['final_effective_size_mean_reduction_from_n1_median'])-0.778688524590164) < 1e-15
+          assert abs(float(n2['realised_high_trait_mass_mean_reduction_from_n1_median'])-0.7170819101198848) < 1e-15
+          assert abs(float(n4['final_interaction_mean_reduction_from_n1_median'])-0.9985533722090489) < 1e-15
+          assert abs(float(n4['final_effective_size_mean_reduction_from_n1_median'])-0.8872950819672131) < 1e-15
+          assert abs(float(n4['realised_high_trait_mass_mean_reduction_from_n1_median'])-0.6981998264893001) < 1e-15
+          records=sum(1 for _ in (bundle/'tables/h3_fragmentation_gradient_records.csv').open(encoding='utf-8'))-1
+          assert records==9600
+
+          for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
               assert 'role="img"' in text, path
               assert '<title ' in text or '<title>' in text, path
@@ -145,6 +197,8 @@ jobs:
               assert actual == expected, relative
           assert any(name.startswith('software/parent/') for name in manifest['files'])
           assert any(name.startswith('software/extension/') for name in manifest['files'])
+          assert 'supplement/figure_s1_fragmentation_gradient.svg' in manifest['files']
+          assert 'tables/h3_fragmentation_gradient_records.csv' in manifest['files']
           PY
 
       - name: Upload submission bundle

@@ -2,6 +2,8 @@
 
 Bibliographic metadata below has been checked against publisher, PubMed, or institutional records. DOI strings are canonical identifiers; final punctuation and author truncation can be adjusted by the journal production system without changing the underlying records.
 
+Andersen, P.K., Geskus, R.B., de Witte, T. & Putter, H. (2012). Competing risks in epidemiology: possibilities and pitfalls. *International Journal of Epidemiology*, **41**, 861–870. doi:10.1093/ije/dyr213
+
 Bell, G. (2017). Evolutionary rescue. *Annual Review of Ecology, Evolution, and Systematics*, **48**, 605–627. doi:10.1146/annurev-ecolsys-110316-023011
 
 Boettiger, C. & Hastings, A. (2012). Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface*, **9**, 2527–2539. doi:10.1098/rsif.2012.0125
@@ -12,6 +14,10 @@ Carlson, S.M., Cunningham, C.J. & Westley, P.A.H. (2014). Evolutionary rescue in
 
 Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
 
+Field, C.A. & Welsh, A.H. (2007). Bootstrapping clustered data. *Journal of the Royal Statistical Society: Series B*, **69**, 369–390. doi:10.1111/j.1467-9868.2007.00593.x
+
+Frankham, R. (2005). Genetics and extinction. *Biological Conservation*, **126**, 131–140. doi:10.1016/j.biocon.2005.05.002
+
 Gomulkiewicz, R. & Holt, R.D. (1995). When does evolution by natural selection prevent extinction? *Evolution*, **49**, 201–207. doi:10.1111/j.1558-5646.1995.tb05971.x
 
 Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hendry, A.P., De Brito Martins, A., Melián, C.J., Raeymaekers, J.A.M., Ratikainen, I.I., Sæther, B.-E., Schweitzer, J.A. & Matthews, B. (2019). Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology*, **33**, 13–30. doi:10.1111/1365-2435.13241
@@ -19,6 +25,8 @@ Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hen
 Hastings, A. & Wysham, D.B. (2010). Regime shifts in ecological systems can occur with no warning. *Ecology Letters*, **13**, 464–472. doi:10.1111/j.1461-0248.2010.01439.x
 
 Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N., Travis, J.M.J. & Clobert, J. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
+
+Lipsitch, M., Tchetgen Tchetgen, E. & Cohen, T. (2010). Negative controls: a tool for detecting confounding and bias in observational studies. *Epidemiology*, **21**, 383–388. doi:10.1097/EDE.0b013e3181d61eeb
 
 McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, **87**, 271–276. doi:10.1890/05-0386
 

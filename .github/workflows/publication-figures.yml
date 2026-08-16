@@ -5,10 +5,15 @@ on:
     branches: [main]
     paths:
       - 'src/eco_genetic_warning_extensions/publication_figures.py'
+      - 'src/eco_genetic_warning_extensions/stage3_review_audit.py'
+      - 'src/eco_genetic_warning_extensions/stage3_trajectory_records.py'
       - 'scripts/build_publication_figures.py'
       - 'tests/test_publication_figures.py'
+      - 'tests/test_stage3_review_audit.py'
+      - 'tests/test_stage3_trajectory_records.py'
+      - 'manuscript/tables/stage3_review_summary.csv'
+      - 'manuscript/tables/stage3_between_domain_differences.csv'
       - '.github/workflows/publication-figures.yml'
-      - 'artifacts/protocol003/stage3_validation_summary.json'
   workflow_dispatch:
 
 permissions:
@@ -26,7 +31,7 @@ jobs:
       - name: Install extension and tests
         run: python -m pip install -e . pytest
       - name: Test publication builders
-        run: python -m pytest -q tests/test_publication_figures.py
+        run: python -m pytest -q tests/test_publication_figures.py tests/test_stage3_review_audit.py tests/test_stage3_trajectory_records.py
       - name: Download all Stage I batch artifacts
         env:
           GH_TOKEN: ${{ github.token }}
@@ -36,16 +41,27 @@ jobs:
             mkdir -p "artifacts/raw_stage1/$run_id"
             gh run download "$run_id" --repo "${{ github.repository }}" --dir "artifacts/raw_stage1/$run_id"
           done
-      - name: Build Stage I table and Figures 2, 5, 6
+      - name: Download immutable Stage III validation artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p artifacts/stage3/domain0 artifacts/stage3/domain1
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D artifacts/stage3/domain0
+          gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D artifacts/stage3/domain1
+      - name: Build Stage I and review-revised Stage III publication outputs
         run: |
           python scripts/build_publication_figures.py \
             --stage1-root artifacts/raw_stage1 \
-            --stage3-summary artifacts/protocol003/stage3_validation_summary.json \
+            --stage3-domain0 artifacts/stage3/domain0/stage3_validation_domain_0.json \
+            --stage3-domain1 artifacts/stage3/domain1/stage3_validation_domain_1.json \
             --output-dir manuscript/generated
+          cmp manuscript/generated/stage3_review_summary.csv manuscript/tables/stage3_review_summary.csv
+          cmp manuscript/generated/stage3_between_domain_differences.csv manuscript/tables/stage3_between_domain_differences.csv
       - name: Show publication summary
         run: |
           cat manuscript/generated/stage1_publication_summary.json
-          cat manuscript/generated/stage1_coordinate_summary.csv
+          cat manuscript/generated/stage3_review_summary.csv
+          cat manuscript/generated/stage3_between_domain_differences.csv
       - uses: actions/upload-artifact@v4
         with:
           name: publication-stage1-stage3-outputs

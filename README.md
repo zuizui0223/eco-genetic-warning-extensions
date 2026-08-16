@@ -4,22 +4,13 @@ Independent, protocol-locked extensions of the finite eco-genetic criticality fr
 
 ## Current status
 
-The directional-transition campaigns are complete. The repository now contains:
+The recurrent-transition campaigns are complete. The repository contains 3,375 independent source-reconstruction attempts, 20,250 warning-blind common-family calibration attempts, a closed Protocol 002 result with 15/15 coordinates recorded as `no_domain_selected`, a separately declared and amended Protocol 003 calibration/confirmation/validation campaign, a post-review whole-trajectory uncertainty audit, publication tables and figures, and a checksummed submission-bundle workflow.
 
-- an algebraic certificate for 15 predeclared transition coordinates;
-- 3,375 independent source-reconstruction and projection attempts;
-- 20,250 warning-blind trait-loss calibration attempts;
-- a closed Protocol 002 result with 15/15 coordinates recorded as `no_domain_selected`;
-- a separately declared Protocol 003 calibration and fresh-seed warning validation;
-- publication tables, accessible figures, manuscript files, and a checksummed submission-bundle workflow.
+The publication source of truth is [`manuscript/main_text.md`](manuscript/main_text.md), synchronized with [`manuscript/supervisor_first_draft.md`](manuscript/supervisor_first_draft.md). Permitted and prohibited claims are locked in [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md).
 
-The integrated manuscript entry point is [`manuscript/main_text.md`](manuscript/main_text.md). The current supervisor-facing draft is [`manuscript/supervisor_first_draft.md`](manuscript/supervisor_first_draft.md).
+## Relationship to the mechanistic phase
 
-## Why this remains a separate repository
-
-[`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality) closed a finite-model campaign covering interaction-conditioned high-trait viability (H1), fragmentation effects (H3), and a conditional symmetric relative-diversity warning result (H2-R). Its numerical results remain bounded by its declared symmetric mutation, trait-recruitment, source-transfer, and deterioration closures.
-
-This repository changes a specific genetic boundary condition and uses new source, calibration, confirmation, and validation seed families. Parent trajectories are not extension evidence, and extension results do not retroactively revise the parent ledger.
+[`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality) contains the theorem-guided interaction/fragmentation mechanism, locked H1/H3 finite campaign, and inherited symmetric warning benchmark. This repository is the second computational phase of the same manuscript, but the two repositories remain separate provenance ledgers and their trajectories are never pooled.
 
 The parent scientific state is fixed at:
 
@@ -28,11 +19,11 @@ repository: zuizui0223/eco-genetic-criticality
 commit:     dd8ee379d0d3518194c767d16402042525bc00dc
 ```
 
-The exact two-repository lock is recorded in [`reproducibility/upstream-lock.json`](reproducibility/upstream-lock.json).
+The exact two-repository and publication-evidence lock is [`reproducibility/upstream-lock.json`](reproducibility/upstream-lock.json).
 
-## Paper question and mechanism
+## Paper question and identification boundary
 
-The recurrent transition operator is
+The recurrent-transition operator is
 
 \[
 p_{t+1}^{\mathrm{mut}}
@@ -46,44 +37,48 @@ parameterised by
 p_\mu^\ast=\frac{u_{L\to H}}{\kappa_\mu}.
 \]
 
-At fixed \(\kappa_\mu\), the study asks how transition direction changes high-trait source feasibility, realised functional-trait loss, the availability of a warning-validation regime, and the ordering and lead time of relative genetic warnings.
+At fixed `kappa_mu`, the common-grid analyses ask how transition direction reorganises high-trait source feasibility and realised functional-loss regimes. These are the direct transition-coordinate comparisons and the strongest identified extension evidence.
 
-The broader manuscript claim is not that one direction universally causes collapse or rescue. It is that warning availability and reliability emerge from the ecological, demographic, genetic, and observation processes that jointly generate both the signal and the functional-loss event.
+Strict Protocol 002 warning-blind calibration selected no common validation domain: the common deterioration family separated into rapid-loss, persistence, and seed-heterogeneous regimes. This means that **event-regime feasibility must be established before warning performance can be compared**.
+
+Protocol 003 was subsequently declared. Amendment 001 expanded the candidate schedules and defined a pooled + four-of-five seed-block event-risk gate before any warning endpoint was calculated. Amendment 002 retained that gate and increased replication with fresh confirmation seeds.
+
+The two final validation domains are not matched except for transition direction. They differ in `A_ref`, interaction-feedback `kappa`, `kappa_mu`, `p_star`, barrier increase, and calibrated horizon. Their comparison therefore tests **warning portability across independently calibrated eco-genetic domains**, not a single-factor causal effect of transition direction.
 
 ## Locked headline results
 
+- **Fragmentation bridge:** across 1,055 H1-qualified paired projections in the mechanistic phase, median reductions after equal isolation were 99.86% for final interaction, 88.73% for local effective size, and 68.87% for realised high-trait mass.
+- **Inherited symmetric benchmark:** 83 of 100 attempted trajectories were available; 35 experienced functional-trait loss, and all six relative-warning endpoints led in all 35 observed event pairs. Fixed absolute thresholds produced both leads and lags.
 - **Source feasibility:** 2,269 of 3,375 attempts completed source preparation and supported projection; coordinate support ranged from 44.89% to 86.67%.
-- **Warning-blind regime map:** among 648 complete candidates, 322 were rapid-loss-side, 242 persistence-side, and 84 seed-heterogeneous; no Protocol 002 coordinate met the all-seed eligibility rule.
-- **Symmetric bridge:** 323 leads, one tie, and no lags across 324 valid endpoint comparisons; median positive lead time 106–112 generations.
-- **Directional transition:** 184 leads, five ties, and 12 lags across 201 valid endpoint comparisons; median positive lead time 74–81 generations, with greater baseline ineligibility and censoring.
+- **Strict warning-blind regime map:** among 648 complete Protocol 002 candidates, 322 were rapid-loss-side, 242 persistence-side, and 84 seed-heterogeneous; zero candidates satisfied the all-seed gate and all 15 coordinates remained `no_domain_selected`.
+- **Recalibrated symmetric domain:** 323 leads, one tie, and no lags across 324 valid endpoint comparisons; valid-pair availability 0.540 and whole-trajectory bootstrap lead fraction 0.997 (95% interval 0.990–1.000).
+- **Directional calibrated domain:** 184 leads, five ties, and 12 lags across 201 valid endpoint comparisons; valid-pair availability 0.335 and lead fraction 0.915 (0.848–0.971). For the 20% `H_gamma` endpoint, final warning incidence was 41/81 (0.506) versus 52/81 (0.642) for realised trait loss.
+- **Direct timing audit:** conventional median positive lead times were 106–109 versus 72.5–77.5 generations. Directional-minus-symmetric absolute 95% difference intervals excluded zero only for `H_alpha` 5% and 10%. Full-horizon-normalized point estimates reversed (0.442–0.454 versus 0.604–0.646), but all six normalized difference intervals included zero. Neither timing ordering is a general single-factor Stage III result.
 
-These endpoint comparisons share trajectories and are correlated repeated summaries. All numerical results remain finite Type S evidence for their declared closures.
+The six endpoint rows within each trajectory are correlated repeated summaries. All uncertainty resamples whole attempted trajectories. All numerical conclusions remain finite Type S evidence for their declared model closures.
 
-## Package and repository architecture
+## Reproducibility architecture
 
-The submission uses two installable packages rather than a merged code base:
+The submission uses two installable packages rather than merging scientific code bases:
 
 ```text
 eco-genetic-criticality
-  mechanistic parent, theorem layer, finite H1/H3 closure, symmetric benchmark
+  mechanistic parent + exact scientific source archive
 
 eco-genetic-warning-extensions
-  directional-transition protocols, publication outputs, integrated manuscript
+  recurrent-transition protocols + publication/audit code
 
 submission bundle
-  both wheels/source distributions + figures + tables + manuscript + provenance
+  manuscript + Figures 1–6 + machine-readable tables
+  + parent/extension software distributions
+  + exact source archives + provenance + SHA-256 manifest
 ```
 
-This arrangement keeps the parent evidence ledger immutable while giving reviewers one checksummed package to inspect.
-
-## Quick reproducibility check
-
-See [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) for the full three-level guide. The lightweight verification is:
+A lightweight check is:
 
 ```bash
 git clone https://github.com/zuizui0223/eco-genetic-criticality.git upstream
 git -C upstream checkout dd8ee379d0d3518194c767d16402042525bc00dc
-
 python -m venv .venv
 source .venv/bin/activate  # Windows: .venv\Scripts\activate
 python -m pip install --upgrade pip
@@ -93,22 +88,18 @@ python -m pytest
 python scripts/verify_reproducibility_contract.py --upstream upstream
 ```
 
-The **Paper completion sprint** workflow additionally:
+The **Paper completion sprint** additionally downloads the locked Stage I, Stage II, and Stage III workflow artifacts; flattens the immutable Stage III validation payloads to 1,200 trajectory-endpoint records; regenerates the fixed 20,000-resample audit and direct between-domain timing contrasts; byte-verifies both committed publication CSVs; regenerates Figures 1–6; builds both software distributions; and writes a SHA-256 manifest over the complete bundle.
 
-1. downloads immutable Stage I and Stage II publication artifacts;
-2. regenerates all six figures with the current code;
-3. reads the committed Stage III summary;
-4. builds both software distributions;
-5. assembles manuscript, figures, tables, software, and provenance;
-6. writes a SHA-256 manifest for every bundled file.
+Historical Stage III source artifacts remain immutable. The original compact summary is retained for provenance; corrected conventional medians, schedule-normalized timing, and direct timing differences are explicitly labelled as post-review secondary analyses rather than silently rewriting historical evidence.
 
 ## Protocol boundaries
 
-- **Protocol 001:** three-anchor asymmetric-transition bridge/pilot.
-- **Protocol 002:** 15-coordinate source reconstruction and warning-blind common-family calibration. It remains closed with `no_domain_selected` at all coordinates.
-- **Protocol 003:** separately declared bracket, calibration, confirmation, and fresh-seed warning-validation campaign.
+- **Protocol 001:** bridge/pilot.
+- **Protocol 002:** 15-coordinate source reconstruction and strict warning-blind common-family calibration; closed with 15/15 `no_domain_selected`.
+- **Protocol 003:** separately declared bracket, amended warning-blind calibration, confirmation, and fresh-seed validation.
+- **Secondary review audit:** data-only analysis of the locked Stage III validation records; no simulation rerun, domain reselection, or endpoint change.
 
-No diversity, warning time, lead/lag ordering, or lead-time quantity was available during trait-loss calibration.
+No diversity, warning time, lead/lag ordering, or lead-time quantity was available during any trait-loss calibration stage.
 
 ## Evidence labels
 
@@ -117,15 +108,13 @@ No diversity, warning time, lead/lag ordering, or lead-time quantity was availab
 - **H** — dynamic hypothesis;
 - **S** — finite, model-specific simulation evidence.
 
-A successful software build verifies reproducibility contracts; it does not strengthen Type S evidence into a theorem.
-
 ## Key entry points
 
-- [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — complete reproducibility and archival guide
-- [`manuscript/README.md`](manuscript/README.md) — manuscript identity and claim boundaries
+- [`REPRODUCIBILITY.md`](REPRODUCIBILITY.md) — reproduction and archival guide
 - [`manuscript/artifact_index.md`](manuscript/artifact_index.md) — workflow, artifact, and digest provenance
-- [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md) — permitted and prohibited claims
-- [`docs/PROTOCOL_002_MUTATION_DIRECTION_PHASE_DIAGRAM.md`](docs/PROTOCOL_002_MUTATION_DIRECTION_PHASE_DIAGRAM.md) — closed common-family campaign
-- [`docs/PROTOCOL_003_STAGE3_OPTIONS.md`](docs/PROTOCOL_003_STAGE3_OPTIONS.md) — separately declared validation logic
+- [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md) — permitted/prohibited claims and corrected timing values
+- [`docs/PROTOCOL_003_AMENDMENT_001.md`](docs/PROTOCOL_003_AMENDMENT_001.md) — warning-blind candidate expansion and revised event-risk gate
+- [`docs/PROTOCOL_003_AMENDMENT_002.md`](docs/PROTOCOL_003_AMENDMENT_002.md) — confirmation with unchanged gate and increased replication
+- [`docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`](docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md) — identification correction, conventional median scope, direct difference bootstrap, normalization, censoring, and cumulative incidence
 
 Final author order, affiliations, CRediT roles, licence, funding, conflicts, archive DOI, and repository citation metadata require explicit author approval and are not inferred by automation.
