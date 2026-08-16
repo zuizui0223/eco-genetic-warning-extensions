@@ -75,11 +75,18 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1
+          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1 locked/h3_gradient
           gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
           gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
           gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D locked/stage3/domain0
           gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D locked/stage3/domain1
+          curl -L --fail --retry 3 \
+            -H 'Accept: application/vnd.github+json' \
+            -H 'X-GitHub-Api-Version: 2026-03-10' \
+            https://api.github.com/repos/zuizui0223/eco-genetic-criticality/actions/artifacts/9261157020/zip \
+            -o locked/h3_gradient.zip
+          echo '424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c  locked/h3_gradient.zip' | sha256sum -c -
+          unzip -q locked/h3_gradient.zip -d locked/h3_gradient
 
       - name: Build both distributions and exact source archives
         run: |
@@ -102,6 +109,7 @@ jobs:
             --stage2-dir locked/stage2 \
             --stage3-domain0 locked/stage3/domain0/stage3_validation_domain_0.json \
             --stage3-domain1 locked/stage3/domain1/stage3_validation_domain_1.json \
+            --h3-gradient-dir locked/h3_gradient \
             --repo-root . \
             --output submission_bundle
 
@@ -117,19 +125,24 @@ jobs:
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 8
+          test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 1
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 11
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*repository-*.tar.gz' | wc -l)" -eq 1
           test -f submission_bundle/provenance/build_context.json
           test -f submission_bundle/provenance/extension/reproducibility/upstream-lock.json
+          test -f submission_bundle/provenance/h3_fragmentation_gradient/metadata.json
+          test -f submission_bundle/tables/h3_fragmentation_gradient_records.csv
+          test -f submission_bundle/tables/h3_fragmentation_gradient_cell_summary.csv
+          test -f submission_bundle/tables/h3_fragmentation_gradient_pooled_summary.csv
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q '323' submission_bundle/manuscript/main_text.md
           grep -q '184' submission_bundle/manuscript/main_text.md
           grep -q '0.540' submission_bundle/manuscript/main_text.md
           grep -q '0.335' submission_bundle/manuscript/main_text.md
-          grep -q 'horizon-normalized' submission_bundle/manuscript/main_text.md
+          grep -q '1,037' submission_bundle/manuscript/main_text.md
           test -f submission_bundle/tables/stage3_review_audit.json
           test -f submission_bundle/tables/stage3_review_summary.csv
           test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
@@ -139,8 +152,10 @@ jobs:
           grep -q 'Cumulative warning and functional-loss incidence' submission_bundle/figures/figure4_stage3_cumulative_incidence.svg
           grep -q 'Warning availability, censoring and ordering' submission_bundle/figures/figure5_stage3_availability_ordering.svg
           grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/figures/figure6_stage3_lead_time_normalized.svg
+          grep -q 'Fixed-area fragmentation gradient from paired H1-prepared sources' submission_bundle/supplement/figure_s1_fragmentation_gradient.svg
           ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes|Directional transition shortens usable intervention time' submission_bundle/figures
           python - <<'PY'
+          import csv
           import hashlib
           import json
           from pathlib import Path
@@ -150,7 +165,19 @@ jobs:
           assert data['attempt_count']==3375
           assert data['totals']['projection_supported']==2269
           assert data['totals']['projection_failed']==0
-          for path in sorted((bundle / 'figures').glob('*.svg')):
+
+          gradient=list(csv.DictReader((bundle/'tables/h3_fragmentation_gradient_pooled_summary.csv').open(encoding='utf-8')))
+          assert len(gradient)==8
+          n2=next(row for row in gradient if int(row['patch_count'])==2)
+          n4=next(row for row in gradient if int(row['patch_count'])==4)
+          assert abs(float(n2['final_interaction_mean_reduction_from_n1_median'])-0.9982562028568333) < 1e-12
+          assert abs(float(n2['final_effective_size_mean_reduction_from_n1_median'])-0.7786885245901639) < 1e-12
+          assert abs(float(n2['realised_high_trait_mass_mean_reduction_from_n1_median'])-0.7170818505338078) < 1e-12
+          assert abs(float(n4['final_effective_size_mean_reduction_from_n1_median'])-0.8872950819672131) < 1e-12
+          records=sum(1 for _ in (bundle/'tables/h3_fragmentation_gradient_records.csv').open(encoding='utf-8'))-1
+          assert records==9600
+
+          for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
               assert 'role="img"' in text, path
               assert '<title ' in text or '<title>' in text, path
@@ -161,6 +188,8 @@ jobs:
               assert actual == expected, relative
           assert any(name.startswith('software/parent/') for name in manifest['files'])
           assert any(name.startswith('software/extension/') for name in manifest['files'])
+          assert 'supplement/figure_s1_fragmentation_gradient.svg' in manifest['files']
+          assert 'tables/h3_fragmentation_gradient_records.csv' in manifest['files']
           PY
 
       - name: Upload submission bundle
