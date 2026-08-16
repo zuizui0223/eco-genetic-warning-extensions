@@ -18,7 +18,7 @@ Candidate-level and seed-block trait-loss frequencies under strict Protocol 002.
 
 ## Table S5. Fresh-seed warning endpoint summaries and secondary uncertainty audit
 
-For each Stage III endpoint and calibrated domain: full attempted denominator, source failure, baseline ineligibility, censoring categories, valid-pair counts, lead/tie/lag ordering, conventional median positive lead time, horizon-normalized lead time, and trajectory-bootstrap 95% intervals. Endpoint rows within trajectories are correlated; the bootstrap resamples trajectories rather than treating the six endpoint summaries as independent observations.
+For each Stage III endpoint and calibrated domain: full attempted denominator, censoring categories, lead/tie/lag ordering, conventional median positive lead time and horizon-normalized lead time with whole-trajectory bootstrap intervals. The companion between-domain table reports directional-minus-symmetric median differences for absolute, horizon-normalized and hold-normalized timing, with intervals calculated by independently resampling whole trajectories within each domain.
 
 ## Numbering rule
 
