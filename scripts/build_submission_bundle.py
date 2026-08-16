@@ -120,10 +120,15 @@ def main() -> int:
     audit_result = stage3_review_audit(records)
     audit_path = out / 'tables/stage3_review_audit.json'
     review_csv = out / 'tables/stage3_review_summary.csv'
-    write_stage3_review_outputs(audit_result, audit_path, review_csv)
+    difference_csv = out / 'tables/stage3_between_domain_differences.csv'
+    write_stage3_review_outputs(audit_result, audit_path, review_csv, difference_csv)
+
     committed_review_csv = root / 'manuscript/tables/stage3_review_summary.csv'
     if review_csv.read_bytes() != committed_review_csv.read_bytes():
         raise RuntimeError('generated Stage III review summary differs from committed publication summary')
+    committed_difference_csv = root / 'manuscript/tables/stage3_between_domain_differences.csv'
+    if difference_csv.read_bytes() != committed_difference_csv.read_bytes():
+        raise RuntimeError('generated Stage III difference bootstrap differs from committed publication summary')
 
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
     _regenerate_publication_figures(stage1, stage2, audit_path, out)
