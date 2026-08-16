@@ -5,7 +5,7 @@
 | Campaign | Evidence | Workflow run / artifact |
 |---|---|---|
 | Inherited H1/H3 finite chain | paired one-large versus equal-isolated outcomes used for the fragmentation effect-size audit | parent run `28456092898`, artifact `7987193632`, digest `sha256:b74b604f3233fa6086e2afa39cd780fa375aac4b1abd8c63e6f5ed8b3a467d2c` |
-| Post-review H3 fragmentation gradient | fresh fixed-area paired projections at 1, 2, 3, 4, 6, 8, 12, and 16 isolated patches; 1,200 attempted / 1,037 prepared sources | parent run `31937210601`, artifact `9261157020`, digest `sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c` |
+| Post-review H3 fragmentation gradient | fresh fixed-area paired projections at 1, 2, 3, 4, 6, 8, 12, and 16 isolated patches; 1,200 attempted / 1,037 prepared sources | parent run `31937210601`, run head `2e1b98b05346342062f6e6e233d791036dcc97cc`, artifact `9261157020`, digest `sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c`; integrated parent merge `b5a92ccc4bfb23da80ab8aee3e12f1c3700fcdaa` |
 | Inherited relative-warning benchmark | trait-loss-only calibration and fresh-seed H2-R validation | parent calibration run `28496735824`; parent validation run `28500796310` |
 | Source reconstruction and projection | 135 batches, 3,375 attempts over the common 15-coordinate transition grid | runs `29177214259`, `29186610167`, `29188592519`, `29188748077`, `29190149319`, `29190149344` |
 | Source-feasibility publication outputs | coordinate CSV and summary JSON | run `29422431944`, artifact `8345805712`, digest `sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9` |
@@ -50,11 +50,12 @@ S1. **Fixed-area fragmentation gradient from paired H1-prepared sources.** Fresh
 
 ## Figure-caption boundaries
 
-Every numerical figure caption states the statistical unit and relevant evidence boundary. Figures 4–6 distinguish the **recalibrated symmetric domain** and **directional calibrated domain**. Figure 6 must not be described as identifying a transition-direction timing effect: the validation domains differ in transition parameters, ecological parameters and deterioration schedules, and every full-horizon-normalized direct difference interval includes zero. Figure 1 is conceptual and does not claim a universal causal theorem.
+Every numerical figure caption states the statistical unit and relevant evidence boundary. Figures 4–6 distinguish the **recalibrated symmetric domain** and **directional calibrated domain**. Figure 6 must not be described as identifying a transition-direction timing effect: the validation domains differ in transition parameters, ecological parameters and deterioration schedules, and every full-horizon-normalized direct difference interval includes zero. Figure 1 is conceptual and does not claim a universal causal theorem. Supplementary Figure S1 is a new post-review finite sensitivity and must not be described as replacing the historical H1/H3 evidence ledger or as a universal monotone fragmentation response.
 
 ## Evidence rules
 
 - The two repositories are computational phases of one manuscript but remain separate provenance ledgers; trajectories are never pooled across phases.
+- The post-review H3 fragmentation gradient is a separately declared fresh-seed Type S sensitivity; its 9,600 rows are repeated measures over 1,200 attempted source replicates and do not replace the historical H1/H3 ledger.
 - Direct recurrent-transition-coordinate effects are supported by the common-grid source-feasibility and loss-regime analyses, not by a single-factor Stage III contrast.
 - Protocol 002 remains closed with 15/15 `no_domain_selected` under its strict all-seed rule.
 - Protocol 003 is separately declared. Amendment 001 expanded the candidate family and changed the event-risk eligibility gate before any warning outcome was calculated; Amendment 002 did not relax that gate further and instead increased replication with fresh seeds.
