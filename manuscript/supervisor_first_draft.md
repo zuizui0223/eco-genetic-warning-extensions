@@ -92,25 +92,13 @@ A post hoc secondary audit was added after manuscript review identified the iden
 
 The historical Stage III artifact generator calculated its timing “median” as the upper middle order statistic for even sample sizes. The audit instead uses the conventional median, averaging the two middle values when `n` is even. Repository-wide inspection found this definition only in the historical Stage III timing-summary path; the fragmentation effect-size audit and other manuscript-facing medians were calculated separately from locked values using the conventional median. Absolute positive lead times are also divided by the full calibrated deterioration horizon (ramp + hold); a hold-only normalization is retained as a sensitivity description.
 
-The six endpoint records within one trajectory are correlated. We therefore calculated descriptive 95% percentile intervals by resampling whole attempted trajectories, retaining all six endpoint rows within each sampled trajectory. We used 20,000 trajectory-cluster bootstrap replicates with fixed seed `20260814`. The aggregate quantities were lead fraction among valid pairs, lag fraction among valid pairs, and valid-pair availability among all attempted endpoint opportunities. Endpoint-specific positive lead-time medians were bootstrapped in the same way. Because the two validation domains use independent trajectories, we additionally resampled 100 whole trajectories independently within each domain and calculated the directional-minus-symmetric difference in median lead time for every endpoint and bootstrap replicate. This directly quantifies uncertainty in the between-domain contrast rather than inferring it from overlap of marginal intervals.
+The six endpoint records within one trajectory are correlated. We therefore calculated descriptive 95% percentile intervals by resampling whole attempted trajectories, retaining all six endpoint rows within each sampled trajectory (Field & Welsh 2007). We used 20,000 trajectory-cluster bootstrap replicates with fixed seed `20260814`. The aggregate quantities were lead fraction among valid pairs, lag fraction among valid pairs, and valid-pair availability among all attempted endpoint opportunities. Endpoint-specific positive lead-time medians were bootstrapped in the same way. Because the two validation domains use independent trajectories, we additionally resampled 100 whole trajectories independently within each domain and calculated the directional-minus-symmetric difference in median lead time for every endpoint and bootstrap replicate. This directly quantifies uncertainty in the between-domain contrast rather than inferring it from overlap of marginal intervals.
 
-Finally, warning and trait loss are not classical competing risks because both can occur in the same trajectory. We therefore report cumulative observed incidence of each event rather than forcing them into a competing-risk estimand. Cumulative curves retain all baseline-eligible completed trajectories through their full administratively censored horizon.
+The positive-lead median is a **conditional estimand**: a trajectory contributes only if both warning and trait loss are observed in that domain and the warning leads. The contributing sets therefore differ systematically across domains, and administrative censoring can preferentially exclude later losses and their potentially longer lead times. Horizon normalization does not remove this selection. We therefore treat full-denominator cumulative event incidence and availability as the primary Stage III timing evidence; conditional lead-time medians are a secondary diagnostic that must be interpreted together with Figures 4 and 5.
+
+Finally, warning and trait loss are not classical competing risks because both can occur in the same trajectory; competing-risk cumulative incidence is defined for mutually exclusive event types (Andersen et al. 2012). We therefore report paired cumulative observed incidence of each event rather than forcing them into a competing-risk estimand. Cumulative curves retain all baseline-eligible completed trajectories through their full administratively censored horizon.
 
 ## Results
-
-### Fragmentation produced large, consistent reductions in interaction, local effective size and realised high-trait mass
-
-The first-phase fragmentation result was quantitatively strong. Across 12 primary cells, 1,055 of 1,200 attempted replicates satisfied the H1 full-state hold criterion. Every one of those 1,055 qualified replicates satisfied the predeclared H3 fragmentation pattern: mean final interaction, mean local effective size, and realised high-trait mass were all lower after equal isolation than in the matched one-large projection.
-
-Pooled descriptively across those paired replicates, mean final interaction was `0.9977` in one large patch and `0.0048` after equal isolation; the median paired reduction was 99.86%. Mean local effective size fell from `72.83` to `8.18`, with a median paired reduction of 88.73%. Mean realised high-trait mass fell from `0.575` to `0.177`, with a median paired reduction of 68.87% (Supplementary Table S1). These finite results provide the demographic and functional bridge between the analytical interaction threshold and later genetic-warning analyses.
-
-### Relative genetic erosion preceded functional-trait loss in the inherited symmetric benchmark
-
-The inherited symmetric benchmark provided a strong but conditional warning result. Of 100 attempted sources, 83 produced an available, projection-supported trajectory. Thirty-five of those 83 trajectories reached post-baseline realised trait loss; the remaining 48 available trajectories were right-censored for trait loss.
-
-For each of the six predeclared relative-diversity endpoints, all 35 valid same-trajectory comparisons had warning before realised trait loss. There were no ties and no lags. This result applies only to observed event pairs in the independently selected benchmark configuration; it does not establish a universal warning rule.
-
-Fixed absolute thresholds behaved differently. For `H_alpha <= 0.20`, 20 valid pairs contained 14 leads and six lags. For `H_gamma <= 0.20`, 16 valid pairs contained eight leads and eight lags. Fixed absolute thresholds were therefore not retained as robust warning rules. The contrast shows that warning performance depended on how genetic change was defined even before the recurrent-transition extension.
 
 ### Recurrent-transition direction changed whether a high-trait source could be established
 
@@ -126,6 +114,20 @@ Low transition equilibria were dominated by rapid loss. At `p_star=0.10`, the cl
 
 No complete candidate satisfied the strict all-seed eligibility rule. All 15 coordinates were therefore recorded as `no_domain_selected`. This result means that the common deterioration family did not provide a reproducible intermediate-risk domain for warning validation; it does not mean that genetic warning failed.
 
+### Fragmentation produced large, consistent reductions in interaction, local effective size and realised high-trait mass
+
+The first-phase fragmentation result was quantitatively strong. Across 12 primary cells, 1,055 of 1,200 attempted replicates satisfied the H1 full-state hold criterion. Every one of those 1,055 qualified replicates satisfied the predeclared H3 fragmentation pattern: mean final interaction, mean local effective size, and realised high-trait mass were all lower after equal isolation than in the matched one-large projection.
+
+Pooled descriptively across those paired replicates, mean final interaction was `0.9977` in one large patch and `0.0048` after equal isolation; the median paired reduction was 99.86%. Mean local effective size fell from `72.83` to `8.18`, with a median paired reduction of 88.73%. Mean realised high-trait mass fell from `0.575` to `0.177`, with a median paired reduction of 68.87% (Supplementary Table S1). These finite results provide the demographic and functional bridge between the analytical interaction threshold and later genetic-warning analyses.
+
+### Relative genetic erosion preceded functional-trait loss in the inherited symmetric benchmark
+
+The inherited symmetric benchmark provided a strong but conditional warning result. Of 100 attempted sources, 83 produced an available, projection-supported trajectory. Thirty-five of those 83 trajectories reached post-baseline realised trait loss; the remaining 48 available trajectories were right-censored for trait loss.
+
+For each of the six predeclared relative-diversity endpoints, all 35 valid same-trajectory comparisons had warning before realised trait loss. There were no ties and no lags. This result applies only to observed event pairs in the independently selected benchmark configuration; it does not establish a universal warning rule.
+
+Fixed absolute thresholds behaved differently. For `H_alpha <= 0.20`, 20 valid pairs contained 14 leads and six lags. For `H_gamma <= 0.20`, 16 valid pairs contained eight leads and eight lags. Fixed absolute thresholds were therefore not retained as robust warning rules. The contrast shows that warning performance depended on how genetic change was defined even before the recurrent-transition extension.
+
 ### Warning availability and ordering differed across recalibrated domains; the timing contrast was schedule-dependent
 
 Protocol 003 recovered two domains only after its warning-blind amendment and independent confirmation. In confirmation, the recalibrated symmetric domain had pooled trait-loss frequency `0.679` among 84 baseline-eligible trajectories, and the directional calibrated domain had frequency `0.625` among 88. These domains were then frozen before fresh-seed warning validation.
@@ -134,7 +136,7 @@ Validation attempted 100 trajectories per domain. Eighty-two recalibrated symmet
 
 Across all six endpoints, valid-pair availability among attempted endpoint opportunities was `0.540` (trajectory-cluster bootstrap 95% interval `0.440–0.640`) in the recalibrated symmetric domain and `0.335` (`0.248–0.425`) in the directional calibrated domain. The recalibrated symmetric domain contained 323 leads, one tie and no lags across 324 valid pairs; its lead fraction was `0.997` (`0.990–1.000`). The directional calibrated domain contained 184 leads, five ties and 12 lags across 201 valid pairs; its lead fraction was `0.915` (`0.848–0.971`) and lag fraction was `0.060` (`0.016–0.112`). These intervals resample trajectories rather than treating the six endpoint rows as independent observations (Figure 5).
 
-Positive lead-time point estimates were lower in the directional calibrated domain: conventional medians were `106–109` generations across endpoints in the recalibrated symmetric domain and `72.5–77.5` generations in the directional calibrated domain. Direct trajectory-bootstrap contrasts, however, showed that this absolute difference was separated from zero only for the `H_alpha` 5% and 10% endpoints; the other four endpoint intervals included zero. The calibrated horizons were 240 and 120 generations, respectively. After dividing lead time by the full horizon, point estimates reversed (`0.442–0.454` versus `0.604–0.646`), but **all six** directional-minus-symmetric 95% difference intervals included zero (Figure 6; Supplementary Table S5). The point-estimate reversal is therefore descriptive evidence of schedule dependence, not evidence for a separated normalized domain effect.
+Conditional on observing a leading warning-loss pair, positive lead-time point estimates were lower in the directional calibrated domain: conventional medians were `106–109` generations across endpoints in the recalibrated symmetric domain and `72.5–77.5` generations in the directional calibrated domain. The direct absolute difference interval excluded zero at only two of six endpoints, `H_alpha` 5% (`−97.0` to `−3.5` generations) and 10% (`−97.0` to `−4.5`), and both exclusions were close to zero at the upper bound; the other four intervals included zero. After full-horizon normalization, all six directional-minus-symmetric 95% difference intervals included zero. These medians are calculated on domain-specific selected subsets (54 leading pairs per symmetric endpoint versus 24–35 in the directional domain) and are additionally shaped by administrative censoring, so they are not a marginal domain-wide timing effect. Figure 4 therefore provides the primary Stage III timing evidence on the full baseline-eligible denominator; Figure 6 is retained as a conditional diagnostic to show why apparent lead time is schedule- and selection-dependent (Supplementary Table S5).
 
 ## Discussion
 
@@ -154,7 +156,7 @@ The final Stage III comparison answers a different question. The two validation 
 
 A matched-schedule Stage III comparison would seem to solve this problem, but the strict common-family experiment explains why it was not the primary validation design. Under the same predeclared deterioration family, all 15 transition coordinates failed the common event-risk gate because candidates collapsed into rapid-loss, persistence, or seed-heterogeneous regimes. Holding the schedule fixed therefore did not yield comparable warning-validation domains to contrast. Recovering intermediate event risk required coordinate-specific recalibration, which restored evaluability at the cost of single-factor identification. That trade-off is itself the biological result: **event-regime feasibility precedes warning comparison**.
 
-The timing audit makes that limitation concrete. Absolute median lead times were lower in the directional calibrated domain, whereas horizon-normalized point estimates reversed the ordering. Direct between-domain bootstrap intervals show that the absolute contrast is endpoint-dependent and that every horizon-normalized contrast includes zero. A claim that direction either shortened or lengthened intervention time would therefore be unsupported. Instead, the result shows why warning time must be interpreted as a property of the whole calibrated system, including the schedule used to make functional loss observable.
+The timing audit makes that limitation concrete but is deliberately secondary to the full-denominator incidence curves. Absolute conditional medians were lower in the directional calibrated domain, whereas horizon-normalized point estimates reversed the ordering; direct difference intervals were endpoint-dependent and every normalized interval included zero. More importantly, the median conditions on the domain-specific subset in which both events are observed and the warning leads, so different availability and administrative censoring change which trajectories contribute. A claim that direction either shortened or lengthened intervention time would therefore be unsupported. Warning timing must be interpreted jointly with event incidence and availability, not from the selected lead-time distribution alone.
 
 ### Warning availability matters as much as conditional ordering
 
@@ -166,7 +168,7 @@ The cumulative event-incidence curves make the same point without discarding non
 
 The inherited symmetric benchmark might otherwise look almost tautological: a relative decline in diversity was followed by a later functional-loss threshold in every observed event pair. Three results argue against interpreting that ordering as an intrinsic property of the diversity statistic. First, fixed absolute diversity thresholds produced substantial lags in the same stored trajectories. Second, strict common-family calibration failed across the entire transition grid because many systems occupied rapid-loss, persistence, or seed-heterogeneous regimes. Third, the independently recalibrated directional domain produced baseline ineligibility, censoring, ties and lags even though the same six relative-warning definitions were used.
 
-These contrasts do not prove that the warning captures a unique causal precursor. They show that its observability and ordering are not guaranteed by the threshold definition alone. The next empirical and model-based test should therefore compare genetic warning with control variables outside the proposed eco-genetic pathway or with deliberately perturbed baseline windows.
+These contrasts do not prove that the warning captures a unique causal precursor. They show that its observability and ordering are not guaranteed by the threshold definition alone. The next empirical and model-based test should therefore compare genetic warning with control variables outside the proposed eco-genetic pathway or with deliberately perturbed baseline windows, using negative controls to expose generic deterioration or analytic artefacts rather than assuming specificity (Lipsitch et al. 2010).
 
 ### Functional-trait loss is not population extinction
 
@@ -182,7 +184,7 @@ Likewise, $p_\mu^*$ is not an estimated nucleotide mutation rate and does not im
 
 ### Genetic monitoring requires biological calibration
 
-The practical implication is not that one genetic metric should replace another. Relative diversity erosion was highly informative in the inherited symmetric benchmark, but fixed thresholds were unreliable and relative warnings became less available in a separately calibrated domain. A threshold learned in one species, trait architecture, landscape, turnover regime, or deterioration timescale should therefore not be transferred without evidence that the underlying interaction feedback, state turnover, baseline eligibility, and censoring structure are comparable.
+The practical implication is not that one genetic metric should replace another. Relative diversity erosion was highly informative in the inherited symmetric benchmark, but fixed thresholds were unreliable and relative warnings became less available in a separately calibrated domain. This calibration problem sits alongside the established sensitivity of small populations to drift, diversity loss and inbreeding (Frankham 2005). A threshold learned in one species, trait architecture, landscape, turnover regime, or deterioration timescale should therefore not be transferred without evidence that the underlying interaction feedback, state turnover, baseline eligibility, and censoring structure are comparable.
 
 Connectivity should be interpreted with the same caution. The first-phase framework established exact bounds for deterministic allele-frequency mixing, but those bounds do not guarantee demographic or functional rescue. More connectivity or more diversity is therefore not automatically the management target. The relevant target is a biological regime in which ecological function persists and any genetic warning appears early enough to support intervention.
 
@@ -204,6 +206,8 @@ The study is distributed across two versioned repositories to preserve computati
 
 ## References
 
+Andersen, P.K., Geskus, R.B., de Witte, T. & Putter, H. (2012). Competing risks in epidemiology: possibilities and pitfalls. *International Journal of Epidemiology*, **41**, 861–870. doi:10.1093/ije/dyr213
+
 Bell, G. (2017). Evolutionary rescue. *Annual Review of Ecology, Evolution, and Systematics*, **48**, 605–627. doi:10.1146/annurev-ecolsys-110316-023011
 
 Boettiger, C. & Hastings, A. (2012). Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface*, **9**, 2527–2539. doi:10.1098/rsif.2012.0125
@@ -214,6 +218,10 @@ Carlson, S.M., Cunningham, C.J. & Westley, P.A.H. (2014). Evolutionary rescue in
 
 Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
 
+Field, C.A. & Welsh, A.H. (2007). Bootstrapping clustered data. *Journal of the Royal Statistical Society: Series B*, **69**, 369–390. doi:10.1111/j.1467-9868.2007.00593.x
+
+Frankham, R. (2005). Genetics and extinction. *Biological Conservation*, **126**, 131–140. doi:10.1016/j.biocon.2005.05.002
+
 Gomulkiewicz, R. & Holt, R.D. (1995). When does evolution by natural selection prevent extinction? *Evolution*, **49**, 201–207. doi:10.1111/j.1558-5646.1995.tb05971.x
 
 Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hendry, A.P., De Brito Martins, A., Melián, C.J., Raeymaekers, J.A.M., Ratikainen, I.I., Sæther, B.-E., Schweitzer, J.A. & Matthews, B. (2019). Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology*, **33**, 13–30. doi:10.1111/1365-2435.13241
@@ -221,6 +229,8 @@ Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hen
 Hastings, A. & Wysham, D.B. (2010). Regime shifts in ecological systems can occur with no warning. *Ecology Letters*, **13**, 464–472. doi:10.1111/j.1461-0248.2010.01439.x
 
 Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N., Travis, J.M.J. & Clobert, J. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
+
+Lipsitch, M., Tchetgen Tchetgen, E. & Cohen, T. (2010). Negative controls: a tool for detecting confounding and bias in observational studies. *Epidemiology*, **21**, 383–388. doi:10.1097/EDE.0b013e3181d61eeb
 
 McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, **87**, 271–276. doi:10.1890/05-0386
 

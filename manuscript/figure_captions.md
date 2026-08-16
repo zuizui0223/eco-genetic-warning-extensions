@@ -22,7 +22,7 @@ Each bar retains the full 100 attempted trajectories for one preregistered endpo
 
 ## Figure 6. Absolute and schedule-normalized positive warning lead time
 
-Conventional median positive lead time with trajectory-bootstrap 95% intervals and contributing lead counts. **A**, generations. **B**, fraction of the full calibrated horizon. Absolute point estimates were lower in the directional calibrated domain, whereas normalized point estimates reversed. Direct directional-minus-symmetric bootstrap intervals were endpoint-dependent for absolute time and included zero at all six normalized endpoints; Stage III does not identify a single-factor timing effect.
+Conditional median positive lead time among trajectories in which both events were observed and warning led, with whole-trajectory bootstrap 95% intervals and contributing lead counts. **A**, generations. **B**, fraction of the full calibrated horizon. The contributing set differs by domain and endpoint, and administrative censoring can remove later losses; normalization does not remove this selection. Direct directional-minus-symmetric intervals were endpoint-dependent for absolute time and included zero at all six normalized endpoints. Interpret this diagnostic together with full-denominator Figures 4–5.
 
 ## Caption rules retained for submission
 

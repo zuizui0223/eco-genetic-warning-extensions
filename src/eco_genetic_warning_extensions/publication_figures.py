@@ -333,7 +333,7 @@ def _stage3_lead_time_svg(domains: dict[str, Any]) -> str:
 
     parts.append(f'<circle cx="180" cy="700" r="6" fill="{colors[DOMAIN_ORDER[0]]}" stroke="#111"/><text x="195" y="704" font-family="sans-serif" font-size="12">Recalibrated symmetric domain: 240 generations (30 + 210)</text>')
     parts.append(f'<rect x="174" y="724" width="12" height="12" fill="{colors[DOMAIN_ORDER[1]]}" stroke="#111"/><text x="195" y="735" font-family="sans-serif" font-size="12">Directional calibrated domain: 120 generations (30 + 90)</text>')
-    parts.append('<text x="640" y="785" text-anchor="middle" font-family="sans-serif" font-size="11">Direct D−S bootstrap: all six horizon-normalized 95% intervals include 0; absolute intervals exclude 0 only for Hα 5% and 10%.</text>')
+    parts.append('<text x="640" y="785" text-anchor="middle" font-family="sans-serif" font-size="11">Direct directional-minus-symmetric bootstrap: all six horizon-normalized 95% intervals include 0; absolute intervals exclude 0 only for Hα 5% and 10%.</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 
