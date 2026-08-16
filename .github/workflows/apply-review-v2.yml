@@ -1,0 +1,44 @@
+name: Apply second-review manuscript patch
+
+on:
+  push:
+    branches: [agent/address-identification-review]
+    paths:
+      - 'scripts/apply_review_v2_patch.py'
+      - '.github/workflows/apply-review-v2.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/address-identification-review
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply deterministic manuscript edits
+        run: python scripts/apply_review_v2_patch.py
+      - name: Verify edited manuscript constraints
+        run: |
+          python scripts/check_ecology_letters_compliance.py
+          grep -q 'event-regime feasibility precedes warning comparison' manuscript/main_text.md
+          grep -q 'all six' manuscript/main_text.md
+          grep -q '41 of 81' manuscript/main_text.md
+          cmp manuscript/main_text.md manuscript/supervisor_first_draft.md
+      - name: Commit patched manuscript
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/main_text.md manuscript/supervisor_first_draft.md manuscript/figure_captions.md manuscript/table_captions.md
+          if git diff --cached --quiet; then
+            echo 'No manuscript changes to commit.'
+          else
+            git commit -m 'Apply second-review identification edits [skip ci]'
+            git push origin HEAD:agent/address-identification-review
+          fi
