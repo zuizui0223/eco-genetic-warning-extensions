@@ -4,6 +4,7 @@
     "Protocol 002 remains closed with no selected domain",
     "Protocol 003 remains separately declared",
     "endpoint summaries within trajectories are correlated",
+    "between-domain timing contrasts use direct whole-trajectory difference bootstrap rather than marginal interval overlap",
     "all numerical outcomes remain finite Type S evidence"
   ],
   "extension_base_commit": "5ef4e9dd0105a00ed76fc079e48d290c8682e119",
@@ -47,7 +48,16 @@
       "directional_calibrated_domain":{"horizon":120,"median_positive_lead_fraction_horizon_range":[0.6041666666666666,0.6458333333333334],"median_positive_lead_time_range_generations":[72.5,77.5]},
       "recalibrated_symmetric_domain":{"horizon":240,"median_positive_lead_fraction_horizon_range":[0.44166666666666665,0.45416666666666666],"median_positive_lead_time_range_generations":[106.0,109.0]}
     },
-    "identification_boundary":"Stage III is a calibrated-domain portability comparison; the two domains differ in ecological, transition, and deterioration parameters and do not identify a transition-direction-only effect.",
+    "between_domain_difference_bootstrap": {
+      "contrast":"directional_calibrated_domain minus recalibrated_symmetric_domain",
+      "absolute_generations_ci_excludes_zero_endpoints":["H_alpha_0.05","H_alpha_0.10"],
+      "absolute_generations_ci_includes_zero_endpoints":["H_alpha_0.20","H_gamma_0.05","H_gamma_0.10","H_gamma_0.20"],
+      "full_horizon_fraction_ci_includes_zero_endpoints":["H_alpha_0.05","H_alpha_0.10","H_alpha_0.20","H_gamma_0.05","H_gamma_0.10","H_gamma_0.20"],
+      "publication_path":"manuscript/tables/stage3_between_domain_differences.csv",
+      "resampling":"100 whole attempted trajectories independently within each domain per bootstrap replicate"
+    },
+    "identification_boundary":"Stage III is a calibrated-domain portability comparison; the two domains differ in ecological, transition, and deterioration parameters and do not identify a transition-direction-only effect. Under the shared Protocol 002 deterioration family, no transition coordinate supplied an eligible validation domain.",
+    "median_correction_scope":"The historical upper-middle definition is confined to the Stage III timing-summary path; H3 paired reduction medians were calculated separately and are unaffected.",
     "publication_summary_path":"manuscript/tables/stage3_review_summary.csv",
     "raw_data_preservation":"The immutable Stage III source artifacts are downloaded by Paper completion sprint and archived inside the final checksummed submission bundle; GitHub artifact IDs and digests above remain the source provenance.",
     "source_artifacts":[
