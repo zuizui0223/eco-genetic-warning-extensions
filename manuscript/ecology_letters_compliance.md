@@ -4,7 +4,7 @@
 
 **Letter.** The manuscript reports original model-based ecological research and should remain positioned as a general ecological contribution rather than a software, protocol, or sensitivity-analysis paper.
 
-## Current journal limits checked 17 July 2026
+## Current journal limits checked 16 August 2026
 
 The official Ecology Letters author guidance specifies for a Letter:
 
@@ -22,11 +22,12 @@ The official Ecology Letters author guidance specifies for a Letter:
 - Main display items: **Figures 1–6 only**.
 - Main tables: **none**.
 - Supplementary tables: **Tables S1–S5**.
+- Supplementary figures: **Figure S1** for the fresh fixed-area fragmentation gradient.
 - Text boxes: **none**.
 - Running title: **Eco-genetic closure and warning**.
 - Keywords: **early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss**.
 
-The six-figure allocation exactly reaches the Letter display-item ceiling. Figure 3 now absorbs the former stand-alone candidate-composition display, freeing Figure 4 for cumulative warning/loss incidence while preserving six main figures overall.
+The six-figure allocation exactly reaches the Letter display-item ceiling. The post-review fragmentation gradient is therefore kept in Supporting Information as Figure S1 rather than added to the main display count.
 
 ## Automated gates
 
@@ -41,29 +42,40 @@ The six-figure allocation exactly reaches the Letter display-item ceiling. Figur
 
 The script is a repository guard, not a replacement for the word count produced by the final Word or journal submission file. Template conversion must repeat the counts because equations, hyphenation, and journal software can tokenize words differently.
 
-## Current development counts
+## Current merged-main counts
 
-The identification-revised Markdown remains within the Letter limits:
+After the completed fragmentation-gradient integration, the merged manuscript remains within the Letter limits under the repository tokenizer:
 
-- abstract: **150 words**;
-- estimated main text: **approximately 3,850 words** under the repository tokenizer;
+- abstract: **137 words**;
+- estimated main text (Introduction through Conclusion): **4,416 words**;
+- references: **21**;
 - main display items: **6 figures**;
 - main tables: **0**;
+- text boxes: **0**;
+- supplementary figure added by the D sensitivity: **Figure S1**;
 - keywords: **10**;
 - running title: **31 characters**.
 
-The final converted DOCX must be counted again.
+The current main-text title is **“Eco-genetic regimes govern when genetic early warning can be validated”** and `manuscript/submission_metadata.md` is synchronized to that title. Final author approval of the title remains separate from this technical consistency check.
 
-## Remaining non-author checks
+## Completed non-author checks
 
-- Run the complete repository test suite and the rebuilt submission-bundle workflow on the identification-review head.
-- Render the regenerated Figures 1–6 at intended journal width in colour and grayscale; check Figure 3 dense labels, Figure 5 narrow categories, and Figure 6 interval/`n` labels.
-- Confirm that every Figure 1–6 call agrees with captions and file names and every Table S1–S5 call is restricted to Supplementary Material.
-- Rebuild the supervisor/submission DOCX **from scratch** from the revised manuscript and current six figures; do not reuse the previous Word package containing orphaned media.
-- Generate final title-page counts from that clean converted submission file.
-- Prepare the 50 mm × 60 mm graphical-abstract asset at revision stage.
-- Rebuild and independently verify the checksummed bundle from merged `main` only after manuscript freeze.
+- [x] Complete repository invariant/compliance checks passed on the identification/gradient-integrated state.
+- [x] Rebuilt submission-bundle workflow passed on merged `main` after D integration.
+- [x] Figures 1–6 were regenerated and visually checked at journal width in colour and grayscale.
+- [x] Supplementary Figure S1 was visually checked without smoothing away the non-monotonic realised-trait response.
+- [x] Figure 1–6 calls, captions, and file names were synchronized.
+- [x] The checksummed merged-main submission bundle contains the 9,600-row gradient record and separate historical/post-review parent provenance layers.
+- [x] The merged-main submission manifest was independently verified with zero missing, mismatched, or unmanifested files.
+
+## Remaining submission/revision checks
+
+- Rebuild the supervisor/submission DOCX **from scratch** from the frozen manuscript and current six main figures plus Supporting Information; do not reuse a previous Word package containing orphaned media.
+- Generate final title-page counts from that clean converted submission file and update the counts if Word/journal tokenization differs.
+- Prepare the 50 mm × 60 mm graphical-abstract asset at major/minor revision stage.
+- Replace repository/commit-based data and code wording with permanent archive DOI(s) after the author approves release metadata, licences, and versions.
+- Recheck Ecology Letters/Wiley submission and automated-tool disclosure policies immediately before portal submission because journal requirements can change.
 
 ## Source of truth
 
-The limits above were taken from the official Wiley Ecology Letters author guidance accessed on 17 July 2026. Recheck immediately before submission because journal requirements can change.
+The limits above were rechecked against the official Wiley Ecology Letters author guidance on 16 August 2026. Recheck immediately before submission.
