@@ -18,12 +18,12 @@ def test_display_allocation_matches_current_figure_captions() -> None:
     allocation = _read("manuscript/main_vs_supplement.md")
     captions = _read("manuscript/figure_captions.md")
     expected = {
-        1: ("eco-genetic causal architecture", "Genetic warning emerges from eco-genetic closure"),
+        1: ("eco-genetic causal architecture", "Eco-genetic closure links fragmentation to genetic warning"),
         2: ("source feasibility across recurrent-transition coordinates", "High-trait source feasibility depends on recurrent-transition coordinates"),
-        3: ("functional-loss regimes plus complete-candidate composition", "The common deterioration family separates rapid-loss, heterogeneous, and persistence regimes"),
-        4: ("cumulative warning and functional-loss incidence", "Cumulative warning and functional-loss incidence across calibrated horizons"),
-        5: ("full attempted denominator, censoring, and ordering", "Warning availability, censoring, and ordering across the full attempted denominator"),
-        6: ("absolute and horizon-normalized positive lead time", "Absolute and horizon-normalized positive warning lead time"),
+        3: ("functional-loss regimes plus complete-candidate composition", "A common deterioration family separates into three event regimes"),
+        4: ("cumulative warning and functional-loss incidence", "Cumulative warning and functional-loss incidence"),
+        5: ("full attempted denominator, censoring, and ordering", "Warning availability, censoring and ordering"),
+        6: ("absolute and horizon-normalized positive lead time", "Absolute and schedule-normalized positive warning lead time"),
     }
     for number, (allocation_title, caption_title) in expected.items():
         assert f"### Figure {number} — {allocation_title}" in allocation
