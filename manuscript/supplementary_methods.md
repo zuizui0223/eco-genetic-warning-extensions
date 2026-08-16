@@ -26,7 +26,9 @@ where final interaction is the mean of `final_q_by_patch`, local effective size 
 | final local effective size | 72.828 | 8.182 | 88.73% | 88.52–88.93% |
 | realised high-trait mass | 0.575312 | 0.177313 | 68.87% | 59.90–78.50% |
 
-The parent campaign reports the H3 directional pattern in every H1-qualified replicate. These pooled values are descriptive finite-model summaries rather than universal fragmentation effect sizes.
+The parent campaign reports the H3 directional pattern in every H1-qualified replicate. These pooled values are descriptive finite-model summaries rather than universal fragmentation effect sizes. These medians were calculated separately from the locked H3 paired outcomes using the conventional median; they do not use the historical Stage III timing-summary function discussed in Section S9.
+
+The locked parent artifact contains the predeclared `one_large`, `equal_isolated`, and `equal_migrating` scenarios, but not an intermediate gradient in the number of isolated fragments. Consequently, an additional fragmentation-gradient figure would require a new finite-model campaign rather than replotting an existing locked result.
 
 ## S3. Inherited symmetric warning benchmark
 
@@ -53,6 +55,8 @@ Stage I contains 15 transition coordinates × 3 area-reference values × 3 inter
 Stage II contains 15 coordinates × 3 area references × 3 interaction-feedback values × 2 holds × 3 barrier increases × 5 seeds × 5 replicates = 20,250 attempts. Candidate selection may inspect only source/projection eligibility, baseline high-trait presence, trait-loss occurrence, and trait-loss time. Warning, diversity, lead/lag, and event-pair fields are prohibited by executable guards.
 
 Each Protocol 002 candidate requires five complete seed blocks. A domain is eligible only when **every** seed-block trait-loss frequency lies in `[0.30, 0.70]`. No candidate met this rule. Protocol 002 therefore closed with 15/15 `no_domain_selected` and did not widen its own candidate family.
+
+This common-family experiment is also the study's matched-schedule test across recurrent-transition coordinates. Because it yielded no eligible intermediate-risk validation domain at any coordinate, the same schedule family could not support a matched Stage III warning comparison without first changing the event-risk regime.
 
 ## S6. Protocol 003 Amendment 001: warning-blind candidate expansion and revised gate
 
@@ -92,7 +96,7 @@ The confirmed Stage III domains differ in more than recurrent-transition directi
 | total horizon | 240 | 120 |
 | normalized barrier increase | 0.20 | 0.10 |
 
-Stage III is therefore a portability comparison across independently calibrated domains, not a matched single-factor experiment.
+Stage III is therefore a portability comparison across independently calibrated domains, not a matched single-factor experiment. Coordinate-specific recalibration restored an evaluable event regime but necessarily sacrificed single-factor identification.
 
 ## S8. Stage III warning endpoints and censoring
 
@@ -114,11 +118,11 @@ Source-preparation failure is retained separately in the full attempted denomina
 
 The manuscript-review audit is documented in `docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`. It uses only locked Stage III records from workflow run `29417632137`, artifacts `8343958766` and `8343922879`. It does not rerun trajectories or alter any domain or endpoint.
 
-### S9.1 Conventional-median correction
+### S9.1 Conventional-median correction and scope
 
-The original Stage III generator calculated `sorted(lead_times)[len(lead_times)//2]`. For even `n`, this is the upper middle order statistic. The review audit uses the conventional median, averaging the two central observations.
+The historical Stage III artifact generator calculated `sorted(lead_times)[len(lead_times)//2]`. For even `n`, this is the upper middle order statistic. The review audit uses the conventional median, averaging the two central observations.
 
-The source artifacts remain immutable. Corrected publication summaries are stored in the regenerated `stage3_review_audit.json` in the checksummed submission bundle and `manuscript/tables/stage3_review_summary.csv`.
+Repository-wide inspection found this historical definition only in the Stage III timing-summary path. It does not affect the separately calculated H3 paired-reduction medians or other manuscript-facing medians. Historical Stage III source artifacts remain immutable.
 
 ### S9.2 Horizon normalization
 
@@ -130,22 +134,34 @@ L_{\mathrm{norm}}=
 {\text{ramp generations}+\text{hold generations}}.
 \]
 
-A hold-only normalization is retained in the machine-readable audit. The main paper reports full-horizon normalization because both event times are measured from the start of the ramp.
+A hold-only normalization is retained in the machine-readable audit. The main paper reports full-horizon normalization because both event times are measured from the start of the ramp. Neither normalization converts the two calibrated domains into a matched causal contrast.
 
-### S9.3 Trajectory-cluster bootstrap
+### S9.3 Whole-trajectory bootstrap within domains
 
 The six endpoint observations within a trajectory are correlated. Whole attempted trajectories were therefore sampled with replacement, preserving all six endpoint rows. The audit uses 20,000 replicates, fixed random seed `20260814`, and percentile 95% intervals.
 
 The intervals are finite-campaign descriptive uncertainty, not population-level inferential confidence intervals.
 
-### S9.4 Cumulative event incidence
+### S9.4 Direct bootstrap of between-domain timing differences
+
+The two Stage III domains use independent attempted trajectories. In each bootstrap replicate, 100 whole attempted trajectories are resampled independently within each domain. For each endpoint, the median among positive leads is calculated in both resampled domains and the directional-minus-symmetric difference is stored.
+
+The direct difference is evaluated on three scales: absolute generations, fraction of the full calibrated horizon, and fraction of the hold duration. The latter is a sensitivity description only. This procedure avoids treating overlap or non-overlap of the two marginal intervals as a test of the difference.
+
+For absolute generations, the 95% directional-minus-symmetric difference interval excludes zero only for `H_alpha` at 5% and 10% decline. For the other four endpoints it includes zero. For full-horizon-normalized lead time, **all six** difference intervals include zero. The normalized point-estimate reversal is therefore descriptive evidence of schedule dependence rather than a separated timing effect.
+
+The compact direct-difference results are stored in `manuscript/tables/stage3_between_domain_differences.csv` and are regenerated from the immutable Stage III artifacts during publication builds.
+
+### S9.5 Cumulative event incidence
 
 Warning and trait loss can both occur in one trajectory and are therefore not classical mutually exclusive competing risks. For each endpoint, cumulative warning incidence and cumulative realised trait-loss incidence are calculated among baseline-eligible completed trajectories over the domain-specific administrative horizon. Censored non-events remain in the denominator through the end of follow-up.
 
+For the directional calibrated domain at the 20% `H_gamma` endpoint, final warning incidence was 41/81 (0.506), whereas final realised functional-trait-loss incidence was 52/81 (0.642).
+
 ## S10. Reproducibility
 
-All locked campaign identifiers, source artifact digests, and exact software states are recorded in the submission bundle. `Paper completion sprint` downloads the immutable Stage III domain artifacts, generates the 1,200-row trajectory-endpoint table, reruns the fixed secondary audit, verifies the compact publication CSV against the committed summary, and archives both generated records and audit JSON in the checksummed bundle.
+All locked campaign identifiers, source artifact digests, and exact software states are recorded in the submission bundle. `Paper completion sprint` downloads the immutable Stage III domain artifacts, generates the 1,200-row trajectory-endpoint table, reruns the fixed secondary audit, verifies both committed publication CSVs against regenerated versions, and archives records, audit JSON, direct differences, figures, software and provenance in the checksummed bundle.
 
 ## S11. Interpretation boundary
 
-All numerical conclusions are finite Type S evidence for declared model closures. `p_star` is an effective recurrent-transition equilibrium and is not an empirical mutation-rate estimate. The study does not claim a universal warning theorem, universal rescue, independence among the six endpoint observations from a trajectory, or an isolated Stage III effect of recurrent-transition direction.
+All numerical conclusions are finite Type S evidence for declared model closures. `p_star` is an effective recurrent-transition equilibrium and is not an empirical mutation-rate estimate. The study does not claim a universal warning theorem, universal rescue, independence among the six endpoint observations from a trajectory, an isolated Stage III effect of recurrent-transition direction, or a separated full-horizon-normalized timing contrast.
