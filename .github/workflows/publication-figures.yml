@@ -12,6 +12,7 @@ on:
       - 'tests/test_stage3_review_audit.py'
       - 'tests/test_stage3_trajectory_records.py'
       - 'manuscript/tables/stage3_review_summary.csv'
+      - 'manuscript/tables/stage3_between_domain_differences.csv'
       - '.github/workflows/publication-figures.yml'
   workflow_dispatch:
 
@@ -55,10 +56,12 @@ jobs:
             --stage3-domain1 artifacts/stage3/domain1/stage3_validation_domain_1.json \
             --output-dir manuscript/generated
           cmp manuscript/generated/stage3_review_summary.csv manuscript/tables/stage3_review_summary.csv
+          cmp manuscript/generated/stage3_between_domain_differences.csv manuscript/tables/stage3_between_domain_differences.csv
       - name: Show publication summary
         run: |
           cat manuscript/generated/stage1_publication_summary.json
           cat manuscript/generated/stage3_review_summary.csv
+          cat manuscript/generated/stage3_between_domain_differences.csv
       - uses: actions/upload-artifact@v4
         with:
           name: publication-stage1-stage3-outputs
