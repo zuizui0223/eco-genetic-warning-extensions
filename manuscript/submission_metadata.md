@@ -1,13 +1,30 @@
 # Submission metadata
 
-This file is a completion template. Bracketed fields must be replaced before journal submission; they are intentionally not inferred from repository ownership.
+This file separates fields already fixed by the merged manuscript/repository from fields that require explicit author approval. Bracketed fields must be replaced before journal submission and are intentionally not inferred from repository ownership.
 
 ## Manuscript identity
 
-- **Title:** Genetic warning emerges from eco-genetic closure in fragmented systems
-- **Running title:** [maximum journal length]
-- **Article type:** [confirm against current Ecology Letters categories]
-- **Corresponding author:** [name, postal address, email]
+- **Current manuscript title:** Eco-genetic regimes govern when genetic early warning can be validated
+- **Running title:** Eco-genetic closure and warning
+- **Article type:** Letter
+- **Keywords:** early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss
+- **Corresponding author:** [name, complete postal address, telephone, email]
+
+The title above is synchronized to `manuscript/main_text.md` on merged `main`; final author approval of the title remains required.
+
+## Current Ecology Letters title-page counts
+
+Repository-tokenizer counts for the merged manuscript are:
+
+- **Abstract:** 137 words
+- **Main text (Introduction through Conclusion):** 4,416 words
+- **References:** 21
+- **Main figures:** 6
+- **Main tables:** 0
+- **Text boxes:** 0
+- **Running title length:** 31 characters including spaces
+
+These values satisfy the current Letter limits (abstract <=150 words; main text <=5,000 words; <=6 combined main figures/tables/text boxes; running title <45 characters). The final converted Word/submission file must be counted again because journal software may tokenize equations and hyphenation differently.
 
 ## Authors and affiliations
 
@@ -21,7 +38,7 @@ Affiliations:
 
 ## Author contributions (CRediT)
 
-Replace placeholders with author initials.
+Replace placeholders with author initials only after all authors approve the contribution statement.
 
 - **Conceptualization:** [initials]
 - **Methodology:** [initials]
@@ -49,13 +66,13 @@ Replace placeholders with author initials.
 
 [The authors declare no competing interests / specify interests.]
 
-## Data availability
+## Data availability — pre-DOI wording
 
-All model definitions, protocol locks, calibration decisions, validation summaries, machine-readable tables, figure builders, workflow identifiers, artifact digests, and submission-bundle manifests are maintained in `zuizui0223/eco-genetic-warning-extensions` and the pinned predecessor repository `zuizui0223/eco-genetic-criticality`. The final statement must replace branch-based references with a permanent archived release and DOI.
+All finite-model outputs used for the manuscript, including the complete 9,600-row post-review fragmentation-gradient record, cell and pooled summaries, Stage III trajectory-endpoint records, publication tables, figures, protocol locks, workflow identifiers, artifact digests, and checksummed submission manifests are preserved in the coordinated `eco-genetic-criticality` and `eco-genetic-warning-extensions` repositories. The historical scientific parent state is pinned at commit `dd8ee379d0d3518194c767d16402042525bc00dc`; the post-review fragmentation-gradient archive is preserved at parent commit `076ab3e28078cfd7cbe1b67ab544c8d1e9066c54`; and the integrated manuscript/submission state is merged at extension commit `0242f21f5e3e394f426e9ed09fd5c59bcddd9c2b`. Before submission, this paragraph must replace repository-only references with the permanent archive DOI(s).
 
-## Code availability
+## Code availability — pre-DOI wording
 
-The analysis and publication code is version controlled in the extension repository, with inherited model behaviour pinned to predecessor commit `dd8ee379d0d3518194c767d16402042525bc00dc`. The final statement must cite the frozen release commit, software archive DOI, licence, and minimal reproduction entry point.
+All analysis, simulation, validation, figure-generation, and submission-bundle code is version controlled in the two repositories above. Historical model behaviour remains pinned to parent scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`, while the post-review fragmentation sensitivity is retained as an explicitly separate finite Type S evidence layer. The merged extension workflow reconstructs a checksummed submission bundle from the fixed parent scientific state, the versioned post-review gradient archive, and immutable Stage III inputs. Before submission, cite the permanent software/data archive DOI(s), approved licence(s), frozen release version(s), and minimal reproduction entry point.
 
 ## Ethics and permits
 
@@ -63,15 +80,18 @@ Not applicable to the present finite-model study unless additional empirical mat
 
 ## AI or automated-tool disclosure
 
-[Complete according to the journal policy in force at submission. Describe any language, code, or figure assistance accurately and retain author responsibility for all content.]
+[Complete according to the journal/Wiley policy in force at submission. Describe any language, code, analysis, or figure assistance accurately and retain author responsibility for all content.]
 
 ## Pre-submission completion gate
 
+- [ ] Final manuscript title approved by all authors.
 - [ ] Author order and corresponding author approved by all authors.
 - [ ] Affiliations and ORCID identifiers verified.
 - [ ] CRediT roles approved by all authors.
 - [ ] Funding and grant numbers checked against award records.
 - [ ] Acknowledgements approved by named contributors where required.
 - [ ] Competing-interest statement approved.
-- [ ] Data and code statements point to permanent archived records rather than mutable branches.
-- [ ] Current journal policy checked for automated-tool disclosure.
+- [ ] Data and code statements point to permanent archived records/DOIs rather than repository commits alone.
+- [ ] Software/data licences and release versions approved.
+- [ ] Current journal/Wiley policy checked for automated-tool disclosure.
+- [ ] Final converted submission file re-counted and title-page counts updated if needed.
