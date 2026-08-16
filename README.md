@@ -4,9 +4,9 @@ Independent, protocol-locked extensions of the finite eco-genetic criticality fr
 
 ## Current status
 
-The recurrent-transition campaigns are complete. The repository contains 3,375 independent source-reconstruction attempts, 20,250 warning-blind common-family calibration attempts, a closed Protocol 002 result with 15/15 coordinates recorded as `no_domain_selected`, a separately declared and amended Protocol 003 calibration/confirmation/validation campaign, a post-review trajectory-cluster uncertainty audit, publication tables and figures, and a checksummed submission-bundle workflow.
+The recurrent-transition campaigns are complete. The repository contains 3,375 independent source-reconstruction attempts, 20,250 warning-blind common-family calibration attempts, a closed Protocol 002 result with 15/15 coordinates recorded as `no_domain_selected`, a separately declared and amended Protocol 003 calibration/confirmation/validation campaign, a post-review whole-trajectory uncertainty audit, publication tables and figures, and a checksummed submission-bundle workflow.
 
-The publication source of truth is [`manuscript/main_text.md`](manuscript/main_text.md), which is synchronized with [`manuscript/supervisor_first_draft.md`](manuscript/supervisor_first_draft.md). Permitted and prohibited claims are locked in [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md).
+The publication source of truth is [`manuscript/main_text.md`](manuscript/main_text.md), synchronized with [`manuscript/supervisor_first_draft.md`](manuscript/supervisor_first_draft.md). Permitted and prohibited claims are locked in [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md).
 
 ## Relationship to the mechanistic phase
 
@@ -37,11 +37,13 @@ parameterised by
 p_\mu^\ast=\frac{u_{L\to H}}{\kappa_\mu}.
 \]
 
-At fixed `kappa_mu`, the common-grid analyses ask how transition direction reorganises high-trait source feasibility and realised functional-loss regimes. Those are the direct transition-coordinate comparisons.
+At fixed `kappa_mu`, the common-grid analyses ask how transition direction reorganises high-trait source feasibility and realised functional-loss regimes. These are the direct transition-coordinate comparisons and the strongest identified extension evidence.
 
-Strict Protocol 002 warning-blind calibration selected no common validation domain. Protocol 003 was then separately declared. Amendment 001 expanded the candidate schedules and defined a pooled + four-of-five seed-block event-risk gate before any warning endpoint was calculated. Amendment 002 retained that gate and increased replication with fresh confirmation seeds.
+Strict Protocol 002 warning-blind calibration selected no common validation domain: the common deterioration family separated into rapid-loss, persistence, and seed-heterogeneous regimes. This means that **event-regime feasibility must be established before warning performance can be compared**.
 
-The two final Stage III domains are **not** matched except for transition direction. They differ in `A_ref`, interaction-feedback `kappa`, `kappa_mu`, `p_star`, barrier increase, and calibrated horizon. Stage III therefore tests **warning portability across independently calibrated eco-genetic domains**, not a single-factor causal effect of transition direction.
+Protocol 003 was subsequently declared. Amendment 001 expanded the candidate schedules and defined a pooled + four-of-five seed-block event-risk gate before any warning endpoint was calculated. Amendment 002 retained that gate and increased replication with fresh confirmation seeds.
+
+The two final validation domains are not matched except for transition direction. They differ in `A_ref`, interaction-feedback `kappa`, `kappa_mu`, `p_star`, barrier increase, and calibrated horizon. Their comparison therefore tests **warning portability across independently calibrated eco-genetic domains**, not a single-factor causal effect of transition direction.
 
 ## Locked headline results
 
@@ -50,10 +52,10 @@ The two final Stage III domains are **not** matched except for transition direct
 - **Source feasibility:** 2,269 of 3,375 attempts completed source preparation and supported projection; coordinate support ranged from 44.89% to 86.67%.
 - **Strict warning-blind regime map:** among 648 complete Protocol 002 candidates, 322 were rapid-loss-side, 242 persistence-side, and 84 seed-heterogeneous; zero candidates satisfied the all-seed gate and all 15 coordinates remained `no_domain_selected`.
 - **Recalibrated symmetric domain:** 323 leads, one tie, and no lags across 324 valid endpoint comparisons; valid-pair availability 0.540 and whole-trajectory bootstrap lead fraction 0.997 (95% interval 0.990–1.000).
-- **Directional calibrated domain:** 184 leads, five ties, and 12 lags across 201 valid endpoint comparisons; valid-pair availability 0.335 and lead fraction 0.915 (0.848–0.971).
-- **Schedule-aware timing audit:** conventional median positive lead times were 106–109 versus 72.5–77.5 generations, but the calibrated horizons were 240 versus 120 generations. Horizon-normalized medians were 0.442–0.454 versus 0.604–0.646. The absolute timing contrast therefore does not identify a transition-direction-only effect.
+- **Directional calibrated domain:** 184 leads, five ties, and 12 lags across 201 valid endpoint comparisons; valid-pair availability 0.335 and lead fraction 0.915 (0.848–0.971). For the 20% `H_gamma` endpoint, final warning incidence was 41/81 (0.506) versus 52/81 (0.642) for realised trait loss.
+- **Direct timing audit:** conventional median positive lead times were 106–109 versus 72.5–77.5 generations. Directional-minus-symmetric absolute 95% difference intervals excluded zero only for `H_alpha` 5% and 10%. Full-horizon-normalized point estimates reversed (0.442–0.454 versus 0.604–0.646), but all six normalized difference intervals included zero. Neither timing ordering is a general single-factor Stage III result.
 
-The six endpoint rows within each trajectory are correlated repeated summaries. The secondary uncertainty audit resamples whole attempted trajectories. All numerical conclusions remain finite Type S evidence for their declared model closures.
+The six endpoint rows within each trajectory are correlated repeated summaries. All uncertainty resamples whole attempted trajectories. All numerical conclusions remain finite Type S evidence for their declared model closures.
 
 ## Reproducibility architecture
 
@@ -86,9 +88,9 @@ python -m pytest
 python scripts/verify_reproducibility_contract.py --upstream upstream
 ```
 
-The **Paper completion sprint** additionally downloads the locked Stage I, Stage II, and Stage III workflow artifacts; flattens the immutable Stage III validation payloads to the full 1,200 trajectory-endpoint records; regenerates the fixed 20,000-resample post-review audit; verifies that its compact publication summary matches the committed table; regenerates Figures 1–6; builds both software distributions; and writes a SHA-256 manifest over the complete bundle.
+The **Paper completion sprint** additionally downloads the locked Stage I, Stage II, and Stage III workflow artifacts; flattens the immutable Stage III validation payloads to 1,200 trajectory-endpoint records; regenerates the fixed 20,000-resample audit and direct between-domain timing contrasts; byte-verifies both committed publication CSVs; regenerates Figures 1–6; builds both software distributions; and writes a SHA-256 manifest over the complete bundle.
 
-The historical Stage III source artifacts remain immutable. The original historical summary is retained for provenance; corrected conventional medians and schedule-normalized timing are explicitly labelled as a post-review secondary audit rather than silently rewriting the historical artifact.
+Historical Stage III source artifacts remain immutable. The original compact summary is retained for provenance; corrected conventional medians, schedule-normalized timing, and direct timing differences are explicitly labelled as post-review secondary analyses rather than silently rewriting historical evidence.
 
 ## Protocol boundaries
 
@@ -113,6 +115,6 @@ No diversity, warning time, lead/lag ordering, or lead-time quantity was availab
 - [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md) — permitted/prohibited claims and corrected timing values
 - [`docs/PROTOCOL_003_AMENDMENT_001.md`](docs/PROTOCOL_003_AMENDMENT_001.md) — warning-blind candidate expansion and revised event-risk gate
 - [`docs/PROTOCOL_003_AMENDMENT_002.md`](docs/PROTOCOL_003_AMENDMENT_002.md) — confirmation with unchanged gate and increased replication
-- [`docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`](docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md) — identification correction, conventional median, normalization, bootstrap, and cumulative incidence
+- [`docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`](docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md) — identification correction, conventional median scope, direct difference bootstrap, normalization, censoring, and cumulative incidence
 
 Final author order, affiliations, CRediT roles, licence, funding, conflicts, archive DOI, and repository citation metadata require explicit author approval and are not inferred by automation.
