@@ -10,7 +10,7 @@ def _read(path: str) -> str:
 
 def test_integrated_story_contains_locked_headline_results() -> None:
     text = _read("manuscript/integrated_story.md").lower()
-    required = ("2,269", "3,375", "20,250", "322", "242", "84", "323", "12 lags", "0.540", "0.335", "horizon-normalized")
+    required = ("2,269", "3,375", "20,250", "322", "242", "84", "323", "12 lags", "0.540", "0.335")
     for token in required:
         assert token in text
 
@@ -30,24 +30,25 @@ def test_main_supplement_allocation_keeps_debug_history_out() -> None:
     assert "out of the scientific manuscript" in text
 
 
-def test_integrated_abstract_states_ecological_significance() -> None:
-    lower = _read("manuscript/integrated_abstract_and_outline.md").lower()
-    for token in (
-        "functional-trait loss", "portable", "eco-genetic closure",
-        "horizon-normalized", "calibrated domains",
-    ):
-        assert token in lower
-
-
-def test_main_text_uses_closure_first_identity() -> None:
+def test_main_text_centres_event_regime_feasibility() -> None:
     text = _read("manuscript/main_text.md")
-    first_line = text.splitlines()[0]
-    assert "Genetic warning emerges from eco-genetic closure" in first_line
+    lower = text.lower()
+    assert text.splitlines()[0] == "# Eco-genetic regimes govern when genetic early warning can be validated"
+    assert "strict calibration selected no common validation domain" in lower
+    assert "genetic warning therefore depends first on event-regime feasibility" in lower
+    assert "warning portability across calibrated eco-genetic domains" in lower
     assert "### Stage I" not in text
     assert "### Stage II" not in text
     assert "### Stage III" not in text
-    assert "warning portability across calibrated eco-genetic domains" in text
-    assert "genetic warning is not a context-free property" in text.lower()
+
+
+def test_stage3_timing_claim_uses_direct_difference_uncertainty() -> None:
+    text = _read("manuscript/main_text.md")
+    assert "separated from zero only for the `H_alpha` 5% and 10% endpoints" in text
+    assert "all six" in text
+    assert "directional-minus-symmetric" in text
+    assert "not evidence for a separated normalized domain effect" in text
+    assert "event-regime feasibility precedes warning comparison" in text
 
 
 def test_workspace_does_not_present_mutation_direction_as_sole_novelty() -> None:
@@ -72,9 +73,9 @@ def test_submission_bundle_includes_biological_figure_captions() -> None:
     assert "figure_captions.md" in builder
     for number in range(1, 7):
         assert f"## Figure {number}." in captions
-    assert "not warning failure" in captions
-    assert "correlated" in captions
-    assert "does not identify a single-factor effect" in captions
+    assert "all 15 were retained as `no_domain_selected`" in captions
+    assert "Endpoint rows share trajectories" in captions
+    assert "does not identify a single-factor timing effect" in captions
 
 
 def test_main_text_contains_load_bearing_citation_roles() -> None:
@@ -100,6 +101,6 @@ def test_table_captions_lock_statistical_units_and_numbering() -> None:
         assert label in captions
     assert "Table 1." not in captions
     assert "Table 2." not in captions
-    assert "bootstrap resamples trajectories" in captions
-    assert "Endpoint rows within trajectories are correlated" in captions
+    assert "whole-trajectory bootstrap intervals" in captions
+    assert "directional-minus-symmetric median differences" in captions
     assert "not a test of warning performance" in captions
