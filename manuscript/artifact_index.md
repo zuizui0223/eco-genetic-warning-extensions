@@ -5,6 +5,7 @@
 | Campaign | Evidence | Workflow run / artifact |
 |---|---|---|
 | Inherited H1/H3 finite chain | paired one-large versus equal-isolated outcomes used for the fragmentation effect-size audit | parent run `28456092898`, artifact `7987193632`, digest `sha256:b74b604f3233fa6086e2afa39cd780fa375aac4b1abd8c63e6f5ed8b3a467d2c` |
+| Post-review H3 fragmentation gradient | fresh fixed-area paired projections at 1, 2, 3, 4, 6, 8, 12, and 16 isolated patches; 1,200 attempted / 1,037 prepared sources | parent run `31937210601`, artifact `9261157020`, digest `sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c` |
 | Inherited relative-warning benchmark | trait-loss-only calibration and fresh-seed H2-R validation | parent calibration run `28496735824`; parent validation run `28500796310` |
 | Source reconstruction and projection | 135 batches, 3,375 attempts over the common 15-coordinate transition grid | runs `29177214259`, `29186610167`, `29188592519`, `29188748077`, `29190149319`, `29190149344` |
 | Source-feasibility publication outputs | coordinate CSV and summary JSON | run `29422431944`, artifact `8345805712`, digest `sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9` |
@@ -22,6 +23,8 @@ Protocol and stage identifiers remain in workflow metadata and Methods because t
 ## Machine-readable manuscript and bundle tables
 
 - `manuscript/tables/inherited_h3_effect_summary.csv` — paired first-phase H3 descriptive effects from the locked parent artifact.
+- `h3_fragmentation_gradient_records.csv` in the checksummed submission bundle — 9,600 post-review repeated-measures rows from 1,200 attempted fresh sources across eight patch counts.
+- `h3_fragmentation_gradient_cell_summary.csv` and `h3_fragmentation_gradient_pooled_summary.csv` — cell-level and pooled paired gradient summaries underlying Supplementary Figure S1.
 - Stage I `stage1_coordinate_summary.csv` — source feasibility over the common 15-coordinate grid; generated from locked publication artifact `8345805712` and included in the bundle.
 - Stage II `stage2_coordinate_regimes.csv` — strict Protocol 002 loss-regime map; generated from locked publication artifact `8336631530` and included in the bundle.
 - `manuscript/tables/stage3_endpoint_summary.csv` — historical Stage III compact summary retained for provenance.
@@ -40,6 +43,10 @@ The historical Stage III summary is not silently overwritten. Corrected conventi
 4. **Cumulative warning and functional-loss incidence in the two calibrated validation domains.** Administrative censoring is retained over each domain-specific horizon; warning and loss are paired repeatable events rather than classical competing-risk outcomes.
 5. **Warning availability, censoring and ordering from the full attempted denominator.** Each endpoint bar retains 100 attempts, source failure, baseline ineligibility, both-censored, warning-censored, trait-loss-censored, lead, tie and lag categories.
 6. **Absolute and horizon-normalized positive warning lead time.** Conventional medians and whole-trajectory bootstrap intervals are shown; the direct between-domain audit demonstrates endpoint-dependent absolute contrasts and no separated full-horizon-normalized contrast.
+
+### Supplementary figure
+
+S1. **Fixed-area fragmentation gradient from paired H1-prepared sources.** Fresh-seed repeated-measures sensitivity across 1, 2, 3, 4, 6, 8, 12, and 16 isolated equal patches; interaction and local effective size decline after the first split, while realised high-trait mass is non-monotonic.
 
 ## Figure-caption boundaries
 

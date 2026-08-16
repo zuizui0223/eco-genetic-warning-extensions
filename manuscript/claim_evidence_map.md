@@ -15,6 +15,7 @@
 | P1 | Equal isolation from an H1-prepared full state lowers final interaction, local effective size, and realised high-trait mass relative to the matched one-large projection. | Parent workflow run `28456092898`, artifact `7987193632`; 1,055 H1-qualified paired replicates across 12 primary cells. | supported, finite Type S |
 | P2 | In the inherited symmetric benchmark, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10%, and 20% preceded all 35 observed realised trait-loss events. | Parent H2-R trait-loss-only calibration and independent fresh-seed validation. | supported conditionally, finite Type S |
 | P3 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that same benchmark. | Stored-trajectory H2-A audit: 14/0/6 and 8/0/8 lead/tie/lag. | negative robustness result |
+| P4 | A fresh fixed-area fragmentation sensitivity shows that the historical four-patch contrast was already present after the first split to two isolated patches; interaction and local effective size then declined further, whereas realised high-trait mass was non-monotonic. | Parent run `31937210601`, artifact `9261157020`; 1,037 prepared sources projected across eight patch counts. | new supplementary finite Type S sensitivity |
 
 ## Permitted extension claims
 
@@ -40,6 +41,10 @@
 | median paired interaction reduction after isolation | 99.86% |
 | median paired local effective-size reduction | 88.73% |
 | median paired realised high-trait-mass reduction | 68.87% |
+| fresh fragmentation-gradient attempted / prepared sources | 1,200 / 1,037 |
+| fresh n=2 paired reductions: interaction / local effective size / realised high-trait mass | 99.83% / 77.87% / 71.71% |
+| fresh n=4 paired reductions: interaction / local effective size / realised high-trait mass | 99.86% / 88.73% / 69.82% |
+| potential high-trait viability: n=1 / every n>=2 | 1,037/1,037 / 0/1,037 |
 | inherited symmetric benchmark attempted / available / trait loss | 100 / 83 / 35 |
 | inherited symmetric benchmark censored for trait loss | 48 |
 | inherited relative-warning lead/tie/lag per endpoint | 35 / 0 / 0 |
@@ -85,6 +90,9 @@ The historical Stage III source artifacts used the upper middle order statistic 
 - Endpoint-level comparisons are independent biological replicates.
 - Bootstrap intervals are population-level confidence intervals.
 - Two calibrated domains constitute a complete phase diagram of warning performance.
+- The fragmentation sensitivity is a universal monotone dose-response.
+- `K=4` is the observed finite fragmentation threshold.
+- The post-review fragmentation sensitivity replaces the historical H1/H3 evidence ledger.
 
 ## Required figure-to-claim mapping
 
@@ -96,5 +104,6 @@ The historical Stage III source artifacts used the upper middle order statistic 
 | Figure 4 | cumulative warning and functional-loss incidence with administrative censoring | S6, S8 |
 | Figure 5 | full attempted denominator: source failure, ineligibility, censoring, lead/tie/lag | S6, S8 |
 | Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7 |
+| Supplementary Figure S1 | fresh fixed-area paired fragmentation gradient | P4 |
 
 Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures.

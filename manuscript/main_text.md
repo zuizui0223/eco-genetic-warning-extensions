@@ -38,6 +38,8 @@ Potential viability, realised trait occupancy, allele persistence, local effecti
 
 The first-phase fragmentation experiment compared the same H1-prepared full state after conservation-preserving projection into one-large and equal-isolated landscapes. Twelve predeclared primary cells, each with 100 attempted seed-replicates, were evaluated. Manuscript-facing effect sizes were calculated after the campaign from the already locked paired outcomes: final interaction was the mean of `final_q_by_patch`, local effective size was the mean of `final_effective_size_by_patch`, and realised high-trait mass used the stored metapopulation summary. No simulation was rerun for this descriptive summary.
 
+After review, a separately declared supplementary sensitivity replayed the same finite closure with fresh master seeds `20260820`–`20260824` and projected each prepared source across 1, 2, 3, 4, 6, 8, 12, and 16 equal isolated patches at fixed total area. Patch-count outcomes from one source were paired repeated measures; no warning endpoint was evaluated (Supplementary Methods).
+
 The inherited symmetric warning benchmark was selected separately by trait-loss-only calibration. Its locked configuration used symmetric allele-state mutation rate `0.10`, `A_ref=0.8`, interaction-feedback `kappa=6.0`, an equal-isolated landscape, a 30-generation ramp followed by a 90-generation hold, and normalized barrier increase `0.15`. Calibration used realised trait loss only; genetic diversity, warning time, ordering, and lead time were unavailable during selection. Fresh validation seeds were introduced only after the configuration was fixed.
 
 Relative warnings were the first post-baseline generations at which `H_alpha` or `H_gamma` declined by 5%, 10%, or 20% from their own baselines. Non-events remained right-censored. The same stored validation trajectories were also evaluated with the predeclared fixed thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20`, without rerunning or reselecting the model.
@@ -116,9 +118,11 @@ No complete candidate satisfied the strict all-seed eligibility rule. All 15 coo
 
 ### Fragmentation produced large, consistent reductions in interaction, local effective size and realised high-trait mass
 
-The first-phase fragmentation result was quantitatively strong. Across 12 primary cells, 1,055 of 1,200 attempted replicates satisfied the H1 full-state hold criterion. Every one of those 1,055 qualified replicates satisfied the predeclared H3 fragmentation pattern: mean final interaction, mean local effective size, and realised high-trait mass were all lower after equal isolation than in the matched one-large projection.
+Across 12 primary cells, 1,055 of 1,200 attempted replicates satisfied the H1 full-state hold criterion, and every qualified replicate had lower final interaction, local effective size, and realised high-trait mass after equal isolation than in its matched one-large projection.
 
 Pooled descriptively across those paired replicates, mean final interaction was `0.9977` in one large patch and `0.0048` after equal isolation; the median paired reduction was 99.86%. Mean local effective size fell from `72.83` to `8.18`, with a median paired reduction of 88.73%. Mean realised high-trait mass fell from `0.575` to `0.177`, with a median paired reduction of 68.87% (Supplementary Table S1). These finite results provide the demographic and functional bridge between the analytical interaction threshold and later genetic-warning analyses.
+
+A fresh-seed fragmentation gradient showed that the four-patch contrast was not endpoint-specific. Of 1,200 attempted sources, 1,037 were prepared and projected across all eight patch counts. At the first split to two isolated patches, paired medians fell by 99.83% for interaction, 77.87% for local effective size, and 71.71% for realised high-trait mass, with all three lower in 1,037/1,037 sources. Interaction and local effective size then declined further, whereas realised high-trait mass partially recovered; fresh four-patch reductions closely reproduced the historical endpoint (Supplementary Fig. S1).
 
 ### Relative genetic erosion preceded functional-trait loss in the inherited symmetric benchmark
 
