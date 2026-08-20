@@ -22,6 +22,14 @@ Recent work has explicitly generalized deterministic tipping points to stochasti
 
 This is especially relevant to Phase A/B: an interior frontier occupied by heterogeneous event rates should not be advertised simply as discovery of a stochastic tipping region.
 
+### Conditioning EWS analyses on systems already known to transition is a recognized bias
+
+Boettiger & Hastings' "prosecutor's fallacy" argument distinguishes systems selected because a transition has already been observed from systems in which one genuinely wishes to forecast a future transition. Conditioning analysis on observed-transition cases can inflate apparent warning performance because chance transitions are preferentially retained.
+
+This prior art directly supports keeping non-events and whole attempted denominators in the present study. It also means the novelty is not simply "include non-events."
+
+The stronger design step here is to define **event-regime evaluability before the proposed warning is available**, using independent stochastic blocks. A system enters a warning comparison only after the event process itself is shown to be reproducible and nondegenerate under a predeclared rule.
+
 ### The domain of mechanistic models underlying EWS is an explicit research problem
 
 Recent EWS work discusses the need to characterize which mechanistic model classes produce catastrophic transitions and whether warnings remain valid under different environmental rates/mechanisms. Arumugam et al. (2024), for example, explicitly frame extension of the mechanistic model domain as part of EWS applicability.
@@ -46,9 +54,9 @@ The key operational distinction is that the third layer is determined **before t
 
 Protocol 002 and the later warning-blind frontier refinements therefore do more than demonstrate heterogeneous EWS performance: they prevent warning performance from being promoted to the primary comparison when the event-generating prerequisite is absent.
 
-Phase B sharpens this point. Along a matched `p_star` bracket, pooled functional-loss rate moves smoothly from 1 toward 0, but every interior cell is seed-heterogeneous under the predeclared all-seed rule. Thus **intermediate pooled event risk and reproducible warning-evaluable event regime are different estimands**.
+Phase B sharpened this point. Along a matched `p_star` bracket, pooled functional-loss rate moved smoothly from 1 toward 0, but every interior cell was seed-heterogeneous under the predeclared all-seed rule. Thus **intermediate pooled event risk and reproducible warning-evaluable event regime are different estimands**.
 
-That distinction, rather than stochasticity itself, is the load-bearing conceptual result to test further.
+Phase C then showed that higher replication can recover a genuine R4 event-regime point at `p_star=0.35`, while the adjacent `0.40` cell remains outside R4. Thus the revised result is not that stochastic heterogeneity universally prevents warning evaluation. It is that **warning evaluability occupies a narrower state-space region than pooled transition probability alone implies, and its existence must be established independently rather than assumed from the pooled rate.**
 
 ## Novelty wording to prefer
 
@@ -59,14 +67,15 @@ Avoid:
 - "We discover that there are different routes to collapse."
 - "We discover a stochastic tipping region."
 - "We discover that diversity and function are context dependent."
+- "We are the first to retain non-transitioning systems in an EWS analysis."
 
 Prefer:
 
 > **We treat the existence of a reproducible event regime as a pre-warning estimability condition and map that condition independently of the proposed genetic warning.**
 
-Or, more specifically after Phase B:
+After Phase C, an even more specific formulation is:
 
-> **We distinguish an intermediate pooled probability of functional loss from a reproducible event regime in which warning performance is actually estimable across independent stochastic realizations.**
+> **We show that an intermediate pooled probability of functional loss does not uniquely identify a warning-evaluable regime; evaluability must be established from reproducible event rates across independent stochastic blocks, and occupies a narrower region of eco-genetic state space.**
 
 Or, biologically:
 
@@ -85,6 +94,7 @@ These systems therefore create repeated cases where a coarse label (urban, isola
 
 ## Literature anchors
 
+- Boettiger, C. & Hastings, A. (2012). Early Warning Signals and the Prosecutor's Fallacy. arXiv:1210.1204; conceptual selection-bias argument for transition-conditioned EWS studies.
 - Storch, L.S. & Day, S. (2022). Topological early warning signals: Quantifying varying routes to extinction in a spatially distributed population model. *Journal of Theoretical Biology*, 111274. doi:10.1016/j.jtbi.2022.111274.
 - Arumugam et al. (2024). Early warning indicators capture catastrophic transitions driven by explicit rates of environmental change. *Ecology*. doi:10.1002/ecy.4240.
 - From tipping point to tipping set: Extending the concept of regime shift to uncertain dynamics for real-world applications (2024). *Ecological Modelling*, 496, 110801. doi:10.1016/j.ecolmodel.2024.110801.
