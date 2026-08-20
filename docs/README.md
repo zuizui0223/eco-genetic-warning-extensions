@@ -2,6 +2,21 @@
 
 This directory contains both **current scientific sources** and **historical protocol/development records**. Historical files are retained for provenance but must not be read as competing current hypotheses.
 
+## Repository science closure — 20 August 2026
+
+The current biological closure is **scientifically closed at the repository level** before further manuscript work:
+
+- H-MD-1 is supported as finite Type S evidence;
+- H-MD-2 is supported as finite Type S evidence;
+- H-MD-3a is negatively resolved by the complete Protocol 002 no-domain certificate;
+- H-MD-3b has no matched finite causal estimate, but this is a **bounded unresolved effect**, not an unexecuted task: exact Type T diversity/support boundaries are recovered and the stop rule below prevents unprincipled schedule tuning;
+- Protocol 003 is retained only as a separately recalibrated portability result;
+- no open pull request or open scientific issue remains for the current closure. The only open repository issue concerns author-approved metadata, licensing, releases, and DOI deposition.
+
+Historical `agent/*` branches may remain visible as Git provenance. Their existence does not indicate unmerged science. In particular, the old `submission-reproducibility` and `release-main-trigger` branches correspond to merged PRs #52 and #54; their intended merged-main reproducibility and submission triggers are present in current `main`. Recent scientific cleanup/recovery branches are fully contained in `main`.
+
+A new finite campaign must therefore begin as a **new declared hypothesis/protocol**, not as continuation of unfinished H-MD-3b tuning.
+
 ## Current scientific sources
 
 Read these first:
