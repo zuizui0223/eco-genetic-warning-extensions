@@ -9,9 +9,10 @@ on:
       - "scripts/run_protocol002_stage1_projection_pilot.py"
       - "tests/test_protocol002_stage1_projection_pilot.py"
       - ".github/workflows/protocol-002-stage1-projection-pilot.yml"
-  pull_request:
-    branches: [main]
 
+# Historical development pilot. The Stage I projection campaign is complete;
+# routine PRs use protocol-001-ci and reproducibility-contract. This remains
+# dispatchable for provenance/reproduction only.
 permissions:
   contents: read
 

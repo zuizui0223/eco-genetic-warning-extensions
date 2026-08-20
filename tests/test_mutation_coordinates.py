@@ -4,6 +4,8 @@ from eco_genetic_warning_extensions.mutation_coordinates import (
     MutationCoordinates,
     PRIMARY_KAPPA_MU,
     PRIMARY_P_STAR,
+    alpha_gamma_diversity,
+    heterozygosity,
     primary_phase_grid,
 )
 
@@ -41,6 +43,71 @@ def test_local_pre_mutation_threshold_follows_declared_algebra() -> None:
     threshold = coordinate.pre_mutation_threshold(0.50)
     assert threshold == pytest.approx((0.50 - 0.20 * 0.75) / 0.80)
     assert coordinate.apply(threshold) == pytest.approx(0.50)
+
+
+def test_heterozygosity_change_matches_direct_evaluation() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.80)
+    p = 0.20
+    direct = heterozygosity(coordinate.apply(p)) - heterozygosity(p)
+    assert coordinate.heterozygosity_change(p) == pytest.approx(direct)
+
+
+def test_transition_toward_half_increases_heterozygosity() -> None:
+    low_state_upward = MutationCoordinates(kappa_mu=0.20, p_star=0.80)
+    high_state_downward = MutationCoordinates(kappa_mu=0.20, p_star=0.20)
+    assert low_state_upward.heterozygosity_change(0.20) > 0.0
+    assert high_state_downward.heterozygosity_change(0.80) > 0.0
+
+
+def test_transition_away_from_half_decreases_heterozygosity() -> None:
+    low_state_downward = MutationCoordinates(kappa_mu=0.20, p_star=0.00)
+    high_state_upward = MutationCoordinates(kappa_mu=0.20, p_star=1.00)
+    assert low_state_downward.heterozygosity_change(0.20) < 0.0
+    assert high_state_upward.heterozygosity_change(0.80) < 0.0
+
+
+def test_pstar_effect_has_no_universal_sign_across_states() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
+    assert coordinate.heterozygosity_pstar_derivative(0.20) > 0.0
+    assert coordinate.heterozygosity_pstar_derivative(0.80) < 0.0
+
+
+def test_pstar_derivative_changes_sign_at_post_transition_half() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
+    assert coordinate.apply(0.50) == pytest.approx(0.50)
+    assert coordinate.heterozygosity_pstar_derivative(0.50) == pytest.approx(0.0)
+
+
+def test_alpha_gamma_gap_contracts_independently_of_direction() -> None:
+    frequencies = (0.10, 0.80, 0.55)
+    weights = (2.0, 3.0, 5.0)
+    before_alpha, before_gamma = alpha_gamma_diversity(frequencies, weights)
+    gaps = []
+    for p_star in (0.10, 0.50, 0.90):
+        coordinate = MutationCoordinates(kappa_mu=0.20, p_star=p_star)
+        after_alpha, after_gamma = coordinate.diversity_after_transition(frequencies, weights)
+        expected_gap = coordinate.contraction_factor**2 * (before_gamma - before_alpha)
+        assert after_gamma - after_alpha == pytest.approx(expected_gap)
+        assert coordinate.expected_alpha_gamma_gap_after_transition(frequencies, weights) == pytest.approx(expected_gap)
+        gaps.append(after_gamma - after_alpha)
+    assert gaps[0] == pytest.approx(gaps[1])
+    assert gaps[1] == pytest.approx(gaps[2])
+
+
+def test_alpha_and_gamma_have_same_directional_derivative_at_fixed_weights() -> None:
+    frequencies = (0.15, 0.45, 0.85)
+    weights = (1.0, 2.0, 1.0)
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.55)
+    eps = 1e-6
+    low = MutationCoordinates(kappa_mu=coordinate.kappa_mu, p_star=coordinate.p_star - eps)
+    high = MutationCoordinates(kappa_mu=coordinate.kappa_mu, p_star=coordinate.p_star + eps)
+    low_alpha, low_gamma = low.diversity_after_transition(frequencies, weights)
+    high_alpha, high_gamma = high.diversity_after_transition(frequencies, weights)
+    numerical_alpha = (high_alpha - low_alpha) / (2.0 * eps)
+    numerical_gamma = (high_gamma - low_gamma) / (2.0 * eps)
+    exact = coordinate.diversity_pstar_derivative(frequencies, weights)
+    assert numerical_alpha == pytest.approx(exact, rel=1e-6, abs=1e-8)
+    assert numerical_gamma == pytest.approx(exact, rel=1e-6, abs=1e-8)
 
 
 def test_primary_grid_is_complete_and_admissible() -> None:
