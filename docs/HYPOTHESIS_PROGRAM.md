@@ -1,10 +1,24 @@
 # Independent hypothesis program
 
-## Scope
+## Current scientific question
 
-`eco-genetic-warning-extensions` does not reopen the completed H1/H3 evidence ledger in `eco-genetic-criticality`. It changes the recurrent state-transition closure and asks what new finite-model propositions follow.
+`eco-genetic-warning-extensions` does **not** reopen the completed H1/H3 evidence ledger in `eco-genetic-criticality`. It changes the recurrent state-transition closure and asks, in order:
 
-Parent logic:
+```text
+H-MD-1  Can the high-function source state be established?
+   ↓
+H-MD-2  What realised functional-loss regime is generated?
+   ↓
+H-MD-3a Does a matched warning-validation domain exist?
+   ↓
+H-MD-3b If it exists, does transition direction itself change warning performance?
+```
+
+H-MD-1/2/3 were present in the pre-campaign Paper 001 design. The split of H-MD-3 into **3a/3b is post hoc logical decomposition**, used only to state clearly which part of the completed evidence is resolved. It is not retroactive preregistration.
+
+## Inherited parent result, not extension evidence
+
+The parent finite program established its own bounded chain:
 
 ```text
 interaction feedback can support distinct functional states
@@ -12,246 +26,195 @@ interaction feedback can support distinct functional states
 → relative genetic erosion can precede realised functional-trait loss in one calibrated symmetric domain
 ```
 
-Extension logic:
+Those parent trajectories are never pooled with extension trajectories. The canonical parent scientific state remains `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
-```text
-H-MD-1  source feasibility
-→ H-MD-2  functional-loss regime
-→ H-MD-3a  matched warning-domain evaluability
-→ H-MD-3b  direction-only warning effect, conditional on evaluability
-```
+## H-MD-1 — source feasibility
 
-H-MD-3a/3b are a post hoc logical decomposition of the original H-MD-3 question. The labels clarify the status of completed evidence; they do not retroactively preregister a new hypothesis.
-
-## H-MD-1 — recurrent-transition coordinates change high-function source feasibility
-
-### Proposition
-
-At fixed recurrent-transition relaxation strength `kappa_mu`, changing directional equilibrium `p_star` changes the finite region in which a prepared high-function source can be reconstructed and retained under the declared closure.
-
-### Mechanistic basis
+**Proposition.** At fixed recurrent-transition relaxation strength `kappa_mu`, changing directional equilibrium `p_star` changes the finite region in which a prepared high-function source can be established.
 
 For
 
 \[
-M(p)=\kappa_\mu p_\mu^\ast+(1-\kappa_\mu)p,
+M(p)=\kappa_\mu p_\mu^*+(1-\kappa_\mu)p,
 \]
 
-a local requirement `M(p) >= p_c` implies
+a local post-transition requirement \(M(p)\ge p_c\) requires, for \(\kappa_\mu<1\),
 
 \[
-p \ge \frac{p_c-\kappa_\mu p_\mu^\ast}{1-\kappa_\mu}.
+p\ge\theta(p_c)=\frac{p_c-\kappa_\mu p_\mu^*}{1-\kappa_\mu}.
 \]
 
-Increasing `p_star` lowers the pre-transition frequency required to remain above that local boundary. This is a mechanism-level algebraic prediction; the finite stochastic result is tested separately.
+Increasing `p_star` lowers this required pre-transition frequency.
 
-### Test and result
+**Test.** Protocol 002 Stage I, common `3 kappa_mu × 5 p_star` grid with independent source reconstruction.
 
-Protocol 002 Stage I used the common `3 kappa_mu × 5 p_star` grid with independent source reconstruction at every coordinate.
+**Result.** 2,269 of 3,375 attempts supported source preparation/projection; coordinate support ranged from 44.89% to 86.67% and generally increased with `p_star` within fixed-`kappa_mu` rows.
 
-- attempts: 3,375;
-- source-prepared and projection-supported: 2,269;
-- support range: 44.89%–86.67%;
-- within fixed-`kappa_mu` rows, support generally increased with `p_star`.
+**Status: supported, finite Type S.**
 
-### Status
+## H-MD-2 — functional-loss regime
 
-**Supported as finite Type S evidence for the declared closure.**
+**Proposition.** Under the same deterioration candidate family, recurrent-transition coordinates change the realised high-trait-loss regime.
 
-## H-MD-2 — recurrent-transition coordinates change the functional-loss regime
+**Test.** Protocol 002 Stage II used the same warning-blind deterioration family across all 15 coordinates. Diversity and warning fields were unavailable to calibration.
 
-### Proposition
+**Result.** Among 648 complete five-seed candidates:
 
-Under the same predeclared deterioration candidate family, recurrent-transition coordinates change the probability/timing structure of realised high-trait loss, including rapid loss, persistence, censoring, and seed sensitivity.
+- 322 rapid-loss-side;
+- 242 persistence-side;
+- 84 seed-heterogeneous.
 
-### Test and result
+**Status: supported, finite Type S.**
 
-Protocol 002 Stage II applied the same warning-blind deterioration family across all 15 coordinates. Calibration could inspect source/projection eligibility, baseline high-trait presence, trait-loss occurrence, and trait-loss time only; diversity and warning fields were unavailable.
+This is an upstream result: recurrent-transition dynamics changed how functional loss was generated before genetic warning was evaluated.
 
-Among 648 complete five-seed candidates:
+## H-MD-3a — matched-domain evaluability
 
-- 322 were rapid-loss-side;
-- 242 were persistence-side;
-- 84 were seed-heterogeneous.
-
-### Status
-
-**Supported as finite Type S evidence for the declared closure.**
-
-The key result is upstream of warning: the recurrent-transition manipulation reorganised the event-generating regime itself.
-
-## H-MD-3a — common-family warning-domain evaluability
-
-### Proposition
-
-For a matched warning comparison to be available under Protocol 002, each recurrent-transition coordinate must contain at least one complete candidate with all five seed-block trait-loss frequencies in the preregistered intermediate-risk interval `[0.30, 0.70]`.
-
-### Exact finite certificate
-
-For coordinate \(\theta\), define
+For coordinate \(\theta\), define the strict Protocol 002 eligible set
 
 \[
-E_\theta = \left\{c : 0.30 \le r_{c,b} \le 0.70\;\;\text{for every seed block }b\right\},
+E_\theta=\{c:0.30\le r_{c,b}\le0.70\text{ for every one of five seed blocks }b\}.
 \]
 
-where \(r_{c,b}\) is the realised trait-loss frequency for candidate \(c\) in seed block \(b\).
+The locked selector can choose a warning-validation domain **if and only if** \(E_\theta\neq\varnothing\).
 
-The Protocol 002 selector returns a domain for coordinate \(\theta\) if and only if \(E_\theta\neq\varnothing\). The completed Stage II artifacts show:
+**Result.** Across the completed Stage II evidence:
 
-- eligible candidate count: 0;
-- selected domain count: 0;
-- `no_domain_selected`: 15/15 coordinates.
+- eligible candidate count = 0;
+- selected domain count = 0;
+- `no_domain_selected` = 15/15 coordinates.
 
-Therefore \(E_\theta=\varnothing\) for every tested coordinate under the declared common candidate family and strict gate.
+Thus \(E_\theta=\varnothing\) for every tested coordinate in the declared common candidate family.
 
-### Status
+**Status: negative result, recovered for the declared finite grid/family.**
 
-**Negative result, recovered for the declared finite grid and candidate family.**
+This is a finite **no-domain/evaluability certificate**, not evidence that genetic warning itself failed. Warning values were not inspected during this selection.
 
-The proposition that every coordinate supplies an eligible common-family warning domain is false in this finite design. This is not a claim that no such domain can exist under another deterioration family or biological model.
+## H-MD-3b — direction-only warning effect
 
-The stored finite calibration table plus the preregistered gate therefore form a complete Protocol 002 **no-domain certificate**, not merely an unsuccessful calibration search.
+**Proposition.** Conditional on matched evaluable domains existing under a common deterioration family, recurrent-transition direction changes warning availability, lead/lag ordering, or lead time.
 
-## H-MD-3b — direction-only genetic-warning effect conditional on matched evaluability
+### Finite empirical status
 
-### Proposition
+**Bounded unresolved / not identified.** Protocol 002 never instantiated the matched domains required for this contrast. Therefore the current finite evidence cannot assign a direction-only warning effect or null effect.
 
-Conditional on matched warning-validation domains existing under a common deterioration family, recurrent-transition direction changes warning availability, lead/lag ordering, or lead time.
+### Type T boundary 1 — no universal direction-to-diversity sign
 
-### Empirical status
-
-**Unresolved / not identified by the matched common-grid experiment.**
-
-Protocol 002 did not supply the matched evaluable domains required to instantiate this contrast. Because H-MD-3a failed, a null or directional effect cannot be assigned from Protocol 002.
-
-### Exact theoretical boundary: transition direction has no universal sign on heterozygosity
-
-For a single allele frequency, expected heterozygosity is
+For \(H(p)=2p(1-p)\), write \(k=\kappa_\mu\), \(s=p_\mu^*\), and \(M(p)=p+k(s-p)\). Then
 
 \[
-H(p)=2p(1-p).
+H(M(p))-H(p)=2k(s-p)[1-2p-k(s-p)],
 \]
 
-Let \(s=p_\mu^*\), \(k=\kappa_\mu\), and
+and
 
 \[
-M(p)=p+k(s-p).
+\frac{\partial H(M(p))}{\partial s}=2k[1-2M(p)].
 \]
 
-Then the exact one-step change is
+So increasing `p_star` can increase or decrease heterozygosity depending on the current allele-frequency state; the sign changes at \(M(p)=1/2\).
+
+### Type T boundary 2 — direction and among-patch contraction are separable
+
+With fixed patch weights,
 
 \[
-H(M(p))-H(p)
-=2k(s-p)\left[1-2p-k(s-p)\right].
+H_\gamma-H_\alpha=2\operatorname{Var}_w(p_j),
 \]
 
-Equivalently,
+and a common affine transition gives
 
 \[
-\frac{\partial H(M(p))}{\partial s}
-=2k\left[1-2M(p)\right].
+H_\gamma'-H_\alpha'=(1-k)^2(H_\gamma-H_\alpha).
 \]
 
-Therefore increasing `p_star` can **increase or decrease heterozygosity depending on the current allele-frequency state**. The sign switches at `M(p)=0.5`: movement toward 0.5 raises heterozygosity; movement away from 0.5 lowers it.
+This contraction depends on `kappa_mu` but not on `p_star`. Direction shifts the weighted mean allele state; transition strength contracts among-patch deviations.
 
-This exact result is implemented and tested in `mutation_coordinates.py`.
+### Type T boundary 3 — local function-support and diversity can oppose each other
 
-### What this theoretical result does and does not recover
+For local high-associated allele support margin
 
-It **does recover a Type T boundary**:
+\[
+S=M(p)-p_c,
+\]
 
-> recurrent-transition direction alone does not imply a universal signed change in genetic diversity without additional state constraints.
+\[
+\frac{\partial S}{\partial s}=k>0.
+\]
 
-It does **not** prove the dynamic H-MD-3b warning-ordering hypothesis true or false, because warning first passage also depends on selection, drift, demography, interaction state, functional-loss timing, and censoring.
+Thus increasing `p_star` always strengthens this local post-transition high-state support condition. But diversity follows the derivative above. Therefore:
 
-Thus H-MD-3b is no longer an unexplained loose end. The repository now has both:
+- \(M(p)<1/2\): support and heterozygosity increase together;
+- \(M(p)=1/2\): support increases while heterozygosity is stationary to first order;
+- \(M(p)>1/2\): support increases while heterozygosity **decreases**.
 
-1. an empirical identification failure — no matched common-grid validation domain;
-2. a theoretical non-monotonicity boundary — direction alone has no universal sign on heterozygosity.
+So genetic diversity is **not a monotone proxy for local functional support** under this recurrent-transition operator. Full realised ecological function still depends on the complete stochastic life cycle; this is a local Type T support boundary, not a warning theorem.
 
-A future clean H-MD-3b test would need both a matched evaluable domain and explicit constraints on the allele-frequency state/path if a directional sign is to be predicted beforehand.
+The exact derivations and executable tests are in [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) and `src/eco_genetic_warning_extensions/mutation_coordinates.py`.
 
-## Protocol 003 — separate recovery of evaluability, not H-MD-3b recovery
+## Protocol 003 — portability, not H-MD-3b recovery
 
-Protocol 003 was declared after Protocol 002 closed. It expanded candidate schedules and changed the event-risk gate using trait-loss-only information before warning endpoints were calculated. Fresh independent confirmation recovered two evaluable domains.
+Protocol 003 was declared only after Protocol 002 closed. Warning-blind recalibration recovered two evaluable domains, but they differ in recurrent-transition parameters **and** `A_ref`, interaction-feedback `kappa`, deterioration strength, and horizon.
 
-Those domains differ in recurrent-transition parameters and also in `A_ref`, interaction-feedback `kappa`, deterioration strength, and horizon. Therefore their Stage III contrast cannot identify recurrent-transition direction alone.
+Observed Stage III:
 
-Observed portability results:
-
-- recalibrated symmetric: 323 leads, 1 tie, 0 lags across 324 valid endpoint comparisons; valid-pair availability 0.540;
-- directional calibrated: 184 leads, 5 ties, 12 lags across 201 valid endpoint comparisons; valid-pair availability 0.335;
-- directional `H_gamma` 20%: warning incidence 41/81; realised functional-trait-loss incidence 52/81;
+- recalibrated symmetric: 323 lead / 1 tie / 0 lag, valid-pair availability 0.540;
+- directional calibrated: 184 lead / 5 tie / 12 lag, availability 0.335;
+- directional `H_gamma` 20%: warning 41/81 versus realised functional loss 52/81;
 - all six full-horizon-normalized direct timing-difference intervals include zero.
 
-### Status
+**Status: separate portability/boundary result.** Warning behaviour is not invariant across the two recalibrated domains, but the contrast does not identify recurrent-transition direction alone.
 
-**Separate portability/boundary result.**
+## Historical H2-R-AS
 
-Warning behaviour was not invariant across the two recalibrated domains, but the contrast does not recover H-MD-3b as a direction-only causal statement.
+H2-R-AS was the original Protocol 001 special-case warning formulation. It remains part of protocol history, not the final organising hypothesis. The completed campaigns showed that source feasibility, functional-loss regime, and matched-domain evaluability must be resolved before a direction-only warning comparison is meaningful.
 
-## Where H2-R-AS fits
+## Final recovery ledger
 
-H2-R-AS was the original Protocol 001 special-case formulation:
+| item | status | current conclusion |
+|---|---|---|
+| **H-MD-1** | **supported** | recurrent-transition coordinates change high-function source feasibility |
+| **H-MD-2** | **supported** | recurrent-transition coordinates change functional-loss regime |
+| **H-MD-3a** | **negative / recovered** | no eligible matched common-family warning domain exists in the tested 15-coordinate design |
+| **H-MD-3b finite effect** | **bounded unresolved** | matched direction-only warning effect was not instantiated |
+| **H-MD-3b theory** | **Type T boundaries recovered** | direction has no universal diversity sign; diversity and local high-state support can move in opposite directions |
+| **Protocol 003** | **portability result** | warning availability/ordering differ across two non-matched recalibrated domains; cause is not isolated to direction |
 
-\[
-\tau_{\Delta H_x(r)} < \tau_T,
-\quad x\in\{\alpha,\gamma\},\quad r\in\{0.05,0.10,0.20\}.
-\]
+## Stop rule before any new protocol
 
-It remains historical motivation, not the final organising hypothesis. The completed evidence showed that source feasibility and loss-regime structure change before warning reliability can be fairly compared.
+Do not open a new finite campaign merely by widening schedules or relaxing the Protocol 002 gate. A future H-MD-3b campaign is scientifically justified only after it predeclares:
 
-## Recovery table
+1. a matched deterioration family with non-direction parameters fixed across compared coordinates;
+2. a warning-blind evaluability rule;
+3. a specified allele-frequency state/path region;
+4. a directional prediction derived from the Type T identities above;
+5. fresh calibration and validation seeds.
 
-| item | evidence object | status | actual conclusion |
-|---|---|---|---|
-| H-MD-1 | common-grid source reconstruction | **supported** | source feasibility changes across recurrent-transition coordinates |
-| H-MD-2 | common-family Stage II loss outcomes | **supported** | functional-loss regime changes across recurrent-transition coordinates |
-| H-MD-3a | strict all-seed eligibility sets `E_theta` | **negative / recovered** | no matched common-family warning domain exists in the tested grid/family |
-| H-MD-3b empirical | matched common-grid warning contrast | **unresolved** | direction-only warning effect is not identified |
-| H-MD-3b theory | exact one-step `H(M(p))-H(p)` algebra | **Type T boundary recovered** | no universal direction→heterozygosity sign exists without state constraints |
-| Protocol 003 | two independently recalibrated validation domains | **portability result** | warning availability/ordering are not invariant across the two domains; cause is not isolated to direction |
+Until then, H-MD-3b is **scientifically bounded rather than unfinished**.
 
 ## Protocol map
 
-- **Protocol 001:** historical directional-mutation bridge/pilot; preserves H2-R-AS provenance.
+- **Protocol 001:** historical bridge/pilot; H2-R-AS provenance.
 - **Protocol 002 Stage I:** H-MD-1.
-- **Protocol 002 Stage II:** H-MD-2 and the finite H-MD-3a no-domain certificate.
-- **Protocol 003:** separately declared evaluability recovery and portability validation; not a matched H-MD-3b test.
-- **Secondary review audit:** locked-record uncertainty, timing, and censoring analysis; no new simulation or hypothesis selection.
+- **Protocol 002 Stage II:** H-MD-2 + H-MD-3a.
+- **Protocol 003:** separately declared evaluability recovery + non-matched portability validation.
+- **Secondary review audit:** locked-record uncertainty/timing/censoring analysis; no simulation rerun.
 
-## Interpretation discipline
+## Current interpretation boundary
 
 Permitted:
 
-- recurrent-transition coordinates reorganise high-function source feasibility;
-- recurrent-transition coordinates reorganise the functional-loss regime under the common deterioration family;
-- the declared common candidate family contains no eligible warning-validation domain at any of the 15 coordinates;
-- recurrent-transition direction alone has no universal one-step sign on heterozygosity without state constraints;
-- after separate warning-blind recalibration, warning availability and ordering differ across two non-matched eco-genetic domains.
+- source feasibility and functional-loss regime change across recurrent-transition coordinates;
+- the strict common candidate family contains no eligible warning-validation domain at all 15 tested coordinates;
+- direction alone has no universal signed one-step effect on diversity;
+- stronger local high-state allele support can coincide with lower genetic diversity;
+- warning portability differs across the two separately recalibrated domains.
 
-Prohibited:
+Not permitted:
 
-- directional transition universally causes collapse or rescue;
-- H-MD-3b is false because Protocol 002 selected no domain;
-- the one-step heterozygosity theorem determines full warning first-passage ordering;
-- Protocol 003 identifies a direction-only warning effect;
-- genetic diversity always warns before function is lost;
-- `p_star` is an empirical mutation-rate estimate;
-- the two Stage III domains form a complete phase diagram;
-- extension trajectories replace the parent H1/H3 evidence ledger.
-
-## Final logic
-
-```text
-parent H1/H3 mechanism
-→ change recurrent-transition closure
-→ H-MD-1: can the high-function source exist?               supported
-→ H-MD-2: what functional-loss regime is generated?        supported
-→ H-MD-3a: does a matched warning-validation domain exist?  no, finite negative result
-→ H-MD-3b: does direction itself change warning?            empirically unresolved
-      └─ theory: no universal direction→H sign exists without state constraints
-→ Protocol 003: separately recalibrated portability result
-```
-
-The scientific repository therefore closes most of the hypothesis chain without forcing a binary answer where the estimand was not instantiated: **H-MD-1 and H-MD-2 are supported, H-MD-3a is negatively resolved, and H-MD-3b has a recovered theoretical boundary but no matched finite causal estimate.**
+- H-MD-3b is false merely because no Protocol 002 domain was selected;
+- Protocol 003 identifies a direction-only causal warning effect;
+- lower genetic diversity necessarily means poorer ecological function;
+- the local transition theorem determines full warning first-passage ordering;
+- `p_star` is an empirical biological mutation-rate estimate;
+- extension evidence replaces the parent H1/H3 ledger.
