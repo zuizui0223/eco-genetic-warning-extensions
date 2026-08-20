@@ -2,6 +2,8 @@
 
 Bibliographic metadata below has been checked against publisher, PubMed, or institutional records. DOI strings are canonical identifiers; final punctuation and author truncation can be adjusted by the journal production system without changing the underlying records.
 
+Alberti, M. (2015). Eco-evolutionary dynamics in an urbanizing planet. *Trends in Ecology & Evolution*, **30**, 114–126. doi:10.1016/j.tree.2014.11.007
+
 Andersen, P.K., Geskus, R.B., de Witte, T. & Putter, H. (2012). Competing risks in epidemiology: possibilities and pitfalls. *International Journal of Epidemiology*, **41**, 861–870. doi:10.1093/ije/dyr213
 
 Bell, G. (2017). Evolutionary rescue. *Annual Review of Ecology, Evolution, and Systematics*, **48**, 605–627. doi:10.1146/annurev-ecolsys-110316-023011
@@ -34,7 +36,13 @@ Lipsitch, M., Tchetgen Tchetgen, E. & Cohen, T. (2010). Negative controls: a too
 
 McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, **87**, 271–276. doi:10.1890/05-0386
 
+Miles, L.S., Rivkin, L.R., Johnson, M.T.J., Munshi-South, J. & Verrelli, B.C. (2019). Gene flow and genetic drift in urban environments. *Molecular Ecology*, **28**, 4138–4151. doi:10.1111/mec.15221
+
+Rivkin, L.R., Santangelo, J.S., Alberti, M., et al. (2019). A roadmap for urban evolutionary ecology. *Evolutionary Applications*, **12**, 384–398. doi:10.1111/eva.12734
+
 Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
+
+Schrader, J., Wright, I.J., Kreft, H. & Westoby, M. (2021). A roadmap to plant functional island biogeography. *Biological Reviews*, **96**, 2851–2870. doi:10.1111/brv.12782
 
 Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
 
@@ -46,6 +54,10 @@ Stoltzfus, A. & McCandlish, D.M. (2017). Mutational biases influence parallel ad
 
 Storz, J.F., Natarajan, C., Signore, A.V., Witt, C.C., McCandlish, D.M. & Stoltzfus, A. (2019). The role of mutation bias in adaptive molecular evolution: insights from convergent changes in protein function. *Philosophical Transactions of the Royal Society B*, **374**, 20180238. doi:10.1098/rstb.2018.0238
 
+Traveset, A. & Navarro, L. (2018). Plant reproductive ecology and evolution in the Mediterranean islands: state of the art. *Plant Biology*, **20** Suppl. 1, 63–77. doi:10.1111/plb.12636
+
 Valiente-Banuet, A., Aizen, M.A., Alcántara, J.M., Arroyo, J., Cocucci, A., Galetti, M., García, M.B., García, D., Gómez, J.M., Jordano, P., Medel, R., Navarro, L., Obeso, J.R., Oviedo, R., Ramírez, N., Rey, P.J., Traveset, A., Verdú, M. & Zamora, R. (2015). Beyond species loss: the extinction of ecological interactions in a changing world. *Functional Ecology*, **29**, 299–307. doi:10.1111/1365-2435.12356
 
 Whitlock, R. (2014). Relationships between adaptive and neutral genetic diversity and ecological structure and functioning: a meta-analysis. *Journal of Ecology*, **102**, 857–872. doi:10.1111/1365-2745.12240
+
+Youngsteadt, E. & Keighron, M.C. (2023). Urban Pollination Ecology. *Annual Review of Ecology, Evolution, and Systematics*, **54**, 21–42. doi:10.1146/annurev-ecolsys-102221-044616
