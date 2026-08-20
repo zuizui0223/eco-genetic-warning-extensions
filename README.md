@@ -43,7 +43,7 @@ The Protocol 002 selector can choose a warning-validation domain **if and only i
 
 This is not evidence that genetic warning failed: warning and diversity fields were unavailable during calibration. It is a finite **evaluability certificate** for the declared candidate family.
 
-## Why H-MD-3b has no universal theoretical sign
+## What is now recovered theoretically around H-MD-3b
 
 For single-locus expected heterozygosity `H(p)=2p(1-p)` and transition map
 
@@ -51,11 +51,27 @@ For single-locus expected heterozygosity `H(p)=2p(1-p)` and transition map
 
 `H(M(p)) - H(p) = 2*kappa_mu*(p_star-p)*(1-2p-kappa_mu*(p_star-p))`.
 
-Thus the same directional parameter change can increase diversity when it moves allele frequency toward `0.5`, and decrease diversity when it moves frequency away from `0.5`. The derivative with respect to `p_star` changes sign at `M(p)=0.5`.
+The derivative with respect to `p_star` changes sign at `M(p)=0.5`. Thus transition direction can raise or lower diversity depending on the current allele-frequency state.
 
-So the repository now has an exact **Type T boundary** for H-MD-3b: recurrent-transition direction alone does not imply a universal signed change in heterozygosity without additional state constraints. This does not determine dynamic warning first-passage ordering, which still depends on selection, drift, demography, functional-loss timing, and censoring.
+For fixed patch weights,
 
-The theorem is implemented in `src/eco_genetic_warning_extensions/mutation_coordinates.py` and tested in `tests/test_mutation_coordinates.py`.
+`H_gamma' - H_alpha' = (1-kappa_mu)^2 * (H_gamma-H_alpha)`.
+
+The contraction of the alpha/gamma gap depends on transition strength but **not** on direction. Direction moves the weighted mean state; `kappa_mu` contracts among-patch frequency differences.
+
+A stronger exact decoupling also holds for a local high-associated allele condition `M(p) >= p_c`. Its support margin `S=M(p)-p_c` satisfies
+
+`dS/dp_star = kappa_mu > 0`,
+
+so increasing `p_star` always makes that local high-state condition easier to satisfy. But
+
+`dH(M(p))/dp_star = 2*kappa_mu*(1-2M(p))`.
+
+Therefore, whenever `M(p)>0.5`, increasing `p_star` **strengthens local high-state allele support while decreasing heterozygosity**. At `M(p)<0.5`, support and diversity increase together; at exactly `0.5`, support increases while diversity is stationary to first order.
+
+This is an exact **function-support/diversity decoupling boundary**. Genetic diversity is therefore not a monotone proxy for local functional support under recurrent transitions.
+
+These Type T identities are documented in [`docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md), implemented in `mutation_coordinates.py`, and tested directly. They do not determine full dynamic warning first-passage ordering.
 
 ## What Protocol 003 does — and does not do
 
@@ -82,15 +98,30 @@ parent H1/H3 mechanism
 → change recurrent-transition closure
 → H-MD-1: source feasibility changes
 → H-MD-2: functional-loss regime changes
-→ H-MD-3a: a common evaluable warning domain is absent in the declared common family
-→ H-MD-3b: matched direction-only warning effect remains empirically unidentified
-      └─ Type T boundary: direction alone has no universal sign on heterozygosity
+→ H-MD-3a: common matched warning domain absent in the declared family
+→ H-MD-3b: matched direction-only warning effect empirically unidentified
+      ├─ direction has no universal sign on heterozygosity
+      └─ stronger local high-state support can coincide with lower diversity
 → Protocol 003: separate portability result across recalibrated domains
 ```
 
 The extension's strongest conclusion is therefore upstream of warning timing:
 
-> **Recurrent-transition dynamics reshape both the existence of a high-function state and the way that function is lost; those changes can remove the matched event regime required to identify a direction-only genetic-warning effect, while the transition operator itself supplies no universal diversity-warning sign without state constraints.**
+> **Recurrent-transition dynamics reshape the existence and loss of a high-function state, and genetic diversity need not move monotonically with that functional support. A direction-only warning effect cannot be inferred until both a matched event regime and a state-constrained prediction exist.**
+
+## Stop rule before any new finite campaign
+
+Do **not** open a Protocol 004 merely by widening the Protocol 002 schedule search or relaxing its gate. The current evidence already establishes that the original matched candidate family has no eligible domain, and the theory shows that direction alone has no universal diversity sign.
+
+A new finite H-MD-3b campaign is justified only if it predeclares all of the following before simulation:
+
+1. a matched deterioration family that preserves all non-direction parameters across compared coordinates;
+2. an evaluability criterion fixed without warning/diversity fields;
+3. an explicit allele-frequency state/path region, such as a high-frequency regime with `M(p)>0.5`;
+4. a directional prediction derived from the exact support/diversity identities above;
+5. fresh calibration and validation seeds.
+
+Until those conditions are specified, H-MD-3b remains a bounded unresolved finite effect rather than an invitation to tune the existing campaign until a warning contrast appears.
 
 ## Protocol map
 
@@ -107,6 +138,7 @@ The current integrated manuscript and checksummed **submission bundle** are down
 ## Source of truth
 
 - [`docs/HYPOTHESIS_PROGRAM.md`](docs/HYPOTHESIS_PROGRAM.md) — current hypothesis definitions and recovery status
+- [`docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md) — exact recurrent-transition diversity/support identities
 - [`manuscript/claim_evidence_map.md`](manuscript/claim_evidence_map.md) — permitted/prohibited numerical claims
 - [`manuscript/main_text.md`](manuscript/main_text.md) — current integrated manuscript, downstream of the scientific repository state
 - [`manuscript/artifact_index.md`](manuscript/artifact_index.md) — workflow/artifact provenance
