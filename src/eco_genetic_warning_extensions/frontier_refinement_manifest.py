@@ -23,6 +23,14 @@ PHASE_B_CONFIRMATION_REPLICATES_PER_SEED = 20
 PHASE_B_RAMP_GENERATIONS = 30
 PHASE_B_HOLD_GENERATIONS = 90
 
+PHASE_C_KAPPA_MU = 0.35
+PHASE_C_P_STAR = (0.35, 0.40)
+PHASE_C_MASTER_SEEDS = (20290210, 20290211, 20290212, 20290213, 20290214)
+PHASE_C_REPLICATES_PER_SEED = 20
+PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED = 10
+PHASE_C_RAMP_GENERATIONS = 30
+PHASE_C_HOLD_GENERATIONS = 90
+
 
 @dataclass(frozen=True)
 class FrontierAnchor:
@@ -40,6 +48,7 @@ PHASE_A_ANCHORS = (
 PHASE_B_ANCHOR = FrontierAnchor(
     "B1", area_reference=1.0, interaction_kappa=4.5, normalised_barrier_increase=0.30
 )
+PHASE_C_ANCHOR = PHASE_B_ANCHOR
 
 
 @dataclass(frozen=True)
@@ -98,6 +107,19 @@ def phase_b_cells() -> tuple[FrontierRefinementCell, ...]:
     )
 
 
+def phase_c_cells() -> tuple[FrontierRefinementCell, ...]:
+    return tuple(
+        FrontierRefinementCell(
+            cell_index=index,
+            anchor=PHASE_C_ANCHOR,
+            coordinate=MutationCoordinates(kappa_mu=PHASE_C_KAPPA_MU, p_star=p_star),
+            ramp_generations=PHASE_C_RAMP_GENERATIONS,
+            hold_generations=PHASE_C_HOLD_GENERATIONS,
+        )
+        for index, p_star in enumerate(PHASE_C_P_STAR)
+    )
+
+
 def phase_a_manifest() -> dict[str, object]:
     cells = phase_a_cells()
     return {
@@ -130,6 +152,23 @@ def phase_b_manifest() -> dict[str, object]:
         "replicates_per_seed": PHASE_B_REPLICATES_PER_SEED,
         "confirmation_master_seeds": list(PHASE_B_CONFIRMATION_MASTER_SEEDS),
         "confirmation_replicates_per_seed": PHASE_B_CONFIRMATION_REPLICATES_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }
+
+
+def phase_c_manifest() -> dict[str, object]:
+    cells = phase_c_cells()
+    return {
+        "protocol": "warning-blind frontier reproducibility audit Phase C",
+        "phase_b_parent_cells": [0.35, 0.40],
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_C_MASTER_SEEDS) * PHASE_C_REPLICATES_PER_SEED,
+        "planned_attempts": len(cells) * len(PHASE_C_MASTER_SEEDS) * PHASE_C_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_C_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_C_REPLICATES_PER_SEED,
+        "minimum_baseline_eligible_per_seed": PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED,
         "warning_fields_available": False,
         "diversity_fields_available": False,
         "cells": [cell.identity() for cell in cells],
