@@ -6,7 +6,7 @@
 |---|---|
 | The manuscript integrates a theorem-guided first phase and an independently declared recurrent-transition extension as one study. | Keep the two repositories as separate computational provenance units; do not pool their trajectories. |
 | The first phase provides the analytical interaction mechanism, locked H1/H3 fragmentation campaign, and inherited symmetric warning benchmark. | `eco-genetic-criticality` canonical scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc` and final evidence ledger. |
-| The extension reconstructs sources, maps common-grid loss regimes, and performs separately declared warning-blind recalibration and validation. | Protocol 002/003 documents, amendments, locked artifacts, and fresh validation seeds. |
+| The extension reconstructs sources, maps common-grid loss regimes, performs separately declared warning-blind recalibration/validation, and derives exact recurrent-transition diversity/support identities. | Protocol 002/003 documents, amendments, locked artifacts, fresh validation seeds, and `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`. |
 
 ## Permitted first-phase claims
 
@@ -15,7 +15,7 @@
 | P1 | Equal isolation from an H1-prepared full state lowers final interaction, local effective size, and realised high-trait mass relative to the matched one-large projection. | Parent workflow run `28456092898`, artifact `7987193632`; 1,055 H1-qualified paired replicates across 12 primary cells. | supported, finite Type S |
 | P2 | In the inherited symmetric benchmark, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10%, and 20% preceded all 35 observed realised trait-loss events. | Parent H2-R trait-loss-only calibration and independent fresh-seed validation. | supported conditionally, finite Type S |
 | P3 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that same benchmark. | Stored-trajectory H2-A audit: 14/0/6 and 8/0/8 lead/tie/lag. | negative robustness result |
-| P4 | A fresh fixed-area fragmentation sensitivity shows that the historical four-patch contrast was already present after the first split to two isolated patches; interaction and local effective size then declined further, whereas realised high-trait mass was non-monotonic. | Parent run `31937210601`, artifact `9261157020`; 1,037 prepared sources projected across eight patch counts. | new supplementary finite Type S sensitivity |
+| P4 | A fresh fixed-area fragmentation sensitivity shows that the historical four-patch contrast was already present after the first split to two isolated patches; interaction and local effective size then declined further, whereas realised high-trait mass was non-monotonic. | Parent run `31937210601`, artifact `9261157020`; 1,037 prepared sources projected across eight patch counts. | supplementary finite Type S sensitivity |
 
 ## Permitted extension claims
 
@@ -23,13 +23,23 @@
 |---|---|---|---|
 | S1 | At fixed `kappa_mu`, recurrent-transition direction changes high-state source feasibility. | Common Stage I coordinate grid; 3,375 source attempts and 2,269 supported projections. | supported for declared closure |
 | S2 | The common deterioration family partitions candidates into rapid-loss, persistence, and seed-heterogeneous regimes. | Stage II complete candidate rates and regime audit. | supported for declared closure |
-| S3 | No Protocol 002 coordinate had an eligible warning-validation domain under the strict all-seed rule. | 648 complete candidates, zero eligible, 15 `no_domain_selected`. | supported for declared closure |
+| S3 | No Protocol 002 coordinate had an eligible warning-validation domain under the strict all-seed rule. | 648 complete candidates, zero eligible, 15 `no_domain_selected`. | negative/recovered for declared grid/family |
 | S4 | Protocol 003 used a separately declared, warning-blind amendment that expanded the candidate family and replaced the Protocol 002 all-seed gate before warning values were calculated. | `PROTOCOL_003_AMENDMENT_001.md` and `PROTOCOL_003_AMENDMENT_002.md`. | documented design fact |
 | S5 | The two Stage III validation domains differ in recurrent-transition parameters, `A_ref`, interaction-feedback `kappa`, barrier increase, and calibrated horizon. | Locked confirmation cells and Stage III domain identities. | documented design fact |
 | S6 | Warning availability and ordering differ between the recalibrated symmetric domain and directional calibrated domain. | Locked Stage III trajectories plus trajectory-cluster secondary audit. | supported as a calibrated-domain portability result |
 | S7 | Stage III timing point estimates are schedule-dependent; direct between-domain bootstrap differences are endpoint-dependent for absolute time and include zero for all six full-horizon-normalized contrasts. | Immutable Stage III trajectories, conventional-median audit, and `stage3_between_domain_differences.csv`. | supported uncertainty / identification statement |
 | S8 | Censoring and warning availability are part of the finite ecological outcome rather than discarded missing data. | Full 100-attempt endpoint denominators and cumulative event-incidence summaries. | supported as bounded interpretation |
 | S9 | Under the strict common deterioration family, no matched validation domain was available at any of the 15 coordinates; coordinate-specific recalibration restored evaluability at the cost of single-factor identification. | Protocol 002 no-domain audit plus separately declared Protocol 003 amendments. | supported design/biology boundary |
+
+## Permitted exact recurrent-transition claims
+
+These are Type T algebraic boundaries for the declared affine transition step with the stated fixed-weight assumptions. They are not finite Stage III effect estimates and not dynamic warning theorems.
+
+| ID | permitted claim | required evidence | status |
+|---|---|---|---|
+| T1 | Increasing `p_star` has no universal signed effect on heterozygosity: `dH(M(p))/dp_star = 2*kappa_mu*(1-2M(p))`, so the sign changes at `M(p)=0.5`. | Exact derivation in `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`; executable tests in `tests/test_mutation_coordinates.py`. | Type T |
+| T2 | With fixed patch weights and a common affine transition, `H_gamma' - H_alpha' = (1-kappa_mu)^2 (H_gamma-H_alpha)`, so one-step contraction of the alpha–gamma gap depends on transition strength but not `p_star`. | Same exact derivation and executable tests. | Type T |
+| T3 | Increasing `p_star` always strengthens the local high-associated allele support margin `M(p)-p_c`, but when `M(p)>0.5` it decreases heterozygosity; genetic diversity is therefore not a monotone proxy for this local functional-support condition. | Same exact derivation and executable tests. | Type T, local support boundary |
 
 ## Locked and corrected numerical facts
 
@@ -83,8 +93,8 @@ The historical Stage III source artifacts used the upper middle order statistic 
 - The Stage III domains are matched except for `p_star`.
 - Protocol 003 retained the Protocol 002 eligibility rule unchanged.
 - Protocol 003 never expanded its candidate family.
-- Directional mutation universally causes ecological collapse or rescue.
-- Genetic diversity warning universally fails or succeeds under directional mutation.
+- Directional transition universally causes ecological collapse or rescue.
+- Genetic diversity warning universally fails or succeeds under directional transition.
 - `p_star` is an empirically estimated mutation rate.
 - Protocol 003 changes the historical Protocol 002 `no_domain_selected` result.
 - Endpoint-level comparisons are independent biological replicates.
@@ -93,6 +103,22 @@ The historical Stage III source artifacts used the upper middle order statistic 
 - The fragmentation sensitivity is a universal monotone dose-response.
 - `K=4` is the observed finite fragmentation threshold.
 - The post-review fragmentation sensitivity replaces the historical H1/H3 evidence ledger.
+- Increasing `p_star` universally increases or universally decreases heterozygosity.
+- Lower genetic diversity necessarily means poorer ecological function or weaker local high-state support.
+- The local Type T support–diversity result determines full stochastic warning first-passage ordering.
+- The fixed-weight one-step alpha/gamma identities remain exact after arbitrary demographic reweighting, drift or selection without re-evaluation.
+
+## Story-to-evidence mapping
+
+| narrative step | evidence role |
+|---|---|
+| Functional state can be lost before population disappearance | analytical interaction/function-state distinction + parent finite state definitions |
+| Fragmentation creates an eco-genetic vulnerability bridge | P1; P4 is supplementary robustness |
+| Genetic erosion can warn in one calibrated regime but not by a universal absolute threshold | P2 + P3 |
+| Recurrent transitions change source feasibility | S1 |
+| Recurrent transitions change the loss-generating regime and can remove matched evaluability | S2 + S3 + S9 |
+| Recalibration restores evaluability but warning is not fully portable | S4–S8 |
+| Diversity is not a monotone proxy for local functional support | T1–T3 |
 
 ## Required figure-to-claim mapping
 
@@ -103,7 +129,7 @@ The historical Stage III source artifacts used the upper middle order statistic 
 | Figure 3 | common-grid loss regimes plus 648-candidate composition | S2, S3, S9 |
 | Figure 4 | cumulative warning and functional-loss incidence with administrative censoring | S6, S8 |
 | Figure 5 | full attempted denominator: source failure, ineligibility, censoring, lead/tie/lag | S6, S8 |
-| Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7 |
+| Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7; secondary conditional diagnostic |
 | Supplementary Figure S1 | fresh fixed-area paired fragmentation gradient | P4 |
 
-Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures.
+Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures. The T1–T3 claims are exact local transition identities and must retain their stated scope.
