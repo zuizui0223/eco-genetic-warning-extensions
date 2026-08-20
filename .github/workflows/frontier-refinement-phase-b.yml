@@ -1,15 +1,6 @@
 name: Warning-blind frontier refinement Phase B
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "docs/WARNING_BLIND_FRONTIER_REFINEMENT_PHASE_B.md"
-      - "src/eco_genetic_warning_extensions/frontier_refinement_manifest.py"
-      - "src/eco_genetic_warning_extensions/frontier_refinement_phase_b_runner.py"
-      - "scripts/run_frontier_refinement_phase_b.py"
-      - "tests/test_frontier_refinement_phase_b_manifest.py"
-      - ".github/workflows/frontier-refinement-phase-b.yml"
   workflow_dispatch:
 
 permissions:
