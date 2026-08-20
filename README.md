@@ -100,6 +100,10 @@ The extension's strongest conclusion is therefore upstream of warning timing:
 - **Protocol 003 — separate portability analysis.** Warning-blind recalibration, confirmation, and fresh-seed validation in two non-matched domains.
 - **Secondary review audit.** Locked-record uncertainty/censoring analysis; no simulation rerun or domain reselection.
 
+## Publication and reproducibility
+
+The current integrated manuscript and checksummed **submission bundle** are downstream publication products of this scientific state; they do not define the hypotheses. The bundle preserves the pinned parent scientific source, the separately archived post-review fragmentation sensitivity, extension software, machine-readable tables, figures, and provenance manifests.
+
 ## Source of truth
 
 - [`docs/HYPOTHESIS_PROGRAM.md`](docs/HYPOTHESIS_PROGRAM.md) — current hypothesis definitions and recovery status
