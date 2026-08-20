@@ -1,0 +1,66 @@
+name: Protocol 002 warning-blind frontier brackets
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/protocol002_frontier_brackets.py"
+      - "scripts/analyze_protocol002_frontier_brackets.py"
+      - "tests/test_protocol002_frontier_brackets.py"
+      - "docs/RECURRENT_TRANSITION_SUPPORT_FRONTIER.md"
+      - ".github/workflows/protocol-002-frontier-brackets.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  frontier-brackets:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WAVE001_RUN_ID: "29192237756"
+      BULK_RUN_ID: "29192711417"
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install extension and test runner
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+      - name: Run frontier tests
+        run: |
+          python -m pytest -q \
+            tests/test_recurrent_transition_frontier.py \
+            tests/test_protocol002_frontier_brackets.py
+      - name: Download locked Protocol 002 Stage II batches
+        run: |
+          mkdir -p collected/wave001 collected/bulk
+          gh run download "$WAVE001_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/wave001
+          gh run download "$BULK_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/bulk
+          test "$(find collected -name 'batch_*.json' | wc -l)" -eq 810
+      - name: Extract matched frontier brackets
+        run: |
+          python scripts/analyze_protocol002_frontier_brackets.py \
+            --batch-root collected \
+            --output artifacts/protocol002/stage2_frontier_brackets.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          a = json.loads(Path('artifacts/protocol002/stage2_frontier_brackets.json').read_text())
+          print('bracket_type_counts=', a['bracket_type_counts'])
+          for row in a['brackets'][:20]:
+              print(row)
+          PY
+      - name: Upload frontier-bracket artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-warning-blind-frontier-brackets
+          path: artifacts/protocol002/stage2_frontier_brackets.json
+          if-no-files-found: error
+          retention-days: 90
