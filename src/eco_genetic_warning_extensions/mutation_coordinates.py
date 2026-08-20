@@ -1,8 +1,12 @@
-"""Coordinate system for Protocol 002 mutation-direction phase diagrams.
+"""Coordinate system for Protocol 002 recurrent-transition phase diagrams.
 
-The coordinates separate mutation-map relaxation strength from its directional
-mutation-only equilibrium. They intentionally do not claim to hold the
-frequency-dependent expected mutation flux constant.
+The coordinates separate transition-map relaxation strength from its directional
+equilibrium. They intentionally do not claim to hold the frequency-dependent
+expected transition flux constant.
+
+This module also records the exact one-step heterozygosity consequence of the
+affine transition operator. That result is a local algebraic boundary, not a
+dynamic early-warning theorem.
 """
 from __future__ import annotations
 
@@ -11,17 +15,25 @@ from dataclasses import dataclass
 from .asymmetric_mutation import AsymmetricMutation
 
 
+def heterozygosity(frequency: float) -> float:
+    """Return single-locus expected heterozygosity ``H(p)=2p(1-p)``."""
+    p = float(frequency)
+    if not 0.0 <= p <= 1.0:
+        raise ValueError("frequency must lie in [0, 1]")
+    return 2.0 * p * (1.0 - p)
+
+
 @dataclass(frozen=True)
 class MutationCoordinates:
-    """A recurrent-mutation operator expressed as ``(kappa_mu, p_star)``.
+    """A recurrent-transition operator expressed as ``(kappa_mu, p_star)``.
 
     Parameters
     ----------
     kappa_mu:
-        Sum of directional mutation probabilities. It controls the contraction
-        factor of the mutation map, ``1 - kappa_mu``.
+        Sum of directional transition probabilities. It controls the contraction
+        factor of the transition map, ``1 - kappa_mu``.
     p_star:
-        Mutation-only equilibrium frequency of the high-trait-associated allele.
+        Transition-only equilibrium frequency of the high-trait-associated allele.
         It is identifiable only when ``kappa_mu > 0``.
     """
 
@@ -46,7 +58,7 @@ class MutationCoordinates:
 
     @property
     def contraction_factor(self) -> float:
-        """Slope of the affine mutation map."""
+        """Slope of the affine transition map."""
         return 1.0 - self.kappa_mu
 
     @property
@@ -59,11 +71,11 @@ class MutationCoordinates:
         return AsymmetricMutation(self.low_to_high, self.high_to_low)
 
     def apply(self, frequency: float) -> float:
-        """Apply M(p) = kappa_mu * p_star + (1 - kappa_mu) * p."""
+        """Apply ``M(p) = kappa_mu*p_star + (1-kappa_mu)*p``."""
         return self.mutation().apply(frequency)
 
     def expected_flux(self, frequency: float) -> float:
-        """Return J(p) = u_LH * (1 - p) + u_HL * p at the current frequency.
+        """Return ``J(p)=u_LH(1-p)+u_HL p`` at the current frequency.
 
         This is allowed to vary across directionality coordinates even when
         ``kappa_mu`` is fixed.
@@ -81,6 +93,37 @@ class MutationCoordinates:
         if self.kappa_mu == 1.0:
             raise ValueError("pre-mutation threshold is undefined when kappa_mu is 1")
         return (threshold - self.kappa_mu * self.p_star) / self.contraction_factor
+
+    def heterozygosity_after_transition(self, frequency: float) -> float:
+        """Return ``H(M(p))`` for the exact one-step affine transition."""
+        return heterozygosity(self.apply(frequency))
+
+    def heterozygosity_change(self, frequency: float) -> float:
+        """Return the exact one-step change ``H(M(p))-H(p)``.
+
+        With ``s=p_star`` and ``k=kappa_mu``, the closed form is
+
+        ``2*k*(s-p)*(1-2*p-k*(s-p))``.
+
+        Its sign is positive when the transition moves the allele frequency
+        closer to 0.5, negative when it moves it farther away, and zero when
+        heterozygosity is unchanged. Therefore transition direction alone has no
+        universal signed effect on diversity without a state constraint.
+        """
+        p = float(frequency)
+        if not 0.0 <= p <= 1.0:
+            raise ValueError("frequency must lie in [0, 1]")
+        displacement = self.kappa_mu * (self.p_star - p)
+        return 2.0 * displacement * (1.0 - 2.0 * p - displacement)
+
+    def heterozygosity_pstar_derivative(self, frequency: float) -> float:
+        """Return ``d H(M(p)) / d p_star = 2*kappa_mu*(1-2*M(p))``.
+
+        The derivative changes sign at ``M(p)=0.5``. This is the exact local
+        non-monotonicity boundary behind the absence of a universal
+        direction-to-diversity sign.
+        """
+        return 2.0 * self.kappa_mu * (1.0 - 2.0 * self.apply(frequency))
 
     @classmethod
     def from_directional_rates(cls, *, low_to_high: float, high_to_low: float) -> "MutationCoordinates":
