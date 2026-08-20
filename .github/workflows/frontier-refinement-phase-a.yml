@@ -62,14 +62,12 @@ jobs:
           rows=[]
           for p in sorted(Path('artifacts/frontier_refinement/phase_a').glob('cell_*.json')):
               a=json.loads(p.read_text())
-              assert a['warning_fields_available'] is False
-              assert a['diversity_fields_available'] is False
+              assert a['calibration_scope'] == 'trait_loss_only'
               rows.append({**a['cell'], 'regime':a['regime'], 'pooled_trait_loss_rate':a['pooled_trait_loss_rate'], 'seed_rates':[b['trait_loss_rate'] for b in a['seed_blocks']], 'status_counts':a['status_counts']})
           summary={
-              'stage':'warning-blind recurrent-transition frontier refinement Phase A summary',
+              'stage':'recurrent-transition frontier refinement Phase A summary',
+              'calibration_scope':'trait_loss_only',
               'cell_count':len(rows),
-              'warning_fields_available':False,
-              'diversity_fields_available':False,
               'cells':rows,
           }
           out=Path('artifacts/frontier_refinement/phase_a_summary.json')
