@@ -223,6 +223,7 @@ def _build_artifact(phase_cell, attempts: list[dict[str, Any]]) -> dict[str, Any
 
     return {
         "stage": "warning-blind recurrent-transition frontier refinement Phase A",
+        "calibration_scope": "trait_loss_only",
         "cell": phase_cell.identity(),
         "upstream": {"repository": UPSTREAM_REPOSITORY, "commit": UPSTREAM_COMMIT},
         "design": {
@@ -242,8 +243,6 @@ def _build_artifact(phase_cell, attempts: list[dict[str, Any]]) -> dict[str, Any
         "seed_blocks": seed_blocks,
         "regime": regime,
         "attempts": attempts,
-        "warning_fields_available": False,
-        "diversity_fields_available": False,
         "domain_selected": False,
     }
 
