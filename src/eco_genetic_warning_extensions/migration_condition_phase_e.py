@@ -73,7 +73,7 @@ def phase_e_manifest() -> dict[str, object]:
         "prepared_source_count": len(PHASE_E_MASTER_SEEDS) * PHASE_E_REPLICATES_PER_SEED,
         "trajectory_count": len(conditions) * len(PHASE_E_MASTER_SEEDS) * PHASE_E_REPLICATES_PER_SEED,
         "paired_across_migration_rates": True,
-        "warning_or_diversity_fields_permitted": False,
+        "output_scope": "source_projection_baseline_and_trait_loss_only",
         "migration_scope_boundary": (
             "migration_rate mixes allele frequencies toward the population-weighted mean; "
             "it is not demographic, pollinator, seed, recolonisation, or trait-bin dispersal"
