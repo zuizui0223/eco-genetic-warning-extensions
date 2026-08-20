@@ -1,14 +1,6 @@
 name: Protocol 002 warning-blind condition map
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "src/eco_genetic_warning_extensions/protocol002_condition_map.py"
-      - "scripts/analyze_protocol002_condition_map.py"
-      - "tests/test_protocol002_condition_map.py"
-      - "manuscript/hypothesis_condition_phase_map.md"
-      - ".github/workflows/protocol-002-condition-map.yml"
   workflow_dispatch:
 
 permissions:
