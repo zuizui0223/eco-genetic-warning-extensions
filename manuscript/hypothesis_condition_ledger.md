@@ -98,13 +98,18 @@ Warning-blind matched reanalysis further shows, within complete candidate pairs:
 - increasing horizon from 120→240 could increase observed loss but never decreased it;
 - barrier magnitude, `A_ref` and interaction `kappa` had much weaker/mixed pooled-loss effects within the matched complete subset.
 
+The first two prospective frontier refinements sharpen that condition map:
+
+- **Phase A, `kappa_mu=0.05`:** 10 new interior cells, 250 attempts; 0 R4, 6 R3 seed-heterogeneous, 4 R2 rapid-loss, 0 persistence.
+- **Phase B, `kappa_mu=0.35`:** one clean matched ecological/deterioration anchor bracketed by historical R2 at `p_star=0.25` and R1 at `0.50`; all four new interior cells (`0.30,0.35,0.40,0.45`) were R3 seed-heterogeneous. Pooled loss declined `0.739→0.476→0.304→0.095` as `p_star` increased.
+
 ### Conditions
 
-These matched effects are conditional on candidate completeness and the declared finite factor levels. They do not include how those factors affect source feasibility or completeness and are not universal monotonicity theorems.
+The old matched effects are conditional on candidate completeness and declared factor levels. Phase A/B frontier rates use five replicates per seed and therefore establish finite event-regime classification under the strict gate, not a high-precision population-level estimate of seed heterogeneity.
 
-### Boundary now being mapped
+### Boundary now being checked
 
-The rapid-to-persistence frontier in `(kappa_mu,p_star)` space. The coarse grid shows that this frontier shifts toward lower `p_star` as `kappa_mu` increases.
+Whether R3 remains when the two central Phase-B cells are estimated with 20 fresh replicates per seed. This is Phase C, a trait-loss-only reproducibility audit with no parameter expansion.
 
 ## H-MD-3a — warning-domain evaluability
 
@@ -112,23 +117,30 @@ The rapid-to-persistence frontier in `(kappa_mu,p_star)` space. The coarse grid 
 
 Under the strict Protocol 002 common candidate family, the eligible set was empty at every coordinate: 15/15 `no_domain_selected`.
 
-This is a negative result for the declared grid/family, not evidence that genetic warning failed and not proof that an evaluable domain cannot exist elsewhere.
+Subsequent warning-blind refinement has so far failed to recover R4 in both tested transition frontiers:
+
+- Phase A: **0/10 R4** at `kappa_mu=0.05`, `p_star=0.775–0.875`, across two predeclared closest non-transition anchors;
+- Phase B: **0/4 R4** at `kappa_mu=0.35`, `p_star=0.30–0.45`, with one ecological/deterioration anchor fixed across the entire historical rapid-to-persistence bracket.
+
+Phase B is especially informative because pooled loss moves smoothly through intermediate values while every interior cell remains R3 under the all-seed rule. At `p_star=0.35`, pooled loss was 0.476 but seed rates ranged 0–0.75; at `0.40`, pooled loss was 0.304 but two seeds showed zero loss.
 
 ### Conditions
 
 `R4` event-regime evaluability requires every one of five seed blocks to show post-baseline functional-loss frequency in `[0.30,0.70]`, without access to genetic-warning fields.
 
-### Boundary now being mapped
+The current Phase A/B seed rates use five replicates per seed. Therefore the next question is whether the apparent R3 frontier persists under higher seed-block replication rather than whether warning itself succeeds.
 
-Whether R4 is absent structurally or was missed because the original recurrent-transition grid crossed a narrow rapid-to-persistence frontier too coarsely.
+### Boundary now being checked
 
-The first refinement is prospectively fixed at `kappa_mu=0.05`, `p_star=0.775–0.875`, with two non-transition anchors selected from the warning-blind candidates closest to the strict band.
+Phase C is prospectively fixed at the two central matched Phase-B cells (`p_star=0.35,0.40`), using five fresh seeds and 20 replicates per seed, with at least 10 baseline-eligible trajectories required per seed for classification.
+
+If both cells become R4-highrep, a matched event-regime interval will finally exist and can be frozen for a later warning-validation protocol. If R3 persists, event-regime reproducibility itself becomes the recovered finite frontier condition.
 
 ## H-MD-3b — direction-only effect on warning performance
 
 ### Recovered
 
-No matched finite direction-only warning effect has yet been identified, because Protocol 002 supplied no matched R4 domain. Protocol 003 recovered evaluability only by separately recalibrating non-matched eco-genetic domains and therefore provides a portability result rather than a single-factor causal estimate.
+No matched finite direction-only warning effect has yet been identified, because Protocol 002, Phase A and Phase B supplied no matched R4 domain. Protocol 003 recovered evaluability only by separately recalibrating non-matched eco-genetic domains and therefore provides a portability result rather than a single-factor causal estimate.
 
 ### Theoretical constraints already recovered
 
@@ -157,4 +169,4 @@ C3: does genetic change occur before that loss?        H2 / H-MD-3b
 C4: is that warning portable across regimes?           Protocol 003 / future tests
 ```
 
-This nested condition structure is the primary object to recover before final manuscript framing.
+The current scientific bottleneck is now precisely C2, not warning threshold selection. That is the condition to resolve before final manuscript framing.
