@@ -7,7 +7,7 @@ This directory contains both **current scientific sources** and **historical pro
 Read these first:
 
 1. [`HYPOTHESIS_PROGRAM.md`](HYPOTHESIS_PROGRAM.md) — current H-MD-1 / H-MD-2 / H-MD-3a / H-MD-3b definitions and recovery status.
-2. [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) — exact Type T one-step diversity identities: non-universal direction→heterozygosity sign, direction-independent contraction of the `H_gamma-H_alpha` gap, and equal fixed-weight `p_star` derivatives of `H_alpha` and `H_gamma`.
+2. [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) — exact Type T recurrent-transition identities, including non-universal direction→heterozygosity sign, direction-independent contraction of the `H_gamma-H_alpha` gap, and local function-support/diversity decoupling.
 3. [`DECISION_LOG.md`](DECISION_LOG.md) — chronology of protocol declarations and the final interpretation boundary.
 4. `PROTOCOL_002_*` scientific protocol/audit documents — common-grid source reconstruction, common deterioration family, and strict no-domain selection.
 5. [`PROTOCOL_003_AMENDMENT_001.md`](PROTOCOL_003_AMENDMENT_001.md) and [`PROTOCOL_003_AMENDMENT_002.md`](PROTOCOL_003_AMENDMENT_002.md) — separately declared evaluability recovery.
@@ -30,9 +30,20 @@ The older H2-R-AS framing belongs here. It motivated the project but is not the 
 
 - [`INHERITED_H3_EFFECT_SIZE_AUDIT.md`](INHERITED_H3_EFFECT_SIZE_AUDIT.md) documents manuscript-facing summaries derived from the locked parent evidence. It does not make those parent results extension hypotheses.
 
-## Implementation notes
+## Implementation and public-API boundary
 
-Files describing smoke adapters, minimal fixtures, runner wiring, or batch mechanics document reproducibility and development constraints. They support execution but do not define scientific conclusions.
+Files describing smoke adapters, minimal fixtures, runner wiring, source examples, and batch mechanics remain in explicit submodules for historical reproduction. They support execution but do not define the current scientific API.
+
+The package root `eco_genetic_warning_extensions` intentionally exposes only the recurrent-transition/diversity primitives used by the current science:
+
+- `AsymmetricMutation`
+- `MutationCoordinates`
+- `heterozygosity`
+- `alpha_gamma_diversity`
+- `mutate_frequency`
+- `primary_phase_grid`
+
+Historical fixtures and protocol helpers must be imported from their explicit submodules. This prevents development scaffolding from being mistaken for the current scientific surface while preserving reproducibility.
 
 ## Current recovery status
 
@@ -40,8 +51,8 @@ Files describing smoke adapters, minimal fixtures, runner wiring, or batch mecha
 H-MD-1   supported, finite Type S
 H-MD-2   supported, finite Type S
 H-MD-3a  negative / recovered: no eligible common-family validation domain at 15/15 coordinates
-H-MD-3b  matched finite effect unresolved
-          + Type T boundaries recovered for the recurrent-transition diversity step
+H-MD-3b  matched finite effect bounded unresolved
+          + Type T diversity/support boundaries recovered
 Protocol 003  separate portability result across non-matched recalibrated domains
 ```
 
