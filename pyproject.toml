@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "eco-genetic-warning-extensions"
 version = "0.1.0"
-description = "Protocol-locked extensions for finite eco-genetic warning models"
+description = "Recurrent-transition tests of high-function-state feasibility, functional-loss regimes, and genetic-warning evaluability"
 readme = "README.md"
 requires-python = ">=3.11"
 
