@@ -58,8 +58,6 @@ Protocol 002 Stage I used the common `3 kappa_mu × 5 p_star` grid with independ
 
 **Supported as finite Type S evidence for the declared closure.**
 
-This is a clean common-grid extension result.
-
 ## H-MD-2 — recurrent-transition coordinates change the functional-loss regime
 
 ### Proposition
@@ -88,8 +86,6 @@ The key result is upstream of warning: the recurrent-transition manipulation reo
 
 For a matched warning comparison to be available under Protocol 002, each recurrent-transition coordinate must contain at least one complete candidate with all five seed-block trait-loss frequencies in the preregistered intermediate-risk interval `[0.30, 0.70]`.
 
-This is the evaluability component implicit in the original H-MD-3 question.
-
 ### Exact finite certificate
 
 For coordinate \(\theta\), define
@@ -100,29 +96,21 @@ E_\theta = \left\{c : 0.30 \le r_{c,b} \le 0.70\;\;\text{for every seed block }b
 
 where \(r_{c,b}\) is the realised trait-loss frequency for candidate \(c\) in seed block \(b\).
 
-The Protocol 002 selector returns a domain for coordinate \(\theta\) if and only if \(E_\theta\neq\varnothing\). This is implemented directly by the locked calibration selector; warning fields are not involved.
-
-The completed Stage II artifacts show:
+The Protocol 002 selector returns a domain for coordinate \(\theta\) if and only if \(E_\theta\neq\varnothing\). The completed Stage II artifacts show:
 
 - eligible candidate count: 0;
 - selected domain count: 0;
 - `no_domain_selected`: 15/15 coordinates.
 
-Therefore
-
-\[
-E_\theta=\varnothing
-\]
-
-for every tested coordinate under the declared common candidate family and strict gate.
+Therefore \(E_\theta=\varnothing\) for every tested coordinate under the declared common candidate family and strict gate.
 
 ### Status
 
 **Negative result, recovered for the declared finite grid and candidate family.**
 
-The proposition that every coordinate supplies an eligible common-family warning domain is false in this finite design. This is not a claim that no such domain can exist under any other deterioration family or biological model.
+The proposition that every coordinate supplies an eligible common-family warning domain is false in this finite design. This is not a claim that no such domain can exist under another deterioration family or biological model.
 
-This result is stronger than “calibration happened to fail”: the stored finite calibration table plus the preregistered gate form a complete no-domain certificate for Protocol 002.
+The stored finite calibration table plus the preregistered gate therefore form a complete Protocol 002 **no-domain certificate**, not merely an unsuccessful calibration search.
 
 ## H-MD-3b — direction-only genetic-warning effect conditional on matched evaluability
 
@@ -130,13 +118,58 @@ This result is stronger than “calibration happened to fail”: the stored fini
 
 Conditional on matched warning-validation domains existing under a common deterioration family, recurrent-transition direction changes warning availability, lead/lag ordering, or lead time.
 
-### Status of the matched test
+### Empirical status
 
-**Unresolved / not identified.**
+**Unresolved / not identified by the matched common-grid experiment.**
 
-Protocol 002 did not supply the matched evaluable domains required to define this contrast. Because H-MD-3a failed, the intended common-grid Stage III estimand was unavailable. A null result cannot be assigned, because the comparison itself was not instantiated.
+Protocol 002 did not supply the matched evaluable domains required to instantiate this contrast. Because H-MD-3a failed, a null or directional effect cannot be assigned from Protocol 002.
 
-This is the only part of the current H-MD chain that remains neither supported nor rejected by a matched common-grid experiment.
+### Exact theoretical boundary: transition direction has no universal sign on heterozygosity
+
+For a single allele frequency, expected heterozygosity is
+
+\[
+H(p)=2p(1-p).
+\]
+
+Let \(s=p_\mu^*\), \(k=\kappa_\mu\), and
+
+\[
+M(p)=p+k(s-p).
+\]
+
+Then the exact one-step change is
+
+\[
+H(M(p))-H(p)
+=2k(s-p)\left[1-2p-k(s-p)\right].
+\]
+
+Equivalently,
+
+\[
+\frac{\partial H(M(p))}{\partial s}
+=2k\left[1-2M(p)\right].
+\]
+
+Therefore increasing `p_star` can **increase or decrease heterozygosity depending on the current allele-frequency state**. The sign switches at `M(p)=0.5`: movement toward 0.5 raises heterozygosity; movement away from 0.5 lowers it.
+
+This exact result is implemented and tested in `mutation_coordinates.py`.
+
+### What this theoretical result does and does not recover
+
+It **does recover a Type T boundary**:
+
+> recurrent-transition direction alone does not imply a universal signed change in genetic diversity without additional state constraints.
+
+It does **not** prove the dynamic H-MD-3b warning-ordering hypothesis true or false, because warning first passage also depends on selection, drift, demography, interaction state, functional-loss timing, and censoring.
+
+Thus H-MD-3b is no longer an unexplained loose end. The repository now has both:
+
+1. an empirical identification failure — no matched common-grid validation domain;
+2. a theoretical non-monotonicity boundary — direction alone has no universal sign on heterozygosity.
+
+A future clean H-MD-3b test would need both a matched evaluable domain and explicit constraints on the allele-frequency state/path if a directional sign is to be predicted beforehand.
 
 ## Protocol 003 — separate recovery of evaluability, not H-MD-3b recovery
 
@@ -166,16 +199,17 @@ H2-R-AS was the original Protocol 001 special-case formulation:
 \quad x\in\{\alpha,\gamma\},\quad r\in\{0.05,0.10,0.20\}.
 \]
 
-It remains historical motivation, not the final organising hypothesis. The completed evidence showed that source feasibility and loss-regime structure change before warning reliability can be fairly compared, so H-MD-1/H-MD-2/H-MD-3a/H-MD-3b is the clearer final logic.
+It remains historical motivation, not the final organising hypothesis. The completed evidence showed that source feasibility and loss-regime structure change before warning reliability can be fairly compared.
 
 ## Recovery table
 
-| item | empirical object | status | what is actually concluded |
+| item | evidence object | status | actual conclusion |
 |---|---|---|---|
 | H-MD-1 | common-grid source reconstruction | **supported** | source feasibility changes across recurrent-transition coordinates |
 | H-MD-2 | common-family Stage II loss outcomes | **supported** | functional-loss regime changes across recurrent-transition coordinates |
 | H-MD-3a | strict all-seed eligibility sets `E_theta` | **negative / recovered** | no matched common-family warning domain exists in the tested grid/family |
-| H-MD-3b | matched common-grid warning contrast | **unresolved** | direction-only warning effect is not identified |
+| H-MD-3b empirical | matched common-grid warning contrast | **unresolved** | direction-only warning effect is not identified |
+| H-MD-3b theory | exact one-step `H(M(p))-H(p)` algebra | **Type T boundary recovered** | no universal direction→heterozygosity sign exists without state constraints |
 | Protocol 003 | two independently recalibrated validation domains | **portability result** | warning availability/ordering are not invariant across the two domains; cause is not isolated to direction |
 
 ## Protocol map
@@ -193,13 +227,14 @@ Permitted:
 - recurrent-transition coordinates reorganise high-function source feasibility;
 - recurrent-transition coordinates reorganise the functional-loss regime under the common deterioration family;
 - the declared common candidate family contains no eligible warning-validation domain at any of the 15 coordinates;
-- after separate warning-blind recalibration, warning availability and ordering differ across two non-matched eco-genetic domains;
-- potential function, realised function, population persistence, genetic diversity, and warning observability are distinct states.
+- recurrent-transition direction alone has no universal one-step sign on heterozygosity without state constraints;
+- after separate warning-blind recalibration, warning availability and ordering differ across two non-matched eco-genetic domains.
 
 Prohibited:
 
 - directional transition universally causes collapse or rescue;
 - H-MD-3b is false because Protocol 002 selected no domain;
+- the one-step heterozygosity theorem determines full warning first-passage ordering;
 - Protocol 003 identifies a direction-only warning effect;
 - genetic diversity always warns before function is lost;
 - `p_star` is an empirical mutation-rate estimate;
@@ -211,13 +246,12 @@ Prohibited:
 ```text
 parent H1/H3 mechanism
 → change recurrent-transition closure
-→ H-MD-1: can the high-function source exist?
-→ H-MD-2: what functional-loss regime is generated?
-→ H-MD-3a: does a matched warning-validation domain exist?
-   → here: no, under the declared common family
-→ H-MD-3b: if matched domains exist, does direction change warning performance?
-   → here: unresolved
-→ Protocol 003: separately recalibrated portability test
+→ H-MD-1: can the high-function source exist?               supported
+→ H-MD-2: what functional-loss regime is generated?        supported
+→ H-MD-3a: does a matched warning-validation domain exist?  no, finite negative result
+→ H-MD-3b: does direction itself change warning?            empirically unresolved
+      └─ theory: no universal direction→H sign exists without state constraints
+→ Protocol 003: separately recalibrated portability result
 ```
 
-The main scientific advance is therefore not a universal warning threshold. It is a resolved ordering of questions: **source feasibility, functional-loss regime, and matched-domain evaluability must be established before a direction-only warning effect can be identified.**
+The scientific repository therefore closes most of the hypothesis chain without forcing a binary answer where the estimand was not instantiated: **H-MD-1 and H-MD-2 are supported, H-MD-3a is negatively resolved, and H-MD-3b has a recovered theoretical boundary but no matched finite causal estimate.**
