@@ -31,6 +31,14 @@ PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED = 10
 PHASE_C_RAMP_GENERATIONS = 30
 PHASE_C_HOLD_GENERATIONS = 90
 
+PHASE_D_KAPPA_MU = 0.35
+PHASE_D_P_STAR = (0.325, 0.350, 0.375)
+PHASE_D_MASTER_SEEDS = (20290310, 20290311, 20290312, 20290313, 20290314)
+PHASE_D_REPLICATES_PER_SEED = 20
+PHASE_D_MIN_BASELINE_ELIGIBLE_PER_SEED = 10
+PHASE_D_RAMP_GENERATIONS = 30
+PHASE_D_HOLD_GENERATIONS = 90
+
 
 @dataclass(frozen=True)
 class FrontierAnchor:
@@ -49,6 +57,7 @@ PHASE_B_ANCHOR = FrontierAnchor(
     "B1", area_reference=1.0, interaction_kappa=4.5, normalised_barrier_increase=0.30
 )
 PHASE_C_ANCHOR = PHASE_B_ANCHOR
+PHASE_D_ANCHOR = PHASE_B_ANCHOR
 
 
 @dataclass(frozen=True)
@@ -78,6 +87,19 @@ class FrontierRefinementCell:
         }
 
 
+def _cells(*, kappa_mu: float, p_stars: tuple[float, ...], anchor: FrontierAnchor, ramp: int, hold: int) -> tuple[FrontierRefinementCell, ...]:
+    return tuple(
+        FrontierRefinementCell(
+            cell_index=index,
+            anchor=anchor,
+            coordinate=MutationCoordinates(kappa_mu=kappa_mu, p_star=p_star),
+            ramp_generations=ramp,
+            hold_generations=hold,
+        )
+        for index, p_star in enumerate(p_stars)
+    )
+
+
 def phase_a_cells() -> tuple[FrontierRefinementCell, ...]:
     cells: list[FrontierRefinementCell] = []
     for anchor in PHASE_A_ANCHORS:
@@ -95,29 +117,15 @@ def phase_a_cells() -> tuple[FrontierRefinementCell, ...]:
 
 
 def phase_b_cells() -> tuple[FrontierRefinementCell, ...]:
-    return tuple(
-        FrontierRefinementCell(
-            cell_index=index,
-            anchor=PHASE_B_ANCHOR,
-            coordinate=MutationCoordinates(kappa_mu=PHASE_B_KAPPA_MU, p_star=p_star),
-            ramp_generations=PHASE_B_RAMP_GENERATIONS,
-            hold_generations=PHASE_B_HOLD_GENERATIONS,
-        )
-        for index, p_star in enumerate(PHASE_B_P_STAR)
-    )
+    return _cells(kappa_mu=PHASE_B_KAPPA_MU, p_stars=PHASE_B_P_STAR, anchor=PHASE_B_ANCHOR, ramp=PHASE_B_RAMP_GENERATIONS, hold=PHASE_B_HOLD_GENERATIONS)
 
 
 def phase_c_cells() -> tuple[FrontierRefinementCell, ...]:
-    return tuple(
-        FrontierRefinementCell(
-            cell_index=index,
-            anchor=PHASE_C_ANCHOR,
-            coordinate=MutationCoordinates(kappa_mu=PHASE_C_KAPPA_MU, p_star=p_star),
-            ramp_generations=PHASE_C_RAMP_GENERATIONS,
-            hold_generations=PHASE_C_HOLD_GENERATIONS,
-        )
-        for index, p_star in enumerate(PHASE_C_P_STAR)
-    )
+    return _cells(kappa_mu=PHASE_C_KAPPA_MU, p_stars=PHASE_C_P_STAR, anchor=PHASE_C_ANCHOR, ramp=PHASE_C_RAMP_GENERATIONS, hold=PHASE_C_HOLD_GENERATIONS)
+
+
+def phase_d_cells() -> tuple[FrontierRefinementCell, ...]:
+    return _cells(kappa_mu=PHASE_D_KAPPA_MU, p_stars=PHASE_D_P_STAR, anchor=PHASE_D_ANCHOR, ramp=PHASE_D_RAMP_GENERATIONS, hold=PHASE_D_HOLD_GENERATIONS)
 
 
 def phase_a_manifest() -> dict[str, object]:
@@ -169,6 +177,23 @@ def phase_c_manifest() -> dict[str, object]:
         "master_seeds": list(PHASE_C_MASTER_SEEDS),
         "replicates_per_seed": PHASE_C_REPLICATES_PER_SEED,
         "minimum_baseline_eligible_per_seed": PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }
+
+
+def phase_d_manifest() -> dict[str, object]:
+    cells = phase_d_cells()
+    return {
+        "protocol": "warning-blind R4 width refinement Phase D",
+        "phase_c_r4_replay": 0.35,
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_D_MASTER_SEEDS) * PHASE_D_REPLICATES_PER_SEED,
+        "planned_attempts": len(cells) * len(PHASE_D_MASTER_SEEDS) * PHASE_D_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_D_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_D_REPLICATES_PER_SEED,
+        "minimum_baseline_eligible_per_seed": PHASE_D_MIN_BASELINE_ELIGIBLE_PER_SEED,
         "warning_fields_available": False,
         "diversity_fields_available": False,
         "cells": [cell.identity() for cell in cells],
