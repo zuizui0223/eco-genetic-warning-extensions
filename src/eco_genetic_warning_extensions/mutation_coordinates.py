@@ -94,6 +94,25 @@ class MutationCoordinates:
             raise ValueError("frequency must lie in [0, 1]")
         return self.low_to_high * (1.0 - p) + self.high_to_low * p
 
+    def high_state_support_margin(self, frequency: float, post_transition_threshold: float) -> float:
+        """Return the local high-state allele support margin ``M(p)-p_c``.
+
+        This is a local allele-state condition only. A positive value does not
+        by itself prove realised ecological function in the full life cycle.
+        """
+        threshold = float(post_transition_threshold)
+        if not 0.0 <= threshold <= 1.0:
+            raise ValueError("post_transition_threshold must lie in [0, 1]")
+        return self.apply(frequency) - threshold
+
+    def high_state_support_margin_pstar_derivative(self) -> float:
+        """Return ``d[M(p)-p_c]/d p_star = kappa_mu > 0``.
+
+        At fixed pre-transition state and threshold, increasing ``p_star`` always
+        increases the local post-transition high-state support margin.
+        """
+        return self.kappa_mu
+
     def pre_mutation_threshold(self, post_mutation_threshold: float) -> float:
         """Return p needed for M(p) >= p_c, for ``kappa_mu < 1``."""
         threshold = float(post_mutation_threshold)
@@ -102,6 +121,16 @@ class MutationCoordinates:
         if self.kappa_mu == 1.0:
             raise ValueError("pre-mutation threshold is undefined when kappa_mu is 1")
         return (threshold - self.kappa_mu * self.p_star) / self.contraction_factor
+
+    def pre_mutation_threshold_pstar_derivative(self) -> float:
+        """Return ``d theta/d p_star = -kappa_mu/(1-kappa_mu)``.
+
+        The pre-transition frequency needed to reach a fixed post-transition
+        high-state threshold decreases monotonically with ``p_star``.
+        """
+        if self.kappa_mu == 1.0:
+            raise ValueError("pre-mutation threshold derivative is undefined when kappa_mu is 1")
+        return -self.kappa_mu / self.contraction_factor
 
     def heterozygosity_after_transition(self, frequency: float) -> float:
         return heterozygosity(self.apply(frequency))
@@ -121,6 +150,28 @@ class MutationCoordinates:
     def heterozygosity_pstar_derivative(self, frequency: float) -> float:
         """Return ``d H(M(p))/d p_star = 2*kappa_mu*(1-2*M(p))``."""
         return 2.0 * self.kappa_mu * (1.0 - 2.0 * self.apply(frequency))
+
+    def function_diversity_direction_relation(
+        self,
+        frequency: float,
+        post_transition_threshold: float,
+    ) -> str:
+        """Classify the local direction of support-margin and diversity effects.
+
+        Increasing ``p_star`` always raises the high-state support margin. The
+        diversity derivative is positive below post-transition frequency 0.5,
+        zero at 0.5, and negative above 0.5. Therefore the two effects are
+        ``aligned``, ``support_only``, or ``opposed`` respectively.
+        """
+        # Validate both scientific inputs even though the threshold does not
+        # enter the derivative sign itself.
+        self.high_state_support_margin(frequency, post_transition_threshold)
+        diversity_derivative = self.heterozygosity_pstar_derivative(frequency)
+        if diversity_derivative > 0.0:
+            return "aligned"
+        if diversity_derivative < 0.0:
+            return "opposed"
+        return "support_only"
 
     def diversity_after_transition(
         self,
