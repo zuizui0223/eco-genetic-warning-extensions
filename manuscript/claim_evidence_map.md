@@ -6,7 +6,7 @@
 |---|---|
 | The manuscript integrates a theorem-guided first phase and an independently declared recurrent-transition extension as one study. | Keep the two repositories as separate computational provenance units; do not pool their trajectories. |
 | The first phase provides the analytical interaction mechanism, locked H1/H3 fragmentation campaign, and inherited symmetric warning benchmark. | `eco-genetic-criticality` canonical scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc` and final evidence ledger. |
-| The extension reconstructs sources, maps common-grid loss regimes, performs separately declared warning-blind recalibration/validation, and derives exact recurrent-transition diversity/support identities. | Protocol 002/003 documents, amendments, locked artifacts, fresh validation seeds, and `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`. |
+| The extension reconstructs sources, maps common-grid loss regimes, recovers a narrow warning-blind R4 event regime, performs separately declared Protocol 003 portability validation, and derives exact recurrent-transition identities. | Protocol 002/003 documents, Phases A–D frontier artifacts, locked Stage III artifacts, and exact theory documents/tests. |
 
 ## Permitted first-phase claims
 
@@ -23,13 +23,16 @@
 |---|---|---|---|
 | S1 | At fixed `kappa_mu`, recurrent-transition direction changes high-state source feasibility. | Common Stage I coordinate grid; 3,375 source attempts and 2,269 supported projections. | supported for declared closure |
 | S2 | The common deterioration family partitions candidates into rapid-loss, persistence, and seed-heterogeneous regimes. | Stage II complete candidate rates and regime audit. | supported for declared closure |
-| S3 | No Protocol 002 coordinate had an eligible warning-validation domain under the strict all-seed rule. | 648 complete candidates, zero eligible, 15 `no_domain_selected`. | negative/recovered for declared grid/family |
+| S3 | No Protocol 002 coordinate had an eligible warning-validation domain under the original strict all-seed rule. | 648 complete candidates, zero eligible, 15 `no_domain_selected`. | negative/recovered for original coarse grid/family |
 | S4 | Protocol 003 used a separately declared, warning-blind amendment that expanded the candidate family and replaced the Protocol 002 all-seed gate before warning values were calculated. | `PROTOCOL_003_AMENDMENT_001.md` and `PROTOCOL_003_AMENDMENT_002.md`. | documented design fact |
 | S5 | The two Stage III validation domains differ in recurrent-transition parameters, `A_ref`, interaction-feedback `kappa`, barrier increase, and calibrated horizon. | Locked confirmation cells and Stage III domain identities. | documented design fact |
 | S6 | Warning availability and ordering differ between the recalibrated symmetric domain and directional calibrated domain. | Locked Stage III trajectories plus trajectory-cluster secondary audit. | supported as a calibrated-domain portability result |
 | S7 | Stage III timing point estimates are schedule-dependent; direct between-domain bootstrap differences are endpoint-dependent for absolute time and include zero for all six full-horizon-normalized contrasts. | Immutable Stage III trajectories, conventional-median audit, and `stage3_between_domain_differences.csv`. | supported uncertainty / identification statement |
 | S8 | Censoring and warning availability are part of the finite ecological outcome rather than discarded missing data. | Full 100-attempt endpoint denominators and cumulative event-incidence summaries. | supported as bounded interpretation |
-| S9 | Under the strict common deterioration family, no matched validation domain was available at any of the 15 coordinates; coordinate-specific recalibration restored evaluability at the cost of single-factor identification. | Protocol 002 no-domain audit plus separately declared Protocol 003 amendments. | supported design/biology boundary |
+| S9 | Under the original strict common deterioration family, no matched validation domain was available at any of the 15 coarse coordinates; Protocol 003 restored evaluability only by separately recalibrating non-matched domains. | Protocol 002 no-domain audit plus Protocol 003 amendments. | historical design/biology boundary |
+| S10 | Warning-blind frontier refinement shows that R4 event-regime evaluability is not structurally absent: at fixed `A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, `p_star=0.35`, horizon 120 and barrier increase 0.30, all five independent seed blocks fell in `[0.30,0.70]` in two fresh high-rep campaigns. | Phase C and Phase D summaries/artifacts. | positive finite condition recovery |
+| S11 | The recovered R4 region is narrow along `p_star` at the tested resolution: Phase D neighbors `0.325` and `0.375` were R3-highrep, and Phase C `0.40` was also R3-highrep. | Phase C/D high-rep summaries. | finite boundary result |
+| S12 | Intermediate pooled trait-loss probability is not sufficient to define warning evaluability; seed-block reproducibility is an additional condition. | Phase B pooled gradient plus Phase C/D block-level classifications. | supported condition/estimand distinction |
 
 ## Permitted exact recurrent-transition claims
 
@@ -37,9 +40,10 @@ These are Type T algebraic boundaries for the declared affine transition step wi
 
 | ID | permitted claim | required evidence | status |
 |---|---|---|---|
-| T1 | Increasing `p_star` has no universal signed effect on heterozygosity: `dH(M(p))/dp_star = 2*kappa_mu*(1-2M(p))`, so the sign changes at `M(p)=0.5`. | Exact derivation in `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`; executable tests in `tests/test_mutation_coordinates.py`. | Type T |
+| T1 | Increasing `p_star` has no universal signed effect on heterozygosity: `dH(M(p))/dp_star = 2*kappa_mu*(1-2M(p))`, so the sign changes at `M(p)=0.5`. | `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md`; executable tests in `tests/test_mutation_coordinates.py`. | Type T |
 | T2 | With fixed patch weights and a common affine transition, `H_gamma' - H_alpha' = (1-kappa_mu)^2 (H_gamma-H_alpha)`, so one-step contraction of the alpha–gamma gap depends on transition strength but not `p_star`. | Same exact derivation and executable tests. | Type T |
 | T3 | Increasing `p_star` always strengthens the local high-associated allele support margin `M(p)-p_c`, but when `M(p)>0.5` it decreases heterozygosity; genetic diversity is therefore not a monotone proxy for this local functional-support condition. | Same exact derivation and executable tests. | Type T, local support boundary |
+| T4 | For a pre-state below a local high-state threshold, stronger `kappa_mu` lowers the `p_star` required to reach the same post-transition support boundary. | `docs/RECURRENT_TRANSITION_SUPPORT_FRONTIER.md`; executable frontier tests. | Type T, local support frontier |
 
 ## Locked and corrected numerical facts
 
@@ -61,8 +65,15 @@ These are Type T algebraic boundaries for the declared affine transition step wi
 | Protocol 002 batches | 810 |
 | Protocol 002 complete five-seed candidates | 648 |
 | Protocol 002 rapid-loss / heterogeneous / persistence candidates | 322 / 84 / 242 |
-| Protocol 002 eligible candidates | 0 |
-| Protocol 002 no-domain coordinates | 15 |
+| original Protocol 002 eligible candidates | 0 |
+| original Protocol 002 no-domain coordinates | 15 |
+| Phase A new attempts / R4 / R3 / R2 | 250 / 0 / 6 / 4 cells |
+| Phase B pooled loss across p_star 0.30 / 0.35 / 0.40 / 0.45 | 0.739 / 0.476 / 0.304 / 0.095 |
+| Phase C p_star=0.35 pooled loss / regime | 0.505 / R4-highrep |
+| Phase C p_star=0.40 pooled loss / regime | 0.304 / R3-highrep |
+| Phase D p_star=0.325 pooled loss / regime | 0.663 / R3-highrep |
+| Phase D p_star=0.350 pooled loss / regime | 0.609 / R4-highrep |
+| Phase D p_star=0.375 pooled loss / regime | 0.391 / R3-highrep |
 | Stage III attempted trajectories | 100 + 100 |
 | recalibrated symmetric domain completed trajectories | 82 |
 | directional calibrated domain completed trajectories | 91 |
@@ -80,33 +91,33 @@ These are Type T algebraic boundaries for the declared affine transition step wi
 | directional H-gamma 20% final warning / trait-loss incidence | 41/81 (0.506) / 52/81 (0.642) |
 | Stage III calibrated horizons | 240 vs 120 generations |
 
-The historical Stage III source artifacts used the upper middle order statistic for even `n` while calling it a median. The source artifacts remain immutable; publication timing values come from the post-review secondary audit, which uses the conventional median. Repository-wide inspection found the historical definition only in that Stage III timing-summary path. The paired fragmentation reductions were calculated separately from locked parent outcomes and are not affected by this correction.
+The historical Stage III source artifacts used the upper middle order statistic for even `n` while calling it a median. The source artifacts remain immutable; publication timing values come from the post-review secondary audit, which uses the conventional median. The paired fragmentation reductions were calculated separately and are unaffected.
 
 ## Prohibited claims
 
-- Recurrent-transition direction alone caused the Stage III warning-ordering difference.
+- The original 15/15 `no_domain_selected` result proves that an evaluable event regime cannot exist.
+- The refined R4 condition proves that genetic warning succeeds there; warning fields have not been evaluated in Phases A–D.
+- R4 is a broad or contiguous `p_star` interval; only `p_star=0.35` reproduced at the tested high-rep resolution.
+- Finer `p_star` tuning is justified merely to manufacture adjacent R4 cells.
+- Recurrent-transition direction alone caused the historical Stage III warning-ordering difference.
 - Recurrent-transition direction alone shortened or lengthened intervention time.
 - The horizon-normalized Stage III timing difference is separated at any of the six endpoints.
 - All six absolute Stage III timing contrasts are separated.
-- Overlap or non-overlap of marginal bootstrap intervals is a test of the between-domain difference.
-- Stage III changed only one biological parameter.
-- The Stage III domains are matched except for `p_star`.
+- Stage III changed only one biological parameter or is matched except for `p_star`.
 - Protocol 003 retained the Protocol 002 eligibility rule unchanged.
-- Protocol 003 never expanded its candidate family.
 - Directional transition universally causes ecological collapse or rescue.
 - Genetic diversity warning universally fails or succeeds under directional transition.
 - `p_star` is an empirically estimated mutation rate.
-- Protocol 003 changes the historical Protocol 002 `no_domain_selected` result.
 - Endpoint-level comparisons are independent biological replicates.
 - Bootstrap intervals are population-level confidence intervals.
 - Two calibrated domains constitute a complete phase diagram of warning performance.
 - The fragmentation sensitivity is a universal monotone dose-response.
 - `K=4` is the observed finite fragmentation threshold.
-- The post-review fragmentation sensitivity replaces the historical H1/H3 evidence ledger.
 - Increasing `p_star` universally increases or universally decreases heterozygosity.
 - Lower genetic diversity necessarily means poorer ecological function or weaker local high-state support.
 - The local Type T support–diversity result determines full stochastic warning first-passage ordering.
-- The fixed-weight one-step alpha/gamma identities remain exact after arbitrary demographic reweighting, drift or selection without re-evaluation.
+- The fixed-weight one-step identities remain exact after arbitrary demographic reweighting, drift or selection without re-evaluation.
+- The current simulator's `migration_rate` should be interpreted as demographic, pollinator or seed movement; it is an allele-frequency mixing parameter.
 
 ## Story-to-evidence mapping
 
@@ -116,20 +127,23 @@ The historical Stage III source artifacts used the upper middle order statistic 
 | Fragmentation creates an eco-genetic vulnerability bridge | P1; P4 is supplementary robustness |
 | Genetic erosion can warn in one calibrated regime but not by a universal absolute threshold | P2 + P3 |
 | Recurrent transitions change source feasibility | S1 |
-| Recurrent transitions change the loss-generating regime and can remove matched evaluability | S2 + S3 + S9 |
-| Recalibration restores evaluability but warning is not fully portable | S4–S8 |
-| Diversity is not a monotone proxy for local functional support | T1–T3 |
+| Recurrent transitions change the loss-generating regime | S2 |
+| A coarse common grid can miss the narrow region where loss is reproducible and nondegenerate | S3 + S10–S12 |
+| Recalibration across non-matched domains yields bounded portability differences | S4–S8 |
+| Diversity is not a monotone proxy for local functional support | T1–T4 |
 
 ## Required figure-to-claim mapping
+
+Current publication figures remain tied to the locked manuscript campaign. Frontier-condition Phases A–E are **not** silently inserted into those figures before the final manuscript architecture is revised.
 
 | figure | content | claims supported |
 |---|---|---|
 | Figure 1 | integrated fragmentation-to-warning causal architecture | conceptual mechanism; no numerical effect size |
 | Figure 2 | common-grid source feasibility | S1 |
-| Figure 3 | common-grid loss regimes plus 648-candidate composition | S2, S3, S9 |
+| Figure 3 | original common-grid loss regimes plus 648-candidate composition | S2, S3, S9 |
 | Figure 4 | cumulative warning and functional-loss incidence with administrative censoring | S6, S8 |
 | Figure 5 | full attempted denominator: source failure, ineligibility, censoring, lead/tie/lag | S6, S8 |
 | Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7; secondary conditional diagnostic |
 | Supplementary Figure S1 | fresh fixed-area paired fragmentation gradient | P4 |
 
-Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures. The T1–T3 claims are exact local transition identities and must retain their stated scope.
+Every finite numerical claim must retain the declared Type S closure. T1–T4 are exact local identities only within their stated assumptions.
