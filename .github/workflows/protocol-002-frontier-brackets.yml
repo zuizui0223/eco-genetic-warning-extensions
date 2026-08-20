@@ -1,14 +1,6 @@
 name: Protocol 002 warning-blind frontier brackets
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "src/eco_genetic_warning_extensions/protocol002_frontier_brackets.py"
-      - "scripts/analyze_protocol002_frontier_brackets.py"
-      - "tests/test_protocol002_frontier_brackets.py"
-      - "docs/RECURRENT_TRANSITION_SUPPORT_FRONTIER.md"
-      - ".github/workflows/protocol-002-frontier-brackets.yml"
   workflow_dispatch:
 
 permissions:
