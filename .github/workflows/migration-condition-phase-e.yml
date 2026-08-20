@@ -1,14 +1,6 @@
 name: Warning-blind migration condition Phase E
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "src/eco_genetic_warning_extensions/migration_condition_phase_e.py"
-      - "src/eco_genetic_warning_extensions/migration_condition_phase_e_runner.py"
-      - "scripts/run_migration_condition_phase_e.py"
-      - "tests/test_migration_condition_phase_e.py"
-      - ".github/workflows/migration-condition-phase-e.yml"
   workflow_dispatch:
 
 permissions:
