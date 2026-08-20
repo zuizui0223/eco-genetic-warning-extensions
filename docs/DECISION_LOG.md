@@ -26,28 +26,31 @@
 
 ## 2026-08-20 — final paper-level hypothesis chain fixed
 
-**Decision.** The completed repository will no longer be organised around H2-R-AS as its headline hypothesis. The final paper-level chain is:
+**Decision.** The completed repository is no longer organised around H2-R-AS as its headline hypothesis. The current chain is:
 
 ```text
-H-MD-1  recurrent-transition direction changes high-function source feasibility
--> H-MD-2  recurrent-transition direction changes the realised functional-loss regime
--> H-MD-3  genetic-warning reliability can only be compared where an evaluable loss regime exists
+H-MD-1   source feasibility
+-> H-MD-2   realised functional-loss regime
+-> H-MD-3a  common-family warning-domain evaluability
+-> H-MD-3b  direction-only warning effect conditional on matched evaluability
 ```
 
-**Reason.** The completed common-grid evidence is strongest upstream of warning itself. Protocol 002 directly identified structured differences in source feasibility and loss-regime class, but selected no warning-validation domain at any of the 15 recurrent-transition coordinates. Therefore the original warning-ordering question was not uniformly evaluable under the shared deterioration family.
+**Reason.** The completed common-grid evidence is strongest upstream of warning itself. Protocol 002 directly identified structured differences in source feasibility and loss-regime class, but selected no warning-validation domain at any of the 15 recurrent-transition coordinates. The original H-MD-3 question therefore contains two logically distinct components: whether a matched warning domain exists, and what the direction-only warning effect would be if it did.
 
-**Consequence.** H-MD-1 and H-MD-2 are treated as the two cleanly recovered extension hypotheses. H-MD-3 is not described as a clean direction-only hypothesis result. Protocol 003 is interpreted as a separately declared recovery of evaluability followed by a portability comparison across two non-matched calibrated domains.
+**Consequence.** H-MD-1 and H-MD-2 are treated as supported finite hypotheses. H-MD-3a is a negative finite result: under the declared common candidate family and strict all-seed gate, all 15 eligible sets are empty. H-MD-3b remains unresolved because its matched common-grid contrast was never instantiated.
+
+The H-MD-3a/3b labels are a post hoc logical decomposition of the original H-MD-3 question. They clarify completed evidence and are not presented as retroactively preregistered hypotheses.
 
 ## 2026-08-20 — protocol roles clarified
 
-**Decision.** Protocol roles are now fixed as follows:
+**Decision.** Protocol roles are fixed as follows:
 
 - **Protocol 001:** historical directional-mutation bridge/pilot and provenance for H2-R-AS;
 - **Protocol 002 Stage I:** direct common-grid test of H-MD-1;
-- **Protocol 002 Stage II:** direct common-family test of H-MD-2 and strict attempt to obtain a warning-validation domain;
-- **Protocol 003:** separately declared warning-blind recalibration after Protocol 002 closed with 15/15 `no_domain_selected`;
+- **Protocol 002 Stage II:** direct common-family test of H-MD-2 plus the finite H-MD-3a no-domain certificate;
+- **Protocol 003:** separately declared warning-blind recalibration after Protocol 002 closed with 15/15 `no_domain_selected`; it provides a portability comparison but not a matched H-MD-3b test;
 - **Secondary review audit:** locked-record interpretation/uncertainty audit, not a new simulation or hypothesis test.
 
 **Reason.** This mapping matches the actual chronology and prevents later recalibration from being mistaken for a continuation or silent rescue of the failed Protocol 002 gate.
 
-**Consequence.** README and `docs/HYPOTHESIS_PROGRAM.md` use the H-MD-1/H-MD-2/H-MD-3 structure as the current source of conceptual truth. Older Protocol 001 documents remain historical records and are not deleted or rewritten to disguise the project's development.
+**Consequence.** README and `docs/HYPOTHESIS_PROGRAM.md` are the current conceptual source of truth. Older Protocol 001 and pre-completion paper-planning documents remain historical records and are classified as such in `docs/README.md` rather than deleted or rewritten to disguise project development.
