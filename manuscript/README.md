@@ -12,6 +12,8 @@ The paper is not a catalogue of H1/H3/H2/Protocol 002/Protocol 003 results. It a
 
 > **Is genetic early-warning reliability a portable property of the genetic signal, or does it emerge from the eco-genetic regime that generates both genetic change and functional loss?**
 
+**Genetic-warning reliability is not a portable property** of a diversity statistic. Recurrent-transition direction is **one mechanism that reshapes this closure**, but it is not the sole novelty or the isolated explanation for the final calibrated-domain contrast.
+
 The answer is developed in causal order.
 
 ```text
@@ -52,7 +54,7 @@ The extension asks whether the warning problem remains well posed when the proce
 
 Protocol 003 is a separately declared warning-blind recovery of evaluability. The two confirmed domains differ in transition parameters, ecological parameters and deterioration schedules. Their Stage III comparison therefore tests **warning portability across calibrated eco-genetic domains**, not the isolated causal effect of transition direction.
 
-The main Stage III evidence is availability/censoring and ordering. Conditional lead-time medians are secondary because the contributing trajectories and calibrated horizons differ between domains.
+**Stage III does not identify the isolated causal effect** of recurrent-transition direction. The main Stage III evidence is availability/censoring and ordering. Conditional lead-time medians are secondary because the contributing trajectories and calibrated horizons differ between domains.
 
 ### Exact recurrent-transition theory — conceptual closure
 
