@@ -90,8 +90,55 @@ Grounded by the established dependence of EWS on transition mechanism and releva
 
 Grounded by community-genetics evidence that diversity–function relationships are context dependent. The exact recurrent-transition Type T identities add a model-specific mechanism: local high-state support and heterozygosity can move in opposite directions.
 
-## 5. References most directly supporting the ecological framing
+## 5. Urban ecology application
 
+Urban ecosystems are useful because spatial fragmentation does not imply a single genetic regime. Urban evolutionary-ecology reviews show that cities can reduce population size and connectivity, but also create corridors, repeated introductions, anthropogenic dispersal and novel selection. A quantitative review of urban population genetics found only a weak average reduction in within-population diversity and no consistent increase in between-population differentiation, and a recent plant-focused review reports that urban plants often retain substantial gene flow and diversity despite urban fragmentation.
+
+Urban pollination provides a direct functional endpoint. Urban pollination reviews report an overall negative signal for pollination in cities but strong among-study heterogeneity and difficult-to-predict pollen movement. Thus urban mosaics can plausibly span the model's rapid-loss, persistent, heterogeneous and potentially warning-evaluable regimes.
+
+The model should therefore not map "urbanization" to one parameter. Candidate empirical mappings are:
+
+- green-space area -> patch area;
+- roads/impervious matrix -> resistance and effective connectivity;
+- green corridors and human/animal-mediated movement -> migration;
+- pollinator visitation/network integrity -> interaction support;
+- urban heat/pollution/disturbance -> deterioration/selection;
+- repeated introduction, biased recruitment or recurrent switching among trait-associated states -> possible analogues of effective state turnover, without treating `p_star` as a mutation rate.
+
+A particularly useful urban prediction is that genetic diversity may remain high through human-mediated movement even while pollination function deteriorates. Such systems would provide an empirical test of the model's support–diversity decoupling.
+
+## 6. Island ecology application
+
+Island systems provide strong gradients in area, isolation, colonization and mutualist availability. Functional island-biogeography theory predicts that pollinator and other mutualist diversity generally declines with island isolation, while generalist pollination, self-compatibility and vegetative reproduction become more common with increasing isolation. Reviews of island plant reproductive biology also emphasize that pollinator availability and breeding system strongly influence colonization and persistence.
+
+Candidate empirical mappings are:
+
+- island area -> patch area/carrying support;
+- mainland or source-island distance -> connectivity/colonization pressure;
+- stepping-stone archipelago structure -> migration network;
+- pollinator/mutualist richness -> interaction support;
+- self-compatibility/generalist pollination/vegetative reproduction -> alternative routes to persistence when specialist interaction support is weak;
+- bottlenecks and repeated colonization -> starting-state and turnover structure.
+
+This suggests testable regime predictions. Small remote islands with weak mutualist support should be enriched for source-infeasible or rapid functional-loss regimes for specialist/outcrossing systems. Self-compatible or generalized lineages may instead shift toward persistence even after specialist interaction function is weakened. Intermediate area/isolation may be the most plausible location for a warning-evaluable region, but that remains a hypothesis to test rather than an inference from the current simulation.
+
+## 7. Why urban and island systems are complementary
+
+The two applications probe the same framework under contrasting connectivity rules.
+
+```text
+islands:
+  persistent geographic isolation + colonization/mutualist filters
+
+cities:
+  fragmentation + possible corridors + repeated introductions + anthropogenic dispersal
+```
+
+This contrast is scientifically useful because similar patchiness can yield different genetic outcomes. Cities are not simply artificial islands, and islands are not simply maximally fragmented cities. The phase-map framework predicts that the same spatial isolation can fall into different functional-loss and warning-evaluability regimes depending on interaction support, effective connectivity and recurrent state turnover.
+
+## 8. References most directly supporting the ecological framing
+
+Core EWS/function/genetics:
 - Boettiger, C. & Hastings, A. (2012). Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface*, 9, 2527–2539. doi:10.1098/rsif.2012.0125.
 - Boettiger, C. & Hastings, A. (2013). No early warning signals for stochastic transitions: insights from large deviation theory. *Proceedings of the Royal Society B*, 280, 20131372. doi:10.1098/rspb.2013.1372.
 - Gsell, A.S. et al. (2016). Evaluating early-warning indicators of critical transitions in natural aquatic ecosystems. *Proceedings of the National Academy of Sciences USA*, 113, E8089–E8095. doi:10.1073/pnas.1608242113.
@@ -99,3 +146,14 @@ Grounded by community-genetics evidence that diversity–function relationships 
 - Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, 11, 609–623. doi:10.1111/j.1461-0248.2008.01179.x.
 - McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, 87, 271–276. doi:10.1890/05-0386.
 - Whitlock, R. (2014). Relationships between adaptive and neutral genetic diversity and ecological structure and functioning: a meta-analysis. *Journal of Ecology*, 102, 857–872. doi:10.1111/1365-2745.12240.
+
+Urban:
+- Alberti, M. (2015). Eco-evolutionary dynamics in an urbanizing planet. *Trends in Ecology & Evolution*, 30, 114–126. doi:10.1016/j.tree.2014.11.007.
+- Rivkin, L.R. et al. (2019). A roadmap for urban evolutionary ecology. *Evolutionary Applications*, 12, 384–398. doi:10.1111/eva.12734.
+- Miles, L.S. et al. (2019). Gene flow and genetic drift in urban environments. *Molecular Ecology*, 28, 4138–4151. doi:10.1111/mec.15221.
+- Youngsteadt, E. & Keighron, M.C. (2023). Urban Pollination Ecology. *Annual Review of Ecology, Evolution, and Systematics*, 54, 21–42. doi:10.1146/annurev-ecolsys-102221-044616.
+
+Islands:
+- Schrader, J. et al. (2021). A roadmap to plant functional island biogeography. *Biological Reviews*. doi:10.1111/brv.12782.
+- Traveset, A. et al. (2018). Plant reproductive ecology and evolution in the Mediterranean islands: state of the art. *Plant Biology*. doi:10.1111/plb.12636.
+- Whittaker, R.J. et al. (2017). Island biogeography: taking the long view of nature's laboratories. *Science*.
