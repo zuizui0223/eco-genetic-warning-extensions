@@ -47,7 +47,7 @@ Across the common 15-coordinate recurrent-transition grid, 2,269 of 3,375 attemp
 
 #### H-MD-2: functional-loss regime
 
-Under the same common deterioration family, the 648 complete candidates separated into 322 rapid-loss, 242 persistence, and 84 seed-heterogeneous candidates.
+Protocol 002 completed 20,250 warning-blind calibration attempts. Under the same common deterioration family, the 648 complete candidates separated into 322 rapid-loss, 242 persistence, and 84 seed-heterogeneous candidates.
 
 #### H-MD-3a: matched-domain evaluability
 
