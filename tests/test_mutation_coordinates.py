@@ -4,6 +4,7 @@ from eco_genetic_warning_extensions.mutation_coordinates import (
     MutationCoordinates,
     PRIMARY_KAPPA_MU,
     PRIMARY_P_STAR,
+    heterozygosity,
     primary_phase_grid,
 )
 
@@ -41,6 +42,39 @@ def test_local_pre_mutation_threshold_follows_declared_algebra() -> None:
     threshold = coordinate.pre_mutation_threshold(0.50)
     assert threshold == pytest.approx((0.50 - 0.20 * 0.75) / 0.80)
     assert coordinate.apply(threshold) == pytest.approx(0.50)
+
+
+def test_heterozygosity_change_matches_direct_evaluation() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.80)
+    p = 0.20
+    direct = heterozygosity(coordinate.apply(p)) - heterozygosity(p)
+    assert coordinate.heterozygosity_change(p) == pytest.approx(direct)
+
+
+def test_transition_toward_half_increases_heterozygosity() -> None:
+    low_state_upward = MutationCoordinates(kappa_mu=0.20, p_star=0.80)
+    high_state_downward = MutationCoordinates(kappa_mu=0.20, p_star=0.20)
+    assert low_state_upward.heterozygosity_change(0.20) > 0.0
+    assert high_state_downward.heterozygosity_change(0.80) > 0.0
+
+
+def test_transition_away_from_half_decreases_heterozygosity() -> None:
+    low_state_downward = MutationCoordinates(kappa_mu=0.20, p_star=0.00)
+    high_state_upward = MutationCoordinates(kappa_mu=0.20, p_star=1.00)
+    assert low_state_downward.heterozygosity_change(0.20) < 0.0
+    assert high_state_upward.heterozygosity_change(0.80) < 0.0
+
+
+def test_pstar_effect_has_no_universal_sign_across_states() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
+    assert coordinate.heterozygosity_pstar_derivative(0.20) > 0.0
+    assert coordinate.heterozygosity_pstar_derivative(0.80) < 0.0
+
+
+def test_pstar_derivative_changes_sign_at_post_transition_half() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
+    assert coordinate.apply(0.50) == pytest.approx(0.50)
+    assert coordinate.heterozygosity_pstar_derivative(0.50) == pytest.approx(0.0)
 
 
 def test_primary_grid_is_complete_and_admissible() -> None:
