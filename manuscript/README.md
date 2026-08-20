@@ -4,7 +4,7 @@
 
 ## Publication source of truth
 
-The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines permitted and prohibited claims. [`integrated_story.md`](integrated_story.md) and [`integrated_abstract_and_outline.md`](integrated_abstract_and_outline.md) define the current narrative architecture for the next manuscript revision. [`ecological_grounding.md`](ecological_grounding.md) separates established ecological background from the study's defensible conceptual addition. Older exploratory notes are not publication sources when they conflict with these files.
+The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines permitted and prohibited claims. [`integrated_story.md`](integrated_story.md) and [`integrated_abstract_and_outline.md`](integrated_abstract_and_outline.md) define the current narrative architecture for the next manuscript revision. [`ecological_grounding.md`](ecological_grounding.md) separates established ecological background from the study's novelty claim. [`hypothesis_condition_phase_map.md`](hypothesis_condition_phase_map.md) defines the next warning-blind hypothesis/condition-recovery program and maps urban/island applications. Older exploratory notes are not publication sources when they conflict with these files.
 
 ## One paper, one question
 
@@ -28,17 +28,21 @@ interaction feedback permits a functional state
 → exact theory shows diversity is not a monotone proxy for functional support
 ```
 
-## Ecological grounding and novelty boundary
+## Current science priority before final manuscript rewriting
 
-The ecological literature already supports four premises: ecological function can be lost before population extinction; early-warning performance depends on transition mechanism and state-variable choice; monitoring design affects detectability; and genetic diversity is not a universally monotone proxy for ecological function. The manuscript must not present those premises themselves as new discoveries.
+Before strengthening the paper's novelty claim, recover the **conditions** under which the warning problem is well posed. The next research target is a warning-blind eco-genetic phase map, not another tuned warning comparison.
 
-The defensible conceptual addition is narrower and more operational:
+The finite regimes to map are:
 
-> **A warning comparison requires a reproducible event-generating regime, and whether that regime exists can itself be treated as an upstream eco-genetic outcome before warning statistics are compared.**
+- `R0`: source-infeasible;
+- `R1`: persistence / functional loss too rare;
+- `R2`: rapid-loss / functional loss nearly deterministic or too fast;
+- `R3`: seed-heterogeneous / event regime not reproducible;
+- `R4`: warning-evaluable / reproducible intermediate-risk functional loss.
 
-The common-grid Protocol 002 result supplies the finite-model evidence for that step because source feasibility and loss-regime structure change before warning fields are available, and the complete tested grid contains no eligible matched warning-validation domain under the declared common family.
+`R4` must be identified without diversity or warning fields. Only after candidate regions are frozen should fresh-seed warning validation be run. The current Protocol 002 result establishes only that `R4` was absent from the declared 15-coordinate common grid/candidate family; it does not establish universal absence.
 
-See [`ecological_grounding.md`](ecological_grounding.md) for the literature-to-claim mapping and references to Hastings & Wysham, Boettiger & Hastings, Gsell et al., Hughes et al., McConkey & Drake, and Whitlock.
+Urban and island systems are the leading external application domains for this phase-map idea. Cities can combine fragmentation with corridors, repeated introductions and human-mediated dispersal, whereas islands often impose persistent isolation, colonization filters and mutualist limitation. These contrasting systems can test whether similar spatial isolation generates different eco-genetic regimes depending on connectivity, interaction support and recurrent state turnover.
 
 ## What each study phase contributes
 
