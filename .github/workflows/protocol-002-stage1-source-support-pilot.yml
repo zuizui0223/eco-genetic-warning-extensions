@@ -11,9 +11,10 @@ on:
       - "tests/test_protocol002_source_grid.py"
       - "tests/test_protocol002_stage1_pilot.py"
       - ".github/workflows/protocol-002-stage1-source-support-pilot.yml"
-  pull_request:
-    branches: [main]
 
+# Historical development pilot. The Stage I campaign is complete; routine PRs
+# are covered by protocol-001-ci and reproducibility-contract. Keep this workflow
+# dispatchable for provenance/reproduction without rerunning the pilot on every PR.
 permissions:
   contents: read
 
