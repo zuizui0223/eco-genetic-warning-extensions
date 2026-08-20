@@ -1,15 +1,6 @@
 name: Warning-blind R4 width refinement Phase D
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "docs/WARNING_BLIND_R4_WIDTH_PHASE_D.md"
-      - "src/eco_genetic_warning_extensions/frontier_refinement_manifest.py"
-      - "src/eco_genetic_warning_extensions/r4_width_phase_d_runner.py"
-      - "scripts/run_r4_width_phase_d.py"
-      - "tests/test_r4_width_phase_d_manifest.py"
-      - ".github/workflows/r4-width-phase-d.yml"
   workflow_dispatch:
 
 permissions:
