@@ -1,15 +1,6 @@
 name: Warning-blind frontier reproducibility Phase C
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "docs/WARNING_BLIND_FRONTIER_REPRODUCIBILITY_PHASE_C.md"
-      - "src/eco_genetic_warning_extensions/frontier_refinement_manifest.py"
-      - "src/eco_genetic_warning_extensions/frontier_reproducibility_phase_c_runner.py"
-      - "scripts/run_frontier_reproducibility_phase_c.py"
-      - "tests/test_frontier_reproducibility_phase_c_manifest.py"
-      - ".github/workflows/frontier-reproducibility-phase-c.yml"
   workflow_dispatch:
 
 permissions:
