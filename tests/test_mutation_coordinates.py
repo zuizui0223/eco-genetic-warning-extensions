@@ -45,6 +45,29 @@ def test_local_pre_mutation_threshold_follows_declared_algebra() -> None:
     assert coordinate.apply(threshold) == pytest.approx(0.50)
 
 
+def test_pre_mutation_threshold_decreases_with_pstar() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.75)
+    assert coordinate.pre_mutation_threshold_pstar_derivative() == pytest.approx(-0.25)
+    eps = 1e-6
+    low = MutationCoordinates(kappa_mu=0.20, p_star=0.75 - eps)
+    high = MutationCoordinates(kappa_mu=0.20, p_star=0.75 + eps)
+    numerical = (high.pre_mutation_threshold(0.70) - low.pre_mutation_threshold(0.70)) / (2.0 * eps)
+    assert numerical == pytest.approx(coordinate.pre_mutation_threshold_pstar_derivative(), rel=1e-7)
+
+
+def test_support_margin_always_increases_with_pstar() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.90)
+    assert coordinate.high_state_support_margin_pstar_derivative() == pytest.approx(0.20)
+    eps = 1e-6
+    low = MutationCoordinates(kappa_mu=0.20, p_star=0.90 - eps)
+    high = MutationCoordinates(kappa_mu=0.20, p_star=0.90 + eps)
+    numerical = (
+        high.high_state_support_margin(0.80, 0.70)
+        - low.high_state_support_margin(0.80, 0.70)
+    ) / (2.0 * eps)
+    assert numerical == pytest.approx(0.20, rel=1e-7)
+
+
 def test_heterozygosity_change_matches_direct_evaluation() -> None:
     coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.80)
     p = 0.20
@@ -76,6 +99,30 @@ def test_pstar_derivative_changes_sign_at_post_transition_half() -> None:
     coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
     assert coordinate.apply(0.50) == pytest.approx(0.50)
     assert coordinate.heterozygosity_pstar_derivative(0.50) == pytest.approx(0.0)
+
+
+def test_high_frequency_state_has_support_diversity_opposition() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.90)
+    assert coordinate.apply(0.80) > 0.50
+    assert coordinate.high_state_support_margin_pstar_derivative() > 0.0
+    assert coordinate.heterozygosity_pstar_derivative(0.80) < 0.0
+    assert coordinate.function_diversity_direction_relation(0.80, 0.70) == "opposed"
+
+
+def test_low_frequency_state_has_aligned_support_diversity_direction() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.60)
+    assert coordinate.apply(0.20) < 0.50
+    assert coordinate.high_state_support_margin_pstar_derivative() > 0.0
+    assert coordinate.heterozygosity_pstar_derivative(0.20) > 0.0
+    assert coordinate.function_diversity_direction_relation(0.20, 0.30) == "aligned"
+
+
+def test_half_frequency_state_changes_support_without_first_order_diversity_change() -> None:
+    coordinate = MutationCoordinates(kappa_mu=0.20, p_star=0.50)
+    assert coordinate.apply(0.50) == pytest.approx(0.50)
+    assert coordinate.high_state_support_margin_pstar_derivative() > 0.0
+    assert coordinate.heterozygosity_pstar_derivative(0.50) == pytest.approx(0.0)
+    assert coordinate.function_diversity_direction_relation(0.50, 0.50) == "support_only"
 
 
 def test_alpha_gamma_gap_contracts_independently_of_direction() -> None:
@@ -125,3 +172,9 @@ def test_identity_operator_is_not_an_identifiable_phase_coordinate() -> None:
         MutationCoordinates(kappa_mu=0.0, p_star=0.5)
     with pytest.raises(ValueError, match="identifiable"):
         MutationCoordinates.from_directional_rates(low_to_high=0.0, high_to_low=0.0)
+
+
+def test_threshold_derivative_is_undefined_at_full_contraction() -> None:
+    coordinate = MutationCoordinates(kappa_mu=1.0, p_star=0.5)
+    with pytest.raises(ValueError, match="undefined"):
+        coordinate.pre_mutation_threshold_pstar_derivative()

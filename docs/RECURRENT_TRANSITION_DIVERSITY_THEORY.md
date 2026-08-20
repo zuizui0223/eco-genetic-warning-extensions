@@ -51,8 +51,6 @@ M(p)=\frac12.
 
 There is **no universal signed effect of increasing `p_star` on heterozygosity without a constraint on the allele-frequency state**.
 
-This is the first theoretical boundary relevant to H-MD-3b.
-
 ## T2 — exact alpha/gamma decomposition across patches
 
 Let fixed nonnegative patch weights \(w_j\) sum to one, with frequencies \(p_j\) and weighted mean
@@ -100,8 +98,6 @@ H_\gamma'-H_\alpha'
 
 The one-step contraction of the \(H_\gamma-H_\alpha\) gap depends on **transition strength `kappa_mu` but not on direction `p_star`**. Under fixed weights, direction shifts the mean allele frequency, whereas the affine contraction controls the reduction of among-patch frequency heterogeneity.
 
-This separates two effects that were previously easy to conflate:
-
 ```text
 p_star      -> directional shift of the weighted mean state
 kappa_mu    -> affine contraction of deviations among patches
@@ -131,15 +127,99 @@ For the transition step alone and fixed patch weights, `p_star` does not push \(
 
 Dynamic divergence between the warning behaviour of \(H_\alpha\) and \(H_\gamma\) must therefore enter through other life-cycle components or changing weights/states, not from the common affine transition direction alone.
 
+## T4 — local high-state support and genetic diversity can move in opposite directions
+
+Suppose a local high-associated allele condition requires
+
+\[
+M(p)\ge p_c.
+\]
+
+Define the post-transition support margin
+
+\[
+S(p;s)=M(p)-p_c.
+\]
+
+At fixed pre-transition frequency \(p\), threshold \(p_c\), and \(k>0\),
+
+\[
+\frac{\partial S}{\partial s}=k>0.
+\]
+
+Thus increasing `p_star` **always increases the local high-state allele support margin**.
+
+For \(k<1\), the equivalent pre-transition threshold is
+
+\[
+\theta(p_c;s)=\frac{p_c-ks}{1-k},
+\]
+
+with
+
+\[
+\frac{\partial\theta}{\partial s}
+=-\frac{k}{1-k}<0.
+\]
+
+So increasing `p_star` always lowers the pre-transition allele frequency needed to meet the same post-transition high-state condition.
+
+Compare this with T1:
+
+\[
+\frac{\partial H(M(p))}{\partial s}
+=2k[1-2M(p)].
+\]
+
+Therefore:
+
+- if \(M(p)<1/2\), increasing `p_star` raises both the support margin and heterozygosity;
+- if \(M(p)=1/2\), increasing `p_star` raises the support margin while heterozygosity is stationary to first order;
+- if \(M(p)>1/2\), increasing `p_star` raises the support margin **while lowering heterozygosity**.
+
+### Consequence
+
+In the high-frequency regime, a recurrent transition can make the high-associated allele condition **easier to maintain while genetic diversity decreases**. Conversely, moving direction away from that high state can make the local support condition harder while heterozygosity increases as frequency moves toward one half.
+
+This is an exact **function-support/diversity decoupling boundary** for the declared transition step. It gives a precise version of the statement that genetic diversity is not a monotone proxy for functional support.
+
+The word “function-support” is intentionally local and bounded: \(S>0\) is an allele-state condition used by the finite closure, not proof that realised ecological function persists through the complete stochastic life cycle.
+
+### Multipatch consequence
+
+With fixed patch weights, if the post-transition weighted mean satisfies
+
+\[
+M(\bar p)>1/2,
+\]
+
+then increasing `p_star` lowers both \(H_\alpha'\) and \(H_\gamma'\) by T3 while it increases the local high-state support margin at every patch by T4. Thus the same directional change can systematically favour the high-associated allele state and reduce both diversity summaries in the transition step.
+
+This directly blocks any universal interpretation of “lower diversity = closer to functional loss” under recurrent transitions.
+
 ## Relation to H-MD-3b
 
-These results do not assign H-MD-3b a true/false dynamic answer. They recover a stronger theoretical boundary around what a future matched experiment may legitimately predict:
+These identities do not assign H-MD-3b a true/false dynamic answer. They recover increasingly specific theoretical boundaries around what a future matched experiment may legitimately predict:
 
-1. a universal `p_star -> lower diversity` or `p_star -> higher diversity` hypothesis is not valid without state constraints;
+1. a universal `p_star -> lower diversity` or `p_star -> higher diversity` hypothesis is invalid without state constraints;
 2. `p_star` and `kappa_mu` have analytically separable roles at the transition step;
-3. a directional warning hypothesis must specify the relevant pre/post-transition allele-frequency region and cannot infer warning ordering from transition direction alone.
+3. a directional warning hypothesis must specify the relevant pre/post-transition allele-frequency region;
+4. even the sign of diversity change need not match the sign of local high-state support change.
 
-The current Protocol 002 evidence independently shows that the matched warning-validation domain required for a finite H-MD-3b causal contrast was absent under the declared common candidate family. Thus the repository has both an **empirical evaluability boundary** and an **exact diversity-sign boundary**.
+The current Protocol 002 evidence independently shows that the matched warning-validation domain required for a finite H-MD-3b causal contrast was absent under the declared common candidate family. The repository therefore now has three distinct closure results around H-MD-3b:
+
+```text
+finite evaluability boundary:
+  no matched Protocol 002 warning domain at 15/15 coordinates
+
+exact diversity-sign boundary:
+  direction -> heterozygosity has no universal sign
+
+exact support-diversity boundary:
+  stronger high-state support can coincide with lower diversity
+```
+
+A future finite H-MD-3b campaign would need a newly declared matched domain **and** a state-constrained directional prediction. Re-running a broader schedule search without those constraints would not resolve the theoretical ambiguity identified here.
 
 ## Executable implementation
 
@@ -151,4 +231,4 @@ and tested in:
 
 - `tests/test_mutation_coordinates.py`
 
-The tests verify the direct one-step formula, both possible heterozygosity signs, the sign switch at \(M(p)=0.5\), exact direction-independent contraction of the \(H_\gamma-H_\alpha\) gap, and equality of the fixed-weight `p_star` derivatives of \(H_\alpha\) and \(H_\gamma\).
+The tests verify the direct one-step formula, both heterozygosity signs, the sign switch at \(M(p)=0.5\), exact direction-independent contraction of the \(H_\gamma-H_\alpha\) gap, equality of the fixed-weight `p_star` derivatives of \(H_\alpha\) and \(H_\gamma\), monotonic easing of the local high-state threshold, and aligned/opposed support-diversity regimes.
