@@ -4,7 +4,7 @@
 
 ## Publication source of truth
 
-The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines permitted and prohibited claims. [`integrated_story.md`](integrated_story.md) and [`integrated_abstract_and_outline.md`](integrated_abstract_and_outline.md) define the current narrative architecture for the next manuscript revision. Older exploratory notes are not publication sources when they conflict with these files.
+The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines permitted and prohibited claims. [`integrated_story.md`](integrated_story.md) and [`integrated_abstract_and_outline.md`](integrated_abstract_and_outline.md) define the current narrative architecture for the next manuscript revision. [`ecological_grounding.md`](ecological_grounding.md) separates established ecological background from the study's defensible conceptual addition. Older exploratory notes are not publication sources when they conflict with these files.
 
 ## One paper, one question
 
@@ -27,6 +27,18 @@ interaction feedback permits a functional state
 → after recalibration, availability/ordering are not fully portable
 → exact theory shows diversity is not a monotone proxy for functional support
 ```
+
+## Ecological grounding and novelty boundary
+
+The ecological literature already supports four premises: ecological function can be lost before population extinction; early-warning performance depends on transition mechanism and state-variable choice; monitoring design affects detectability; and genetic diversity is not a universally monotone proxy for ecological function. The manuscript must not present those premises themselves as new discoveries.
+
+The defensible conceptual addition is narrower and more operational:
+
+> **A warning comparison requires a reproducible event-generating regime, and whether that regime exists can itself be treated as an upstream eco-genetic outcome before warning statistics are compared.**
+
+The common-grid Protocol 002 result supplies the finite-model evidence for that step because source feasibility and loss-regime structure change before warning fields are available, and the complete tested grid contains no eligible matched warning-validation domain under the declared common family.
+
+See [`ecological_grounding.md`](ecological_grounding.md) for the literature-to-claim mapping and references to Hastings & Wysham, Boettiger & Hastings, Gsell et al., Hughes et al., McConkey & Drake, and Whitlock.
 
 ## What each study phase contributes
 
