@@ -28,7 +28,7 @@ These are not extension hypotheses. Parent and extension trajectories are never 
 
 | hypothesis | question | result | status |
 |---|---|---|---|
-| **H-MD-1** | Do recurrent-transition coordinates change whether a high-function source can be established? | 2,269/3,375 supported projections; support 44.89–86.67% across the common grid | **supported, finite Type S** |
+| **H-MD-1** | Do recurrent-transition coordinates change whether a high-function source can be established? | **2,269 of 3,375** attempts supported source preparation/projection; support 44.89–86.67% across the common grid | **supported, finite Type S** |
 | **H-MD-2** | Under the same deterioration family, do recurrent-transition coordinates change the realised functional-loss regime? | 648 complete candidates split into 322 rapid-loss, 242 persistence, and 84 seed-heterogeneous candidates | **supported, finite Type S** |
 | **H-MD-3a** | Does the common candidate family contain an eligible intermediate-risk warning-validation domain at each coordinate? | eligible set empty at all 15 coordinates; 15/15 `no_domain_selected` | **negative result, recovered for the declared grid/family** |
 | **H-MD-3b** | If matched evaluable domains exist, does recurrent-transition direction itself change warning reliability? | the matched common-grid prerequisite failed; Protocol 003 domains are not single-factor matched | **matched finite effect unresolved** |
@@ -64,12 +64,12 @@ Protocol 003 was declared only after Protocol 002 closed. Warning-blind candidat
 - recalibrated symmetric domain;
 - directional calibrated domain.
 
-They differ in recurrent-transition parameters **and** `A_ref`, interaction-feedback `kappa`, deterioration strength, and horizon. Thus Stage III is a **portability comparison across independently calibrated eco-genetic domains**, not a recovery of H-MD-3b as a direction-only causal effect.
+They differ in recurrent-transition parameters **and** `A_ref`, interaction-feedback `kappa`, deterioration strength, and horizon. Stage III is therefore **not a single-factor causal effect** experiment. It is a portability comparison across independently calibrated eco-genetic domains, not a recovery of H-MD-3b as a direction-only causal effect.
 
 Observed Stage III results:
 
-- valid-pair availability: `0.540` vs `0.335`;
-- ordering: `323/1/0` vs `184/5/12` lead/tie/lag;
+- recalibrated symmetric domain: **323 leads**, 1 tie, 0 lags across 324 valid endpoint comparisons; valid-pair availability `0.540`;
+- directional calibrated domain: **184 leads**, 5 ties, 12 lags across 201 valid endpoint comparisons; valid-pair availability `0.335`;
 - directional `H_gamma` 20%: warning incidence `41/81`, realised functional-trait-loss incidence `52/81`;
 - all six full-horizon-normalized direct timing-difference intervals include zero.
 
