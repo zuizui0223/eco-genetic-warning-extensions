@@ -18,7 +18,7 @@ functional state
 → exact support–diversity decoupling
 ```
 
-The current build uses six main figures and no main-text tables or text boxes. Figure priority should follow the causal spine, not historical analysis order.
+The Letter uses exactly six main display items and no main-text tables or text boxes. Figure priority should follow the causal spine, not historical analysis order.
 
 ## Main display items
 
@@ -30,7 +30,7 @@ Conceptual synthesis: interaction-dependent functional state, fragmentation, rea
 
 ### Figure 2 — source feasibility across recurrent-transition coordinates
 
-Common-grid Stage I source reconstruction and projection.
+Common-grid Stage I source reconstruction and projection. Supplementary tables retain cell-level values underlying Figure 2.
 
 **Narrative role:** first direct extension result; recurrent-transition dynamics change whether the high-function starting state can be established before deterioration begins.
 
@@ -46,7 +46,7 @@ Retains baseline-eligible completed trajectories and plots cumulative observed i
 
 **Narrative role:** after evaluability is separately recovered, shows whether warning is actually observable over the full calibrated horizon.
 
-### Figure 5 — full attempted denominator, censoring and ordering
+### Figure 5 — full attempted denominator, censoring, and ordering
 
 Shows all 100 attempted trajectories per endpoint, including source failure, baseline ineligibility, censoring, lead, tie and lag.
 
@@ -57,6 +57,8 @@ Shows all 100 attempted trajectories per endpoint, including source failure, bas
 Conditional diagnostic among observed leading pairs. Conventional medians and whole-trajectory bootstrap intervals are shown in generations and as fractions of each calibrated horizon.
 
 **Priority:** secondary. It supports the statement that timing point estimates are schedule-dependent and not a direction-only result, but it is not required to establish the main event-regime/evaluability story. If the Letter needs compression, this is the first main figure to move to Supplementary Material.
+
+Supplementary endpoint tables underlying Figures 4–6 retain exact counts and timing summaries. These are reported as Table S4 and its machine-readable companion files. Table S5 records calibrated-domain schedule and timing-normalization details.
 
 ## Main-text evidence without a dedicated main figure
 
@@ -90,4 +92,4 @@ Post-review Type S sensitivity using fresh seeds and the same mutation-primary H
 
 If main-text compression is needed, move current Figure 6 (conditional positive lead-time timing) to Supplementary Material before removing Figures 2–5. Source feasibility, loss-regime/no-domain structure, incidence and full-denominator availability are more central to the paper's causal claim.
 
-Implementation debugging, temporary GitHub Actions outages, CI troubleshooting, obsolete figures and PR chronology remain repository history and stay out of the scientific manuscript rather than entering the Supplementary Material.
+implementation debugging, temporary GitHub Actions outages, CI troubleshooting, obsolete figures and PR chronology remain repository history and stay out of the scientific manuscript rather than entering the Supplementary Material. These records are explicitly out of the scientific manuscript.
