@@ -10,13 +10,20 @@ on:
       - "manuscript/**"
       - "reproducibility/**"
       - "scripts/build_submission_bundle.py"
+      - "scripts/replace_submission_figures.py"
       - "scripts/assemble_software_bundle.py"
       - "scripts/verify_reproducibility_contract.py"
       - "src/eco_genetic_warning_extensions/publication_figures.py"
+      - "src/eco_genetic_warning_extensions/revised_publication_figures.py"
+      - "src/eco_genetic_warning_extensions/condition_figure1.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
-      - "artifacts/protocol003/stage3_validation_summary.json"
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
       - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
+      - "artifacts/protocol003/stage3_validation_summary.json"
+      - "artifacts/frontier_refinement/phase_b_summary.json"
+      - "artifacts/frontier_refinement/phase_c_summary.json"
+      - "artifacts/frontier_refinement/phase_d_summary.json"
+      - "artifacts/migration_condition/phase_e_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
@@ -27,13 +34,20 @@ on:
       - "manuscript/**"
       - "reproducibility/**"
       - "scripts/build_submission_bundle.py"
+      - "scripts/replace_submission_figures.py"
       - "scripts/assemble_software_bundle.py"
       - "scripts/verify_reproducibility_contract.py"
       - "src/eco_genetic_warning_extensions/publication_figures.py"
+      - "src/eco_genetic_warning_extensions/revised_publication_figures.py"
+      - "src/eco_genetic_warning_extensions/condition_figure1.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
-      - "artifacts/protocol003/stage3_validation_summary.json"
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
       - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
+      - "artifacts/protocol003/stage3_validation_summary.json"
+      - "artifacts/frontier_refinement/phase_b_summary.json"
+      - "artifacts/frontier_refinement/phase_c_summary.json"
+      - "artifacts/frontier_refinement/phase_d_summary.json"
+      - "artifacts/migration_condition/phase_e_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   workflow_dispatch:
 
@@ -118,6 +132,9 @@ jobs:
             --h3-gradient-dir upstream_gradient/artifacts/h3_fragmentation_gradient \
             --repo-root . \
             --output submission_bundle
+          python scripts/replace_submission_figures.py \
+            --bundle submission_bundle \
+            --repo-root .
 
       - name: Add both packages and provenance to bundle
         run: |
@@ -131,8 +148,8 @@ jobs:
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
-          test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 1
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 11
+          test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 2
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 16
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
@@ -144,9 +161,15 @@ jobs:
           test -f submission_bundle/tables/h3_fragmentation_gradient_records.csv
           test -f submission_bundle/tables/h3_fragmentation_gradient_cell_summary.csv
           test -f submission_bundle/tables/h3_fragmentation_gradient_pooled_summary.csv
+          test -f submission_bundle/tables/inherited_h2_warning_summary.csv
+          test -f submission_bundle/tables/frontier_phase_b_summary.json
+          test -f submission_bundle/tables/frontier_phase_c_summary.json
+          test -f submission_bundle/tables/frontier_phase_d_summary.json
+          test -f submission_bundle/tables/migration_phase_e_summary.json
           grep -q '2,269' submission_bundle/manuscript/main_text.md
-          grep -q '323' submission_bundle/manuscript/main_text.md
-          grep -q '184' submission_bundle/manuscript/main_text.md
+          grep -q 'R4 exists' submission_bundle/manuscript/main_text.md
+          grep -q '0.571' submission_bundle/manuscript/main_text.md
+          grep -q '25 of 91' submission_bundle/manuscript/main_text.md
           grep -q '0.540' submission_bundle/manuscript/main_text.md
           grep -q '0.335' submission_bundle/manuscript/main_text.md
           grep -q '1,037' submission_bundle/manuscript/main_text.md
@@ -154,13 +177,15 @@ jobs:
           test -f submission_bundle/tables/stage3_review_summary.csv
           test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
           test -f submission_bundle/tables/inherited_h3_effect_summary.csv
-          grep -q 'Source feasibility across transition coordinates' submission_bundle/figures/figure2_stage1_source_feasibility.svg
-          grep -q 'Functional-loss regimes across transition coordinates' submission_bundle/figures/figure3_stage2_coordinate_regimes.svg
-          grep -q 'Cumulative warning and functional-loss incidence' submission_bundle/figures/figure4_stage3_cumulative_incidence.svg
-          grep -q 'Warning availability, censoring and ordering' submission_bundle/figures/figure5_stage3_availability_ordering.svg
-          grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/figures/figure6_stage3_lead_time_normalized.svg
+          grep -q 'Eco-genetic causal architecture and four-question hierarchy' submission_bundle/figures/figure1_eco_genetic_estimability.svg
+          grep -q 'Fragmentation creates vulnerability and genetic warning is conditionally possible' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
+          grep -q 'Recurrent state turnover reorganises source feasibility and functional-loss regime' submission_bundle/figures/figure3_source_loss_regimes.svg
+          grep -q 'Warning-blind recovery of a narrow reproducible event regime' submission_bundle/figures/figure4_r4_recovery.svg
+          grep -q 'Effective genetic connectivity changes event-regime estimability' submission_bundle/figures/figure5_connectivity_estimability.svg
+          grep -q 'Portability after evaluability is separately recovered' submission_bundle/figures/figure6_portability.svg
+          grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/supplement/figure_s3_stage3_lead_time_normalized.svg
           grep -q 'Fixed-area fragmentation gradient from paired H1-prepared sources' submission_bundle/supplement/figure_s1_fragmentation_gradient.svg
-          ! grep -R -qE 'Stage I source-feasibility map|Stage III warning ordering|Stage III median positive lead time|Protocol 002 trait-loss regimes|Directional transition shortens usable intervention time' submission_bundle/figures
+          ! find submission_bundle/figures -type f -name '*lead_time*' | grep -q .
           python - <<'PY'
           import csv
           import hashlib
@@ -186,6 +211,12 @@ jobs:
           records=sum(1 for _ in (bundle/'tables/h3_fragmentation_gradient_records.csv').open(encoding='utf-8'))-1
           assert records==9600
 
+          phase_e=json.loads((bundle/'tables/migration_phase_e_summary.json').read_text())
+          regimes=[row['regime'] for row in phase_e['migration_condition_summaries']]
+          assert regimes == ['R4_highrep','R4_highrep','R4_highrep','R3_highrep','R3_highrep']
+          assert phase_e['paired_loss_status_vs_isolation'][-1]['loss_to_no_loss'] == 11
+          assert phase_e['paired_loss_status_vs_isolation'][-1]['no_loss_to_loss'] == 14
+
           for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
               assert 'role="img"' in text, path
@@ -198,7 +229,9 @@ jobs:
           assert any(name.startswith('software/parent/') for name in manifest['files'])
           assert any(name.startswith('software/extension/') for name in manifest['files'])
           assert 'supplement/figure_s1_fragmentation_gradient.svg' in manifest['files']
+          assert 'supplement/figure_s3_stage3_lead_time_normalized.svg' in manifest['files']
           assert 'tables/h3_fragmentation_gradient_records.csv' in manifest['files']
+          assert 'tables/migration_phase_e_summary.json' in manifest['files']
           PY
 
       - name: Upload submission bundle
