@@ -2,213 +2,229 @@
 
 ## Abstract
 
-Ecological early-warning studies usually ask whether a signal precedes loss, but that question assumes the system generates a comparable loss regime. We used a finite eco-genetic model with warning-blind calibration, frozen endpoints and fresh validation seeds. Across a common 15-coordinate recurrent-transition grid, source support ranged from 44.89% to 86.67%, while 20,250 calibration attempts separated into rapid-loss, persistence and seed-heterogeneous regimes; strict calibration selected no common validation domain. Thus recurrent-transition direction changed whether warning could be evaluated before warning values were inspected. A separately declared recalibration recovered two non-matched eco-genetic domains. Warning availability fell from 0.540 to 0.335 and lags appeared, but direct trajectory-bootstrap differences showed endpoint-dependent absolute timing and no separated horizon-normalized timing contrast. Genetic warning therefore depends first on event-regime feasibility and only second on conditional ordering within a calibrated domain.
+Genetic early warning is usually evaluated by asking whether genetic change precedes ecological loss, but that comparison is meaningful only when loss itself occurs at a reproducible, nondegenerate rate. We used a finite eco-genetic model in which interaction feedback maintains a functional state, fragmentation can disrupt it, and warning domains are selected without access to genetic-warning outcomes. Genetic erosion preceded functional loss in one calibrated benchmark. Across a common recurrent-transition grid, however, source feasibility and loss regime changed enough that no common validation domain was selected. Prospective warning-blind refinement recovered a narrow reproducible intermediate-risk regime, and allele-frequency connectivity moved that same anchor from warning-evaluable to seed-heterogeneous loss without a simple change in mean risk. Genetic early warning therefore has biological conditions of estimability: functional loss must first be generated reproducibly before warning performance can be interpreted.
 
 ## Introduction
 
-Ecological function can be lost before the population carrying it disappears. A species may remain present while becoming ineffective as a pollinator, seed disperser, mutualist, defender, or other ecological actor (Soulé et al. 2005; McConkey & Drake 2006; Valiente-Banuet et al. 2015). Conservation therefore needs to distinguish population persistence from the persistence of ecological function. Abundance, allele presence, genetic diversity, interaction state, and realised trait occupancy are related, but they are not interchangeable monitoring targets.
+Ecological function can disappear before the population carrying it disappears. A species may remain numerically present while becoming ineffective as a pollinator, seed disperser, mutualist, defender, or other ecological actor (Soulé et al. 2005; McConkey & Drake 2006; Valiente-Banuet et al. 2015). Conservation monitoring therefore has to distinguish population persistence from the persistence of ecological function. Abundance, interaction state, allele presence, genetic diversity and realised functional-trait occupancy are related, but they are not interchangeable state variables.
 
-Habitat fragmentation provides a direct route by which these states can become uncoupled. Fragmentation changes patch size and connectivity, which can alter interaction intensity, local demography, gene flow, drift, and adaptation (Legrand et al. 2017; Govaert et al. 2019). If an ecological function depends on interaction feedback, a smaller or more isolated patch may first weaken the interaction that supports the function. The resulting ecological change can then reduce realised functional-trait occupancy and local effective population size before the population itself disappears.
+Habitat fragmentation provides a natural setting in which those states can separate. Fragmentation changes local patch size and connectivity, which can alter interaction intensity, local demography, gene flow, drift and eco-evolutionary feedbacks (Legrand et al. 2017; Govaert et al. 2019). If a function depends on positive interaction feedback, fragmentation can first weaken the interaction that supports the function, then reduce local effective population size and realised functional-trait occupancy, even while the population persists. Such a sequence creates the possibility of an earlier genetic signal.
 
-This sequence suggests a possible early-warning signal. If local effective size and genetic diversity respond before realised functional-trait loss, genetic erosion may provide intervention time. Early-warning research asks whether a statistic changes before collapse (Scheffer et al. 2009; Drake & Griffen 2010), while genetic monitoring uses changes in diversity or allele frequency to diagnose deterioration (Schwartz et al. 2007; Stange et al. 2021). Yet neither approach guarantees that the same genetic threshold will work across biological systems. Early-warning behaviour depends on the process that generates the signal, the event used to define loss, and the observation window (Hastings & Wysham 2010; Boettiger & Hastings 2012, 2013).
+This possibility motivates genetic early warning. Classical ecological early-warning studies ask whether a statistic changes before a transition (Scheffer et al. 2009; Drake & Griffen 2010), while conservation genetic monitoring asks whether changes in diversity or allele frequencies diagnose deterioration (Schwartz et al. 2007; Stange et al. 2021). Yet early-warning signals are not expected to be universal across transition mechanisms or observation regimes. Regime shifts can occur without classical warning, and detectability depends on the process generating the transition, the state variable measured and the observation design (Hastings & Wysham 2010; Boettiger & Hastings 2012, 2013; Gsell et al. 2016). Genetic diversity is likewise ecologically important without being a context-free surrogate for ecological function (Hughes et al. 2008; Whitlock 2014).
 
-The first phase of this study followed that causal sequence. A specified positive-feedback interaction map established an ecological threshold and connected low and high interaction branches to potential high-trait viability. The same prepared high-trait state was then projected into one large patch or equal isolated fragments, linking fragmentation to realised function and local effective size. Finally, warning-blind calibration fixed a symmetric deterioration domain before fresh validation trajectories were examined. Baseline-relative diversity erosion preceded every observed realised trait-loss event, whereas fixed absolute diversity thresholds produced both leads and lags. These results raised a more difficult question: is warning reliability a property of the diversity metric, or of the biological and observational system that generates both warning and loss?
+Most warning analyses nevertheless begin one step downstream: they compare a proposed signal with an observed loss event and ask whether the signal leads. That comparison assumes that the system first generates a suitable loss process. If functional loss is almost certain, almost absent, or highly unstable among otherwise comparable stochastic realizations, lead time is not the only problem; the warning comparison itself may be poorly defined. We therefore treat **warning estimability** as a biological condition to be established before warning performance is analysed.
 
-We addressed this question in two stages. First, we varied recurrent-transition parameters across a common 15-coordinate grid while keeping the source-reconstruction and deterioration families fixed. This tests how transition direction reorganises source feasibility and functional-loss regimes. Second, because the strict common calibration selected no validation domain, we used a separately declared warning-blind calibration to recover two event-risk domains for validation. Those final domains differ in recurrent-transition parameters, ecological parameters, and deterioration schedules. Their validation is therefore a test of **warning portability across calibrated eco-genetic domains**, not a single-factor causal test of transition direction. This distinction is central to our interpretation (Figure 1).
+We organize the study around four questions. **First**, how is an interaction-dependent ecological function maintained, and how can fragmentation destroy it? **Second**, can genetic erosion precede that functional loss in at least one independently calibrated regime? **Third**, under what eco-genetic conditions does the system generate a reproducible, nondegenerate functional-loss regime in which a warning can actually be estimated? **Fourth**, once evaluability is recovered, is warning behaviour portable across eco-genetic regimes, and why should portability be limited? Figure 1 summarizes this hierarchy while keeping functional state, population persistence, genetic state and warning performance distinct.
+
+The first two questions establish the mechanism and proof of possibility. The third is the central extension. We changed recurrent state-transition dynamics while keeping source-reconstruction and deterioration families controlled, then refined the event-regime frontier prospectively without access to diversity or warning outcomes. Finally, we held a recovered warning-evaluable event regime fixed and changed only allele-frequency connectivity among fragmented patches. This design separates the biological generation of a warning-comparison domain from the later performance of the warning statistic itself.
 
 ## Model and methods
 
-### Study architecture and computational provenance
+### Study architecture
 
-The study was developed in two computational phases stored in separate repositories so that later extensions could not overwrite the closed evidence ledger of the first phase. The present manuscript treats both phases as one study. The first-phase repository supplies the theorem-guided interaction mechanism, the locked fragmentation experiment, and the inherited symmetric warning benchmark. The extension repository supplies independent source reconstruction under directional recurrent transitions, strict common-family calibration, the separately declared recalibration protocol, fresh-seed validation, and the integrated publication outputs.
+The study was developed in two computational phases with separate evidence ledgers. The parent phase supplies the theorem-guided interaction mechanism, the paired fragmentation experiment and an inherited symmetric warning benchmark. The extension phase independently reconstructs high-function sources under recurrent state-transition coordinates, maps realised functional-loss regimes, prospectively recovers warning-evaluable conditions, tests an allele-frequency-connectivity axis, and performs a separately declared portability validation. Parent and extension trajectories are never pooled.
 
-Numerical trajectories from the two phases are never pooled. The parent scientific state is pinned at commit `dd8ee379d0d3518194c767d16402042525bc00dc`, and all extension analyses that use parent life-cycle code load that exact state. Workflow identifiers, artifact digests, and claim boundaries are retained in the Supplementary Material and repository evidence ledgers.
+All extension analyses using the parent life cycle load the pinned parent scientific state `dd8ee379d0d3518194c767d16402042525bc00dc`. The condition-recovery analyses are warning-blind: genetic diversity, warning times, lead/lag ordering and lead time are unavailable until a condition is prospectively fixed.
 
-### From interaction feedback to realised functional loss
+### Interaction-dependent function and fragmentation
 
-The ecological mechanism separates exact analytical results from finite stochastic outcomes. For the stated canonical sigmoid interaction map, the analytical result identifies the conditions under which one interaction state or three fixed points occur; within the strict bistable interval, the low and high fixed points are locally stable and the middle point is unstable. A declared high-trait viability margin then distinguishes potential viability on the low and high branches. These results apply to the specified map and performance surface rather than to all positive-feedback systems.
+The ecological mechanism separates analytical state structure from finite stochastic outcomes. In the declared canonical positive-feedback interaction map, explicit parameter conditions permit distinct low- and high-interaction states. A high-trait viability margin links the interaction branch to potential support for a high-investment trait. These are model-specific analytical results rather than universal claims about positive feedback.
 
-The finite model embeds those ecological states in a stochastic trait-allele life cycle. The causal sequence is
+The finite model embeds interaction state, a high-trait-associated allele, realised trait-bin occupancy, population size and local effective size in a stochastic multipatch life cycle. Potential high-trait viability, realised high-trait occupancy, allele persistence, genetic diversity and population persistence are recorded separately.
 
-`patch size -> interaction intensity -> high-trait-state stability -> local effective size -> genetic diversity -> realised functional-trait loss`.
+The fragmentation experiment began from the same H1-prepared full state and projected it either to one large patch or to equal isolated fragments at fixed total area. Twelve primary cells contained 100 attempted seed-replicates each. A later fresh-seed sensitivity projected prepared sources across 1, 2, 3, 4, 6, 8, 12 and 16 equal isolated patches, again at fixed total area.
 
-Potential viability, realised trait occupancy, allele persistence, local effective size, and genetic diversity are tracked separately. This allows a population or allele to remain present even when the realised functional trait has been lost. Full theorem statements, proofs, migration bounds, and the complete finite-model specification are provided in the Supplementary Material.
+### Conditional symmetric genetic-warning benchmark
 
-### Fragmentation and the inherited symmetric benchmark
+A separate trait-loss-only calibration fixed one symmetric deterioration domain before warning values were evaluated. Fresh validation seeds were then introduced. Relative warnings were the first post-baseline generations at which `H_alpha` or `H_gamma` declined by 5%, 10% or 20% relative to their own baselines. Non-events remained right-censored. Predeclared absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` were audited on the same stored trajectories without rerunning the model.
 
-The first-phase fragmentation experiment compared the same H1-prepared full state after conservation-preserving projection into one-large and equal-isolated landscapes. Twelve predeclared primary cells, each with 100 attempted seed-replicates, were evaluated. Manuscript-facing effect sizes were calculated after the campaign from the already locked paired outcomes: final interaction was the mean of `final_q_by_patch`, local effective size was the mean of `final_effective_size_by_patch`, and realised high-trait mass used the stored metapopulation summary. No simulation was rerun for this descriptive summary.
+### Recurrent state-transition coordinates
 
-After review, a separately declared supplementary sensitivity replayed the same finite closure with fresh master seeds `20260820`–`20260824` and projected each prepared source across 1, 2, 3, 4, 6, 8, 12, and 16 equal isolated patches at fixed total area. Patch-count outcomes from one source were paired repeated measures; no warning endpoint was evaluated (Supplementary Methods).
-
-The inherited symmetric warning benchmark was selected separately by trait-loss-only calibration. Its locked configuration used symmetric allele-state mutation rate `0.10`, `A_ref=0.8`, interaction-feedback `kappa=6.0`, an equal-isolated landscape, a 30-generation ramp followed by a 90-generation hold, and normalized barrier increase `0.15`. Calibration used realised trait loss only; genetic diversity, warning time, ordering, and lead time were unavailable during selection. Fresh validation seeds were introduced only after the configuration was fixed.
-
-Relative warnings were the first post-baseline generations at which `H_alpha` or `H_gamma` declined by 5%, 10%, or 20% from their own baselines. Non-events remained right-censored. The same stored validation trajectories were also evaluated with the predeclared fixed thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20`, without rerunning or reselecting the model.
-
-### Directional recurrent-transition operator
-
-Let `p` denote the high-trait-associated allele frequency. The recurrent transition operator is
+Let `p` be the high-trait-associated allele frequency. The extension uses the affine recurrent-transition operator
 
 \[
-M(p)=\kappa_\mu p_\mu^\ast+(1-\kappa_\mu)p.
+M(p)=\kappa_\mu p_\mu^*+(1-\kappa_\mu)p,
 \]
 
-Here, $\kappa_\mu$ controls contraction towards the transition-only equilibrium, and $p_\mu^*$ controls direction. In code, tables, and figure labels, these quantities are recorded as `kappa_mu` and `p_star`, respectively. The effective transition rates are
+where `kappa_mu` controls relaxation strength and `p_star` is the transition-only equilibrium/direction. The effective low-to-high and high-to-low transition rates are
 
 \[
-u_{L\to H}=\kappa_\mu p_\mu^\ast,\qquad
-u_{H\to L}=\kappa_\mu(1-p_\mu^\ast).
+u_{L\to H}=\kappa_\mu p_\mu^*,\qquad
+u_{H\to L}=\kappa_\mu(1-p_\mu^*).
 \]
 
-At a local post-transition threshold $p_c$, the required pre-transition frequency is
+`p_star` is an effective recurrent-state equilibrium, not an empirical mutation-rate estimate.
+
+The common grid contained `kappa_mu = 0.05, 0.20, 0.35` crossed with `p_star = 0.10, 0.25, 0.50, 0.75, 0.90`. Each coordinate received independent high-function source reconstruction rather than inheriting a source from the symmetric benchmark.
+
+### Common-grid warning-blind loss calibration
+
+Source reconstruction crossed the 15 recurrent-transition coordinates with three area-reference values, three interaction-feedback values, five master seeds and five replicates, for 3,375 attempts. Prepared sources were projected under declared landscape scenarios and retained only when projection invariants passed.
+
+The common deterioration campaign then crossed those coordinates with two horizons and three normalized barrier increases. Calibration used realised post-baseline functional-trait loss only. A candidate was warning-evaluable only if every one of five independent seed blocks had trait-loss frequency in `[0.30,0.70]`. A coordinate with no such candidate was recorded as `no_domain_selected`.
+
+We distinguish four complete-candidate regimes: **R1 persistence**, when every seed-block loss rate is below 0.30; **R2 rapid loss**, when every seed-block rate is above 0.70; **R3 seed-heterogeneous**, when seed blocks cross these categories or the eligibility band; and **R4 warning-evaluable**, when every seed-block rate lies in `[0.30,0.70]`. R4 defines only event-regime estimability, not warning success.
+
+### Prospective recovery of the event-regime frontier
+
+The original common grid selected no R4 domain. We therefore used the completed warning-blind loss data to locate the rapid-to-persistence frontier, without inspecting any diversity or warning field, then prospectively declared new refinement phases.
+
+Phase A refined the weak-transition frontier at `kappa_mu=0.05`. Phase B refined a clean historical rapid-to-persistence bracket at `kappa_mu=0.35`, holding `A_ref=1.0`, interaction `kappa=4.5`, horizon 120 and normalized barrier increase 0.30 fixed while testing interior `p_star` values. Phase C increased replication to 20 replicates per seed with fresh seeds at the two central Phase-B coordinates. Phase D independently replayed `p_star=0.35` and its immediate neighbours `0.325` and `0.375`, again using fresh seeds and 20 replicates per seed.
+
+The recurrent-transition search was stopped after Phase D. No finer `p_star` tuning was permitted merely to widen R4.
+
+### Effective genetic connectivity
+
+Phase E asked whether a recovered R4 condition was stable to genetic connectivity. All non-migration parameters were frozen to the independently reproduced R4 anchor: `A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, `p_star=0.35`, four equal patches at fixed total area, horizon 120 and normalized barrier increase 0.30.
+
+The current simulator implements allele-frequency mixing after local selection as
 
 \[
-\theta(p_c)=\frac{p_c-\kappa_\mu p_\mu^\ast}{1-\kappa_\mu}.
+p_i'=(1-m)p_i+m\bar p,
 \]
 
-Increasing $p_\mu^*$ therefore lowers the pre-transition frequency required to remain above a high-state boundary. We tested, rather than assumed, whether this local mechanism organised the finite stochastic system. The operator can represent recurrent mutation, gain-loss asymmetry, epimutation, switching, or another effective state transition; $p_\mu^*$ is not an empirical mutation-rate estimate.
+where `m` is `migration_rate` and \(\bar p\) is the population-weighted selected mean. This is an **allele-frequency connectivity** operator. It is not demographic migration, pollinator movement, seed dispersal, recolonisation or trait-bin dispersal.
 
-### Common-grid source reconstruction and strict warning-blind calibration
+One hundred independently prepared sources were paired across `m = 0, 0.025, 0.05, 0.10, 0.20`, using the same prepared source and trajectory seed at every migration level. The resulting 500 trajectories were classified from realised functional loss only. Migration rates were fixed prospectively and were not subsequently refined to preserve or create R4.
 
-We evaluated three relaxation strengths (`0.05`, `0.20`, `0.35`) and five transition equilibria (`0.10`, `0.25`, `0.50`, `0.75`, `0.90`). All other life-cycle components were loaded from the pinned first-phase commit.
+### Portability validation and uncertainty
 
-Each coordinate received an independent source reconstruction rather than inheriting a qualified source from the symmetric benchmark. The source grid used three area-reference values, three interaction-feedback values, five master seeds, and five replicates. Prepared sources were held for 30 generations and projected into one-large, equal-isolated, and equal-migrating landscapes. Projection support required every declared invariant to pass.
+A historical separately declared protocol began after the original common-grid no-domain result. It used warning-blind recalibration to recover two evaluable domains, one symmetric and one directional. Those domains differ in recurrent-transition parameters, ecological parameters, deterioration strength and horizon, so their fresh-seed validation is interpreted as a **portability comparison across calibrated eco-genetic domains**, not a single-factor effect of transition direction.
 
-Protocol 002 then evaluated two horizons and three normalized barrier increases with five new calibration seeds and five replicates. A candidate was eligible only if **every** seed block had a post-baseline trait-loss frequency in `[0.30, 0.70]`. Diversity, warning times, lead-lag ordering, and lead time were unavailable during calibration. If no candidate satisfied the rule, the coordinate was recorded as `no_domain_selected`; the Protocol 002 candidate family was not expanded.
+Post-review uncertainty analyses resampled whole attempted trajectories, retaining the six correlated endpoint records within each trajectory. Direct between-domain timing differences were bootstrapped from the two independent domains rather than inferred from marginal interval overlap. Because lead-time medians condition on observing both events and a leading warning, full-denominator event incidence and warning availability are treated as more primary than conditional lead-time summaries.
 
-### Separately declared warning-blind recalibration
+### Exact support-diversity boundaries
 
-Protocol 002 selected no common validation domain. Protocol 003 therefore began as a separate warning-blind protocol, not as a silent relaxation of Protocol 002. After a trait-loss-only bracket pilot, Amendment 001 declared a broader candidate family and a different event-risk gate **before any warning endpoint was calculated**. Eligibility required (i) pooled trait-loss frequency in `[0.30, 0.70]`, (ii) at least four of five seed-block frequencies in `[0.20, 0.80]`, and (iii) at least three baseline-eligible trajectories in every seed block. The amendment also added a weaker directional schedule `(hold=90, normalized increase=0.10)` before independent calibration.
+For heterozygosity \(H(p)=2p(1-p)\),
 
-The first independent calibration did not satisfy that gate. Amendment 002 did not relax it further; instead, it retained the two candidates closest to the pooled target, increased replication to 20 per seed, and introduced a fresh confirmation seed family. Only candidates that passed this unchanged confirmation gate proceeded to validation. Warning values, warning times, and lead-lag outcomes remained unavailable throughout bracket search, calibration, and confirmation.
+\[
+\frac{\partial H(M(p))}{\partial p_\mu^*}
+=2\kappa_\mu[1-2M(p)].
+\]
 
-The two confirmed validation domains were:
+The sign therefore changes at `M(p)=0.5`. At the same time, increasing `p_star` always increases the local high-state support margin `M(p)-p_c`. Thus stronger local high-state support can coincide with lower heterozygosity.
 
-- **recalibrated symmetric domain:** `A_ref=0.8`, interaction-feedback `kappa=6.0`, `kappa_mu=0.20`, `p_star=0.50`, 30-generation ramp, 210-generation hold, total horizon 240 generations, normalized barrier increase `0.20`;
-- **directional calibrated domain:** `A_ref=1.0`, interaction-feedback `kappa=4.5`, `kappa_mu=0.05`, `p_star=0.90`, 30-generation ramp, 90-generation hold, total horizon 120 generations, normalized barrier increase `0.10`.
+With fixed patch weights,
 
-Validation used five fresh master seeds and 20 replicates per seed in each domain. Because these domains differ in ecological parameters and deterioration schedules as well as recurrent-transition parameters, Stage III is interpreted only as a portability comparison across independently calibrated domains.
+\[
+H_\gamma'-H_\alpha'=(1-\kappa_\mu)^2(H_\gamma-H_\alpha),
+\]
 
-### Secondary timing, censoring and uncertainty audit
-
-A post hoc secondary audit was added after manuscript review identified the identification problem above. The audit uses only the locked Stage III validation records; it does not rerun simulations, alter domains, or change endpoint definitions.
-
-The historical Stage III artifact generator calculated its timing “median” as the upper middle order statistic for even sample sizes. The audit instead uses the conventional median, averaging the two middle values when `n` is even. Repository-wide inspection found this definition only in the historical Stage III timing-summary path; the fragmentation effect-size audit and other manuscript-facing medians were calculated separately from locked values using the conventional median. Absolute positive lead times are also divided by the full calibrated deterioration horizon (ramp + hold); a hold-only normalization is retained as a sensitivity description.
-
-The six endpoint records within one trajectory are correlated. We therefore calculated descriptive 95% percentile intervals by resampling whole attempted trajectories, retaining all six endpoint rows within each sampled trajectory (Field & Welsh 2007). We used 20,000 trajectory-cluster bootstrap replicates with fixed seed `20260814`. The aggregate quantities were lead fraction among valid pairs, lag fraction among valid pairs, and valid-pair availability among all attempted endpoint opportunities. Endpoint-specific positive lead-time medians were bootstrapped in the same way. Because the two validation domains use independent trajectories, we additionally resampled 100 whole trajectories independently within each domain and calculated the directional-minus-symmetric difference in median lead time for every endpoint and bootstrap replicate. This directly quantifies uncertainty in the between-domain contrast rather than inferring it from overlap of marginal intervals.
-
-The positive-lead median is a **conditional estimand**: a trajectory contributes only if both warning and trait loss are observed in that domain and the warning leads. The contributing sets therefore differ systematically across domains, and administrative censoring can preferentially exclude later losses and their potentially longer lead times. Horizon normalization does not remove this selection. We therefore treat full-denominator cumulative event incidence and availability as the primary Stage III timing evidence; conditional lead-time medians are a secondary diagnostic that must be interpreted together with Figures 4 and 5.
-
-Finally, warning and trait loss are not classical competing risks because both can occur in the same trajectory; competing-risk cumulative incidence is defined for mutually exclusive event types (Andersen et al. 2012). We therefore report paired cumulative observed incidence of each event rather than forcing them into a competing-risk estimand. Cumulative curves retain all baseline-eligible completed trajectories through their full administratively censored horizon.
+so the contraction of among-patch allele-frequency heterogeneity depends on transition strength but not direction. Parent migration theory likewise shows that allele-frequency mixing homogenises patch differences without imposing a universal sign on demographic or functional rescue.
 
 ## Results
 
-### Recurrent-transition direction changed whether a high-trait source could be established
+### Fragmentation disrupted an interaction-supported functional state
 
-Recurrent-transition parameters affected the system before deterioration began. All 3,375 planned source attempts were completed, and 2,269 attempts (67.23%) completed source preparation and supported projection. Every prepared source passed all projection invariants.
+Of 1,200 attempted parent replicates, 1,055 satisfied the H1 full-state hold criterion. Every qualified replicate had lower final interaction, local effective size and realised high-trait mass after equal isolation than in its matched one-large projection.
 
-Source support ranged from 101 of 225 attempts (44.89%) at `kappa_mu=0.05`, `p_star=0.10` to 195 of 225 attempts (86.67%) at `kappa_mu=0.35`, `p_star=0.90`. Within each fixed-`kappa_mu` row, support generally increased with `p_star`. Because these comparisons occur within the common source-reconstruction grid, they directly show that transition direction reorganised the feasibility of reconstructing the high-trait starting state (Figure 2).
+Mean final interaction was 0.998 in one large patch and 0.0048 after equal isolation; the median paired reduction was 99.86%. Mean local effective size fell from 72.83 to 8.18, with a median paired reduction of 88.73%. Mean realised high-trait mass fell from 0.575 to 0.177, with a median paired reduction of 68.87%.
 
-### The common deterioration family separated into rapid-loss, persistence and heterogeneous regimes
+The fresh fragmentation gradient confirmed that the effect appeared after the first split. Among 1,037 prepared sources, moving from one patch to two isolated patches reduced paired median interaction by 99.83%, local effective size by 77.87% and realised high-trait mass by 71.71%. Interaction and local effective size declined further with additional fragmentation, whereas realised high-trait mass was non-monotonic. Fragmentation therefore provides the ecological bridge from interaction-dependent function to demographic and genetic vulnerability without requiring population extinction (Figure 2A).
 
-The same common grid also changed how realised functional loss occurred. Strict warning-blind calibration completed 20,250 attempts in 810 batches. Among 648 candidates with complete five-seed blocks, 322 had all loss frequencies above the eligibility band, 242 had all rates below it, and 84 crossed the band among seeds (Figure 3).
+### Genetic erosion could precede functional loss, but not as a universal absolute threshold
 
-Low transition equilibria were dominated by rapid loss. At `p_star=0.10`, the closest candidates had a loss frequency of 1.0 in every seed block and at every relaxation strength. High transition equilibria at stronger relaxation were dominated by persistence, including zero loss in every seed block at (`0.20`, `0.90`), (`0.35`, `0.75`), and (`0.35`, `0.90`). Intermediate coordinates were often seed-heterogeneous; at (`0.20`, `0.50`), for example, the pooled frequency was 0.524 while seed-block rates ranged from 0.20 to 0.80.
+In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available after source preparation and projection. Thirty-five reached post-baseline realised functional-trait loss; 48 remained right-censored for loss.
 
-No complete candidate satisfied the strict all-seed eligibility rule. All 15 coordinates were therefore recorded as `no_domain_selected`. This result means that the common deterioration family did not provide a reproducible intermediate-risk domain for warning validation; it does not mean that genetic warning failed.
+For each of the six baseline-relative `H_alpha` and `H_gamma` endpoints, all 35 valid same-trajectory pairs had genetic erosion before functional loss, with no ties and no lags. This establishes that genetic erosion can provide advance information in a calibrated regime.
 
-### Fragmentation produced large, consistent reductions in interaction, local effective size and realised high-trait mass
+The result did not extend to the predeclared absolute thresholds. `H_alpha <= 0.20` produced 14 leads and six lags among 20 valid pairs; `H_gamma <= 0.20` produced eight leads and eight lags among 16 valid pairs. Warning behaviour therefore depended on the definition of genetic change even within one biological closure (Figure 2B).
 
-Across 12 primary cells, 1,055 of 1,200 attempted replicates satisfied the H1 full-state hold criterion, and every qualified replicate had lower final interaction, local effective size, and realised high-trait mass after equal isolation than in its matched one-large projection.
+### Recurrent state turnover changed both source feasibility and the way function was lost
 
-Pooled descriptively across those paired replicates, mean final interaction was `0.9977` in one large patch and `0.0048` after equal isolation; the median paired reduction was 99.86%. Mean local effective size fell from `72.83` to `8.18`, with a median paired reduction of 88.73%. Mean realised high-trait mass fell from `0.575` to `0.177`, with a median paired reduction of 68.87% (Supplementary Table S1). These finite results provide the demographic and functional bridge between the analytical interaction threshold and later genetic-warning analyses.
+Across the common 15-coordinate recurrent-transition grid, all 3,375 source attempts were completed and 2,269 supported source preparation and projection. Coordinate support ranged from 44.89% at `kappa_mu=0.05, p_star=0.10` to 86.67% at `kappa_mu=0.35, p_star=0.90`, generally increasing with `p_star` within fixed-`kappa_mu` rows.
 
-A fresh-seed fragmentation gradient showed that the four-patch contrast was not endpoint-specific. Of 1,200 attempted sources, 1,037 were prepared and projected across all eight patch counts. At the first split to two isolated patches, paired medians fell by 99.83% for interaction, 77.87% for local effective size, and 71.71% for realised high-trait mass, with all three lower in 1,037/1,037 sources. Interaction and local effective size then declined further, whereas realised high-trait mass partially recovered; fresh four-patch reductions closely reproduced the historical endpoint (Supplementary Fig. S1).
+The common deterioration campaign completed 20,250 attempts in 810 batches. Among 648 complete five-seed candidates, 322 were rapid-loss, 242 persistence and 84 seed-heterogeneous. No candidate satisfied the strict all-seed R4 rule, so all 15 coarse coordinates were `no_domain_selected`.
 
-### Relative genetic erosion preceded functional-trait loss in the inherited symmetric benchmark
+This result occurred before warning values were inspected. It therefore did not show warning failure; it showed that the shared candidate family failed to generate a reproducible intermediate-risk functional-loss process at the sampled coordinates (Figure 3).
 
-The inherited symmetric benchmark provided a strong but conditional warning result. Of 100 attempted sources, 83 produced an available, projection-supported trajectory. Thirty-five of those 83 trajectories reached post-baseline realised trait loss; the remaining 48 available trajectories were right-censored for trait loss.
+### Warning-blind refinement recovered a narrow reproducible R4 event regime
 
-For each of the six predeclared relative-diversity endpoints, all 35 valid same-trajectory comparisons had warning before realised trait loss. There were no ties and no lags. This result applies only to observed event pairs in the independently selected benchmark configuration; it does not establish a universal warning rule.
+The prospective frontier phases changed that interpretation. Phase A produced no R4 cell. In the cleaner Phase-B bracket at `kappa_mu=0.35`, pooled loss declined smoothly from 0.739 to 0.095 as `p_star` increased from 0.30 to 0.45, but all four low-rep interior cells remained seed-heterogeneous. A middle pooled probability was therefore not sufficient to identify a warning-evaluable regime.
 
-Fixed absolute thresholds behaved differently. For `H_alpha <= 0.20`, 20 valid pairs contained 14 leads and six lags. For `H_gamma <= 0.20`, 16 valid pairs contained eight leads and eight lags. Fixed absolute thresholds were therefore not retained as robust warning rules. The contrast shows that warning performance depended on how genetic change was defined even before the recurrent-transition extension.
+With fresh high replication in Phase C, `p_star=0.35` became R4-highrep: seed-block loss rates were 0.579, 0.529, 0.474, 0.588 and 0.368, with pooled loss 0.505. `p_star=0.40` remained R3-highrep.
 
-### Warning availability and ordering differed across recalibrated domains; the timing contrast was schedule-dependent
+Phase D independently replayed the central point and its neighbours. `p_star=0.35` again satisfied R4, with seed-block rates 0.500, 0.667, 0.647, 0.588 and 0.632 and pooled loss 0.609. The lower neighbour `0.325` had pooled loss 0.663 but two seed blocks above 0.70; the upper neighbour `0.375` had pooled loss 0.391 but one seed block below 0.30. Both were R3-highrep.
 
-Protocol 003 recovered two domains only after its warning-blind amendment and independent confirmation. In confirmation, the recalibrated symmetric domain had pooled trait-loss frequency `0.679` among 84 baseline-eligible trajectories, and the directional calibrated domain had frequency `0.625` among 88. These domains were then frozen before fresh-seed warning validation.
+The original 15/15 no-domain result was therefore a coarse-grid/common-family result rather than structural impossibility. R4 exists, but occupies a narrower region than pooled loss probability alone suggests. **Reproducibility across independent stochastic blocks is an additional biological condition of warning estimability** (Figure 4).
 
-Validation attempted 100 trajectories per domain. Eighty-two recalibrated symmetric trajectories completed source preparation, all 82 were baseline-eligible, and 54 valid warning-loss pairs were available at each endpoint. Ninety-one directional calibrated trajectories completed source preparation, but ten were baseline-ineligible; endpoint-specific valid-pair counts ranged from 28 to 38. Cumulative event-incidence curves retain those censored trajectories and show that warning incidence reached 1.0 for all six endpoints in the recalibrated symmetric domain, whereas directional-domain warning incidence remained endpoint-dependent and often below functional-loss incidence by the end of its shorter horizon (Figure 4).
+### Effective genetic connectivity moved the same R4 anchor into a heterogeneous event regime
 
-Across all six endpoints, valid-pair availability among attempted endpoint opportunities was `0.540` (trajectory-cluster bootstrap 95% interval `0.440–0.640`) in the recalibrated symmetric domain and `0.335` (`0.248–0.425`) in the directional calibrated domain. The recalibrated symmetric domain contained 323 leads, one tie and no lags across 324 valid pairs; its lead fraction was `0.997` (`0.990–1.000`). The directional calibrated domain contained 184 leads, five ties and 12 lags across 201 valid pairs; its lead fraction was `0.915` (`0.848–0.971`) and lag fraction was `0.060` (`0.016–0.112`). These intervals resample trajectories rather than treating the six endpoint rows as independent observations (Figure 5).
+Phase E held the independently reproduced R4 anchor fixed and changed only allele-frequency migration. The isolated replay remained R4-highrep with pooled functional-loss rate 0.571. Low migration also retained R4: pooled loss was 0.549 at `m=0.025` and 0.593 at `m=0.05`.
 
-Conditional on observing a leading warning-loss pair, positive lead-time point estimates were lower in the directional calibrated domain: conventional medians were `106–109` generations across endpoints in the recalibrated symmetric domain and `72.5–77.5` generations in the directional calibrated domain. The direct absolute difference interval excluded zero at only two of six endpoints, `H_alpha` 5% (`−97.0` to `−3.5` generations) and 10% (`−97.0` to `−4.5`), and both exclusions were close to zero at the upper bound; the other four intervals included zero. After full-horizon normalization, all six directional-minus-symmetric 95% difference intervals included zero. These medians are calculated on domain-specific selected subsets (54 leading pairs per symmetric endpoint versus 24–35 in the directional domain) and are additionally shaped by administrative censoring, so they are not a marginal domain-wide timing effect. Figure 4 therefore provides the primary Stage III timing evidence on the full baseline-eligible denominator; Figure 6 is retained as a conditional diagnostic to show why apparent lead time is schedule- and selection-dependent (Supplementary Table S5).
+At stronger tested mixing, the event-regime class changed despite only modest change in pooled risk. At `m=0.10`, pooled loss was 0.626 but one seed block reached 0.722, producing R3-highrep. At `m=0.20`, pooled loss was 0.604 and one seed block again reached 0.722, also producing R3-highrep.
+
+Because the same prepared sources and trajectory seeds were paired across migration levels, we could ask which individual trajectories changed loss status. Relative to isolation, 8 of 91 comparable trajectories switched status at `m=0.025`, 12 at `0.05`, 21 at `0.10` and 25 at `0.20`. At every nonzero rate, some trajectories changed from loss to no loss and others from no loss to loss.
+
+Thus genetic connectivity did not behave as a simple rescue or collapse axis. Instead, it changed **which stochastic trajectories lost function** and, at the stronger tested rates, changed whether the event process remained reproducible enough to satisfy R4. Warning estimability is therefore conditional not only on recurrent state turnover but also on effective genetic connectivity (Figure 5).
+
+### Warning behaviour was not fully portable across independently calibrated domains
+
+The separately declared portability protocol recovered two evaluable domains only after warning-blind recalibration. Fresh validation attempted 100 trajectories in each domain.
+
+Valid-pair availability across the six endpoints was 0.540 in the recalibrated symmetric domain and 0.335 in the directional calibrated domain. The symmetric domain contained 323 leads, one tie and no lags among 324 valid comparisons. The directional calibrated domain contained 184 leads, five ties and 12 lags among 201 valid comparisons.
+
+Conditional positive lead-time medians were shorter in absolute generations in the directional calibrated domain, but direct between-domain difference intervals excluded zero at only two of six endpoints. After normalization by each calibrated horizon, all six direct timing-difference intervals included zero. Because the domains also differ in ecological parameters and deterioration schedules, these results support bounded **non-portability across calibrated eco-genetic domains**, not an isolated effect of recurrent-transition direction (Figure 6).
 
 ## Discussion
 
-Genetic warning is not a context-free property of a diversity statistic; its meaning depends on the event-generating and observation system.
+### Genetic early warning has biological conditions of estimability
 
-### Methodological discipline is part of the biological result
+The central result is not simply that genetic early warning is context dependent. The study identifies an upstream biological requirement that is often treated as implicit: a warning can be estimated only if the system first generates a functional-loss process that is both nondegenerate and reproducible across comparable stochastic realizations.
 
-The strongest result of this study is not a universal claim that one genetic signal predicts functional loss. It is that warning behaviour depended on whether the biological system generated a usable event regime and on how that regime had to be calibrated. The strict common-family design selected no domain at any of 15 transition coordinates. Rather than treating this as a failed analysis, we retained the `no_domain_selected` outcome and opened a separately documented protocol.
+This distinction became visible in three steps. The original common grid produced rapid-loss, persistence and seed-heterogeneous regimes but no R4 condition. Prospective warning-blind refinement then recovered and independently reproduced a narrow R4 region, showing that the original no-domain result reflected coarse placement rather than impossibility. Finally, genetic connectivity moved the same biological anchor from R4 to R3 while pooled loss probability changed only modestly. The event-regime class therefore contains information that a pooled transition probability alone does not.
 
-That second protocol did change the candidate family and eligibility rule. The important safeguard was not that the search space never changed; it was that every change was declared from **trait-loss-only information before warning values were calculated**, and that later validation used fresh seeds. Amendment 001 added a weaker directional schedule and replaced the Protocol 002 all-seed `[0.30, 0.70]` requirement with a pooled `[0.30, 0.70]` target plus a four-of-five `[0.20, 0.80]` seed-block requirement and baseline-eligibility floor. When the first independent calibration still failed, Amendment 002 kept that rule fixed and increased replication. Writing these steps explicitly makes the calibration history evidence for, rather than a threat to, the warning-blind design.
+This suggests a different workflow for early-warning studies. Rather than beginning with a candidate statistic and searching for a threshold that leads collapse, first map the event-generating regime without using the warning. Ask whether the state of interest can exist, whether deterioration produces the target loss event, and whether loss occurs reproducibly at a rate that allows timing to be estimated. Only after that domain is fixed should warning performance be compared.
 
-### Transition direction is identified for source and loss regimes, not for the final timing contrast
+### Reproducibility is not the same as intermediate average risk
 
-The common 15-coordinate grid supports a direct statement about recurrent-transition direction: within fixed relaxation-strength rows, source feasibility generally increased with `p_star`, and the common deterioration family moved from rapid-loss through heterogeneous to persistence regimes across the transition map. Those analyses use shared source-reconstruction and deterioration families.
+The Phase-B to Phase-D sequence makes this point directly. Several cells had pooled functional-loss probabilities near the middle of the range but failed R4 because independent seed blocks occupied different event regimes. Conversely, `p_star=0.35` only became interpretable after increased replication showed that all independent blocks lay inside the intermediate-risk band, and that conclusion was reproduced with a second fresh seed family.
 
-The final Stage III comparison answers a different question. The two validation domains differ not only in `p_star` and `kappa_mu`, but also in `A_ref`, interaction-feedback `kappa`, barrier increase, and deterioration horizon. The comparison therefore asks whether a relative-diversity warning is portable across two independently calibrated eco-genetic settings. It cannot identify the isolated causal contribution of transition direction to warning ordering or lead time.
+The ecological meaning is important. A system can have a population-level average risk that appears ideal for warning analysis while individual populations, years or stochastic histories separate into almost-certain loss and almost-certain persistence. In such a system a pooled lead time is not simply noisy; it mixes distinct event-generating regimes. The same logic applies to empirical monitoring across sites or years.
 
-A matched-schedule Stage III comparison would seem to solve this problem, but the strict common-family experiment explains why it was not the primary validation design. Under the same predeclared deterioration family, all 15 transition coordinates failed the common event-risk gate because candidates collapsed into rapid-loss, persistence, or seed-heterogeneous regimes. Holding the schedule fixed therefore did not yield comparable warning-validation domains to contrast. Recovering intermediate event risk required coordinate-specific recalibration, which restored evaluability at the cost of single-factor identification. That trade-off is itself the biological result: **event-regime feasibility precedes warning comparison**.
+### Connectivity can change event-regime reproducibility without a simple rescue sign
 
-The timing audit makes that limitation concrete but is deliberately secondary to the full-denominator incidence curves. Absolute conditional medians were lower in the directional calibrated domain, whereas horizon-normalized point estimates reversed the ordering; direct difference intervals were endpoint-dependent and every normalized interval included zero. More importantly, the median conditions on the domain-specific subset in which both events are observed and the warning leads, so different availability and administrative censoring change which trajectories contribute. A claim that direction either shortened or lengthened intervention time would therefore be unsupported. Warning timing must be interpreted jointly with event incidence and availability, not from the selected lead-time distribution alone.
+Connectivity is often framed as beneficial because it can provide demographic or genetic rescue, or as harmful because it can erode local differentiation. The present model supports neither sign as universal. The exact migration layer homogenizes allele-frequency differences, while the finite Phase-E experiment showed bidirectional loss-status switching under the same paired sources. Stronger tested allele-frequency mixing changed the event regime from R4 to R3 without a large monotone change in pooled loss probability.
 
-### Warning availability matters as much as conditional ordering
+This is particularly relevant to fragmented landscapes. Two landscapes with similar patch geometry can occupy different eco-genetic regimes if their effective connectivity differs. But the present `migration_rate` represents allele-frequency mixing only. It should not be equated with demographic movement, pollinator flow, seed dispersal or recolonisation. Those processes can be added only with explicit life-cycle mechanisms.
 
-A warning can lead almost whenever both events occur and still be operationally weak if the pair is rarely observable. This is why Figure 5 retains source failures, baseline ineligibility, and every censoring category in the 100-attempt denominator. The directional calibrated domain retained predominantly leading valid pairs, but valid-pair availability was lower and warning censoring was common, especially for stricter `H_gamma` thresholds.
+### Genetic diversity is not a monotone meter of ecological function
 
-The cumulative event-incidence curves make the same point without discarding non-events. Warning and trait loss are not mutually exclusive competing risks, so we followed both over the complete horizon rather than forcing a competing-risk model. In the recalibrated symmetric domain, relative-warning incidence rapidly approached one while trait loss accumulated later. In the directional calibrated domain, warning incidence often plateaued below one. Most strikingly, for the 20% `H_gamma` endpoint, warning was observed in 41 of 81 baseline-eligible completed trajectories (`0.506`) whereas functional-trait loss occurred in 52 of 81 (`0.642`) by the end of follow-up (Figure 4). Warning availability is therefore part of the ecological result, not a nuisance denominator.
+The exact recurrent-transition identities explain why a universal diversity threshold should not be expected. Increasing `p_star` always strengthens the local high-associated allele support margin, yet its effect on heterozygosity changes sign at post-transition frequency 0.5. In a high-frequency state, stronger support can therefore coincide with lower genetic diversity.
 
-### Relative genetic erosion is not automatically an informative warning
+Spatial diversity is also affected differently by transition strength and direction. Under fixed weights, `H_gamma-H_alpha` contracts with `(1-kappa_mu)^2` independently of `p_star`. Migration similarly contracts spatial allele-frequency differences. A low-diversity or low-differentiation state can therefore arise from mechanisms that either weaken or maintain the high-associated state. Genetic diversity remains biologically important, but its warning meaning must be conditioned on the state-generating pathway.
 
-The inherited symmetric benchmark might otherwise look almost tautological: a relative decline in diversity was followed by a later functional-loss threshold in every observed event pair. Three results argue against interpreting that ordering as an intrinsic property of the diversity statistic. First, fixed absolute diversity thresholds produced substantial lags in the same stored trajectories. Second, strict common-family calibration failed across the entire transition grid because many systems occupied rapid-loss, persistence, or seed-heterogeneous regimes. Third, the independently recalibrated directional domain produced baseline ineligibility, censoring, ties and lags even though the same six relative-warning definitions were used.
+### Urban and island systems provide complementary empirical tests
 
-These contrasts do not prove that the warning captures a unique causal precursor. They show that its observability and ordering are not guaranteed by the threshold definition alone. The next empirical and model-based test should therefore compare genetic warning with control variables outside the proposed eco-genetic pathway or with deliberately perturbed baseline windows, using negative controls to expose generic deterioration or analytic artefacts rather than assuming specificity (Lipsitch et al. 2010).
+Urban and island landscapes are useful not because one is an artificial version of the other, but because they decouple apparent spatial fragmentation from effective biological connectivity in different ways.
 
-### Functional-trait loss is not population extinction
+Urban habitat patches can be separated by built surfaces yet remain connected by pollen movement, green corridors, repeated introductions or anthropogenic dispersal. Urban population-genetic responses are correspondingly heterogeneous rather than uniformly isolation-like (Miles et al. 2019), and urban pollination can decline even while movement among some green spaces remains substantial (Youngsteadt & Keighron 2023). The model predicts that such systems should be classified by realised connectivity and pollination function separately. Two urban networks with similar mean reproductive failure could differ in warning estimability if connectivity changes how consistently loss occurs across patches or years.
 
-The ecological endpoint was realised loss of a high-trait state, not extinction of the whole population. Species can persist numerically while losing their effectiveness as pollinators, seed dispersers, mutualists, defenders, or other ecological actors (Soulé et al. 2005; McConkey & Drake 2006; Valiente-Banuet et al. 2015). The model therefore separates population persistence, potential trait viability, realised trait occupancy, allele persistence, local effective size, and genetic diversity.
+Island systems provide stronger long-term gradients of area, geographic isolation, colonization and mutualist availability. Functional island biogeography predicts changes in pollinator availability, generalism and reproductive assurance along those gradients (Schrader et al. 2021). Self-compatibility is over-represented in many island floras, while obligate outcrossing can persist when an effective pollination niche remains available. These systems therefore offer natural tests of the same hierarchy: can the functional state establish, does interaction-dependent function fail, is failure reproducible, and only then does genetic change provide warning?
 
-This distinction changes how warning should be interpreted. A population-based monitor may respond after an interaction-dependent function has already been lost. A genetic indicator may respond earlier, but only if the demographic and genetic processes that produce erosion operate on a timescale that precedes realised functional loss. Monitoring should therefore be calibrated against the ecological function at risk rather than against population persistence alone.
+The most informative empirical design would follow the same lineage across a network of patches or islands and measure patch support, contemporary gene or pollen flow, interaction success, realised reproductive/function endpoints and temporal genetic state together. The primary classification would be the functional-loss regime; genetic warning would be a second-stage analysis restricted to reproducible intermediate-risk systems.
 
-### Recurrent transitions affect persistence without implying directed mutation or demographic rescue
+### Limits and interpretation
 
-The recurrent-transition extension is related to evolutionary rescue but does not test demographic rescue in the conventional sense. Evolutionary-rescue theory asks whether heritable change prevents population extinction during environmental deterioration (Gomulkiewicz & Holt 1995; Carlson et al. 2014; Bell 2017). Our endpoint is functional-trait loss. A high-trait-directed transition can favour functional persistence without demonstrating that the whole population would otherwise have gone extinct.
+The model is finite and intentionally explicit. R4 is not proposed as a universal numerical band, and the tested `p_star` or migration values are not ecological thresholds to be transferred to nature. The band is an operational device for separating persistent, rapid, heterogeneous and estimable event regimes in the declared simulation.
 
-Likewise, $p_\mu^*$ is not an estimated nucleotide mutation rate and does not imply directed adaptive mutation. It represents the equilibrium direction of effective recurrent transitions between high-trait-associated and low-trait-associated states. Such transitions could represent allelic mutation, biased gain and loss of function, epimutation, developmental switching, or another recurrent process. Mapping this effective parameter to a particular mechanism requires system-specific data.
+The recovered R4 region is narrow along the tested recurrent-transition axis, and the connectivity result is demonstrated at one R4 anchor. The current model also lacks an independent exogenous pollinator- or mutualist-availability control. We therefore stop condition tuning rather than reinterpret an internal feedback parameter as a direct ecological proxy.
 
-### Genetic monitoring requires biological calibration
-
-The practical implication is not that one genetic metric should replace another. Relative diversity erosion was highly informative in the inherited symmetric benchmark, but fixed thresholds were unreliable and relative warnings became less available in a separately calibrated domain. This calibration problem sits alongside the established sensitivity of small populations to drift, diversity loss and inbreeding (Frankham 2005). A threshold learned in one species, trait architecture, landscape, turnover regime, or deterioration timescale should therefore not be transferred without evidence that the underlying interaction feedback, state turnover, baseline eligibility, and censoring structure are comparable.
-
-Connectivity should be interpreted with the same caution. The first-phase framework established exact bounds for deterministic allele-frequency mixing, but those bounds do not guarantee demographic or functional rescue. More connectivity or more diversity is therefore not automatically the management target. The relevant target is a biological regime in which ecological function persists and any genetic warning appears early enough to support intervention.
-
-### Limits and empirical tests
-
-All numerical results are finite Type S evidence for declared model closures. The trajectory-cluster bootstrap intervals quantify finite-campaign uncertainty; they are not population-level confidence intervals. The Stage III timing and ordering comparison is not a single-factor experiment because the independently calibrated domains differ in ecological and deterioration parameters. The cumulative-incidence analysis is a post hoc descriptive audit of locked validation records. None of these analyses estimates a universal effect size or a biological mutation rate.
-
-Empirical tests would need repeated measurements of at least four distinct layers: spatial configuration and connectivity, the interaction-dependent ecological function, effective population size or genetic diversity, and the recurrent process that generates or removes trait-associated states. A prospective study should predefine the functional-loss threshold, collect temporal genetic data, retain non-events, and compare the proposed genetic warning with negative-control variables or baseline perturbations so that early ordering is not mistaken for a generic consequence of shared deterioration.
+Finally, the study does not establish that genetic warning succeeds throughout R4. The inherited symmetric benchmark proves that advance genetic information is possible, while the historical portability comparison shows that availability and ordering can change across recalibrated domains. The new condition-recovery phases deliberately withheld genetic-warning outcomes. Their contribution is more upstream: they identify when a warning comparison is biologically estimable in the first place.
 
 ## Conclusion
 
-Fragmentation can weaken interaction-dependent ecological function and reduce the local effective population size that maintains genetic variation. In the first phase of this study, relative diversity erosion preceded every observed functional-trait loss in one warning-blind calibrated symmetric benchmark, while fixed absolute thresholds did not provide a robust rule. Across a common directional-transition grid, recurrent-transition parameters then reorganised source feasibility and functional-loss regimes so strongly that the strict calibration selected no common validation domain.
+Fragmentation can disrupt an interaction-supported ecological function, and genetic erosion can precede that functional loss in a calibrated regime. But a warning statistic cannot be interpreted independently of the biological process that generates the loss event. Recurrent state turnover changed whether a high-function source could be established and how function was lost; warning-blind refinement recovered a narrow, reproducible intermediate-risk regime missed by the coarse grid; and effective genetic connectivity moved that same anchor between reproducible and seed-heterogeneous loss regimes.
 
-The strongest extension result occurred before warning values were examined: recurrent-transition coordinates reorganised source feasibility and partitioned a common deterioration family into rapid-loss, persistence and seed-heterogeneous regimes, leaving no strict common validation domain. A separately declared warning-blind protocol later recovered two non-matched domains for a portability test. Warning availability was lower and lags appeared in the directional calibrated domain, but direct timing contrasts remained endpoint- and schedule-dependent. The defensible conclusion is therefore not that transition direction alone weakens or accelerates genetic warning. **Whether warning can be meaningfully evaluated is itself an eco-genetic property, and conditional warning performance comes only after that feasibility question is satisfied.**
+Genetic early warning therefore has **conditions of estimability**. The relevant question is not only whether a genetic signal is early, but whether the eco-genetic system first generates a functional-loss process for which “early” is a reproducible quantity. Mapping that event-generating domain before evaluating the signal provides a general route for translating genetic early-warning theory to heterogeneous fragmented landscapes, including urban and island systems.
 
 ## Data and code availability
 
-The study is distributed across two versioned repositories to preserve computational provenance. The mechanistic parent repository contains the theorem-guided interaction model, locked fragmentation campaign, inherited symmetric warning benchmark, and its evidence ledger. The extension repository contains the directional-transition protocols, amendments, validation records, secondary timing audit, publication figures, and integrated manuscript. The parent scientific state is pinned at commit `dd8ee379d0d3518194c767d16402042525bc00dc`. Submission bundles include both software distributions, exact source archives, machine-readable trajectory summaries, protocol documents, artifact identifiers and SHA-256 manifests.
+The study is distributed across two versioned repositories to preserve computational provenance. The parent repository contains the theorem-guided interaction model, locked fragmentation campaign, inherited symmetric warning benchmark and its evidence ledger. The extension repository contains the recurrent-transition protocols, warning-blind condition-recovery phases, Phase-E connectivity records, Protocol 003 portability validation, exact theory, figures and integrated manuscript. The parent scientific state is pinned at commit `dd8ee379d0d3518194c767d16402042525bc00dc`. Submission bundles contain both software distributions, exact source archives, machine-readable condition and trajectory summaries, protocol documents, artifact identifiers and SHA-256 manifests.
 
 ## References
+
+Alberti, M. (2015). Eco-evolutionary dynamics in an urbanizing planet. *Trends in Ecology & Evolution*, **30**, 114–126. doi:10.1016/j.tree.2014.11.007
 
 Andersen, P.K., Geskus, R.B., de Witte, T. & Putter, H. (2012). Competing risks in epidemiology: possibilities and pitfalls. *International Journal of Epidemiology*, **41**, 861–870. doi:10.1093/ije/dyr213
 
@@ -230,7 +246,11 @@ Gomulkiewicz, R. & Holt, R.D. (1995). When does evolution by natural selection p
 
 Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hendry, A.P., De Brito Martins, A., Melián, C.J., Raeymaekers, J.A.M., Ratikainen, I.I., Sæther, B.-E., Schweitzer, J.A. & Matthews, B. (2019). Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology*, **33**, 13–30. doi:10.1111/1365-2435.13241
 
+Gsell, A.S., Scharfenberger, U., Özkundakci, D., Walters, A.W., Hansson, L.-A., Janssen, A.B.G., Nõges, P., Reid, P.C., Schindler, D.E., van Donk, E., Dakos, V. & Adrian, R. (2016). Evaluating early-warning indicators of critical transitions in natural aquatic ecosystems. *Proceedings of the National Academy of Sciences USA*, **113**, E8089–E8095. doi:10.1073/pnas.1608242113
+
 Hastings, A. & Wysham, D.B. (2010). Regime shifts in ecological systems can occur with no warning. *Ecology Letters*, **13**, 464–472. doi:10.1111/j.1461-0248.2010.01439.x
+
+Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, **11**, 609–623. doi:10.1111/j.1461-0248.2008.01179.x
 
 Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N., Travis, J.M.J. & Clobert, J. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
 
@@ -238,7 +258,13 @@ Lipsitch, M., Tchetgen Tchetgen, E. & Cohen, T. (2010). Negative controls: a too
 
 McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, **87**, 271–276. doi:10.1890/05-0386
 
+Miles, L.S., Rivkin, L.R., Johnson, M.T.J., Munshi-South, J. & Verrelli, B.C. (2019). Gene flow and genetic drift in urban environments. *Molecular Ecology*, **28**, 4138–4151. doi:10.1111/mec.15221
+
+Rivkin, L.R., Santangelo, J.S., Alberti, M., et al. (2019). A roadmap for urban evolutionary ecology. *Evolutionary Applications*, **12**, 384–398. doi:10.1111/eva.12734
+
 Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
+
+Schrader, J., Wright, I.J., Kreft, H. & Westoby, M. (2021). A roadmap to plant functional island biogeography. *Biological Reviews*, **96**, 2851–2870. doi:10.1111/brv.12782
 
 Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
 
@@ -250,4 +276,10 @@ Stoltzfus, A. & McCandlish, D.M. (2017). Mutational biases influence parallel ad
 
 Storz, J.F., Natarajan, C., Signore, A.V., Witt, C.C., McCandlish, D.M. & Stoltzfus, A. (2019). The role of mutation bias in adaptive molecular evolution: insights from convergent changes in protein function. *Philosophical Transactions of the Royal Society B*, **374**, 20180238. doi:10.1098/rstb.2018.0238
 
+Traveset, A. & Navarro, L. (2018). Plant reproductive ecology and evolution in the Mediterranean islands: state of the art. *Plant Biology*, **20** Suppl. 1, 63–77. doi:10.1111/plb.12636
+
 Valiente-Banuet, A., Aizen, M.A., Alcántara, J.M., Arroyo, J., Cocucci, A., Galetti, M., García, M.B., García, D., Gómez, J.M., Jordano, P., Medel, R., Navarro, L., Obeso, J.R., Oviedo, R., Ramírez, N., Rey, P.J., Traveset, A., Verdú, M. & Zamora, R. (2015). Beyond species loss: the extinction of ecological interactions in a changing world. *Functional Ecology*, **29**, 299–307. doi:10.1111/1365-2435.12356
+
+Whitlock, R. (2014). Relationships between adaptive and neutral genetic diversity and ecological structure and functioning: a meta-analysis. *Journal of Ecology*, **102**, 857–872. doi:10.1111/1365-2745.12240
+
+Youngsteadt, E. & Keighron, M.C. (2023). Urban Pollination Ecology. *Annual Review of Ecology, Evolution, and Systematics*, **54**, 21–42. doi:10.1146/annurev-ecolsys-102221-044616
