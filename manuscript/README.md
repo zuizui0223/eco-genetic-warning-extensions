@@ -2,137 +2,88 @@
 
 **Working title:** *Eco-genetic regimes govern when genetic early warning can be validated*
 
-## Publication source of truth
+## Current status
 
-The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines permitted and prohibited claims. [`integrated_story.md`](integrated_story.md) and [`integrated_abstract_and_outline.md`](integrated_abstract_and_outline.md) define the current narrative architecture for the next manuscript revision. [`ecological_grounding.md`](ecological_grounding.md) separates established ecological background from the study's novelty claim. [`hypothesis_condition_phase_map.md`](hypothesis_condition_phase_map.md) defines the next warning-blind hypothesis/condition-recovery program and maps urban/island applications. Older exploratory notes are not publication sources when they conflict with these files.
+Warning-blind condition recovery is closed for this manuscript cycle. The original publication source [`main_text.md`](main_text.md) still reflects the pre-refinement narrative and is therefore **not yet the preferred scientific draft**.
 
-## One paper, one question
+The current rewrite source is:
 
-The paper is not a catalogue of H1/H3/H2/Protocol 002/Protocol 003 results. It asks one question:
+- [`main_text_condition_recovered_draft.md`](main_text_condition_recovered_draft.md)
 
-> **Is genetic early-warning reliability a portable property of the genetic signal, or does it emerge from the eco-genetic regime that generates both genetic change and functional loss?**
+It incorporates:
 
-**Genetic-warning reliability is not a portable property** of a diversity statistic. Recurrent-transition direction is **one mechanism that reshapes this closure**, but it is not the sole novelty or the isolated explanation for the final calibrated-domain contrast.
+- parent H1/H3 mechanism;
+- the inherited conditional genetic-warning benchmark;
+- the original Protocol 002 common-grid no-domain result;
+- prospective Phases A–D recovery of a narrow, independently reproduced R4 event regime;
+- Phase-E allele-frequency-connectivity condition mapping;
+- historical Protocol 003 portability evidence;
+- exact support–diversity and migration interpretation boundaries;
+- urban and island empirical translation.
 
-The answer is developed in causal order.
+Do not overwrite `main_text.md` with the new draft until the condition-recovered draft passes claim/evidence and journal-format review.
 
-```text
-interaction feedback permits a functional state
-→ fragmentation can weaken that state and local effective size
-→ in one calibrated regime, genetic erosion can precede functional loss
-→ recurrent transitions change source feasibility
-→ recurrent transitions change the functional-loss regime
-→ a matched warning-validation domain can disappear
-→ warning must be recalibrated before it can be compared
-→ after recalibration, availability/ordering are not fully portable
-→ exact theory shows diversity is not a monotone proxy for functional support
-```
+## Four manuscript questions
 
-## Current science priority before final manuscript rewriting
+1. **How is interaction-dependent ecological function maintained and lost under fragmentation?**
+2. **Can genetic erosion precede that functional loss?**
+3. **Under what eco-genetic conditions is that warning comparison estimable?**
+4. **Once estimable, is the warning portable across regimes, and why should portability be limited?**
 
-Before strengthening the paper's novelty claim, recover the **conditions** under which the warning problem is well posed. The next research target is a warning-blind eco-genetic phase map, not another tuned warning comparison.
+Question 3 is now the empirical centre of the paper.
 
-The finite regimes to map are:
+## Current main conclusion
 
-- `R0`: source-infeasible;
-- `R1`: persistence / functional loss too rare;
-- `R2`: rapid-loss / functional loss nearly deterministic or too fast;
-- `R3`: seed-heterogeneous / event regime not reproducible;
-- `R4`: warning-evaluable / reproducible intermediate-risk functional loss.
+> **Genetic early warning has biological conditions of estimability. Functional loss must first occur at a reproducible, nondegenerate rate; recurrent state turnover determines where that regime occurs, and effective genetic connectivity can move the same biological anchor into or out of that regime before any warning statistic is inspected.**
 
-`R4` must be identified without diversity or warning fields. Only after candidate regions are frozen should fresh-seed warning validation be run. The current Protocol 002 result establishes only that `R4` was absent from the declared 15-coordinate common grid/candidate family; it does not establish universal absence.
+This is stronger and more precise than the earlier conclusion that the common 15-coordinate grid had no validation domain. The historical 15/15 `no_domain_selected` result remains immutable, but Phases C/D show that R4 exists in a narrow region missed by the coarse grid, and Phase E shows that R4/R3 classification is connectivity-dependent at that anchor.
 
-Urban and island systems are the leading external application domains for this phase-map idea. Cities can combine fragmentation with corridors, repeated introductions and human-mediated dispersal, whereas islands often impose persistent isolation, colonization filters and mutualist limitation. These contrasting systems can test whether similar spatial isolation generates different eco-genetic regimes depending on connectivity, interaction support and recurrent state turnover.
+## Publication sources of truth
 
-## What each study phase contributes
+Use the following hierarchy while the rewrite is under review:
 
-### Mechanistic parent phase — establish the biological pathway
+1. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited scientific claims;
+2. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → conditions → remaining boundary;
+3. [`integrated_story.md`](integrated_story.md) — four-question narrative architecture;
+4. [`main_text_condition_recovered_draft.md`](main_text_condition_recovered_draft.md) — current manuscript rewrite;
+5. [`ecological_grounding.md`](ecological_grounding.md) and [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — ecological/prior-art and application boundaries.
 
-The parent repository supplies:
-
-1. the theorem-guided interaction/function-state mechanism;
-2. the paired fragmentation bridge from interaction support to local effective size and realised high-trait mass;
-3. one warning-blind symmetric benchmark in which relative genetic erosion precedes observed functional loss, plus an absolute-threshold audit showing that warning definition matters.
-
-These results establish **why a genetic warning is biologically possible**. They are not the final claim that warning is universal.
-
-### Recurrent-transition common grid — the empirical centre
-
-The extension asks whether the warning problem remains well posed when the process maintaining/removing the high-associated state changes.
-
-- H-MD-1: source feasibility changes across recurrent-transition coordinates.
-- H-MD-2: the same deterioration family produces rapid-loss, persistence and seed-heterogeneous regimes.
-- H-MD-3a: zero eligible candidates and 15/15 `no_domain_selected` under the strict common warning-blind gate.
-
-**This is the core result:** the eco-genetic regime can remove the comparable event process required to validate a warning before warning values are inspected.
-
-### Protocol 003 — portability after evaluability is recovered
-
-Protocol 003 is a separately declared warning-blind recovery of evaluability. The two confirmed domains differ in transition parameters, ecological parameters and deterioration schedules. Their Stage III comparison therefore tests **warning portability across calibrated eco-genetic domains**, not the isolated causal effect of transition direction.
-
-**Stage III does not identify the isolated causal effect** of recurrent-transition direction. The main Stage III evidence is availability/censoring and ordering. Conditional lead-time medians are secondary because the contributing trajectories and calibrated horizons differ between domains.
-
-### Exact recurrent-transition theory — conceptual closure
-
-The Type T identities show why no context-free direction→diversity→function rule should be expected. Increasing `p_star` always strengthens the local high-associated allele support margin, but when post-transition frequency exceeds 0.5 it decreases heterozygosity. Genetic diversity is therefore not a monotone proxy for functional support under the declared transition operator.
-
-This local theorem constrains interpretation; it does not determine full stochastic warning first-passage ordering.
-
-## Main claim
-
-> **A genetic warning can only be interpreted after the eco-genetic regime first sustains a functional state, generates a reproducible loss process and gives genetic diversity an interpretable relationship to function. Recurrent-transition dynamics alter these prerequisites, so genetic warning is regime- and calibration-dependent rather than a portable property of the diversity metric.**
-
-## Results order for the next manuscript revision
-
-1. Fragmentation establishes the eco-genetic route from interaction loss to demographic/genetic vulnerability.
-2. Relative genetic erosion can precede functional loss in one calibrated symmetric regime, but fixed absolute thresholds are not robust.
-3. Recurrent-transition coordinates reorganise high-function source feasibility.
-4. The common deterioration family reorganises loss regimes and produces 15/15 no-domain outcomes.
-5. Warning-blind recalibration restores evaluability, but warning availability and ordering differ across calibrated domains.
-6. Exact transition theory explains why diversity is not a monotone proxy for high-state support.
-
-The current `main_text.md` still begins Results with H-MD-1/H-MD-2 and then returns to fragmentation. That publication source should be reordered in the next revision so the Results follow the causal chain above rather than reversing to the mechanistic parent phase midstream.
+Older exploratory notes are not publication sources when they conflict with these files.
 
 ## Main versus secondary evidence
 
 ### Main line
 
-- concise interaction/function-state mechanism;
-- concise paired fragmentation bridge;
-- concise symmetric relative-warning benchmark and absolute-threshold contrast;
-- H-MD-1 source feasibility;
-- H-MD-2/H-MD-3a event-regime/no-domain result;
-- Protocol 003 warning availability/order portability;
-- Type T function-support/diversity decoupling.
+- concise H1/H3 interaction–fragmentation mechanism;
+- conditional relative-warning benchmark and absolute-threshold contrast;
+- recurrent-transition source feasibility and loss-regime map;
+- narrow R4 recovery and independent replay;
+- Phase-E connectivity boundary;
+- bounded Protocol 003 portability result;
+- exact support–diversity/migration interpretation boundaries.
 
 ### Secondary / Supplementary
 
-- fresh 1–16 patch fragmentation-gradient details beyond the robustness statement;
-- cell-level H3 tables;
-- full Protocol 003 amendment chronology and candidate-search bookkeeping;
-- conditional positive lead-time medians, hold-only normalization and endpoint-by-endpoint timing detail;
-- implementation debugging, CI history and PR chronology.
+- detailed 1–16 patch fragmentation gradient;
+- low-rep Phase-A/B cell bookkeeping beyond what is needed to show frontier recovery;
+- Protocol 003 amendment chronology beyond the minimum needed to prove warning-blindness;
+- conditional positive lead-time medians and hold-only normalization;
+- implementation debugging, CI and branch history.
 
 ## Claims not made
 
 - No universal genetic-warning theorem is claimed.
-- `p_mu*` is not an empirical mutation-rate estimate.
-- `no_domain_selected` is not warning failure.
+- R4 is not a universal numerical risk band.
+- `p_star` is not an empirical mutation-rate estimate.
+- The original `no_domain_selected` result is not warning failure.
+- The recovered R4 region does not prove warning success; warning fields were withheld during Phases A–E.
+- `m=0.05` is not a universal connectivity threshold.
+- Current `migration_rate` is allele-frequency mixing, not demographic, pollinator or seed movement.
 - Protocol 003 is not a matched single-factor direction experiment.
 - Lower genetic diversity does not necessarily imply poorer ecological function.
-- The local support–diversity theorem does not determine full dynamic warning ordering.
 - Endpoint rows within a trajectory are not independent biological replicates.
 - Bootstrap intervals describe finite-campaign uncertainty rather than population-level confidence intervals.
-- Parent and extension trajectories remain separate evidence/provenance units.
 
-## Display priority
+## Next manuscript action
 
-The strongest visual spine remains:
-
-- Figure 1: eco-genetic causal architecture;
-- Figure 2: recurrent-transition source feasibility;
-- Figure 3: functional-loss regimes and the no-domain result;
-- Figure 4: cumulative warning and functional-loss incidence;
-- Figure 5: full attempted denominator, censoring and ordering.
-
-Figure 6 lead-time timing is scientifically secondary and should be reconsidered for Supplementary placement if further compression is needed. Supplementary Figure S1 remains the fixed-area fragmentation-gradient sensitivity.
+Review `main_text_condition_recovered_draft.md` against the claim map, reference list and Ecology Letters length/display constraints. If clean, promote it to `main_text.md`, then rebuild figures so the narrow R4 recovery and Phase-E connectivity condition appear in the main evidence spine rather than only in repository planning documents.
