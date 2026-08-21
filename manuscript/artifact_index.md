@@ -16,6 +16,7 @@ Protocol and phase identifiers are retained here because they are necessary for 
 | R4 prospective recovery | high-rep warning-blind recovery/replay of `p_star=0.35` | committed Phase C/D summaries under `artifacts/frontier_refinement/` |
 | Genetic-connectivity condition | paired `m=0–0.20` test at recovered R4 anchor | run `32376912392`, artifact `9409687687`; committed `artifacts/migration_condition/phase_e_summary.json` |
 | Aggregate interaction-support condition | predeclared `kappa=3.0,4.5,6.0`; 100 attempts/level; all three R4-highrep | run `32441549848`, artifact `9432854668`, digest `sha256:bb221af16a9b6557280610e90807fdfe058dccbafd7d0183e38d4525ecef2c16`; committed `artifacts/interaction_support/phase_f_summary.json` |
+| Reduced-form partner-loss condition | paired intact plus three one-partner-loss architectures; 100 source preparations; intact R4, all loss architectures R3 | run `32450362310`, artifact `9435520830`, digest `sha256:669cfc468f8a36e53ccc157aaa97e5a4de14f6ad7c09458ed105762e4d0d6ec7`; committed `artifacts/partner_redundancy/phase_g_summary.json` |
 | Protocol 003 validation | 200 attempted fresh-seed trajectories across separately calibrated domains | run `29417632137` |
 | Recalibrated symmetric domain | 100 attempts; `A_ref=0.8`, `kappa=6.0`, `kappa_mu=0.20`, `p_star=0.50`, ramp 30 + hold 210, increase 0.20 | artifact `8343958766`, digest `sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58` |
 | Directional calibrated domain | 100 attempts; `A_ref=1.0`, `kappa=4.5`, `kappa_mu=0.05`, `p_star=0.90`, ramp 30 + hold 90, increase 0.10 | artifact `8343922879`, digest `sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8` |
@@ -28,8 +29,9 @@ Protocol and phase identifiers are retained here because they are necessary for 
 - `artifacts/frontier_refinement/phase_d_summary.json` — independent replay plus immediate neighbours.
 - `artifacts/migration_condition/phase_e_summary.json` — connectivity condition and paired status switches.
 - `artifacts/interaction_support/phase_f_summary.json` — aggregate interaction-support result with exact run/artifact provenance.
+- `artifacts/partner_redundancy/phase_g_summary.json` — reduced-form one-partner-loss result, matched contribution architectures, paired switches and the labelled post-hoc incidence audit.
 
-The Phase-F committed summary records:
+### Phase F
 
 | interaction kappa | source/baseline eligible | pooled functional loss | regime |
 |---:|---:|---:|---|
@@ -38,6 +40,17 @@ The Phase-F committed summary records:
 | 6.0 | 87/100 | 0.552 | R4-highrep |
 
 All five seed-block loss rates at all three levels remained within `[0.30,0.70]`.
+
+### Phase G
+
+| partner condition | baseline eligible | pooled functional loss | seed-rate range | regime |
+|---|---:|---:|---:|---|
+| intact control | 90/100 | 0.544 | 0.129 | R4-highrep |
+| even redundant loss | 90/100 | 0.567 | 0.261 | R3-highrep |
+| graded-contribution loss | 90/100 | 0.556 | 0.353 | R3-highrep |
+| dominant-partner loss | 90/100 | 0.578 | 0.235 | R3-highrep |
+
+The three loss architectures are matched for `4→3` partner richness and mean retained support `0.75`. Paired loss-status switches versus intact occurred in 38/90, 39/90 and 31/90 trajectories. The post-hoc paired incidence audit (explicitly secondary) gave Cochran's Q `p=0.943`; this supports interpreting the predeclared R4→R3 changes as reproducibility/estimability changes rather than a directional shift in pooled risk.
 
 ## Submission-bundle tables
 
@@ -54,7 +67,7 @@ Historical Stage III source artifacts are not overwritten. Conventional-median c
 
 ## Publication display rule
 
-The current six-display limit is controlled by `manuscript/display_allocation.md`. The final condition-first layout should not create a seventh main display merely because Phase F closed. Phase E and Phase F are both C2 condition-axis results and should be integrated in the same condition display when figures are revised.
+The current six-display limit is controlled by `manuscript/display_allocation.md`. Phase G should not automatically create an additional main display. Phases E–G are C2 condition-axis results and should be integrated into the same condition-focused display or use Phase-G detail in supplement unless figure redesign shows a clearer six-display allocation.
 
 ## Evidence rules
 
@@ -65,6 +78,9 @@ The current six-display limit is controlled by `manuscript/display_allocation.md
 - Phase E `migration_rate` is allele-frequency mixing only.
 - Phase F `interaction kappa` is aggregate positive-feedback/effective interaction support, not partner richness, connectance or network simplification.
 - Phase F is closed after its three predeclared levels; no finer/wider kappa search is opened to manufacture a boundary.
+- Phase G is a reduced-form partner-contribution perturbation, not a full network/connectance/rewiring model.
+- Phase G is closed after its predeclared architectures; no partner-weight/removal tuning is opened to manufacture an architecture effect.
+- Phase G does not support a claim that partner loss raises mean loss probability or that contribution concentration alone determines regime.
 - Protocol 003 domains differ in recurrent-transition, ecological and deterioration parameters, so their Stage III contrast is portability rather than a direction-only effect.
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
