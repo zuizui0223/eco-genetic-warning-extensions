@@ -1,0 +1,16 @@
+kappa_mu,p_star,complete_candidate_count,incomplete_candidate_count,dominant_regime,rapid_loss_candidate_count,seed_heterogeneous_candidate_count,persistence_candidate_count,closest_batch_index,closest_area_reference,closest_kappa,closest_horizon,closest_barrier_increase,closest_pooled_trait_loss_rate,closest_inside_band_seed_count,closest_maximum_distance_to_band,closest_seed_block_rates,domain_selected
+0.05,0.1,24,30,rapid-loss,24,0,0,6,0.8,4.5,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.05,0.25,48,6,rapid-loss,48,0,0,54,0.8,3.0,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.05,0.5,36,18,rapid-loss,36,0,0,108,0.8,3.0,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.05,0.75,54,0,rapid-loss,51,3,0,181,1.0,3.0,120,0.3,0.8888888888888888,1,0.30000000000000004,1;1;0.5;1;1,False
+0.05,0.9,54,0,seed-heterogeneous,19,35,0,224,0.8,4.5,120,0.45,0.4583333333333333,4,0.04999999999999999,0.6;0.4;0.25;0.6;0.4,False
+0.2,0.1,30,24,rapid-loss,30,0,0,276,0.8,4.5,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.2,0.25,42,12,rapid-loss,42,0,0,324,0.8,3.0,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.2,0.5,42,12,seed-heterogeneous,0,40,2,406,1.0,4.5,240,0.3,0.5238095238095238,2,0.10000000000000009,0.2;0.75;0.333333;0.8;0.5,False
+0.2,0.75,54,0,persistence,0,4,50,433,0.8,3.0,120,0.3,0.05555555555555555,1,0.3,0.333333;0;0;0;0,False
+0.2,0.9,42,12,persistence,0,0,42,486,0.8,3.0,120,0.15,0.0,0,0.3,0;0;0;0;0,False
+0.35,0.1,30,24,rapid-loss,30,0,0,546,0.8,4.5,120,0.15,1.0,0,0.30000000000000004,1;1;1;1;1,False
+0.35,0.25,42,12,rapid-loss,42,0,0,595,0.8,3.0,120,0.3,0.9565217391304348,0,0.30000000000000004,1;1;1;0.75;1,False
+0.35,0.5,48,6,persistence,0,2,46,657,0.8,4.5,240,0.15,0.13043478260869565,0,0.3,0;0.2;0;0.2;0.2,False
+0.35,0.75,54,0,persistence,0,0,54,702,0.8,3.0,120,0.15,0.0,0,0.3,0;0;0;0;0,False
+0.35,0.9,48,6,persistence,0,0,48,756,0.8,3.0,120,0.15,0.0,0,0.3,0;0;0;0;0,False
