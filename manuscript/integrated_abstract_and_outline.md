@@ -4,207 +4,184 @@
 
 **Eco-genetic regimes govern when genetic early warning can be validated**
 
-## Paper-level question
+## Four paper questions
 
-> **Is genetic early-warning reliability a portable property of the genetic signal, or does it emerge from the eco-genetic regime that generates both genetic change and functional loss?**
+1. **How is interaction-dependent ecological function maintained and lost under fragmentation?**
+2. **Can genetic erosion precede that functional loss?**
+3. **Under what eco-genetic conditions is the warning comparison itself estimable?**
+4. **Once estimable, is warning behaviour portable across regimes, and why should portability be limited?**
 
-The manuscript should answer this in causal order rather than presenting the parent and extension as parallel result sets.
+Question 3 is the empirical centre.
 
 ## Central proposition
 
-A genetic warning can only be interpreted after three upstream conditions are met:
+A genetic warning can be interpreted only after the system first:
 
-1. a functional state exists and can be lost without immediate population extinction;
-2. deterioration generates a reproducible event regime in which loss is neither essentially certain nor essentially absent;
-3. genetic diversity has an interpretable relationship to that functional state along the relevant trajectory.
+1. sustains the functional state of interest;
+2. generates its loss at a nondegenerate rate;
+3. does so reproducibly across comparable stochastic blocks.
 
-The study shows that recurrent-transition dynamics alter all three prerequisites. Therefore **event-regime feasibility precedes warning performance as the primary biological question**.
+The study now shows that recurrent state turnover determines where this warning-evaluable event regime occurs, and effective genetic connectivity can move the same biological anchor into or out of that regime before warning statistics are inspected.
 
 ## Recommended abstract logic
 
-1. Ecological function can disappear before population extinction, creating a monitoring target not captured by presence alone.
-2. The parent mechanism/fragmentation phase establishes a route from interaction loss to reduced local effective size and realised functional-trait loss.
-3. A warning-blind symmetric benchmark shows that relative genetic erosion can precede functional loss in one calibrated regime, while fixed absolute thresholds are not robust.
-4. The recurrent-transition common grid then asks whether that warning question remains comparable when the state-transition process changes.
-5. Source feasibility and loss regimes reorganise across the grid, and strict warning-blind calibration selects no common validation domain at all 15 coordinates.
-6. This is the main result: the biological closure can remove the event regime required to evaluate warning before warning values are inspected.
-7. Separately declared recalibration restores evaluability in two non-matched domains; warning availability and ordering differ, but timing is not a direction-only effect.
-8. Exact transition theory shows why: stronger high-state allele support can coincide with lower heterozygosity, so diversity is not a monotone proxy for functional support.
-9. Conclusion: genetic early warning is regime- and calibration-dependent, not a portable property of a diversity statistic.
+1. Warning analyses normally ask whether genetic change precedes ecological loss, implicitly assuming that a comparable loss process exists.
+2. H1/H3 establish an interaction-supported function and a fragmentation route that degrades interaction, local effective size and realised function.
+3. The inherited symmetric benchmark shows that relative genetic erosion can precede loss in one calibrated regime, while absolute thresholds are not robust.
+4. The common recurrent-transition grid changes source feasibility and partitions functional loss into rapid, persistent and seed-heterogeneous regimes; the original coarse grid contains no R4 candidate.
+5. Prospective warning-blind refinement recovers and independently replays a narrow R4 condition at `kappa_mu=0.35, p_star=0.35`.
+6. At that fixed anchor, low allele-frequency mixing preserves R4, whereas stronger tested mixing produces R3 even though pooled loss changes only modestly.
+7. Historical separately recalibrated validation shows bounded non-portability of warning availability/order, not a direction-only effect.
+8. Exact theory shows why: functional support and heterozygosity need not move monotonically together.
+9. Conclusion: genetic early warning has biological conditions of estimability.
 
 ## Introduction logic
 
-### Paragraph 1 — what conservation can lose before extinction
+### Paragraph 1 — ecological function can be lost before population disappearance
 
-Functional traits and ecological interactions can disappear while the population remains present. Population persistence, realised ecological function, allele persistence and genetic diversity are therefore distinct monitoring targets.
+Separate population persistence from ecological function, allele persistence, genetic diversity and realised trait occupancy.
 
-### Paragraph 2 — why fragmentation creates a warning problem
+### Paragraph 2 — fragmentation creates the eco-genetic pathway
 
-Interaction-dependent function can be sensitive to patch size and isolation. Fragmentation can weaken interaction support, realised high-trait occupancy and local effective size, creating a plausible sequence in which genetic erosion might precede functional loss.
+Interaction-dependent function can be sensitive to patch structure. Fragmentation can reduce interaction support and local effective size before population extinction.
 
-### Paragraph 3 — warning can work without being universal
+### Paragraph 3 — genetic warning is possible but not automatically portable
 
-Early-warning studies normally ask whether a signal precedes collapse, but that assumes a comparable loss process exists. The parent symmetric benchmark provides a proof of possibility for relative genetic erosion, while fixed absolute thresholds already show that warning definition matters.
+Use early-warning and genetic-monitoring literature to motivate advance genetic change, while noting known mechanism/state-variable dependence and diversity–function non-equivalence.
 
-### Paragraph 4 — the real question
+### Paragraph 4 — the missing upstream question
 
-Ask whether warning reliability belongs to the diversity metric or to the eco-genetic regime that generates both signal and loss. Introduce recurrent-transition direction as a biological process that can alter the persistence of the high-associated state before warning is evaluated.
+A warning comparison assumes that functional loss occurs at a reproducible, nondegenerate rate. Define warning estimability as an event-regime property to be established without looking at warning outcomes.
 
-### Paragraph 5 — study design and prediction hierarchy
+### Paragraph 5 — four questions and study design
 
-State the ordered questions:
-
-```text
-Can the high-function source be established?
-→ What loss regime is generated?
-→ Does a matched warning-validation domain exist?
-→ Only then, how portable is warning across calibrated domains?
-```
-
-Make explicit that the final two Protocol 003 domains are not a single-factor direction experiment.
+State Q1–Q4. Explain that recurrent-transition and migration condition searches are warning-blind, whereas Protocol 003 is a separately recalibrated portability comparison.
 
 ## Methods logic
 
-### Mechanistic foundation
+### H1/H3 mechanistic foundation
 
-Present only enough parent theory to establish the state distinction: interaction feedback permits functionally distinct states, and potential viability, realised occupancy, allele state, local effective size and diversity are tracked separately.
+Present only enough analytical state structure to define the interaction-supported functional state. Then describe paired one-large versus fragmented projections and the fresh fragmentation sensitivity.
 
-### Fragmentation bridge
+### Conditional genetic-warning benchmark
 
-Use the locked paired H3 experiment to establish that the same prepared high state loses interaction support, local effective size and realised high-trait mass after isolation. Keep the fresh 1–16 patch gradient as supplementary sensitivity.
-
-### Conditional symmetric warning benchmark
-
-Describe trait-loss-only calibration, fresh validation seeds, relative-warning definitions and absolute-threshold audit. Frame this as a conditional benchmark, not the paper's universal result.
+Describe trait-loss-only calibration, fresh validation seeds, six relative-diversity endpoints, censoring and the absolute-threshold audit.
 
 ### Recurrent-transition common grid
 
 Define
 
 \[
-M(p)=\kappa_\mu p_\mu^*+(1-\kappa_\mu)p
+M(p)=\kappa_\mu p_\mu^*+(1-\kappa_\mu)p.
 \]
 
-and separate `kappa_mu` (contraction/relaxation strength) from `p_mu*` (transition-only equilibrium direction). Use the same source-reconstruction and deterioration families across the 15 coordinates.
+Keep `kappa_mu` and `p_star` biologically distinct and do not call `p_star` a mutation rate.
 
-### Strict Protocol 002 calibration
+### Warning-blind event-regime classification
 
-State the all-seed `[0.30,0.70]` intermediate-risk gate and warning-blindness. The selector either finds an eligible domain or records `no_domain_selected`; the candidate family is not expanded within Protocol 002.
+Use R1 persistence, R2 rapid loss, R3 seed heterogeneous and R4 warning evaluable. R4 means every independent seed-block functional-loss rate lies in `[0.30,0.70]` with the required baseline support. It does not mean warning succeeds.
 
-### Protocol 003 portability recovery
+### Prospective condition recovery
 
-Explain only the design facts necessary to preserve identification: candidate expansion and the new event-risk rule were declared from trait-loss-only information before warning inspection; independent confirmation and fresh validation seeds followed. Detailed amendment chronology can remain supplementary.
+Describe Phases A–D as a prospectively staged refinement of the rapid-to-persistence frontier. Emphasise that warning/diversity fields were unavailable and that `p_star` refinement stopped after the independent Phase-D replay.
 
-### Type T diversity/support boundary
+### Phase E connectivity
 
-Add the exact local identities as an analytical closure to the recurrent-transition model. Keep the interpretation bounded to the transition step and do not present them as dynamic first-passage theorems.
+Fix the independently reproduced R4 anchor and pair the same 100 prepared sources across `migration_rate = 0, 0.025, 0.05, 0.10, 0.20`. State explicitly that this is allele-frequency mixing only.
 
-### Secondary timing and uncertainty audit
+### Protocol 003 portability and uncertainty
 
-Retain whole-trajectory resampling, full denominators and cumulative observed incidence. Conditional positive lead-time medians are secondary to availability and censoring.
+Retain the warning-blind recalibration history only as needed for identification. The two validation domains are not matched single-factor contrasts. Whole-trajectory bootstrap and full denominators remain primary for timing/availability interpretation.
 
-## Results logic — causal order
+### Exact theory
 
-### Result 1 — fragmentation establishes the eco-genetic vulnerability bridge
+Retain Type T support–diversity identities and migration homogenisation as bounded operator results, not dynamic warning theorems.
 
-Across 1,055 H1-qualified paired projections, equal isolation reduced final interaction, local effective size and realised high-trait mass in every qualified replicate; median paired reductions were 99.86%, 88.73%, and 68.87%.
+## Results logic
 
-**Interpretation:** functional support and demographic-genetic capacity can deteriorate before population disappearance.
+### Result 1 — fragmentation creates functional vulnerability
 
-### Result 2 — genetic erosion can lead functional loss in one calibrated regime, but the rule is conditional
+Across 1,055 H1-qualified paired projections, isolation reduced interaction, local effective size and realised high-trait mass in every qualified replicate. The fresh gradient shows the main collapse appears at the first split.
 
-In the inherited symmetric benchmark, 83/100 trajectories were available and 35 experienced functional loss; all six relative-warning endpoints led in all 35 event pairs. Fixed absolute thresholds produced lags.
+### Result 2 — genetic erosion can lead loss in one calibrated regime
 
-**Interpretation:** genetic warning is possible, but it is already definition- and regime-dependent.
+All six relative-diversity endpoints led all 35 observed loss events in the inherited benchmark. Absolute thresholds produced lags.
 
-### Result 3 — recurrent-transition coordinates reorganise source feasibility
+### Result 3 — recurrent transition reorganises source feasibility and loss regime
 
-Across 3,375 common-grid attempts, 2,269 completed source preparation and supported projection, with support ranging from 44.89% to 86.67%.
+Source support varies 44.89–86.67% across the common grid. The 648 complete deterioration candidates partition into 322 rapid-loss, 242 persistence and 84 heterogeneous candidates. The original coarse grid has 0 R4 candidates and 15/15 `no_domain_selected`.
 
-**Interpretation:** the recurrent process changes whether the high-function state can be established before deterioration begins.
+### Result 4 — warning-blind refinement positively recovers a narrow R4 regime
 
-### Result 4 — recurrent transitions reorganise the event-generating regime and eliminate a common validation domain
+Phase C recovers `p_star=0.35` as R4-highrep and Phase D independently replays it. Neighbours `0.325`, `0.375` and the Phase-C `0.40` cell are R3-highrep.
 
-Among 648 complete Protocol 002 candidates, 322 were rapid-loss-side, 242 persistence-side, and 84 seed-heterogeneous. No candidate satisfied the strict all-seed gate; all 15 coordinates remained `no_domain_selected`.
+**Key interpretation:** pooled intermediate loss is insufficient; reproducibility across independent stochastic blocks is an additional estimability condition.
 
-**This is the core extension result.** The biological closure can remove the comparable intermediate-risk regime required to validate a warning before warning outcomes are inspected.
+### Result 5 — connectivity changes evaluability of the same biological anchor
 
-### Result 5 — recalibration restores evaluability, but warning is not fully portable
+At the fixed R4 anchor:
 
-Valid-pair availability was 0.540 versus 0.335. The recalibrated symmetric domain produced 323 leads, 1 tie and 0 lags; the directional calibrated domain produced 184 leads, 5 ties and 12 lags. For directional `H_gamma` at 20%, final warning incidence was 41/81 while realised functional-trait-loss incidence was 52/81.
+- `m=0,0.025,0.05`: R4-highrep;
+- `m=0.10,0.20`: R3-highrep.
 
-**Interpretation:** after evaluability is recovered, availability and ordering remain system-dependent. Do not attribute the difference to transition direction alone.
+Pooled loss remains within 0.549–0.626, while paired status switching rises from 8/91 to 25/91 with migration and occurs in both directions.
 
-### Result 6 — exact theory explains why a context-free diversity warning is not expected
+**Key interpretation:** effective genetic connectivity can alter event-regime reproducibility without a universal rescue/collapse sign.
 
-For the declared affine transition,
+### Result 6 — warning is not fully portable after separate recalibration
 
-\[
-\frac{\partial [M(p)-p_c]}{\partial p_\mu^*}=\kappa_\mu>0,
-\]
+Valid-pair availability is 0.540 vs 0.335. The two historical calibrated domains differ in ordering/censoring, while all six full-horizon-normalized direct timing-difference intervals include zero.
 
-while
+### Result 7 — exact theory bounds portability
 
-\[
-\frac{\partial H(M(p))}{\partial p_\mu^*}=2\kappa_\mu[1-2M(p)].
-\]
-
-When `M(p)>0.5`, stronger local high-state support coincides with lower heterozygosity. Under fixed patch weights, `H_gamma-H_alpha` contracts by `(1-kappa_mu)^2` independently of `p_star`.
-
-**Interpretation:** diversity is not a monotone proxy for functional support, providing a mechanistic boundary around warning portability.
-
-### Secondary result — conditional lead time is schedule-dependent
-
-Conventional median positive lead times were 106–109 versus 72.5–77.5 generations. Absolute direct-difference intervals excluded zero only for `H_alpha` 5% and 10%; all six full-horizon-normalized intervals included zero.
-
-**Interpretation:** this is a secondary diagnostic, not a headline direction effect. It is a strong candidate for Supplementary placement if the Letter needs further compression.
+Increasing `p_star` can strengthen local high-state support while lowering heterozygosity, and transition/migration operators contract spatial allele-frequency differences without fixing the sign of realised functional loss.
 
 ## Discussion logic
 
-### 1. Event-regime feasibility comes before warning performance
+### 1. Warning estimability is an upstream biological condition
 
-The central advance is not a new universal threshold. It is the ordering of questions. Warning cannot be compared until the biological system generates a reproducible loss regime.
+The novelty is not generic context dependence. It is making event-regime reproducibility an explicit pre-warning estimand and mapping it without access to the proposed warning.
 
-### 2. The no-domain result is biological, not merely methodological
+### 2. Mean event risk is not enough
 
-Rapid loss, persistence and seed heterogeneity are outcomes of the eco-genetic closure. Protocol 002 therefore reveals that the manipulation changes the event-generating regime itself.
+Phase B–D show that a plausible pooled loss probability can conceal incompatible seed-block regimes.
 
-### 3. Conditional success is not portability
+### 3. Connectivity changes reproducibility, not just mean risk
 
-The symmetric benchmark shows that relative genetic warning can be useful in one calibrated domain. Protocol 003 shows that the same warning definitions need not have the same availability or ordering after recalibration elsewhere.
+Phase E provides a matched condition test and a direct bridge to fragmented urban/island landscapes.
 
-### 4. Diversity is not a monotone surrogate for function
+### 4. Conditional warning success is not portability
 
-Use the Type T support–diversity decoupling result to explain why more diversity is not automatically more function and why a lower diversity value is not intrinsically an earlier warning of poorer function.
+Use the inherited benchmark as proof of possibility and Protocol 003 as bounded portability evidence.
 
-### 5. Calibration is biological inference
+### 5. Diversity is not a monotone functional meter
 
-Warning-blind calibration is not merely a technical preprocessing step. It identifies whether the system generates the event regime required for the scientific comparison.
+Use Type T support–diversity decoupling to explain why no context-free threshold follows from the model.
 
-### 6. Practical monitoring implication
+### 6. Urban and island applications
 
-Genetic monitoring should be calibrated against the ecological function, turnover process, deterioration timescale and observation regime at risk. Availability and censoring belong in the management interpretation, not just valid lead pairs.
+Urban systems test fragmentation with potentially high effective connectivity; islands test area/isolation with stepping-stone connectivity and mutualist/reproductive filters. In both, classify the functional-loss regime first and test a genetic warning second.
 
-## Main versus supporting evidence
+## Main versus supplementary evidence
 
-### Keep in the main causal line
+### Main line
 
-- analytical interaction/function-state distinction;
-- concise H3 fragmentation bridge;
-- concise inherited symmetric warning benchmark + absolute-threshold contrast;
-- H-MD-1 source feasibility;
-- H-MD-2/H-MD-3a loss-regime/no-domain result;
-- Protocol 003 warning availability/order portability;
-- Type T support–diversity decoupling.
+- concise H1/H3 mechanism;
+- concise conditional genetic-warning benchmark;
+- common-grid source/loss regimes;
+- Phase C/D narrow R4 recovery;
+- Phase E connectivity boundary;
+- Protocol 003 availability/order portability;
+- Type T interpretation boundaries.
 
-### Keep secondary or supplementary
+### Supplementary
 
-- fresh fragmentation-gradient details beyond the one-split robustness statement;
-- cell-level H3 tables;
+- detailed fragmentation gradient;
+- full Phase A/B low-rep bookkeeping;
 - full Protocol 003 amendment chronology;
-- endpoint-by-endpoint conditional lead-time plots and hold-only normalization;
-- implementation/CI/PR history.
+- conditional positive lead-time detail and hold-only normalization;
+- CI/debugging history.
 
-## Final conclusion sentence
+## Final conclusion
 
-**Genetic warning is informative only within an eco-genetic regime that sustains the functional state, generates a comparable loss process and gives diversity an interpretable relationship to function; recurrent-transition dynamics can change each prerequisite before warning performance is even defined.**
+**Genetic early warning has biological conditions of estimability: interaction-dependent function must first exist, deterioration must generate reproducible but nondegenerate functional loss, and recurrent state turnover plus effective genetic connectivity determine where that condition is met. Genetic erosion can precede loss inside a calibrated regime, but the warning is not a portable property of the diversity statistic itself.**
