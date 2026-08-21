@@ -23,7 +23,7 @@ interaction-supported functional state
 → bounded warning portability + support/diversity theory
 ```
 
-The Letter retains exactly six main display items, no main-text tables and no text boxes. Historical figure numbering should not determine the final scientific order.
+The Letter uses **exactly six main display items** and **no main-text tables or text boxes**. Historical figure numbering should not determine the final scientific order.
 
 ## Main display items
 
@@ -50,7 +50,7 @@ A compact two-part parent-evidence figure.
 
 **Narrative role:** answers Q1 and Q2 without turning the parent phase into a separate paper inside the paper. It establishes both the ecological loss pathway and a proof that genetic warning can work in one calibrated regime.
 
-The detailed 1–16 patch fragmentation sensitivity remains Supplementary Figure S1.
+Table S1 retains the paired fragmentation effect sizes underlying Figure 2. The detailed 1–16 patch fragmentation sensitivity remains Supplementary Figure S1.
 
 ### Figure 3 — recurrent state turnover reorganises source feasibility and functional-loss regime
 
@@ -62,6 +62,8 @@ A combined common-grid figure.
 
 **Narrative role:** first half of Q3. Recurrent state turnover changes both whether the high-function source can be established and how function is lost before any warning statistic is available.
 
+Tables S3–S4 retain the coordinate and candidate records underlying Figure 3.
+
 ### Figure 4 — warning-blind recovery of a narrow R4 event regime
 
 The key new condition-recovery figure.
@@ -72,7 +74,7 @@ The key new condition-recovery figure.
 
 **Narrative role:** central Q3 result. A middle pooled probability is not enough; reproducibility across independent stochastic blocks is an additional condition. The historical 15/15 no-domain result reflected coarse-grid/common-family placement rather than structural impossibility.
 
-Low-rep Phase-A detail and full candidate bookkeeping remain supplementary.
+Low-rep Phase-A detail and full candidate bookkeeping remain supplementary. Table S6 contains the high-rep frontier records underlying Figure 4.
 
 ### Figure 5 — effective genetic connectivity changes event-regime estimability
 
@@ -84,7 +86,7 @@ Phase-E paired migration-condition figure at the independently reproduced R4 anc
 
 **Narrative role:** second half of Q3 and the strongest bridge to urban/island ecology. Connectivity changes event-regime reproducibility and trajectory identity without acting as a simple monotone rescue/collapse operator.
 
-The caption must state that `migration_rate` is allele-frequency mixing only, not demographic, pollinator or seed movement, and must not present `m=0.05` as a threshold.
+The caption must state that `migration_rate` is allele-frequency mixing only, not demographic, pollinator or seed movement, and must not present `m=0.05` as a threshold. Table S6 contains the migration-level and paired-switch records underlying Figure 5.
 
 ### Figure 6 — portability after evaluability is separately recovered
 
@@ -92,11 +94,11 @@ Compress the historical Stage III evidence into one main portability figure rath
 
 **Panel A:** full attempted-denominator warning availability / censoring / lead-tie-lag composition for the two independently calibrated domains.
 
-**Panel B:** cumulative warning and realised functional-loss incidence for a representative or compact endpoint set, preserving administrative censoring and the different calibrated horizons.
+**Panel B:** cumulative warning and realised functional-loss incidence for a compact endpoint set, preserving administrative censoring and the different calibrated horizons.
 
 **Narrative role:** answers Q4 empirically. Warning can remain mostly leading among valid pairs while availability and censoring differ across calibrated regimes. The domains are non-matched, so this figure does not identify a recurrent-transition-direction effect.
 
-The old conditional lead-time figure is moved to Supplementary Material. Timing remains an identification/sensitivity diagnostic rather than a main conclusion.
+Table S5 contains the endpoint, censoring and timing audit underlying Figure 6. The old conditional lead-time figure moves to Supplementary Figure S3; timing remains an identification/sensitivity diagnostic rather than a main conclusion.
 
 ## Main-text theory without a dedicated seventh figure
 
@@ -119,25 +121,22 @@ Fresh paired 1, 2, 3, 4, 6, 8, 12 and 16 patch sensitivity. Retain non-monotonic
 
 ### Supplementary Figure S2 — detailed frontier search chronology
 
-If useful, show Phase A and low-rep Phase B condition discovery separately from the high-rep Figure 4 evidence. This should document search geometry, not inflate the main claim.
+If useful, show Phase A and low-rep Phase B condition discovery separately from the high-rep Figure 4 evidence. This documents search geometry rather than inflating the main claim.
 
 ### Supplementary Figure S3 — conditional positive lead time
 
 Move the former main Figure 6 here. Show conventional absolute medians, horizon-normalised medians and direct trajectory-bootstrap difference intervals. State that all six full-horizon-normalised direct intervals include zero and that the estimand conditions on observed leading pairs.
 
-## Main-text tables
+## Table allocation
 
-None.
+There are no main-text tables or text boxes. All tables are supplementary.
 
-Machine-readable and supplementary tables retain:
-
-- H3 paired effect summaries;
-- Stage I coordinate source support;
-- Stage II coarse-grid regimes;
-- Phase C/D R4 high-rep seed-block records;
-- Phase E migration-level and paired-switch records;
-- Protocol 003 full-denominator availability/order summaries;
-- timing uncertainty and schedule details.
+- Table S1 supports the paired H3 component of Figure 2.
+- Table S2 records model/calibration/domain contrasts.
+- Table S3 supports source feasibility in Figure 3.
+- Table S4 supports the original warning-blind loss-regime map in Figure 3.
+- Table S5 supports the Protocol 003 portability evidence in Figure 6 and its supplementary timing audit.
+- Table S6 supports the high-rep R4 recovery and Phase-E connectivity results in Figures 4–5.
 
 ## Evidence hierarchy for compression
 
@@ -152,4 +151,4 @@ If further space reduction is required, preserve evidence in this order:
 
 Do not restore the historical conditional lead-time figure to the main text at the expense of the new R4/connectivity evidence.
 
-Implementation debugging, CI outages, obsolete figure versions and PR chronology remain repository history and stay outside the scientific Supplementary Material.
+implementation debugging, CI outages, obsolete figure versions and PR chronology remain repository history and stay outside the scientific Supplementary Material.
