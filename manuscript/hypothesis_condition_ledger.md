@@ -112,9 +112,10 @@ The cross-system comparison should therefore be a **regime map**, not a `city ve
 ## Stop rules
 
 - No warning/diversity-informed event-regime selection.
-- No finer `p_star`, migration, kappa or Phase-G weight tuning merely to create/widen R4.
+- No finer `p_star`, migration or kappa tuning merely to create/widen R4.
+- No Phase-G partner-weight or removal-identity tuning merely to create/widen R4.
 - No reinterpretation of the historical 15/15 coarse-grid no-domain result.
-- No demographic/dispersal meaning assigned to allele-frequency mixing.
+- No demographic meaning assigned to allele-frequency mixing.
 - No network-simplification meaning assigned to interaction kappa.
 - No full-network/connectance/rewiring meaning assigned to Phase G.
 - No claim that Phase G increases average failure probability or that contribution concentration determines the regime.
