@@ -1,0 +1,35 @@
+name: Post-J manuscript and contract CI
+
+on:
+  pull_request:
+    branches:
+      - "agent/pollen-movement-phase-i"
+    paths:
+      - "manuscript/**"
+      - "docs/HYPOTHESIS_PROGRAM.md"
+      - "docs/CLASSIFICATION_STABILITY_RESULT.md"
+      - "artifacts/classification_stability/**"
+      - "src/eco_genetic_warning_extensions/classification_gate_theory.py"
+      - "tests/**"
+      - ".github/workflows/post-j-manuscript-contract.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install package and test runner
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+      - name: Run full extension test suite
+        run: python -m pytest
+      - name: Check Ecology Letters manuscript contract
+        run: python scripts/check_ecology_letters_compliance.py
