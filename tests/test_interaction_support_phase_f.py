@@ -18,10 +18,11 @@ def test_phase_f_reuses_original_protocol002_kappa_levels() -> None:
     assert PHASE_F_REPLICATES_PER_SEED == 20
 
 
-def test_phase_f_manifest_is_warning_blind_and_bounded() -> None:
+def test_phase_f_manifest_is_blinded_and_bounded() -> None:
     manifest = phase_f_manifest()
     assert manifest["calibration_scope"] == "source_and_trait_loss_only"
-    assert manifest["warning_blind"] is True
+    assert manifest["blinding_scope"] == "source_and_trait_loss_only"
+    assert "warning_blind" not in manifest
     assert manifest["interaction_kappa_provenance"] == "original_protocol002_source_grid_values"
     assert manifest["condition_count"] == 3
     assert "do not refine kappa" in manifest["stop_rule"]
