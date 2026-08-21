@@ -34,9 +34,11 @@ def test_readme_reports_closed_condition_first_state() -> None:
     assert "2,269/3,375" in readme
     assert "phase f is closed" in lower
     assert "77/100" not in readme  # README reports rates, not a second detailed ledger
-    assert "0.77, 0.94 and 0.87" in readme
-    assert "aggregate interaction support did not break r4" in lower
-    assert "portability is bounded" in lower
+    assert "0.77, 0.94, 0.87" in readme
+    assert "all 15 tested seed-block rates remained in the operational intermediate-risk band" in lower
+    assert "finite-panel calibration certificate" in lower
+    assert "not a sample-size-invariant biological regime" in lower
+    assert "warning portability remains bounded" in lower
     assert "active missing condition" not in lower
 
 
@@ -105,17 +107,20 @@ def test_locked_publication_inputs_materialize_from_committed_bytes(tmp_path: Pa
 
 def test_reproducibility_guide_retains_current_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
+    lower = guide.lower()
     for statement in (
-        "parent trajectories and extension trajectories are separate evidence",
+        "parent and extension trajectories are separate evidence",
         "15/15 `no_domain_selected`",
-        "prospective high-rep refinement later recovered a narrow R4 condition",
+        "later finite R4 certificates do not establish warning success or a sample-size-invariant biological regime",
         "Phase E `migration_rate` is allele-frequency mixing",
-        "Phase F `interaction kappa` is aggregate positive-feedback/effective interaction support",
-        "all three Phase-F kappa levels retained R4",
-        "Stage III therefore tests bounded portability across calibrated eco-genetic domains",
-        "finite Type S results",
+        "Phase F `interaction kappa` is aggregate feedback",
+        "Phase H does not establish rewiring is generally ineffective",
+        "Phase I's regional `g↔m/2` identity is narrow",
+        "Phase J's ensemble-sensitive result",
+        "Stage III domains are non-matched; their contrast is bounded portability",
     ):
-        assert statement in guide
+        assert statement.lower() in lower
+    assert "new finite type s ensemble" in lower
 
 
 def test_committed_phase_f_summary_matches_reproducibility_claim() -> None:
@@ -126,3 +131,20 @@ def test_committed_phase_f_summary_matches_reproducibility_claim() -> None:
     assert [row["regime"] for row in rows] == ["R4_highrep"] * 3
     assert phase_f["run_provenance"]["workflow_run_id"] == 32441549848
     assert phase_f["run_provenance"]["artifact_id"] == 9432854668
+
+
+def test_committed_phase_h_i_j_summaries_lock_new_boundaries() -> None:
+    phase_h = json.loads((ROOT / "artifacts/explicit_rewiring/phase_h_summary.json").read_text(encoding="utf-8"))
+    phase_i = json.loads((ROOT / "artifacts/pollen_movement/phase_i_summary.json").read_text(encoding="utf-8"))
+    phase_j = json.loads((ROOT / "artifacts/classification_stability/phase_j_summary.json").read_text(encoding="utf-8"))
+    distribution = json.loads((ROOT / "artifacts/classification_stability/phase_j_distributional_profile.json").read_text(encoding="utf-8"))
+
+    assert phase_h["opening_rule_satisfied"] is True
+    assert phase_h["rescue_classification"] == "not_rescued"
+    assert phase_i["regional_legacy_equivalence"]["trajectory_exact"] is True
+    assert phase_i["regional_legacy_equivalence"]["pair_count"] == 90
+    assert phase_i["kernel_comparison"] == "kernel_same_regime"
+    assert phase_j["stability_classification"] == "ensemble_sensitive"
+    assert phase_j["panel_regime_counts"] == {"R3_highrep": 1, "R4_highrep": 3}
+    assert distribution["exact_five_block_combinatorial_audit"]["R4_fraction"] == 0.75
+    assert distribution["exact_five_block_combinatorial_audit"]["R3_fraction"] == 0.25
