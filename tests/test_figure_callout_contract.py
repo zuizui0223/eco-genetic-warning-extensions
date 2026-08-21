@@ -42,8 +42,9 @@ def test_supplementary_links_follow_distributional_figure_spine() -> None:
 def test_phase_j_reframes_r4_as_finite_certificate_in_display_contract() -> None:
     allocation = _read("manuscript/display_allocation.md").lower()
     captions = _read("manuscript/figure_captions.md").lower()
-    for text in (allocation, captions):
-        assert "finite-panel calibration certificate" in text
-        assert "sample-size-invariant biological regime" in text
+    assert "finite-panel calibration certificate" in allocation
+    assert "not a biological regime" in allocation
+    assert "finite-panel calibration certificate" in captions
+    assert "not a sample-size-invariant biological regime" in captions
     assert "75%" in captions and "25%" in captions
     assert "network state, process-resolved connectivity, mean loss incidence and among-block heterogeneity" in captions
