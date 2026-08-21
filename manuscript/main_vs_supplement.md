@@ -2,94 +2,154 @@
 
 ## Main-text principle
 
-The Letter should retain only evidence needed to answer the central question:
-
-> **Does genetic-warning reliability belong to the diversity metric, or to the eco-genetic regime that generates both warning and functional loss?**
-
-The causal spine is:
+The Letter should retain only evidence needed to answer the four biological questions:
 
 ```text
-functional state
-→ fragmentation/demographic-genetic vulnerability
-→ conditional warning benchmark
-→ recurrent-transition source feasibility
-→ recurrent-transition loss regime / no-domain evaluability
-→ recalibrated warning portability
-→ exact support–diversity decoupling
+Q1  how is interaction-dependent function maintained and lost?
+Q2  can genetic erosion precede that loss?
+Q3  under what eco-genetic conditions is warning estimable?
+Q4  once estimable, is warning portable and why is portability limited?
 ```
 
-The Letter uses exactly six main display items and no main-text tables or text boxes. Figure priority should follow the causal spine, not historical analysis order.
+The causal spine is now:
+
+```text
+interaction-supported functional state
+→ fragmentation-induced functional/demographic vulnerability
+→ conditional genetic-warning benchmark
+→ recurrent-transition source and loss-regime map
+→ narrow warning-blind R4 recovery
+→ connectivity-dependent R4/R3 shift
+→ bounded warning portability + support/diversity theory
+```
+
+The Letter retains exactly six main display items, no main-text tables and no text boxes. Historical figure numbering should not determine the final scientific order.
 
 ## Main display items
 
-### Figure 1 — eco-genetic causal architecture
+### Figure 1 — eco-genetic causal architecture and four-question hierarchy
 
-Conceptual synthesis: interaction-dependent functional state, fragmentation, realised high-trait state, local effective size, genetic diversity, warning, and functional-trait loss.
+Conceptual synthesis showing distinct state variables and the order in which the study asks its questions:
 
-**Narrative role:** establishes the biological pathway and makes clear that population persistence, functional state and genetic diversity are distinct.
+- interaction-dependent functional state;
+- fragmentation/deterioration;
+- realised functional loss;
+- local effective size/genetic diversity;
+- event-regime estimability;
+- genetic-warning performance.
 
-### Figure 2 — source feasibility across recurrent-transition coordinates
+**Narrative role:** makes explicit that population persistence, functional state, genetic diversity and warning estimability are different quantities. Q3 is positioned upstream of warning-performance comparison.
 
-Common-grid Stage I source reconstruction and projection. Supplementary tables retain cell-level values underlying Figure 2.
+### Figure 2 — fragmentation creates vulnerability and genetic warning is conditionally possible
 
-**Narrative role:** first direct extension result; recurrent-transition dynamics change whether the high-function starting state can be established before deterioration begins.
+A compact two-part parent-evidence figure.
 
-### Figure 3 — functional-loss regimes plus complete-candidate composition
+**Panel A:** paired H3 one-large versus equal-isolated effect summary for interaction, local effective size and realised high-trait mass, using the 1,055 H1-qualified historical pairs.
 
-Common-grid warning-blind Stage II result, including rapid-loss, seed-heterogeneous and persistence candidates plus the 15/15 no-domain outcome.
+**Panel B:** inherited symmetric warning benchmark: relative H-alpha/H-gamma endpoints all lead the 35 observed functional-loss pairs, contrasted with the predeclared absolute-threshold lead/lag counts.
 
-**Narrative role:** empirical centre of the paper. The biological closure changes the event-generating regime so strongly that a common warning-validation comparison can disappear before warning values are inspected.
+**Narrative role:** answers Q1 and Q2 without turning the parent phase into a separate paper inside the paper. It establishes both the ecological loss pathway and a proof that genetic warning can work in one calibrated regime.
 
-### Figure 4 — cumulative warning and functional-loss incidence
+The detailed 1–16 patch fragmentation sensitivity remains Supplementary Figure S1.
 
-Retains baseline-eligible completed trajectories and plots cumulative observed incidence across each calibrated horizon. It is descriptive rather than a classical competing-risk estimator because warning and loss can both occur on one trajectory.
+### Figure 3 — recurrent state turnover reorganises source feasibility and functional-loss regime
 
-**Narrative role:** after evaluability is separately recovered, shows whether warning is actually observable over the full calibrated horizon.
+A combined common-grid figure.
 
-### Figure 5 — full attempted denominator, censoring, and ordering
+**Panel A:** Stage I source-feasibility surface across the 15 `(kappa_mu, p_star)` coordinates.
 
-Shows all 100 attempted trajectories per endpoint, including source failure, baseline ineligibility, censoring, lead, tie and lag.
+**Panel B:** Stage II functional-loss regime map / complete-candidate composition: rapid loss, seed heterogeneity and persistence, with the historical 0/15 coarse-grid R4 result explicitly retained.
 
-**Narrative role:** portability is about availability as well as ordering; valid leading pairs alone are not the denominator of interest.
+**Narrative role:** first half of Q3. Recurrent state turnover changes both whether the high-function source can be established and how function is lost before any warning statistic is available.
 
-### Figure 6 — absolute and horizon-normalized positive lead time
+### Figure 4 — warning-blind recovery of a narrow R4 event regime
 
-Conditional diagnostic among observed leading pairs. Conventional medians and whole-trajectory bootstrap intervals are shown in generations and as fractions of each calibrated horizon.
+The key new condition-recovery figure.
 
-**Priority:** secondary. It supports the statement that timing point estimates are schedule-dependent and not a direction-only result, but it is not required to establish the main event-regime/evaluability story. If the Letter needs compression, this is the first main figure to move to Supplementary Material.
+**Panel A:** fixed B1 recurrent-transition frontier, showing the historical rapid (`p_star=0.25`) to persistence (`0.50`) bracket and the Phase-B pooled-loss gradient at `0.30,0.35,0.40,0.45`.
 
-Supplementary endpoint tables underlying Figures 4–6 retain exact counts and timing summaries. These are reported as Table S4 and its machine-readable companion files. Table S5 records calibrated-domain schedule and timing-normalization details.
+**Panel B:** high-rep seed-block loss rates for Phase C/D, highlighting independent R4 recovery at `p_star=0.35` and R3 neighbours at `0.325`, `0.375` and `0.40`. The `[0.30,0.70]` R4 band is shown as an operational classification band, not an ecological universal threshold.
 
-## Main-text evidence without a dedicated main figure
+**Narrative role:** central Q3 result. A middle pooled probability is not enough; reproducibility across independent stochastic blocks is an additional condition. The historical 15/15 no-domain result reflected coarse-grid/common-family placement rather than structural impossibility.
 
-### Fragmentation bridge
+Low-rep Phase-A detail and full candidate bookkeeping remain supplementary.
 
-The historical paired H3 result belongs in the main Results as a concise biological bridge: the same prepared high state loses interaction, local effective size and realised high-trait mass after isolation. It does not need a second main fragmentation figure because Figure 1 carries the conceptual architecture and Supplementary Figure S1 carries the fresh gradient sensitivity.
+### Figure 5 — effective genetic connectivity changes event-regime estimability
 
-### Symmetric warning benchmark
+Phase-E paired migration-condition figure at the independently reproduced R4 anchor.
 
-Retain the key conditional benchmark in the main text: all six relative-warning endpoints led all 35 observed functional-loss event pairs, whereas fixed absolute thresholds produced lags. Detailed endpoint tables remain supplementary.
+**Panel A:** pooled and seed-block functional-loss rates for `m=0,0.025,0.05,0.10,0.20`, with R4 at the first three levels and R3 at the two stronger tested levels.
 
-### Type T support–diversity boundary
+**Panel B:** paired trajectory-status switching relative to isolation, separating `loss→no loss` and `no loss→loss` and retaining the common 91-source denominator.
 
-Retain the exact local result in the main text or Discussion without adding a new figure:
+**Narrative role:** second half of Q3 and the strongest bridge to urban/island ecology. Connectivity changes event-regime reproducibility and trajectory identity without acting as a simple monotone rescue/collapse operator.
+
+The caption must state that `migration_rate` is allele-frequency mixing only, not demographic, pollinator or seed movement, and must not present `m=0.05` as a threshold.
+
+### Figure 6 — portability after evaluability is separately recovered
+
+Compress the historical Stage III evidence into one main portability figure rather than three main figures.
+
+**Panel A:** full attempted-denominator warning availability / censoring / lead-tie-lag composition for the two independently calibrated domains.
+
+**Panel B:** cumulative warning and realised functional-loss incidence for a representative or compact endpoint set, preserving administrative censoring and the different calibrated horizons.
+
+**Narrative role:** answers Q4 empirically. Warning can remain mostly leading among valid pairs while availability and censoring differ across calibrated regimes. The domains are non-matched, so this figure does not identify a recurrent-transition-direction effect.
+
+The old conditional lead-time figure is moved to Supplementary Material. Timing remains an identification/sensitivity diagnostic rather than a main conclusion.
+
+## Main-text theory without a dedicated seventh figure
+
+### Exact support–diversity boundary
+
+Keep the compact Type T result in Results/Discussion beside Figure 6:
 
 - increasing `p_star` strengthens the local high-associated support margin;
 - the heterozygosity effect changes sign at `M(p)=0.5`;
-- with fixed patch weights, the `H_gamma-H_alpha` gap contracts by `(1-kappa_mu)^2`, independent of direction.
+- fixed-weight `H_gamma-H_alpha` contracts by `(1-kappa_mu)^2`, independent of direction;
+- allele-frequency migration homogenises spatial frequency differences without determining a universal realised-loss sign.
 
-This is the mechanistic explanation for why genetic diversity cannot be treated as a context-free monotone proxy for function.
+This closes Q4 mechanistically without exceeding the six-display limit.
 
 ## Supplementary Material
 
-Supplement includes full mathematical results and proofs, life-cycle specification, migration bounds, source/projection invariants, complete Stage I–III parameter and seed bookkeeping, Protocol 002 and Protocol 003 calibration rules and amendments, inherited H3 effect-size audit, post-review Stage III timing/uncertainty audit, full endpoint/censoring tables, and provenance hashes.
-
 ### Supplementary Figure S1 — fixed-area fragmentation gradient
 
-Post-review Type S sensitivity using fresh seeds and the same mutation-primary H1/H3 closure. It shows paired response across 1, 2, 3, 4, 6, 8, 12 and 16 isolated equal patches and retains the non-monotonic realised high-trait-mass response.
+Fresh paired 1, 2, 3, 4, 6, 8, 12 and 16 patch sensitivity. Retain non-monotonic realised high-trait mass; do not reinterpret `K=4` as an observed finite threshold.
 
-### First candidate for an additional supplementary figure
+### Supplementary Figure S2 — detailed frontier search chronology
 
-If main-text compression is needed, move current Figure 6 (conditional positive lead-time timing) to Supplementary Material before removing Figures 2–5. Source feasibility, loss-regime/no-domain structure, incidence and full-denominator availability are more central to the paper's causal claim.
+If useful, show Phase A and low-rep Phase B condition discovery separately from the high-rep Figure 4 evidence. This should document search geometry, not inflate the main claim.
 
-implementation debugging, temporary GitHub Actions outages, CI troubleshooting, obsolete figures and PR chronology remain repository history and stay out of the scientific manuscript rather than entering the Supplementary Material. These records are explicitly out of the scientific manuscript.
+### Supplementary Figure S3 — conditional positive lead time
+
+Move the former main Figure 6 here. Show conventional absolute medians, horizon-normalised medians and direct trajectory-bootstrap difference intervals. State that all six full-horizon-normalised direct intervals include zero and that the estimand conditions on observed leading pairs.
+
+## Main-text tables
+
+None.
+
+Machine-readable and supplementary tables retain:
+
+- H3 paired effect summaries;
+- Stage I coordinate source support;
+- Stage II coarse-grid regimes;
+- Phase C/D R4 high-rep seed-block records;
+- Phase E migration-level and paired-switch records;
+- Protocol 003 full-denominator availability/order summaries;
+- timing uncertainty and schedule details.
+
+## Evidence hierarchy for compression
+
+If further space reduction is required, preserve evidence in this order:
+
+1. Figure 4 R4 recovery;
+2. Figure 5 connectivity condition;
+3. Figure 3 source/loss regime map;
+4. Figure 2 fragmentation + conditional-warning bridge;
+5. Figure 6 portability availability/order;
+6. Figure 1 conceptual synthesis.
+
+Do not restore the historical conditional lead-time figure to the main text at the expense of the new R4/connectivity evidence.
+
+Implementation debugging, CI outages, obsolete figure versions and PR chronology remain repository history and stay outside the scientific Supplementary Material.
