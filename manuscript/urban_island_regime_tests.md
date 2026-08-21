@@ -12,7 +12,25 @@ and for `0<m<1/2`,
 
 `|p1'-p2'|=(1-2m)|p1-p2|`.
 
-Thus migration strictly homogenizes nonidentical allele frequencies while conserving the mean. A separate rescue certificate can coexist with that homogenization. This is important for applications: **connectivity can improve demographic/high-trait rescue while simultaneously reducing spatial genetic contrast.** Connectivity therefore cannot be represented as a generic "more diversity = better function" axis.
+Thus migration strictly homogenizes nonidentical allele frequencies while conserving the mean. A separate rescue certificate can coexist with that homogenization. Connectivity therefore cannot be represented as a generic "more diversity = better function" axis.
+
+## New finite connectivity result from Phase E
+
+The Phase-E condition experiment fixed the independently reproduced R4 anchor and varied only allele-frequency migration among the four fragmented patches.
+
+- `m=0, 0.025, 0.05` remained **R4-highrep**;
+- `m=0.10, 0.20` became **R3-highrep**;
+- pooled trait-loss probability changed only modestly (`0.549–0.626` across the five levels);
+- relative to isolation, paired loss-status switching increased from 8/91 at `m=0.025` to 25/91 at `m=0.20`;
+- both `loss→no loss` and `no loss→loss` occurred at every nonzero migration level.
+
+This adds a finite condition result to the exact homogenisation theorem:
+
+> **effective genetic connectivity can change the reproducibility of functional loss without acting as a simple universal rescue or collapse process.**
+
+The empirical translation is therefore stronger than "connected patches do better." Connectivity may change *which* populations or years cross the functional-loss boundary even when average loss risk changes little.
+
+The current simulator still mixes allele frequencies only. It does not simulate demographic migration, pollen vectors, seed dispersal, recolonisation or trait-bin dispersal.
 
 ## 1. Urban systems: fragmentation with variable effective connectivity
 
@@ -36,6 +54,8 @@ Thus the same urban matrix can generate very different effective migration/inter
 **U4 — specialised-pollinator rapid-loss regime.** Plants whose effective pollen movement depends on short-ranging or habitat-sensitive pollinators should enter rapid-loss/source-limited regimes at lower spatial fragmentation than species served by mobile/generalist pollinators.
 
 **U5 — urban heterogeneous frontier.** Mixed urban mosaics, where some patches are connected by pollinators and others are effectively isolated, should be enriched for population/year-heterogeneous event regimes rather than a single monotone urbanization response.
+
+**U6 — connectivity can alter evaluability before warning.** Phase E predicts that increasing effective genetic connection need not greatly change pooled functional-loss frequency to change whether loss is reproducible across comparable populations/years. Empirically, urban networks with similar mean reproductive failure could therefore differ in whether a genetic warning is estimable because connectivity changes among-patch/year event heterogeneity.
 
 ### Urban observations needed
 
@@ -69,6 +89,8 @@ At the same time, island isolation does not force one reproductive outcome. Obli
 
 **I5 — intermediate-isolation warning frontier.** The most promising warning-evaluable systems should not necessarily be the most isolated islands. They should occur where interaction-dependent function is vulnerable enough to be lost, but loss is neither nearly deterministic nor nearly absent across comparable populations/years.
 
+**I6 — connectivity-sensitive reproducibility.** Phase E predicts that stepping-stone genetic connection can change the reproducibility class of functional loss without a large monotone change in mean loss risk. Therefore island distance alone should not define the warning domain; contemporary effective connectivity and interaction support must be measured separately.
+
 ### Island observations needed
 
 1. island area and distance/stepping-stone connectivity;
@@ -100,13 +122,28 @@ Cities and islands therefore test complementary parts of the model:
 
 - **urban systems** are strongest for showing that spatial fragmentation does not uniquely determine gene flow or genetic diversity;
 - **island systems** are strongest for showing that geographic isolation interacts with mutualist availability and reproductive strategy to filter establishment and persistence;
-- both can test the predicted coexistence of connectivity-mediated rescue and genetic homogenization.
+- both can test the predicted coexistence of connectivity-mediated rescue, homogenization and altered functional-loss reproducibility.
 
 A successful empirical translation would classify populations first by source/functional-loss regime and its reproducibility, and only then ask whether a genetic warning is observable. That preserves the same logic as the warning-blind simulation program.
+
+## 4. Concrete empirical design
+
+The cleanest field test is not "city versus island." It is a replicated network design in which the same biological lineage spans gradients of:
+
+- local patch/island support;
+- realised interaction/pollination support;
+- effective gene flow/connectivity;
+- reproductive assurance;
+- repeated functional success/failure through time.
+
+The primary response should first be **event-regime class**: persistent, rapid-loss, heterogeneous or reproducible intermediate-risk. Genetic warning is a second-stage analysis only for systems that occupy the reproducible intermediate-risk class.
+
+This directly tests the study's core methodological prediction that warning estimability is a biological property of the event-generating regime rather than an automatic property of the measured genetic statistic.
 
 ## Literature and theory anchors
 
 - Parent Type T migration trade-off: `causal_model/canonical_h3_migration_tradeoff.py` at the pinned parent scientific commit — exact two-patch allelic homogenization plus separate rescue certificate.
+- Phase-E finite condition result: `artifacts/migration_condition/phase_e_summary.json` and `manuscript/migration_condition_phase_e_results.md`.
 - Miles et al. (2019), *Molecular Ecology*, doi:10.1111/mec.15221 — urbanization can either restrict or facilitate dispersal; quantitative review found only weak average within-population diversity loss and no consistent increase in differentiation.
 - Youngsteadt & Keighron (2023), *Annual Review of Ecology, Evolution, and Systematics*, doi:10.1146/annurev-ecolsys-102221-044616 — urban pollination shows a global negative signal but strong heterogeneity; pollen movement remains difficult to predict.
 - Pollinator-mediated connectivity in fragmented urban green spaces (2024), *Acta Oecologica* 123:103985, doi:10.1016/j.actao.2024.103985 — direct evidence of pollen movement among isolated urban green spaces.
