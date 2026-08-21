@@ -33,3 +33,4 @@ At the independently reproduced R4 anchor, the same 100 prepared sources were pa
 - Do not claim that R4 itself proves warning success; warning fields were withheld during Phases A–E.
 - Do not describe Phase-E `migration_rate` as demographic, pollinator or seed movement or infer a universal threshold.
 - Never describe the Stage III contrast as the isolated effect of transition direction.
+- The old conditional lead-time panel is now supplementary; **Interpret this diagnostic together with full-denominator Figures 4–5** in the historical numbering/provenance record, and with current Figure 6 in the revised scientific spine.
