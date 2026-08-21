@@ -16,7 +16,7 @@ Specified interaction map/performance surface; appropriate feedback/area/barrier
 
 ### Remaining boundary
 
-How ecological support and effective connectivity interact with recurrent state turnover to shift finite source feasibility.
+How ecological support and landscape structure jointly shift finite source feasibility. Recurrent-transition and post-fragmentation connectivity effects are now partly mapped, but the interaction-support/area surface is not yet resolved around the recovered R4 condition.
 
 ## H3 — fragmentation disrupts the prepared high-function state
 
@@ -24,13 +24,33 @@ How ecological support and effective connectivity interact with recurrent state 
 
 Conditional on an H1-prepared full source, equal isolation at fixed total area reduced final interaction, local effective size and realised high-trait mass in all 1,055 qualified historical paired replicates. Fresh 1–16-patch sensitivity confirmed that the large interaction/Ne effect appears after the first split, while realised high-trait mass is not monotone across all patch counts.
 
+Parent Type T theory separately shows that allele-frequency migration can homogenize patch frequencies and can coexist with separately certified rescue conditions.
+
 ### Conditions
 
-H1-qualified source, fixed total area, declared equal-isolation projection/migration closure and finite horizon.
+H1-qualified source, fixed total area, declared equal-patch projection/migration closure and finite horizon. The Phase-E migration result concerns allele-frequency mixing only, not demographic, pollinator, seed or trait-bin dispersal.
+
+### Connectivity boundary recovered in Phase E
+
+At the independently reproduced R4 anchor (`A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, `p_star=0.35`, horizon 120, barrier increase 0.30), 100 prepared sources were paired across five migration rates.
+
+- `m=0`: pooled loss 0.571 → **R4-highrep**
+- `m=0.025`: pooled 0.549 → **R4-highrep**
+- `m=0.05`: pooled 0.593 → **R4-highrep**
+- `m=0.10`: pooled 0.626 → **R3-highrep**
+- `m=0.20`: pooled 0.604 → **R3-highrep**
+
+Relative to isolation, paired loss-status switches increased with migration: 8/91, 12/91, 21/91 and 25/91 comparable trajectories at `m=0.025,0.05,0.10,0.20`, with switches in both directions at every nonzero rate.
+
+### Condition conclusion
+
+Effective genetic connectivity can alter **event-regime reproducibility** without producing a simple monotone rescue or collapse response in pooled functional-loss probability. Under the tested R4 anchor, low mixing preserved R4 whereas stronger mixing moved the condition into R3.
+
+The migration grid is closed under its predeclared stop rule. Do not tune additional migration rates merely to preserve or widen R4.
 
 ### Remaining boundary
 
-**Effective connectivity/migration.** Parent Type T theory shows symmetric migration can provide a rescue condition while contracting among-patch allele-frequency differences. This is the next ecological axis and directly links to urban corridors/pollen flow and island stepping-stone dispersal.
+The next ecological uncertainty is not another migration threshold. It is how **interaction support / local habitat support** combines with the now-recovered recurrent-transition and connectivity boundaries.
 
 ## H2 relative-warning benchmark — genetic erosion can precede functional loss
 
@@ -58,7 +78,7 @@ Independent source reconstruction at every recurrent-transition coordinate under
 
 ### Remaining boundary
 
-Joint source-feasibility surfaces over recurrent turnover and connectivity/ecological support.
+Joint source-feasibility surfaces over recurrent turnover, local ecological support and connectivity remain only partly mapped.
 
 ## H-MD-2 — recurrent transition changes the functional-loss regime
 
@@ -74,10 +94,11 @@ Prospective frontier work then resolved the transition structure:
 - **Phase B (`kappa_mu=0.35`)**: fixed ecological/deterioration anchor, historical R2 at `p_star=0.25` and R1 at `0.50`; four interior cells all R3 while pooled loss declined `0.739→0.476→0.304→0.095`.
 - **Phase C high-rep**: `p_star=0.35` became R4-highrep, whereas `0.40` remained R3-highrep.
 - **Phase D high-rep independent replay**: `0.35` again R4-highrep; `0.325` and `0.375` were R3-highrep.
+- **Phase E paired migration condition**: the same recovered R4 anchor remained R4 for `m<=0.05` and became R3 at `m=0.10,0.20`.
 
 ### Condition conclusion
 
-The finite rapid-to-persistence frontier contains a **reproducible intermediate-risk R4 condition**, but it is narrow along `p_star`: the confirmed `0.35` point is flanked by non-R4 cells within ±0.025 under the same non-direction conditions.
+The finite rapid-to-persistence frontier contains a **reproducible intermediate-risk R4 condition**, but it is narrow along `p_star` and conditional on effective genetic connectivity.
 
 ## H-MD-3a — warning-domain evaluability
 
@@ -93,19 +114,24 @@ At fixed `A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, horizon 120 and 
 - Phase D upper neighbor `0.375`: pooled 0.391 but one seed block <0.30 → R3-highrep.
 - Phase C `0.40`: pooled 0.304 but two seed blocks <0.30 → R3-highrep.
 
+Phase E then held this R4 anchor fixed and varied only allele-frequency migration:
+
+- R4 persisted at `m=0,0.025,0.05`;
+- R3 appeared at `m=0.10,0.20` because one seed block exceeded the strict upper event-rate bound in each condition.
+
 ### Condition conclusion
 
-**Intermediate pooled loss probability and warning evaluability are not the same estimand.** R4 requires reproducible intermediate event rates across independent stochastic blocks and occupies a narrower region than pooled risk alone suggests.
+**Intermediate pooled loss probability and warning evaluability are not the same estimand.** R4 requires reproducible intermediate event rates across independent stochastic blocks and occupies a narrower region than pooled risk alone suggests. Phase E further shows that this estimability condition can change with effective genetic connectivity even when pooled loss changes only modestly.
 
-The recurrent-transition `p_star` condition search now stops under the predeclared Phase-D rule. No finer tuning is allowed merely to enlarge R4.
+The recurrent-transition `p_star` and migration-rate searches are now both closed under their predeclared stop rules.
 
 ## H-MD-3b — direction-only effect on warning performance
 
 ### Status
 
-Still **not tested in the new frontier program**. Phases A–D deliberately withheld diversity/warning fields.
+Still **not tested in the new frontier program**. Phases A–E deliberately withheld diversity/warning fields.
 
-A reproducible R4 point now exists, but the predeclared rule required an adjacent confirmed R4 cell before freezing a contiguous matched interval for a direction-only warning comparison. Phase D found no adjacent R4 cell at ±0.025. Therefore no new H-MD-3b warning experiment is opened from this result.
+A reproducible R4 point now exists, and Phase E shows that several matched migration conditions also remain R4. But H-MD-3b is specifically a recurrent-transition-direction question; the predeclared rule required an adjacent confirmed R4 interval along `p_star`, which Phase D did not recover. Therefore no new direction-only warning experiment is opened.
 
 Protocol 003 remains a portability comparison across separately recalibrated non-matched domains, not a direction-only causal estimate.
 
@@ -114,7 +140,8 @@ Protocol 003 remains a portability comparison across separately recalibrated non
 - direction has no universal signed effect on heterozygosity;
 - stronger local high-state support can coincide with lower heterozygosity;
 - fixed-weight among-patch diversity gap contracts with `kappa_mu` independently of `p_star`;
-- below a local support threshold, stronger `kappa_mu` lowers the `p_star` required to reach that threshold.
+- below a local support threshold, stronger `kappa_mu` lowers the `p_star` required to reach that threshold;
+- migration/mixing can reduce among-patch allele-frequency contrast without implying a universal sign on realised functional loss.
 
 ## Cross-hypothesis condition hierarchy
 
@@ -133,9 +160,13 @@ C4  is that warning portable across regimes?              Protocol 003 / future 
 ### Current location
 
 - C0: recovered conditionally.
-- C1: recovered for isolation/deterioration closures; connectivity remains an important axis.
-- **C2: positively recovered at a narrow, independently reproduced R4 condition.**
-- C3: proven possible in the inherited symmetric benchmark, but no new matched direction-only test is opened because the R4 width criterion was not met.
+- C1: fragmentation/deterioration recovered; **the allele-frequency connectivity boundary is now also mapped at one independently reproduced R4 anchor**.
+- C2: positively recovered at a narrow `p_star` condition and shown to be connectivity-dependent.
+- C3: proven possible in the inherited symmetric benchmark, but no new matched direction-only test is opened because the R4 width criterion along `p_star` was not met.
 - C4: Protocol 003 shows bounded non-portability across non-matched recalibrated domains.
 
-The next condition-recovery axis should therefore be **effective connectivity/migration**, not finer `p_star` tuning and not another warning threshold search.
+## Next condition axis
+
+Do not refine `p_star` or migration further. The next condition-recovery question, if one more model campaign is scientifically necessary before manuscript rewriting, is **ecological interaction/local habitat support around the recovered R4 anchor**, because urban and island applications differ not only in connectivity but also in pollinator/mutualist support and local patch support.
+
+That axis must be defined with an explicit empirical analogue before simulation. If it cannot be mapped cleanly to the current model, condition recovery should stop and the manuscript should be rewritten from the recovered H1/H3 → R4 → connectivity hierarchy rather than adding another abstract parameter sweep.
