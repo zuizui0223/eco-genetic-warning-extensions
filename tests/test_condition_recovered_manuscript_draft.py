@@ -50,7 +50,7 @@ def test_condition_recovered_draft_follows_four_question_science() -> None:
 
 def test_condition_recovered_draft_retains_key_evidence_boundaries() -> None:
     text = DRAFT.read_text(encoding="utf-8")
-    assert "not structural impossibility" in text
+    assert "coarse-grid/common-family result rather than structural impossibility" in text
     assert "R4 exists" in text
     assert "It is not demographic migration, pollinator movement, seed dispersal, recolonisation or trait-bin dispersal" in text
     assert "not a single-factor effect of transition direction" in text
