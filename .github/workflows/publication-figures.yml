@@ -5,14 +5,24 @@ on:
     branches: [main]
     paths:
       - 'src/eco_genetic_warning_extensions/publication_figures.py'
+      - 'src/eco_genetic_warning_extensions/revised_publication_figures.py'
+      - 'src/eco_genetic_warning_extensions/condition_figure1.py'
       - 'src/eco_genetic_warning_extensions/stage3_review_audit.py'
       - 'src/eco_genetic_warning_extensions/stage3_trajectory_records.py'
       - 'scripts/build_publication_figures.py'
+      - 'scripts/build_revised_publication_figures.py'
       - 'tests/test_publication_figures.py'
+      - 'tests/test_revised_publication_figures.py'
       - 'tests/test_stage3_review_audit.py'
       - 'tests/test_stage3_trajectory_records.py'
+      - 'manuscript/tables/inherited_h2_warning_summary.csv'
+      - 'manuscript/tables/inherited_h3_effect_summary.csv'
       - 'manuscript/tables/stage3_review_summary.csv'
       - 'manuscript/tables/stage3_between_domain_differences.csv'
+      - 'artifacts/frontier_refinement/phase_b_summary.json'
+      - 'artifacts/frontier_refinement/phase_c_summary.json'
+      - 'artifacts/frontier_refinement/phase_d_summary.json'
+      - 'artifacts/migration_condition/phase_e_summary.json'
       - '.github/workflows/publication-figures.yml'
   workflow_dispatch:
 
@@ -31,7 +41,12 @@ jobs:
       - name: Install extension and tests
         run: python -m pip install -e . pytest
       - name: Test publication builders
-        run: python -m pytest -q tests/test_publication_figures.py tests/test_stage3_review_audit.py tests/test_stage3_trajectory_records.py
+        run: |
+          python -m pytest -q \
+            tests/test_publication_figures.py \
+            tests/test_revised_publication_figures.py \
+            tests/test_stage3_review_audit.py \
+            tests/test_stage3_trajectory_records.py
       - name: Download all Stage I batch artifacts
         env:
           GH_TOKEN: ${{ github.token }}
@@ -41,14 +56,16 @@ jobs:
             mkdir -p "artifacts/raw_stage1/$run_id"
             gh run download "$run_id" --repo "${{ github.repository }}" --dir "artifacts/raw_stage1/$run_id"
           done
-      - name: Download immutable Stage III validation artifacts
+      - name: Download locked Stage II and Stage III publication artifacts
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
-          mkdir -p artifacts/stage3/domain0 artifacts/stage3/domain1
+          mkdir -p artifacts/stage2 artifacts/stage3/domain0 artifacts/stage3/domain1
+          gh run download 29399936061 -n protocol002-publication-outputs -D artifacts/stage2
           gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D artifacts/stage3/domain0
           gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D artifacts/stage3/domain1
-      - name: Build Stage I and review-revised Stage III publication outputs
+          test -f artifacts/stage2/stage2_coordinate_regimes.csv
+      - name: Build locked Stage I and Stage III audit outputs
         run: |
           python scripts/build_publication_figures.py \
             --stage1-root artifacts/raw_stage1 \
@@ -57,11 +74,28 @@ jobs:
             --output-dir manuscript/generated
           cmp manuscript/generated/stage3_review_summary.csv manuscript/tables/stage3_review_summary.csv
           cmp manuscript/generated/stage3_between_domain_differences.csv manuscript/tables/stage3_between_domain_differences.csv
+      - name: Build condition-recovered main figures
+        run: |
+          mkdir -p manuscript/generated/figures manuscript/generated/supplement
+          cp manuscript/generated/figure6_stage3_lead_time_normalized.svg manuscript/generated/supplement/figure_s3_stage3_lead_time_normalized.svg
+          python scripts/build_revised_publication_figures.py \
+            --stage1-csv manuscript/generated/stage1_coordinate_summary.csv \
+            --stage2-csv artifacts/stage2/stage2_coordinate_regimes.csv \
+            --stage3-audit manuscript/generated/stage3_review_audit.json \
+            --repo-root . \
+            --output-dir manuscript/generated/figures
+          test "$(find manuscript/generated/figures -name '*.svg' | wc -l)" -eq 6
+          rm -f \
+            manuscript/generated/figure2_stage1_source_feasibility.svg \
+            manuscript/generated/figure4_stage3_cumulative_incidence.svg \
+            manuscript/generated/figure5_stage3_availability_ordering.svg \
+            manuscript/generated/figure6_stage3_lead_time_normalized.svg
       - name: Show publication summary
         run: |
           cat manuscript/generated/stage1_publication_summary.json
           cat manuscript/generated/stage3_review_summary.csv
           cat manuscript/generated/stage3_between_domain_differences.csv
+          find manuscript/generated/figures -maxdepth 1 -type f -name '*.svg' -print | sort
       - uses: actions/upload-artifact@v4
         with:
           name: publication-stage1-stage3-outputs
