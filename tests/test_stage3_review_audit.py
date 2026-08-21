@@ -65,6 +65,7 @@ def test_direct_between_domain_bootstrap_is_reported_without_interval_overlap_he
 
 def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
     text = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8")
+    lower = text.lower()
     forbidden = (
         "altered only recurrent transition direction",
         "changing one genetic boundary condition while holding the ecological life cycle fixed",
@@ -72,10 +73,15 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
     )
     for phrase in forbidden:
         assert phrase not in text
-    for required in (
-        "portability", "210-generation hold", "90-generation hold",
-        "four of five seed-block", "weaker directional schedule",
-        "0.540", "0.335", "directional-minus-symmetric",
-        "all six", "41 of 81", "event-regime feasibility precedes warning comparison",
-    ):
-        assert required in text
+
+    required = (
+        "portability comparison across calibrated eco-genetic domains",
+        "0.540", "0.335",
+        "conditional positive lead-time medians",
+        "all six direct timing-difference intervals included zero",
+        "the domains also differ in ecological parameters and deterioration schedules",
+        "not an isolated effect of recurrent-transition direction",
+        "full-denominator event incidence and warning availability are treated as more primary",
+    )
+    for phrase in required:
+        assert phrase in lower or phrase in text
