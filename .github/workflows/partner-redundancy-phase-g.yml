@@ -1,0 +1,82 @@
+name: Warning-blind partner redundancy Phase G
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "src/eco_genetic_warning_extensions/partner_redundancy_phase_g.py"
+      - "src/eco_genetic_warning_extensions/partner_redundancy_phase_g_runner.py"
+      - "scripts/run_partner_redundancy_phase_g.py"
+      - "tests/test_partner_redundancy_phase_g.py"
+      - "docs/WARNING_BLIND_PARTNER_REDUNDANCY_PHASE_G.md"
+      - ".github/workflows/partner-redundancy-phase-g.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-g:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - name: Verify Phase-G preregistered contract
+        working-directory: extension
+        run: python -m pytest -q tests/test_partner_redundancy_phase_g.py
+      - name: Run partner-redundancy campaign
+        working-directory: extension
+        run: |
+          mkdir -p artifacts/partner_redundancy
+          python scripts/run_partner_redundancy_phase_g.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/partner_redundancy/phase_g_full.json
+      - name: Build and print compact summary
+        working-directory: extension
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('artifacts/partner_redundancy/phase_g_full.json')
+          artifact = json.loads(source.read_text())
+          summary = {
+              'stage': artifact['stage'],
+              'calibration_scope': artifact['calibration_scope'],
+              'manifest': artifact['manifest'],
+              'source_preparation_count': artifact['source_preparation_count'],
+              'opening_rule_satisfied': artifact['opening_rule_satisfied'],
+              'partner_architecture_summaries': artifact['partner_architecture_summaries'],
+              'paired_loss_status_vs_intact': artifact['paired_loss_status_vs_intact'],
+          }
+          out = Path('artifacts/partner_redundancy/phase_g_summary.json')
+          out.write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')
+          print('PHASE_G_SUMMARY_BEGIN')
+          print(json.dumps(summary, sort_keys=True))
+          print('PHASE_G_SUMMARY_END')
+          PY
+      - name: Upload Phase-G artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: warning-blind-partner-redundancy-phase-g
+          path: |
+            extension/artifacts/partner_redundancy/phase_g_full.json
+            extension/artifacts/partner_redundancy/phase_g_summary.json
+          if-no-files-found: error
+          retention-days: 90
