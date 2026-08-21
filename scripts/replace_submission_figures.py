@@ -50,12 +50,15 @@ def main() -> int:
         output_dir=figures,
     )
 
-    # Add the machine-readable evidence newly used by Figures 2, 4 and 5.
+    # Add every machine-readable condition result used by the current manuscript.
+    # Phase F is text-supported rather than a seventh main figure, but its evidence
+    # belongs in the same checksummed bundle as Phases B-E.
     shutil.copy2(root / "manuscript/tables/inherited_h2_warning_summary.csv", tables / "inherited_h2_warning_summary.csv")
     shutil.copy2(root / "artifacts/frontier_refinement/phase_b_summary.json", tables / "frontier_phase_b_summary.json")
     shutil.copy2(root / "artifacts/frontier_refinement/phase_c_summary.json", tables / "frontier_phase_c_summary.json")
     shutil.copy2(root / "artifacts/frontier_refinement/phase_d_summary.json", tables / "frontier_phase_d_summary.json")
     shutil.copy2(root / "artifacts/migration_condition/phase_e_summary.json", tables / "migration_phase_e_summary.json")
+    shutil.copy2(root / "artifacts/interaction_support/phase_f_summary.json", tables / "interaction_support_phase_f_summary.json")
 
     expected = {
         "figure1_eco_genetic_estimability.svg",
