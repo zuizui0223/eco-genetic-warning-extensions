@@ -40,6 +40,8 @@ Question 3 is now the empirical centre of the paper.
 
 This is stronger and more precise than the earlier conclusion that the common 15-coordinate grid had no validation domain. The historical 15/15 `no_domain_selected` result remains immutable, but Phases C/D show that R4 exists in a narrow region missed by the coarse grid, and Phase E shows that R4/R3 classification is connectivity-dependent at that anchor.
 
+**Stage III does not identify the isolated causal effect** of recurrent-transition direction. Its two validation domains differ in transition, ecological and deterioration parameters, so Stage III remains a bounded portability comparison across independently calibrated domains.
+
 ## Publication sources of truth
 
 Use the following hierarchy while the rewrite is under review:
