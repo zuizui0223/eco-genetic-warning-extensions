@@ -8,6 +8,10 @@ def _read(path: str) -> str:
     return (ROOT / path).read_text(encoding="utf-8")
 
 
+def _plain(text: str) -> str:
+    return text.lower().replace("**", "")
+
+
 def test_repository_exposes_one_condition_first_science_spine() -> None:
     root = _read("README.md")
     program = _read("docs/HYPOTHESIS_PROGRAM.md")
@@ -20,14 +24,14 @@ def test_repository_exposes_one_condition_first_science_spine() -> None:
 
 
 def test_interaction_support_is_not_mislabeled_as_network_simplification() -> None:
-    root = _read("README.md")
-    program = _read("docs/HYPOTHESIS_PROGRAM.md")
-    application = _read("manuscript/urban_island_regime_tests.md")
+    root = _plain(_read("README.md"))
+    program = _plain(_read("docs/HYPOTHESIS_PROGRAM.md"))
+    application = _plain(_read("manuscript/urban_island_regime_tests.md"))
     assert "not partner richness" in root
     assert "not partner richness" in program
     assert "network dimensionality" in program
     assert "network simplification" in application
-    assert "Phase F" in program
+    assert "phase f" in program
     assert "3.0, 4.5, 6.0" in program
 
 
@@ -62,6 +66,7 @@ def test_superseded_phase_narratives_stay_removed() -> None:
     )
     for path in removed:
         assert not (ROOT / path).exists(), path
+    assert (ROOT / "manuscript/display_allocation.md").exists()
 
 
 def test_submission_bundle_keeps_provenance_and_statistical_units() -> None:
