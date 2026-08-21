@@ -35,24 +35,42 @@ def test_condition_recovered_manuscript_meets_letter_length_limits() -> None:
     assert main_words <= 5000
 
 
-def test_condition_recovered_manuscript_follows_four_question_science() -> None:
+def test_condition_recovered_manuscript_follows_condition_first_science() -> None:
     text = MAIN.read_text(encoding="utf-8")
     required = (
         "Fragmentation disrupted an interaction-supported functional state",
-        "Genetic erosion could precede functional loss",
-        "Warning-blind refinement recovered a narrow reproducible R4 event regime",
-        "Effective genetic connectivity moved the same R4 anchor into a heterogeneous event regime",
+        "Recurrent state turnover changed source feasibility and functional-loss regime",
+        "Warning-blind refinement recovered a narrow reproducible event regime",
+        "Genetic connectivity changed loss-regime reproducibility without a simple rescue sign",
+        "Aggregate interaction support changed source eligibility but not the R4 classification",
+        "Genetic erosion could precede functional loss, but not by a universal absolute threshold",
         "Warning behaviour was not fully portable across independently calibrated domains",
     )
+    positions = []
     for phrase in required:
         assert phrase in text
+        positions.append(text.index(phrase))
+    assert positions == sorted(positions)
 
 
 def test_condition_recovered_manuscript_retains_key_evidence_boundaries() -> None:
     text = MAIN.read_text(encoding="utf-8")
-    assert "coarse-grid/common-family result rather than structural impossibility" in text
+    lower = text.lower()
+    # Original no-domain result remains historical/bounded, while later R4 recovery
+    # establishes that it was not structural impossibility.
+    assert "all 15 coarse coordinates were historically `no_domain_selected`" in text
+    assert "the coarse result was a placement boundary rather than structural impossibility" in text
     assert "R4 exists" in text
-    assert "It is not demographic migration, pollinator movement, seed dispersal, recolonisation or trait-bin dispersal" in text
+
+    # Connectivity and interaction-support axes retain their operator boundaries.
+    assert "not demographic migration" in lower
+    assert "not partner richness, connectance, pollinator diversity or network dimensionality" in lower
+    assert "all three levels were therefore r4-highrep" in lower
+    assert "bounded negative condition result" in lower
+    assert "the kappa search was closed rather than widened to manufacture a boundary" in lower
+
+    # Warning remains downstream and portability is not a single-factor result.
     assert "not a single-factor effect of transition direction" in text
-    assert "does not establish that genetic warning succeeds throughout R4" in text
-    assert "universal connectivity threshold" not in text
+    assert "does not establish that warning succeeds throughout R4" in text or "does not establish that genetic warning succeeds throughout R4" in text
+    assert "universal connectivity threshold" not in lower
+    assert "universal interaction-support threshold" not in lower
