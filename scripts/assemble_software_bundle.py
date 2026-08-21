@@ -103,6 +103,7 @@ def main() -> int:
             "manuscript/artifact_index.md",
             "manuscript/claim_evidence_map.md",
             "manuscript/tables/stage3_review_summary.csv",
+            "artifacts/interaction_support/phase_f_summary.json",
             "docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md",
             "docs/INHERITED_H3_EFFECT_SIZE_AUDIT.md",
         ),
@@ -148,8 +149,8 @@ def main() -> int:
         "# Example: python <extension runner> parent-source <other arguments>\n"
         "```\n\n"
         "The full repository archives preserve tracked scripts, workflows, protocol "
-        "documents, and tests. The wheels provide importable model code. Evidence and "
-        "artifact provenance remain in the adjacent bundle directories.\n",
+        "documents, and tests. Evidence and artifact provenance remain in the adjacent "
+        "bundle directories, including the committed warning-blind condition summaries.\n",
         encoding="utf-8",
     )
 
