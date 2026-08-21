@@ -18,7 +18,7 @@ def test_repository_exposes_one_condition_first_science_spine() -> None:
     workspace = _read("manuscript/README.md")
     for text in (root, program, workspace):
         assert all(token in text for token in ("C0", "C1", "C2", "C3", "C4"))
-    assert "Warning is therefore a downstream conditional outcome" in root
+    assert "Warning is a downstream conditional outcome" in root
     assert "condition-first" in program.lower()
     assert "protocol chronology" in workspace.lower()
 
@@ -31,16 +31,21 @@ def test_interaction_support_is_not_mislabeled_as_network_simplification() -> No
     assert "not partner richness" in program
     assert "network dimensionality" in program
     assert "network simplification" in application
-    assert "phase f" in program
+    assert "phase f is closed" in root
     assert "3.0, 4.5, 6.0" in program
+    assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in program
 
 
-def test_main_text_retains_locked_headline_results_and_boundaries() -> None:
+def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> None:
     text = _read("manuscript/main_text.md")
     lower = text.lower()
     for token in ("2,269", "3,375", "322", "242", "84", "0.571", "0.540", "0.335", "1,037"):
         assert token in text
+    for token in ("77/100", "94/100", "87/100", "0.468", "0.521", "0.552"):
+        assert token in text
     assert "r4 exists" in lower
+    assert "all three levels were therefore r4-highrep" in lower
+    assert "bounded negative condition result" in lower
     assert "not an isolated effect of recurrent-transition direction" in lower
     assert "not demographic migration" in lower or "not demographic" in lower
     assert "### Stage I" not in text
@@ -80,12 +85,16 @@ def test_superseded_phase_narratives_stay_removed() -> None:
     assert (ROOT / "manuscript/core_reference_map.md").exists()
 
 
-def test_submission_bundle_keeps_provenance_and_statistical_units() -> None:
+def test_submission_bundle_keeps_provenance_and_condition_evidence() -> None:
     builder = _read("scripts/build_submission_bundle.py")
+    replacer = _read("scripts/replace_submission_figures.py")
+    assembler = _read("scripts/assemble_software_bundle.py")
     captions = _read("manuscript/figure_captions.md")
     assert "claim_evidence_map.md" in builder
     assert "artifact_index.md" in builder
     assert "stage3_trajectory_endpoint_records.csv" in builder
+    assert "interaction_support_phase_f_summary.json" in replacer
+    assert "artifacts/interaction_support/phase_f_summary.json" in assembler
     for number in range(1, 7):
         assert f"## Figure {number}." in captions
     assert "Endpoint rows share trajectories" in captions
@@ -107,5 +116,7 @@ def test_verified_reference_list_covers_load_bearing_families() -> None:
 
 def test_phase_chronology_is_not_a_manuscript_source_of_truth() -> None:
     workspace = _read("manuscript/README.md")
-    assert "phase-specific result notes" in workspace.lower()
-    assert "must not override" in workspace.lower()
+    lower = workspace.lower()
+    assert "phase-specific result notes" in lower
+    assert "must not compete with the current sources" in lower
+    assert "results sections are named by biological result" in lower
