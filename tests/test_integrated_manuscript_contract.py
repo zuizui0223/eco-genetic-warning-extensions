@@ -62,11 +62,22 @@ def test_superseded_phase_narratives_stay_removed() -> None:
         "manuscript/r4_width_phase_d_results.md",
         "manuscript/protocol002_condition_map_results.md",
         "manuscript/protocol002_existing_condition_frontier.md",
+        "manuscript/el_editorial_pass.md",
+        "manuscript/integrated_introduction.md",
+        "manuscript/integrated_discussion.md",
+        "manuscript/gap_novelty_ecological_significance.md",
+        "manuscript/results_stage3.md",
+        "manuscript/supervisor_first_draft.md",
+        "manuscript/literature_gap_review.md",
         "docs/CONDITION_RECOVERY_CLOSURE.md",
     )
     for path in removed:
         assert not (ROOT / path).exists(), path
+    assert len(removed) == 20
     assert (ROOT / "manuscript/display_allocation.md").exists()
+    assert (ROOT / "manuscript/main_text.md").exists()
+    assert (ROOT / "manuscript/warning_evaluability_prior_art.md").exists()
+    assert (ROOT / "manuscript/core_reference_map.md").exists()
 
 
 def test_submission_bundle_keeps_provenance_and_statistical_units() -> None:
