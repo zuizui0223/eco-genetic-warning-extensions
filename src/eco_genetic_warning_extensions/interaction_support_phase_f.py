@@ -68,7 +68,7 @@ def phase_f_manifest() -> dict[str, object]:
         "minimum_baseline_eligible_per_seed": PHASE_F_MIN_BASELINE_ELIGIBLE_PER_SEED,
         "source_preparations_per_condition": len(PHASE_F_MASTER_SEEDS) * PHASE_F_REPLICATES_PER_SEED,
         "condition_count": len(PHASE_F_INTERACTION_KAPPAS),
-        "warning_blind": True,
+        "blinding_scope": "source_and_trait_loss_only",
         "output_scope": "source_projection_baseline_and_trait_loss_only",
         "interpretation_boundary": (
             "interaction_kappa is the existing aggregate positive-feedback strength; "
