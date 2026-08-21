@@ -1,15 +1,6 @@
 name: Warning-blind partner redundancy Phase G
 
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - "src/eco_genetic_warning_extensions/partner_redundancy_phase_g.py"
-      - "src/eco_genetic_warning_extensions/partner_redundancy_phase_g_runner.py"
-      - "scripts/run_partner_redundancy_phase_g.py"
-      - "tests/test_partner_redundancy_phase_g.py"
-      - "docs/WARNING_BLIND_PARTNER_REDUNDANCY_PHASE_G.md"
-      - ".github/workflows/partner-redundancy-phase-g.yml"
   workflow_dispatch:
 
 permissions:
