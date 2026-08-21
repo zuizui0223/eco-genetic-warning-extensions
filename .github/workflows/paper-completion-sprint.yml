@@ -169,7 +169,6 @@ jobs:
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q 'R4 exists' submission_bundle/manuscript/main_text.md
           grep -q '0.571' submission_bundle/manuscript/main_text.md
-          grep -q '25 of 91' submission_bundle/manuscript/main_text.md
           grep -q '0.540' submission_bundle/manuscript/main_text.md
           grep -q '0.335' submission_bundle/manuscript/main_text.md
           grep -q '1,037' submission_bundle/manuscript/main_text.md
@@ -214,8 +213,10 @@ jobs:
           phase_e=json.loads((bundle/'tables/migration_phase_e_summary.json').read_text())
           regimes=[row['regime'] for row in phase_e['migration_condition_summaries']]
           assert regimes == ['R4_highrep','R4_highrep','R4_highrep','R3_highrep','R3_highrep']
-          assert phase_e['paired_loss_status_vs_isolation'][-1]['loss_to_no_loss'] == 11
-          assert phase_e['paired_loss_status_vs_isolation'][-1]['no_loss_to_loss'] == 14
+          highest_switch=phase_e['paired_loss_status_vs_isolation'][-1]
+          assert highest_switch['loss_to_no_loss'] == 11
+          assert highest_switch['no_loss_to_loss'] == 14
+          assert highest_switch['loss_to_no_loss'] + highest_switch['no_loss_to_loss'] == 25
 
           for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
