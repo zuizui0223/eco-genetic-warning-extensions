@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Habitat fragmentation can leave populations present while ecological function becomes weak or disappears, but genetic warning is interpretable only when the functional-loss process itself is sufficiently reproducible. We used a finite eco-genetic model in which positive interaction feedback supports a high-function state and all condition selection is blind to genetic-warning outcomes. Fragmentation sharply reduced interaction, local effective size and realised high-trait mass before population disappearance. Recurrent state turnover altered source feasibility and functional-loss regime, and prospective warning-blind refinement recovered a narrow reproducible intermediate-risk regime (R4). Allele-frequency connectivity moved that anchor from reproducible to seed-heterogeneous loss, whereas three predeclared levels of aggregate interaction support all retained R4 despite differing source eligibility. A new preregistered reduced-form partner-loss experiment then reproduced R4 in an intact control but moved all three one-partner-loss architectures to seed-heterogeneous R3 while pooled loss incidence remained similar. Thus average risk and event-regime estimability can separate. Only downstream of these conditions did baseline-relative genetic erosion precede functional loss in one calibrated benchmark; fixed absolute thresholds were unreliable and warning behaviour was not fully portable across independently calibrated domains. We conclude that genetic early warning is an emergent property of the eco-genetic process generating functional loss. The model motivates an empirical programme in which urban and island systems are treated not as equivalents, but as contrasting routes through a shared condition space of habitat support, interaction structure, biological connectivity, reproductive assurance and realised function.
+Habitat fragmentation can leave populations present while ecological function weakens, but genetic warning is interpretable only when functional loss itself is reproducible. In a finite eco-genetic model, fragmentation reduced interaction, local effective size and realised high-trait mass. Warning-blind mapping showed that recurrent state turnover altered source feasibility and loss regime; a narrow intermediate-risk R4 regime was prospectively recovered. Allele-frequency connectivity moved R4 to seed-heterogeneous R3, whereas three aggregate interaction-support levels retained R4. A preregistered reduced-form partner-loss test reproduced R4 in the intact control but moved all three one-partner-loss conditions to R3 while pooled loss incidence remained similar, separating event risk from estimability. Baseline-relative genetic erosion preceded loss in one calibrated benchmark, but absolute thresholds were unreliable and warning was not fully portable across independently calibrated domains. Genetic early warning is therefore a downstream property of the eco-genetic process generating functional loss.
 
 ## Introduction
 
@@ -93,7 +93,7 @@ A separate trait-loss-only calibration fixed one symmetric deterioration domain 
 
 ### Portability validation and uncertainty
 
-A separately declared historical protocol used warning-blind recalibration to recover two evaluable domains. They differ in recurrent-transition parameters, ecological parameters, deterioration strength and horizon, so the fresh-seed comparison is interpreted as portability across calibrated eco-genetic domains, **not an isolated effect of recurrent-transition direction**.
+A separately declared historical protocol used warning-blind recalibration to recover two evaluable domains. They differ in recurrent-transition parameters, ecological parameters, deterioration strength and horizon, so the fresh-seed comparison is interpreted as portability across calibrated eco-genetic domains and **not a single-factor effect of transition direction**.
 
 Post-review uncertainty analyses resampled whole attempted trajectories, retaining correlated endpoint records within each trajectory. Direct between-domain timing differences were bootstrapped from the two domains rather than inferred from marginal interval overlap. Because lead-time medians condition on observing both events and a leading warning, full-denominator event incidence and warning availability are treated as more primary than conditional lead-time summaries.
 
@@ -133,7 +133,7 @@ Because warning values were unavailable during this calibration, the result was 
 
 ### Warning-blind refinement recovered a narrow reproducible event regime
 
-Prospective refinement changed the interpretation of the coarse no-domain result. In the high-rep recovery, `p_star=0.35` produced seed-block loss rates 0.579, 0.529, 0.474, 0.588 and 0.368, with pooled loss 0.505; `p_star=0.40` remained R3-highrep.
+Prospective refinement changed the interpretation of the no-domain result: **the coarse result was a placement boundary rather than structural impossibility**. In the high-rep recovery, `p_star=0.35` produced seed-block loss rates 0.579, 0.529, 0.474, 0.588 and 0.368, with pooled loss 0.505; `p_star=0.40` remained R3-highrep.
 
 An independent replay again classified `p_star=0.35` as R4, with block rates 0.500, 0.667, 0.647, 0.588 and 0.632 and pooled loss 0.609. The lower neighbour `0.325` had pooled loss 0.663 but two blocks above 0.70; the upper neighbour `0.375` had pooled loss 0.391 but one block below 0.30. Both remained R3-highrep.
 
@@ -147,13 +147,13 @@ At `m=0.10`, pooled loss was 0.626 but one seed block reached 0.722, producing R
 
 Paired prepared sources showed why the classification changed. Relative to isolation, 8 of 91 comparable trajectories switched loss status at `m=0.025`, 12 at `0.05`, 21 at `0.10` and 25 at `0.20`. At every nonzero level, some trajectories changed from loss to no loss and others from no loss to loss. Connectivity therefore changed which stochastic histories lost function and whether loss remained reproducible enough for R4, rather than acting as a universal rescue or collapse axis (Figure 5).
 
-### Aggregate interaction support changed source eligibility but not R4
+### Aggregate interaction support changed source eligibility but not the R4 classification
 
 The warning-blind interaction-support test produced 100 source attempts at each predeclared kappa. Source preparation, projection and baseline eligibility succeeded for **77/100** attempts at `kappa=3.0`, **94/100** at `4.5` and **87/100** at `6.0`.
 
 Among eligible trajectories, pooled functional-loss rates were **0.468**, **0.521** and **0.552**, respectively. Crucially, every one of the five seed-block loss rates at every tested kappa remained inside `[0.30,0.70]`; **all three levels were therefore R4-highrep**.
 
-This is a **bounded negative condition result**. Across the predeclared `kappa=3.0–6.0` range, aggregate interaction support did not provide the missing R4 boundary at this anchor, although source eligibility differed descriptively. The result separates whether a high-function state can be established and retained for analysis from how reproducibly function is lost once that state is available. The kappa search was closed rather than widened to manufacture a boundary.
+This is a **bounded negative condition result**. Across the predeclared `kappa=3.0–6.0` range, aggregate interaction support did not provide the missing R4 boundary at this anchor, although source eligibility differed descriptively. The result separates whether a high-function state can be established and retained for analysis from how reproducibly function is lost once that state is available. **The kappa search was closed rather than widened to manufacture a boundary.**
 
 ### One-partner loss changed event-regime reproducibility more than pooled risk
 
@@ -175,7 +175,7 @@ For each of six baseline-relative `H_alpha` and `H_gamma` endpoints, all 35 vali
 
 The separately declared portability validation attempted 100 fresh trajectories in each calibrated domain. Valid-pair availability across the six endpoints was **0.540** in the recalibrated symmetric domain and **0.335** in the directional calibrated domain. The symmetric domain contained 323 leads, one tie and no lags among 324 valid comparisons; the directional calibrated domain contained 184 leads, five ties and 12 lags among 201 valid comparisons.
 
-Conditional positive lead-time medians were shorter in absolute generations in the directional calibrated domain, but direct between-domain difference intervals excluded zero at only two of six endpoints. After normalization by calibrated horizon, all six direct timing-difference intervals included zero. Because the domains also differ in ecological parameters and deterioration schedules, this is bounded non-portability across calibrated eco-genetic domains, **not an isolated effect of recurrent-transition direction** (Figure 6).
+Conditional positive lead-time medians were shorter in absolute generations in the directional calibrated domain, but direct between-domain difference intervals excluded zero at only two of six endpoints. After normalization by calibrated horizon, all six direct timing-difference intervals included zero. Because the domains also differ in ecological parameters and deterioration schedules, this is bounded non-portability across calibrated eco-genetic domains and **not a single-factor effect of transition direction** (Figure 6).
 
 ## Discussion
 
@@ -209,7 +209,7 @@ The empirical implication is therefore stronger as a measurement rule than as a 
 
 The present `migration_rate` operator mixes allele frequencies only. Its R4→R3 transition is therefore evidence that genetic-state connectivity can change loss-regime reproducibility, not evidence about demographic recolonisation, pollen flow, seed dispersal or pollinator movement. Those processes can be coupled in real systems but need not have the same sign or timescale.
 
-This boundary is empirically important. A global meta-analysis found no consistent overall change in fine-scale plant genetic structure between fragmented, degraded and undisturbed habitats, with large heterogeneity and a detectable role for seed-dispersal mode (Miguel-Peñaloza et al. 2023). Genetic structure is therefore not a universal readout of habitat fragmentation. Conversely, Peled et al. (2026) showed theoretically and empirically that heterogeneous landscape connectivity can generate complex genetic trajectories and early warning before rapid genetic transitions. Together, these findings support treating spatial structure, biological movement, genetic state and realised function as linked but separate observables.
+This boundary is empirically important. A global meta-analysis found no consistent overall change in fine-scale plant genetic structure between fragmented, degraded and undisturbed habitats, with large heterogeneity and a detectable role for seed-dispersal mode (Miguel-Peñaloza et al. 2023). Genetic structure is therefore not a universal readout of habitat fragmentation. Conversely, Peled et al. (2026) showed that heterogeneous landscape connectivity can generate complex genetic trajectories and early warning before rapid genetic transitions. Together, these findings support treating spatial structure, biological movement, genetic state and realised function as linked but separate observables.
 
 A direct future model extension would need biologically explicit movement—pollen, seed/propagule, demographic or partner movement—rather than silently relabelling allele-frequency mixing. We therefore leave that as an unresolved mechanism rather than claiming the present Phase E is a full dispersal experiment.
 
@@ -243,7 +243,7 @@ The model is finite and intentionally explicit. R4 is an operational classificat
 
 The Phase-G partner layer is reduced-form. It does not simulate partner abundance, explicit bipartite topology, connectance, nestedness, modularity, coextinction or adaptive rewiring. Because the loss architectures were matched in mean retained support but not in trajectory-level retained-support variance, Phase G tests a bounded combination of partner-contribution concentration and loss identity rather than a universal network statistic. The absence of a regime difference among even, graded and dominant architectures is therefore as important as their common R4→R3 classification.
 
-The study also does not establish that warning succeeds throughout R4. Condition-recovery campaigns deliberately withheld warning outcomes. The inherited symmetric benchmark provides proof of possibility, while the historical portability validation shows that warning availability and ordering can change across recalibrated domains. Because those domains differ in multiple parameters, the portability result is not a direction-only causal test.
+The study also **does not establish that warning succeeds throughout R4**. Condition-recovery campaigns deliberately withheld warning outcomes. The inherited symmetric benchmark provides proof of possibility, while the historical portability validation shows that warning availability and ordering can change across recalibrated domains. Because those domains differ in multiple parameters, the portability result is not a direction-only causal test.
 
 Finally, censoring remains part of the finite ecological outcome. Source failure, baseline ineligibility and finite-horizon non-events are not silently removed. This matters because warning availability is itself partly determined by the biology generating observable loss and genetic events.
 
