@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 MAIN = ROOT / "manuscript/main_text.md"
 COMPLIANCE = ROOT / "manuscript/ecology_letters_compliance.md"
-ALLOCATION = ROOT / "manuscript/main_vs_supplement.md"
+ALLOCATION = ROOT / "manuscript/display_allocation.md"
 CAPTIONS = ROOT / "manuscript/table_captions.md"
 
 
@@ -52,7 +52,7 @@ def main() -> int:
     assert "Main display items: **Figures 1–6 only**" in compliance
     assert "Main tables: **none**" in compliance
     assert "Text boxes: **none**" in compliance
-    assert "## Main-text tables" not in allocation
+    assert "no main-text tables or text boxes" in allocation
     for number in range(1, 7):
         assert f"### Figure {number}" in allocation
     for number in range(1, 6):
