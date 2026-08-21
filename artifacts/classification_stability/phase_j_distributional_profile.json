@@ -1,0 +1,42 @@
+{
+  "stage": "Phase J distributional estimability profile",
+  "source": "artifacts/classification_stability/phase_j_summary.json",
+  "interpretation": "secondary sampling-design audit; does not alter the preregistered Phase-J outcome",
+  "fixed_condition": {
+    "area_reference": 1.0,
+    "interaction_kappa": 4.5,
+    "kappa_mu": 0.35,
+    "p_star": 0.35,
+    "migration_rate": 0.1,
+    "horizon": 120,
+    "normalised_barrier_increase": 0.3
+  },
+  "event_distribution": {
+    "seed_block_count": 20,
+    "total_baseline_eligible": 342,
+    "total_trait_loss": 180,
+    "pooled_trait_loss_rate": 0.5263157894736842,
+    "unweighted_mean_seed_rate": 0.5247052373581012,
+    "median_seed_rate": 0.513157894736842,
+    "sample_sd_seed_rate": 0.11815943796885155,
+    "minimum_seed_rate": 0.35294117647058826,
+    "maximum_seed_rate": 0.75
+  },
+  "operational_band_diagnostic": {
+    "band": [0.3, 0.7],
+    "blocks_inside": 19,
+    "blocks_total": 20,
+    "observed_block_evaluable_fraction": 0.95,
+    "wilson_95_interval": [0.763868806553258, 0.9911185511992047],
+    "plug_in_independent_five_block_all_pass_probability": 0.7737809374999998
+  },
+  "exact_five_block_combinatorial_audit": {
+    "possible_panels": 15504,
+    "R4_panels": 11628,
+    "R3_panels": 3876,
+    "R4_fraction": 0.75,
+    "R3_fraction": 0.25
+  },
+  "design_identity": "If one independent block passes with probability q, an all-pass B-block certificate passes with probability q^B.",
+  "scientific_boundary": "The distributional diagnostics are primary descriptions of the fixed-condition loss process. The legacy all-block R4 label remains a finite-panel opening certificate and is not interpreted as a sample-size-invariant biological regime."
+}
