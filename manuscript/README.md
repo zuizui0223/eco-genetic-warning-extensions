@@ -4,11 +4,11 @@
 
 ## Current status
 
-Warning-blind condition recovery is closed for this manuscript cycle. The original publication source [`main_text.md`](main_text.md) still reflects the pre-refinement narrative and is therefore **not yet the preferred scientific draft**.
+Warning-blind condition recovery is closed for this manuscript cycle, and the condition-recovered rewrite has been promoted to the publication source:
 
-The current rewrite source is:
+- [`main_text.md`](main_text.md)
 
-- [`main_text_condition_recovered_draft.md`](main_text_condition_recovered_draft.md)
+The obsolete intermediate draft was removed after promotion. `main_text.md` now contains the four-question causal story, Figure 1–6 callouts, Data and code availability, and the verified reference list.
 
 It incorporates:
 
@@ -21,8 +21,6 @@ It incorporates:
 - exact support–diversity and migration interpretation boundaries;
 - urban and island empirical translation.
 
-Do not overwrite `main_text.md` with the new draft until the condition-recovered draft passes claim/evidence and journal-format review.
-
 ## Four manuscript questions
 
 1. **How is interaction-dependent ecological function maintained and lost under fragmentation?**
@@ -30,7 +28,7 @@ Do not overwrite `main_text.md` with the new draft until the condition-recovered
 3. **Under what eco-genetic conditions is that warning comparison estimable?**
 4. **Once estimable, is the warning portable across regimes, and why should portability be limited?**
 
-Question 3 is now the empirical centre of the paper.
+Question 3 is the empirical centre of the paper.
 
 ## Current main conclusion
 
@@ -44,12 +42,12 @@ This is stronger and more precise than the earlier conclusion that the common 15
 
 ## Publication sources of truth
 
-Use the following hierarchy while the rewrite is under review:
+Use the following hierarchy:
 
-1. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited scientific claims;
-2. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → conditions → remaining boundary;
-3. [`integrated_story.md`](integrated_story.md) — four-question narrative architecture;
-4. [`main_text_condition_recovered_draft.md`](main_text_condition_recovered_draft.md) — current manuscript rewrite;
+1. [`main_text.md`](main_text.md) — publication manuscript;
+2. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited scientific claims;
+3. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → conditions → remaining boundary;
+4. [`integrated_story.md`](integrated_story.md) — four-question narrative architecture;
 5. [`ecological_grounding.md`](ecological_grounding.md) and [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — ecological/prior-art and application boundaries.
 
 Older exploratory notes are not publication sources when they conflict with these files.
@@ -90,4 +88,4 @@ Older exploratory notes are not publication sources when they conflict with thes
 
 ## Next manuscript action
 
-Review `main_text_condition_recovered_draft.md` against the claim map, reference list and Ecology Letters length/display constraints. If clean, promote it to `main_text.md`, then rebuild figures so the narrow R4 recovery and Phase-E connectivity condition appear in the main evidence spine rather than only in repository planning documents.
+Run the promoted `main_text.md` through the Ecology Letters compliance, citation/claim, figure-callout, two-repository reproducibility, and submission-bundle checks. Once green, rebuild the publication figures so Figures 4–5 directly render the recovered R4 and connectivity results described in the promoted manuscript.
