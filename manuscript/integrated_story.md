@@ -39,7 +39,7 @@ Across the common 15-coordinate recurrent-transition grid, source preparation/pr
 
 #### Loss-regime generation
 
-The same common deterioration family produced 322 rapid-loss, 242 persistence and 84 seed-heterogeneous complete candidates among 648 five-seed candidates. The system can therefore fail in qualitatively different ways before warning is measured.
+The common warning-blind deterioration campaign comprised **20,250** attempts. Among 648 complete five-seed candidates it produced 322 rapid-loss, 242 persistence and 84 seed-heterogeneous candidates. The system can therefore fail in qualitatively different ways before warning is measured.
 
 #### Coarse-grid no-domain result
 
