@@ -2,7 +2,7 @@
 
 ## Figure 1. Eco-genetic causal architecture and four-question hierarchy
 
-Conceptual synthesis separating interaction-supported ecological function, population persistence, genetic state, functional loss, event-regime estimability and genetic-warning performance. The study asks first whether function can exist and be lost, then whether loss is reproducible and nondegenerate enough for warning to be estimated, and only then whether genetic change precedes loss and is portable. Arrows summarize the tested organization; they do not assert a universal theorem.
+Conceptual synthesis separating interaction-supported ecological function, population persistence, genetic state, functional loss, event-regime estimability and genetic-warning performance. The study asks first whether function can exist and be lost, then which recurrent-turnover, connectivity and interaction-support conditions make loss reproducible, and only then whether genetic change precedes loss and is portable. R1/R2/R3/R4 are operational functional-loss regimes, not warning outcomes. Arrows summarize the tested organization; they do not assert a universal theorem.
 
 ## Figure 2. Fragmentation creates vulnerability and genetic warning is conditionally possible
 
@@ -24,13 +24,18 @@ At the independently reproduced R4 anchor, the same 100 prepared sources were pa
 
 **A**, full attempted-denominator warning availability, censoring and lead/tie/lag composition for the independently recalibrated symmetric and directional calibrated domains. **B**, cumulative observed warning and realised functional-loss incidence over each domain-specific administrative horizon for the compact endpoint set retained in the main figure. Warning and loss can both occur in one trajectory, so incidence curves are paired event summaries rather than competing-risk estimates. **Endpoint rows share trajectories** and are not independent biological replicates. The two domains differ in recurrent-transition, ecological and deterioration parameters; Stage III therefore tests bounded portability across calibrated eco-genetic domains and does not identify the isolated causal effect of recurrent-transition direction.
 
+## Supplementary Figure S3. Conditional positive lead-time diagnostic
+
+Positive warning lead time is summarized only among trajectories in which both the warning endpoint and realised functional loss were observed and the warning preceded loss. This conditional diagnostic is secondary to full-denominator warning availability and event incidence. Absolute-generation lead times depend on each domain's calibrated horizon; horizon-normalized direct between-domain bootstrap intervals include zero for all six endpoints.
+
 ## Caption rules retained for submission
 
 - Keep the inherited symmetric benchmark, the refined R4 condition, the recalibrated symmetric domain and the directional calibrated domain terminologically distinct.
 - State when endpoint counts or migration levels share trajectories/prepared sources.
 - Describe `p_star` as an effective recurrent-transition equilibrium, not an empirical mutation-rate estimate.
 - Keep the original strict Protocol 002 15/15 no-domain outcome separate from the later warning-blind R4 recovery.
-- Do not claim that R4 itself proves warning success; warning fields were withheld during Phases A–E.
+- Do not claim that R4 itself proves warning success; warning fields were withheld during Phases A–E and the interaction-support condition test.
 - Do not describe Phase-E `migration_rate` as demographic, pollinator or seed movement or infer a universal threshold.
+- Do not describe interaction `kappa` as partner richness, connectance or network simplification; Phase F is a bounded aggregate-support result.
 - Never describe the Stage III contrast as the isolated effect of transition direction.
-- The old conditional lead-time panel is now supplementary; **Interpret this diagnostic together with full-denominator Figures 4–5** in the historical numbering/provenance record, and with current Figure 6 in the revised scientific spine.
+- The conditional positive lead-time diagnostic is supplementary and should be interpreted together with current full-denominator Figure 6.
