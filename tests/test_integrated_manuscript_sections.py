@@ -28,7 +28,7 @@ def test_main_discussion_keeps_calibration_and_portability_limits() -> None:
         "warning-blind",
         "candidate family",
         "horizon",
-        "not an isolated effect of recurrent-transition direction",
+        "not a single-factor effect of transition direction",
         "trajectory",
         "right-censored",
     ):
