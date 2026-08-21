@@ -23,7 +23,7 @@ def figure1_estimability_svg() -> str:
     ]
     boxes = [
         (35, 105, 270, 155, "Q1", "Functional fragmentation", "high-function state exists", "→ fragmentation vulnerability"),
-        (340, 105, 285, 155, "Q2", "Loss-regime conditions", "turnover · connectivity", "· interaction support"),
+        (340, 105, 285, 155, "Q2", "Loss-regime conditions", "turnover · connectivity · interaction support", "R1/R2/R3/R4 regimes"),
         (660, 105, 275, 155, "Q3", "Conditional warning", "relative genetic erosion", "can precede loss"),
         (970, 105, 275, 155, "Q4", "Warning portability", "availability / ordering", "across calibrated regimes"),
     ]
@@ -31,7 +31,7 @@ def figure1_estimability_svg() -> str:
         parts.append(f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="#f9fafb" stroke="#111" stroke-width="2"/>')
         parts.append(f'<text x="{x+18}" y="{y+27}" font-family="sans-serif" font-size="14" font-weight="bold">{q}</text>')
         parts.append(f'<text x="{x+w/2}" y="{y+61}" text-anchor="middle" font-family="sans-serif" font-size="17" font-weight="bold">{html.escape(line1)}</text>')
-        parts.append(f'<text x="{x+w/2}" y="{y+92}" text-anchor="middle" font-family="sans-serif" font-size="13">{html.escape(line2)}</text>')
+        parts.append(f'<text x="{x+w/2}" y="{y+92}" text-anchor="middle" font-family="sans-serif" font-size="12">{html.escape(line2)}</text>')
         parts.append(f'<text x="{x+w/2}" y="{y+119}" text-anchor="middle" font-family="sans-serif" font-size="13">{html.escape(line3)}</text>')
     for x1, x2 in ((305, 340), (625, 660), (935, 970)):
         parts.append(f'<line x1="{x1}" y1="182" x2="{x2}" y2="182" stroke="#111" stroke-width="2.5" marker-end="url(#a)"/>')
