@@ -1,49 +1,84 @@
-# Explicit network and biological-movement closures: unresolved next-model work
+# Explicit network and biological-movement closures
 
-## Purpose
+## Current status
 
-The current condition programme has now tested recurrent state turnover, allele-frequency connectivity, aggregate interaction support, and a reduced-form matched one-partner-loss perturbation. Two ecologically important axes remain genuinely unresolved:
+The programme has now tested:
 
-1. explicit interaction-network dynamics, especially adaptive rewiring and partner population dynamics;
-2. biologically explicit movement, separating pollen, seed/propagule, demographic and partner movement.
+1. recurrent state turnover;
+2. allele-frequency connectivity;
+3. aggregate interaction support;
+4. reduced-form matched partner loss;
+5. one prospectively fixed explicit interaction-rewiring rule.
 
-These are **not missing parameter sweeps in the current model**. They require new state variables and/or life-cycle operators. They must therefore not be backfilled by relabelling existing parameters.
+The canonical explicit-rewiring test is now **closed**. The remaining major unrepresented mechanism is biologically explicit movement, separated into pollen, seed/propagule, demographic and partner movement. Broader network dynamics with endogenous partner abundance or coextinction also remain outside the current closure.
 
-## What Phase G did and did not close
+These are not missing parameter sweeps. They require new state variables and/or life-cycle operators and must not be backfilled by relabelling existing parameters.
 
-Phase G established a bounded reduced-form result: at one fresh R4 anchor, matched one-partner loss moved the predeclared classifier from R4 to R3 in three partner-contribution architectures while pooled loss incidence remained similar. Contribution concentration itself did not separate regimes.
+## What Phase G established
 
-Phase G did not represent:
+Phase G recovered a bounded reduced-form result: at one fresh R4 anchor, matched one-partner loss moved the predeclared classifier from R4 to R3 in three partner-contribution architectures while pooled loss incidence remained similar. Contribution concentration itself did not separate regimes.
 
-- a bipartite or multilayer interaction matrix;
-- partner abundances or partner extinction dynamics;
-- connectance, nestedness or modularity as state variables;
-- adaptive or opportunistic rewiring;
-- trait matching constraints on rewiring;
-- spatial movement of interaction partners;
-- coextinction cascades.
+Phase G did not represent explicit partner nodes, latent edges or rewiring, motivating a new prospective network closure.
 
-Therefore no claim about those mechanisms is available from Phase G.
+## What Phase H added
 
-## Minimum explicit-network closure required before a rewiring test
+Phase H represented one focal interaction network with:
 
-A scientifically interpretable rewiring extension should introduce at minimum:
+- six candidate partner nodes;
+- four initially active primary edges;
+- two latent available partners;
+- explicit edge strengths;
+- fixed trait-match scores;
+- per-edge capacities;
+- balanced exogenous primary-partner loss;
+- dynamic trait- and capacity-constrained rewiring;
+- explicit active-edge, connectance and functional-support diagnostics.
 
-1. **partner state** — explicit identity and abundance/availability for each partner in each patch;
-2. **interaction state** — a patch-specific weighted interaction matrix or equivalent edge-strength representation;
-3. **functional mapping** — a declared mapping from realised partner interactions to focal ecological function;
-4. **partner loss process** — exogenous removal and/or endogenous partner decline defined independently of the focal warning statistic;
-5. **rewiring rule** — a prospective rule specifying which surviving edges can form or strengthen, with explicit constraints from availability or trait matching;
-6. **network diagnostics** — connectance, interaction-strength evenness, functional partner diversity and rewiring recorded as diagnostics rather than silently collapsed into scalar `kappa`;
-7. **warning-blind regime classification** — source/function and loss-regime selection completed before genetic-warning fields are exposed.
+The same high-function source, lost primary partner, deterioration schedule and trajectory seed were paired across:
 
-A first explicit-network experiment should compare at least `no rewiring` versus a biologically constrained rewiring rule under the **same initial network, partner loss, deterioration schedule and random source identity**. Rewiring intensity should not be tuned after observing R4/R3 outcomes.
+1. intact control;
+2. partner loss without rewiring;
+3. the same partner loss with constrained rewiring.
 
-## Why existing `interaction kappa` cannot substitute
+The opening rule required fresh intact `R4_highrep` and fresh no-rewiring loss `R3_highrep`. Both were recovered, so the rescue comparison was valid.
 
-`interaction kappa` is aggregate positive-feedback/effective interaction support. It does not encode which partner supplies support, which edge is lost, whether a new edge forms, or whether surviving partners compensate. Phase F therefore answers a scalar support question, not a network-topology question.
+The rewiring condition remained `R3_highrep`, giving prospective classification **`not_rescued`**.
 
-## Minimum biological-movement closure required before a dispersal test
+### Network state recovered, loss-regime reproducibility did not
+
+The rewiring rule changed the network substantially:
+
+| diagnostic | no rewiring | constrained rewiring |
+|---|---:|---:|
+| final active edges | 3 | 5 |
+| realised connectance | 0.500 | 0.833 |
+| latent edges activated | 0 | 2 |
+| rewired edge effort | 0 | 0.125 |
+| final support multiplier | 0.750 | 0.844 |
+
+Yet pooled functional loss changed only `0.430 → 0.419`, and the final seed block remained below the R4 lower bound (`0.294`). The rewiring condition therefore remained R3.
+
+The bounded conclusion is:
+
+> **Network structural recovery and match-weighted interaction-support recovery were not sufficient to recover functional-loss regime reproducibility under this predeclared closure.**
+
+This strengthens the separation among network state, functional-loss incidence, event reproducibility and downstream warning estimability.
+
+Phase-H evidence: `artifacts/explicit_rewiring/phase_h_summary.json`; workflow run `32453377127`; artifact `9436467391`.
+
+## Stop rule for explicit rewiring
+
+Phase H is closed. Do not vary the partner pool, match scores, edge capacities, rewiring fraction, rewiring window, loss identity, seeds or R4 thresholds merely to obtain a rescue.
+
+The result does not imply that rewiring is universally ineffective. A different rewiring mechanism may be scientifically justified later only as a separately motivated and prospectively declared model, not as a continuation of Phase-H tuning.
+
+## Why existing `interaction kappa` still cannot substitute for network state
+
+`interaction kappa` is aggregate positive-feedback/effective interaction support. It does not encode which partner supplies support, which edge is lost, whether a latent edge activates, or how interaction effort is redistributed. Phase F and Phase H therefore address distinct axes.
+
+Conversely, Phase H shows that higher realised connectance and greater network-derived support do not automatically restore the downstream functional-loss regime. This makes it especially unsafe to use any one network metric as a stand-alone proxy for functional resilience.
+
+## Remaining biological-movement closure
 
 The pinned parent model's `migration_rate` changes allele frequencies through mixing toward the population-weighted patch mean. It does **not** move individuals, trait-bin occupancy, pollen, seeds or interaction partners.
 
@@ -85,20 +120,16 @@ Minimum additions:
 
 These processes can differ in direction, timescale and ecological effect; they should not be collapsed into one scalar connectivity variable.
 
-## Cross-system reason this distinction matters
+## Cross-system implication
 
-The literature audit indicates that urban and island systems can decouple these processes in different ways. Urban habitat can be spatially patchy while gene flow remains substantial through long-distance or human-mediated movement, yet local interaction composition changes. Oceanic islands can have strong geographic isolation while mutualist availability, stepping-stone structure and reproductive assurance alter whether a focal function is established or maintained.
+The urban–island literature audit makes process-resolved movement the natural next axis. Urban habitat can be spatially patchy while focal gene flow or anthropogenic movement remains substantial, even as local interaction composition changes. Oceanic islands can have strong geographic isolation while mutualist availability, stepping-stone structure and reproductive assurance alter whether a focal function is established or maintained.
 
-Therefore the next urban–island programme should compare **process-resolved connectivity and interaction-mediated functional state**, not geography alone.
+Phase H adds an important warning to that programme: even if an interaction network appears structurally reconnected, the relevant functional-loss process may remain heterogeneous. Field tests should therefore measure realised function and its temporal/among-population reproducibility rather than stopping at connectance or visitation-network recovery.
 
 ## Prospective convergence hypothesis
 
-The next empirical/model question remains:
+The cross-system question remains:
 
-> Do different fragmentation mechanisms converge on the same operational interaction-mediated functional-fragmentation regime once state feasibility, realised interaction support, biological connectivity and functional-loss reproducibility are measured separately?
+> Do different fragmentation mechanisms converge on the same operational interaction-mediated functional-fragmentation regime once state feasibility, realised interaction support, process-resolved biological connectivity and functional-loss reproducibility are measured separately?
 
-This is not a result of the current model. It becomes testable only after the relevant network and movement processes are represented or measured explicitly.
-
-## Stop rule for the present manuscript
-
-Do not add a synthetic rewiring or biological-dispersal parameter to the current paper merely to close every ecological mechanism. Phase G closes the reduced-form partner-loss question. Explicit rewiring and process-resolved biological movement are **next-model hypotheses** unless a new prospective closure is fully specified before outcomes are generated.
+Current simulations do not establish such convergence. They now show that **network recovery itself is not sufficient evidence of regime recovery**, which sharpens what an empirical convergence test must measure.
