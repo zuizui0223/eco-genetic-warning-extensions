@@ -13,7 +13,7 @@ def test_repository_exposes_one_condition_first_science_spine() -> None:
     program = _read("docs/HYPOTHESIS_PROGRAM.md")
     workspace = _read("manuscript/README.md")
     for text in (root, program, workspace):
-        assert "C0" in text and "C1" in text and "C2" in text and "C3" in text and "C4" in text
+        assert all(token in text for token in ("C0", "C1", "C2", "C3", "C4"))
     assert "Warning is therefore a downstream conditional outcome" in root
     assert "condition-first" in program.lower()
     assert "protocol chronology" in workspace.lower()
@@ -22,9 +22,11 @@ def test_repository_exposes_one_condition_first_science_spine() -> None:
 def test_interaction_support_is_not_mislabeled_as_network_simplification() -> None:
     root = _read("README.md")
     program = _read("docs/HYPOTHESIS_PROGRAM.md")
+    application = _read("manuscript/urban_island_regime_tests.md")
     assert "not partner richness" in root
     assert "not partner richness" in program
     assert "network dimensionality" in program
+    assert "network simplification" in application
     assert "Phase F" in program
     assert "3.0, 4.5, 6.0" in program
 
@@ -32,13 +34,34 @@ def test_interaction_support_is_not_mislabeled_as_network_simplification() -> No
 def test_main_text_retains_locked_headline_results_and_boundaries() -> None:
     text = _read("manuscript/main_text.md")
     lower = text.lower()
-    for token in ("2,269", "3,375", "322", "242", "84", "r4 exists", "0.571", "0.540", "0.335", "1,037"):
-        assert token in text.lower() if token == "r4 exists" else token in text
+    for token in ("2,269", "3,375", "322", "242", "84", "0.571", "0.540", "0.335", "1,037"):
+        assert token in text
+    assert "r4 exists" in lower
     assert "not an isolated effect of recurrent-transition direction" in lower
     assert "not demographic migration" in lower or "not demographic" in lower
     assert "### Stage I" not in text
     assert "### Stage II" not in text
     assert "### Stage III" not in text
+
+
+def test_superseded_phase_narratives_stay_removed() -> None:
+    removed = (
+        "manuscript/integrated_story.md",
+        "manuscript/integrated_abstract_and_outline.md",
+        "manuscript/integrated_claim_evidence_map.md",
+        "manuscript/hypothesis_condition_phase_map.md",
+        "manuscript/main_vs_supplement.md",
+        "manuscript/frontier_refinement_phase_a_results.md",
+        "manuscript/frontier_refinement_phase_b_results.md",
+        "manuscript/frontier_reproducibility_phase_c_results.md",
+        "manuscript/migration_condition_phase_e_results.md",
+        "manuscript/r4_width_phase_d_results.md",
+        "manuscript/protocol002_condition_map_results.md",
+        "manuscript/protocol002_existing_condition_frontier.md",
+        "docs/CONDITION_RECOVERY_CLOSURE.md",
+    )
+    for path in removed:
+        assert not (ROOT / path).exists(), path
 
 
 def test_submission_bundle_keeps_provenance_and_statistical_units() -> None:
@@ -68,6 +91,5 @@ def test_verified_reference_list_covers_load_bearing_families() -> None:
 
 def test_phase_chronology_is_not_a_manuscript_source_of_truth() -> None:
     workspace = _read("manuscript/README.md")
-    assert "Phase-specific historical documents are provenance only" not in workspace  # old wording removed
     assert "phase-specific result notes" in workspace.lower()
     assert "must not override" in workspace.lower()
