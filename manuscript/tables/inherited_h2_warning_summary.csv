@@ -1,0 +1,9 @@
+endpoint_type,diversity,threshold,attempted,available,trait_loss_observed,valid_pairs,lead,tie,lag,censored_or_unpaired,evidence_scope
+relative,H_alpha,0.05,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+relative,H_alpha,0.10,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+relative,H_alpha,0.20,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+relative,H_gamma,0.05,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+relative,H_gamma,0.10,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+relative,H_gamma,0.20,100,83,35,35,35,0,0,48,inherited symmetric warning-blind calibrated domain
+absolute,H_alpha,0.20,100,83,35,20,14,0,6,63,inherited absolute-threshold audit on stored H2 trajectories
+absolute,H_gamma,0.20,100,83,35,16,8,0,8,67,inherited absolute-threshold audit on stored H2 trajectories
