@@ -9,6 +9,14 @@ on:
       - "src/eco_genetic_warning_extensions/interaction_support_phase_f_runner.py"
       - "scripts/run_interaction_support_phase_f.py"
       - "tests/test_interaction_support_phase_f.py"
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/interaction-support-phase-f.yml"
+      - "src/eco_genetic_warning_extensions/interaction_support_phase_f.py"
+      - "src/eco_genetic_warning_extensions/interaction_support_phase_f_runner.py"
+      - "scripts/run_interaction_support_phase_f.py"
+      - "tests/test_interaction_support_phase_f.py"
   workflow_dispatch:
 
 permissions:
