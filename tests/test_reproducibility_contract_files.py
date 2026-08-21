@@ -27,15 +27,15 @@ def test_package_metadata_exposes_submission_roles() -> None:
     assert project["urls"]["Mechanistic parent"].endswith("eco-genetic-criticality")
 
 
-def test_readme_is_submission_facing_not_pre_simulation() -> None:
+def test_readme_reports_current_condition_first_state() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
-    assert "campaigns are complete" in readme
-    assert "No new simulation result exists yet" not in readme
-    assert "submission bundle" in readme
-    assert "2,269 of 3,375" in readme
-    assert "323 leads" in readme
-    assert "184 leads" in readme
-    assert "not a single-factor causal effect" in readme
+    lower = readme.lower().replace("**", "")
+    assert "warning is therefore a downstream conditional outcome" in lower
+    assert "2,269/3,375" in readme
+    assert "phase f" in lower
+    assert "aggregate interaction support" in lower
+    assert "portability is bounded" in lower
+    assert "no new simulation result exists yet" not in lower
 
 
 def test_submission_bundle_adds_both_packages_and_source_archives() -> None:
