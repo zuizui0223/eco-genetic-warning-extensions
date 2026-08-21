@@ -32,6 +32,8 @@ Parent and extension repositories are separate computational provenance units an
 | S13 | Stage III is not a matched recurrent-transition-direction experiment because the calibrated domains also differ in ecological parameters, deterioration strength and horizon. | Locked domain identities. | identification boundary |
 | S14 | Stage III timing point estimates are schedule-dependent; all six full-horizon-normalized direct between-domain bootstrap contrasts include zero. | Post-review trajectory-level audit. | uncertainty/identification result |
 | S15 | Censoring, source failure and baseline ineligibility are finite outcomes that affect warning availability and are retained in the denominator. | Full attempted Stage III endpoint records. | bounded interpretation |
+| S16 | In the prospective Phase-G reduced-form partner test, the fresh intact control reproduced R4 (49/90 losses; pooled 0.544), whereas every predeclared one-partner-loss architecture was R3-highrep despite matched post-loss richness and matched mean retained support among the three loss architectures. | Phase G run `32450362310`, artifact `9435520830`; committed `artifacts/partner_redundancy/phase_g_summary.json`. | finite partner-loss boundary |
+| S17 | Phase G does not support a directional mean-risk or contribution-concentration claim: pooled loss incidence remained 0.544–0.578, paired loss status switched in both directions, a post-hoc paired incidence audit gave Cochran Q p=0.943, and even/graded/dominant loss architectures all shared R3. | Same Phase-G evidence plus post-hoc paired audit. | reproducibility/estimand boundary |
 
 ## Exact operator claims
 
@@ -59,6 +61,9 @@ These are Type T boundaries for the declared operators, not finite warning theor
 | Phase F `kappa=3.0 / 4.5 / 6.0` | R4 / R4 / R4 |
 | Phase F source/baseline eligible | 77 / 94 / 87 of 100 |
 | Phase F pooled loss among eligible | 0.468 / 0.521 / 0.552 |
+| Phase G intact / even-loss / graded-loss / dominant-loss | R4 / R3 / R3 / R3 |
+| Phase G pooled loss | 0.544 / 0.567 / 0.556 / 0.578 |
+| Phase G seed-rate range | 0.129 / 0.261 / 0.353 / 0.235 |
 | Stage III valid-pair availability | 0.540 vs 0.335 |
 | Stage III lead/tie/lag | 323/1/0 vs 184/5/12 |
 | horizon-normalized Stage III timing contrasts | all six include zero |
@@ -70,11 +75,14 @@ Do not claim that:
 - the historical 15/15 `no_domain_selected` result proves R4 cannot exist;
 - R4 itself means genetic warning succeeds;
 - R4 is a broad or contiguous `p_star` interval;
-- finer `p_star`, migration or kappa tuning is justified merely to manufacture a desired boundary;
+- finer `p_star`, migration, kappa or Phase-G partner-weight tuning is justified merely to manufacture a desired boundary;
 - `migration_rate` is demographic, pollinator, pollen, seed or recolonisation movement;
 - connectivity universally rescues or harms function;
 - Phase F proves interaction support is irrelevant, or that all kappa values preserve R4;
 - interaction `kappa` is partner richness, connectance, pollinator diversity, network dimensionality or direct network simplification;
+- Phase G is a full network/connectance/rewiring experiment;
+- Phase G shows partner loss increases average loss probability;
+- Phase G shows contribution concentration alone determines the loss regime;
 - recurrent-transition direction alone caused the Stage III warning difference or timing difference;
 - `p_star` is an empirically estimated mutation rate;
 - genetic diversity is a monotone proxy for local functional support;
@@ -90,7 +98,8 @@ Do not claim that:
 | A reproducible intermediate-risk loss regime exists but occupies a narrow tested recurrent-turnover region | S4–S6 |
 | Genetic connectivity can change loss-regime reproducibility without a simple rescue sign | S7–S8 + T4 |
 | The same R4 anchor is robust across the predeclared aggregate interaction-support range, while source feasibility varies | S9–S10 |
+| A matched one-partner perturbation can move R4→R3 mainly by increasing block-to-block heterogeneity rather than mean loss incidence; tested contribution concentration did not further separate regimes | S16–S17 |
 | Only after loss-regime evaluability is established does genetic warning become a meaningful downstream question | P3–P4 |
 | Warning behaviour is not automatically portable across independently calibrated eco-genetic domains | S11–S15 |
 
-Every finite numerical claim retains the declared Type S closure. Interaction-network simplification remains an empirical or future explicit-network hypothesis rather than a Phase-F result.
+Every finite numerical claim retains the declared Type S closure. Phase G adds a reduced-form partner-loss boundary, while connectance, adaptive rewiring, coextinction and biological dispersal remain empirical or future explicit-network hypotheses.
