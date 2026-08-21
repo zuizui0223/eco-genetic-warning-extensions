@@ -46,7 +46,7 @@ def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> Non
     assert "r4 exists" in lower
     assert "all three levels were therefore r4-highrep" in lower
     assert "bounded negative condition result" in lower
-    assert "not an isolated effect of recurrent-transition direction" in lower
+    assert "not a single-factor effect of transition direction" in lower
     assert "not demographic migration" in lower or "not demographic" in lower
     assert "### Stage I" not in text
     assert "### Stage II" not in text
