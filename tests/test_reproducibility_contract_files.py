@@ -27,24 +27,29 @@ def test_package_metadata_exposes_submission_roles() -> None:
     assert project["urls"]["Mechanistic parent"].endswith("eco-genetic-criticality")
 
 
-def test_readme_reports_current_condition_first_state() -> None:
+def test_readme_reports_closed_condition_first_state() -> None:
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     lower = readme.lower().replace("**", "")
-    assert "warning is therefore a downstream conditional outcome" in lower
+    assert "warning is a downstream conditional outcome" in lower
     assert "2,269/3,375" in readme
-    assert "phase f" in lower
-    assert "aggregate interaction support" in lower
+    assert "phase f is closed" in lower
+    assert "77/100" not in readme  # README reports rates, not a second detailed ledger
+    assert "0.77, 0.94 and 0.87" in readme
+    assert "aggregate interaction support did not break r4" in lower
     assert "portability is bounded" in lower
-    assert "no new simulation result exists yet" not in lower
+    assert "active missing condition" not in lower
 
 
-def test_submission_bundle_adds_both_packages_and_source_archives() -> None:
+def test_submission_bundle_adds_both_packages_and_condition_evidence() -> None:
     assembler = (ROOT / "scripts/assemble_software_bundle.py").read_text(encoding="utf-8")
+    replacer = (ROOT / "scripts/replace_submission_figures.py").read_text(encoding="utf-8")
     workflow = (ROOT / ".github/workflows/paper-completion-sprint.yml").read_text(encoding="utf-8")
     assert 'for role in ("parent", "extension")' in assembler
     assert "provenance / \"parent\"" in assembler
     assert "no wheel found" in assembler
     assert "no source archive found" in assembler
+    assert "artifacts/interaction_support/phase_f_summary.json" in assembler
+    assert "interaction_support_phase_f_summary.json" in replacer
     assert "--upstream upstream" in workflow
     assert "software_dist/parent" in workflow
     assert "software_dist/extension" in workflow
@@ -72,14 +77,26 @@ def test_secondary_audit_lock_preserves_source_artifact_provenance() -> None:
     assert "--stage3-domain0" in workflow and "--stage3-domain1" in workflow
 
 
-def test_reproducibility_guide_retains_protocol_boundaries() -> None:
+def test_reproducibility_guide_retains_current_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
     for statement in (
         "parent trajectories and extension trajectories are separate evidence",
         "15/15 `no_domain_selected`",
-        "Protocol 003 is separately declared",
-        "Amendment 001 expanded its candidate family",
-        "Stage III therefore tests warning portability across calibrated eco-genetic domains",
+        "prospective high-rep refinement later recovered a narrow R4 condition",
+        "Phase E `migration_rate` is allele-frequency mixing",
+        "Phase F `interaction kappa` is aggregate positive-feedback/effective interaction support",
+        "all three Phase-F kappa levels retained R4",
+        "Stage III therefore tests bounded portability across calibrated eco-genetic domains",
         "finite Type S results",
     ):
         assert statement in guide
+
+
+def test_committed_phase_f_summary_matches_reproducibility_claim() -> None:
+    phase_f = json.loads((ROOT / "artifacts/interaction_support/phase_f_summary.json").read_text(encoding="utf-8"))
+    rows = phase_f["interaction_support_summaries"]
+    assert [row["interaction_kappa"] for row in rows] == [3.0, 4.5, 6.0]
+    assert [row["status_counts"]["baseline_eligible"] for row in rows] == [77, 94, 87]
+    assert [row["regime"] for row in rows] == ["R4_highrep"] * 3
+    assert phase_f["run_provenance"]["workflow_run_id"] == 32441549848
+    assert phase_f["run_provenance"]["artifact_id"] == 9432854668
