@@ -151,4 +151,4 @@ If further space reduction is required, preserve evidence in this order:
 
 Do not restore the historical conditional lead-time figure to the main text at the expense of the new R4/connectivity evidence.
 
-implementation debugging, temporary GitHub Actions outages, obsolete figure versions and PR chronology remain repository history and stay outside the scientific Supplementary Material.
+implementation debugging, temporary GitHub Actions outages, obsolete figure versions and PR chronology remain repository history and are kept **out of the scientific manuscript** and its Supplementary Material.
