@@ -8,11 +8,11 @@ This ledger records each proposition as **recovered result → conditions → re
 
 **Conditions.** Declared positive-feedback map, area/feedback/barrier geometry, finite source reconstruction and hold. The analytical `K>4` boundary is model-specific, not a universal ecological threshold.
 
-## C1 — fragmentation can become functional fragmentation
+## C1 — fragmentation can become interaction-mediated functional fragmentation
 
 **Recovered.** Among 1,055 parent H1-qualified paired replicates, equal isolation at fixed total area reduced final interaction, local effective size and realised high-trait mass relative to one large patch. A fresh 1–16-patch sensitivity showed the major interaction/Ne change after the first split; realised high-trait mass was not universally monotone across patch number.
 
-**Boundary.** Spatial fragmentation alone is not equated with interaction-network simplification. The current simulator represents aggregate interaction feedback, not partner-richness or connectance dynamics.
+**Boundary.** `Functional fragmentation` has an existing landscape-ecology usage centred on organismal functional connectivity. For this manuscript, **interaction-mediated functional fragmentation** means loss or destabilisation of the interaction support required for realised ecological function. Spatial fragmentation alone is not equated with interaction-network simplification.
 
 ## C2 — the functional-loss regime is conditioned by eco-genetic closure
 
@@ -52,11 +52,28 @@ Paired loss-status switches occurred in both directions. Connectivity therefore 
 
 All 15 seed-block loss rates remained inside `[0.30,0.70]`. Thus the recovered R4 event regime was robust across this predeclared aggregate interaction-support range. Source feasibility changed descriptively while event-regime classification did not, separating **state establishment** from **post-establishment loss-regime reproducibility**.
 
-**Boundary.** This does not establish invariance outside `kappa=3.0–6.0` or show that interaction support is irrelevant. Per the prospective stop rule, the kappa axis is closed rather than widened or refined to manufacture a boundary.
-
-`interaction kappa` is aggregate interaction-support/feedback strength, not partner richness, connectance, pollinator diversity or network dimensionality. The present model therefore does not directly test interaction-network simplification.
+**Boundary.** This does not establish invariance outside `kappa=3.0–6.0` or show that interaction support is irrelevant. Per the prospective stop rule, the kappa axis is closed rather than widened or refined to manufacture a boundary. `interaction kappa` is aggregate feedback strength, not partner richness, connectance, pollinator diversity or network dimensionality.
 
 **Evidence.** `artifacts/interaction_support/phase_f_summary.json`; workflow run `32441549848`; artifact `9432854668`.
+
+### C2d matched reduced-form partner loss
+
+**Recovered at one fresh R4 anchor.** Phase G prospectively represented four partner contributions summing to one and removed one partner at deterioration onset. Partner identity was balanced across replicates. The three loss architectures were matched for partner-richness change (`4 → 3`) and mean retained interaction support (`0.75`) while contribution concentration differed.
+
+| condition | pooled loss | seed-rate range | regime |
+|---|---:|---:|---|
+| intact control | 0.544 | 0.129 | R4-highrep |
+| even redundant loss | 0.567 | 0.261 | R3-highrep |
+| graded-contribution loss | 0.556 | 0.353 | R3-highrep |
+| dominant-partner loss | 0.578 | 0.235 | R3-highrep |
+
+The fresh intact control satisfied the opening rule. All three one-partner-loss architectures moved to R3 under the predeclared classifier. Paired trajectories switched loss status in both directions. A post-hoc paired incidence audit found no evidence that pooled binary loss incidence differed across the four conditions (Cochran's Q = 0.385, df = 3, `p=0.943`).
+
+**Conclusion.** The bounded result is a change in **loss-regime reproducibility / warning estimability**, not evidence that one-partner loss directionally raises average loss probability. It further separates event incidence from event estimability.
+
+**Boundary.** Contribution concentration itself did not separate regimes: even, graded and dominant loss structures were all R3. Phase G is a reduced-form partner-contribution closure and does not model connectance, nestedness, modularity, adaptive rewiring, partner population dynamics, coextinction, pollen/seed movement or pollinator movement. Per the stop rule, Phase G is closed without weight tuning.
+
+**Evidence.** `artifacts/partner_redundancy/phase_g_summary.json`; workflow run `32450362310`; artifact `9435520830`.
 
 ## C3 — genetic warning is a conditional possibility
 
@@ -78,15 +95,27 @@ The authoritative Type T derivations remain in `docs/RECURRENT_TRANSITION_DIVERS
 
 ## Cross-system application
 
-Urban and island systems are contrasting routes through this condition space. A field test should estimate separately spatial fragmentation/local habitat support, realised interaction support and partner composition, effective genetic connectivity, reproductive assurance/functional redundancy, realised functional performance/loss, and genetic state through time.
+Urban and island systems are **contrasting causal routes through the condition space, not ecological equivalents and not demonstrated here to occupy the same regime**. The next empirical question is whether distinct fragmentation mechanisms can converge on the same operational state once functional-state feasibility, realised function and loss reproducibility are measured separately.
 
-The common application question is **when spatial fragmentation becomes functional fragmentation**. Actual network simplification is an empirical or future explicit-network axis; it is not inferred directly from interaction `kappa`.
+A field test should estimate separately:
+
+- structural spatial support: habitat amount/configuration and matrix quality;
+- realised interaction support and partner identity;
+- partner functional diversity, contribution evenness and rewiring;
+- biological connectivity, separating pollen, seed/propagule, demographic and partner movement;
+- reproductive assurance / alternative functional routes;
+- realised functional performance through time;
+- genetic state through time, distinguishing neutral and functional/adaptive information where possible.
+
+The cross-system comparison should therefore be a **regime map**, not a `city versus island` contrast. Similar regime occupancy would mean similar combinations of state feasibility, realised function and loss incidence/reproducibility; it would not require similar geography, network topology, species composition or genetic differentiation.
 
 ## Stop rules
 
 - No warning/diversity-informed event-regime selection.
-- No finer `p_star`, migration or kappa tuning merely to create/widen R4.
+- No finer `p_star`, migration, kappa or Phase-G weight tuning merely to create/widen R4.
 - No reinterpretation of the historical 15/15 coarse-grid no-domain result.
 - No demographic/dispersal meaning assigned to allele-frequency mixing.
 - No network-simplification meaning assigned to interaction kappa.
+- No full-network/connectance/rewiring meaning assigned to Phase G.
+- No claim that Phase G increases average failure probability or that contribution concentration determines the regime.
 - If a universal hypothesis fails but its boundary is recovered, record the boundary as the result rather than continuing until the hypothesis appears true.
