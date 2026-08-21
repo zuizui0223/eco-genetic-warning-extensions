@@ -1,62 +1,51 @@
 # Condition-first hypothesis program
 
-## Central conceptual hypothesis
+## Central hypothesis
 
-The repository now tests a hierarchy rather than a universal early-warning rule:
+> **Spatial fragmentation becomes functional fragmentation only under eco-genetic conditions that weaken or destabilise an interaction-supported functional state. Genetic warning is interpretable only after the loss process itself is reproducible.**
 
-> **Spatial fragmentation becomes functional fragmentation only under eco-genetic conditions that weaken or destabilise the interaction-supported functional state. Genetic warning is interpretable only after that functional-loss process is itself reproducible.**
-
-When a proposition is not recovered generally, the next scientific target is its **condition of recovery**, not a wider search for a favourable warning result.
+The repository follows one rule: if a proposition is not general, recover its **condition or boundary** rather than widening the search until a desired warning result appears.
 
 ```text
 C0  FUNCTION EXISTS
-    Can an interaction-dependent high-function state be established?
+    interaction-dependent high-function state
         ↓
 C1  FUNCTION IS VULNERABLE
-    Can fragmentation / deterioration disrupt that state before population disappearance?
+    fragmentation / deterioration can disrupt it
         ↓
 C2  LOSS REGIME IS CONDITIONED
-    Which eco-genetic conditions generate reproducible functional loss?
-        ├─ recurrent state turnover
-        ├─ effective genetic connectivity
-        └─ aggregate interaction support
+    recurrent turnover + genetic connectivity + interaction support
         ↓
 C3  WARNING IS CONDITIONAL
-    Inside an independently fixed evaluable loss regime, can genetic change precede loss?
+    only inside an independently fixed evaluable loss regime
         ↓
 C4  PORTABILITY IS BOUNDED
-    Does warning behaviour transfer across calibrated eco-genetic regimes?
+    warning need not transfer across eco-genetic regimes
 ```
 
-## Inherited mechanistic base: C0–C1
+## C0–C1 — inherited mechanism
 
-The pinned parent repository (`eco-genetic-criticality`, scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`) supplies the bounded mechanistic chain:
+The pinned parent repository (`eco-genetic-criticality`, scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`) supplies the bounded mechanism:
 
-- the declared canonical positive-feedback interaction map can support distinct low/high states;
+- the declared positive-feedback interaction map can support a high-function state;
 - high interaction can support a high-investment trait mode under the declared trait-margin condition;
-- projecting the same prepared high state into equal isolated fragments lowers interaction, local effective size and realised high-trait mass;
-- population persistence, realised function, allele state and genetic diversity are kept distinct.
+- projecting the same prepared state into equal isolated fragments lowers interaction, local effective size and realised high-trait mass;
+- population persistence, realised function, allele state and genetic diversity remain distinct.
 
-These results are inherited. Parent and extension trajectories are never pooled.
+**C0: recovered for the declared model closure.**  
+**C1: recovered as bounded parent theory plus finite Type S fragmentation evidence.**
 
-**C0 status: recovered for the declared model closure.**  
-**C1 status: recovered as finite Type S fragmentation evidence plus bounded parent theory.**
+## C2 — conditions generating reproducible functional loss
 
-## C2 — conditions generating functional loss
+All C2 campaigns are warning-blind: genetic-diversity decline, warning time, lead/lag ordering and lead time are unavailable during condition selection.
 
-C2 is the centre of the extension. All C2 campaigns are warning-blind: warning time, diversity decline, lead/lag ordering and lead time are unavailable during condition selection.
+### C2a — recurrent turnover changes source feasibility
 
-### C2a — recurrent state turnover changes source feasibility
-
-Historical label: **H-MD-1**.
-
-Across the original 15 recurrent-transition coordinates, 2,269/3,375 source attempts supported preparation/projection. Coordinate support ranged from 44.89% to 86.67%.
+Across the original 15 recurrent-transition coordinates, **2,269/3,375** source attempts supported preparation/projection. Coordinate support ranged from **44.89% to 86.67%**.
 
 **Status: supported, finite Type S.**
 
-### C2b — recurrent state turnover changes functional-loss regime
-
-Historical label: **H-MD-2**.
+### C2b — recurrent turnover changes loss regime
 
 Among 648 complete common-grid candidates:
 
@@ -65,15 +54,13 @@ Among 648 complete common-grid candidates:
 - 84 seed-heterogeneous;
 - 0 strict R4 candidates.
 
-The original 15/15 `no_domain_selected` result remains immutable for that declared coarse family. It is evidence about event-regime evaluability, not warning failure.
+The historical 15/15 `no_domain_selected` result remains immutable for that coarse candidate family. Prospective warning-blind refinement later recovered R4 twice at `kappa_mu=0.35, p_star=0.35`; immediate neighbouring `p_star` values remained R3-highrep.
 
-Prospective warning-blind refinement later recovered R4 at `kappa_mu=0.35, p_star=0.35` twice with fresh high-rep seed blocks, while immediate neighbouring `p_star` values remained R3-highrep. Thus R4 exists but is narrow along the tested recurrent-transition frontier.
+**Conclusion:** R4 exists, but is narrower than pooled loss probability alone implies. Reproducibility across independent stochastic blocks is an additional condition.
 
-**Status: supported, finite Type S; coarse no-domain result bounded rather than structural.**
+**Status: supported, finite Type S.**
 
-### C2c — effective genetic connectivity changes event-regime reproducibility
-
-Historical campaign: **Phase E**.
+### C2c — effective genetic connectivity can change reproducibility
 
 At the independently reproduced R4 anchor, allele-frequency mixing gave:
 
@@ -85,70 +72,58 @@ At the independently reproduced R4 anchor, allele-frequency mixing gave:
 | 0.100 | 0.626 | R3-highrep |
 | 0.200 | 0.604 | R3-highrep |
 
-Paired trajectories switched loss status in both directions as mixing increased. Therefore connectivity is not a universal rescue/collapse axis; it can alter **which stochastic realisations lose function** and whether loss remains reproducible enough for R4.
+Paired trajectories switched loss status in both directions. Connectivity therefore altered **which stochastic realisations lost function** and whether loss remained reproducible enough for R4; it was not a universal rescue/collapse axis.
 
-`migration_rate` here is allele-frequency mixing only. It is not demographic, pollen, seed, pollinator or recolonisation movement.
+`migration_rate` is allele-frequency mixing only, not demographic, pollen, seed, pollinator or recolonisation movement.
 
-**Status: supported at one recovered R4 anchor, finite Type S.**
+**Status: supported at one R4 anchor, finite Type S.**
 
-### C2d — aggregate interaction support
+### C2d — aggregate interaction support does not break R4 across the predeclared tested range
 
-Current prospective campaign: **Phase F**.
+Phase F used only the original Protocol 002 interaction-feedback values `kappa = 3.0, 4.5, 6.0`, at fixed `A_ref=1.0`, `kappa_mu=0.35`, `p_star=0.35`, no allele-frequency migration, horizon 120 and normalized barrier increase 0.30. Each kappa received fresh independent source reconstruction across five seed blocks × 20 attempts. Warning/diversity fields were unavailable.
 
-The unresolved ecological condition is whether changing the strength of the existing interaction feedback changes:
+| interaction kappa | source / baseline eligible | pooled loss among eligible | regime |
+|---:|---:|---:|---|
+| 3.0 | 77/100 | 0.468 | R4-highrep |
+| 4.5 | 94/100 | 0.521 | R4-highrep |
+| 6.0 | 87/100 | 0.552 | R4-highrep |
 
-1. high-function source feasibility;
-2. baseline functional-state support after fragmentation;
-3. the R1–R4 functional-loss regime.
+Every seed-block loss rate at every tested kappa remained inside `[0.30,0.70]`. Thus **the recovered R4 event regime was robust to this predeclared three-level aggregate interaction-support axis**. Source/baseline eligibility changed descriptively (0.77, 0.94, 0.87), so source feasibility and post-source event-regime classification need not respond identically.
 
-Phase F uses only the original Protocol 002 feedback values:
+This does **not** show that interaction support is ecologically irrelevant, nor that all kappa values preserve R4. It shows that `3.0–6.0` did not provide the missing R4 boundary at this anchor. Per the stop rule, no finer or wider kappa search is opened merely to manufacture one.
 
-`interaction kappa = 3.0, 4.5, 6.0`
+**Interpretation boundary:** interaction `kappa` is aggregate positive-feedback strength. It is not partner richness, connectance, pollinator diversity or network dimensionality. Phase F therefore tests effective interaction support, not interaction-network simplification itself.
 
-at fixed `A_ref=1.0`, `kappa_mu=0.35`, `p_star=0.35`, no allele-frequency migration, horizon 120 and normalized barrier increase 0.30, with fresh five seed blocks × 20 replicates. Because kappa changes H1 source geometry, source reconstruction is repeated independently at every kappa.
+**Status: recovered negative/bounded condition result, finite Type S. Campaign closed.**
 
-**Interpretation boundary:** interaction `kappa` is aggregate positive-feedback strength. It is not partner richness, connectance, pollinator diversity or network dimensionality. Phase F therefore tests **effective interaction support**, not interaction-network simplification itself.
-
-**Stop rule:** classify the three pre-existing kappa levels once. Do not refine kappa merely to create or widen R4.
-
-**Status: active prospective finite condition test.**
+Machine-readable result: `artifacts/interaction_support/phase_f_summary.json`; workflow run `32441549848`, artifact `9432854668`.
 
 ## C3 — genetic warning only after C2
 
-Historical labels: inherited **H2-R** and unresolved matched **H-MD-3b**.
-
 The inherited symmetric benchmark provides proof of possibility: in one independently calibrated domain, baseline-relative `H_alpha`/`H_gamma` decline preceded 35 observed functional losses at all six tested relative endpoints. Predeclared absolute thresholds produced both leads and lags.
 
-This establishes **conditional possibility**, not portability.
+A matched recurrent-transition-direction effect remains unresolved because the refined `p_star` frontier did not recover the adjacent matched R4 interval required by the opening rule. No direction-only warning campaign is opened by further tuning.
 
-A matched recurrent-transition-direction effect remains unresolved because the refined `p_star` frontier did not recover an adjacent confirmed R4 interval. No direction-only warning campaign is opened merely by tuning until such an interval appears.
-
-**C3 status: proof of possibility recovered; direction-only finite causal effect unresolved by design.**
+**C3: conditional possibility recovered; direction-only causal effect unresolved by design.**
 
 ## C4 — warning portability
 
-Historical **Protocol 003** recovered two warning-evaluable domains by separate warning-blind calibration. The domains differ in recurrent-transition parameters, ecological parameters, deterioration strength and horizon.
+Historical Protocol 003 recovered two warning-evaluable domains by separate warning-blind calibration. They differ in recurrent-transition, ecological and deterioration parameters. Their fresh-seed warning differences are therefore **bounded portability evidence across calibrated eco-genetic domains**, not an isolated mutation-direction effect.
 
-Their fresh-seed warning differences are therefore interpreted as **bounded portability evidence across calibrated eco-genetic domains**, not as an isolated mutation-direction effect.
+**C4: bounded non-portability result; causal attribution intentionally limited.**
 
-**C4 status: bounded non-portability result; causal attribution intentionally limited.**
+## Exact theory boundaries
 
-## Exact theory retained separately
-
-The exact recurrent-transition identities remain authoritative in [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md). In particular:
+`RECURRENT_TRANSITION_DIVERSITY_THEORY.md` remains authoritative for Type T identities:
 
 - direction has no universal signed effect on heterozygosity;
 - transition strength contracts among-patch allele-frequency differences independently of direction under fixed weights;
-- stronger local high-state allele support can coincide with lower heterozygosity;
+- stronger local high-state support can coincide with lower heterozygosity;
 - allele-frequency homogenisation is not a theorem of functional rescue.
 
-These are Type T boundaries. They constrain interpretation but do not by themselves determine stochastic first-passage warning order.
+## Urban and island application
 
-## Urban and island application hypothesis
-
-Urban and island landscapes are not assumed to be equivalent. They are contrasting empirical routes through the same condition space.
-
-A field translation should measure separately:
+Urban and island landscapes are contrasting empirical routes through the same condition space, not ecological equivalents. A field translation should measure separately:
 
 - spatial fragmentation / local habitat support;
 - realised interaction support and partner composition;
@@ -157,11 +132,11 @@ A field translation should measure separately:
 - realised functional performance or loss;
 - genetic state through time.
 
-The general empirical question is:
+The common question is:
 
 > **When does spatial fragmentation become functional fragmentation, and which interaction or connectivity mechanisms buffer that transition?**
 
-Actual interaction-network simplification (partner loss, rewiring, connectance, functional redundancy, effective interaction dimensionality) is an empirical or future-model axis unless a new explicit network closure is declared. It must not be silently substituted by interaction `kappa`.
+Actual interaction-network simplification—partner loss, rewiring, connectance, functional redundancy, effective interaction dimensionality—is an empirical or future explicit-network axis. It must not be silently substituted by interaction `kappa`.
 
 ## Recovery ledger
 
@@ -169,10 +144,10 @@ Actual interaction-network simplification (partner loss, rewiring, connectance, 
 |---|---|---|
 | C0 functional-state existence | recovered | high-function state is possible under the declared interaction closure |
 | C1 fragmentation vulnerability | recovered | fragmentation can lower interaction, local effective size and realised function |
-| C2a recurrent-transition source feasibility | supported | source feasibility changes across recurrent-transition coordinates |
-| C2b recurrent-transition loss regime | supported | loss regime changes; R4 exists narrowly despite the immutable coarse-grid no-domain result |
+| C2a recurrent-turnover source feasibility | supported | source feasibility changes across recurrent-transition coordinates |
+| C2b recurrent-turnover loss regime | supported | loss regime changes; R4 exists narrowly despite the immutable coarse-grid no-domain result |
 | C2c genetic connectivity | supported at one anchor | connectivity can move R4→R3 without a universal rescue/collapse sign |
-| C2d aggregate interaction support | active Phase F | test source feasibility and loss regime at pre-existing kappa 3.0/4.5/6.0 |
+| C2d aggregate interaction support | bounded negative result | all predeclared kappa 3.0/4.5/6.0 remain R4; source eligibility varies |
 | C3 conditional genetic warning | bounded support | relative warning can lead loss in one calibrated benchmark; absolute thresholds are not portable |
 | C3 matched direction-only effect | unresolved | no prospectively matched adjacent R4 interval was recovered |
 | C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
@@ -186,5 +161,5 @@ Do not:
 3. overwrite the historical 15/15 Protocol 002 no-domain result;
 4. call allele-frequency migration demographic/pollinator/seed rescue;
 5. call interaction `kappa` network simplification;
-6. open a new direction-only warning test without prospectively matched evaluable conditions;
-7. treat a failed universal hypothesis as unfinished work when its boundary/condition has already been recovered.
+6. open a direction-only warning test without prospectively matched evaluable conditions;
+7. treat a failed universal hypothesis as unfinished work when its boundary has already been recovered.
