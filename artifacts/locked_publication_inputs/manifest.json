@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "purpose": "Compact, lossless publication inputs vendored from immutable historical workflow artifacts to avoid repeated GitHub Actions artifact API downloads during PR validation.",
+  "files": {
+    "stage1_publication_summary.json": {
+      "sha256": "36da31f70242756fc89cb25f7b3489088b57a1bb20c07e01946f7dc463b8b7ec",
+      "source_workflow_run": 29422431944,
+      "source_artifact_id": 8345805712,
+      "source_artifact_digest": "sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9"
+    },
+    "stage1_coordinate_summary.csv": {
+      "sha256": "7b1af38af36e087bd4b48d886425d65c99efc6824dd75afc3794f2dcf1b8f8aa",
+      "source_workflow_run": 29422431944,
+      "source_artifact_id": 8345805712,
+      "source_artifact_digest": "sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9"
+    },
+    "stage2_coordinate_regimes.csv": {
+      "sha256": "b41c8f9563f9cbfe88983cf16a4836230bbcd6b20046722cad4bc53d01efb9b8",
+      "source_workflow_run": 29399936061,
+      "source_artifact_id": 8336631530,
+      "source_artifact_digest": "sha256:3c7f63b5bc054c37012bb448ad1dc5e9bf45a4ec79737520390b576079ccc8f7"
+    },
+    "stage3_trajectory_endpoint_records.csv.gz.b64": {
+      "sha256": "25c0b076591ac9d7d32d15acb531587504de756de2e4a7c535cc1b41de29082b",
+      "compressed_sha256": "a5bdc34d51de498c330506b76d84f947a79013d51748362d976b19f1c6ed7317",
+      "decoded_csv_sha256": "a8ffb11d48db122d4396754111c738f2c1623e4bad80a903d90960debd45a84a",
+      "decoded_csv_bytes": 301124,
+      "decoded_data_rows": 1200,
+      "source_workflow_run": 29417632137,
+      "source_artifacts": [
+        {
+          "domain": "recalibrated_symmetric_domain",
+          "artifact_id": 8343958766,
+          "artifact_digest": "sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58"
+        },
+        {
+          "domain": "directional_calibrated_domain",
+          "artifact_id": 8343922879,
+          "artifact_digest": "sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8"
+        }
+      ]
+    }
+  },
+  "scientific_boundary": "These files are byte-verified derivatives of already locked historical evidence. Vendoring them changes CI transport only; it does not add, select, rerun, or reinterpret trajectories."
+}
