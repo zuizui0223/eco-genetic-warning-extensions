@@ -21,7 +21,7 @@
       "source_artifact_digest": "sha256:3c7f63b5bc054c37012bb448ad1dc5e9bf45a4ec79737520390b576079ccc8f7"
     },
     "stage3_trajectory_endpoint_records.csv.gz.b64": {
-      "sha256": "25c0b076591ac9d7d32d15acb531587504de756de2e4a7c535cc1b41de29082b",
+      "sha256": "004020cf26b53889fa19f14751905928a953b7ca72a2da5c6a1ff567a7c11b5f",
       "compressed_sha256": "a5bdc34d51de498c330506b76d84f947a79013d51748362d976b19f1c6ed7317",
       "decoded_csv_sha256": "a8ffb11d48db122d4396754111c738f2c1623e4bad80a903d90960debd45a84a",
       "decoded_csv_bytes": 301124,

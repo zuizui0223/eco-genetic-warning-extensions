@@ -94,7 +94,7 @@ def planned_source_grid_lock_artifact() -> dict[str, Any]:
     artifact = planned_source_grid_artifact()
     return {
         "artifact": "Protocol 002 Stage I planned source-grid manifest lock",
-        "full_manifest_path": str(DEFAULT_SOURCE_GRID_PATH),
+        "full_manifest_path": DEFAULT_SOURCE_GRID_PATH.as_posix(),
         "full_manifest_sha256": artifact_sha256(artifact),
         "record_count": artifact["record_count"],
         "simulation_result_present": artifact["simulation_result_present"],

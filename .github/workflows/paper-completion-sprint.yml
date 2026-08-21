@@ -6,10 +6,12 @@ on:
     paths:
       - "README.md"
       - "REPRODUCIBILITY.md"
+      - ".gitattributes"
       - "pyproject.toml"
       - "manuscript/**"
       - "reproducibility/**"
       - "scripts/build_submission_bundle.py"
+      - "scripts/materialize_locked_publication_inputs.py"
       - "scripts/replace_submission_figures.py"
       - "scripts/assemble_software_bundle.py"
       - "scripts/verify_reproducibility_contract.py"
@@ -20,20 +22,24 @@ on:
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
       - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "artifacts/locked_publication_inputs/**"
       - "artifacts/frontier_refinement/phase_b_summary.json"
       - "artifacts/frontier_refinement/phase_c_summary.json"
       - "artifacts/frontier_refinement/phase_d_summary.json"
       - "artifacts/migration_condition/phase_e_summary.json"
+      - "artifacts/interaction_support/phase_f_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
     paths:
       - "README.md"
       - "REPRODUCIBILITY.md"
+      - ".gitattributes"
       - "pyproject.toml"
       - "manuscript/**"
       - "reproducibility/**"
       - "scripts/build_submission_bundle.py"
+      - "scripts/materialize_locked_publication_inputs.py"
       - "scripts/replace_submission_figures.py"
       - "scripts/assemble_software_bundle.py"
       - "scripts/verify_reproducibility_contract.py"
@@ -44,10 +50,12 @@ on:
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
       - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
+      - "artifacts/locked_publication_inputs/**"
       - "artifacts/frontier_refinement/phase_b_summary.json"
       - "artifacts/frontier_refinement/phase_c_summary.json"
       - "artifacts/frontier_refinement/phase_d_summary.json"
       - "artifacts/migration_condition/phase_e_summary.json"
+      - "artifacts/interaction_support/phase_f_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   workflow_dispatch:
 
@@ -92,15 +100,9 @@ jobs:
       - name: Verify two-repository scientific lock
         run: python scripts/verify_reproducibility_contract.py --upstream upstream
 
-      - name: Download locked publication data
-        env:
-          GH_TOKEN: ${{ github.token }}
+      - name: Materialize and verify locked publication data
         run: |
-          mkdir -p locked/stage1 locked/stage2 locked/stage3/domain0 locked/stage3/domain1
-          gh run download 29422431944 -n publication-stage1-stage3-outputs -D locked/stage1
-          gh run download 29399936061 -n protocol002-publication-outputs -D locked/stage2
-          gh run download 29417632137 -n protocol003-stage3-validation-domain-0 -D locked/stage3/domain0
-          gh run download 29417632137 -n protocol003-stage3-validation-domain-1 -D locked/stage3/domain1
+          python scripts/materialize_locked_publication_inputs.py --output locked
           cd upstream_gradient/artifacts/h3_fragmentation_gradient
           sha256sum -c MANIFEST.sha256
 
@@ -127,8 +129,7 @@ jobs:
           python scripts/build_submission_bundle.py \
             --stage1-dir locked/stage1 \
             --stage2-dir locked/stage2 \
-            --stage3-domain0 locked/stage3/domain0/stage3_validation_domain_0.json \
-            --stage3-domain1 locked/stage3/domain1/stage3_validation_domain_1.json \
+            --stage3-records locked/stage3/stage3_trajectory_endpoint_records.csv \
             --h3-gradient-dir upstream_gradient/artifacts/h3_fragmentation_gradient \
             --repo-root . \
             --output submission_bundle

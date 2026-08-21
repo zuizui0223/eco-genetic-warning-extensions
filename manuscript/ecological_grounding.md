@@ -32,6 +32,12 @@ Genetic diversity can affect productivity, recovery, interactions, community str
 
 Thus existing community-genetics evidence already argues against assuming a universal monotone mapping from a generic diversity statistic to ecological function.
 
+### 1.5 Fragmentation can reorganise interaction opportunity without producing one universal network response
+
+Primary pollination-network studies support an interaction-bottleneck motivation, but not a universal monotone simplification law. In Pampean habitat remnants, species and link richness increased with habitat area, and rare or specialised interactions were disproportionately absent from smaller remnants (Sabatino et al. 2010; Aizen et al. 2012). In other systems, however, connectance increased as richness or partner coverage contracted (Spiesman & Inouye 2013; Brosi et al. 2017). Connectance therefore cannot be used as a stand-alone proxy for partner richness, interaction amount, redundancy or ecological function.
+
+Rewiring is also a condition rather than an automatic rescue mechanism. Experimental removal of a dominant ant disperser left seed-dispersal function intact through behavioural plasticity and redundant partners (Timóteo et al. 2016), whereas experimental bumblebee loss broadened remaining diets but reduced floral fidelity, conspecific pollen delivery and seed production (Brosi & Briggs 2013). Across simplified agricultural landscapes, abundant generalists buffered interaction richness and modelled robustness but did not prevent declining flower-visitation frequency (Maurer et al. 2024). The external claim ceiling is therefore: environmental filtering can constrain and reorganise interaction opportunity, with consequences conditional on partner identity, interaction effectiveness and rewiring. These studies do not establish the model's trait-loss threshold or genetic-warning sequence.
+
 ## 2. What the present study adds
 
 The novelty should not be stated as "EWS are context dependent" or "genetic diversity and function are not identical." Both are already supported broadly in ecology.
@@ -96,6 +102,8 @@ Urban ecosystems are useful because spatial fragmentation does not imply a singl
 
 Urban pollination provides a direct functional endpoint. Urban pollination reviews report an overall negative signal for pollination in cities but strong among-study heterogeneity and difficult-to-predict pollen movement. Thus urban mosaics can plausibly span the model's rapid-loss, persistent, heterogeneous and potentially warning-evaluable regimes.
 
+Primary network comparisons reinforce that heterogeneity. Along an urbanisation gradient around Paris, total visits and interaction diversity declined while some long-tongued generalists persisted, but they did not replace visitation to all flower types (Geslin et al. 2013). Standardised gardens across farmland, villages and cities showed taxon-specific responses and declining network robustness, evenness and interaction diversity toward cities (Udy et al. 2020). Conversely, a 36-landscape UK comparison found higher urban bee richness than in farmland and no overall loss of flower-visitor abundance or richness (Baldock et al. 2015). Urbanisation must therefore be decomposed into resource, matrix, partner and connectivity axes rather than treated as a single fragmentation parameter.
+
 The model should therefore not map "urbanization" to one parameter. Candidate empirical mappings are:
 
 - green-space area -> patch area;
@@ -110,6 +118,8 @@ A particularly useful urban prediction is that genetic diversity may remain high
 ## 6. Island ecology application
 
 Island systems provide strong gradients in area, isolation, colonization and mutualist availability. Functional island-biogeography theory predicts that pollinator and other mutualist diversity generally declines with island isolation, while generalist pollination, self-compatibility and vegetative reproduction become more common with increasing isolation. Reviews of island plant reproductive biology also emphasize that pollinator availability and breeding system strongly influence colonization and persistence.
+
+An empirical comparison of 52 mainland, continental-island and oceanic-island pollination networks found the oceanic-island networks least rich in species and links, with lower interaction diversity and greater plant niche overlap (Traveset et al. 2016). This supports a biogeographic interaction-filtering association, not a causal within-island collapse sequence: the source networks were heterogeneous, functional compensation was not measured and island area was not significant for the tested network metrics.
 
 Candidate empirical mappings are:
 
@@ -147,13 +157,26 @@ Core EWS/function/genetics:
 - McConkey, K.R. & Drake, D.R. (2006). Flying foxes cease to function as seed dispersers long before they become rare. *Ecology*, 87, 271–276. doi:10.1890/05-0386.
 - Whitlock, R. (2014). Relationships between adaptive and neutral genetic diversity and ecological structure and functioning: a meta-analysis. *Journal of Ecology*, 102, 857–872. doi:10.1111/1365-2745.12240.
 
+Interaction reorganisation and buffering:
+- Aizen, M.A., Sabatino, M. & Tylianakis, J.M. (2012). Specialization and rarity predict nonrandom loss of interactions from mutualist networks. *Science*, 335, 1486–1489. doi:10.1126/science.1215320.
+- Brosi, B.J. & Briggs, H.M. (2013). Single pollinator species losses reduce floral fidelity and plant reproductive function. *Proceedings of the National Academy of Sciences USA*, 110, 13044–13048. doi:10.1073/pnas.1307438110.
+- Brosi, B.J., Niezgoda, K. & Briggs, H.M. (2017). Experimental species removals impact the architecture of pollination networks. *Biology Letters*, 13, 20170243. doi:10.1098/rsbl.2017.0243.
+- Maurer, C. et al. (2024). Landscape simplification leads to loss of plant–pollinator interaction diversity and flower visitation frequency despite buffering by abundant generalist pollinators. *Diversity and Distributions*. doi:10.1111/ddi.13853.
+- Sabatino, M., Maceira, N. & Aizen, M.A. (2010). Direct effects of habitat area on interaction diversity in pollination webs. *Ecological Applications*, 20, 1491–1497. doi:10.1890/09-1626.1.
+- Spiesman, B.J. & Inouye, B.D. (2013). Habitat loss alters the architecture of plant–pollinator interaction networks. *Ecology*, 94, 2688–2696. doi:10.1890/13-0977.1.
+- Timóteo, S. et al. (2016). High resilience of seed dispersal webs highlighted by the experimental removal of the dominant disperser. *Current Biology*, 26, 910–915. doi:10.1016/j.cub.2016.01.046.
+
 Urban:
 - Alberti, M. (2015). Eco-evolutionary dynamics in an urbanizing planet. *Trends in Ecology & Evolution*, 30, 114–126. doi:10.1016/j.tree.2014.11.007.
+- Baldock, K.C.R. et al. (2015). Where is the UK's pollinator biodiversity? The importance of urban areas for flower-visiting insects. *Proceedings of the Royal Society B*, 282, 20142849. doi:10.1098/rspb.2014.2849.
+- Geslin, B. et al. (2013). Plant pollinator networks along a gradient of urbanisation. *PLoS ONE*, 8, e63421. doi:10.1371/journal.pone.0063421.
 - Rivkin, L.R. et al. (2019). A roadmap for urban evolutionary ecology. *Evolutionary Applications*, 12, 384–398. doi:10.1111/eva.12734.
 - Miles, L.S. et al. (2019). Gene flow and genetic drift in urban environments. *Molecular Ecology*, 28, 4138–4151. doi:10.1111/mec.15221.
+- Udy, K.L. et al. (2020). Plant–pollinator interactions along an urbanization gradient from cities and villages to farmland landscapes. *Ecosphere*, 11, e03020. doi:10.1002/ecs2.3020.
 - Youngsteadt, E. & Keighron, M.C. (2023). Urban Pollination Ecology. *Annual Review of Ecology, Evolution, and Systematics*, 54, 21–42. doi:10.1146/annurev-ecolsys-102221-044616.
 
 Islands:
 - Schrader, J. et al. (2021). A roadmap to plant functional island biogeography. *Biological Reviews*. doi:10.1111/brv.12782.
+- Traveset, A. et al. (2016). Global patterns of mainland and insular pollination networks. *Global Ecology and Biogeography*, 25, 880–890. doi:10.1111/geb.12362.
 - Traveset, A. et al. (2018). Plant reproductive ecology and evolution in the Mediterranean islands: state of the art. *Plant Biology*. doi:10.1111/plb.12636.
 - Whittaker, R.J. et al. (2017). Island biogeography: taking the long view of nature's laboratories. *Science*.

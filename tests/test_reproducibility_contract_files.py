@@ -71,10 +71,36 @@ def test_secondary_audit_lock_preserves_source_artifact_provenance() -> None:
     }
     assert review["source_workflow_run"] == 29417632137
     assert [row["artifact_id"] for row in review["source_artifacts"]] == [8343958766, 8343922879]
+
+    vendored = json.loads(
+        (ROOT / "artifacts/locked_publication_inputs/manifest.json").read_text(encoding="utf-8")
+    )
+    stage3 = vendored["files"]["stage3_trajectory_endpoint_records.csv.gz.b64"]
+    assert stage3["source_workflow_run"] == review["source_workflow_run"]
+    assert [row["artifact_id"] for row in stage3["source_artifacts"]] == [
+        row["artifact_id"] for row in review["source_artifacts"]
+    ]
+
     workflow = (ROOT / ".github/workflows/paper-completion-sprint.yml").read_text(encoding="utf-8")
-    assert "protocol003-stage3-validation-domain-0" in workflow
-    assert "protocol003-stage3-validation-domain-1" in workflow
-    assert "--stage3-domain0" in workflow and "--stage3-domain1" in workflow
+    attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
+    assert "scripts/materialize_locked_publication_inputs.py --output locked" in workflow
+    assert "--stage3-records locked/stage3/stage3_trajectory_endpoint_records.csv" in workflow
+    assert "artifacts/locked_publication_inputs/**" in workflow
+    assert '".gitattributes"' in workflow
+    assert "artifacts/locked_publication_inputs/** -text -diff" in attributes
+    assert "manuscript/tables/stage3_review_summary.csv -text" in attributes
+    assert "manuscript/tables/stage3_between_domain_differences.csv -text" in attributes
+    assert "--stage3-domain0" not in workflow
+    assert "--stage3-domain1" not in workflow
+
+
+def test_locked_publication_inputs_materialize_from_committed_bytes(tmp_path: Path) -> None:
+    from scripts.materialize_locked_publication_inputs import materialize
+
+    locked = materialize(tmp_path / "locked")
+    assert (locked / "stage1/stage1_publication_summary.json").is_file()
+    assert (locked / "stage2/stage2_coordinate_regimes.csv").is_file()
+    assert (locked / "stage3/stage3_trajectory_endpoint_records.csv").is_file()
 
 
 def test_reproducibility_guide_retains_current_boundaries() -> None:
