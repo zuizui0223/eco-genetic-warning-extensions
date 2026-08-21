@@ -1,0 +1,67 @@
+{
+  "stage": "warning-blind R4 classification-stability Phase J",
+  "calibration_scope": "source_and_trait_loss_only",
+  "provenance": {
+    "workflow_run": 32454874360,
+    "artifact_id": 9437232755,
+    "artifact_digest": "sha256:65b97aebb5c14cf15dee3ecf974f5f297a67bebbf8ae564f68018d9cb13bfe50",
+    "preregistered_head_sha": "b5077b182ac881e7d49e65f2165485d55955fd45",
+    "parent_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "fixed_condition": {
+    "area_reference": 1.0,
+    "interaction_kappa": 4.5,
+    "kappa_mu": 0.35,
+    "p_star": 0.35,
+    "migration_rate": 0.1,
+    "ramp_generations": 30,
+    "hold_generations": 90,
+    "horizon": 120,
+    "normalised_barrier_increase": 0.3,
+    "fragmentation_geometry": "four_equal_patches_fixed_total_area"
+  },
+  "master_seeds": [20290910,20290911,20290912,20290913,20290914,20290915,20290916,20290917,20290918,20290919,20290920,20290921,20290922,20290923,20290924,20290925,20290926,20290927,20290928,20290929],
+  "replicates_per_seed": 20,
+  "source_preparation_count": 400,
+  "opening_rule_satisfied": true,
+  "stability_classification": "ensemble_sensitive",
+  "panel_regime_counts": {"R3_highrep": 1, "R4_highrep": 3},
+  "panels": [
+    {"panel_index":1,"master_seeds":[20290910,20290911,20290912,20290913,20290914],"seed_block_trait_loss_rates":[0.47368421052631576,0.35294117647058826,0.3888888888888889,0.6842105263157895,0.4375],"regime":"R4_highrep"},
+    {"panel_index":2,"master_seeds":[20290915,20290916,20290917,20290918,20290919],"seed_block_trait_loss_rates":[0.5,0.6470588235294118,0.47058823529411764,0.375,0.75],"regime":"R3_highrep"},
+    {"panel_index":3,"master_seeds":[20290920,20290921,20290922,20290923,20290924],"seed_block_trait_loss_rates":[0.5625,0.4375,0.4117647058823529,0.4,0.5263157894736842],"regime":"R4_highrep"},
+    {"panel_index":4,"master_seeds":[20290925,20290926,20290927,20290928,20290929],"seed_block_trait_loss_rates":[0.6111111111111112,0.5263157894736842,0.6666666666666666,0.625,0.6470588235294118],"regime":"R4_highrep"}
+  ],
+  "seed_blocks": [
+    {"master_seed":20290910,"baseline_eligible_count":19,"trait_loss_count":9,"trait_loss_rate":0.47368421052631576,"inside_R4_band":true},
+    {"master_seed":20290911,"baseline_eligible_count":17,"trait_loss_count":6,"trait_loss_rate":0.35294117647058826,"inside_R4_band":true},
+    {"master_seed":20290912,"baseline_eligible_count":18,"trait_loss_count":7,"trait_loss_rate":0.3888888888888889,"inside_R4_band":true},
+    {"master_seed":20290913,"baseline_eligible_count":19,"trait_loss_count":13,"trait_loss_rate":0.6842105263157895,"inside_R4_band":true},
+    {"master_seed":20290914,"baseline_eligible_count":16,"trait_loss_count":7,"trait_loss_rate":0.4375,"inside_R4_band":true},
+    {"master_seed":20290915,"baseline_eligible_count":16,"trait_loss_count":8,"trait_loss_rate":0.5,"inside_R4_band":true},
+    {"master_seed":20290916,"baseline_eligible_count":17,"trait_loss_count":11,"trait_loss_rate":0.6470588235294118,"inside_R4_band":true},
+    {"master_seed":20290917,"baseline_eligible_count":17,"trait_loss_count":8,"trait_loss_rate":0.47058823529411764,"inside_R4_band":true},
+    {"master_seed":20290918,"baseline_eligible_count":16,"trait_loss_count":6,"trait_loss_rate":0.375,"inside_R4_band":true},
+    {"master_seed":20290919,"baseline_eligible_count":16,"trait_loss_count":12,"trait_loss_rate":0.75,"inside_R4_band":false},
+    {"master_seed":20290920,"baseline_eligible_count":16,"trait_loss_count":9,"trait_loss_rate":0.5625,"inside_R4_band":true},
+    {"master_seed":20290921,"baseline_eligible_count":16,"trait_loss_count":7,"trait_loss_rate":0.4375,"inside_R4_band":true},
+    {"master_seed":20290922,"baseline_eligible_count":17,"trait_loss_count":7,"trait_loss_rate":0.4117647058823529,"inside_R4_band":true},
+    {"master_seed":20290923,"baseline_eligible_count":15,"trait_loss_count":6,"trait_loss_rate":0.4,"inside_R4_band":true},
+    {"master_seed":20290924,"baseline_eligible_count":19,"trait_loss_count":10,"trait_loss_rate":0.5263157894736842,"inside_R4_band":true},
+    {"master_seed":20290925,"baseline_eligible_count":18,"trait_loss_count":11,"trait_loss_rate":0.6111111111111112,"inside_R4_band":true},
+    {"master_seed":20290926,"baseline_eligible_count":19,"trait_loss_count":10,"trait_loss_rate":0.5263157894736842,"inside_R4_band":true},
+    {"master_seed":20290927,"baseline_eligible_count":18,"trait_loss_count":12,"trait_loss_rate":0.6666666666666666,"inside_R4_band":true},
+    {"master_seed":20290928,"baseline_eligible_count":16,"trait_loss_count":10,"trait_loss_rate":0.625,"inside_R4_band":true},
+    {"master_seed":20290929,"baseline_eligible_count":17,"trait_loss_count":11,"trait_loss_rate":0.6470588235294118,"inside_R4_band":true}
+  ],
+  "twenty_seed_diagnostics": {
+    "seed_block_count":20,
+    "inside_R4_band_count":19,
+    "below_R4_band_count":0,
+    "above_R4_band_count":1,
+    "minimum_trait_loss_rate":0.35294117647058826,
+    "maximum_trait_loss_rate":0.75,
+    "mean_trait_loss_rate":0.5247052373581012,
+    "median_trait_loss_rate":0.513157894736842
+  }
+}
