@@ -36,7 +36,7 @@ Question 3 is now the empirical centre of the paper.
 
 > **Genetic early warning has biological conditions of estimability. Functional loss must first occur at a reproducible, nondegenerate rate; recurrent state turnover determines where that regime occurs, and effective genetic connectivity can move the same biological anchor into or out of that regime before any warning statistic is inspected.**
 
-**Genetic-warning reliability is not a portable property** of mutation direction or of a diversity statistic alone; it is conditional on the eco-genetic event-generating regime.
+**Genetic-warning reliability is not a portable property** of mutation direction or of a diversity statistic alone; it is conditional on the eco-genetic event-generating regime. Recurrent-transition direction is **one mechanism that reshapes this closure**; effective genetic connectivity is another condition axis recovered by Phase E.
 
 This is stronger and more precise than the earlier conclusion that the common 15-coordinate grid had no validation domain. The historical 15/15 `no_domain_selected` result remains immutable, but Phases C/D show that R4 exists in a narrow region missed by the coarse grid, and Phase E shows that R4/R3 classification is connectivity-dependent at that anchor.
 
