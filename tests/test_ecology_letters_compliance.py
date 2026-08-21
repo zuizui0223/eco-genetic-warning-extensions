@@ -29,7 +29,7 @@ def test_cover_letter_centres_ecological_contribution() -> None:
 
 
 def test_letter_allocation_has_six_figures_and_no_main_tables() -> None:
-    allocation = (ROOT / "manuscript/main_vs_supplement.md").read_text(encoding="utf-8")
+    allocation = (ROOT / "manuscript/display_allocation.md").read_text(encoding="utf-8")
     captions = (ROOT / "manuscript/table_captions.md").read_text(encoding="utf-8")
     assert "exactly six main display items" in allocation
     assert "no main-text tables or text boxes" in allocation
