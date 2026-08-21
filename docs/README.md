@@ -1,76 +1,62 @@
 # Documentation map
 
-This directory contains both **current scientific sources** and **historical protocol/development records**. Historical files are retained for provenance but must not be read as competing current hypotheses.
+This directory contains both current scientific sources and historical protocol records. The current interpretation is **condition-first**; protocol chronology is provenance.
 
-## Repository science closure — 20 August 2026
+## Read these first
 
-The current biological closure is **scientifically closed at the repository level** before further manuscript work:
+1. [`HYPOTHESIS_PROGRAM.md`](HYPOTHESIS_PROGRAM.md) — C0→C4 condition hierarchy, recovery status, Phase-F scope and stop rules.
+2. [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) — exact Type T recurrent-transition diversity/support identities.
+3. [`../manuscript/hypothesis_condition_ledger.md`](../manuscript/hypothesis_condition_ledger.md) — result → condition → remaining boundary ledger.
+4. [`../manuscript/claim_evidence_map.md`](../manuscript/claim_evidence_map.md) — permitted/prohibited manuscript claims.
+5. [`DECISION_LOG.md`](DECISION_LOG.md) — declaration chronology and historical decision provenance.
 
-- H-MD-1 is supported as finite Type S evidence;
-- H-MD-2 is supported as finite Type S evidence;
-- H-MD-3a is negatively resolved by the complete Protocol 002 no-domain certificate;
-- H-MD-3b has no matched finite causal estimate, but this is a **bounded unresolved effect**, not an unexecuted task: exact Type T diversity/support boundaries are recovered and the stop rule below prevents unprincipled schedule tuning;
-- Protocol 003 is retained only as a separately recalibrated portability result;
-- no open pull request or open scientific issue remains for the current closure. The only open repository issue concerns author-approved metadata, licensing, releases, and DOI deposition.
+When historical documents use older H-MD/Stage/Phase framing, the current files above control interpretation while the historical file remains authoritative for what was declared at that earlier time.
 
-Historical `agent/*` branches may remain visible as Git provenance. Their existence does not indicate unmerged science. In particular, the old `submission-reproducibility` and `release-main-trigger` branches correspond to merged PRs #52 and #54; their intended merged-main reproducibility and submission triggers are present in current `main`. Recent scientific cleanup/recovery branches are fully contained in `main`.
-
-A new finite campaign must therefore begin as a **new declared hypothesis/protocol**, not as continuation of unfinished H-MD-3b tuning.
-
-## Current scientific sources
-
-Read these first:
-
-1. [`HYPOTHESIS_PROGRAM.md`](HYPOTHESIS_PROGRAM.md) — current H-MD-1 / H-MD-2 / H-MD-3a / H-MD-3b definitions and recovery status.
-2. [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) — exact Type T recurrent-transition identities, including non-universal direction→heterozygosity sign, direction-independent contraction of the `H_gamma-H_alpha` gap, and local function-support/diversity decoupling.
-3. [`DECISION_LOG.md`](DECISION_LOG.md) — chronology of protocol declarations and the final interpretation boundary.
-4. `PROTOCOL_002_*` scientific protocol/audit documents — common-grid source reconstruction, common deterioration family, and strict no-domain selection.
-5. [`PROTOCOL_003_AMENDMENT_001.md`](PROTOCOL_003_AMENDMENT_001.md) and [`PROTOCOL_003_AMENDMENT_002.md`](PROTOCOL_003_AMENDMENT_002.md) — separately declared evaluability recovery.
-6. [`PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`](PROTOCOL_003_SECONDARY_WARNING_AUDIT.md) — locked-record timing/censoring audit.
-7. [`../manuscript/claim_evidence_map.md`](../manuscript/claim_evidence_map.md) — final permitted/prohibited manuscript claims.
-
-## Historical design/provenance records
-
-These explain how the project arrived at the current design but are **not current claim sources**:
-
-- [`PROTOCOL_001_ASYMMETRIC_MUTATION.md`](PROTOCOL_001_ASYMMETRIC_MUTATION.md)
-- [`MATHEMATICAL_DESIGN_PROTOCOL_001.md`](MATHEMATICAL_DESIGN_PROTOCOL_001.md)
-- [`LITERATURE_SCREEN_PROTOCOL_001.md`](LITERATURE_SCREEN_PROTOCOL_001.md)
-- [`NOVELTY_REVIEW_PROTOCOL.md`](NOVELTY_REVIEW_PROTOCOL.md)
-- [`PAPER_001_MUTATION_DIRECTION_PHASE_DIAGRAM.md`](PAPER_001_MUTATION_DIRECTION_PHASE_DIAGRAM.md) — historical paper-planning note; explicitly superseded by `HYPOTHESIS_PROGRAM.md`.
-
-The older H2-R-AS framing belongs here. It motivated the project but is not the completed project's headline hypothesis structure.
-
-## Inherited-parent audit records
-
-- [`INHERITED_H3_EFFECT_SIZE_AUDIT.md`](INHERITED_H3_EFFECT_SIZE_AUDIT.md) documents manuscript-facing summaries derived from the locked parent evidence. It does not make those parent results extension hypotheses.
-
-## Implementation and public-API boundary
-
-Files describing smoke adapters, minimal fixtures, runner wiring, source examples, and batch mechanics remain in explicit submodules for historical reproduction. They support execution but do not define the current scientific API.
-
-The package root `eco_genetic_warning_extensions` intentionally exposes only the recurrent-transition/diversity primitives used by the current science:
-
-- `AsymmetricMutation`
-- `MutationCoordinates`
-- `heterozygosity`
-- `alpha_gamma_diversity`
-- `mutate_frequency`
-- `primary_phase_grid`
-
-Historical fixtures and protocol helpers must be imported from their explicit submodules. This prevents development scaffolding from being mistaken for the current scientific surface while preserving reproducibility.
-
-## Current recovery status
+## Current science state
 
 ```text
-H-MD-1   supported, finite Type S
-H-MD-2   supported, finite Type S
-H-MD-3a  negative / recovered: no eligible common-family validation domain at 15/15 coordinates
-H-MD-3b  matched finite effect bounded unresolved
-          + Type T diversity/support boundaries recovered
-Protocol 003  separate portability result across non-matched recalibrated domains
+C0  high-function state existence                    recovered
+C1  fragmentation vulnerability                      recovered
+C2a recurrent-transition source feasibility          supported
+C2b recurrent-transition functional-loss regime      supported
+C2c effective genetic connectivity condition         supported at one R4 anchor
+C2d aggregate interaction-support condition          active prospective Phase F
+C3  conditional relative-warning possibility         bounded support
+C3  matched direction-only warning effect            unresolved by stop rule
+C4  portability across recalibrated domains          bounded non-portability result
 ```
 
-The Type T theory is implemented in `src/eco_genetic_warning_extensions/mutation_coordinates.py` and tested in `tests/test_mutation_coordinates.py`. It constrains what a direction-only warning hypothesis may claim, but it does not determine full dynamic warning first-passage ordering.
+The historical Protocol 002 15/15 `no_domain_selected` result remains immutable for the original common grid. Prospective high-rep refinement subsequently showed that R4 exists narrowly, so the coarse result is not structural impossibility.
 
-When a historical file and the current hypothesis program differ in framing, **`HYPOTHESIS_PROGRAM.md`, `RECURRENT_TRANSITION_DIVERSITY_THEORY.md`, and `manuscript/claim_evidence_map.md` take precedence for current interpretation**, while the historical file remains authoritative only for what was declared at that earlier protocol stage.
+## Active versus historical material
+
+### Active scientific sources
+
+- `HYPOTHESIS_PROGRAM.md`
+- `RECURRENT_TRANSITION_DIVERSITY_THEORY.md`
+- current Phase-F interaction-support manifest/runner/tests in `src/`, `scripts/`, and `tests/`
+- parent scientific lock and reproducibility contract
+
+### Historical/provenance material
+
+- `PROTOCOL_001_*`
+- `PROTOCOL_002_*`
+- `PROTOCOL_003_*`
+- `MATHEMATICAL_DESIGN_PROTOCOL_001.md`
+- `LITERATURE_SCREEN_PROTOCOL_001.md`
+- `NOVELTY_REVIEW_PROTOCOL.md`
+- `PAPER_001_MUTATION_DIRECTION_PHASE_DIAGRAM.md`
+- Phase A–E declaration/result notes once their conclusions are represented in the current hypothesis program and machine-readable artifacts.
+
+Historical files may be retained when they are needed to prove warning-blind declaration or reproduce an old run. They should not be duplicated in the manuscript-facing narrative.
+
+## Interpretation boundaries
+
+- `migration_rate` in the current simulator is allele-frequency mixing, not demographic, pollen, seed, pollinator or recolonisation movement.
+- interaction `kappa` is aggregate positive-feedback strength, not partner richness, connectance, pollinator diversity or network dimensionality.
+- urban/island applications may treat partner loss, rewiring, reproductive assurance and habitat support as empirical mechanisms that alter effective interaction support; the present model does not directly simulate interaction-network simplification.
+- warning is evaluated only after a reproducible nondegenerate functional-loss regime is fixed without warning/diversity fields.
+
+## Cleanup rule
+
+Keep code, tests, locked numerical summaries and declarations required for reproducibility. Remove or consolidate narrative files that only repeat Phase/Stage chronology, editorial trial text, or superseded storylines. Implementation history belongs in Git history rather than competing current documentation.
