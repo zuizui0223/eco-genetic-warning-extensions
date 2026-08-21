@@ -32,8 +32,9 @@ def test_interaction_support_is_not_mislabeled_as_network_simplification() -> No
     assert "network dimensionality" in program
     assert "network simplification" in application
     assert "phase f is closed" in root
-    assert "3.0, 4.5, 6.0" in program
-    assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in program
+    assert "kappa = 3.0, 4.5, 6.0" in program
+    assert "all 15 seed-block rates" in program
+    assert "finite-panel certificate did not change" in program or "finite-panel certificate" in program
 
 
 def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> None:
@@ -43,9 +44,11 @@ def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> Non
         assert token in text
     for token in ("77/100", "94/100", "87/100", "0.468", "0.521", "0.552"):
         assert token in text
-    assert "r4 exists" in lower
+    assert "finite intermediate-risk panels could be recovered" in lower
     assert "all three levels were therefore r4-highrep" in lower
     assert "bounded negative condition result" in lower
+    assert "finite-panel calibration certificate" in lower
+    assert "not a sample-size-invariant biological regime" in lower
     assert "not a single-factor effect of transition direction" in lower
     assert "not demographic migration" in lower or "not demographic" in lower
     assert "### Stage I" not in text
