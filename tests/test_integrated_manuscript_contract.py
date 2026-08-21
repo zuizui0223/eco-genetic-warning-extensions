@@ -10,7 +10,10 @@ def _read(path: str) -> str:
 
 def test_integrated_story_contains_locked_headline_results() -> None:
     text = _read("manuscript/integrated_story.md").lower()
-    required = ("2,269", "3,375", "20,250", "322", "242", "84", "323", "12 lags", "0.540", "0.335")
+    required = (
+        "2,269", "3,375", "20,250", "322", "242", "84",
+        "0.35", "r4", "0.540", "0.335", "323", "12 lags",
+    )
     for token in required:
         assert token in text
 
@@ -30,32 +33,41 @@ def test_main_supplement_allocation_keeps_debug_history_out() -> None:
     assert "out of the scientific manuscript" in text
 
 
-def test_main_text_centres_event_regime_feasibility() -> None:
+def test_main_text_follows_condition_recovered_four_question_story() -> None:
     text = _read("manuscript/main_text.md")
     lower = text.lower()
     assert text.splitlines()[0] == "# Eco-genetic regimes govern when genetic early warning can be validated"
-    assert "strict calibration selected no common validation domain" in lower
-    assert "genetic warning therefore depends first on event-regime feasibility" in lower
-    assert "warning portability across calibrated eco-genetic domains" in lower
+    assert "conditions of estimability" in lower
+    assert "r4 exists" in lower
+    assert "warning estimability is therefore conditional not only on recurrent state turnover but also on effective genetic connectivity" in lower
+    assert "non-portability across calibrated eco-genetic domains" in lower
     assert "### Stage I" not in text
     assert "### Stage II" not in text
     assert "### Stage III" not in text
-    source = text.index("### Recurrent-transition direction changed whether a high-trait source could be established")
-    regimes = text.index("### The common deterioration family separated into rapid-loss, persistence and heterogeneous regimes")
-    fragmentation = text.index("### Fragmentation produced large, consistent reductions")
-    benchmark = text.index("### Relative genetic erosion preceded functional-trait loss")
-    assert source < regimes < fragmentation < benchmark
+
+    fragmentation = text.index("### Fragmentation disrupted an interaction-supported functional state")
+    benchmark = text.index("### Genetic erosion could precede functional loss")
+    source_regime = text.index("### Recurrent state turnover changed both source feasibility and the way function was lost")
+    r4 = text.index("### Warning-blind refinement recovered a narrow reproducible R4 event regime")
+    connectivity = text.index("### Effective genetic connectivity moved the same R4 anchor into a heterogeneous event regime")
+    portability = text.index("### Warning behaviour was not fully portable across independently calibrated domains")
+    assert fragmentation < benchmark < source_regime < r4 < connectivity < portability
+
+    for number in range(1, 7):
+        assert f"Figure {number}" in text
 
 
-def test_stage3_timing_claim_uses_direct_difference_uncertainty_and_selection_boundary() -> None:
+def test_stage3_portability_claim_retains_direct_uncertainty_and_selection_boundary() -> None:
     text = _read("manuscript/main_text.md")
-    assert "conditional estimand" in text.lower()
-    assert "`−97.0` to `−3.5` generations" in text
-    assert "`−97.0` to `−4.5`" in text
-    assert "all six directional-minus-symmetric 95% difference intervals included zero" in text
-    assert "Figure 4 therefore provides the primary Stage III timing evidence" in text
-    assert "Figure 6 is retained as a conditional diagnostic" in text
-    assert "event-regime feasibility precedes warning comparison" in text
+    lower = text.lower()
+    assert "conditional positive lead-time medians" in lower
+    assert "lead-time medians condition on observing both events and a leading warning" in lower
+    assert "full-denominator event incidence and warning availability are treated as more primary" in lower
+    assert "0.540" in text
+    assert "0.335" in text
+    assert "all six direct timing-difference intervals included zero" in lower
+    assert "not an isolated effect of recurrent-transition direction" in lower
+    assert "(Figure 6)" in text
 
 
 def test_stage3_per_trajectory_records_are_committed_for_external_audit() -> None:
@@ -98,8 +110,10 @@ def test_main_text_contains_load_bearing_citation_roles() -> None:
     text = _read("manuscript/main_text.md")
     required = (
         "Scheffer et al. 2009", "Schwartz et al. 2007", "Soulé et al. 2005",
-        "Gomulkiewicz & Holt 1995", "Legrand et al. 2017", "Field & Welsh 2007",
-        "Andersen et al. 2012", "Frankham 2005", "Lipsitch et al. 2010",
+        "Legrand et al. 2017", "Govaert et al. 2019", "Hastings & Wysham 2010",
+        "Boettiger & Hastings 2012, 2013", "Gsell et al. 2016", "Hughes et al. 2008",
+        "Whitlock 2014", "Miles et al. 2019", "Youngsteadt & Keighron 2023",
+        "Schrader et al. 2021",
     )
     for token in required:
         assert token in text
@@ -109,10 +123,10 @@ def test_verified_reference_list_covers_every_citation_family() -> None:
     references = _read("manuscript/references.md")
     required = (
         "doi:10.1038/nature08227", "doi:10.1890/05-0386", "doi:10.1016/j.tree.2006.08.009",
-        "doi:10.1111/ecog.02537", "doi:10.1111/1365-2435.13241", "doi:10.1098/rstb.2018.0238",
-        "doi:10.1146/annurev-ecolsys-110316-023011", "doi:10.1111/j.1467-9868.2007.00593.x",
-        "doi:10.1093/ije/dyr213", "doi:10.1016/j.biocon.2005.05.002",
-        "doi:10.1097/EDE.0b013e3181d61eeb",
+        "doi:10.1111/ecog.02537", "doi:10.1111/1365-2435.13241", "doi:10.1073/pnas.1608242113",
+        "doi:10.1111/j.1461-0248.2008.01179.x", "doi:10.1111/1365-2745.12240",
+        "doi:10.1111/mec.15221", "doi:10.1146/annurev-ecolsys-102221-044616",
+        "doi:10.1111/brv.12782",
     )
     for token in required:
         assert token in references
@@ -123,7 +137,7 @@ def test_table_captions_lock_statistical_units_and_numbering() -> None:
     captions = _read("manuscript/table_captions.md")
     assert "references.md" in builder
     assert "table_captions.md" in builder
-    for label in ("Table S1.", "Table S2.", "Table S3.", "Table S4.", "Table S5."):
+    for label in ("Table S1.", "Table S2.", "Table S3.", "Table S4.", "Table S5.", "Table S6."):
         assert label in captions
     assert "Table 1." not in captions
     assert "Table 2." not in captions
