@@ -1,0 +1,96 @@
+name: Harvest corrected Phase F artifact
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/interaction-support-phase-f-harvest.yml"
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  harvest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout PR head branch
+        uses: actions/checkout@v4
+        with:
+          ref: agent/unify-paper-storyline
+          fetch-depth: 0
+
+      - name: Locate completed corrected Phase-F run
+        id: locate
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          run_id=""
+          for attempt in $(seq 1 50); do
+            row=$(gh run list \
+              --workflow interaction-support-phase-f-once.yml \
+              --branch agent/unify-paper-storyline \
+              --limit 1 \
+              --json databaseId,status,conclusion \
+              --jq '.[0] // {}')
+            status=$(printf '%s' "$row" | jq -r '.status // "missing"')
+            conclusion=$(printf '%s' "$row" | jq -r '.conclusion // ""')
+            candidate=$(printf '%s' "$row" | jq -r '.databaseId // ""')
+            echo "Phase-F one-shot run=${candidate:-none} status=$status conclusion=${conclusion:-none}"
+            if [ "$status" = "completed" ] && [ "$conclusion" = "success" ] && [ -n "$candidate" ]; then
+              run_id="$candidate"
+              break
+            fi
+            if [ "$status" = "completed" ] && [ "$conclusion" != "success" ]; then
+              echo "Latest corrected Phase-F one-shot completed unsuccessfully" >&2
+              exit 1
+            fi
+            sleep 20
+          done
+          if [ -z "$run_id" ]; then
+            echo "No completed corrected Phase-F run found within harvest window" >&2
+            exit 1
+          fi
+          echo "run_id=$run_id" >> "$GITHUB_OUTPUT"
+
+      - name: Download and verify Phase-F summary
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ steps.locate.outputs.run_id }}
+        run: |
+          rm -rf phase_f_harvest
+          mkdir -p phase_f_harvest artifacts/interaction_support
+          gh run download "$RUN_ID" \
+            -n warning-blind-interaction-support-phase-f-corrected \
+            -D phase_f_harvest
+          test -f phase_f_harvest/phase_f_summary.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('phase_f_harvest/phase_f_summary.json')
+          data = json.loads(source.read_text())
+          rows = data['interaction_support_summaries']
+          assert [row['interaction_kappa'] for row in rows] == [3.0, 4.5, 6.0]
+          assert data['calibration_scope'] == 'source_and_trait_loss_only'
+          assert data['manifest']['blinding_scope'] == 'source_and_trait_loss_only'
+          Path('artifacts/interaction_support/phase_f_summary.json').write_text(
+              json.dumps(data, indent=2, sort_keys=True) + '\n', encoding='utf-8'
+          )
+          for row in rows:
+              print(json.dumps(row, sort_keys=True))
+          PY
+
+      - name: Commit immutable compact summary
+        env:
+          RUN_ID: ${{ steps.locate.outputs.run_id }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add artifacts/interaction_support/phase_f_summary.json
+          if git diff --cached --quiet; then
+            echo "Phase-F summary already committed"
+            exit 0
+          fi
+          git commit -m "Record corrected Phase F interaction-support result (run ${RUN_ID})"
+          git push origin HEAD:agent/unify-paper-storyline
