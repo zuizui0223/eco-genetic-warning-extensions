@@ -1,0 +1,86 @@
+name: Warning-blind R4 classification stability Phase J
+
+on:
+  pull_request:
+    branches:
+      - "agent/pollen-movement-phase-i"
+    paths:
+      - "src/eco_genetic_warning_extensions/classification_stability_phase_j.py"
+      - "src/eco_genetic_warning_extensions/classification_stability_phase_j_runner.py"
+      - "scripts/run_classification_stability_phase_j.py"
+      - "tests/test_classification_stability_phase_j.py"
+      - "docs/WARNING_BLIND_CLASSIFICATION_STABILITY_PHASE_J.md"
+      - ".github/workflows/classification-stability-phase-j.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-j:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - name: Verify Phase-J preregistered contract
+        working-directory: extension
+        run: python -m pytest -q tests/test_classification_stability_phase_j.py
+      - name: Run fixed-condition stability audit
+        working-directory: extension
+        run: |
+          mkdir -p artifacts/classification_stability
+          python scripts/run_classification_stability_phase_j.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/classification_stability/phase_j_full.json
+      - name: Build and print compact summary
+        working-directory: extension
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('artifacts/classification_stability/phase_j_full.json')
+          artifact = json.loads(source.read_text())
+          summary = {
+              'stage': artifact['stage'],
+              'calibration_scope': artifact['calibration_scope'],
+              'manifest': artifact['manifest'],
+              'source_preparation_count': artifact['source_preparation_count'],
+              'opening_rule_satisfied': artifact['opening_rule_satisfied'],
+              'stability_classification': artifact['stability_classification'],
+              'seed_blocks': artifact['seed_blocks'],
+              'panels': artifact['panels'],
+              'panel_regime_counts': artifact['panel_regime_counts'],
+              'twenty_seed_diagnostics': artifact['twenty_seed_diagnostics'],
+          }
+          out = Path('artifacts/classification_stability/phase_j_summary.json')
+          out.write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')
+          print('PHASE_J_SUMMARY_BEGIN')
+          print(json.dumps(summary, sort_keys=True))
+          print('PHASE_J_SUMMARY_END')
+          PY
+      - name: Upload Phase-J artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: warning-blind-classification-stability-phase-j
+          path: |
+            extension/artifacts/classification_stability/phase_j_full.json
+            extension/artifacts/classification_stability/phase_j_summary.json
+          if-no-files-found: error
+          retention-days: 90
