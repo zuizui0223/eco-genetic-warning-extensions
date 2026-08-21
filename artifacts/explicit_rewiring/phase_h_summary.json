@@ -1,0 +1,183 @@
+{
+  "stage": "warning-blind explicit rewiring Phase H",
+  "calibration_scope": "source_network_and_trait_loss_only",
+  "provenance": {
+    "workflow_run": 32453377127,
+    "artifact_id": 9436467391,
+    "artifact_digest": "sha256:3b26257527e6c1c22fa33cbcdf19ddf7d381c3df55c857f2c6f2f8f1acc50a85",
+    "head_sha": "611cf4e884e7d125465bf0fd16884d95424bd389",
+    "parent_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "manifest": {
+    "protocol": "warning-blind explicit rewiring Phase H",
+    "scientific_scope": "trait_and_capacity_constrained_interaction_rewiring_after_matched_partner_loss",
+    "calibration_scope": "source_and_trait_loss_only",
+    "blinding_scope": "source_network_and_trait_loss_only",
+    "coordinate": {
+      "kappa_mu": 0.35,
+      "p_star": 0.35
+    },
+    "fixed_conditions": {
+      "area_reference": 1.0,
+      "interaction_kappa": 4.5,
+      "ramp_generations": 30,
+      "hold_generations": 90,
+      "horizon": 120,
+      "normalised_barrier_increase": 0.3,
+      "fragmentation_geometry": "four_equal_patches_fixed_total_area",
+      "migration_rate": 0.0
+    },
+    "network": {
+      "focal_node_count": 1,
+      "candidate_partner_count": 6,
+      "initial_active_partner_count": 4,
+      "initial_edge_strengths": [0.25, 0.25, 0.25, 0.25, 0.0, 0.0],
+      "trait_match_scores": [1.0, 0.9, 0.8, 0.7, 0.6, 0.5],
+      "edge_capacities": [0.3, 0.3, 0.3, 0.3, 0.3, 0.3],
+      "loss_assignment": "lost_primary_partner_index = replicate_index mod 4",
+      "rewiring_fraction_of_lost_effort": 0.5,
+      "rewiring_window_generations": 10,
+      "rewiring_allocation_rule": "trait_match_score * spare_edge_capacity with deterministic capacity redistribution",
+      "functional_mapping": "sum(edge_strength * trait_match_score), normalized to intact and capped at 1"
+    },
+    "conditions": [
+      {
+        "name": "intact_control",
+        "remove_primary_partner": false,
+        "rewiring_rule": "none"
+      },
+      {
+        "name": "partner_loss_no_rewiring",
+        "remove_primary_partner": true,
+        "rewiring_rule": "none"
+      },
+      {
+        "name": "partner_loss_trait_capacity_rewiring",
+        "remove_primary_partner": true,
+        "rewiring_rule": "trait_capacity"
+      }
+    ],
+    "master_seeds": [20290710, 20290711, 20290712, 20290713, 20290714],
+    "replicates_per_seed": 20,
+    "minimum_baseline_eligible_per_seed": 10,
+    "prepared_source_count": 100,
+    "trajectory_count": 300,
+    "paired_across_rewiring_conditions": true,
+    "opening_rule": "Interpret rewiring as a rescue test only if the fresh intact control is R4_highrep and the fresh matched partner-loss/no-rewiring condition is R3_highrep; otherwise record the failed opening without changing seeds, network scores, capacities, rewiring fraction, rewiring window, or thresholds.",
+    "rescue_rule": "If the opening rule is satisfied, classify the predeclared rewiring condition once: R4_highrep is a bounded rescue of warning estimability; any other regime is not a rescue.",
+    "stop_rule": "Do not tune trait-match scores, edge capacities, candidate partners, rewiring fraction, rewiring window, loss identity, seeds, or R4 thresholds after observing the Phase-H result.",
+    "interpretation_boundary": "Phase H is an explicit one-focal-node interaction-network closure with fixed partner availability. It does not model partner population dynamics, coextinction, pollen/seed movement, demographic movement, or pollinator movement and must not be interpreted as a universal ecological-network rescue theorem."
+  },
+  "source_preparation_count": 100,
+  "opening_rule_satisfied": true,
+  "rescue_classification": "not_rescued",
+  "network_condition_summaries": [
+    {
+      "network_condition": "intact_control",
+      "rewiring_rule": "none",
+      "status_counts": {
+        "attempted": 100,
+        "source_prepared": 86,
+        "projection_supported": 86,
+        "baseline_eligible": 86,
+        "trait_loss": 37
+      },
+      "seed_blocks": [
+        {"master_seed": 20290710, "baseline_eligible_count": 18, "trait_loss_count": 9, "trait_loss_rate": 0.5},
+        {"master_seed": 20290711, "baseline_eligible_count": 17, "trait_loss_count": 8, "trait_loss_rate": 0.47058823529411764},
+        {"master_seed": 20290712, "baseline_eligible_count": 17, "trait_loss_count": 7, "trait_loss_rate": 0.4117647058823529},
+        {"master_seed": 20290713, "baseline_eligible_count": 17, "trait_loss_count": 6, "trait_loss_rate": 0.35294117647058826},
+        {"master_seed": 20290714, "baseline_eligible_count": 17, "trait_loss_count": 7, "trait_loss_rate": 0.4117647058823529}
+      ],
+      "pooled_trait_loss_rate": 0.43023255813953487,
+      "highrep_support_sufficient": true,
+      "regime": "R4_highrep",
+      "network_diagnostics": {
+        "mean_final_active_edge_count": 4.0,
+        "mean_final_latent_edges_activated": 0.0,
+        "mean_final_realised_connectance": 0.6666666666666659,
+        "mean_final_rewired_edge_effort": 0.0,
+        "mean_final_support_multiplier": 1.0,
+        "mean_support_multiplier_over_time": 1.0
+      }
+    },
+    {
+      "network_condition": "partner_loss_no_rewiring",
+      "rewiring_rule": "none",
+      "status_counts": {
+        "attempted": 100,
+        "source_prepared": 86,
+        "projection_supported": 86,
+        "baseline_eligible": 86,
+        "trait_loss": 37
+      },
+      "seed_blocks": [
+        {"master_seed": 20290710, "baseline_eligible_count": 18, "trait_loss_count": 9, "trait_loss_rate": 0.5},
+        {"master_seed": 20290711, "baseline_eligible_count": 17, "trait_loss_count": 8, "trait_loss_rate": 0.47058823529411764},
+        {"master_seed": 20290712, "baseline_eligible_count": 17, "trait_loss_count": 9, "trait_loss_rate": 0.5294117647058824},
+        {"master_seed": 20290713, "baseline_eligible_count": 17, "trait_loss_count": 6, "trait_loss_rate": 0.35294117647058826},
+        {"master_seed": 20290714, "baseline_eligible_count": 17, "trait_loss_count": 5, "trait_loss_rate": 0.29411764705882354}
+      ],
+      "pooled_trait_loss_rate": 0.43023255813953487,
+      "highrep_support_sufficient": true,
+      "regime": "R3_highrep",
+      "network_diagnostics": {
+        "mean_final_active_edge_count": 3.0,
+        "mean_final_latent_edges_activated": 0.0,
+        "mean_final_realised_connectance": 0.5,
+        "mean_final_rewired_edge_effort": 0.0,
+        "mean_final_support_multiplier": 0.75,
+        "mean_support_multiplier_over_time": 0.75
+      }
+    },
+    {
+      "network_condition": "partner_loss_trait_capacity_rewiring",
+      "rewiring_rule": "trait_capacity",
+      "status_counts": {
+        "attempted": 100,
+        "source_prepared": 86,
+        "projection_supported": 86,
+        "baseline_eligible": 86,
+        "trait_loss": 36
+      },
+      "seed_blocks": [
+        {"master_seed": 20290710, "baseline_eligible_count": 18, "trait_loss_count": 9, "trait_loss_rate": 0.5},
+        {"master_seed": 20290711, "baseline_eligible_count": 17, "trait_loss_count": 8, "trait_loss_rate": 0.47058823529411764},
+        {"master_seed": 20290712, "baseline_eligible_count": 17, "trait_loss_count": 8, "trait_loss_rate": 0.47058823529411764},
+        {"master_seed": 20290713, "baseline_eligible_count": 17, "trait_loss_count": 6, "trait_loss_rate": 0.35294117647058826},
+        {"master_seed": 20290714, "baseline_eligible_count": 17, "trait_loss_count": 5, "trait_loss_rate": 0.29411764705882354}
+      ],
+      "pooled_trait_loss_rate": 0.4186046511627907,
+      "highrep_support_sufficient": true,
+      "regime": "R3_highrep",
+      "network_diagnostics": {
+        "mean_final_active_edge_count": 5.0,
+        "mean_final_latent_edges_activated": 2.0,
+        "mean_final_realised_connectance": 0.833333333333333,
+        "mean_final_rewired_edge_effort": 0.125,
+        "mean_final_support_multiplier": 0.8442390181159675,
+        "mean_support_multiplier_over_time": 0.840312392361136
+      }
+    }
+  ],
+  "paired_loss_status": [
+    {
+      "reference": "intact_control",
+      "comparison": "partner_loss_no_rewiring",
+      "comparable_pair_count": 86,
+      "loss_to_no_loss": 16,
+      "no_loss_to_loss": 16,
+      "same_loss": 21,
+      "same_no_loss": 33
+    },
+    {
+      "reference": "partner_loss_no_rewiring",
+      "comparison": "partner_loss_trait_capacity_rewiring",
+      "comparable_pair_count": 86,
+      "loss_to_no_loss": 1,
+      "no_loss_to_loss": 0,
+      "same_loss": 36,
+      "same_no_loss": 49
+    }
+  ]
+}
