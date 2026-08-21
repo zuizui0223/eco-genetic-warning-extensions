@@ -78,7 +78,7 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
         "conditional positive lead-time medians",
         "all six direct timing-difference intervals included zero",
         "the domains also differ in ecological parameters and deterioration schedules",
-        "not an isolated effect of recurrent-transition direction",
+        "not a single-factor effect of transition direction",
         "full-denominator event incidence and warning availability are treated as more primary",
     )
     for phrase in required:
