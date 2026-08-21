@@ -6,7 +6,7 @@
 |---|---|
 | The manuscript integrates a theorem-guided first phase and an independently declared recurrent-transition extension as one study. | Keep the two repositories as separate computational provenance units; do not pool their trajectories. |
 | The first phase provides the analytical interaction mechanism, locked H1/H3 fragmentation campaign, and inherited symmetric warning benchmark. | `eco-genetic-criticality` canonical scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc` and final evidence ledger. |
-| The extension reconstructs sources, maps common-grid loss regimes, recovers a narrow warning-blind R4 event regime, performs separately declared Protocol 003 portability validation, and derives exact recurrent-transition identities. | Protocol 002/003 documents, Phases A–D frontier artifacts, locked Stage III artifacts, and exact theory documents/tests. |
+| The extension reconstructs sources, maps common-grid loss regimes, recovers a narrow warning-blind R4 event regime, maps one allele-frequency-connectivity boundary, performs separately declared Protocol 003 portability validation, and derives exact recurrent-transition identities. | Protocol 002/003 documents, Phases A–E condition artifacts, locked Stage III artifacts, and exact theory documents/tests. |
 
 ## Permitted first-phase claims
 
@@ -33,10 +33,12 @@
 | S10 | Warning-blind frontier refinement shows that R4 event-regime evaluability is not structurally absent: at fixed `A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, `p_star=0.35`, horizon 120 and barrier increase 0.30, all five independent seed blocks fell in `[0.30,0.70]` in two fresh high-rep campaigns. | Phase C and Phase D summaries/artifacts. | positive finite condition recovery |
 | S11 | The recovered R4 region is narrow along `p_star` at the tested resolution: Phase D neighbors `0.325` and `0.375` were R3-highrep, and Phase C `0.40` was also R3-highrep. | Phase C/D high-rep summaries. | finite boundary result |
 | S12 | Intermediate pooled trait-loss probability is not sufficient to define warning evaluability; seed-block reproducibility is an additional condition. | Phase B pooled gradient plus Phase C/D block-level classifications. | supported condition/estimand distinction |
+| S13 | At the independently reproduced R4 anchor, allele-frequency migration changed event-regime evaluability: `m=0,0.025,0.05` remained R4-highrep whereas `m=0.10,0.20` were R3-highrep, despite pooled loss remaining in a relatively narrow 0.549–0.626 range. | Phase E paired migration-condition run `32376912392`, artifact `9409687687`. | finite connectivity-boundary result |
+| S14 | Migration changed which paired trajectories lost realised function in both directions; relative to isolation, total loss-status switches were 8/91, 12/91, 21/91 and 25/91 at `m=0.025,0.05,0.10,0.20`. | Phase E paired prepared-source records. | finite trajectory-switching result |
 
-## Permitted exact recurrent-transition claims
+## Permitted exact recurrent-transition / migration claims
 
-These are Type T algebraic boundaries for the declared affine transition step with the stated fixed-weight assumptions. They are not finite Stage III effect estimates and not dynamic warning theorems.
+These are Type T algebraic boundaries for the declared operators under their stated assumptions. They are not finite Stage III effect estimates and not dynamic warning theorems.
 
 | ID | permitted claim | required evidence | status |
 |---|---|---|---|
@@ -44,6 +46,7 @@ These are Type T algebraic boundaries for the declared affine transition step wi
 | T2 | With fixed patch weights and a common affine transition, `H_gamma' - H_alpha' = (1-kappa_mu)^2 (H_gamma-H_alpha)`, so one-step contraction of the alpha–gamma gap depends on transition strength but not `p_star`. | Same exact derivation and executable tests. | Type T |
 | T3 | Increasing `p_star` always strengthens the local high-associated allele support margin `M(p)-p_c`, but when `M(p)>0.5` it decreases heterozygosity; genetic diversity is therefore not a monotone proxy for this local functional-support condition. | Same exact derivation and executable tests. | Type T, local support boundary |
 | T4 | For a pre-state below a local high-state threshold, stronger `kappa_mu` lowers the `p_star` required to reach the same post-transition support boundary. | `docs/RECURRENT_TRANSITION_SUPPORT_FRONTIER.md`; executable frontier tests. | Type T, local support frontier |
+| T5 | The declared allele-frequency migration operator contracts among-patch frequency deviations toward a weighted mean; this homogenisation does not by itself determine the sign of realised functional loss. | Parent migration theorem plus Phase E bidirectional trajectory switching. | Type T + finite boundary |
 
 ## Locked and corrected numerical facts
 
@@ -74,6 +77,10 @@ These are Type T algebraic boundaries for the declared affine transition step wi
 | Phase D p_star=0.325 pooled loss / regime | 0.663 / R3-highrep |
 | Phase D p_star=0.350 pooled loss / regime | 0.609 / R4-highrep |
 | Phase D p_star=0.375 pooled loss / regime | 0.391 / R3-highrep |
+| Phase E prepared sources / migration-level trajectories | 100 / 500 |
+| Phase E pooled loss at m=0 / 0.025 / 0.05 / 0.10 / 0.20 | 0.571 / 0.549 / 0.593 / 0.626 / 0.604 |
+| Phase E regime at m=0 / 0.025 / 0.05 / 0.10 / 0.20 | R4 / R4 / R4 / R3 / R3 |
+| Phase E paired status switches vs isolation at m=0.025 / 0.05 / 0.10 / 0.20 | 8 / 12 / 21 / 25 of 91 |
 | Stage III attempted trajectories | 100 + 100 |
 | recalibrated symmetric domain completed trajectories | 82 |
 | directional calibrated domain completed trajectories | 91 |
@@ -96,9 +103,12 @@ The historical Stage III source artifacts used the upper middle order statistic 
 ## Prohibited claims
 
 - The original 15/15 `no_domain_selected` result proves that an evaluable event regime cannot exist.
-- The refined R4 condition proves that genetic warning succeeds there; warning fields have not been evaluated in Phases A–D.
+- The refined R4 condition proves that genetic warning succeeds there; warning fields have not been evaluated in Phases A–E.
 - R4 is a broad or contiguous `p_star` interval; only `p_star=0.35` reproduced at the tested high-rep resolution.
 - Finer `p_star` tuning is justified merely to manufacture adjacent R4 cells.
+- `m=0.05` or any tested migration value is a universal ecological threshold.
+- Migration universally rescues, protects, destabilizes or harms ecological function; Phase E contains paired switches in both directions and non-monotone pooled loss.
+- The current simulator's `migration_rate` is demographic migration, pollinator movement, seed dispersal, recolonisation or trait-bin dispersal; it is allele-frequency mixing only.
 - Recurrent-transition direction alone caused the historical Stage III warning-ordering difference.
 - Recurrent-transition direction alone shortened or lengthened intervention time.
 - The horizon-normalized Stage III timing difference is separated at any of the six endpoints.
@@ -117,7 +127,6 @@ The historical Stage III source artifacts used the upper middle order statistic 
 - Lower genetic diversity necessarily means poorer ecological function or weaker local high-state support.
 - The local Type T support–diversity result determines full stochastic warning first-passage ordering.
 - The fixed-weight one-step identities remain exact after arbitrary demographic reweighting, drift or selection without re-evaluation.
-- The current simulator's `migration_rate` should be interpreted as demographic, pollinator or seed movement; it is an allele-frequency mixing parameter.
 
 ## Story-to-evidence mapping
 
@@ -129,6 +138,7 @@ The historical Stage III source artifacts used the upper middle order statistic 
 | Recurrent transitions change source feasibility | S1 |
 | Recurrent transitions change the loss-generating regime | S2 |
 | A coarse common grid can miss the narrow region where loss is reproducible and nondegenerate | S3 + S10–S12 |
+| Effective genetic connectivity can move that recovered event regime between R4 and R3 without a simple pooled-risk sign | S13 + S14 + T5 |
 | Recalibration across non-matched domains yields bounded portability differences | S4–S8 |
 | Diversity is not a monotone proxy for local functional support | T1–T4 |
 
@@ -146,4 +156,4 @@ Current publication figures remain tied to the locked manuscript campaign. Front
 | Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7; secondary conditional diagnostic |
 | Supplementary Figure S1 | fresh fixed-area paired fragmentation gradient | P4 |
 
-Every finite numerical claim must retain the declared Type S closure. T1–T4 are exact local identities only within their stated assumptions.
+Every finite numerical claim must retain the declared Type S closure. T1–T5 are exact/local operator boundaries only within their stated assumptions.
