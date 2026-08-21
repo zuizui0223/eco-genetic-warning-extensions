@@ -56,11 +56,13 @@ def test_condition_recovered_manuscript_follows_condition_first_science() -> Non
 def test_condition_recovered_manuscript_retains_key_evidence_boundaries() -> None:
     text = MAIN.read_text(encoding="utf-8")
     lower = text.lower()
-    # Original no-domain result remains historical/bounded, while later R4 recovery
-    # establishes that it was not structural impossibility.
+    # Original no-domain result remains historical/bounded, while later work
+    # establishes that finite validation panels can exist without promoting R4
+    # to a sample-size-invariant biological regime.
     assert "all 15 coarse coordinates were historically `no_domain_selected`" in text
     assert "the coarse result was a placement boundary rather than structural impossibility" in text
-    assert "R4 exists" in text
+    assert "finite intermediate-risk panels could be recovered" in lower
+    assert "not itself a sample-size-invariant biological state" in lower
 
     # Connectivity and interaction-support axes retain their operator boundaries.
     assert "not demographic migration" in lower
