@@ -53,10 +53,7 @@ def test_direct_between_domain_bootstrap_is_reported_without_interval_overlap_he
         if row["absolute_generations_ci_includes_zero"] == "False"
     }
     assert separated_absolute == {"H_alpha_0.05", "H_alpha_0.10"}
-    assert all(
-        row["horizon_fraction_ci_includes_zero"] == "True"
-        for row in rows.values()
-    )
+    assert all(row["horizon_fraction_ci_includes_zero"] == "True" for row in rows.values())
     assert all(
         float(row["horizon_fraction_difference_directional_minus_symmetric"]) > 0
         for row in rows.values()
@@ -72,11 +69,12 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
         "shortened the intervention window in the tested closure",
     )
     for phrase in forbidden:
-        assert phrase not in text
+        assert phrase not in lower
 
     required = (
-        "portability comparison across calibrated eco-genetic domains",
-        "0.540", "0.335",
+        "portability across calibrated eco-genetic domains",
+        "0.540",
+        "0.335",
         "conditional positive lead-time medians",
         "all six direct timing-difference intervals included zero",
         "the domains also differ in ecological parameters and deterioration schedules",
@@ -85,3 +83,13 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
     )
     for phrase in required:
         assert phrase in lower or phrase in text
+
+
+def test_publication_metadata_uses_one_conditional_timing_concept() -> None:
+    captions = (ROOT / "manuscript/figure_captions.md").read_text(encoding="utf-8").lower()
+    allocation = (ROOT / "manuscript/display_allocation.md").read_text(encoding="utf-8").lower()
+    manuscript = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8").lower()
+    assert "conditional positive lead-time" in manuscript
+    assert "conditional positive lead-time" in allocation
+    assert "positive warning lead time" in captions or "positive lead time" in captions
+    assert "conditional uncertainty" not in manuscript
