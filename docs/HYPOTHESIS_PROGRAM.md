@@ -70,8 +70,9 @@ Prospective frontier work then resolved the rapid-to-persistence transition more
 - **Phase B (`kappa_mu=0.35`)**: at one fixed ecological/deterioration anchor, pooled loss declined smoothly across `p_star=0.30,0.35,0.40,0.45` (`0.739→0.476→0.304→0.095`), but all four low-rep cells were seed-heterogeneous.
 - **Phase C high-rep**: `p_star=0.35` became R4-highrep; `0.40` remained R3-highrep.
 - **Phase D independent high-rep replay**: `0.35` again became R4-highrep; neighboring `0.325` and `0.375` were R3-highrep.
+- **Phase E migration condition**: the independently reproduced R4 anchor remained R4-highrep at allele-frequency migration `m=0,0.025,0.05` and became R3-highrep at `m=0.10,0.20`.
 
-**Status: supported, finite Type S, with a resolved narrow transition frontier.**
+**Status: supported, finite Type S, with a resolved narrow transition frontier and one mapped connectivity boundary.**
 
 ## H-MD-3a — event-regime evaluability
 
@@ -87,9 +88,7 @@ The strict Protocol 002 selector found:
 
 This remains an immutable result for the **declared coarse common grid/family**. It was never evidence that the warning itself failed.
 
-### Refined condition recovery
-
-Warning-blind Phases B–D show that the coarse-grid result was **not structural impossibility**.
+### Refined recurrent-transition recovery
 
 At fixed:
 
@@ -102,35 +101,41 @@ At fixed:
 
 `p_star=0.35` recovered R4 independently twice.
 
-**Phase C:**
+**Phase C:** seed loss rates `0.579, 0.529, 0.474, 0.588, 0.368`; pooled loss `0.505`.
 
-- seed loss rates `0.579, 0.529, 0.474, 0.588, 0.368`;
-- pooled loss `0.505`;
-- all five blocks in `[0.30,0.70]`.
-
-**Phase D independent replay:**
-
-- seed loss rates `0.500, 0.667, 0.647, 0.588, 0.632`;
-- pooled loss `0.609`;
-- all five blocks in `[0.30,0.70]`.
+**Phase D independent replay:** `0.500, 0.667, 0.647, 0.588, 0.632`; pooled loss `0.609`.
 
 Neighbors were not R4:
 
-- `p_star=0.325`: pooled `0.663`, but two seed blocks exceeded 0.70;
-- `p_star=0.375`: pooled `0.391`, but one seed block fell below 0.30;
-- `p_star=0.40` in Phase C: pooled `0.304`, but two seed blocks fell below 0.30.
+- `p_star=0.325`: pooled `0.663`, but two seed blocks >0.70;
+- `p_star=0.375`: pooled `0.391`, but one seed block <0.30;
+- `p_star=0.40` in Phase C: pooled `0.304`, but two seed blocks <0.30.
 
-### Recovered conclusion
+Thus the coarse-grid 15/15 no-domain result was **not structural impossibility**. R4 exists, but it is narrow along the tested recurrent-transition frontier.
 
-**H-MD-3a is now positively recovered in a narrow finite region.**
+### Phase E — effective genetic connectivity
 
-The important distinction is:
+Phase E fixed the independently reproduced R4 anchor and varied only the simulator's allele-frequency migration toward the population-weighted selected mean. One hundred prepared sources were paired across five rates, producing 500 migration-level trajectories.
 
-> intermediate pooled loss probability is not sufficient for warning evaluability; reproducibility across independent stochastic blocks is an additional condition.
+| `migration_rate` | pooled trait-loss rate | regime |
+|---:|---:|---|
+| 0.000 | 0.571 | **R4-highrep** |
+| 0.025 | 0.549 | **R4-highrep** |
+| 0.050 | 0.593 | **R4-highrep** |
+| 0.100 | 0.626 | **R3-highrep** |
+| 0.200 | 0.604 | **R3-highrep** |
 
-The original 15/15 no-domain result therefore means that the predeclared coarse common grid missed the narrow R4 region, not that R4 cannot exist.
+Relative to isolation, paired loss-status switches increased with mixing: 8/91, 12/91, 21/91 and 25/91 trajectories at the four nonzero rates, and both `loss→no loss` and `no loss→loss` occurred at every rate.
 
-The `p_star` search stops here. Phase D did not find a contiguous neighboring R4 cell at ±0.025, and no finer tuning is permitted merely to widen the warning domain.
+### Recovered H-MD-3a conclusion
+
+**H-MD-3a is positively recovered in a bounded finite region, and evaluability itself is connectivity-dependent.**
+
+The important distinction is now stronger than a pooled-risk statement:
+
+> intermediate pooled functional-loss probability is not sufficient for warning evaluability; reproducibility across independent stochastic blocks is an additional condition, and effective genetic connectivity can change that reproducibility without a simple monotone rescue/collapse shift in pooled loss.
+
+The `p_star` and migration searches are closed under their predeclared stop rules. No finer tuning is permitted merely to widen R4.
 
 ## H-MD-3b — direction-only warning effect
 
@@ -138,15 +143,13 @@ The `p_star` search stops here. Phase D did not find a contiguous neighboring R4
 
 ### Current finite status
 
-**Still not tested in the refined frontier program.** Phases A–D withheld all diversity and warning fields.
+**Still not tested in the refined frontier program.** Phases A–E withheld all diversity and warning fields.
 
-A reproducible R4 point now exists, but the predeclared condition for opening a new direction-only warning experiment was a contiguous matched R4 interval. Phase D found no adjacent R4 at ±0.025. Therefore no new H-MD-3b warning validation is opened from this frontier.
+A reproducible R4 point exists, and several matched migration conditions retain R4, but H-MD-3b is specifically a recurrent-transition-direction contrast. The predeclared opening condition required an adjacent confirmed R4 interval along `p_star`; Phase D found no such adjacent R4 at ±0.025. Therefore no new direction-only warning validation is opened.
 
 Protocol 003 remains a separate portability comparison across two independently recalibrated, non-matched eco-genetic domains.
 
-## Exact recurrent-transition boundaries
-
-The local affine operator provides several Type T constraints on interpretation.
+## Exact recurrent-transition and migration boundaries
 
 ### T1 — no universal signed direction-to-diversity effect
 
@@ -156,7 +159,7 @@ For \(H(p)=2p(1-p)\), \(k=\kappa_\mu\), \(s=p_\mu^*\),
 \frac{\partial H(M(p))}{\partial s}=2k[1-2M(p)].
 \]
 
-The sign changes at `M(p)=0.5`. Increasing `p_star` can therefore increase or decrease heterozygosity depending on state.
+The sign changes at `M(p)=0.5`.
 
 ### T2 — transition strength and direction have separable spatial effects
 
@@ -166,7 +169,7 @@ With fixed patch weights,
 H_\gamma'-H_\alpha'=(1-k)^2(H_\gamma-H_\alpha).
 \]
 
-Thus the one-step contraction of among-patch allele-frequency heterogeneity depends on `kappa_mu`, not `p_star`.
+Thus one-step contraction of among-patch allele-frequency heterogeneity depends on `kappa_mu`, not `p_star`.
 
 ### T3 — local high-state support and diversity can oppose
 
@@ -176,11 +179,15 @@ For support margin \(S=M(p)-p_c\),
 \frac{\partial S}{\partial s}=k>0.
 \]
 
-When `M(p)>0.5`, increasing `p_star` strengthens the local high-associated allele condition while decreasing heterozygosity. Genetic diversity is therefore not a monotone proxy for local functional support.
+When `M(p)>0.5`, increasing `p_star` strengthens the local high-associated allele condition while decreasing heterozygosity.
 
 ### T4 — recurrent-transition support frontier
 
-For a pre-state below a local high-state threshold, stronger `kappa_mu` lowers the `p_star` required to reach the same post-transition support boundary. This gives the correct direction for the finite frontier shift without claiming a theorem for the full stochastic loss regime.
+For a pre-state below a local high-state threshold, stronger `kappa_mu` lowers the `p_star` required to reach the same post-transition support boundary.
+
+### T5 — migration homogenisation is not a functional-loss sign theorem
+
+In the parent migration layer, allele-frequency mixing contracts deviations from a common mean and can coexist with a separately certified rescue condition. Phase E shows in the full finite closure that migration can change which trajectories lose realised function in both directions. Therefore neither the exact homogenisation result nor nonzero connectivity carries a universal beneficial/harmful sign for realised functional loss.
 
 ## Protocol 003 — portability, not direction-only recovery
 
@@ -204,30 +211,25 @@ Observed Stage III:
 | **H-MD-1** | **supported** | recurrent-transition coordinates change high-function source feasibility |
 | **H-MD-2** | **supported** | recurrent-transition coordinates reorganise functional-loss regimes |
 | **H-MD-3a coarse grid** | **negative, immutable** | 15/15 original coordinates selected no domain under the strict common-family gate |
-| **H-MD-3a refined condition** | **positive, independently reproduced** | R4 exists at the fixed B1 condition with `kappa_mu=0.35, p_star=0.35`, but is narrow along `p_star` |
-| **H-MD-3b finite effect** | **not opened** | no contiguous matched R4 interval was recovered at the predeclared ±0.025 resolution |
+| **H-MD-3a refined recurrent condition** | **positive, independently reproduced** | R4 exists at `kappa_mu=0.35, p_star=0.35`, but is narrow along `p_star` |
+| **H-MD-3a connectivity condition** | **supported at one R4 anchor** | R4 persisted at `m<=0.05` and shifted to R3 at `m=0.10,0.20`; pooled risk alone did not explain evaluability |
+| **H-MD-3b finite effect** | **not opened** | no contiguous matched R4 interval was recovered along recurrent-transition direction |
 | **H-MD-3b theory** | **Type T boundaries recovered** | diversity sign, spatial contraction and local functional support are not interchangeable |
 | **Protocol 003** | **portability result** | warning availability/ordering differ across non-matched recalibrated domains; cause is not isolated to direction |
 
-## Next condition axis — migration / effective genetic connectivity
+## Next condition decision
 
-The recurrent-transition direction search is closed. The next biologically motivated condition question is whether **allele-frequency migration among fragmented patches** shifts the event-regime class of the independently reproduced R4 anchor.
+Do **not** refine `p_star` or migration further. The next ecological uncertainty is whether local interaction/habitat support changes the recovered R4/connectivity structure. This is directly relevant to urban pollinator support and island mutualist/reproductive-assurance gradients.
 
-This is directly connected to the remaining H3 boundary and to urban/island applications, but the simulator scope must remain explicit:
-
-- `migration_rate` in the current life cycle mixes allele frequencies toward the population-weighted mean;
-- it is **not** demographic migration, pollinator movement, seed dispersal, or trait-bin dispersal;
-- parent Type T results already show that migration can homogenize patch frequencies and can coexist with separately certified rescue conditions;
-- therefore the finite sign of migration on realised functional-loss regime is not assumed in advance.
-
-The next campaign must remain trait-loss/source-only. Genetic diversity and warning outcomes stay locked until the connectivity condition map is fixed.
+However, another simulation campaign should be opened only if that empirical analogue can be represented cleanly by an existing model parameter. If not, condition recovery should stop here and the manuscript should be rewritten around the recovered hierarchy rather than adding an abstract parameter sweep.
 
 ## Stop rules
 
 Do not:
 
 1. refine `p_star` further merely to manufacture a wider R4 region;
-2. tune migration using warning/diversity outcomes;
-3. call any migration effect demographic or pollinator rescue without an explicit life-cycle extension;
-4. open H-MD-3b unless the required matched evaluable conditions are prospectively satisfied;
-5. overwrite the historical Protocol 002 15/15 no-domain result.
+2. tune migration further merely to preserve or create R4;
+3. tune any condition using warning/diversity outcomes;
+4. call the current migration effect demographic, pollinator or seed rescue;
+5. open H-MD-3b unless the required matched evaluable recurrent-transition conditions are prospectively satisfied;
+6. overwrite the historical Protocol 002 15/15 no-domain result.
