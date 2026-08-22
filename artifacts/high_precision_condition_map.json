@@ -47,7 +47,14 @@
       "digest": "sha256:b5863c872d68119227213aa2de61ebabacb834c3d3973a2da905e81639fc6aa0",
       "official_aggregate_matches_deterministic_replay": true,
       "scientific_run": 32562175464,
-      "seed_artifacts": [9473209731, 9473180880, 9473211484, 9473212261, 9473211026]
+      "seed_artifacts": [9473209731, 9473180880, 9473211484, 9473212261, 9473211026],
+      "seed_artifact_digests": [
+        "sha256:8c99f04d718fc6edb4163fee1cf9f9ecfd8cbe282b4d958d20116cfdb86c6ffe",
+        "sha256:c10b15849ba0c51dccddbdd360ac8ccb1a4d0da3bb681dcb47b2c7a29586542b",
+        "sha256:2432b5341011a2c2875c5f0b4a6db68a2947b05dbba275117d2cc716bd738ae1",
+        "sha256:6441d24e1b4fd48d098f3ba7a0657a1ec145288a112e6ec022378a2ed1240296",
+        "sha256:689deef0d5196d5fc27a4364ac3563dfb47ca63d28359ebb67b1f624d43c2545"
+      ]
     }
   },
   "reduced_form_partner_loss": {
