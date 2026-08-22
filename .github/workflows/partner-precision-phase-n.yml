@@ -1,0 +1,80 @@
+name: Partner precision validation Phase N
+
+on:
+  pull_request:
+    branches:
+      - "agent/headline-r3-validity-phase-l"
+    paths:
+      - "src/eco_genetic_warning_extensions/partner_precision_phase_n.py"
+      - "src/eco_genetic_warning_extensions/partner_precision_phase_n_runner.py"
+      - "scripts/run_partner_precision_phase_n_seed.py"
+      - "scripts/aggregate_partner_precision_phase_n.py"
+      - "tests/test_partner_precision_phase_n.py"
+      - "docs/PARTNER_PRECISION_PHASE_N.md"
+      - ".github/workflows/partner-precision-phase-n.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+          python -m pytest -q tests/test_partner_precision_phase_n.py
+  seed-block:
+    needs: contract
+    strategy:
+      fail-fast: false
+      matrix:
+        master_seed: [20290610,20290611,20290612,20290613,20290614]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - uses: actions/checkout@v4
+        with: {path: extension}
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - working-directory: extension
+        run: |
+          mkdir -p artifacts/partner_precision
+          python scripts/run_partner_precision_phase_n_seed.py --upstream-checkout ../upstream --master-seed ${{ matrix.master_seed }} --output artifacts/partner_precision/seed_${{ matrix.master_seed }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-n-seed-${{ matrix.master_seed }}
+          path: extension/artifacts/partner_precision/seed_${{ matrix.master_seed }}.json
+          if-no-files-found: error
+          retention-days: 90
+  aggregate:
+    needs: seed-block
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: phase-n-seed-*
+          path: artifacts/partner_precision/seeds
+          merge-multiple: true
+      - run: python scripts/aggregate_partner_precision_phase_n.py --input-glob 'artifacts/partner_precision/seeds/seed_*.json' --output artifacts/partner_precision/phase_n_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: partner-precision-phase-n
+          path: artifacts/partner_precision/phase_n_summary.json
+          if-no-files-found: error
+          retention-days: 90
