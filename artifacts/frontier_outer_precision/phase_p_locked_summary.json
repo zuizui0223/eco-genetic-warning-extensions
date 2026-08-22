@@ -1,0 +1,33 @@
+{
+  "stage": "outer frontier precision validation Phase P",
+  "decision": "p040_remains_outside_r4_at_high_precision",
+  "prefix_audit_passed": true,
+  "scientific_run": 32562175464,
+  "aggregation": "deterministic replay of the committed Phase-P aggregate logic over all five completed seed artifacts; GitHub aggregate job was queued at lock time",
+  "seed_artifacts": [
+    {"master_seed":20290210,"artifact_id":9473209731,"digest":"sha256:8c99f04d718fc6edb4163fee1cf9f9ecfd8cbe282b4d958d20116cfdb86c6ffe"},
+    {"master_seed":20290211,"artifact_id":9473180880,"digest":"sha256:c10b15849ba0c51dccddbdd360ac8ccb1a4d0da3bb681dcb47b2c7a29586542b"},
+    {"master_seed":20290212,"artifact_id":9473211484,"digest":"sha256:2432b5341011a2c2875c5f0b4a6db68a2947b05dbba275117d2cc716bd738ae1"},
+    {"master_seed":20290213,"artifact_id":9473212261,"digest":"sha256:6441d24e1b4fd48d098f3ba7a0657a1ec145288a112e6ec022378a2ed1240296"},
+    {"master_seed":20290214,"artifact_id":9473211026,"digest":"sha256:689deef0d5196d5fc27a4364ac3563dfb47ca63d28359ebb67b1f624d43c2545"}
+  ],
+  "p_star_summaries": [
+    {
+      "p_star": 0.35,
+      "pooled_loss_rate": 0.5381263616557734,
+      "historical_gate_regime_at_full_precision": "R4_highrep",
+      "pearson_equal_rate_p_value": 0.25235199374458883,
+      "homogeneous_reference_gate_fail_probability": 0.004056269381482069,
+      "blocks": [[54,96],[51,92],[48,92],[53,87],[41,92]]
+    },
+    {
+      "p_star": 0.40,
+      "pooled_loss_rate": 0.2725274725274725,
+      "historical_gate_regime_at_full_precision": "R3_highrep",
+      "pearson_equal_rate_p_value": 0.1508355744652627,
+      "homogeneous_reference_gate_fail_probability": 0.9979616493786607,
+      "blocks": [[21,96],[32,85],[25,92],[21,90],[25,92]]
+    }
+  ],
+  "interpretation": "The historical p_star=0.40 R3 screen label persists, but the high-precision evidence does not support excess between-block heterogeneity. Its pooled loss incidence is below 0.30 and four of five block rates are below 0.30. Combined with Phase O, the recurrent-turnover frontier is best interpreted as an incidence gradient rather than a narrow seed-heterogeneity window."
+}
