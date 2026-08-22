@@ -1,0 +1,39 @@
+{
+  "stage": "R4 finite-sample gate validity Phase J",
+  "scope": "historical_gate_diagnostic_not_reclassification",
+  "provenance": {
+    "workflow_run": 32556672652,
+    "artifact_id": 9471623282,
+    "artifact_digest": "sha256:f4c1ba1ac8f06d185a86a5d6d9bfe008b00af9204eb2df925fbfc1e712f61acb",
+    "preregistered_head": "d4e2c07afbf29371e4fde846313fab5a50da3380"
+  },
+  "historical_rule": "all five observed block loss rates must lie in [0.30,0.70]",
+  "phase_h_partner_loss": {
+    "blocks": [[9,18],[8,17],[9,17],[6,17],[5,17]],
+    "historical_regime": "R3_highrep",
+    "pooled_loss_rate": 0.43023255813953487,
+    "homogeneous_reference_gate_pass_probability": 0.33195401038872996,
+    "homogeneous_reference_gate_fail_probability": 0.66804598961127,
+    "pearson_equal_rate_statistic": 2.851692028162616,
+    "pearson_equal_rate_df": 4,
+    "pearson_equal_rate_p_value": 0.582943110070413
+  },
+  "phase_i_partner_loss": {
+    "blocks": [[7,17],[8,18],[11,19],[9,18],[9,18]],
+    "historical_regime": "R4_highrep",
+    "pooled_loss_rate": 0.4888888888888889,
+    "homogeneous_reference_gate_pass_probability": 0.5872504241850737,
+    "homogeneous_reference_gate_fail_probability": 0.41274957581492633,
+    "pearson_equal_rate_statistic": 1.1814571886586964,
+    "pearson_equal_rate_df": 4,
+    "pearson_equal_rate_p_value": 0.8811420334214243
+  },
+  "selected_sampling_calibration": [
+    {"eligible_per_block":17,"latent_p":0.5,"five_block_gate_pass_probability":0.4610311802690835,"five_block_gate_fail_probability":0.5389688197309165},
+    {"eligible_per_block":18,"latent_p":0.5,"five_block_gate_pass_probability":0.6028866753543848,"five_block_gate_fail_probability":0.3971133246456152},
+    {"eligible_per_block":20,"latent_p":0.5,"five_block_gate_pass_probability":0.8094890657320445,"five_block_gate_fail_probability":0.1905109342679555},
+    {"eligible_per_block":50,"latent_p":0.5,"five_block_gate_pass_probability":0.9870566797076847,"five_block_gate_fail_probability":0.012943320292315263},
+    {"eligible_per_block":100,"latent_p":0.5,"five_block_gate_pass_probability":0.9998392102658552,"five_block_gate_fail_probability":0.00016078973414479503}
+  ],
+  "conclusion": "Historical R3/R4 labels remain immutable protocol facts, but R3 gate failure at the current 17-20 eligible trajectories per block does not by itself identify biological seed heterogeneity. The Phase-H R3 outcome is highly plausible under a homogeneous finite-sample reference and the observed blocks show no detectable excess equal-rate heterogeneity. The next validation must increase within-block precision rather than select replacement seed ensembles or retune the R4 band."
+}
