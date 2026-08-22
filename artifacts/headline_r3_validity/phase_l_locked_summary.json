@@ -1,0 +1,26 @@
+{
+  "stage": "headline R3 validity audit Phase L",
+  "scope": "cross_campaign_historical_gate_diagnostic_not_reclassification",
+  "provenance": {
+    "workflow_run": 32557903970,
+    "artifact_id": 9471949092,
+    "artifact_digest": "sha256:896a374fbac8f05d4747a3a7694701b1713fb234b6ba248c0f3e8420518b0213",
+    "head_sha": "34f92a706cfd61c992b268f531416609b67afd78"
+  },
+  "headline_r3_case_count": 10,
+  "r3_cases_with_detectable_excess_block_heterogeneity": 0,
+  "cases": [
+    {"id":"C_pstar_040","pooled":0.30434782608695654,"gate_fail_reference":0.9530753515398038,"equal_rate_p":0.6556872561598132},
+    {"id":"D_pstar_0325","pooled":0.6630434782608695,"gate_fail_reference":0.909663546114706,"equal_rate_p":0.22357853897348945},
+    {"id":"D_pstar_0375","pooled":0.39080459770114945,"gate_fail_reference":0.7990028359388922,"equal_rate_p":0.5362115263676861},
+    {"id":"E_m010","pooled":0.6263736263736264,"gate_fail_reference":0.7561879662345662,"equal_rate_p":0.8587779063958588},
+    {"id":"E_m020","pooled":0.6043956043956044,"gate_fail_reference":0.6570324390432101,"equal_rate_p":0.5035856940696991},
+    {"id":"G_even","pooled":0.5666666666666667,"gate_fail_reference":0.5759591826803787,"equal_rate_p":0.455363493903165},
+    {"id":"G_graded","pooled":0.5555555555555556,"gate_fail_reference":0.5339224855959299,"equal_rate_p":0.32367825211156687},
+    {"id":"G_dominant","pooled":0.5777777777777777,"gate_fail_reference":0.6215393139849806,"equal_rate_p":0.5516720741077729},
+    {"id":"H_no_rewiring","pooled":0.43023255813953487,"gate_fail_reference":0.66804598961127,"equal_rate_p":0.582943110070413},
+    {"id":"H_rewiring","pooled":0.4186046511627907,"gate_fail_reference":0.7121060649940347,"equal_rate_p":0.6896716566225822}
+  ],
+  "conclusion": "None of the ten load-bearing historical small-block R3 classifications independently identifies excess between-block heterogeneity. Historical R3/R4 labels remain immutable protocol facts, but mechanistic claims based on R4-to-R3 or neighbour-R3 transitions require high-precision revalidation.",
+  "required_follow_up": ["Phase E connectivity precision validation", "Phase G partner-architecture precision validation", "Phase C/D frontier precision validation"]
+}
