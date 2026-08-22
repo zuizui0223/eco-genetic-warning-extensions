@@ -1,0 +1,102 @@
+name: R4 high-precision validation Phase K
+
+on:
+  pull_request:
+    branches:
+      - "agent/r4-gate-validity-phase-j"
+    paths:
+      - "src/eco_genetic_warning_extensions/r4_precision_phase_k.py"
+      - "src/eco_genetic_warning_extensions/r4_precision_phase_k_runner.py"
+      - "scripts/run_r4_precision_phase_k_seed.py"
+      - "scripts/aggregate_r4_precision_phase_k.py"
+      - "tests/test_r4_precision_phase_k.py"
+      - "docs/R4_PRECISION_VALIDATION_PHASE_K.md"
+      - ".github/workflows/r4-precision-phase-k.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+          python -m pytest -q tests/test_r4_precision_phase_k.py
+
+  seed-block:
+    needs: contract
+    strategy:
+      fail-fast: false
+      matrix:
+        master_seed: [20290710, 20290711, 20290712, 20290713, 20290714, 20290810, 20290811, 20290812, 20290813, 20290814]
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - name: Run one locked master seed at 100 replicates
+        working-directory: extension
+        run: |
+          mkdir -p artifacts/r4_precision
+          python scripts/run_r4_precision_phase_k_seed.py \
+            --upstream-checkout ../upstream \
+            --master-seed ${{ matrix.master_seed }} \
+            --output artifacts/r4_precision/seed_${{ matrix.master_seed }}.json
+      - name: Upload seed block
+        uses: actions/upload-artifact@v4
+        with:
+          name: phase-k-seed-${{ matrix.master_seed }}
+          path: extension/artifacts/r4_precision/seed_${{ matrix.master_seed }}.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: seed-block
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - name: Download all seed blocks
+        uses: actions/download-artifact@v4
+        with:
+          pattern: phase-k-seed-*
+          path: artifacts/r4_precision/seeds
+          merge-multiple: true
+      - name: Aggregate precision result
+        run: |
+          python scripts/aggregate_r4_precision_phase_k.py \
+            --input-glob 'artifacts/r4_precision/seeds/seed_*.json' \
+            --output artifacts/r4_precision/phase_k_summary.json
+      - name: Upload Phase-K summary
+        uses: actions/upload-artifact@v4
+        with:
+          name: r4-high-precision-phase-k
+          path: artifacts/r4_precision/phase_k_summary.json
+          if-no-files-found: error
+          retention-days: 90
