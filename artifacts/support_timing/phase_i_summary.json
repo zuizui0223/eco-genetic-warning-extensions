@@ -1,0 +1,95 @@
+{
+  "stage": "warning-blind support/timing decomposition Phase I",
+  "calibration_scope": "source_network_and_trait_loss_only",
+  "provenance": {
+    "workflow_run": 32556093071,
+    "artifact_id": 9471533889,
+    "artifact_digest": "sha256:218d476ebc2fc5f140df681f7d36a3500b64872f514e93b249ee78ef46e6e164",
+    "head_sha": "f879a4f4fbbe0a9786536a76d8fce97798cd704c",
+    "parent_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "source_preparation_count": 100,
+  "opening_rule_satisfied": false,
+  "causal_classification": "not_opened",
+  "representation_audit": {
+    "topology_only_null_matches_no_rescue": true,
+    "partial_support_only_matches_coupled_rewiring": true,
+    "full_support_immediate_matches_intact": true
+  },
+  "condition_summaries": [
+    {
+      "network_condition": "intact_control",
+      "baseline_eligible": 90,
+      "trait_loss": 46,
+      "pooled_trait_loss_rate": 0.5111111111111111,
+      "seed_block_trait_loss_rates": [0.5294117647058824, 0.5555555555555556, 0.5263157894736842, 0.4444444444444444, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "partner_loss_no_rescue",
+      "baseline_eligible": 90,
+      "trait_loss": 44,
+      "pooled_trait_loss_rate": 0.4888888888888889,
+      "seed_block_trait_loss_rates": [0.4117647058823529, 0.4444444444444444, 0.5789473684210527, 0.5, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "topology_only_null",
+      "baseline_eligible": 90,
+      "trait_loss": 44,
+      "pooled_trait_loss_rate": 0.4888888888888889,
+      "seed_block_trait_loss_rates": [0.4117647058823529, 0.4444444444444444, 0.5789473684210527, 0.5, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "partial_support_only",
+      "baseline_eligible": 90,
+      "trait_loss": 43,
+      "pooled_trait_loss_rate": 0.4777777777777778,
+      "seed_block_trait_loss_rates": [0.4117647058823529, 0.4444444444444444, 0.5263157894736842, 0.5, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "coupled_rewiring_replay",
+      "baseline_eligible": 90,
+      "trait_loss": 43,
+      "pooled_trait_loss_rate": 0.4777777777777778,
+      "seed_block_trait_loss_rates": [0.4117647058823529, 0.4444444444444444, 0.5263157894736842, 0.5, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "full_support_delayed",
+      "baseline_eligible": 90,
+      "trait_loss": 44,
+      "pooled_trait_loss_rate": 0.4888888888888889,
+      "seed_block_trait_loss_rates": [0.47058823529411764, 0.4444444444444444, 0.5263157894736842, 0.5, 0.5],
+      "regime": "R4_highrep"
+    },
+    {
+      "network_condition": "full_support_immediate",
+      "baseline_eligible": 90,
+      "trait_loss": 46,
+      "pooled_trait_loss_rate": 0.5111111111111111,
+      "seed_block_trait_loss_rates": [0.5294117647058824, 0.5555555555555556, 0.5263157894736842, 0.4444444444444444, 0.5],
+      "regime": "R4_highrep"
+    }
+  ],
+  "paired_representation_checks": {
+    "partner_loss_no_rescue_vs_topology_only_null": {
+      "comparable": 90,
+      "loss_to_no_loss": 0,
+      "no_loss_to_loss": 0
+    },
+    "partial_support_only_vs_coupled_rewiring_replay": {
+      "comparable": 90,
+      "loss_to_no_loss": 0,
+      "no_loss_to_loss": 0
+    },
+    "intact_control_vs_full_support_immediate": {
+      "comparable": 90,
+      "loss_to_no_loss": 0,
+      "no_loss_to_loss": 0
+    }
+  },
+  "bounded_interpretation": "Phase I is not opened because the fresh partner-loss/no-rescue control classified R4_highrep rather than the preregistered R3_highrep. The support-magnitude and recovery-timing contrasts therefore cannot be interpreted causally. The passed representation audits validate the implementation. The result instead demonstrates that the R4/R3 classification of this near-boundary partner-loss condition is not stable across the Phase-H and Phase-I fresh seed ensembles. No seeds, support schedules, recovery windows, or R4 thresholds are changed after this result."
+}
