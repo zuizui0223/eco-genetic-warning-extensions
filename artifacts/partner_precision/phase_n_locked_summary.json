@@ -1,0 +1,15 @@
+{
+  "stage":"partner precision validation Phase N",
+  "provenance":{"workflow_run":32558466157,"artifact_id":9472148035,"artifact_digest":"sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0","head_sha":"199faf10e26c040f8559efe38462ff9f20c9b3b3"},
+  "prefix_audit_passed":true,
+  "decision":"historical_partner_r3_disappears_at_high_precision",
+  "regimes":{"intact_control":"R4_highrep","even_redundant":"R4_highrep","graded_contributions":"R4_highrep","dominant_partner":"R4_highrep"},
+  "pooled_loss":{"intact_control":0.5555555555555556,"even_redundant":0.54421768707483,"graded_contributions":0.564625850340136,"dominant_partner":0.5487528344671202},
+  "equal_rate_p":{"intact_control":0.11652006953072078,"even_redundant":0.4880660793236201,"graded_contributions":0.26344381758667657,"dominant_partner":0.12085400673631179},
+  "paired_vs_intact":{
+    "even_redundant":{"comparable":441,"loss_to_no_loss":86,"no_loss_to_loss":81,"mcnemar_p":0.757026167183961},
+    "graded_contributions":{"comparable":441,"loss_to_no_loss":75,"no_loss_to_loss":79,"mcnemar_p":0.8090726851888604},
+    "dominant_partner":{"comparable":441,"loss_to_no_loss":67,"no_loss_to_loss":64,"mcnemar_p":0.8613689310511555}
+  },
+  "conclusion":"All three historical Phase-G partner-loss R3 labels disappear at 100-attempt precision. None of the loss architectures changes paired marginal functional-loss probability versus intact. Partner loss does switch many individual stochastic histories in both directions, but the high-precision event-regime class and marginal loss incidence remain comparable. The previous R4-to-R3 warning-estimability/reproducibility claim from Phase G is withdrawn; historical labels remain provenance facts."
+}
