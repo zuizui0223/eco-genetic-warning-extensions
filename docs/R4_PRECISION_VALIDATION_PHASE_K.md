@@ -22,7 +22,7 @@ No new or replacement master seed is allowed.
 For every prepared source, run only:
 
 1. `intact_control` — effective interaction support multiplier `1.0`;
-2. `partner_loss_no_rescue` — the same matched one-primary-partner-loss closure used in Phases H/I, effective support `0.75` throughout deterioration.
+2. `partner_loss_no_rescue` — the **exact Phase-H/Phase-I one-primary-partner-loss closure**. Losing primary partner `replicate_index mod 4` produces one of four trait-match-weighted support multipliers (approximately 0.706, 0.735, 0.765, 0.794). Because partner identity is balanced across each 20-replicate cycle, their mean is exactly 0.75, but the trajectory-level multiplier is not replaced by that mean.
 
 The two conditions use the same prepared source and trajectory seed. Genetic warning/diversity fields are unavailable to the precision decision.
 
@@ -31,6 +31,14 @@ The two conditions use the same prepared source and trajectory seed. Genetic war
 The parent seed derivation is deterministic in `(master_seed, cell_index, replicate_index)`. Increasing the requested replicate count therefore preserves the first 20 derived replicate seeds. Before interpreting the expanded blocks, Phase K requires the first 20 attempted replicates for every master seed and both conditions to reproduce the locked historical eligible/loss counts exactly.
 
 Any prefix mismatch is an implementation/provenance failure and stops interpretation.
+
+### Prefix-detected implementation correction
+
+The first Phase-K execution failed this audit. Diagnosis showed that the runner had simplified the historical partner-loss closure to a constant support multiplier `0.75`. That was not the Phase-H/Phase-I condition: `0.75` is only the balanced mean of four replicate-specific trait-match-weighted post-loss multipliers.
+
+The correction restores the exact historical `support_multiplier(post_loss_edges(replicate_index))` closure. **No scientific design choice changed:** the ten master seeds, 100-replicate precision target, partner-loss identity rule, deterioration schedule, historical R4 band and decision rule are unchanged. A new contract test now requires all four historical support levels and their balanced mean, preventing recurrence of this implementation error.
+
+The rejected first execution remains provenance evidence and is not interpreted scientifically.
 
 ## Precision target
 
@@ -71,4 +79,4 @@ If both converge to R3, the Phase-I R4 pass was finite-sample unstable instead.
 
 ## Stop rule
 
-Run all ten locked master seeds once at 100 attempted replicates per block. Do not add replacement seeds, alter the historical `[0.30,0.70]` band, or increase the replicate count again merely to obtain agreement.
+After the prefix-detected implementation correction, run all ten locked master seeds once at 100 attempted replicates per block. Do not add replacement seeds, alter the historical `[0.30,0.70]` band, or increase the replicate count again merely to obtain agreement.
