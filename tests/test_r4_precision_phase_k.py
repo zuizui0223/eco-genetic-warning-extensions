@@ -1,3 +1,6 @@
+import pytest
+
+from eco_genetic_warning_extensions.explicit_rewiring_phase_h import post_loss_edges, support_multiplier
 from eco_genetic_warning_extensions.r4_precision_phase_k import (
     PHASE_H_PREFIX_LOSS,
     PHASE_I_PREFIX_LOSS,
@@ -7,6 +10,7 @@ from eco_genetic_warning_extensions.r4_precision_phase_k import (
     phase_k_manifest,
     phase_k_seed_families,
 )
+from eco_genetic_warning_extensions.r4_precision_phase_k_runner import _support_schedule
 
 
 def test_phase_k_uses_all_conflicting_historical_master_seeds() -> None:
@@ -32,6 +36,24 @@ def test_locked_prefix_counts_are_exposed_for_both_families() -> None:
         assert expected_prefix(seed, "partner_loss_no_rescue") == counts
 
 
+def test_phase_k_replays_exact_historical_partner_loss_support_not_constant_mean() -> None:
+    levels = []
+    for replicate in range(4):
+        expected = support_multiplier(post_loss_edges(replicate))
+        schedule = _support_schedule("partner_loss_no_rescue", replicate, 120)
+        assert len(set(schedule)) == 1
+        assert schedule[0] == pytest.approx(expected)
+        levels.append(expected)
+    assert len({round(value, 12) for value in levels}) == 4
+    assert sum(levels) / len(levels) == pytest.approx(0.75)
+    assert any(abs(value - 0.75) > 1e-3 for value in levels)
+
+
+def test_intact_support_is_exactly_one() -> None:
+    for replicate in range(4):
+        assert set(_support_schedule("intact_control", replicate, 120)) == {1.0}
+
+
 def test_phase_k_is_warning_blind_and_only_runs_two_conditions() -> None:
     manifest = phase_k_manifest()
     assert manifest["blinding_scope"] == "source_network_and_trait_loss_only"
@@ -39,3 +61,4 @@ def test_phase_k_is_warning_blind_and_only_runs_two_conditions() -> None:
     assert manifest["paired_conditions"] is True
     assert manifest["trajectory_count"] == 2000
     assert manifest["prepared_source_count"] == 1000
+    assert "replicate-specific" in manifest["partner_loss_support_closure"]
