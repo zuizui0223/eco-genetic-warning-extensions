@@ -37,7 +37,7 @@ def test_readme_reports_closed_condition_first_state() -> None:
     assert "pooled loss is `.499/.573/.598`" in readme
     assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in lower
     assert "partner loss is a negative population-level result" in lower
-    assert "portability is bounded" in lower
+    assert "warning remains conditional and portability bounded" in lower
     assert "active missing condition" not in lower
 
 
