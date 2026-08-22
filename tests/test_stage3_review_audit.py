@@ -75,21 +75,22 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
         "portability across calibrated eco-genetic domains",
         "0.540",
         "0.335",
-        "conditional positive lead-time medians",
-        "all six direct timing-difference intervals included zero",
+        "valid-pair availability",
+        "all six horizon-normalised direct bootstrap contrasts included zero",
         "the domains also differ in ecological parameters and deterioration schedules",
         "not a single-factor effect of transition direction",
-        "full-denominator event incidence and warning availability are treated as more primary",
+        "protocol 003 attempted 100 fresh trajectories",
     )
     for phrase in required:
         assert phrase in lower or phrase in text
 
 
-def test_publication_metadata_uses_one_conditional_timing_concept() -> None:
+def test_publication_metadata_preserves_conditional_timing_as_secondary() -> None:
     captions = (ROOT / "manuscript/figure_captions.md").read_text(encoding="utf-8").lower()
     allocation = (ROOT / "manuscript/display_allocation.md").read_text(encoding="utf-8").lower()
     manuscript = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8").lower()
-    assert "conditional positive lead-time" in manuscript
     assert "conditional positive lead-time" in allocation
     assert "positive warning lead time" in captions or "positive lead time" in captions
+    assert "valid-pair availability" in manuscript
+    assert "horizon-normalised direct bootstrap contrasts" in manuscript
     assert "conditional uncertainty" not in manuscript

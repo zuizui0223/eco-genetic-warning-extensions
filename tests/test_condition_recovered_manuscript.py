@@ -50,7 +50,7 @@ def test_condition_recovered_manuscript_retains_evidence_and_new_interpretation_
     text = MAIN.read_text(encoding="utf-8")
     lower = text.lower()
     assert "all 15 coarse coordinates remain historically `no_domain_selected`" in text
-    assert "the coarse result was a placement boundary rather than structural impossibility" in text
+    assert "the coarse result was a placement boundary rather than structural impossibility" in lower
     assert "historical r3 is described as a mixed-block screen failure" in lower
     assert "not demographic migration" in lower
     assert "not partner richness, connectance, pollinator diversity or network dimensionality" in lower

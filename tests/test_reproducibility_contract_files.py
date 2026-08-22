@@ -33,9 +33,10 @@ def test_readme_reports_closed_condition_first_state() -> None:
     assert "warning is a downstream conditional outcome" in lower
     assert "2,269/3,375" in readme
     assert "phase f is closed" in lower
-    assert "77/100" not in readme  # README reports rates, not a second detailed ledger
-    assert "0.77, 0.94 and 0.87" in readme
-    assert "aggregate interaction support did not break r4" in lower
+    assert "historical r3 is not automatically" in lower
+    assert "pooled loss is `.499/.573/.598`" in readme
+    assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in lower
+    assert "partner loss is a negative population-level result" in lower
     assert "portability is bounded" in lower
     assert "active missing condition" not in lower
 
@@ -50,6 +51,8 @@ def test_submission_bundle_adds_both_packages_and_condition_evidence() -> None:
     assert "no source archive found" in assembler
     assert "artifacts/interaction_support/phase_f_summary.json" in assembler
     assert "interaction_support_phase_f_summary.json" in replacer
+    assert "high_precision_condition_map.json" in replacer
+    assert "partner_phase_g_summary.json" in replacer
     assert "--upstream upstream" in workflow
     assert "software_dist/parent" in workflow
     assert "software_dist/extension" in workflow
@@ -105,17 +108,19 @@ def test_locked_publication_inputs_materialize_from_committed_bytes(tmp_path: Pa
 
 def test_reproducibility_guide_retains_current_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
+    lower = guide.lower()
     for statement in (
         "parent trajectories and extension trajectories are separate evidence",
         "15/15 `no_domain_selected`",
-        "prospective high-rep refinement later recovered a narrow R4 condition",
-        "Phase E `migration_rate` is allele-frequency mixing",
-        "Phase F `interaction kappa` is aggregate positive-feedback/effective interaction support",
-        "all three Phase-F kappa levels retained R4",
-        "Stage III therefore tests bounded portability across calibrated eco-genetic domains",
-        "finite Type S results",
+        "historical r1–r4 screen is a calibration device, not a latent biological classification",
+        "recurrent turnover: pooled loss declines",
+        "only `m=.10` shows detectable high-precision between-block heterogeneity",
+        "all three predeclared `kappa=3.0/4.5/6.0` remain intermediate",
+        "reduced-form partner loss",
+        "protocol 003 tests bounded portability across non-matched calibrated domains",
+        "finite type s results",
     ):
-        assert statement in guide
+        assert statement in lower
 
 
 def test_committed_phase_f_summary_matches_reproducibility_claim() -> None:

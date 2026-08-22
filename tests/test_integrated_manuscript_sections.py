@@ -13,7 +13,8 @@ def test_main_manuscript_states_gap_and_identification_boundary() -> None:
     lower = text.lower()
     for token in (
         "functional-trait loss",
-        "warning estimability",
+        "warning performance",
+        "incidence frontier",
         "no_domain_selected",
         "not a single-factor effect of transition direction",
         "eco-genetic",
