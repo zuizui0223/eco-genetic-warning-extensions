@@ -1,0 +1,12 @@
+{
+  "stage":"warning-blind connectivity precision validation Phase M",
+  "provenance":{"workflow_run":32558147960,"artifact_id":9472067167,"artifact_digest":"sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6","head_sha":"ddb4d208d7524eeae578b93c65b67ceee1d30b7d"},
+  "prefix_audit_passed":true,
+  "decision":"historical_r3_persists_at_high_precision_only_at_m_0.10",
+  "regimes":{"0.000":"R4_highrep","0.025":"R4_highrep","0.050":"R4_highrep","0.100":"R3_highrep","0.200":"R4_highrep"},
+  "pooled_loss":{"0.000":0.5592841163310962,"0.025":0.5480984340044742,"0.050":0.5637583892617449,"0.100":0.5570469798657718,"0.200":0.5413870246085011},
+  "equal_rate_p":{"0.000":0.7096426551674799,"0.025":0.7790959269575507,"0.050":0.7019970834831539,"0.100":0.020549135503541822,"0.200":0.9234738516885075},
+  "m_0.10_blocks":[[45,88],[48,89],[66,93],[42,86],[48,91]],
+  "paired_mcnemar_p":{"0.025":0.542384011856484,"0.050":0.9006532462520331,"0.100":1.0,"0.200":0.5455343664798731},
+  "conclusion":"The historical monotone connectivity interpretation is rejected. At high precision m=0.20 returns to R4 and shows no excess block heterogeneity. m=0.10 remains R3 and shows detectable between-block rate heterogeneity, driven by one 66/93=0.710 block, while pooled loss and paired marginal loss probability remain essentially unchanged. Allele-frequency mixing can therefore alter stochastic block dependence at a specific tested level, but is not a monotone rescue/collapse axis and does not show a directional marginal-risk effect across the tested levels."
+}
