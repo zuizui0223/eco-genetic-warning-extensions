@@ -31,7 +31,7 @@ def phase_n_manifest() -> dict[str,object]:
         "scientific_scope":"high_precision_partner_loss_architecture_condition_map",
         "blinding_scope":"source_and_trait_loss_only",
         "master_seeds":list(PHASE_G_MASTER_SEEDS),
-        "seed_selection":"all five locked Phase-G master seeds; no replacement or outcome-based selection",
+        "seed_selection":"all five locked Phase-G master seeds; no replacement seeds and no outcome-based selection",
         "architectures":[condition.name for condition in conditions],
         "replicates_per_seed":PHASE_N_REPLICATES_PER_SEED,
         "prefix_replicates":PHASE_N_PREFIX_REPLICATES,
