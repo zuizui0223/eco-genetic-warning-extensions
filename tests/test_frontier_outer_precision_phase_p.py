@@ -12,8 +12,8 @@ def test_phase_p_reuses_locked_phase_c_design():
 
 
 def test_phase_p_prefix_counts_lock_phase_c():
-    assert expected_prefix(20290320,.35)==(19,11); assert expected_prefix(20290320,.40)==(20,6)
-    assert expected_prefix(20290321,.40)==(15,6); assert expected_prefix(20290324,.35)==(19,7); assert expected_prefix(20290324,.40)==(19,5)
+    assert expected_prefix(20290210,.35)==(19,11); assert expected_prefix(20290210,.40)==(20,6)
+    assert expected_prefix(20290211,.40)==(15,6); assert expected_prefix(20290214,.35)==(19,7); assert expected_prefix(20290214,.40)==(19,5)
 
 
 def test_phase_p_preserves_gate_and_scope():
