@@ -1,0 +1,75 @@
+{
+  "aggregate_interaction_support": {
+    "artifact": 9472941879,
+    "conditions": [
+      {
+        "equal_rate_p": 0.06296936769732636,
+        "kappa": 3.0,
+        "pooled_loss": 0.49877750611246946,
+        "screen": "R4_highrep"
+      },
+      {
+        "equal_rate_p": 0.6231318435808466,
+        "kappa": 4.5,
+        "pooled_loss": 0.5726681127982647,
+        "screen": "R4_highrep"
+      },
+      {
+        "equal_rate_p": 0.5432267941702302,
+        "kappa": 6.0,
+        "pooled_loss": 0.5977777777777777,
+        "screen": "R4_highrep"
+      }
+    ],
+    "conclusion": "bounded_high_precision_robustness_across_three_predeclared_scalar_feedback_levels",
+    "digest": "sha256:7ccaf8efd253499f047de2a40a35eaab6007292005814fc2f9539b66891d3df7",
+    "run": 32559058069
+  },
+  "connectivity": {
+    "artifact": 9472067167,
+    "conditions": [
+      {"equal_rate_p": 0.7096426551674799, "m": 0.0, "pooled_loss": 0.5592841163310962, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.7790959269575507, "m": 0.025, "mcnemar_p": 0.542384011856484, "pooled_loss": 0.5480984340044742, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.7019970834831539, "m": 0.05, "mcnemar_p": 0.9006532462520331, "pooled_loss": 0.5637583892617449, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.020549135503541822, "m": 0.1, "mcnemar_p": 1.0, "pooled_loss": 0.5570469798657718, "screen": "R3_highrep"},
+      {"equal_rate_p": 0.9234738516885075, "m": 0.2, "mcnemar_p": 0.5455343664798731, "pooled_loss": 0.5413870246085011, "screen": "R4_highrep"}
+    ],
+    "conclusion": "non_monotone_block_heterogeneity_at_m_0.10_without_directional_marginal_risk_effect",
+    "digest": "sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6",
+    "run": 32558147960
+  },
+  "finite_sample_audit": {
+    "phase_k": {"artifact": 9471883061, "decision": "phase_h_and_phase_i_exact_seed_families_both_converge_R4_at_100_attempts", "run": 32557289628},
+    "phase_l": {"artifact": 9471949092, "cases_with_detectable_excess_heterogeneity": 0, "headline_R3_cases_audited": 10, "run": 32557903970}
+  },
+  "interpretation_rule": {
+    "R3": "mixed-block screen failure; not biological heterogeneity without independent high-precision evidence",
+    "R4": "all observed blocks inside [0.30,0.70]; not proof of warning success or exchangeability",
+    "final_estimands": ["pooled_loss_incidence", "between_block_equal_rate_heterogeneity", "paired_trajectory_identity", "downstream_warning_performance"],
+    "historical_R1_R4": "immutable preregistered screen labels"
+  },
+  "recurrent_turnover": {
+    "conclusion": "asymmetric_high_to_low_loss_incidence_frontier; no detected excess block heterogeneity at tested high-precision frontier conditions",
+    "conditions": [
+      {"equal_rate_p": 0.2948182344020262, "p_star": 0.325, "pooled_loss": 0.6823266219239373, "screen": "R3_highrep"},
+      {"equal_rate_p_phase_c": 0.25235199374458883, "equal_rate_p_phase_d": 0.3704867890360789, "p_star": 0.35, "pooled_loss_phase_c_family": 0.5381263616557734, "pooled_loss_phase_d_family": 0.546485260770975, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.6934252918131607, "p_star": 0.375, "pooled_loss": 0.4074074074074074, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.1508355744652627, "p_star": 0.4, "pooled_loss": 0.2725274725274725, "screen": "R3_highrep"}
+    ],
+    "phase_o": {"artifact": 9472838181, "digest": "sha256:4b39d7df5d60b08bef0f78eb59524510c5549bae9199064f5a9841164db9a610", "run": 32558742101},
+    "phase_p": {"aggregation": "committed Phase-P deterministic aggregate logic applied to all five completed seed artifacts", "scientific_run": 32562175464, "seed_artifacts": [9473209731, 9473180880, 9473211484, 9473212261, 9473211026]}
+  },
+  "reduced_form_partner_loss": {
+    "artifact": 9472148035,
+    "conditions": [
+      {"condition": "intact", "equal_rate_p": 0.11652006953072078, "pooled_loss": 0.5555555555555556, "screen": "R4_highrep"},
+      {"condition": "even_loss", "equal_rate_p": 0.4880660793236201, "mcnemar_p": 0.757026167183961, "pooled_loss": 0.54421768707483, "screen": "R4_highrep"},
+      {"condition": "graded_loss", "equal_rate_p": 0.26344381758667657, "mcnemar_p": 0.8090726851888604, "pooled_loss": 0.564625850340136, "screen": "R4_highrep"},
+      {"condition": "dominant_loss", "equal_rate_p": 0.12085400673631179, "mcnemar_p": 0.8613689310511555, "pooled_loss": 0.5487528344671202, "screen": "R4_highrep"}
+    ],
+    "conclusion": "trajectory_identity_changes_without_detected_marginal_incidence_or_block_heterogeneity_effect",
+    "digest": "sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0",
+    "run": 32558466157
+  },
+  "stage": "high_precision_condition_map_2026-08-22"
+}

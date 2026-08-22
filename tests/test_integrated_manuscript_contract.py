@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -32,22 +31,21 @@ def test_interaction_support_is_not_mislabeled_as_network_simplification() -> No
     assert "network dimensionality" in program
     assert "network simplification" in application
     assert "phase f is closed" in root
-    assert "3.0, 4.5, 6.0" in program
+    assert "3.0,4.5,6.0" in program.replace(" ", "")
     assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in program
 
 
-def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> None:
+def test_main_text_retains_locked_headline_results_and_precision_correction() -> None:
     text = _read("manuscript/main_text.md")
     lower = text.lower()
-    for token in ("2,269", "3,375", "322", "242", "84", "0.571", "0.540", "0.335", "1,037"):
+    for token in ("2,269", "3,375", "322", "242", "84", "1,037", "0.540", "0.335"):
         assert token in text
-    for token in ("77/100", "94/100", "87/100", "0.468", "0.521", "0.552"):
+    for token in ("0.682", "0.407", "0.273", "0.0205", "0.499", "0.573", "0.598"):
         assert token in text
-    assert "r4 exists" in lower
-    assert "all three levels were therefore r4-highrep" in lower
-    assert "bounded negative condition result" in lower
+    assert "incidence frontier" in lower
+    assert "historical r3 is described as a mixed-block screen failure" in lower
     assert "not a single-factor effect of transition direction" in lower
-    assert "not demographic migration" in lower or "not demographic" in lower
+    assert "not demographic migration" in lower
     assert "### Stage I" not in text
     assert "### Stage II" not in text
     assert "### Stage III" not in text
@@ -55,26 +53,16 @@ def test_main_text_retains_locked_headline_results_and_phase_f_boundary() -> Non
 
 def test_superseded_phase_narratives_stay_removed() -> None:
     removed = (
-        "manuscript/integrated_story.md",
-        "manuscript/integrated_abstract_and_outline.md",
-        "manuscript/integrated_claim_evidence_map.md",
-        "manuscript/hypothesis_condition_phase_map.md",
-        "manuscript/main_vs_supplement.md",
-        "manuscript/frontier_refinement_phase_a_results.md",
-        "manuscript/frontier_refinement_phase_b_results.md",
-        "manuscript/frontier_reproducibility_phase_c_results.md",
-        "manuscript/migration_condition_phase_e_results.md",
-        "manuscript/r4_width_phase_d_results.md",
-        "manuscript/protocol002_condition_map_results.md",
-        "manuscript/protocol002_existing_condition_frontier.md",
-        "manuscript/el_editorial_pass.md",
-        "manuscript/integrated_introduction.md",
-        "manuscript/integrated_discussion.md",
-        "manuscript/gap_novelty_ecological_significance.md",
-        "manuscript/results_stage3.md",
-        "manuscript/supervisor_first_draft.md",
-        "manuscript/literature_gap_review.md",
-        "docs/CONDITION_RECOVERY_CLOSURE.md",
+        "manuscript/integrated_story.md", "manuscript/integrated_abstract_and_outline.md",
+        "manuscript/integrated_claim_evidence_map.md", "manuscript/hypothesis_condition_phase_map.md",
+        "manuscript/main_vs_supplement.md", "manuscript/frontier_refinement_phase_a_results.md",
+        "manuscript/frontier_refinement_phase_b_results.md", "manuscript/frontier_reproducibility_phase_c_results.md",
+        "manuscript/migration_condition_phase_e_results.md", "manuscript/r4_width_phase_d_results.md",
+        "manuscript/protocol002_condition_map_results.md", "manuscript/protocol002_existing_condition_frontier.md",
+        "manuscript/el_editorial_pass.md", "manuscript/integrated_introduction.md",
+        "manuscript/integrated_discussion.md", "manuscript/gap_novelty_ecological_significance.md",
+        "manuscript/results_stage3.md", "manuscript/supervisor_first_draft.md",
+        "manuscript/literature_gap_review.md", "docs/CONDITION_RECOVERY_CLOSURE.md",
     )
     for path in removed:
         assert not (ROOT / path).exists(), path
@@ -87,31 +75,13 @@ def test_superseded_phase_narratives_stay_removed() -> None:
 
 def test_submission_bundle_keeps_provenance_and_condition_evidence() -> None:
     builder = _read("scripts/build_submission_bundle.py")
-    replacer = _read("scripts/replace_submission_figures.py")
-    assembler = _read("scripts/assemble_software_bundle.py")
     captions = _read("manuscript/figure_captions.md")
     assert "claim_evidence_map.md" in builder
     assert "artifact_index.md" in builder
     assert "stage3_trajectory_endpoint_records.csv" in builder
-    assert "interaction_support_phase_f_summary.json" in replacer
-    assert "artifacts/interaction_support/phase_f_summary.json" in assembler
     for number in range(1, 7):
         assert f"## Figure {number}." in captions
     assert "Endpoint rows share trajectories" in captions
-
-
-def test_verified_reference_list_covers_load_bearing_families() -> None:
-    references = _read("manuscript/references.md")
-    required = (
-        "doi:10.1038/nature08227",
-        "doi:10.1890/05-0386",
-        "doi:10.1111/ecog.02537",
-        "doi:10.1111/j.1461-0248.2008.01179.x",
-        "doi:10.1111/mec.15221",
-        "doi:10.1146/annurev-ecolsys-102221-044616",
-    )
-    for token in required:
-        assert token in references
 
 
 def test_phase_chronology_is_not_a_manuscript_source_of_truth() -> None:

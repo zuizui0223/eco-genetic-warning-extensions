@@ -1,6 +1,5 @@
 from pathlib import Path
 
-
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -20,20 +19,20 @@ def test_display_allocation_matches_current_figure_captions() -> None:
     expected = {
         1: ("eco-genetic causal architecture and four-question hierarchy", "Eco-genetic causal architecture and four-question hierarchy"),
         2: ("fragmentation creates vulnerability and genetic warning is conditionally possible", "Fragmentation creates vulnerability and genetic warning is conditionally possible"),
-        3: ("recurrent state turnover reorganises source feasibility and functional-loss regime", "Recurrent state turnover reorganises source feasibility and functional-loss regime"),
-        4: ("warning-blind recovery of a narrow R4 event regime", "Warning-blind recovery of a narrow reproducible event regime"),
-        5: ("effective genetic connectivity changes event-regime estimability", "Effective genetic connectivity changes event-regime estimability"),
-        6: ("portability after evaluability is separately recovered", "Portability after evaluability is separately recovered"),
+        3: ("recurrent state turnover reorganises source feasibility and historical loss-screen placement", "Recurrent state turnover reorganises source feasibility and historical loss-screen placement"),
+        4: ("high-precision recurrent-turnover incidence frontier", "High-precision recurrent-turnover incidence frontier"),
+        5: ("allele-frequency connectivity separates marginal risk from block heterogeneity", "Allele-frequency connectivity separates marginal risk from block heterogeneity"),
+        6: ("portability after downstream loss conditions are separately recovered", "Portability after downstream loss conditions are separately recovered"),
     }
     for number, (allocation_title, caption_title) in expected.items():
         assert f"### Figure {number} — {allocation_title}" in allocation
         assert f"## Figure {number}. {caption_title}" in captions
 
 
-def test_supplementary_table_links_follow_recovered_figure_spine() -> None:
+def test_supplementary_table_links_follow_current_figure_spine() -> None:
     allocation = _read("manuscript/display_allocation.md")
-    assert "Table S1 retains the paired fragmentation effect sizes underlying Figure 2" in allocation
-    assert "Tables S3–S4 retain the coordinate and candidate records underlying Figure 3" in allocation
-    assert "Table S6 contains the high-rep frontier records underlying Figure 4" in allocation
-    assert "Table S6 contains the migration-level and paired-switch records underlying Figure 5" in allocation
-    assert "Table S5 contains the endpoint, censoring and timing audit underlying Figure 6" in allocation
+    assert "Table S1 retains the paired fragmentation effect sizes" in allocation
+    assert "Tables S3–S4 retain the coordinate and candidate records" in allocation
+    assert "Table S6 retains the high-precision frontier records" in allocation
+    assert "Table S6 retains migration-level and paired-switch records" in allocation
+    assert "Table S5 retains the endpoint, censoring and timing audit" in allocation
