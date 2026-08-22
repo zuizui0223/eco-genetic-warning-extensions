@@ -1,0 +1,16 @@
+{
+  "stage": "frontier precision validation Phase O",
+  "decision": "at_least_one_immediate_neighbour_outside_r4_at_high_precision",
+  "prefix_audit_passed": true,
+  "run": {
+    "workflow_run_id": 32558742101,
+    "artifact_id": 9472838181,
+    "artifact_digest": "sha256:4b39d7df5d60b08bef0f78eb59524510c5549bae9199064f5a9841164db9a610"
+  },
+  "p_star_summaries": [
+    {"p_star":0.325,"pooled_loss_rate":0.6823266219239373,"regime":"R3_highrep","pearson_equal_rate_p_value":0.2948182344020262,"blocks":[[88,58],[90,55],[96,66],[85,59],[88,67]]},
+    {"p_star":0.35,"pooled_loss_rate":0.546485260770975,"regime":"R4_highrep","pearson_equal_rate_p_value":0.3704867890360789,"blocks":[[85,51],[88,53],[89,42],[91,48],[88,47]]},
+    {"p_star":0.375,"pooled_loss_rate":0.4074074074074074,"regime":"R4_highrep","pearson_equal_rate_p_value":0.6934252918131607,"blocks":[[87,32],[87,39],[91,35],[84,38],[83,32]]}
+  ],
+  "interpretation": "The historical two-sided narrow-R4 interpretation is not supported. The lower immediate neighbour p_star=0.325 remains outside the historical all-block R4 screen because loss incidence is high, whereas the upper neighbour p_star=0.375 is R4 at high precision. None of the three conditions shows detectable excess between-block heterogeneity."
+}
