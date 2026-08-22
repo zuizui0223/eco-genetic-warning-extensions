@@ -84,6 +84,10 @@ def phase_k_manifest() -> dict[str, object]:
         "prefix_replicates": PHASE_K_PREFIX_REPLICATES,
         "minimum_baseline_eligible_per_seed": PHASE_K_MIN_BASELINE_ELIGIBLE_PER_SEED,
         "conditions": ["intact_control", "partner_loss_no_rescue"],
+        "partner_loss_support_closure": (
+            "exact Phase-H/Phase-I replicate-specific trait-match-weighted support after loss of primary partner "
+            "replicate_index mod 4; four balanced support levels average to 0.75 per 20-replicate cycle"
+        ),
         "prepared_source_count": len(all_seeds) * PHASE_K_REPLICATES_PER_SEED,
         "trajectory_count": len(all_seeds) * PHASE_K_REPLICATES_PER_SEED * 2,
         "paired_conditions": True,
@@ -104,8 +108,13 @@ def phase_k_manifest() -> dict[str, object]:
             "Phase K distinguishes finite within-block sampling instability from persistent between-master-seed-family differences. "
             "It does not revise historical labels and does not test genetic-warning performance."
         ),
+        "implementation_amendment": (
+            "The first Phase-K execution incorrectly replaced the replicate-specific historical partner-loss support with a constant "
+            "0.75 multiplier. The preregistered prefix audit rejected that execution. The corrected runner restores the exact "
+            "Phase-H/Phase-I support closure without changing seeds, biological conditions, replicate target, or R4 rule."
+        ),
         "stop_rule": (
-            "Run the ten locked master seeds once at 100 attempts per block. Do not add replacement seeds, alter the 0.30-0.70 band, "
-            "or increase replicates again merely to obtain agreement."
+            "Run the ten locked master seeds once at 100 attempts per block after the prefix-detected implementation correction. "
+            "Do not add replacement seeds, alter the 0.30-0.70 band, or increase replicates again merely to obtain agreement."
         ),
     }
