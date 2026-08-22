@@ -6,6 +6,7 @@ on:
     paths:
       - 'src/eco_genetic_warning_extensions/publication_figures.py'
       - 'src/eco_genetic_warning_extensions/revised_publication_figures.py'
+      - 'src/eco_genetic_warning_extensions/high_precision_publication_figures.py'
       - 'src/eco_genetic_warning_extensions/condition_figure1.py'
       - 'src/eco_genetic_warning_extensions/stage3_review_audit.py'
       - 'src/eco_genetic_warning_extensions/stage3_trajectory_records.py'
@@ -13,6 +14,7 @@ on:
       - 'scripts/build_revised_publication_figures.py'
       - 'tests/test_publication_figures.py'
       - 'tests/test_revised_publication_figures.py'
+      - 'tests/test_high_precision_publication_figures.py'
       - 'tests/test_stage3_review_audit.py'
       - 'tests/test_stage3_trajectory_records.py'
       - 'manuscript/tables/inherited_h2_warning_summary.csv'
@@ -23,6 +25,7 @@ on:
       - 'artifacts/frontier_refinement/phase_c_summary.json'
       - 'artifacts/frontier_refinement/phase_d_summary.json'
       - 'artifacts/migration_condition/phase_e_summary.json'
+      - 'artifacts/high_precision_condition_map.json'
       - '.github/workflows/publication-figures.yml'
   workflow_dispatch:
 
@@ -45,6 +48,7 @@ jobs:
           python -m pytest -q \
             tests/test_publication_figures.py \
             tests/test_revised_publication_figures.py \
+            tests/test_high_precision_publication_figures.py \
             tests/test_stage3_review_audit.py \
             tests/test_stage3_trajectory_records.py
       - name: Download all Stage I batch artifacts
@@ -85,6 +89,8 @@ jobs:
             --repo-root . \
             --output-dir manuscript/generated/figures
           test "$(find manuscript/generated/figures -name '*.svg' | wc -l)" -eq 6
+          grep -q 'High-precision recurrent-turnover incidence frontier' manuscript/generated/figures/figure4_r4_recovery.svg
+          grep -q 'separates marginal risk from block heterogeneity' manuscript/generated/figures/figure5_connectivity_estimability.svg
           rm -f \
             manuscript/generated/figure2_stage1_source_feasibility.svg \
             manuscript/generated/figure4_stage3_cumulative_incidence.svg \

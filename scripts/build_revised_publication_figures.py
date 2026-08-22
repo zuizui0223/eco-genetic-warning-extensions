@@ -4,6 +4,7 @@ import argparse
 from pathlib import Path
 
 from eco_genetic_warning_extensions.condition_figure1 import figure1_estimability_svg
+from eco_genetic_warning_extensions.high_precision_publication_figures import write_high_precision_condition_figures
 from eco_genetic_warning_extensions.revised_publication_figures import write_revised_main_figures
 
 
@@ -34,6 +35,13 @@ def main() -> int:
         stage3_summary_csv=root / "manuscript/tables/stage3_review_summary.csv",
         stage3_audit_json=args.stage3_audit,
         output_dir=out,
+    )
+    # The legacy writer above still produces the historical Figure 4/5 files for
+    # provenance compatibility. Overwrite only those two filenames with the
+    # consolidated precision-validated C2 evidence used by the current manuscript.
+    write_high_precision_condition_figures(
+        root / "artifacts/high_precision_condition_map.json",
+        out,
     )
     return 0
 

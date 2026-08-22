@@ -2,24 +2,9 @@
   "aggregate_interaction_support": {
     "artifact": 9472941879,
     "conditions": [
-      {
-        "equal_rate_p": 0.06296936769732636,
-        "kappa": 3.0,
-        "pooled_loss": 0.49877750611246946,
-        "screen": "R4_highrep"
-      },
-      {
-        "equal_rate_p": 0.6231318435808466,
-        "kappa": 4.5,
-        "pooled_loss": 0.5726681127982647,
-        "screen": "R4_highrep"
-      },
-      {
-        "equal_rate_p": 0.5432267941702302,
-        "kappa": 6.0,
-        "pooled_loss": 0.5977777777777777,
-        "screen": "R4_highrep"
-      }
+      {"equal_rate_p": 0.06296936769732636, "kappa": 3.0, "pooled_loss": 0.49877750611246946, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.6231318435808466, "kappa": 4.5, "pooled_loss": 0.5726681127982647, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.5432267941702302, "kappa": 6.0, "pooled_loss": 0.5977777777777777, "screen": "R4_highrep"}
     ],
     "conclusion": "bounded_high_precision_robustness_across_three_predeclared_scalar_feedback_levels",
     "digest": "sha256:7ccaf8efd253499f047de2a40a35eaab6007292005814fc2f9539b66891d3df7",
@@ -29,10 +14,10 @@
     "artifact": 9472067167,
     "conditions": [
       {"equal_rate_p": 0.7096426551674799, "m": 0.0, "pooled_loss": 0.5592841163310962, "screen": "R4_highrep"},
-      {"equal_rate_p": 0.7790959269575507, "m": 0.025, "mcnemar_p": 0.542384011856484, "pooled_loss": 0.5480984340044742, "screen": "R4_highrep"},
-      {"equal_rate_p": 0.7019970834831539, "m": 0.05, "mcnemar_p": 0.9006532462520331, "pooled_loss": 0.5637583892617449, "screen": "R4_highrep"},
-      {"equal_rate_p": 0.020549135503541822, "m": 0.1, "mcnemar_p": 1.0, "pooled_loss": 0.5570469798657718, "screen": "R3_highrep"},
-      {"equal_rate_p": 0.9234738516885075, "m": 0.2, "mcnemar_p": 0.5455343664798731, "pooled_loss": 0.5413870246085011, "screen": "R4_highrep"}
+      {"equal_rate_p": 0.7790959269575507, "loss_to_no_loss": 24, "m": 0.025, "mcnemar_p": 0.542384011856484, "no_loss_to_loss": 19, "pooled_loss": 0.5480984340044742, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.7019970834831539, "loss_to_no_loss": 31, "m": 0.05, "mcnemar_p": 0.9006532462520331, "no_loss_to_loss": 33, "pooled_loss": 0.5637583892617449, "screen": "R4_highrep"},
+      {"equal_rate_p": 0.020549135503541822, "loss_to_no_loss": 50, "m": 0.1, "mcnemar_p": 1.0, "no_loss_to_loss": 49, "pooled_loss": 0.5570469798657718, "screen": "R3_highrep"},
+      {"equal_rate_p": 0.9234738516885075, "loss_to_no_loss": 71, "m": 0.2, "mcnemar_p": 0.5455343664798731, "no_loss_to_loss": 63, "pooled_loss": 0.5413870246085011, "screen": "R4_highrep"}
     ],
     "conclusion": "non_monotone_block_heterogeneity_at_m_0.10_without_directional_marginal_risk_effect",
     "digest": "sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6",
