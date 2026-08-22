@@ -39,10 +39,16 @@
       {"equal_rate_p": 0.2948182344020262, "p_star": 0.325, "pooled_loss": 0.6823266219239373, "screen": "R3_highrep"},
       {"equal_rate_p_phase_c": 0.25235199374458883, "equal_rate_p_phase_d": 0.3704867890360789, "p_star": 0.35, "pooled_loss_phase_c_family": 0.5381263616557734, "pooled_loss_phase_d_family": 0.546485260770975, "screen": "R4_highrep"},
       {"equal_rate_p": 0.6934252918131607, "p_star": 0.375, "pooled_loss": 0.4074074074074074, "screen": "R4_highrep"},
-      {"equal_rate_p": 0.1508355744652627, "p_star": 0.4, "pooled_loss": 0.2725274725274725, "screen": "R3_highrep"}
+      {"equal_rate_p": 0.15083557446526266, "p_star": 0.4, "pooled_loss": 0.2725274725274725, "screen": "R3_highrep"}
     ],
     "phase_o": {"artifact": 9472838181, "digest": "sha256:4b39d7df5d60b08bef0f78eb59524510c5549bae9199064f5a9841164db9a610", "run": 32558742101},
-    "phase_p": {"aggregation": "committed Phase-P deterministic aggregate logic applied to all five completed seed artifacts", "scientific_run": 32562175464, "seed_artifacts": [9473209731, 9473180880, 9473211484, 9473212261, 9473211026]}
+    "phase_p": {
+      "artifact": 9473386152,
+      "digest": "sha256:b5863c872d68119227213aa2de61ebabacb834c3d3973a2da905e81639fc6aa0",
+      "official_aggregate_matches_deterministic_replay": true,
+      "scientific_run": 32562175464,
+      "seed_artifacts": [9473209731, 9473180880, 9473211484, 9473212261, 9473211026]
+    }
   },
   "reduced_form_partner_loss": {
     "artifact": 9472148035,

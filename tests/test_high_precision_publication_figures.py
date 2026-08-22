@@ -6,6 +6,7 @@ from eco_genetic_warning_extensions.high_precision_publication_figures import (
     figure5_high_precision_connectivity_svg,
     write_high_precision_condition_figures,
 )
+from eco_genetic_warning_extensions.publication_figure_semantics import relabel_condition_figure_semantics
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -37,3 +38,20 @@ def test_writer_overwrites_legacy_figure4_5_filenames(tmp_path: Path) -> None:
     figure5 = (tmp_path / "figure5_connectivity_estimability.svg").read_text()
     assert "High-precision recurrent-turnover incidence frontier" in figure4
     assert "separates marginal risk from block heterogeneity" in figure5
+
+
+def test_semantic_relabel_removes_old_regime_and_evaluability_titles(tmp_path: Path) -> None:
+    (tmp_path / "figure3_source_loss_regimes.svg").write_text(
+        "Recurrent state turnover reorganises source feasibility and functional-loss regime H heterogeneous=84",
+        encoding="utf-8",
+    )
+    (tmp_path / "figure6_portability.svg").write_text(
+        "Portability after evaluability is separately recovered",
+        encoding="utf-8",
+    )
+    relabel_condition_figure_semantics(tmp_path)
+    f3 = (tmp_path / "figure3_source_loss_regimes.svg").read_text()
+    f6 = (tmp_path / "figure6_portability.svg").read_text()
+    assert "historical loss-screen placement" in f3
+    assert "H mixed-screen=84" in f3
+    assert "downstream loss conditions" in f6

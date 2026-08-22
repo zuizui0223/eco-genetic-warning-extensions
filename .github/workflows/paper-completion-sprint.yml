@@ -3,7 +3,7 @@ name: Paper completion sprint
 on:
   push:
     branches: [main]
-    paths:
+    paths: &paper_paths
       - "README.md"
       - "REPRODUCIBILITY.md"
       - ".gitattributes"
@@ -13,10 +13,13 @@ on:
       - "scripts/build_submission_bundle.py"
       - "scripts/materialize_locked_publication_inputs.py"
       - "scripts/replace_submission_figures.py"
+      - "scripts/build_revised_publication_figures.py"
       - "scripts/assemble_software_bundle.py"
       - "scripts/verify_reproducibility_contract.py"
       - "src/eco_genetic_warning_extensions/publication_figures.py"
       - "src/eco_genetic_warning_extensions/revised_publication_figures.py"
+      - "src/eco_genetic_warning_extensions/high_precision_publication_figures.py"
+      - "src/eco_genetic_warning_extensions/publication_figure_semantics.py"
       - "src/eco_genetic_warning_extensions/condition_figure1.py"
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
@@ -28,35 +31,12 @@ on:
       - "artifacts/frontier_refinement/phase_d_summary.json"
       - "artifacts/migration_condition/phase_e_summary.json"
       - "artifacts/interaction_support/phase_f_summary.json"
+      - "artifacts/partner_redundancy/phase_g_summary.json"
+      - "artifacts/high_precision_condition_map.json"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
-    paths:
-      - "README.md"
-      - "REPRODUCIBILITY.md"
-      - ".gitattributes"
-      - "pyproject.toml"
-      - "manuscript/**"
-      - "reproducibility/**"
-      - "scripts/build_submission_bundle.py"
-      - "scripts/materialize_locked_publication_inputs.py"
-      - "scripts/replace_submission_figures.py"
-      - "scripts/assemble_software_bundle.py"
-      - "scripts/verify_reproducibility_contract.py"
-      - "src/eco_genetic_warning_extensions/publication_figures.py"
-      - "src/eco_genetic_warning_extensions/revised_publication_figures.py"
-      - "src/eco_genetic_warning_extensions/condition_figure1.py"
-      - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
-      - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
-      - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
-      - "artifacts/protocol003/stage3_validation_summary.json"
-      - "artifacts/locked_publication_inputs/**"
-      - "artifacts/frontier_refinement/phase_b_summary.json"
-      - "artifacts/frontier_refinement/phase_c_summary.json"
-      - "artifacts/frontier_refinement/phase_d_summary.json"
-      - "artifacts/migration_condition/phase_e_summary.json"
-      - "artifacts/interaction_support/phase_f_summary.json"
-      - ".github/workflows/paper-completion-sprint.yml"
+    paths: *paper_paths
   workflow_dispatch:
 
 permissions:
@@ -72,58 +52,41 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
       - name: Checkout exact parent scientific commit
         uses: actions/checkout@v4
         with:
           repository: zuizui0223/eco-genetic-criticality
           ref: dd8ee379d0d3518194c767d16402042525bc00dc
           path: upstream
-
       - name: Checkout versioned parent gradient supplement
         uses: actions/checkout@v4
         with:
           repository: zuizui0223/eco-genetic-criticality
           ref: 076ab3e28078cfd7cbe1b67ab544c8d1e9066c54
           path: upstream_gradient
-
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install both packages and reproducibility tooling
         run: |
           python -m pip install --upgrade pip
           python -m pip install -e upstream
           python -m pip install -e '.[dev,reproducibility]'
-
       - name: Verify two-repository scientific lock
         run: python scripts/verify_reproducibility_contract.py --upstream upstream
-
       - name: Materialize and verify locked publication data
         run: |
           python scripts/materialize_locked_publication_inputs.py --output locked
           cd upstream_gradient/artifacts/h3_fragmentation_gradient
           sha256sum -c MANIFEST.sha256
-
       - name: Build both distributions and exact source archives
         run: |
           mkdir -p software_dist/parent software_dist/extension
           python -m build upstream --outdir software_dist/parent
           python -m build . --outdir software_dist/extension
-          git -C upstream archive \
-            --format=tar.gz \
-            --output="$(pwd)/software_dist/parent/eco-genetic-criticality-scientific-dd8ee379.tar.gz" \
-            HEAD
-          git -C upstream_gradient archive \
-            --format=tar.gz \
-            --output="$(pwd)/software_dist/parent/eco-genetic-criticality-postreview-gradient-076ab3e2.tar.gz" \
-            HEAD
-          git archive \
-            --format=tar.gz \
-            --output="software_dist/extension/eco-genetic-warning-extensions-repository-$(git rev-parse --short=8 HEAD).tar.gz" \
-            HEAD
-
+          git -C upstream archive --format=tar.gz --output="$(pwd)/software_dist/parent/eco-genetic-criticality-scientific-dd8ee379.tar.gz" HEAD
+          git -C upstream_gradient archive --format=tar.gz --output="$(pwd)/software_dist/parent/eco-genetic-criticality-postreview-gradient-076ab3e2.tar.gz" HEAD
+          git archive --format=tar.gz --output="software_dist/extension/eco-genetic-warning-extensions-repository-$(git rev-parse --short=8 HEAD).tar.gz" HEAD
       - name: Build manuscript, figure, and table bundle
         run: |
           python scripts/build_submission_bundle.py \
@@ -133,10 +96,7 @@ jobs:
             --h3-gradient-dir upstream_gradient/artifacts/h3_fragmentation_gradient \
             --repo-root . \
             --output submission_bundle
-          python scripts/replace_submission_figures.py \
-            --bundle submission_bundle \
-            --repo-root .
-
+          python scripts/replace_submission_figures.py --bundle submission_bundle --repo-root .
       - name: Add both packages and provenance to bundle
         run: |
           python scripts/assemble_software_bundle.py \
@@ -144,13 +104,12 @@ jobs:
             --extension-root . \
             --upstream upstream \
             --dist-root software_dist
-
       - name: Validate complete package contents
         run: |
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
           test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 2
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 16
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 18
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
@@ -167,22 +126,26 @@ jobs:
           test -f submission_bundle/tables/frontier_phase_c_summary.json
           test -f submission_bundle/tables/frontier_phase_d_summary.json
           test -f submission_bundle/tables/migration_phase_e_summary.json
-          grep -q '2,269' submission_bundle/manuscript/main_text.md
-          grep -q 'R4 exists' submission_bundle/manuscript/main_text.md
-          grep -q '0.571' submission_bundle/manuscript/main_text.md
-          grep -q '0.540' submission_bundle/manuscript/main_text.md
-          grep -q '0.335' submission_bundle/manuscript/main_text.md
-          grep -q '1,037' submission_bundle/manuscript/main_text.md
+          test -f submission_bundle/tables/interaction_support_phase_f_summary.json
+          test -f submission_bundle/tables/partner_phase_g_summary.json
+          test -f submission_bundle/tables/high_precision_condition_map.json
           test -f submission_bundle/tables/stage3_review_audit.json
           test -f submission_bundle/tables/stage3_review_summary.csv
           test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
           test -f submission_bundle/tables/inherited_h3_effect_summary.csv
+          grep -q '2,269' submission_bundle/manuscript/main_text.md
+          grep -q 'incidence frontier' submission_bundle/manuscript/main_text.md
+          grep -q '0.0205' submission_bundle/manuscript/main_text.md
+          grep -q '0.499' submission_bundle/manuscript/main_text.md
+          grep -q '0.540' submission_bundle/manuscript/main_text.md
+          grep -q '0.335' submission_bundle/manuscript/main_text.md
+          grep -q '1,037' submission_bundle/manuscript/main_text.md
           grep -q 'Eco-genetic causal architecture and four-question hierarchy' submission_bundle/figures/figure1_eco_genetic_estimability.svg
           grep -q 'Fragmentation creates vulnerability and genetic warning is conditionally possible' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
-          grep -q 'Recurrent state turnover reorganises source feasibility and functional-loss regime' submission_bundle/figures/figure3_source_loss_regimes.svg
-          grep -q 'Warning-blind recovery of a narrow reproducible event regime' submission_bundle/figures/figure4_r4_recovery.svg
-          grep -q 'Effective genetic connectivity changes event-regime estimability' submission_bundle/figures/figure5_connectivity_estimability.svg
-          grep -q 'Portability after evaluability is separately recovered' submission_bundle/figures/figure6_portability.svg
+          grep -q 'historical loss-screen placement' submission_bundle/figures/figure3_source_loss_regimes.svg
+          grep -q 'High-precision recurrent-turnover incidence frontier' submission_bundle/figures/figure4_r4_recovery.svg
+          grep -q 'separates marginal risk from block heterogeneity' submission_bundle/figures/figure5_connectivity_estimability.svg
+          grep -q 'downstream loss conditions' submission_bundle/figures/figure6_portability.svg
           grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/supplement/figure_s3_stage3_lead_time_normalized.svg
           grep -q 'Fixed-area fragmentation gradient from paired H1-prepared sources' submission_bundle/supplement/figure_s1_fragmentation_gradient.svg
           ! find submission_bundle/figures -type f -name '*lead_time*' | grep -q .
@@ -211,13 +174,29 @@ jobs:
           records=sum(1 for _ in (bundle/'tables/h3_fragmentation_gradient_records.csv').open(encoding='utf-8'))-1
           assert records==9600
 
-          phase_e=json.loads((bundle/'tables/migration_phase_e_summary.json').read_text())
-          regimes=[row['regime'] for row in phase_e['migration_condition_summaries']]
-          assert regimes == ['R4_highrep','R4_highrep','R4_highrep','R3_highrep','R3_highrep']
-          highest_switch=phase_e['paired_loss_status_vs_isolation'][-1]
-          assert highest_switch['loss_to_no_loss'] == 11
-          assert highest_switch['no_loss_to_loss'] == 14
-          assert highest_switch['loss_to_no_loss'] + highest_switch['no_loss_to_loss'] == 25
+          # Historical Phase-E evidence is retained unchanged for provenance.
+          historical_e=json.loads((bundle/'tables/migration_phase_e_summary.json').read_text())
+          assert [row['regime'] for row in historical_e['migration_condition_summaries']] == ['R4_highrep','R4_highrep','R4_highrep','R3_highrep','R3_highrep']
+          highest_historical_switch=historical_e['paired_loss_status_vs_isolation'][-1]
+          assert highest_historical_switch['loss_to_no_loss'] == 11
+          assert highest_historical_switch['no_loss_to_loss'] == 14
+
+          # Current inference is locked by the additive high-precision condition map.
+          hp=json.loads((bundle/'tables/high_precision_condition_map.json').read_text())
+          frontier=hp['recurrent_turnover']['conditions']
+          assert [round(float(row['p_star']),3) for row in frontier] == [0.325,0.35,0.375,0.4]
+          assert abs(float(frontier[0]['pooled_loss'])-0.6823266219239373) < 1e-15
+          assert abs(float(frontier[-1]['pooled_loss'])-0.2725274725274725) < 1e-15
+          assert hp['recurrent_turnover']['phase_p']['artifact'] == 9473386152
+          assert hp['recurrent_turnover']['phase_p']['digest'] == 'sha256:b5863c872d68119227213aa2de61ebabacb834c3d3973a2da905e81639fc6aa0'
+          conn={float(row['m']):row for row in hp['connectivity']['conditions']}
+          assert float(conn[0.10]['equal_rate_p']) < 0.05
+          assert float(conn[0.20]['equal_rate_p']) > 0.05
+          assert conn[0.20]['screen'] == 'R4_highrep'
+          assert conn[0.20]['loss_to_no_loss'] == 71 and conn[0.20]['no_loss_to_loss'] == 63
+          assert all(row['screen']=='R4_highrep' for row in hp['reduced_form_partner_loss']['conditions'])
+          assert all(float(row.get('mcnemar_p',1.0)) > 0.05 for row in hp['reduced_form_partner_loss']['conditions'])
+          assert all(row['screen']=='R4_highrep' for row in hp['aggregate_interaction_support']['conditions'])
 
           for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
@@ -234,8 +213,9 @@ jobs:
           assert 'supplement/figure_s3_stage3_lead_time_normalized.svg' in manifest['files']
           assert 'tables/h3_fragmentation_gradient_records.csv' in manifest['files']
           assert 'tables/migration_phase_e_summary.json' in manifest['files']
+          assert 'tables/partner_phase_g_summary.json' in manifest['files']
+          assert 'tables/high_precision_condition_map.json' in manifest['files']
           PY
-
       - name: Upload submission bundle
         uses: actions/upload-artifact@v4
         with:

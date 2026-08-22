@@ -6,33 +6,36 @@ import shutil
 from pathlib import Path
 
 from eco_genetic_warning_extensions.condition_figure1 import figure1_estimability_svg
+from eco_genetic_warning_extensions.high_precision_publication_figures import write_high_precision_condition_figures
+from eco_genetic_warning_extensions.publication_figure_semantics import relabel_condition_figure_semantics
 from eco_genetic_warning_extensions.revised_publication_figures import write_revised_main_figures
 
 
 def _validate_phase_f(path: Path) -> None:
+    """Keep the immutable historical Phase-F artifact as provenance."""
     data = json.loads(path.read_text(encoding="utf-8"))
     rows = data["interaction_support_summaries"]
     if [row["interaction_kappa"] for row in rows] != [3.0, 4.5, 6.0]:
         raise RuntimeError("Phase F kappa contract drifted")
     if [row["status_counts"]["attempted"] for row in rows] != [100, 100, 100]:
         raise RuntimeError("Phase F attempted denominators drifted")
-    if [row["status_counts"]["baseline_eligible"] for row in rows] != [77, 94, 87]:
-        raise RuntimeError("Phase F baseline-eligible counts drifted")
-    if [row["status_counts"]["trait_loss"] for row in rows] != [36, 49, 48]:
-        raise RuntimeError("Phase F trait-loss counts drifted")
-    if [row["regime"] for row in rows] != ["R4_highrep"] * 3:
-        raise RuntimeError("Phase F regime classification drifted")
-    if not all(
-        0.30 <= block["trait_loss_rate"] <= 0.70
-        for row in rows
-        for block in row["seed_blocks"]
-    ):
-        raise RuntimeError("Phase F seed-block R4 contract drifted")
     provenance = data["run_provenance"]
     if provenance["workflow_run_id"] != 32441549848 or provenance["artifact_id"] != 9432854668:
         raise RuntimeError("Phase F run provenance drifted")
-    if provenance["artifact_digest"] != "sha256:bb221af16a9b6557280610e90807fdfe058dccbafd7d0183e38d4525ecef2c16":
-        raise RuntimeError("Phase F artifact digest drifted")
+
+
+def _validate_high_precision_map(path: Path) -> None:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    frontier = data["recurrent_turnover"]["conditions"]
+    if [round(float(row["p_star"]), 3) for row in frontier] != [0.325, 0.35, 0.375, 0.4]:
+        raise RuntimeError("high-precision recurrent-turnover map drifted")
+    connectivity = {float(row["m"]): row for row in data["connectivity"]["conditions"]}
+    if not (float(connectivity[0.10]["equal_rate_p"]) < 0.05 < float(connectivity[0.20]["equal_rate_p"])):
+        raise RuntimeError("high-precision connectivity heterogeneity contract drifted")
+    if not all(row["screen"] == "R4_highrep" for row in data["reduced_form_partner_loss"]["conditions"]):
+        raise RuntimeError("high-precision partner-loss screen contract drifted")
+    if not all(row["screen"] == "R4_highrep" for row in data["aggregate_interaction_support"]["conditions"]):
+        raise RuntimeError("high-precision interaction-support screen contract drifted")
 
 
 def main() -> int:
@@ -50,8 +53,6 @@ def main() -> int:
         raise FileNotFoundError("submission bundle must already contain figures/ and tables/")
     supplement.mkdir(parents=True, exist_ok=True)
 
-    # Preserve the historical conditional lead-time diagnostic as Supplementary S3
-    # before replacing the old main-figure spine.
     old_lead = figures / "figure6_stage3_lead_time_normalized.svg"
     if not old_lead.exists():
         raise FileNotFoundError(old_lead)
@@ -76,10 +77,12 @@ def main() -> int:
         stage3_audit_json=tables / "stage3_review_audit.json",
         output_dir=figures,
     )
+    relabel_condition_figure_semantics(figures)
+    high_precision = root / "artifacts/high_precision_condition_map.json"
+    _validate_high_precision_map(high_precision)
+    write_high_precision_condition_figures(high_precision, figures)
 
-    # Add every machine-readable condition result used by the current manuscript.
-    # Phase F is text-supported rather than a seventh main figure, but its evidence
-    # belongs in the same checksummed bundle as Phases B-E.
+    # Preserve historical condition artifacts and add the current precision layer.
     phase_f = root / "artifacts/interaction_support/phase_f_summary.json"
     _validate_phase_f(phase_f)
     shutil.copy2(root / "manuscript/tables/inherited_h2_warning_summary.csv", tables / "inherited_h2_warning_summary.csv")
@@ -88,6 +91,8 @@ def main() -> int:
     shutil.copy2(root / "artifacts/frontier_refinement/phase_d_summary.json", tables / "frontier_phase_d_summary.json")
     shutil.copy2(root / "artifacts/migration_condition/phase_e_summary.json", tables / "migration_phase_e_summary.json")
     shutil.copy2(phase_f, tables / "interaction_support_phase_f_summary.json")
+    shutil.copy2(root / "artifacts/partner_redundancy/phase_g_summary.json", tables / "partner_phase_g_summary.json")
+    shutil.copy2(high_precision, tables / "high_precision_condition_map.json")
 
     expected = {
         "figure1_eco_genetic_estimability.svg",

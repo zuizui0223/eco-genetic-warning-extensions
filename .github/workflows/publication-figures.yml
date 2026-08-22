@@ -7,6 +7,7 @@ on:
       - 'src/eco_genetic_warning_extensions/publication_figures.py'
       - 'src/eco_genetic_warning_extensions/revised_publication_figures.py'
       - 'src/eco_genetic_warning_extensions/high_precision_publication_figures.py'
+      - 'src/eco_genetic_warning_extensions/publication_figure_semantics.py'
       - 'src/eco_genetic_warning_extensions/condition_figure1.py'
       - 'src/eco_genetic_warning_extensions/stage3_review_audit.py'
       - 'src/eco_genetic_warning_extensions/stage3_trajectory_records.py'
@@ -89,8 +90,10 @@ jobs:
             --repo-root . \
             --output-dir manuscript/generated/figures
           test "$(find manuscript/generated/figures -name '*.svg' | wc -l)" -eq 6
+          grep -q 'historical loss-screen placement' manuscript/generated/figures/figure3_source_loss_regimes.svg
           grep -q 'High-precision recurrent-turnover incidence frontier' manuscript/generated/figures/figure4_r4_recovery.svg
           grep -q 'separates marginal risk from block heterogeneity' manuscript/generated/figures/figure5_connectivity_estimability.svg
+          grep -q 'downstream loss conditions' manuscript/generated/figures/figure6_portability.svg
           rm -f \
             manuscript/generated/figure2_stage1_source_feasibility.svg \
             manuscript/generated/figure4_stage3_cumulative_incidence.svg \
