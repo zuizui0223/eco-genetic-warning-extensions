@@ -1,0 +1,85 @@
+name: Warning-blind support timing Phase I
+
+on:
+  pull_request:
+    branches:
+      - "agent/explicit-rewiring-phase-h"
+    paths:
+      - "src/eco_genetic_warning_extensions/support_timing_phase_i.py"
+      - "src/eco_genetic_warning_extensions/support_timing_phase_i_runner.py"
+      - "scripts/run_support_timing_phase_i.py"
+      - "tests/test_support_timing_phase_i.py"
+      - "docs/WARNING_BLIND_SUPPORT_TIMING_PHASE_I.md"
+      - ".github/workflows/support-timing-phase-i.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-i:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - name: Verify Phase-I preregistered contract
+        working-directory: extension
+        run: python -m pytest -q tests/test_support_timing_phase_i.py
+      - name: Run support/timing decomposition
+        working-directory: extension
+        run: |
+          mkdir -p artifacts/support_timing
+          python scripts/run_support_timing_phase_i.py \
+            --upstream-checkout ../upstream \
+            --output artifacts/support_timing/phase_i_full.json
+      - name: Build and print compact summary
+        working-directory: extension
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = Path('artifacts/support_timing/phase_i_full.json')
+          artifact = json.loads(source.read_text())
+          summary = {
+              'stage': artifact['stage'],
+              'calibration_scope': artifact['calibration_scope'],
+              'manifest': artifact['manifest'],
+              'source_preparation_count': artifact['source_preparation_count'],
+              'opening_rule_satisfied': artifact['opening_rule_satisfied'],
+              'representation_audit': artifact['representation_audit'],
+              'causal_classification': artifact['causal_classification'],
+              'condition_summaries': artifact['condition_summaries'],
+              'paired_loss_status': artifact['paired_loss_status'],
+          }
+          out = Path('artifacts/support_timing/phase_i_summary.json')
+          out.write_text(json.dumps(summary, indent=2, sort_keys=True) + '\n')
+          print('PHASE_I_SUMMARY_BEGIN')
+          print(json.dumps(summary, sort_keys=True))
+          print('PHASE_I_SUMMARY_END')
+          PY
+      - name: Upload Phase-I artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: warning-blind-support-timing-phase-i
+          path: |
+            extension/artifacts/support_timing/phase_i_full.json
+            extension/artifacts/support_timing/phase_i_summary.json
+          if-no-files-found: error
+          retention-days: 90
