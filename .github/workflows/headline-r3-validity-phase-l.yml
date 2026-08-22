@@ -1,0 +1,41 @@
+name: Headline R3 validity Phase L
+
+on:
+  pull_request:
+    branches:
+      - "agent/r4-precision-phase-k"
+    paths:
+      - "src/eco_genetic_warning_extensions/headline_r3_validity_phase_l.py"
+      - "scripts/run_headline_r3_validity_phase_l.py"
+      - "tests/test_headline_r3_validity_phase_l.py"
+      - "docs/HEADLINE_R3_VALIDITY_PHASE_L.md"
+      - ".github/workflows/headline-r3-validity-phase-l.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-l:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+      - name: Verify cross-campaign audit contract
+        run: python -m pytest -q tests/test_headline_r3_validity_phase_l.py
+      - name: Run audit
+        run: |
+          mkdir -p artifacts/headline_r3_validity
+          python scripts/run_headline_r3_validity_phase_l.py --output artifacts/headline_r3_validity/phase_l_summary.json
+          cat artifacts/headline_r3_validity/phase_l_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: headline-r3-validity-phase-l
+          path: artifacts/headline_r3_validity/phase_l_summary.json
+          if-no-files-found: error
+          retention-days: 90
