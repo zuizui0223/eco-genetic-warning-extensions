@@ -3,7 +3,6 @@ from __future__ import annotations
 
 import importlib
 import json
-from collections import defaultdict
 from dataclasses import replace
 from pathlib import Path
 from typing import Any, Iterable
@@ -17,6 +16,8 @@ from .explicit_rewiring_phase_h import (
     PHASE_H_MIGRATION_RATE,
     PHASE_H_P_STAR,
     PHASE_H_RAMP_GENERATIONS,
+    post_loss_edges,
+    support_multiplier,
 )
 from .explicit_rewiring_phase_h_runner import patched_interaction_support_schedule
 from .mutation_coordinates import MutationCoordinates
@@ -51,12 +52,22 @@ def _family_for_seed(master_seed: int) -> str:
     raise ValueError("master seed is not in Phase K")
 
 
-def _support_schedule(condition: str, generations: int) -> tuple[float, ...]:
+def _support_schedule(condition: str, replicate_index: int, generations: int) -> tuple[float, ...]:
+    """Replay the exact Phase-H / Phase-I effective-support closure.
+
+    The historical partner-loss condition does not use a constant 0.75 support
+    multiplier.  Losing primary partner ``replicate_index mod 4`` yields one of
+    four trait-match-weighted support levels.  Those four levels are balanced
+    across each 20-replicate prefix and average to 0.75, but individual
+    trajectories must retain their exact replicate-specific multiplier.
+    """
     if condition == "intact_control":
-        return tuple(1.0 for _ in range(generations))
-    if condition == "partner_loss_no_rescue":
-        return tuple(0.75 for _ in range(generations))
-    raise ValueError("unknown Phase-K condition")
+        value = 1.0
+    elif condition == "partner_loss_no_rescue":
+        value = support_multiplier(post_loss_edges(replicate_index))
+    else:
+        raise ValueError("unknown Phase-K condition")
+    return tuple(value for _ in range(generations))
 
 
 def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[str, Any]:
@@ -136,6 +147,7 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
                         attempts.append({
                             **base,
                             "condition": condition,
+                            "effective_support_multiplier": _support_schedule(condition, record.replicate_index, 1)[0],
                             "source_prepared": False,
                             "projection_supported": None,
                             "baseline_realised_high_trait_present": None,
@@ -162,10 +174,13 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
                 projected, invariants = chain.project_full_state(source, template)
 
                 for condition in CONDITIONS:
+                    multipliers = _support_schedule(condition, record.replicate_index, total_generations)
+                    support_value = multipliers[0]
                     if not invariants.projection_supported:
                         attempts.append({
                             **base,
                             "condition": condition,
+                            "effective_support_multiplier": support_value,
                             "source_prepared": True,
                             "projection_supported": False,
                             "baseline_realised_high_trait_present": None,
@@ -173,7 +188,6 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
                             "trait_loss_observed_post_baseline": None,
                         })
                         continue
-                    multipliers = _support_schedule(condition, total_generations)
                     with patched_interaction_support_schedule(
                         mutation,
                         multipliers,
@@ -194,6 +208,7 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
                     attempts.append({
                         **base,
                         "condition": condition,
+                        "effective_support_multiplier": support_value,
                         "source_prepared": True,
                         "projection_supported": True,
                         "baseline_realised_high_trait_present": baseline_present,
@@ -216,6 +231,7 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
 
         eligible = [row for row in rows if row["eligible_for_trait_loss_denominator"]]
         losses = [row for row in eligible if row["trait_loss_observed_post_baseline"] is True]
+        support_levels = sorted({round(float(row["effective_support_multiplier"]), 15) for row in rows})
         summaries.append({
             "condition": condition,
             "attempted": len(rows),
@@ -225,6 +241,7 @@ def run_phase_k_seed(upstream_checkout: str | Path, master_seed: int) -> dict[st
             "trait_loss": len(losses),
             "trait_loss_rate": None if not eligible else len(losses) / len(eligible),
             "precision_sufficient": len(eligible) >= PHASE_K_MIN_BASELINE_ELIGIBLE_PER_SEED,
+            "effective_support_levels": support_levels,
             "prefix": {
                 "observed_eligible": len(prefix_eligible),
                 "observed_losses": len(prefix_losses),
