@@ -1,0 +1,50 @@
+{
+  "stage": "warning-blind R4 precision validation Phase K",
+  "decision": "precision_convergence:R4_highrep",
+  "prefix_audit_passed": true,
+  "provenance": {
+    "workflow_run": 32557289628,
+    "artifact_id": 9471883061,
+    "artifact_digest": "sha256:6d198c819033c4931fc2ac7dca763b670c94dc12c5447116cf7940d274b70dcb",
+    "head_sha": "ec15cdb9640727993a7991f7e9ef6dbad9cc5023",
+    "parent_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "implementation_history": {
+    "first_execution_status": "rejected_by_prefix_audit",
+    "first_execution_error": "partner-loss support was incorrectly simplified to constant 0.75 rather than the exact replicate-specific Phase-H/Phase-I trait-match-weighted post-loss support",
+    "correction": "restored support_multiplier(post_loss_edges(replicate_index)); scientific seeds, partner-loss identity, deterioration, precision target, R4 band and decision rule unchanged"
+  },
+  "phase_h_seed_family": {
+    "intact_control": {
+      "blocks": [[50,86],[51,86],[44,85],[45,87],[40,85]],
+      "pooled_loss_rate": 0.5361305361305362,
+      "regime": "R4_highrep",
+      "pearson_equal_rate_p_value": 0.47217802290438193,
+      "homogeneous_reference_gate_fail_probability": 0.004899345874220584
+    },
+    "partner_loss_no_rescue": {
+      "blocks": [[47,86],[44,86],[46,85],[43,87],[47,85]],
+      "pooled_loss_rate": 0.5291375291375291,
+      "regime": "R4_highrep",
+      "pearson_equal_rate_p_value": 0.9277369701188525,
+      "homogeneous_reference_gate_fail_probability": 0.0031898803990694224
+    }
+  },
+  "phase_i_seed_family": {
+    "intact_control": {
+      "blocks": [[51,93],[53,92],[54,93],[46,90],[52,92]],
+      "pooled_loss_rate": 0.5565217391304348,
+      "regime": "R4_highrep",
+      "pearson_equal_rate_p_value": 0.8834896471648381,
+      "homogeneous_reference_gate_fail_probability": 0.009906276070803854
+    },
+    "partner_loss_no_rescue": {
+      "blocks": [[47,93],[49,92],[54,93],[49,90],[56,92]],
+      "pooled_loss_rate": 0.5543478260869565,
+      "regime": "R4_highrep",
+      "pearson_equal_rate_p_value": 0.649152840737841,
+      "homogeneous_reference_gate_fail_probability": 0.00868949468640623
+    }
+  },
+  "conclusion": "After exact replay of the historical replicate-specific partner-loss support and successful reproduction of every first-20 historical prefix, both formerly conflicting master-seed families classify R4_highrep at 100-attempt precision. The Phase-H R3 classification is therefore best interpreted as a finite-sample failure of the historical all-five-block gate, not demonstrated biological seed heterogeneity. Historical labels remain immutable provenance facts, but mechanistic claims based solely on small-block R3 classifications require re-audit."
+}
