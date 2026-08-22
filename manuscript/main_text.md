@@ -51,7 +51,7 @@ u_{H\to L}=\kappa_\mu(1-p_\mu^*).
 
 ### Historical loss screen and precision audit
 
-Source reconstruction crossed 15 recurrent-transition coordinates with three area-reference values, three interaction-feedback values, five master seeds and five replicates, for 3,375 attempts. The common deterioration campaign crossed those coordinates with two horizons and three normalised barrier increases. Calibration used realised post-baseline functional-trait loss only.
+Source reconstruction crossed 15 recurrent-transition coordinates with three area-reference values, three interaction-feedback values, five master seeds and five replicates, for 3,375 attempts. The common deterioration campaign completed **20,250** attempts and contained 648 complete five-seed candidates. Calibration used realised post-baseline functional-trait loss only.
 
 The preregistered historical classifier called a candidate R1 when all five observed block loss rates were below 0.30, R2 when all were above 0.70, R4 when all were within `[0.30,0.70]`, and R3 otherwise. The historical code names R3 `seed_heterogeneous` and R4 `warning_evaluable`; we retain those labels for provenance but no longer treat them as biological estimands. **Historical R3 is described as a mixed-block screen failure unless independent high-precision evidence supports excess heterogeneity.** R4 was an operational intermediate-incidence screen, not evidence that genetic warning succeeds.
 
