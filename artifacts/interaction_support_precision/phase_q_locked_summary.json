@@ -1,0 +1,16 @@
+{
+  "stage": "interaction support precision validation Phase Q",
+  "decision": "all_predeclared_kappa_remain_r4_at_high_precision",
+  "prefix_audit_passed": true,
+  "run": {
+    "workflow_run_id": 32559058069,
+    "artifact_id": 9472941879,
+    "artifact_digest": "sha256:7ccaf8efd253499f047de2a40a35eaab6007292005814fc2f9539b66891d3df7"
+  },
+  "kappa_summaries": [
+    {"interaction_kappa":3.0,"pooled_loss_rate":0.49877750611246946,"regime":"R4_highrep","pearson_equal_rate_p_value":0.06296936769732636,"blocks":[[74,44],[86,43],[75,27],[90,48],[84,42]]},
+    {"interaction_kappa":4.5,"pooled_loss_rate":0.5726681127982647,"regime":"R4_highrep","pearson_equal_rate_p_value":0.6231318435808466,"blocks":[[93,55],[90,45],[92,56],[89,52],[97,56]]},
+    {"interaction_kappa":6.0,"pooled_loss_rate":0.5977777777777777,"regime":"R4_highrep","pearson_equal_rate_p_value":0.5432267941702302,"blocks":[[89,57],[86,48],[91,58],[94,51],[90,55]]}
+  ],
+  "interpretation": "All three predeclared aggregate interaction-feedback levels remain within the historical intermediate-incidence screen at high precision. This supports the bounded robustness result for scalar aggregate interaction support only; it does not generalize to explicit partner-network structure."
+}
