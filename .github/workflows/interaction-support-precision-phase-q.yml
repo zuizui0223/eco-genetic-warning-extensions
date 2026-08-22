@@ -1,0 +1,80 @@
+name: Interaction support precision validation Phase Q
+
+on:
+  pull_request:
+    branches:
+      - "agent/headline-r3-validity-phase-l"
+    paths:
+      - "src/eco_genetic_warning_extensions/interaction_support_precision_phase_q.py"
+      - "src/eco_genetic_warning_extensions/interaction_support_precision_phase_q_runner.py"
+      - "scripts/run_interaction_support_precision_phase_q_seed.py"
+      - "scripts/aggregate_interaction_support_precision_phase_q.py"
+      - "tests/test_interaction_support_precision_phase_q.py"
+      - "docs/INTERACTION_SUPPORT_PRECISION_PHASE_Q.md"
+      - ".github/workflows/interaction-support-precision-phase-q.yml"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+          python -m pytest -q tests/test_interaction_support_precision_phase_q.py
+  seed-block:
+    needs: contract
+    strategy:
+      fail-fast: false
+      matrix:
+        master_seed: [20290510,20290511,20290512,20290513,20290514]
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with: {path: extension}
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - working-directory: extension
+        run: |
+          mkdir -p artifacts/interaction_support_precision
+          python scripts/run_interaction_support_precision_phase_q_seed.py --upstream-checkout ../upstream --master-seed ${{ matrix.master_seed }} --output artifacts/interaction_support_precision/seed_${{ matrix.master_seed }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-q-seed-${{ matrix.master_seed }}
+          path: extension/artifacts/interaction_support_precision/seed_${{ matrix.master_seed }}.json
+          if-no-files-found: error
+          retention-days: 90
+  aggregate:
+    needs: seed-block
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: phase-q-seed-*
+          path: artifacts/interaction_support_precision/seeds
+          merge-multiple: true
+      - run: python scripts/aggregate_interaction_support_precision_phase_q.py --input-glob 'artifacts/interaction_support_precision/seeds/seed_*.json' --output artifacts/interaction_support_precision/phase_q_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: interaction-support-precision-phase-q
+          path: artifacts/interaction_support_precision/phase_q_summary.json
+          if-no-files-found: error
+          retention-days: 90
