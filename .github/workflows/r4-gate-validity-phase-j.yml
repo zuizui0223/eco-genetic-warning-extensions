@@ -1,0 +1,44 @@
+name: R4 finite-sample gate validity Phase J
+
+on:
+  pull_request:
+    branches:
+      - "agent/support-topology-phase-i"
+    paths:
+      - "src/eco_genetic_warning_extensions/r4_gate_validity_phase_j.py"
+      - "scripts/run_r4_gate_validity_phase_j.py"
+      - "tests/test_r4_gate_validity_phase_j.py"
+      - "docs/R4_GATE_VALIDITY_PHASE_J.md"
+      - ".github/workflows/r4-gate-validity-phase-j.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-j:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install package and test runner
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+      - name: Verify Phase-J gate audit contract
+        run: python -m pytest -q tests/test_r4_gate_validity_phase_j.py
+      - name: Run exact finite-sample audit
+        run: |
+          mkdir -p artifacts/r4_gate_validity
+          python scripts/run_r4_gate_validity_phase_j.py --output artifacts/r4_gate_validity/phase_j_summary.json
+          cat artifacts/r4_gate_validity/phase_j_summary.json
+      - name: Upload Phase-J artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: r4-gate-validity-phase-j
+          path: artifacts/r4_gate_validity/phase_j_summary.json
+          if-no-files-found: error
+          retention-days: 90
