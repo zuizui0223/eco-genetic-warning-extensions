@@ -7,12 +7,14 @@ PHASE_P_REPLICATES_PER_SEED = 100
 PHASE_P_PREFIX_REPLICATES = 20
 PHASE_P_MIN_BASELINE_ELIGIBLE_PER_SEED = 70
 
+# Locked Phase-C first-20 eligible/loss counts, keyed by the actual
+# historical Phase-C master seeds declared in frontier_refinement_manifest.
 PHASE_P_PREFIX_COUNTS = {
-    20290320:{0.35:(19,11),0.40:(20,6)},
-    20290321:{0.35:(17,9),0.40:(15,6)},
-    20290322:{0.35:(19,9),0.40:(18,7)},
-    20290323:{0.35:(17,10),0.40:(20,4)},
-    20290324:{0.35:(19,7),0.40:(19,5)},
+    20290210:{0.35:(19,11),0.40:(20,6)},
+    20290211:{0.35:(17,9),0.40:(15,6)},
+    20290212:{0.35:(19,9),0.40:(18,7)},
+    20290213:{0.35:(17,10),0.40:(20,4)},
+    20290214:{0.35:(19,7),0.40:(19,5)},
 }
 
 
