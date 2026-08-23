@@ -1,0 +1,75 @@
+{
+  "stage": "process-resolved movement validation Phase R",
+  "decision": "legacy_m010_heterogeneity_not_reproduced_by_process_resolved_dispersal",
+  "opening": {
+    "zero_dispersal_parent_finite_bin_equivalence": true,
+    "prefix_audit_passed": true,
+    "legacy_full_phase_m_replay_passed": true,
+    "process_baseline_pairing_passed": true,
+    "opening_passed": true
+  },
+  "conditions": [
+    {
+      "condition": "no_connectivity",
+      "blocks": [[47,88],[48,89],[58,93],[46,86],[51,91]],
+      "pooled_loss_rate": 0.5592841163310962,
+      "historical_screen": "R4_highrep",
+      "equal_rate_p": 0.7096426551674799
+    },
+    {
+      "condition": "allele_only_m010",
+      "blocks": [[45,88],[48,89],[66,93],[42,86],[48,91]],
+      "pooled_loss_rate": 0.5570469798657718,
+      "historical_screen": "R3_highrep",
+      "equal_rate_p": 0.020549135503541822
+    },
+    {
+      "condition": "individual_dispersal_d010",
+      "blocks": [[49,88],[57,89],[57,93],[54,86],[54,91]],
+      "pooled_loss_rate": 0.6062639821029083,
+      "historical_screen": "R4_highrep",
+      "equal_rate_p": 0.8113094808307716,
+      "mean_realised_movement_fraction": 0.09226210048802239,
+      "mean_total_movers_per_trajectory_across_120_generations": 568.2670687820346
+    }
+  ],
+  "paired": {
+    "process_vs_no_connectivity": {
+      "comparable": 447,
+      "loss_to_no_loss": 83,
+      "no_loss_to_loss": 104,
+      "same_loss": 167,
+      "same_no_loss": 93,
+      "exact_mcnemar_p": 0.1433890806565386
+    },
+    "process_vs_allele_only_m010": {
+      "comparable": 447,
+      "loss_to_no_loss": 86,
+      "no_loss_to_loss": 108,
+      "same_loss": 163,
+      "same_no_loss": 90,
+      "exact_mcnemar_p": 0.13141731350102162
+    }
+  },
+  "interpretation": {
+    "process_between_block_heterogeneity_detected": false,
+    "process_marginal_effect_vs_no_connectivity_detected": false,
+    "process_marginal_difference_vs_allele_only_m010_detected": false,
+    "operator_portability": "The Phase-M m=0.10 block-heterogeneity result does not port to the preregistered d=0.10 post-recruitment whole-individual dispersal closure. Connectivity effects therefore depend on the biological operator and cannot be inferred from the allele-frequency mixing scalar alone.",
+    "nominal_rate_equivalence_claimed": false,
+    "genotype_trait_covariance_represented": false
+  },
+  "provenance": {
+    "workflow_run": 32613357637,
+    "scientific_head": "9ecde4cb1527709bc92e26a5a617b845cf07dbb4",
+    "aggregate_artifact_id": 9486225034,
+    "aggregate_artifact_digest": "sha256:13474765636fe839f4953a94618cfdf1dc7bd145f029ae97df26ced32443c143",
+    "seed_artifacts": [
+      {"master_seed": 20290410, "artifact_id": 9486201025, "digest": "sha256:dfea70c07268d5271a964bcdd09b6467ef05d920789529f8ee437b2d1a505be2"},
+      {"master_seed": 20290411, "artifact_id": 9486222662, "digest": "sha256:f2e6975650b5dbe4f243b14a53de4456bd485ee269a588434d0c98806155cc2e"},
+      {"master_seed": 20290412, "artifact_id": 9486197620, "digest": "sha256:106a20a34bd9a36d06635381db3f4430c439f08da2a6a07b5668309ed23fbe3a"},
+      {"master_seed": 20290413, "artifact_id": 9486222736, "digest": "sha256:1d8d622a4d1d226e65e0f75de1ad4876be15b6f22d2fab0ed8bc69c3951f4bb9"},
+      {"master_seed": 20290414, "artifact_id": 9486206789, "digest": "sha256:478efefd79e454d1c4de88cc4ff269ebc8003c789eae1f07a569e88d3dfbeaf4"}
+    ]
+  }
+}
