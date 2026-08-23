@@ -60,11 +60,15 @@ The historical all-five-block `[0.30,0.70]` screen remains a legitimate prospect
 
 Phase U adds a second correction: even a high-precision significance result from one finite seed family is not automatically a portable mechanistic effect. A load-bearing stochastic pattern should be replicated prospectively where feasible.
 
-## C3 — genetic warning is a conditional possibility
+## C3 — baseline-relative genetic warning strictly replicates within the frozen symmetric domain
 
-**Recovered proof of possibility.** In one independently calibrated symmetric benchmark, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
+The original parent H2-R validation fixed one symmetric deterioration domain before warning outcomes were inspected. At all six predeclared relative endpoints (`H_alpha/H_gamma × 5/10/20%`), all **35/35** valid same-trajectory warning/loss pairs were leads. Fixed absolute thresholds produced both leads and lags.
 
-**Boundary.** Warning was not inspected during C2 selection, R/S/T robustness tests or Phase-U replication. A matched direction-only warning effect remains unresolved.
+Phase V then froze the same domain and endpoint family and preregistered a new unused seed ensemble (`20291110–20291114`) before outcomes. Of 100 attempts, 82 trajectories were available and 33 realised functional losses were observed. At every one of the six endpoints, all **33/33** valid pairs were leads, with **0 ties and 0 lags**; exact one-sided binomial `p=1.1641532182693481e-10` against a 0.5 lead probability. Each fresh seed block also contained only leads among valid pairs (`7/7, 7/7, 7/7, 7/7, 5/5`). The preregistered decision was **`strict_replication`**.
+
+**Conclusion.** Baseline-relative `H_alpha` and `H_gamma` warning ordering is now supported across two independent stochastic seed ensembles **within the same frozen symmetric H2-R domain**: historical 35/35 and fresh 33/33 leads at each endpoint.
+
+**Boundary.** This does not establish a universal relative threshold, does not repair the non-robust absolute-threshold rules, does not identify a recurrent-transition-direction effect and does not establish portability across different eco-genetic domains or movement/network closures. Warning outcomes remained unavailable during C2 selection and robustness campaigns; Phase V was a separately preregistered C3 replication.
 
 ## C4 — warning portability is bounded
 
@@ -81,9 +85,11 @@ Urban and island systems are contrasting causal routes, not ecological equivalen
 - No warning/diversity-informed event-regime selection.
 - No finer `p_star`, migration or kappa tuning merely to create a desired screen/effect.
 - No replacement Phase-U seeds or repeated fresh ensembles merely to recover `m=.10` significance.
+- No replacement Phase-V seeds, endpoint changes, recalibration or post-result precision escalation merely to alter the strict-replication result.
 - No reinterpretation of the historical 15/15 coarse-grid no-domain result.
 - No demographic meaning assigned to allele-frequency mixing.
 - No claim that historical Phase-M `m=.10` heterogeneity is independently replicated.
 - No network-simplification meaning assigned to interaction kappa.
 - No full-network/connectance/rewiring meaning assigned to Phase N/T.
+- Do not generalise Phase-V within-domain replication into a universal or cross-domain warning law.
 - Record failed generality or replication as a boundary rather than continuing until the hypothesis appears true.
