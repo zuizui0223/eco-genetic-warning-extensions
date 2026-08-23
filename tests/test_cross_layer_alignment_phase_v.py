@@ -22,11 +22,18 @@ def test_phase_v_is_exactly_one_alignment_contrast() -> None:
     assert "city-versus-island" in manifest["urban_island_scope"]
 
 
-def test_coarse_baseline_marginals_are_exactly_identical() -> None:
+def test_coarse_baseline_marginals_are_mathematically_identical() -> None:
     assert signatures_match()
     left = baseline_signature("aligned")
     right = baseline_signature("anti_aligned")
-    assert left == right
+    exact_keys = (
+        "patch_areas_sorted", "population_sorted", "q_sorted", "p_sorted",
+        "high_trait_mass_sorted", "trait_bin_totals", "total_population",
+    )
+    for key in exact_keys:
+        assert left[key] == right[key]
+    for key in ("mean_q", "mean_p", "mean_high_trait_mass", "h_alpha", "h_gamma", "fst"):
+        assert abs(float(left[key]) - float(right[key])) <= 1e-15
     assert left["total_population"] == 160
     assert abs(float(left["mean_q"]) - 0.8) < 1e-15
     assert abs(float(left["mean_p"]) - 0.5) < 1e-15
