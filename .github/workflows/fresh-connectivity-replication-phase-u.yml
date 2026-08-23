@@ -1,17 +1,6 @@
 name: Fresh connectivity replication Phase U
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - "src/eco_genetic_warning_extensions/fresh_connectivity_replication_phase_u.py"
-      - "src/eco_genetic_warning_extensions/fresh_connectivity_replication_phase_u_runner.py"
-      - "scripts/run_fresh_connectivity_replication_phase_u_seed.py"
-      - "scripts/aggregate_fresh_connectivity_replication_phase_u.py"
-      - "tests/test_fresh_connectivity_replication_phase_u.py"
-      - "docs/FRESH_CONNECTIVITY_REPLICATION_PHASE_U.md"
-      - ".github/workflows/fresh-connectivity-replication-phase-u.yml"
   workflow_dispatch:
 
 permissions:
