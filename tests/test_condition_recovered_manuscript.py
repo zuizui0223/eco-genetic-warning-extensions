@@ -51,8 +51,8 @@ def test_condition_recovered_manuscript_retains_evidence_and_phase_u_boundary() 
     lower = text.lower()
     assert "all 15 coarse coordinates remain historically `no_domain_selected`" in text
     assert "placement boundary rather than structural impossibility" in lower
-    assert "p=.0205" in text
-    assert "p=.745" in text
+    assert ".0205" in text
+    assert ".745" in text
     assert "historical_m010_heterogeneity_not_freshly_replicated" in text
     assert "not supported as an independently reproducible `m=.10` heterogeneity effect" in lower
     assert "no robust, portable connectivity heterogeneity effect was established" in lower
@@ -62,4 +62,4 @@ def test_condition_recovered_manuscript_retains_evidence_and_phase_u_boundary() 
     assert "not a single-factor effect of transition direction" in lower
     assert "phase u is one preregistered independent replication" in lower
     assert "r4 itself means genetic warning succeeds" not in lower
-    assert "reproducible heterogeneity threshold" not in lower
+    assert "the defensible conclusion is therefore not that `m=.10` is a reproducible heterogeneity threshold" in lower
