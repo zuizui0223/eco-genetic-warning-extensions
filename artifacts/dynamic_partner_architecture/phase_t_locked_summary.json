@@ -1,0 +1,112 @@
+{
+  "stage": "dynamic partner architecture Phase T",
+  "decision": "no_detected_dynamic_partner_architecture_effect_at_matched_expected_support",
+  "opening": {
+    "constant_full_phase_n_replay_passed": true,
+    "constant_prefix_audit_passed": true,
+    "dynamic_baseline_pairing_passed": true,
+    "opening_passed": true
+  },
+  "condition_summaries": [
+    {
+      "condition": "constant_support_075",
+      "blocks": [
+        {"master_seed": 20290610, "losses": 51, "eligible": 86, "rate": 0.5930232558139535},
+        {"master_seed": 20290611, "losses": 45, "eligible": 90, "rate": 0.5},
+        {"master_seed": 20290612, "losses": 45, "eligible": 86, "rate": 0.5232558139534884},
+        {"master_seed": 20290613, "losses": 46, "eligible": 91, "rate": 0.5054945054945055},
+        {"master_seed": 20290614, "losses": 53, "eligible": 88, "rate": 0.6022727272727273}
+      ],
+      "pooled_loss_rate": 0.54421768707483,
+      "historical_screen": "R4_highrep",
+      "pearson_equal_rate_statistic": 3.433470840271322,
+      "pearson_equal_rate_df": 4,
+      "pearson_equal_rate_p": 0.4880660793236201,
+      "precision_sufficient": true,
+      "mean_realised_support": 0.75,
+      "mean_realised_support_variance": 0.0,
+      "mean_zero_support_generation_fraction": 0.0
+    },
+    {
+      "condition": "even_dynamic",
+      "blocks": [
+        {"master_seed": 20290610, "losses": 46, "eligible": 86, "rate": 0.5348837209302325},
+        {"master_seed": 20290611, "losses": 47, "eligible": 90, "rate": 0.5222222222222223},
+        {"master_seed": 20290612, "losses": 47, "eligible": 86, "rate": 0.5465116279069767},
+        {"master_seed": 20290613, "losses": 45, "eligible": 91, "rate": 0.4945054945054945},
+        {"master_seed": 20290614, "losses": 57, "eligible": 88, "rate": 0.6477272727272727}
+      ],
+      "pooled_loss_rate": 0.5487528344671202,
+      "historical_screen": "R4_highrep",
+      "pearson_equal_rate_statistic": 4.887095255921933,
+      "pearson_equal_rate_df": 4,
+      "pearson_equal_rate_p": 0.2990796357391462,
+      "precision_sufficient": true,
+      "mean_realised_support": 0.7506476091468824,
+      "mean_realised_support_variance": 0.04683814377403435,
+      "mean_zero_support_generation_fraction": 0.004506555567602081
+    },
+    {
+      "condition": "dominant_dynamic",
+      "blocks": [
+        {"master_seed": 20290610, "losses": 48, "eligible": 86, "rate": 0.5581395348837209},
+        {"master_seed": 20290611, "losses": 45, "eligible": 90, "rate": 0.5},
+        {"master_seed": 20290612, "losses": 47, "eligible": 86, "rate": 0.5465116279069767},
+        {"master_seed": 20290613, "losses": 46, "eligible": 91, "rate": 0.5054945054945055},
+        {"master_seed": 20290614, "losses": 58, "eligible": 88, "rate": 0.6590909090909091}
+      ],
+      "pooled_loss_rate": 0.5532879818594104,
+      "historical_screen": "R4_highrep",
+      "pearson_equal_rate_statistic": 5.884828821269394,
+      "pearson_equal_rate_df": 4,
+      "pearson_equal_rate_p": 0.20791600968327975,
+      "precision_sufficient": true,
+      "mean_realised_support": 0.7499519790179676,
+      "mean_realised_support_variance": 0.09702485734683236,
+      "mean_zero_support_generation_fraction": 0.004506555567602081
+    }
+  ],
+  "paired_even_vs_constant": {
+    "reference": "constant_support_075",
+    "comparison": "even_dynamic",
+    "comparable": 441,
+    "loss_to_no_loss": 28,
+    "no_loss_to_loss": 30,
+    "same_loss": 212,
+    "same_no_loss": 171,
+    "exact_mcnemar_p": 0.8956832138895903
+  },
+  "paired_dominant_vs_constant": {
+    "reference": "constant_support_075",
+    "comparison": "dominant_dynamic",
+    "comparable": 441,
+    "loss_to_no_loss": 47,
+    "no_loss_to_loss": 51,
+    "same_loss": 193,
+    "same_no_loss": 150,
+    "exact_mcnemar_p": 0.7620362195292433
+  },
+  "paired_dominant_vs_even": {
+    "reference": "even_dynamic",
+    "comparison": "dominant_dynamic",
+    "comparable": 441,
+    "loss_to_no_loss": 22,
+    "no_loss_to_loss": 24,
+    "same_loss": 220,
+    "same_no_loss": 175,
+    "exact_mcnemar_p": 0.8829959121223965
+  },
+  "effect_flags": {
+    "even_block_heterogeneity": false,
+    "dominant_block_heterogeneity": false,
+    "even_vs_constant_marginal": false,
+    "dominant_vs_constant_marginal": false,
+    "dominant_vs_even_marginal": false
+  },
+  "provenance": {
+    "workflow_run": 32614486507,
+    "scientific_head": "f19bffe8b875e6ca3cd5c8ca9f338b041fcdcd60",
+    "aggregate_artifact_id": 9486577103,
+    "aggregate_artifact_digest": "sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c"
+  }
+}
