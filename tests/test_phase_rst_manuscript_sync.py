@@ -50,7 +50,7 @@ def test_phase_rstu_remain_c2_and_phase_v_is_separate_c3_replication() -> None:
     program = _read("docs/HYPOTHESIS_PROGRAM.md").lower()
     main = _read("manuscript/main_text.md").lower()
     claims = _read("manuscript/claim_evidence_map.md").lower()
-    assert "warning outcomes remained unavailable during c2 selection and robustness campaigns" in program
+    assert "all c2 campaigns are warning-blind" in program
     assert "c2 condition-recovery, movement, partner and phase-u connectivity campaigns withheld warning outcomes" in main
     assert "phase v was a separately preregistered c3 warning replication" in main
     assert "phase v" in claims and "strict within-domain fresh replication" in claims
