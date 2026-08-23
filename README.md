@@ -14,6 +14,7 @@ C2  What determines source feasibility and functional loss?
         └─ replication / representation boundary
         ↓
 C3  Only after C2 is fixed warning-blind: does genetic change precede loss?
+        └─ replicate warning ordering in a frozen domain
         ↓
 C4  Is that warning portable across eco-genetic domains?
 ```
@@ -38,7 +39,7 @@ Historical R3 is not automatically “seed heterogeneity”, and historical R4 i
 
 ### Inherited mechanism
 
-The parent repository establishes that interaction feedback can support a high-function state and that fragmenting the same prepared state lowers interaction, local effective size and realised high-trait mass before demographic disappearance. In one independently calibrated symmetric benchmark, baseline-relative genetic-diversity erosion preceded observed functional loss; fixed absolute thresholds did not provide a universal rule.
+The parent repository establishes that interaction feedback can support a high-function state and that fragmenting the same prepared state lowers interaction, local effective size and realised high-trait mass before demographic disappearance. Its frozen symmetric H2-R benchmark first showed that baseline-relative genetic-diversity erosion preceded realised functional loss at all six `H_alpha/H_gamma × 5/10/20%` endpoints (35/35 leads at each endpoint), while fixed absolute thresholds did not provide a universal rule.
 
 ### High-precision extension results
 
@@ -49,7 +50,8 @@ The parent repository establishes that interaction feedback can support a high-f
 - **Process-resolved movement did not recover the historical-family pattern.** Whole-individual `d=.10` and pollen-only `g=.20` closures were block-homogeneous in the historical Phase-M family. Combined with Phase U, no robust portable connectivity heterogeneity effect is established.
 - **Aggregate feedback is robust across the tested range.** At `kappa=3.0,4.5,6.0`, high-precision pooled loss is `.499/.573/.598`; all remain intermediate and block-homogeneous.
 - **Partner perturbations are bounded negative results.** Reduced-form partner loss and matched-expected-support temporal partner variability changed some stochastic histories but not detected population-level incidence or block heterogeneity. The adaptive-rewiring gate remains closed.
-- **Warning remains conditional and portability bounded.** Protocol 003 domains differ in multiple ecological and recurrent-transition parameters, so their warning contrast is portability evidence, not a single-factor effect of transition direction.
+- **Baseline-relative warning strictly replicated within the frozen symmetric domain.** Phase V used fresh unused seeds `20291110–20291114` with the domain and six relative endpoints frozen. Of 100 attempts, 82 trajectories were available and 33 realised losses occurred; every endpoint had **33/33 leads, 0 ties and 0 lags** (`p=1.1641532182693481e-10` versus 0.5). Together with the parent 35/35 result, C3 is now supported across two independent seed ensembles within the same calibrated domain.
+- **Portability remains bounded.** Protocol 003 domains differ in multiple ecological and recurrent-transition parameters, so their warning contrast is portability evidence, not a single-factor effect of transition direction.
 
 All numerical conclusions are finite Type S evidence for the declared model closures.
 
@@ -62,6 +64,8 @@ The historical Phase-M `m=.10` equal-rate result is retained as evidence from on
 `interaction kappa` is aggregate positive-feedback/effective interaction support. It is not partner richness, connectance, pollinator diversity or network dimensionality.
 
 The partner layers are bounded and do not simulate a full multispecies dynamic network, coextinction or adaptive rewiring.
+
+Phase V establishes **within-domain replication of baseline-relative warning ordering**, not a universal threshold. The prior absolute-threshold negative result remains unchanged, and cross-domain portability is still bounded.
 
 ## Urban and island translation
 
@@ -89,6 +93,7 @@ Historical Phase documents are provenance only; they do not override the current
 - Do not inspect warning/diversity fields while selecting or replicating C2 conditions.
 - Do not read historical R3 as proof of biological heterogeneity.
 - Do not rerun fresh Phase-U seed ensembles or replace seeds merely to recover `m=.10` significance.
+- Do not rerun Phase V with replacement seeds, changed relative thresholds, recalibration or higher precision merely to alter the strict-replication result.
 - Do not call allele-frequency mixing demographic, pollen or seed dispersal.
 - Do not call interaction `kappa` network simplification.
 - Do not open adaptive rewiring merely to rescue the Phase-T null result.
