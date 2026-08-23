@@ -1,19 +1,6 @@
 name: Process-resolved movement Phase R
 
 on:
-  pull_request:
-    branches:
-      - "agent/unify-paper-storyline"
-    paths:
-      - "src/eco_genetic_warning_extensions/process_resolved_movement.py"
-      - "src/eco_genetic_warning_extensions/process_resolved_movement_phase_r.py"
-      - "src/eco_genetic_warning_extensions/process_resolved_movement_phase_r_runner.py"
-      - "scripts/check_process_resolved_movement_zero_equivalence.py"
-      - "scripts/run_process_resolved_movement_phase_r_seed.py"
-      - "scripts/aggregate_process_resolved_movement_phase_r.py"
-      - "tests/test_process_resolved_movement_phase_r.py"
-      - "docs/PROCESS_RESOLVED_MOVEMENT_PHASE_R.md"
-      - ".github/workflows/process-resolved-movement-phase-r.yml"
   workflow_dispatch:
 
 permissions:
