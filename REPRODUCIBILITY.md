@@ -24,13 +24,15 @@ python scripts/verify_reproducibility_contract.py --upstream upstream
 
 ### Level 2 — rebuild the publication package
 
-The paper-completion workflow regenerates publication outputs from locked evidence, retains finite-horizon censoring, resamples whole trajectories for secondary intervals and builds checksummed submission bundles. Historical artifacts remain immutable.
+The paper-completion workflow regenerates publication outputs from locked evidence, retains finite-horizon censoring, resamples whole trajectories for secondary intervals and builds checksummed submission bundles. Historical artifacts remain immutable. The bundle includes the locked Phase-V fresh-warning summary as a C3 replication layer.
 
-### Level 3 — reproduce condition campaigns
+### Level 3 — reproduce condition and validation campaigns
 
-Warning-blind campaigns can be rerun independently, including recurrent-turnover calibration, historical Phase E/F/G conditions, high-precision Phases K–Q, process-resolved R/S, dynamic partner Phase T, and the preregistered Phase-U fresh connectivity replication.
+Warning-blind C2 campaigns can be rerun independently, including recurrent-turnover calibration, historical Phase E/F/G conditions, high-precision Phases K–Q, process-resolved R/S, dynamic partner Phase T, and the preregistered Phase-U fresh connectivity replication.
 
-A rerun with new seeds creates a **new finite evidence set** and must not overwrite any locked historical or replication result. Phase U itself is closed: replacement seeds or repeated fresh ensembles are not permitted under the same generation merely to recover significance.
+Phase V is different: it is a separately preregistered **C3 warning replication** in the already frozen symmetric H2-R domain. Its scientific evidence is the first preregistered execution only, run `32636847803`. After locking that result, the Phase-V workflow was changed to manual-only so ordinary manuscript/test edits cannot create replacement scientific ensembles.
+
+A rerun with new seeds creates a **new finite evidence set** and must not overwrite any locked historical or replication result. Phase U and Phase V are closed under their declared stop rules: replacement seeds, repeated fresh ensembles, endpoint changes, recalibration or post-result precision escalation are not permitted merely to recover or alter a preferred result.
 
 ## Historical screen and precision protocol
 
@@ -47,7 +49,7 @@ The precision-validation protocol is:
 7. for paired perturbations, report bidirectional switches and exact McNemar evidence;
 8. when an effect becomes load-bearing and an independent replication is declared, fix fresh seeds and the decision rule before outcomes and do not replace the ensemble after inspection.
 
-## Locked precision and robustness evidence
+## Locked precision, robustness and replication evidence
 
 - Phase K seed-family replay: run `32557289628`, artifact `9471883061`.
 - Phase L cross-campaign R3 audit: run `32557903970`, artifact `9471949092`.
@@ -60,8 +62,9 @@ The precision-validation protocol is:
 - Phase S pollen-only gene flow: run `32613877695`, artifact `9486401100`, digest `sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04`.
 - Phase T dynamic partner architecture: run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c`.
 - Phase U fresh connectivity replication: run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`; decision `historical_m010_heterogeneity_not_freshly_replicated`.
+- **Phase V fresh fixed-domain warning replication:** run `32636847803`, artifact `9492587604`, digest `sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031`; decision `strict_replication`; compact evidence `artifacts/fresh_warning_replication/phase_v_locked_summary.json`.
 
-## Current reproducible condition conclusions
+## Current reproducible conclusions
 
 **Recurrent turnover:** pooled loss declines from about `.682` at `p_star=.325` through intermediate `.350–.375` conditions to `.273` at `.400`; no tested high-precision frontier condition shows detected excess block heterogeneity.
 
@@ -70,6 +73,8 @@ The precision-validation protocol is:
 **Aggregate feedback:** all three predeclared `kappa=3.0/4.5/6.0` remain intermediate at high precision with no detected block heterogeneity.
 
 **Partner architecture:** reduced-form partner loss and matched-expected-support temporal partner variability are bounded negative population-level results; the adaptive-rewiring gate remains closed.
+
+**Genetic warning:** within the frozen symmetric H2-R domain, the parent ensemble had 35/35 valid warning/loss pairs lead at each of six baseline-relative `H_alpha/H_gamma × 5/10/20%` endpoints. Phase V independently repeated the same domain/endpoints with fresh unused seeds: 100 attempts, 82 available trajectories, 33 realised losses, and **33/33 leads with 0 ties/0 lags at every endpoint**. The Phase-V strict-replication rule was therefore satisfied. This establishes within-domain replication of the relative warning ordering, not a universal threshold or portable warning law.
 
 ## Interpretation safeguards
 
@@ -84,7 +89,9 @@ Reproduction must preserve that:
 - R/S movement closures are distinct model operators;
 - Phase Q `interaction kappa` is aggregate positive feedback, not partner richness/connectance;
 - Phase N/T do not represent a full dynamic multispecies network;
-- no outcome-informed parameter, seed or precision refinement is opened to recover a preferred result;
+- Phase V is strict **within-domain** C3 replication only; it does not establish a universal relative threshold, does not validate the failed absolute thresholds and does not establish cross-domain portability;
+- the locked Phase-V scientific result is run `32636847803`; later automatic reruns caused by pre-lock workflow wiring are not replacement scientific evidence;
+- no outcome-informed parameter, seed, endpoint or precision refinement is opened to recover a preferred result;
 - Protocol 003 tests bounded portability across non-matched calibrated domains, not a single-factor effect of transition direction;
 - finite-horizon non-events remain right-censored;
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate;
