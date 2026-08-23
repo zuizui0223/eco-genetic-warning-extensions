@@ -93,7 +93,7 @@ def main() -> int:
     _validate_high_precision_map(high_precision)
     write_high_precision_condition_figures(high_precision, figures)
 
-    # Preserve historical condition artifacts and add current precision/robustness layers.
+    # Preserve historical condition artifacts and add current precision/robustness/replication layers.
     phase_f = root / "artifacts/interaction_support/phase_f_summary.json"
     _validate_phase_f(phase_f)
     shutil.copy2(root / "manuscript/tables/inherited_h2_warning_summary.csv", tables / "inherited_h2_warning_summary.csv")
@@ -110,8 +110,10 @@ def main() -> int:
         "phase_s_process_resolved_pollen.json": root / "artifacts/process_resolved_pollen/phase_s_locked_summary.json",
         "phase_t_dynamic_partner_architecture.json": root / "artifacts/dynamic_partner_architecture/phase_t_locked_summary.json",
         "phase_u_fresh_connectivity_replication.json": root / "artifacts/fresh_connectivity_replication/phase_u_locked_summary.json",
+        "phase_v_fresh_warning_replication.json": root / "artifacts/fresh_warning_replication/phase_v_locked_summary.json",
     }
     _validate_locked_phase(locked["phase_u_fresh_connectivity_replication.json"], decision="historical_m010_heterogeneity_not_freshly_replicated")
+    _validate_locked_phase(locked["phase_v_fresh_warning_replication.json"], decision="strict_replication")
     for destination, source in locked.items():
         if not source.exists():
             raise FileNotFoundError(source)
