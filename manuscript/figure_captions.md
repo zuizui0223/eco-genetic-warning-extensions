@@ -6,7 +6,7 @@ Conceptual synthesis separating interaction-supported ecological function, popul
 
 ## Figure 2. Fragmentation creates vulnerability and genetic warning is conditionally possible
 
-**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric warning benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed realised functional-loss pairs, whereas predeclared absolute thresholds produced both leads and lags. These are finite results under the declared parent closure and do not establish a universal warning rule.
+**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric warning benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed realised functional-loss pairs, whereas predeclared absolute thresholds produced both leads and lags. The displayed benchmark was subsequently tested in Phase V using the same frozen domain and six relative endpoints but independently preregistered fresh seeds; all 33/33 fresh valid pairs were leads at every endpoint with zero ties/lags. Phase V is supporting within-domain replication and is not a new plotted panel. Neither ensemble establishes a universal warning threshold.
 
 ## Figure 3. Recurrent state turnover reorganises source feasibility and historical loss-screen placement
 
@@ -31,7 +31,7 @@ Positive warning lead time is summarised only among trajectories in which both t
 ## Caption rules retained for submission
 
 - Keep the historical R1–R4 calibration screen distinct from high-precision incidence and equal-rate inference.
-- Keep the inherited symmetric benchmark, the recalibrated symmetric domain and the directional calibrated domain terminologically distinct.
+- Keep the inherited symmetric benchmark, the Phase-V within-domain replication, the recalibrated symmetric Protocol-003 domain and the directional calibrated domain terminologically distinct.
 - State when endpoint counts or migration levels share trajectories/prepared sources.
 - Describe `p_star` as an effective recurrent-transition equilibrium, not an empirical mutation-rate estimate.
 - Keep the original strict Protocol 002 15/15 no-domain outcome separate from later warning-blind refinement and precision validation.
@@ -40,4 +40,5 @@ Positive warning lead time is summarised only among trajectories in which both t
 - Do not describe Phase-E/M/U `migration_rate` as demographic, pollinator, pollen or seed movement or infer a universal threshold.
 - Do not describe interaction `kappa` as partner richness, connectance or network simplification.
 - Do not interpret the reduced-form partner-loss experiment as an explicit ecological-network test.
+- Describe Phase V as strict replication only within the frozen symmetric H2-R domain; do not generalise it into a universal relative threshold.
 - Never describe the Stage III contrast as the isolated effect of transition direction.
