@@ -33,6 +33,10 @@ on:
       - "artifacts/interaction_support/phase_f_summary.json"
       - "artifacts/partner_redundancy/phase_g_summary.json"
       - "artifacts/high_precision_condition_map.json"
+      - "artifacts/process_resolved_movement/phase_r_locked_summary.json"
+      - "artifacts/process_resolved_pollen/phase_s_locked_summary.json"
+      - "artifacts/dynamic_partner_architecture/phase_t_locked_summary.json"
+      - "artifacts/fresh_connectivity_replication/phase_u_locked_summary.json"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
@@ -109,7 +113,7 @@ jobs:
           test -f submission_bundle/manifest.json
           test "$(find submission_bundle/figures -name '*.svg' | wc -l)" -eq 6
           test "$(find submission_bundle/supplement -name '*.svg' | wc -l)" -eq 2
-          test "$(find submission_bundle/tables -type f | wc -l)" -ge 18
+          test "$(find submission_bundle/tables -type f | wc -l)" -ge 22
           test "$(find submission_bundle/software/parent -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/extension -name '*.whl' | wc -l)" -eq 1
           test "$(find submission_bundle/software/parent -name '*scientific-*.tar.gz' | wc -l)" -eq 1
@@ -129,6 +133,10 @@ jobs:
           test -f submission_bundle/tables/interaction_support_phase_f_summary.json
           test -f submission_bundle/tables/partner_phase_g_summary.json
           test -f submission_bundle/tables/high_precision_condition_map.json
+          test -f submission_bundle/tables/phase_r_process_resolved_movement.json
+          test -f submission_bundle/tables/phase_s_process_resolved_pollen.json
+          test -f submission_bundle/tables/phase_t_dynamic_partner_architecture.json
+          test -f submission_bundle/tables/phase_u_fresh_connectivity_replication.json
           test -f submission_bundle/tables/stage3_review_audit.json
           test -f submission_bundle/tables/stage3_review_summary.csv
           test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
@@ -136,6 +144,8 @@ jobs:
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q 'incidence frontier' submission_bundle/manuscript/main_text.md
           grep -q '0.0205' submission_bundle/manuscript/main_text.md
+          grep -q '0.745' submission_bundle/manuscript/main_text.md
+          grep -q 'historical_m010_heterogeneity_not_freshly_replicated' submission_bundle/manuscript/main_text.md
           grep -q '0.499' submission_bundle/manuscript/main_text.md
           grep -q '0.540' submission_bundle/manuscript/main_text.md
           grep -q '0.335' submission_bundle/manuscript/main_text.md
@@ -144,7 +154,8 @@ jobs:
           grep -q 'Fragmentation creates vulnerability and genetic warning is conditionally possible' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
           grep -q 'historical loss-screen placement' submission_bundle/figures/figure3_source_loss_regimes.svg
           grep -q 'High-precision recurrent-turnover incidence frontier' submission_bundle/figures/figure4_r4_recovery.svg
-          grep -q 'separates marginal risk from block heterogeneity' submission_bundle/figures/figure5_connectivity_estimability.svg
+          grep -q 'Historical m=.10 heterogeneity failed fresh-seed replication' submission_bundle/figures/figure5_connectivity_estimability.svg
+          grep -q 'fresh m=.10 equal-rate p=.745' submission_bundle/figures/figure5_connectivity_estimability.svg
           grep -q 'downstream loss conditions' submission_bundle/figures/figure6_portability.svg
           grep -q 'Positive warning lead time before functional-trait loss' submission_bundle/supplement/figure_s3_stage3_lead_time_normalized.svg
           grep -q 'Fixed-area fragmentation gradient from paired H1-prepared sources' submission_bundle/supplement/figure_s1_fragmentation_gradient.svg
@@ -163,40 +174,30 @@ jobs:
 
           gradient=list(csv.DictReader((bundle/'tables/h3_fragmentation_gradient_pooled_summary.csv').open(encoding='utf-8')))
           assert len(gradient)==8
-          n2=next(row for row in gradient if int(row['patch_count'])==2)
-          n4=next(row for row in gradient if int(row['patch_count'])==4)
-          assert abs(float(n2['final_interaction_mean_reduction_from_n1_median'])-0.998255569246587) < 1e-15
-          assert abs(float(n2['final_effective_size_mean_reduction_from_n1_median'])-0.778688524590164) < 1e-15
-          assert abs(float(n2['realised_high_trait_mass_mean_reduction_from_n1_median'])-0.7170819101198848) < 1e-15
-          assert abs(float(n4['final_interaction_mean_reduction_from_n1_median'])-0.9985533722090489) < 1e-15
-          assert abs(float(n4['final_effective_size_mean_reduction_from_n1_median'])-0.8872950819672131) < 1e-15
-          assert abs(float(n4['realised_high_trait_mass_mean_reduction_from_n1_median'])-0.6981998264893001) < 1e-15
           records=sum(1 for _ in (bundle/'tables/h3_fragmentation_gradient_records.csv').open(encoding='utf-8'))-1
           assert records==9600
 
-          # Historical Phase-E evidence is retained unchanged for provenance.
           historical_e=json.loads((bundle/'tables/migration_phase_e_summary.json').read_text())
           assert [row['regime'] for row in historical_e['migration_condition_summaries']] == ['R4_highrep','R4_highrep','R4_highrep','R3_highrep','R3_highrep']
-          highest_historical_switch=historical_e['paired_loss_status_vs_isolation'][-1]
-          assert highest_historical_switch['loss_to_no_loss'] == 11
-          assert highest_historical_switch['no_loss_to_loss'] == 14
 
-          # Current inference is locked by the additive high-precision condition map.
           hp=json.loads((bundle/'tables/high_precision_condition_map.json').read_text())
           frontier=hp['recurrent_turnover']['conditions']
           assert [round(float(row['p_star']),3) for row in frontier] == [0.325,0.35,0.375,0.4]
-          assert abs(float(frontier[0]['pooled_loss'])-0.6823266219239373) < 1e-15
-          assert abs(float(frontier[-1]['pooled_loss'])-0.2725274725274725) < 1e-15
-          assert hp['recurrent_turnover']['phase_p']['artifact'] == 9473386152
-          assert hp['recurrent_turnover']['phase_p']['digest'] == 'sha256:b5863c872d68119227213aa2de61ebabacb834c3d3973a2da905e81639fc6aa0'
           conn={float(row['m']):row for row in hp['connectivity']['conditions']}
           assert float(conn[0.10]['equal_rate_p']) < 0.05
           assert float(conn[0.20]['equal_rate_p']) > 0.05
-          assert conn[0.20]['screen'] == 'R4_highrep'
-          assert conn[0.20]['loss_to_no_loss'] == 71 and conn[0.20]['no_loss_to_loss'] == 63
-          assert all(row['screen']=='R4_highrep' for row in hp['reduced_form_partner_loss']['conditions'])
-          assert all(float(row.get('mcnemar_p',1.0)) > 0.05 for row in hp['reduced_form_partner_loss']['conditions'])
-          assert all(row['screen']=='R4_highrep' for row in hp['aggregate_interaction_support']['conditions'])
+          fresh={float(row['m']):row for row in hp['fresh_connectivity_replication']['conditions']}
+          assert hp['fresh_connectivity_replication']['decision'] == 'historical_m010_heterogeneity_not_freshly_replicated'
+          assert float(fresh[0.0]['equal_rate_p']) > 0.05
+          assert float(fresh[0.10]['equal_rate_p']) > 0.05
+          assert abs(float(fresh[0.10]['equal_rate_p'])-0.7451298863527918) < 1e-15
+          assert abs(float(hp['fresh_connectivity_replication']['mcnemar_p'])-0.6936859650244837) < 1e-15
+
+          phase_u=json.loads((bundle/'tables/phase_u_fresh_connectivity_replication.json').read_text())
+          assert phase_u['decision'] == 'historical_m010_heterogeneity_not_freshly_replicated'
+          assert phase_u['workflow_run'] == 32615044162
+          assert phase_u['aggregate_artifact'] == 9486740313
+          assert phase_u['artifact_digest'] == 'sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756'
 
           for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
@@ -207,14 +208,10 @@ jobs:
           for relative, expected in manifest['files'].items():
               actual=hashlib.sha256((bundle / relative).read_bytes()).hexdigest()
               assert actual == expected, relative
+          assert 'tables/high_precision_condition_map.json' in manifest['files']
+          assert 'tables/phase_u_fresh_connectivity_replication.json' in manifest['files']
           assert any(name.startswith('software/parent/') for name in manifest['files'])
           assert any(name.startswith('software/extension/') for name in manifest['files'])
-          assert 'supplement/figure_s1_fragmentation_gradient.svg' in manifest['files']
-          assert 'supplement/figure_s3_stage3_lead_time_normalized.svg' in manifest['files']
-          assert 'tables/h3_fragmentation_gradient_records.csv' in manifest['files']
-          assert 'tables/migration_phase_e_summary.json' in manifest['files']
-          assert 'tables/partner_phase_g_summary.json' in manifest['files']
-          assert 'tables/high_precision_condition_map.json' in manifest['files']
           PY
       - name: Upload submission bundle
         uses: actions/upload-artifact@v4

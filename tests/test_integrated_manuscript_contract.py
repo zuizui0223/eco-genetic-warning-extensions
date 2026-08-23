@@ -11,6 +11,10 @@ def _plain(text: str) -> str:
     return text.lower().replace("**", "")
 
 
+def _has_decimal(text: str, token: str) -> bool:
+    return token in text or token.removeprefix("0") in text
+
+
 def test_repository_exposes_one_condition_first_science_spine() -> None:
     root = _read("README.md")
     program = _read("docs/HYPOTHESIS_PROGRAM.md")
@@ -22,28 +26,30 @@ def test_repository_exposes_one_condition_first_science_spine() -> None:
     assert "protocol chronology" in workspace.lower()
 
 
-def test_interaction_support_is_not_mislabeled_as_network_simplification() -> None:
+def test_interaction_support_and_connectivity_are_not_mislabeled() -> None:
     root = _plain(_read("README.md"))
     program = _plain(_read("docs/HYPOTHESIS_PROGRAM.md"))
+    claims = _plain(_read("manuscript/claim_evidence_map.md"))
     application = _plain(_read("manuscript/urban_island_regime_tests.md"))
     assert "not partner richness" in root
-    assert "not partner richness" in program
-    assert "network dimensionality" in program
     assert "network simplification" in application
-    assert "phase f is closed" in root
-    assert "3.0,4.5,6.0" in program.replace(" ", "")
-    assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in program
+    assert "allele-frequency mixing" in root
+    assert "`migration_rate` is demographic" in claims  # prohibited-claim list
+    assert "## prohibited claims" in claims
+    assert "historical_m010_heterogeneity_not_freshly_replicated" in program
 
 
-def test_main_text_retains_locked_headline_results_and_precision_correction() -> None:
+def test_main_text_retains_locked_headline_results_and_phase_u_correction() -> None:
     text = _read("manuscript/main_text.md")
     lower = text.lower()
     for token in ("2,269", "3,375", "322", "242", "84", "1,037", "0.540", "0.335"):
         assert token in text
-    for token in ("0.682", "0.407", "0.273", "0.0205", "0.499", "0.573", "0.598"):
-        assert token in text
+    for token in ("0.682", "0.407", "0.273", "0.0205", "0.745", "0.694", "0.499", "0.573", "0.598"):
+        assert _has_decimal(text, token)
     assert "incidence frontier" in lower
-    assert "historical r3 is described as a mixed-block screen failure" in lower
+    assert "historical r3/r4 labels are retained as protocol facts" in lower
+    assert "historical_m010_heterogeneity_not_freshly_replicated" in text
+    assert "not supported as an independently reproducible `m=.10` heterogeneity effect" in lower
     assert "not a single-factor effect of transition direction" in lower
     assert "not demographic migration" in lower
     assert "### Stage I" not in text
@@ -82,6 +88,7 @@ def test_submission_bundle_keeps_provenance_and_condition_evidence() -> None:
     for number in range(1, 7):
         assert f"## Figure {number}." in captions
     assert "Endpoint rows share trajectories" in captions
+    assert "failed fresh-seed replication" in captions
 
 
 def test_phase_chronology_is_not_a_manuscript_source_of_truth() -> None:

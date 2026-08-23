@@ -107,62 +107,71 @@ def figure4_high_precision_incidence_svg(payload: Mapping[str, Any]) -> str:
 
 
 def figure5_high_precision_connectivity_svg(payload: Mapping[str, Any]) -> str:
-    rows = sorted(payload["connectivity"]["conditions"], key=lambda item: float(item["m"]))
+    historical = sorted(payload["connectivity"]["conditions"], key=lambda item: float(item["m"]))
+    fresh = {float(row["m"]): row for row in payload["fresh_connectivity_replication"]["conditions"]}
+    historical_by_m = {float(row["m"]): row for row in historical}
     width, height = 1280, 690
     parts = _header(
         width,
         height,
-        "Allele-frequency connectivity separates marginal risk from block heterogeneity",
-        "Panel A shows high-precision pooled functional-loss incidence across allele-frequency mixing levels and marks the only level with detected excess between-block heterogeneity. Panel B shows paired loss-status switches versus isolation in both directions, together with exact McNemar p values.",
+        "Historical m=.10 heterogeneity failed fresh-seed replication",
+        "Panel A preserves the historical Phase-M allele-frequency mixing sweep. Panel B compares between-block equal-rate diagnostics for m=0 and m=.10 in the historical Phase-M seed family and one preregistered independent Phase-U seed ensemble. The historical m=.10 p=.0205 observation did not reproduce: fresh m=.10 p=.745.",
         "figure5",
     )
+
     left, top, pw, ph = 95, 120, 520, 410
-    parts.append('<text x="55" y="80" font-family="sans-serif" font-size="14" font-weight="bold">A. Marginal incidence and block heterogeneity</text>')
+    parts.append('<text x="55" y="80" font-family="sans-serif" font-size="14" font-weight="bold">A. Historical Phase-M seed family</text>')
     _axes(parts, left, top, pw, ph, ylabel="pooled functional-loss incidence")
-    band_y = _loss_y(0.70, top, ph); band_h = ph * 0.40
+    band_y = _loss_y(0.70, top, ph)
+    band_h = ph * 0.40
     parts.append(f'<rect x="{left}" y="{band_y}" width="{pw}" height="{band_h}" fill="#e5e7eb" opacity="0.72"/>')
     points = []
-    for index, row in enumerate(rows):
+    for index, row in enumerate(historical):
         x = left + 50 + index * 105
-        loss = float(row["pooled_loss"]); y = _loss_y(loss, top, ph); points.append((x, y))
-        hetero_p = float(row["equal_rate_p"])
-        fill = "#dc2626" if hetero_p < 0.05 else "#2563eb"
-        radius = 8 if hetero_p < 0.05 else 6
+        loss = float(row["pooled_loss"])
+        y = _loss_y(loss, top, ph)
+        points.append((x, y))
+        pval = float(row["equal_rate_p"])
+        fill = "#dc2626" if pval < 0.05 else "#2563eb"
+        radius = 8 if pval < 0.05 else 6
         parts.append(f'<circle cx="{x}" cy="{y:.1f}" r="{radius}" fill="{fill}" stroke="#111"/>')
         parts.append(f'<text x="{x}" y="{max(top+12,y-14):.1f}" text-anchor="middle" font-family="sans-serif" font-size="9">loss {loss:.3f}</text>')
         parts.append(f'<text x="{x}" y="{top+ph+22}" text-anchor="middle" font-family="sans-serif" font-size="10">m={float(row["m"]):g}</text>')
-        parts.append(f'<text x="{x}" y="{top+ph+40}" text-anchor="middle" font-family="sans-serif" font-size="9">equal-rate p={hetero_p:.3g}</text>')
+        parts.append(f'<text x="{x}" y="{top+ph+40}" text-anchor="middle" font-family="sans-serif" font-size="9">equal-rate p={pval:.3g}</text>')
     parts.append('<polyline points="' + ' '.join(f'{x:.1f},{y:.1f}' for x, y in points) + '" fill="none" stroke="#111" stroke-width="2"/>')
     parts.append(f'<text x="{left+12}" y="{band_y+18}" font-family="sans-serif" font-size="10">historical intermediate-incidence screen</text>')
-    parts.append(f'<circle cx="{left+365}" cy="{top+62}" r="8" fill="#dc2626" stroke="#111"/><text x="{left+380}" y="{top+66}" font-family="sans-serif" font-size="10">detected excess block heterogeneity only at m=.10 (p=0.0205)</text>')
+    parts.append(f'<text x="{left+pw/2}" y="{top+ph+66}" text-anchor="middle" font-family="sans-serif" font-size="10">red point = historical m=.10 block-heterogeneity observation (p=.0205)</text>')
 
-    left2, base_y = 735, 520
-    parts.append('<text x="680" y="80" font-family="sans-serif" font-size="14" font-weight="bold">B. Paired trajectory-status switching vs isolation</text>')
-    parts.append(f'<line x1="{left2}" y1="{base_y}" x2="{left2+450}" y2="{base_y}" stroke="#333"/>')
-    paired_rows = [row for row in rows if float(row["m"]) > 0.0]
-    max_count = max(max(int(row["loss_to_no_loss"]), int(row["no_loss_to_loss"])) for row in paired_rows)
-    max_h = 310.0
-    for index, row in enumerate(paired_rows):
-        x = left2 + 65 + index * 100
-        a = int(row["loss_to_no_loss"]); b = int(row["no_loss_to_loss"])
-        ha = max_h * a / max_count; hb = max_h * b / max_count
-        parts.append(f'<rect x="{x-25}" y="{base_y-ha:.1f}" width="21" height="{ha:.1f}" fill="#2563eb" stroke="#111"/>')
-        parts.append(f'<rect x="{x+4}" y="{base_y-hb:.1f}" width="21" height="{hb:.1f}" fill="#dc2626" stroke="#111"/>')
-        parts.append(f'<text x="{x-14}" y="{base_y-ha-7:.1f}" text-anchor="middle" font-family="sans-serif" font-size="10">{a}</text>')
-        parts.append(f'<text x="{x+15}" y="{base_y-hb-7:.1f}" text-anchor="middle" font-family="sans-serif" font-size="10">{b}</text>')
-        parts.append(f'<text x="{x}" y="{base_y+20}" text-anchor="middle" font-family="sans-serif" font-size="10">m={float(row["m"]):g}</text>')
-        parts.append(f'<text x="{x}" y="{base_y+38}" text-anchor="middle" font-family="sans-serif" font-size="9">McNemar p={float(row["mcnemar_p"]):.3f}</text>')
-    parts.append(f'<rect x="{left2+25}" y="585" width="14" height="14" fill="#2563eb"/><text x="{left2+45}" y="597" font-family="sans-serif" font-size="10">loss→no loss</text>')
-    parts.append(f'<rect x="{left2+170}" y="585" width="14" height="14" fill="#dc2626"/><text x="{left2+190}" y="597" font-family="sans-serif" font-size="10">no loss→loss</text>')
-    parts.append(f'<text x="{left2}" y="630" font-family="sans-serif" font-size="10">all paired marginal-risk tests are non-significant; migration_rate is allele-frequency mixing only</text>')
+    left2, pw2 = 735, 445
+    parts.append('<text x="680" y="80" font-family="sans-serif" font-size="14" font-weight="bold">B. Independent fresh-seed replication</text>')
+    _axes(parts, left2, top, pw2, ph, ylabel="equal-rate p value")
+    threshold_y = _p_y(0.05, top, ph)
+    parts.append(f'<line x1="{left2}" y1="{threshold_y:.1f}" x2="{left2+pw2}" y2="{threshold_y:.1f}" stroke="#dc2626" stroke-width="2" stroke-dasharray="6,5"/>')
+    parts.append(f'<text x="{left2+8}" y="{threshold_y-7:.1f}" font-family="sans-serif" font-size="9">0.05 diagnostic line</text>')
+    x_positions = {0.0: left2 + 125, 0.1: left2 + 320}
+    for m in (0.0, 0.1):
+        x = x_positions[m]
+        hp = float(historical_by_m[m]["equal_rate_p"])
+        fp = float(fresh[m]["equal_rate_p"])
+        hy = _p_y(hp, top, ph)
+        fy = _p_y(fp, top, ph)
+        parts.append(f'<circle cx="{x-18}" cy="{hy:.1f}" r="7" fill="#dc2626" stroke="#111"/>')
+        parts.append(f'<rect x="{x+11}" y="{fy-7:.1f}" width="14" height="14" fill="#2563eb" stroke="#111"/>')
+        parts.append(f'<text x="{x-18}" y="{max(top+12,hy-12):.1f}" text-anchor="middle" font-family="sans-serif" font-size="9">H {hp:.3f}</text>')
+        parts.append(f'<text x="{x+18}" y="{max(top+12,fy-12):.1f}" text-anchor="middle" font-family="sans-serif" font-size="9">F {fp:.3f}</text>')
+        parts.append(f'<text x="{x}" y="{top+ph+24}" text-anchor="middle" font-family="sans-serif" font-size="11">m={m:g}</text>')
+        parts.append(f'<text x="{x}" y="{top+ph+43}" text-anchor="middle" font-family="sans-serif" font-size="9">fresh loss {float(fresh[m]["pooled_loss"]):.3f}</text>')
+    parts.append(f'<circle cx="{left2+30}" cy="585" r="7" fill="#dc2626" stroke="#111"/><text x="{left2+45}" y="589" font-family="sans-serif" font-size="10">historical Phase M</text>')
+    parts.append(f'<rect x="{left2+170}" y="578" width="14" height="14" fill="#2563eb" stroke="#111"/><text x="{left2+190}" y="589" font-family="sans-serif" font-size="10">fresh Phase U</text>')
+    parts.append(f'<text x="{left2}" y="620" font-family="sans-serif" font-size="10">fresh m=.10 equal-rate p=.745; paired McNemar p={float(payload["fresh_connectivity_replication"]["mcnemar_p"]):.3f}</text>')
+    parts.append(f'<text x="{left2}" y="640" font-family="sans-serif" font-size="10">historical heterogeneity did not replicate; migration_rate remains allele-frequency mixing only</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 
 
 def write_high_precision_condition_figures(condition_map_json: str | Path, output_dir: str | Path) -> None:
     payload = _json(condition_map_json)
-    out = Path(output_dir); out.mkdir(parents=True, exist_ok=True)
-    # Preserve legacy filenames consumed by the submission bundle while replacing
-    # their contents with the corrected high-precision Figure 4/5 evidence.
+    out = Path(output_dir)
+    out.mkdir(parents=True, exist_ok=True)
     (out / "figure4_r4_recovery.svg").write_text(figure4_high_precision_incidence_svg(payload), encoding="utf-8")
     (out / "figure5_connectivity_estimability.svg").write_text(figure5_high_precision_connectivity_svg(payload), encoding="utf-8")

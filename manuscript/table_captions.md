@@ -20,9 +20,9 @@ Candidate-level and seed-block trait-loss frequencies under strict Protocol 002.
 
 For each Stage III endpoint and calibrated domain: full attempted denominator, censoring categories, lead/tie/lag ordering, conventional median positive lead time and horizon-normalized lead time with whole-trajectory bootstrap intervals. The companion between-domain table reports directional-minus-symmetric median differences for absolute, horizon-normalized and hold-normalized timing, with intervals calculated by independently resampling whole trajectories within each domain.
 
-## Table S6. Warning-blind R4 recovery and allele-frequency-connectivity condition mapping
+## Table S6. High-precision condition mapping and connectivity replication
 
-High-rep seed-block and pooled realised functional-loss rates for the recurrent-transition frontier and Phase-E migration condition. The table records independent Phase C/D replay of R4 at `kappa_mu=0.35, p_star=0.35`, R3 neighboring coordinates, migration-level R4/R3 classifications at the fixed anchor, and paired `loss→no loss` / `no loss→loss` trajectory switches relative to isolation. Warning and diversity outcomes were unavailable during these condition analyses. `migration_rate` is allele-frequency mixing only and is not interpreted as demographic, pollinator or seed movement.
+High-replicate seed-block and pooled realised functional-loss rates for the recurrent-transition frontier, the historical Phase-M migration sweep, and the preregistered Phase-U fresh `m=0/.10` replication. The table retains the historical Phase-M `m=.10` equal-rate observation (`p=.0205`) but places it alongside the fresh Phase-U result (`p=.745` at `m=.10`), where the heterogeneity did not reproduce. Paired `loss→no loss` / `no loss→loss` switches and exact McNemar results are retained for both historical and fresh connectivity comparisons. Warning and diversity outcomes were unavailable during these condition analyses. `migration_rate` is allele-frequency mixing only and is not interpreted as demographic, pollinator, pollen or seed movement.
 
 ## Numbering rule
 

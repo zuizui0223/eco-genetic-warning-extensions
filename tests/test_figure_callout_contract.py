@@ -21,7 +21,7 @@ def test_display_allocation_matches_current_figure_captions() -> None:
         2: ("fragmentation creates vulnerability and genetic warning is conditionally possible", "Fragmentation creates vulnerability and genetic warning is conditionally possible"),
         3: ("recurrent state turnover reorganises source feasibility and historical loss-screen placement", "Recurrent state turnover reorganises source feasibility and historical loss-screen placement"),
         4: ("high-precision recurrent-turnover incidence frontier", "High-precision recurrent-turnover incidence frontier"),
-        5: ("allele-frequency connectivity separates marginal risk from block heterogeneity", "Allele-frequency connectivity separates marginal risk from block heterogeneity"),
+        5: ("historical allele-mixing heterogeneity and fresh non-replication", "Historical allele-mixing heterogeneity failed fresh-seed replication"),
         6: ("portability after downstream loss conditions are separately recovered", "Portability after downstream loss conditions are separately recovered"),
     }
     for number, (allocation_title, caption_title) in expected.items():
@@ -34,5 +34,5 @@ def test_supplementary_table_links_follow_current_figure_spine() -> None:
     assert "Table S1 retains the paired fragmentation effect sizes" in allocation
     assert "Tables S3–S4 retain the coordinate and candidate records" in allocation
     assert "Table S6 retains the high-precision frontier records" in allocation
-    assert "Table S6 retains migration-level and paired-switch records" in allocation
+    assert "Table S6 retains both historical and fresh connectivity records" in allocation
     assert "Table S5 retains the endpoint, censoring and timing audit" in allocation

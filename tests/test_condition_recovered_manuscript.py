@@ -35,30 +35,31 @@ def test_condition_recovered_manuscript_follows_current_condition_first_science(
     text = MAIN.read_text(encoding="utf-8")
     required = (
         "Fragmentation disrupted an interaction-supported functional state",
-        "Recurrent turnover changed source feasibility and historical loss-screen placement",
-        "High-precision recurrent-turnover replays recovered an incidence frontier",
-        "Allele-frequency connectivity produced non-monotone block heterogeneity, not a marginal-risk gradient",
-        "The connectivity heterogeneity did not port to whole-individual or pollen-only movement",
-        "Aggregate feedback, partner loss and temporal partner variability were bounded negative condition results",
-        "Genetic erosion could precede functional loss, but not by a universal absolute threshold",
-        "Warning behaviour was not fully portable across independently calibrated domains",
+        "Recurrent turnover changed source feasibility and loss incidence",
+        "The historical `m=.10` connectivity heterogeneity did not replicate in fresh seeds",
+        "Process-resolved movement also did not establish a portable connectivity effect",
+        "Aggregate feedback and partner dynamics were bounded negative results",
+        "Genetic erosion could precede functional loss, but not by a universal threshold",
+        "Warning behaviour was not fully portable across calibrated domains",
     )
     positions = [text.index(phrase) for phrase in required]
     assert positions == sorted(positions)
 
 
-def test_condition_recovered_manuscript_retains_evidence_and_new_interpretation_boundaries() -> None:
+def test_condition_recovered_manuscript_retains_evidence_and_phase_u_boundary() -> None:
     text = MAIN.read_text(encoding="utf-8")
     lower = text.lower()
     assert "all 15 coarse coordinates remain historically `no_domain_selected`" in text
-    assert "the coarse result was a placement boundary rather than structural impossibility" in lower
-    assert "historical r3 is described as a mixed-block screen failure" in lower
+    assert "placement boundary rather than structural impossibility" in lower
+    assert ".0205" in text
+    assert ".745" in text
+    assert "historical_m010_heterogeneity_not_freshly_replicated" in text
+    assert "not supported as an independently reproducible `m=.10` heterogeneity effect" in lower
+    assert "no robust, portable connectivity heterogeneity effect was established" in lower
+    assert "seed-family contingent" in lower
     assert "not demographic migration" in lower
-    assert "not partner richness, connectance, pollinator diversity or network dimensionality" in lower
-    assert "bounded negative condition result" in lower
-    assert "the kappa search was closed rather than widened to manufacture a boundary" in lower
-    assert "operator-specific within the tested connectivity closures" in lower
-    assert "adaptive-rewiring gate therefore remains **closed**" in lower
+    assert "adaptive-rewiring gate remained closed" in lower
     assert "not a single-factor effect of transition direction" in lower
+    assert "phase u is one preregistered independent replication" in lower
     assert "r4 itself means genetic warning succeeds" not in lower
-    assert "universal connectivity threshold" not in lower
+    assert "the defensible conclusion is therefore not that `m=.10` is a reproducible heterogeneity threshold" in lower

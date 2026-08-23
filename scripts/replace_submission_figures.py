@@ -29,13 +29,24 @@ def _validate_high_precision_map(path: Path) -> None:
     frontier = data["recurrent_turnover"]["conditions"]
     if [round(float(row["p_star"]), 3) for row in frontier] != [0.325, 0.35, 0.375, 0.4]:
         raise RuntimeError("high-precision recurrent-turnover map drifted")
-    connectivity = {float(row["m"]): row for row in data["connectivity"]["conditions"]}
-    if not (float(connectivity[0.10]["equal_rate_p"]) < 0.05 < float(connectivity[0.20]["equal_rate_p"])):
-        raise RuntimeError("high-precision connectivity heterogeneity contract drifted")
+    historical = {float(row["m"]): row for row in data["connectivity"]["conditions"]}
+    if not (float(historical[0.10]["equal_rate_p"]) < 0.05 < float(historical[0.20]["equal_rate_p"])):
+        raise RuntimeError("historical Phase-M connectivity map drifted")
+    fresh = {float(row["m"]): row for row in data["fresh_connectivity_replication"]["conditions"]}
+    if data["fresh_connectivity_replication"]["decision"] != "historical_m010_heterogeneity_not_freshly_replicated":
+        raise RuntimeError("Phase-U replication decision drifted")
+    if not (float(fresh[0.0]["equal_rate_p"]) > 0.05 and float(fresh[0.10]["equal_rate_p"]) > 0.05):
+        raise RuntimeError("Phase-U fresh non-replication evidence drifted")
     if not all(row["screen"] == "R4_highrep" for row in data["reduced_form_partner_loss"]["conditions"]):
         raise RuntimeError("high-precision partner-loss screen contract drifted")
     if not all(row["screen"] == "R4_highrep" for row in data["aggregate_interaction_support"]["conditions"]):
         raise RuntimeError("high-precision interaction-support screen contract drifted")
+
+
+def _validate_locked_phase(path: Path, *, decision: str | None = None) -> None:
+    data = json.loads(path.read_text(encoding="utf-8"))
+    if decision is not None and data.get("decision") != decision:
+        raise RuntimeError(f"locked decision drifted in {path}")
 
 
 def main() -> int:
@@ -82,7 +93,7 @@ def main() -> int:
     _validate_high_precision_map(high_precision)
     write_high_precision_condition_figures(high_precision, figures)
 
-    # Preserve historical condition artifacts and add the current precision layer.
+    # Preserve historical condition artifacts and add current precision/robustness layers.
     phase_f = root / "artifacts/interaction_support/phase_f_summary.json"
     _validate_phase_f(phase_f)
     shutil.copy2(root / "manuscript/tables/inherited_h2_warning_summary.csv", tables / "inherited_h2_warning_summary.csv")
@@ -93,6 +104,18 @@ def main() -> int:
     shutil.copy2(phase_f, tables / "interaction_support_phase_f_summary.json")
     shutil.copy2(root / "artifacts/partner_redundancy/phase_g_summary.json", tables / "partner_phase_g_summary.json")
     shutil.copy2(high_precision, tables / "high_precision_condition_map.json")
+
+    locked = {
+        "phase_r_process_resolved_movement.json": root / "artifacts/process_resolved_movement/phase_r_locked_summary.json",
+        "phase_s_process_resolved_pollen.json": root / "artifacts/process_resolved_pollen/phase_s_locked_summary.json",
+        "phase_t_dynamic_partner_architecture.json": root / "artifacts/dynamic_partner_architecture/phase_t_locked_summary.json",
+        "phase_u_fresh_connectivity_replication.json": root / "artifacts/fresh_connectivity_replication/phase_u_locked_summary.json",
+    }
+    _validate_locked_phase(locked["phase_u_fresh_connectivity_replication.json"], decision="historical_m010_heterogeneity_not_freshly_replicated")
+    for destination, source in locked.items():
+        if not source.exists():
+            raise FileNotFoundError(source)
+        shutil.copy2(source, tables / destination)
 
     expected = {
         "figure1_eco_genetic_estimability.svg",

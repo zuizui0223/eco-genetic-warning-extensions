@@ -23,13 +23,14 @@ def test_figure4_uses_precision_frontier_not_old_narrow_r4_story() -> None:
     assert "narrow reproducible event regime" not in svg.lower()
 
 
-def test_figure5_separates_heterogeneity_from_paired_marginal_risk() -> None:
+def test_figure5_shows_historical_observation_and_fresh_nonreplication() -> None:
     svg = figure5_high_precision_connectivity_svg(_payload())
-    assert "Allele-frequency connectivity separates marginal risk from block heterogeneity" in svg
-    assert "p=0.0205" in svg
-    assert ">71<" in svg and ">63<" in svg
-    assert "McNemar p=1.000" in svg
-    assert "migration_rate is allele-frequency mixing only" in svg
+    assert "Historical m=.10 heterogeneity failed fresh-seed replication" in svg
+    assert "historical m=.10 block-heterogeneity observation (p=.0205)" in svg
+    assert "fresh m=.10 equal-rate p=.745" in svg
+    assert "paired McNemar p=0.694" in svg
+    assert "historical heterogeneity did not replicate" in svg
+    assert "migration_rate remains allele-frequency mixing only" in svg
 
 
 def test_writer_overwrites_legacy_figure4_5_filenames(tmp_path: Path) -> None:
@@ -37,7 +38,7 @@ def test_writer_overwrites_legacy_figure4_5_filenames(tmp_path: Path) -> None:
     figure4 = (tmp_path / "figure4_r4_recovery.svg").read_text()
     figure5 = (tmp_path / "figure5_connectivity_estimability.svg").read_text()
     assert "High-precision recurrent-turnover incidence frontier" in figure4
-    assert "separates marginal risk from block heterogeneity" in figure5
+    assert "failed fresh-seed replication" in figure5
 
 
 def test_semantic_relabel_removes_old_regime_and_evaluability_titles(tmp_path: Path) -> None:

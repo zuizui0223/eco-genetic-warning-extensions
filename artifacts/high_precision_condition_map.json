@@ -19,9 +19,47 @@
       {"equal_rate_p": 0.020549135503541822, "loss_to_no_loss": 50, "m": 0.1, "mcnemar_p": 1.0, "no_loss_to_loss": 49, "pooled_loss": 0.5570469798657718, "screen": "R3_highrep"},
       {"equal_rate_p": 0.9234738516885075, "loss_to_no_loss": 71, "m": 0.2, "mcnemar_p": 0.5455343664798731, "no_loss_to_loss": 63, "pooled_loss": 0.5413870246085011, "screen": "R4_highrep"}
     ],
-    "conclusion": "non_monotone_block_heterogeneity_at_m_0.10_without_directional_marginal_risk_effect",
+    "conclusion": "historical_phase_m_seed_family_showed_non_monotone_m010_block_heterogeneity_without_directional_marginal_risk_effect; not_freshly_replicated",
     "digest": "sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6",
     "run": 32558147960
+  },
+  "fresh_connectivity_replication": {
+    "artifact": 9486740313,
+    "conditions": [
+      {
+        "blocks": [
+          {"eligible": 89, "losses": 48, "master_seed": 20291010, "rate": 0.5393258426966292},
+          {"eligible": 86, "losses": 38, "master_seed": 20291011, "rate": 0.4418604651162791},
+          {"eligible": 91, "losses": 54, "master_seed": 20291012, "rate": 0.5934065934065934},
+          {"eligible": 97, "losses": 49, "master_seed": 20291013, "rate": 0.5051546391752577},
+          {"eligible": 89, "losses": 55, "master_seed": 20291014, "rate": 0.6179775280898876}
+        ],
+        "equal_rate_p": 0.13421243537094518,
+        "m": 0.0,
+        "pooled_loss": 0.5398230088495575,
+        "screen": "R4_highrep"
+      },
+      {
+        "blocks": [
+          {"eligible": 89, "losses": 46, "master_seed": 20291010, "rate": 0.5168539325842697},
+          {"eligible": 86, "losses": 50, "master_seed": 20291011, "rate": 0.5813953488372093},
+          {"eligible": 91, "losses": 50, "master_seed": 20291012, "rate": 0.5494505494505495},
+          {"eligible": 97, "losses": 50, "master_seed": 20291013, "rate": 0.5154639175257731},
+          {"eligible": 89, "losses": 53, "master_seed": 20291014, "rate": 0.5955056179775281}
+        ],
+        "equal_rate_p": 0.7451298863527918,
+        "m": 0.1,
+        "pooled_loss": 0.5508849557522124,
+        "screen": "R4_highrep"
+      }
+    ],
+    "decision": "historical_m010_heterogeneity_not_freshly_replicated",
+    "digest": "sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756",
+    "mcnemar_p": 0.6936859650244837,
+    "paired_loss_to_no_loss": 49,
+    "paired_no_loss_to_loss": 54,
+    "run": 32615044162,
+    "scientific_head": "d9c5c7852f86d78572d42b98f42c0c307fae3e2d"
   },
   "finite_sample_audit": {
     "phase_k": {"artifact": 9471883061, "decision": "phase_h_and_phase_i_exact_seed_families_both_converge_R4_at_100_attempts", "run": 32557289628},
@@ -30,6 +68,7 @@
   "interpretation_rule": {
     "R3": "mixed-block screen failure; not biological heterogeneity without independent high-precision evidence",
     "R4": "all observed blocks inside [0.30,0.70]; not proof of warning success or exchangeability",
+    "connectivity_heterogeneity": "a historical Phase-M seed-family observation at m=0.10 that failed one preregistered independent fresh-seed replication",
     "final_estimands": ["pooled_loss_incidence", "between_block_equal_rate_heterogeneity", "paired_trajectory_identity", "downstream_warning_performance"],
     "historical_R1_R4": "immutable preregistered screen labels"
   },
@@ -69,5 +108,5 @@
     "digest": "sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0",
     "run": 32558466157
   },
-  "stage": "high_precision_condition_map_2026-08-22"
+  "stage": "high_precision_condition_map_2026-08-23_after_phase_u"
 }
