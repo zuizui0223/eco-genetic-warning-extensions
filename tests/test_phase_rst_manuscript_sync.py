@@ -41,7 +41,8 @@ def test_old_next_model_and_replicated_connectivity_boundaries_are_removed() -> 
     assert "`m=.10` is a reproducible or established connectivity heterogeneity threshold" in claims
     assert "no robust portable connectivity heterogeneity effect is established" in claims
     assert "one preregistered independent fresh-seed ensemble" in claims
-    assert "one non-replication" in claims
+    assert "non-replication" in claims
+    assert "not a theorem" in claims
 
 
 def test_phase_rstu_do_not_create_new_warning_claims() -> None:
