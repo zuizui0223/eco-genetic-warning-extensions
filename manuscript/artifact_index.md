@@ -26,6 +26,7 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | Process-resolved pollen-only gene flow | paternal external-pollen closure `g=.20` against no connectivity and historical-family legacy `m=.10` | Phase S run `32613877695`, artifact `9486401100`, digest `sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04` |
 | Dynamic partner architecture | constant/even/dominant conditions; common availability draws; 100 attempts/block | Phase T run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c` |
 | Fresh allele-only connectivity replication | preregistered independent seeds `20291010–20291014`, paired `m=0/.10`, 100 attempts/block | Phase U run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756` |
+| Cross-layer state-sufficiency test | matched layer marginals; aligned vs anti-aligned patchwise joint state; 500 paired trajectories | Phase V run `32636913615`, artifact `9492558602`, digest `sha256:a5754ab2d54dea868a72fed582a9862cbc88b83510e1cf81e0a872f56b70a1bd` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
 ## Historical evidence versus current inference
@@ -34,7 +35,9 @@ Historical artifacts are never overwritten. The high-precision layer is additive
 
 Phase M remains an exact historical-family result. Its `m=.10` condition had equal-rate `p=.0205` in that family. Phase U then asked one prospectively fixed question in one independent fresh five-seed ensemble. The fresh `m=.10` condition had equal-rate `p=.745` and therefore did **not** replicate the historical heterogeneity observation. The historical result is retained, but its permitted interpretation is now seed-family contingent rather than a reproducible parameter-specific effect.
 
-Phases R/S/T are prospective closure tests. R/S showed that the historical-family `m=.10` pattern did not appear under whole-individual or pollen-only operators; T showed that matched-expected-support temporal partner variance/concentration did not generate a detected loss-process effect. These layers narrow interpretation rather than rescue a preferred result.
+Phases R/S/T are prospective closure tests. R/S showed that the historical-family `m=.10` pattern did not appear under whole-individual or pollen-only operators; T showed that matched-expected-support temporal partner variance/concentration did not generate a detected loss-process effect.
+
+Phase V is a separate state-sufficiency closure. It matched the independent habitat/census/interaction/genetic/trait marginals and standard genetic-diversity summaries exactly (up to declared numerical tolerance) while reversing cross-patch layer alignment. It therefore tests whether static marginal-equivalent snapshots are dynamically state-equivalent, not another migration or warning hypothesis.
 
 ## Current high-precision condition map
 
@@ -70,8 +73,6 @@ This is preserved as a historical seed-family observation. Paired marginal-risk 
 
 Fresh paired McNemar `p=.694`. Decision: `historical_m010_heterogeneity_not_freshly_replicated`.
 
-Interpretation: the Phase-M `m=.10` equal-rate signal is not supported as independently reproducible from one fresh replication. Phase U does not prove that no future seed family could ever show heterogeneity.
-
 ### Process-resolved connectivity portability
 
 | condition | pooled loss | historical screen | equal-rate p | paired marginal result |
@@ -81,7 +82,7 @@ Interpretation: the Phase-M `m=.10` equal-rate signal is not supported as indepe
 | whole-individual `d=.10` | .606 | R4 | .811 | McNemar vs no connectivity `p=.143` |
 | pollen-only `g=.20` | .532 | R4 | .728 | McNemar vs no connectivity `p=.311`; vs allele-only `p=.266` |
 
-Interpretation: in the historical Phase-M family, the heterogeneity observation did not port to the two process-resolved operators. Combined with Phase U, no robust portable connectivity heterogeneity effect is established.
+Interpretation: combined with Phase U, no robust portable connectivity heterogeneity effect is established.
 
 ### Aggregate interaction feedback
 
@@ -110,6 +111,21 @@ Interpretation: in the historical Phase-M family, the heterogeneity observation 
 
 Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains closed.
 
+### Cross-layer state sufficiency — Phase V
+
+Both states had the same habitat area, census, q multiset, p multiset, realised high-trait-mass multiset, global trait-bin totals, `H_alpha`, `H_gamma` and `FST`.
+
+| quantity | aligned | anti-aligned |
+|---|---:|---:|
+| q × eco-genetic bundle covariance | +.025 | −.025 |
+| pooled realised loss | .678 | .722 |
+| loss count / 500 | 339 | 361 |
+| mean restricted loss time | 34.332 | 32.100 |
+
+Exact generation-1 maximum patchwise q difference: **.2543**. Paired discordant loss outcomes: `92` versus `114`; exact McNemar `p=.143`.
+
+Interpretation: separate static layer marginals are not transition-sufficient for the declared local feedback. The finite campaign does not establish a directional long-horizon alignment effect under this one schedule. Operational regime equivalence therefore requires joint-state/transition reasoning rather than static-index matching.
+
 ## Submission-bundle evidence rules
 
 - Parent and extension trajectories are never pooled.
@@ -122,10 +138,12 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 - Phase Q `interaction kappa` is aggregate feedback, not network richness/connectance.
 - Phase N/T do not constitute a full multispecies dynamic-network model.
 - Adaptive rewiring remains unopened after the Phase-T negative result.
+- Phase V proves a state-representation boundary for the declared local update, not a universal directional effect of alignment on long-horizon loss.
+- Matching separate static marginal indicators is not evidence of urban/island regime convergence.
 - Protocol 003 supports bounded portability, not a direction-only causal claim.
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
 
 ## Publication display rule
 
-The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 now combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T remain robustness/boundary layers rather than additional headline displays.
+The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T/V remain robustness/state-boundary layers rather than additional headline displays.
