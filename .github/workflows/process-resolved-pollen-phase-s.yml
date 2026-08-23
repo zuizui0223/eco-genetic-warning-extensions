@@ -1,19 +1,6 @@
 name: Process-resolved pollen Phase S
 
 on:
-  pull_request:
-    branches:
-      - "agent/process-resolved-movement-phase-r"
-    paths:
-      - "src/eco_genetic_warning_extensions/process_resolved_pollen.py"
-      - "src/eco_genetic_warning_extensions/process_resolved_pollen_phase_s.py"
-      - "src/eco_genetic_warning_extensions/process_resolved_pollen_phase_s_runner.py"
-      - "scripts/check_process_resolved_pollen_zero_equivalence.py"
-      - "scripts/run_process_resolved_pollen_phase_s_seed.py"
-      - "scripts/aggregate_process_resolved_pollen_phase_s.py"
-      - "tests/test_process_resolved_pollen_phase_s.py"
-      - "docs/PROCESS_RESOLVED_POLLEN_PHASE_S.md"
-      - ".github/workflows/process-resolved-pollen-phase-s.yml"
   workflow_dispatch:
 
 permissions:
