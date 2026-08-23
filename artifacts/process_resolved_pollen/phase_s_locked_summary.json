@@ -1,0 +1,76 @@
+{
+  "stage": "process-resolved pollen validation Phase S",
+  "decision": "legacy_m010_heterogeneity_not_reproduced_by_pollen_gene_flow",
+  "opening": {
+    "zero_pollen_parent_finite_bin_equivalence": true,
+    "prefix_audit_passed": true,
+    "legacy_full_phase_m_replay_passed": true,
+    "pollen_baseline_pairing_passed": true,
+    "opening_passed": true
+  },
+  "conditions": [
+    {
+      "condition": "no_connectivity",
+      "blocks": [[47,88],[48,89],[58,93],[46,86],[51,91]],
+      "pooled_loss_rate": 0.5592841163310962,
+      "historical_screen": "R4_highrep",
+      "equal_rate_p": 0.7096426551674799
+    },
+    {
+      "condition": "allele_only_m010",
+      "blocks": [[45,88],[48,89],[66,93],[42,86],[48,91]],
+      "pooled_loss_rate": 0.5570469798657718,
+      "historical_screen": "R3_highrep",
+      "equal_rate_p": 0.020549135503541822
+    },
+    {
+      "condition": "pollen_only_g020",
+      "blocks": [[46,88],[45,89],[53,93],[42,86],[52,91]],
+      "pooled_loss_rate": 0.5324384787472036,
+      "historical_screen": "R4_highrep",
+      "equal_rate_p": 0.7282046232183307,
+      "mean_realised_pollen_immigration_fraction": 0.19984988701677614,
+      "mean_total_immigrant_pollen_per_trajectory_across_120_generations": 1266.2844823732453
+    }
+  ],
+  "paired": {
+    "pollen_vs_no_connectivity": {
+      "comparable": 447,
+      "loss_to_no_loss": 65,
+      "no_loss_to_loss": 53,
+      "same_loss": 185,
+      "same_no_loss": 144,
+      "exact_mcnemar_p": 0.3112309933213218
+    },
+    "pollen_vs_allele_only_m010": {
+      "comparable": 447,
+      "loss_to_no_loss": 46,
+      "no_loss_to_loss": 35,
+      "same_loss": 203,
+      "same_no_loss": 163,
+      "exact_mcnemar_p": 0.26641230967132035
+    }
+  },
+  "interpretation": {
+    "pollen_between_block_heterogeneity_detected": false,
+    "pollen_marginal_effect_vs_no_connectivity_detected": false,
+    "pollen_marginal_difference_vs_allele_only_m010_detected": false,
+    "operator_portability": "The Phase-M m=0.10 block-heterogeneity result does not port to the preregistered pollen-only g=0.20 paternal-gamete closure. Together with Phase R, the detected legacy heterogeneity is not a generic consequence of either whole-individual dispersal or the tested pollen-mediated gene-flow representation.",
+    "nominal_rate_equivalence_claimed": false,
+    "full_mating_system_represented": false,
+    "pollinator_movement_represented": false
+  },
+  "provenance": {
+    "workflow_run": 32613877695,
+    "scientific_head": "d863971693c1149d572497c3831ed9f91f3e0fa7",
+    "aggregate_artifact_id": 9486401100,
+    "aggregate_artifact_digest": "sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04",
+    "seed_artifacts": [
+      {"master_seed": 20290410, "artifact_id": 9486389898, "digest": "sha256:e0754c677f48f3487502f4a14ea3ca69afcfcff1db189989166feb44512a0933"},
+      {"master_seed": 20290411, "artifact_id": 9486393980, "digest": "sha256:1a87a9c9add631037f396b64845920bc9f25b913484693ede9c4b6c54fc320c5"},
+      {"master_seed": 20290412, "artifact_id": 9486394534, "digest": "sha256:08a2f2d0b3f1d8fc13761cd689172b3ca985362601604eff0d81ce18d144d708"},
+      {"master_seed": 20290413, "artifact_id": 9486393898, "digest": "sha256:55140114169470426b5ee044cc605a0c70a0d78fd825f60241ad4638c8211ae2"},
+      {"master_seed": 20290414, "artifact_id": 9486389837, "digest": "sha256:dfdc6ec8d49a27ca29501de25c4e2584c45b1a1de64d3a58d1a03a2370872276"}
+    ]
+  }
+}
