@@ -8,7 +8,7 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 |---|---|---|
 | Inherited H1/H3 chain | paired one-large versus equal-isolated outcomes | parent run `28456092898`, artifact `7987193632` |
 | Fresh H3 fragmentation gradient | 1–16 equal isolated patches; 1,200 attempted / 1,037 prepared | parent run `31937210601`, artifact `9261157020` |
-| Inherited relative-warning benchmark | trait-loss-only calibration and fresh validation | parent calibration `28496735824`; validation `28500796310` |
+| Inherited relative-warning benchmark | trait-loss-only calibration and fresh validation; 35/35 leads at each of six relative endpoints | parent calibration `28496735824`; validation `28500796310` |
 | Common source reconstruction | 3,375 attempts over 15 recurrent-transition coordinates | historical Protocol 002 source runs |
 | Common warning-blind loss calibration | 20,250 attempts; 648 complete candidates; 15/15 `no_domain_selected` | locked Stage II artifacts |
 | Historical frontier recovery | low-replicate Phase C/D R1–R4 screen | `artifacts/frontier_refinement/phase_c_summary.json`, `phase_d_summary.json` |
@@ -26,6 +26,7 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | Process-resolved pollen-only gene flow | paternal external-pollen closure `g=.20` against no connectivity and historical-family legacy `m=.10` | Phase S run `32613877695`, artifact `9486401100`, digest `sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04` |
 | Dynamic partner architecture | constant/even/dominant conditions; common availability draws; 100 attempts/block | Phase T run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c` |
 | Fresh allele-only connectivity replication | preregistered independent seeds `20291010–20291014`, paired `m=0/.10`, 100 attempts/block | Phase U run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756` |
+| Fresh fixed-domain genetic-warning replication | frozen parent H2-R domain; seeds `20291110–20291114`; six `H_alpha/H_gamma × 5/10/20%` relative endpoints; 33/33 leads at each endpoint | Phase V run `32636847803`, artifact `9492587604`, digest `sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031`; `artifacts/fresh_warning_replication/phase_v_locked_summary.json` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
 ## Historical evidence versus current inference
@@ -35,6 +36,8 @@ Historical artifacts are never overwritten. The high-precision layer is additive
 Phase M remains an exact historical-family result. Its `m=.10` condition had equal-rate `p=.0205` in that family. Phase U then asked one prospectively fixed question in one independent fresh five-seed ensemble. The fresh `m=.10` condition had equal-rate `p=.745` and therefore did **not** replicate the historical heterogeneity observation. The historical result is retained, but its permitted interpretation is now seed-family contingent rather than a reproducible parameter-specific effect.
 
 Phases R/S/T are prospective closure tests. R/S showed that the historical-family `m=.10` pattern did not appear under whole-individual or pollen-only operators; T showed that matched-expected-support temporal partner variance/concentration did not generate a detected loss-process effect. These layers narrow interpretation rather than rescue a preferred result.
+
+Phase V is a separately preregistered **C3** replication rather than a C2 condition search. It froze the parent symmetric H2-R domain and all six baseline-relative warning endpoints before running one new five-seed ensemble. The parent benchmark had 35/35 leads at every relative endpoint; Phase V independently returned 33/33 leads, zero ties and zero lags at every endpoint. This strengthens warning ordering within the same calibrated domain while leaving absolute-threshold and cross-domain portability limits unchanged.
 
 ## Current high-precision condition map
 
@@ -110,6 +113,15 @@ Interpretation: in the historical Phase-M family, the heterogeneity observation 
 
 Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains closed.
 
+## C3 warning replication
+
+| ensemble | attempted | available | realised losses | valid pairs per endpoint | leads per endpoint | ties / lags |
+|---|---:|---:|---:|---:|---:|---:|
+| inherited parent H2-R | 100 | 83 | 35 | 35 | 35 | 0 / 0 |
+| fresh Phase V | 100 | 82 | 33 | 33 | 33 | 0 / 0 |
+
+For each fresh Phase-V endpoint, the one-sided exact binomial probability against a 0.5 lead probability is `1.1641532182693481e-10`. Phase V's preregistered decision is `strict_replication`. Interpretation: baseline-relative warning ordering is independently reproduced **within the frozen symmetric H2-R domain**, not established as a universal threshold.
+
 ## Submission-bundle evidence rules
 
 - Parent and extension trajectories are never pooled.
@@ -122,10 +134,12 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 - Phase Q `interaction kappa` is aggregate feedback, not network richness/connectance.
 - Phase N/T do not constitute a full multispecies dynamic-network model.
 - Adaptive rewiring remains unopened after the Phase-T negative result.
+- Phase V is strict within-domain warning replication; it does not establish a universal warning threshold or cross-domain portability.
+- The historical absolute-threshold negative result remains unchanged after Phase V.
 - Protocol 003 supports bounded portability, not a direction-only causal claim.
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
 
 ## Publication display rule
 
-The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 now combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T remain robustness/boundary layers rather than additional headline displays.
+The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T remain robustness/boundary layers. Phase V strengthens the Figure-2 warning bridge and manuscript C3 evidence without requiring a seventh main display.
