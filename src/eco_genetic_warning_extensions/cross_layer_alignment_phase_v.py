@@ -30,6 +30,7 @@ PHASE_V_DENSITY_CAPACITY = 40.0
 PHASE_V_Q_FEEDBACK = (0.6, 0.3, 0.1)  # q, realised high-trait mass, high-allele frequency
 PHASE_V_CONDITIONS = ("aligned", "anti_aligned")
 PHASE_V_ALPHA = 0.05
+PHASE_V_SIGNATURE_TOLERANCE = 1e-15
 
 
 def condition_bundle_values(condition: str) -> tuple[float, ...]:
@@ -99,7 +100,25 @@ def baseline_signature(condition: str) -> dict[str, object]:
 
 
 def signatures_match() -> bool:
-    return baseline_signature("aligned") == baseline_signature("anti_aligned")
+    """Validate mathematical marginal equality without bitwise float dependence."""
+    left = baseline_signature("aligned")
+    right = baseline_signature("anti_aligned")
+    exact_keys = (
+        "patch_areas_sorted",
+        "population_sorted",
+        "q_sorted",
+        "p_sorted",
+        "high_trait_mass_sorted",
+        "trait_bin_totals",
+        "total_population",
+    )
+    if any(left[key] != right[key] for key in exact_keys):
+        return False
+    float_keys = ("mean_q", "mean_p", "mean_high_trait_mass", "h_alpha", "h_gamma", "fst")
+    return all(
+        abs(float(left[key]) - float(right[key])) <= PHASE_V_SIGNATURE_TOLERANCE
+        for key in float_keys
+    )
 
 
 def cross_layer_covariance(condition: str) -> float:
@@ -182,8 +201,8 @@ def phase_v_manifest() -> dict[str, object]:
             "barrier_schedule_rule": "linear over 60 generations; endpoints are existing standard-profile grid values",
         },
         "opening_rule": (
-            "Aligned and anti-aligned states must have exactly identical marginal signatures for habitat area, census, interaction, allele frequency, realised high-trait mass, trait-bin totals, H_alpha, H_gamma and FST. "
-            "They must differ only in cross-patch alignment, with positive versus negative q-by-eco-genetic-bundle covariance."
+            "Aligned and anti-aligned states must have mathematically identical marginal signatures for habitat area, census, interaction, allele frequency, realised high-trait mass, trait-bin totals, H_alpha, H_gamma and FST. "
+            "Discrete/multiset quantities are compared exactly and derived floating summaries within 1e-15. They must differ only in cross-patch alignment, with positive versus negative q-by-eco-genetic-bundle covariance."
         ),
         "primary_question": (
             "Can states with identical measured coarse marginals but different cross-layer alignment generate different downstream realised functional-loss incidence under identical future forcing?"
