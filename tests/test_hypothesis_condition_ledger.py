@@ -25,6 +25,8 @@ def test_condition_ledger_records_recovered_hierarchy_and_precision_boundaries()
     assert "did **not** freshly replicate" in text
     assert "3.0" in text and "4.5" in text and "6.0" in text
     assert "adaptive-rewiring gate remains closed" in lower
+    assert "strict_replication" in text
+    assert "35/35" in text and "33/33" in text
 
 
 def test_opening_rule_is_frozen_before_warning_is_read() -> None:
@@ -32,8 +34,9 @@ def test_opening_rule_is_frozen_before_warning_is_read() -> None:
     assert "no warning/diversity-informed event-regime selection" in text
     assert "no finer `p_star`, migration or kappa tuning" in text
     assert "no replacement phase-u seeds" in text
-    assert "proof of possibility" in text
-    assert "warning" in text
+    assert "no replacement phase-v seeds" in text
+    assert "two independent stochastic seed ensembles" in text
+    assert "warning outcomes remained unavailable during c2 selection" in text
 
 
 def test_failed_generality_and_nonreplication_are_closed_as_boundaries() -> None:
@@ -41,3 +44,4 @@ def test_failed_generality_and_nonreplication_are_closed_as_boundaries() -> None
     assert "record failed generality or replication as a boundary rather than continuing until the hypothesis appears true" in text
     assert "not supported as a reproducible parameter-specific connectivity heterogeneity effect" in text
     assert "no robust portable connectivity heterogeneity effect is established" in text
+    assert "does not establish a universal relative threshold" in text
