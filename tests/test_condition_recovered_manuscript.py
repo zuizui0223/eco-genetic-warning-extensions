@@ -39,14 +39,14 @@ def test_condition_recovered_manuscript_follows_current_condition_first_science(
         "The historical `m=.10` connectivity heterogeneity did not replicate in fresh seeds",
         "Process-resolved movement also did not establish a portable connectivity effect",
         "Aggregate feedback and partner dynamics were bounded negative results",
-        "Genetic erosion could precede functional loss, but not by a universal threshold",
+        "Baseline-relative genetic warning strictly replicated within the frozen domain",
         "Warning behaviour was not fully portable across calibrated domains",
     )
     positions = [text.index(phrase) for phrase in required]
     assert positions == sorted(positions)
 
 
-def test_condition_recovered_manuscript_retains_evidence_and_phase_u_boundary() -> None:
+def test_condition_recovered_manuscript_retains_evidence_and_replication_boundaries() -> None:
     text = MAIN.read_text(encoding="utf-8")
     lower = text.lower()
     assert "all 15 coarse coordinates remain historically `no_domain_selected`" in text
@@ -61,5 +61,8 @@ def test_condition_recovered_manuscript_retains_evidence_and_phase_u_boundary() 
     assert "adaptive-rewiring gate remained closed" in lower
     assert "not a single-factor effect of transition direction" in lower
     assert "phase u is one preregistered independent replication" in lower
+    assert "33/33" in text and "strict_replication" in text
+    assert "two independent stochastic ensembles" in lower
+    assert "does not convert the failed absolute thresholds into robust rules" in lower or "does not repair the non-robust absolute-threshold rules" in lower
     assert "r4 itself means genetic warning succeeds" not in lower
     assert "the defensible conclusion is therefore not that `m=.10` is a reproducible heterogeneity threshold" in lower
