@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Habitat fragmentation can leave populations present while interaction-dependent function weakens, but genetic warning is meaningful only if the downstream loss process is characterised independently. In a finite eco-genetic model, fragmentation sharply reduced interaction, local effective size and realised high-trait mass. Warning-blind calibration located intermediate-loss conditions, but a finite-sample audit showed that the original blockwise R3/R4 screen could not itself identify biological heterogeneity. High-precision replays separated loss incidence, between-block heterogeneity, trajectory identity and warning performance. Recurrent turnover shifted loss incidence; allele-frequency mixing produced non-monotone heterogeneity at one tested level without changing marginal risk; aggregate interaction feedback was robust across three predeclared levels; reduced-form partner loss changed many trajectories but not incidence or heterogeneity. Baseline-relative genetic erosion preceded observed losses in one calibrated benchmark, while portability was bounded. Genetic warning is therefore downstream of the eco-genetic process generating functional loss.
+Habitat fragmentation can leave populations present while interaction-dependent function weakens, but genetic warning is meaningful only if the downstream loss process is characterised independently. In a finite model, fragmentation reduced interaction, local effective size and realised high-trait mass. Warning-blind calibration located intermediate-loss conditions, but a finite-sample audit showed that the blockwise R3/R4 screen could not itself identify biological heterogeneity. High-precision replays separated loss incidence, between-block heterogeneity, trajectory identity and warning performance. Recurrent turnover shifted loss incidence; allele-frequency mixing produced non-monotone heterogeneity at one tested level without changing marginal risk; aggregate interaction feedback and reduced-form partner loss were bounded negative results. The connectivity heterogeneity did not port to preregistered whole-individual or pollen-only movement, and matched-support temporal partner dynamics produced no detected population-level effect. Baseline-relative genetic erosion preceded observed losses in one calibrated benchmark, while portability was bounded. Genetic warning is therefore downstream of the eco-genetic process generating functional loss.
 
 ## Introduction
 
@@ -57,7 +57,7 @@ The preregistered historical classifier called a candidate R1 when all five obse
 
 A later finite-sample audit quantified the probability that this all-five-block screen would pass or fail under a common latent loss probability at the observed block sizes. Every load-bearing historical R3 contrast was then replayed at 100 attempted replicates per master seed using the exact historical seeds. Each precision replay required its first 20 attempts to reproduce the locked historical eligible/loss counts before interpretation. Final inference reports pooled loss incidence and a separate equal-rate diagnostic across blocks; paired contrasts additionally report bidirectional status switches and exact McNemar tests.
 
-### Effective genetic connectivity
+### Effective genetic connectivity and process-resolved movement
 
 At the recovered recurrent-turnover anchor, allele-frequency mixing varied while all other conditions were fixed: `A_ref=1.0`, interaction `kappa=4.5`, `kappa_mu=0.35`, `p_star=0.35`, four equal patches, horizon 120 and normalised barrier increase 0.30. The operator is
 
@@ -67,13 +67,17 @@ p_i'=(1-m)p_i+m\bar p.
 
 This `migration_rate` is allele-frequency mixing and **not demographic migration**, pollen or seed dispersal, pollinator movement, recolonisation or trait-bin movement. The high-precision replay used the five historical master seeds, 100 attempts per seed and paired all migration levels on the same prepared source and trajectory seed.
 
-### Aggregate interaction support and reduced-form partner loss
+Two prospective robustness closures then tested whether the surviving `m=.10` block-heterogeneity result ported to more explicit movement processes. Whole-individual dispersal (`d=.10`) moved integer post-recruitment individuals and realised trait-bin abundance among patches before recurrent transition and drift. Pollen-only gene flow (`g=.20`) replaced a fraction of paternal gamete contributions with external donors while census and realised trait-bin abundance remained local. The pollen fraction was chosen because a biparental closure gives an approximate maximum external genomic contribution of `g/2=.10`; it was a mechanistically derived nominal comparison, not calibrated equivalence. Both campaigns used the same Phase-E/M anchor, master seeds and 100-attempt precision, and required zero-process equivalence, exact first-20 prefix replay, exact full Phase-M comparator replay and paired baseline eligibility before interpretation.
+
+### Aggregate interaction support, partner loss and temporal partner availability
 
 The aggregate-support test used only the three interaction-feedback values already declared in the source grid: `kappa=3.0,4.5,6.0`. Source reconstruction was independent at every kappa because feedback strength changes source geometry. The precision replay used the same five historical master seeds with 100 attempts per seed and condition.
 
 A separate reduced-form partner-contribution test represented four contributions summing to one. The intact control retained all four. Three predeclared architectures—`(0.25,0.25,0.25,0.25)`, `(0.40,0.30,0.20,0.10)` and `(0.70,0.10,0.10,0.10)`—each lost one partner, balanced by replicate index. The loss architectures shared a `4→3` richness change and mean retained support 0.75. The high-precision replay used the same five historical master seeds and paired architectures on the same prepared sources.
 
-`interaction kappa` is aggregate positive-feedback strength, **not partner richness, connectance, pollinator diversity or network dimensionality**. The partner layer is also reduced-form: it has no explicit partner population dynamics, connectance, nestedness, modularity, coextinction, adaptive rewiring or biological partner movement.
+A final prospective partner-architecture closure tested temporal availability while holding **expected** aggregate support at 0.75. The constant comparator used support 0.75 every generation. In two dynamic conditions, four partners were independently available each generation with probability 0.75, with even weights `(0.25,0.25,0.25,0.25)` or dominant weights `(0.70,0.10,0.10,0.10)`. Even and dominant conditions shared identical availability draws within each trajectory. Their theoretical support variances were 0.046875 and 0.0975, versus zero for the constant condition. The preregistered opening rule required exact replay of the historical first-20 Phase-G prefixes, exact replay of all five Phase-N 100-attempt constant-support blocks and identical baseline eligibility. Adaptive rewiring was not included and would open only if this matched-expected-support test first established a dynamic-network effect.
+
+`interaction kappa` is aggregate positive-feedback strength, **not partner richness, connectance, pollinator diversity or network dimensionality**. The partner closures remain bounded: Phase N is reduced-form, and the temporal Phase-T closure represents one focal node plus four stochastic partner-availability states rather than partner abundance dynamics, coextinction, spatial partner movement or a full multispecies network.
 
 ### Conditional warning and portability
 
@@ -111,13 +115,25 @@ At high precision, `m=0,.025,.05,.20` were compatible with common block rates. O
 
 Paired comparisons reinforced the distinction between trajectory identity and marginal risk. Relative to isolation, loss-status switches occurred in both directions at every nonzero migration rate. Exact McNemar tests were non-significant (`p=0.542, 0.901, 1.000, 0.546`). Allele-frequency connectivity therefore changed which trajectories failed, and at one tested level changed exchangeability across blocks, without a directional mean-risk effect (Figure 5).
 
-### Aggregate feedback was robust across the tested range; partner loss was a high-precision negative condition result
+### The connectivity heterogeneity did not port to whole-individual or pollen-only movement
+
+Both process-resolved opening gates passed. The no-connectivity and allele-only comparator blocks reproduced Phase M exactly, and baseline eligibility was paired across operators.
+
+Whole-individual dispersal at `d=.10` produced pooled loss **0.606** with block rates `49/88, 57/89, 57/93, 54/86, 54/91`; the equal-rate diagnostic was non-significant (`p=0.811`). The operator was active, with mean realised mover fraction 0.0923. Against no connectivity, 83 trajectories changed loss→no-loss and 104 no-loss→loss; exact McNemar `p=0.143`.
+
+Pollen-only paternal gene flow at `g=.20` produced pooled loss **0.532** with block rates `46/88, 45/89, 53/93, 42/86, 52/91`; equal-rate `p=0.728`. Mean realised external-pollen fraction was 0.19985. Exact McNemar tests were non-significant versus no connectivity (`p=0.311`) and legacy `m=.10` (`p=0.266`).
+
+Thus the high-precision `m=.10` block heterogeneity is **operator-specific within the tested connectivity closures**. It did not port to either preregistered whole-individual dispersal or pollen-only gene flow, and none of the three connectivity representations produced a detected directional marginal-risk effect.
+
+### Aggregate feedback, partner loss and temporal partner variability were bounded negative condition results
 
 The aggregate interaction-feedback replay reproduced all 15 historical prefixes. Pooled loss was **0.499, 0.573 and 0.598** at `kappa=3.0,4.5,6.0`; all three remained inside the historical intermediate-incidence screen. Equal-rate diagnostics were `p=0.063, 0.623, 0.543`. This is a **bounded negative condition result**: the predeclared scalar feedback range did not generate a new incidence or block-heterogeneity boundary. **The kappa search was closed rather than widened to manufacture a boundary.**
 
 The partner-loss precision replay likewise changed the interpretation of the original low-replicate result. Pooled loss was **0.556** for intact, **0.544** for even loss, **0.565** for graded loss and **0.549** for dominant-partner loss. All four conditions were inside the historical intermediate-incidence screen, and none showed detectable excess block heterogeneity. Paired McNemar tests against intact were non-significant (`p=0.757, 0.809, 0.861`) despite many bidirectional trajectory switches.
 
-Thus the earlier claim that one-partner loss moved R4 to R3 by reducing event reproducibility is withdrawn. Under this reduced-form closure, partner loss changed individual stochastic histories but not high-precision marginal incidence or block heterogeneity.
+The subsequent matched-expected-support dynamic test passed every preregistered replay gate. Pooled loss was **0.5442** under constant support, **0.5488** under even dynamic availability and **0.5533** under dominant dynamic availability. All three remained R4 and equal-rate diagnostics were non-significant (`p=0.488, 0.299, 0.208`). The intended support-variance contrast was realised (`0`, `0.04684`, `0.09702`) while mean support remained approximately 0.75. Paired McNemar tests were also non-significant (`p=0.896, 0.762, 0.883`).
+
+Thus the earlier claim that one-partner loss moved R4 to R3 by reducing event reproducibility is withdrawn, and adding matched-expected-support temporal partner variability did not recover a population-level effect. Under these bounded closures, partner perturbations alter some stochastic histories without a detected incidence or block-heterogeneity shift. The preregistered adaptive-rewiring gate therefore remains **closed** rather than being tuned after a null result.
 
 ### Genetic erosion could precede functional loss, but not by a universal absolute threshold
 
@@ -153,23 +169,27 @@ This matters for warning calibration. A warning study needs enough downstream ev
 
 ### Connectivity is a process family, not a scalar rescue axis
 
-The high-precision connectivity result is non-monotone. `m=.10` produced excess block heterogeneity, while both weaker mixing and the stronger `.20` level did not. No tested level produced a directional marginal-risk change. The present model therefore does not support a simple “more connectivity rescues” or “more connectivity destabilises” story.
+The high-precision allele-mixing result is non-monotone. `m=.10` produced excess block heterogeneity, while both weaker mixing and the stronger `.20` level did not. No tested level produced a directional marginal-risk change. The model therefore does not support a simple “more connectivity rescues” or “more connectivity destabilises” story.
 
-The operator also has a strict interpretation boundary. It mixes allele frequencies only. Natural pollen flow, seed dispersal, demographic movement, recolonisation and partner movement can act on different state variables and timescales. Empirical plant genetics likewise shows heterogeneous fragmentation responses rather than one universal genetic signature (Miguel-Peñaloza et al. 2023). Peled et al. (2026) further shows that heterogeneous landscape connectivity can generate complex genetic trajectories. Process-resolved movement is therefore a next-model closure, not a relabelling of `m`.
+More importantly, prospective process-resolved tests now show that the `m=.10` heterogeneity is not portable across connectivity representations. Whole-individual dispersal and pollen-only paternal gene flow were active, reproduced all required controls, and nevertheless remained block-homogeneous at the same anchor. This is a direct representation boundary: smooth allele-frequency mixing cannot stand in for biological connectivity in general.
 
-### Interaction architecture remains unresolved beyond the tested reduced forms
+That negative portability is ecologically useful. Natural pollen flow, seed dispersal, demographic movement, recolonisation and partner movement act on different state variables and timescales. Empirical plant genetics likewise shows heterogeneous fragmentation responses rather than one universal genetic signature (Miguel-Peñaloza et al. 2023), and heterogeneous landscape connectivity can generate complex genetic trajectories (Peled et al. 2026). The current result therefore supports process-specific measurement rather than a universal connectivity scalar. Seed/propagule movement, pollinator movement and richer spatial kernels remain outside the tested closures.
+
+### Interaction architecture remains bounded beyond the tested reduced forms
 
 The scalar feedback result is robust within its predeclared range, but it says only that `kappa=3–6` did not create a new high-precision incidence or heterogeneity boundary at this anchor. It does not show that interaction support is irrelevant.
 
-The partner-loss replay is even more informative as a negative result. The original low-replicate R4→R3 shift disappeared completely with precision: intact and all three loss architectures had similar incidence and compatible block rates. Yet paired trajectory identity changed often. This means reduced-form partner removal can alter realised stochastic histories without producing a population-level functional-loss effect under the tested closure.
+The partner-loss replay is informative as a negative result. The original low-replicate R4→R3 shift disappeared completely with precision: intact and all three loss architectures had similar incidence and compatible block rates. Yet paired trajectory identity changed often. Reduced-form partner removal can therefore alter realised stochastic histories without producing a population-level functional-loss effect under the tested closure.
 
-Real networks add partner abundance, topology, coextinction, trait constraints and adaptive rewiring. Experimental and synthetic studies show that compensation is context dependent (Brosi & Briggs 2013; Timóteo et al. 2016; Brosi et al. 2017; Leimberger et al. 2023; Ward et al. 2026). Those mechanisms require a new prospective model. The present negative result is a reason not to inflate the reduced-form layer into a network theorem.
+Phase T then moved one step beyond a static reduced form by making partner availability explicitly temporal while matching expected support. Temporal support variance roughly doubled from the even to the dominant architecture, but loss incidence, block heterogeneity and paired marginal effects remained indistinguishable at the declared precision. The result does not imply that ecological networks are dynamically irrelevant. It says that **temporal variance and contribution concentration alone**, under this one-focal-node/four-partner closure, were insufficient to create the sought loss-process difference.
+
+Real networks add partner abundance dynamics, topology, coextinction, trait constraints, spatial partner movement and adaptive rewiring. Experimental and synthetic studies show that compensation is context dependent (Brosi & Briggs 2013; Timóteo et al. 2016; Brosi et al. 2017; Leimberger et al. 2023; Ward et al. 2026). Because Phase T did not establish a dynamic-network effect to decompose, adaptive rewiring remains prospectively closed rather than being tuned to rescue a preferred result.
 
 ### Genetic warning is downstream of the loss-generating process
 
 The inherited benchmark proves that baseline-relative genetic erosion can precede realised functional loss in one calibrated domain. It does not provide a universal threshold: absolute cut-offs produced both leads and lags, and warning availability differed across recalibrated domains.
 
-The condition-first ordering therefore survives the statistical correction but becomes more precise. Before asking whether a genetic statistic leads loss, establish whether the functional state exists, estimate the incidence of its loss, test whether comparable blocks are exchangeable when that matters, and retain censoring. Only then should lead time and ordering be evaluated. This complements Peled et al. (2026): their warning target is a rapid genetic transition, whereas ours is loss of interaction-supported ecological function.
+The condition-first ordering therefore survives the statistical correction and the later robustness closures. Before asking whether a genetic statistic leads loss, establish whether the functional state exists, estimate the incidence of its loss, test whether comparable blocks are exchangeable when that matters, and verify that the ecological operator represents the biological process being claimed. Only then should lead time and ordering be evaluated. This complements Peled et al. (2026): their warning target is a rapid genetic transition, whereas ours is loss of interaction-supported ecological function.
 
 ### Urban and island systems are contrasting routes through a common condition space
 
@@ -181,10 +201,12 @@ The common empirical question is whether distinct fragmentation mechanisms conve
 
 The model is finite and its numerical coordinates are not transferable ecological thresholds. The historical R1–R4 labels remain in code and provenance because they governed prospective calibration, but they are not treated as latent biological categories. The high-precision equal-rate tests diagnose block-level rate differences within the tested seed families; failure to detect heterogeneity is not a theorem of universal homogeneity.
 
-The partner layer does not simulate explicit network topology or partner demography. Biological movement is not represented by the allele-frequency mixing operator. Warning succeeds only in the inherited calibrated benchmark; condition-recovery campaigns withheld warning outcomes. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect.
+The process-resolved movement closures remain deliberately partial. Whole-individual dispersal moves census and realised trait bins but does not preserve explicit migrant genotype–trait covariance because the parent state representation stores those objects separately. The pollen closure represents paternal gamete origin but not flowers, selfing, incompatibility, pollen limitation, carryover or pollinator behaviour. Phase T represents stochastic partner availability but not explicit partner abundance dynamics, coextinction, spatial partner movement or a full multispecies network. Adaptive rewiring was not tested because its preregistered opening condition was not met.
+
+Warning succeeds only in the inherited calibrated benchmark; condition-recovery and R/S/T robustness campaigns withheld warning outcomes. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect.
 
 Finally, censoring and source feasibility remain part of the ecological outcome. Source failure and baseline ineligibility are not silently discarded when reporting warning availability, and finite-horizon non-events remain right-censored.
 
 ## Data and code availability
 
-The parent and extension repositories are separate computational provenance units. The extension pins the parent scientific state at `dd8ee379d0d3518194c767d16402042525bc00dc`. Machine-readable evidence, workflow/artifact provenance, condition ledgers and submission-build instructions are recorded in the repository. Historical low-replicate results are retained unchanged; high-precision replays are additive validation layers and do not overwrite their provenance.
+The parent and extension repositories are separate computational provenance units. The extension pins the parent scientific state at `dd8ee379d0d3518194c767d16402042525bc00dc`. Machine-readable evidence, workflow/artifact provenance, condition ledgers and submission-build instructions are recorded in the repository. Historical low-replicate results are retained unchanged; high-precision replays and the process-resolved/dynamic robustness closures are additive validation layers and do not overwrite their provenance.
