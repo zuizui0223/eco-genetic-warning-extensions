@@ -89,19 +89,19 @@ The fresh fixed-area gradient retained 1,037 prepared sources. The first split f
 
 ### Recurrent turnover changed source feasibility and loss incidence
 
-Across the 15-coordinate grid, 2,269 of 3,375 source attempts supported preparation and projection. The common deterioration campaign contained 648 complete five-seed candidates: 322 historical rapid-loss, 242 persistence and 84 historical R3/mixed-block candidates. No candidate satisfied the original strict R4 screen, so all 15 coarse coordinates remain historically `no_domain_selected` (Figure 3).
+Across the 15-coordinate grid, 2,269 of 3,375 source attempts supported preparation and projection. The common deterioration campaign contained 648 complete five-seed candidates: 322 historical rapid-loss, 242 persistence and 84 historical R3/mixed-block candidates. No candidate satisfied the original strict R4 screen, so all 15 coarse coordinates remain historically `no_domain_selected` **within the original candidate family** (Figure 3).
 
-The precision audit showed that this coarse result was a placement boundary rather than structural impossibility and that low-replicate R3/R4 labels could not themselves establish block heterogeneity. Across ten previously load-bearing R3 cases, none showed detectable excess equal-rate heterogeneity at the historical block sizes.
+The precision audit showed that this coarse candidate-family result was a placement boundary rather than structural impossibility and that low-replicate R3/R4 labels could not themselves establish block heterogeneity. Across ten previously load-bearing R3 cases, none showed detectable excess equal-rate heterogeneity at the historical block sizes.
 
 Exact Phase-C/D seed families then recovered a high-to-low incidence frontier. Pooled loss was 0.682 at `p_star=.325`, 0.546/0.538 at `.350` in two historical seed families, 0.407 at `.375` and 0.273 at `.400`. Equal-rate diagnostics were non-significant at all four tested coordinates. The former “narrow R4 bounded by seed-heterogeneous neighbours” interpretation is therefore withdrawn (Figure 4).
 
 ### The historical `m=.10` connectivity heterogeneity did not replicate in fresh seeds
 
-In the historical Phase-M seed family, pooled loss remained near 0.54–0.56 across `m=0,.025,.05,.10,.20`. Only `m=.10` showed excess equal-rate heterogeneity (`p=.0205`); `m=.20` returned to homogeneous behaviour. Paired McNemar tests versus isolation were non-significant at every nonzero level.
+In the historical Phase-M seed family, pooled loss remained near 0.54–0.56 across `m=0,.025,.05,.10,.20`. Only `m=.10` showed excess equal-rate heterogeneity (`p=0.0205`); `m=.20` returned to homogeneous behaviour. Paired McNemar tests versus isolation were non-significant at every nonzero level.
 
-The preregistered Phase-U fresh ensemble changed the interpretation of that result. Every fresh block met the precision requirement and eligibility was exactly paired. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=.134` for `m=0` and `p=.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=.694`.
+The preregistered Phase-U fresh ensemble changed the interpretation of that result. Every fresh block met the precision requirement and eligibility was exactly paired. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=0.134` for `m=0` and `p=0.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=0.694`.
 
-The preregistered decision was **`historical_m010_heterogeneity_not_freshly_replicated`**. The Phase-M `p=.0205` result remains a valid observation in its original seed family, but it is not supported as an independently reproducible `m=.10` heterogeneity effect (Figure 5).
+The preregistered decision was **`historical_m010_heterogeneity_not_freshly_replicated`**. The Phase-M `p=0.0205` result remains a valid observation in its original seed family, but it is not supported as an independently reproducible `m=.10` heterogeneity effect (Figure 5).
 
 ### Process-resolved movement also did not establish a portable connectivity effect
 
@@ -123,7 +123,7 @@ Only after warning-blind loss calibration did we inspect genetic warning. In the
 
 ### Warning behaviour was not fully portable across calibrated domains
 
-Protocol 003 attempted 100 fresh trajectories in each separately calibrated domain. Valid-pair availability across the six endpoints was 0.540 in the recalibrated symmetric domain and 0.335 in the directional calibrated domain. The two domains contained 323/1/0 versus 184/5/12 lead/tie/lag comparisons. All six horizon-normalised direct bootstrap timing contrasts included zero. Because the domains differ in multiple parameters, this is bounded non-portability across calibrated eco-genetic domains, not a direction-only causal effect (Figure 6).
+Protocol 003 attempted 100 fresh trajectories in each separately calibrated domain. Valid-pair availability across the six endpoints was 0.540 in the recalibrated symmetric domain and 0.335 in the directional calibrated domain. The two domains contained 323/1/0 versus 184/5/12 lead/tie/lag comparisons. **All six horizon-normalised direct bootstrap contrasts included zero.** The domains also differ in ecological parameters and deterioration schedules, so this is bounded non-portability across calibrated eco-genetic domains, not a single-factor effect of transition direction (Figure 6).
 
 ## Discussion
 
