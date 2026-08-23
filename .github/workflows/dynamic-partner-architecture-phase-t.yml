@@ -1,17 +1,6 @@
 name: Dynamic partner architecture Phase T
 
 on:
-  pull_request:
-    branches:
-      - "agent/unify-paper-storyline"
-    paths:
-      - "src/eco_genetic_warning_extensions/dynamic_partner_architecture_phase_t.py"
-      - "src/eco_genetic_warning_extensions/dynamic_partner_architecture_phase_t_runner.py"
-      - "scripts/run_dynamic_partner_architecture_phase_t_seed.py"
-      - "scripts/aggregate_dynamic_partner_architecture_phase_t.py"
-      - "tests/test_dynamic_partner_architecture_phase_t.py"
-      - "docs/DYNAMIC_PARTNER_ARCHITECTURE_PHASE_T.md"
-      - ".github/workflows/dynamic-partner-architecture-phase-t.yml"
   workflow_dispatch:
 
 permissions:
