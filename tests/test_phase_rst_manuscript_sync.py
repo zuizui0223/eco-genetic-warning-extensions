@@ -42,11 +42,15 @@ def test_old_next_model_and_replicated_connectivity_boundaries_are_removed() -> 
     assert "no robust portable connectivity heterogeneity effect is established" in claims
     assert "one preregistered independent fresh-seed ensemble" in claims
     assert "non-replication" in claims
-    assert "not a theorem" in claims
+    assert "phase v upgrades c3 only within the frozen symmetric h2-r domain" in claims
+    assert "does not establish a universal threshold" in claims
 
 
-def test_phase_rstu_do_not_create_new_warning_claims() -> None:
+def test_phase_rstu_remain_c2_and_phase_v_is_separate_c3_replication() -> None:
     program = _read("docs/HYPOTHESIS_PROGRAM.md").lower()
     main = _read("manuscript/main_text.md").lower()
-    assert "phases r/s/t/u add no warning claims" in program
-    assert "fresh-replication campaigns withheld warning outcomes" in main
+    claims = _read("manuscript/claim_evidence_map.md").lower()
+    assert "warning outcomes remained unavailable during c2 selection and robustness campaigns" in program
+    assert "c2 condition-recovery, movement, partner and phase-u connectivity campaigns withheld warning outcomes" in main
+    assert "phase v was a separately preregistered c3 warning replication" in main
+    assert "phase v" in claims and "strict within-domain fresh replication" in claims
