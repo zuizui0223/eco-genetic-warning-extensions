@@ -14,7 +14,7 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 |---|---|---|---|
 | P1 | Equal isolation from the same H1-prepared state lowers final interaction, local effective size and realised high-trait mass relative to the matched one-large projection. | Parent locked H1/H3 campaign; 1,055 qualified pairs. | finite Type S |
 | P2 | A fresh fixed-area 1–16-patch sensitivity shows the main interaction/Ne disruption after the first split; realised high-trait mass is not universally monotone across patch number. | Parent fresh gradient; 1,037 prepared sources. | supplementary Type S |
-| P3 | In one independently calibrated symmetric benchmark, 5%, 10% and 20% baseline-relative `H_alpha` and `H_gamma` erosion preceded all 35 observed realised functional losses. | Parent H2-R calibration and fresh validation. | bounded proof of possibility |
+| P3 | In the original independently calibrated symmetric benchmark, 5%, 10% and 20% baseline-relative `H_alpha` and `H_gamma` erosion preceded all 35 observed realised functional losses. | Parent H2-R calibration and independent validation. | inherited within-domain warning evidence |
 | P4 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that benchmark. | Stored-trajectory absolute-threshold audit. | negative robustness result |
 
 ## Permitted extension claims
@@ -47,6 +47,8 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | S24 | Phases R/S/T narrow the ecological interpretation of earlier scalar/reduced-form results without adding new warning claims. | Integrated R/S/T closure. | manuscript-scope boundary |
 | S25 | The historical Phase-M `m=.10` heterogeneity did **not** reproduce in one preregistered independent fresh-seed ensemble: fresh `m=0` equal-rate `p=.134`, fresh `m=.10` `p=.745`; pooled loss .540/.551; paired McNemar `p=.694`. | Phase U, run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`. | fresh non-replication result |
 | S26 | The strongest connectivity conclusion is now negative: no robust portable block-heterogeneity effect was established across the historical Phase-M family, the independent Phase-U allele-only replication, and the process-resolved R/S closures. | Integrated M/U/R/S evidence. | claim ceiling |
+| S27 | In the frozen symmetric H2-R domain, the original all-lead ordering of baseline-relative genetic erosion strictly replicated in one independently preregistered fresh-seed ensemble: 100 attempted, 82 available, 33 realised losses; at all six `H_alpha/H_gamma × 5/10/20%` endpoints, all 33/33 valid pairs were leads with 0 ties and 0 lags (`p=1.1641532182693481e-10` vs 0.5 for each endpoint). | Phase V, run `32636847803`, artifact `9492587604`, digest `sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031`. | strict within-domain fresh replication |
+| S28 | Combining P3 and S27, baseline-relative `H_alpha/H_gamma` warning ordering is supported across two independent seed ensembles within the same frozen symmetric H2-R domain (historical 35/35 and fresh 33/33 leads at all six endpoints). | Parent H2-R + Phase V. | replicated within-domain C3 claim |
 
 ## Exact operator claims
 
@@ -64,6 +66,9 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | parent H1/H3 attempted / H1-qualified pairs | 1,200 / 1,055 |
 | fresh fragmentation-gradient attempted / prepared | 1,200 / 1,037 |
 | inherited symmetric benchmark attempted / available / trait loss | 100 / 83 / 35 |
+| inherited symmetric relative-warning valid pairs / leads at each endpoint | 35 / 35 |
+| Phase V fresh warning attempted / available / trait loss | 100 / 82 / 33 |
+| Phase V relative-warning valid pairs / leads / ties / lags at each endpoint | 33 / 33 / 0 / 0 |
 | Protocol 002 complete candidates | 648 |
 | historical rapid-loss / R3-mixed / persistence | 322 / 84 / 242 |
 | original eligible candidates / no-domain coordinates | 0 / 15 |
@@ -103,6 +108,8 @@ Do not claim that:
 - contribution concentration alone determines the loss process;
 - Phase T establishes that partner dynamics are universally irrelevant;
 - adaptive rewiring was tested or should be tuned after the Phase-T null result;
+- the Phase-V within-domain replication establishes a universal genetic-warning threshold or universal warning portability;
+- relative warning success rescues the prior non-robust absolute `H_alpha/H_gamma <= .20` rules;
 - recurrent-transition direction alone caused the Stage III warning difference;
 - `p_star` is an empirically estimated mutation rate;
 - genetic diversity is a monotone proxy for local functional support;
@@ -121,7 +128,7 @@ Do not claim that:
 | No robust portable connectivity heterogeneity effect is established | S26 |
 | Scalar aggregate feedback is robust across the three predeclared levels | S9–S10 |
 | Reduced-form and temporal partner perturbations are bounded negative results | S16–S17 + S22–S23 |
-| Only after the downstream loss process is fixed does genetic warning become a meaningful question | P3–P4 |
-| Warning behaviour is not automatically portable across independently calibrated domains | S11–S15 |
+| After the downstream loss process is fixed, baseline-relative genetic warning strictly replicates within the frozen symmetric H2-R domain | P3 + S27–S28 |
+| Absolute thresholds remain non-robust and warning behaviour is not automatically portable across independently calibrated domains | P4 + S11–S15 |
 
-Every finite numerical claim retains the declared model closure. Phase U is one independent replication: its non-replication limits the historical Phase-M claim but is not a theorem that heterogeneity can never occur at `m=.10`.
+Every finite numerical claim retains the declared model closure. Phase V upgrades C3 only within the frozen symmetric H2-R domain; it does not establish a universal threshold or portable warning law.
