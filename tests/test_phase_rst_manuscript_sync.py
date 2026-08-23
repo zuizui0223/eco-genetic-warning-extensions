@@ -29,7 +29,7 @@ def test_phase_rstu_are_in_current_manuscript_sources() -> None:
         assert _has_decimal(claims, token)
 
     assert "seed-family contingent" in main.lower()
-    assert "not freshly replicate" in claims.lower() or "fresh non-replication" in claims.lower()
+    assert "fresh non-replication" in claims.lower() or "did not reproduce" in claims.lower()
     assert "rewiring" in claims.lower() and "gate" in claims.lower()
     assert "rewiring" in program.lower()
 
@@ -37,8 +37,10 @@ def test_phase_rstu_are_in_current_manuscript_sources() -> None:
 def test_old_next_model_and_replicated_connectivity_boundaries_are_removed() -> None:
     claims = _read("manuscript/claim_evidence_map.md").lower()
     assert "process-resolved biological movement remain next-model hypotheses" not in claims
-    assert "m=.10` is a reproducible" not in claims
+    assert "## prohibited claims" in claims
+    assert "`m=.10` is a reproducible or established connectivity heterogeneity threshold" in claims
     assert "no robust portable connectivity heterogeneity effect is established" in claims
+    assert "one independent non-replication" in claims
 
 
 def test_phase_rstu_do_not_create_new_warning_claims() -> None:
