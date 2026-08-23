@@ -16,9 +16,9 @@ Conceptual synthesis separating interaction-supported ecological function, popul
 
 Exact historical Phase-C/D master seeds were precision-expanded to 100 attempted replicates per block after reproducing every first-20 prefix. Pooled realised functional-loss incidence declines from approximately 0.682 at `p_star=.325` to 0.54 at `.350`, 0.407 at `.375` and 0.273 at `.400`. The fixed `[0.30,0.70]` historical screen places `.325` and `.400` outside R4 for opposite incidence reasons, while `.350–.375` remain inside. Equal-rate diagnostics do not detect excess between-block heterogeneity at any of these high-precision conditions. The figure therefore represents an incidence frontier, not a narrow seed-heterogeneity window.
 
-## Figure 5. Allele-frequency connectivity separates marginal risk from block heterogeneity
+## Figure 5. Historical allele-mixing heterogeneity failed fresh-seed replication
 
-At the fixed recurrent-turnover anchor, the exact Phase-E seed family was precision-expanded to 100 attempted replicates per block and paired across `m=0, .025, .05, .10, .20`. **A**, pooled and block-level functional-loss incidence: pooled loss remains near 0.54–0.56 across all levels, but only `m=.10` shows detectable excess block heterogeneity at high precision (`p=0.0205`); `m=.20` returns to homogeneous behaviour. **B**, paired loss-status switches relative to isolation occur in both directions at every nonzero rate, while exact McNemar tests are non-significant. `migration_rate` is allele-frequency mixing toward the population-weighted selected mean, not demographic migration, pollinator movement, seed dispersal or recolonisation.
+**A**, the exact historical Phase-E seed family precision-expanded to 100 attempted replicates per block across `m=0, .025, .05, .10, .20`. Pooled loss remained near 0.54–0.56, while `m=.10` alone showed excess equal-rate heterogeneity in that historical family (`p=.0205`). **B**, one preregistered independent fresh-seed ensemble at the same anchor compared `m=0` with allele-only `m=.10`, again at 100 attempts per seed. Both fresh conditions were block-homogeneous (`p=.134` and `.745`), pooled loss was `.540` and `.551`, and the paired McNemar contrast was non-significant (`p=.694`). Thus the historical `m=.10` heterogeneity observation did not independently replicate. `migration_rate` is allele-frequency mixing toward the population-weighted selected mean, not demographic migration, pollinator movement, pollen or seed dispersal or recolonisation.
 
 ## Figure 6. Portability after downstream loss conditions are separately recovered
 
@@ -36,7 +36,8 @@ Positive warning lead time is summarised only among trajectories in which both t
 - Describe `p_star` as an effective recurrent-transition equilibrium, not an empirical mutation-rate estimate.
 - Keep the original strict Protocol 002 15/15 no-domain outcome separate from later warning-blind refinement and precision validation.
 - Do not claim that R4 itself proves warning success.
-- Do not describe Phase-E `migration_rate` as demographic, pollinator or seed movement or infer a universal threshold.
+- Describe the Phase-M `m=.10` heterogeneity as a historical seed-family observation that failed the one preregistered fresh Phase-U replication.
+- Do not describe Phase-E/M/U `migration_rate` as demographic, pollinator, pollen or seed movement or infer a universal threshold.
 - Do not describe interaction `kappa` as partner richness, connectance or network simplification.
 - Do not interpret the reduced-form partner-loss experiment as an explicit ecological-network test.
 - Never describe the Stage III contrast as the isolated effect of transition direction.
