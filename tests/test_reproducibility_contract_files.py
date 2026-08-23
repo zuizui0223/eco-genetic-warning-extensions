@@ -32,11 +32,12 @@ def test_readme_reports_closed_condition_first_state() -> None:
     lower = readme.lower().replace("**", "")
     assert "warning is a downstream conditional outcome" in lower
     assert "2,269/3,375" in readme
-    assert "phase f is closed" in lower
     assert "historical r3 is not automatically" in lower
     assert "pooled loss is `.499/.573/.598`" in readme
-    assert "all predeclared kappa 3.0/4.5/6.0 remain r4" in lower
-    assert "partner loss is a negative population-level result" in lower
+    assert "historical `m=.10` connectivity signal did not freshly replicate" in lower
+    assert "fresh `m=0/.10` equal-rate p values were `.134/.745`" in lower
+    assert "no robust portable connectivity heterogeneity effect is established" in lower
+    assert "adaptive-rewiring gate remains closed" in lower
     assert "warning remains conditional and portability bounded" in lower
     assert "active missing condition" not in lower
 
@@ -53,6 +54,8 @@ def test_submission_bundle_adds_both_packages_and_condition_evidence() -> None:
     assert "interaction_support_phase_f_summary.json" in replacer
     assert "high_precision_condition_map.json" in replacer
     assert "partner_phase_g_summary.json" in replacer
+    assert "phase_u_fresh_connectivity_replication.json" in replacer
+    assert "phase_r_process_resolved_movement.json" in replacer
     assert "--upstream upstream" in workflow
     assert "software_dist/parent" in workflow
     assert "software_dist/extension" in workflow
@@ -61,6 +64,7 @@ def test_submission_bundle_adds_both_packages_and_condition_evidence() -> None:
     assert "git archive" in workflow
     assert "scientific-dd8ee379.tar.gz" in workflow
     assert "repository-$(git rev-parse --short=8 HEAD).tar.gz" in workflow
+    assert "phase_u_fresh_connectivity_replication.json" in workflow
 
 
 def test_secondary_audit_lock_preserves_source_artifact_provenance() -> None:
@@ -112,18 +116,31 @@ def test_reproducibility_guide_retains_current_boundaries() -> None:
     for statement in (
         "parent trajectories and extension trajectories are separate evidence",
         "15/15 `no_domain_selected`",
-        "historical r1–r4 screen is a calibration device, not a latent biological classification",
+        "historical r1–r4 labels are calibration outcomes, not latent biological classes",
         "recurrent turnover: pooled loss declines",
-        "only `m=.10` shows detectable high-precision between-block heterogeneity",
+        "one preregistered independent phase-u ensemble",
+        "not supported as independently reproducible",
+        "no robust portable connectivity heterogeneity effect is established",
         "all three predeclared `kappa=3.0/4.5/6.0` remain intermediate",
-        "reduced-form partner loss",
+        "adaptive-rewiring gate remains closed",
         "protocol 003 tests bounded portability across non-matched calibrated domains",
         "finite type s results",
     ):
         assert statement in lower
 
 
-def test_committed_phase_f_summary_matches_reproducibility_claim() -> None:
+def test_phase_u_locked_summary_matches_reproducibility_claim() -> None:
+    phase_u = json.loads((ROOT / "artifacts/fresh_connectivity_replication/phase_u_locked_summary.json").read_text(encoding="utf-8"))
+    assert phase_u["decision"] == "historical_m010_heterogeneity_not_freshly_replicated"
+    assert phase_u["workflow_run"] == 32615044162
+    assert phase_u["aggregate_artifact"] == 9486740313
+    conditions = {float(row["migration_rate"]): row for row in phase_u["condition_summaries"]}
+    assert conditions[0.0]["pearson_equal_rate_p"] > 0.05
+    assert conditions[0.1]["pearson_equal_rate_p"] > 0.05
+    assert phase_u["paired_m010_vs_zero"]["exact_mcnemar_p"] > 0.05
+
+
+def test_committed_phase_f_summary_matches_historical_provenance() -> None:
     phase_f = json.loads((ROOT / "artifacts/interaction_support/phase_f_summary.json").read_text(encoding="utf-8"))
     rows = phase_f["interaction_support_summaries"]
     assert [row["interaction_kappa"] for row in rows] == [3.0, 4.5, 6.0]
