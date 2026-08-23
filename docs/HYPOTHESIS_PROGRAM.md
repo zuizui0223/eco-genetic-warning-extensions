@@ -2,7 +2,7 @@
 
 ## Central hypothesis
 
-> **Spatial fragmentation becomes interaction-mediated functional fragmentation when it weakens the process maintaining realised ecological function. Genetic warning is interpretable only after the downstream loss process has been characterised independently in terms of state feasibility, loss incidence, block heterogeneity and trajectory identity.**
+> **Spatial fragmentation becomes interaction-mediated functional fragmentation when it weakens the process maintaining realised ecological function. Genetic warning is interpretable only after the downstream loss process has been characterised independently from a sufficiently specified joint eco-genetic-interaction state and its transition dynamics.**
 
 The repository follows one rule: if a proposition is not general, recover its **condition or boundary** rather than widening the search until a desired result appears.
 
@@ -14,7 +14,8 @@ C1  FUNCTION IS VULNERABLE
     fragmentation / deterioration can disrupt it
         ↓
 C2  LOSS PROCESS IS CONDITIONED
-    source feasibility + loss incidence + block heterogeneity + trajectory identity
+    source feasibility + joint state + transition dynamics
+    + loss incidence + block heterogeneity + trajectory identity
         ↓
 C3  WARNING IS CONDITIONAL
     genetic lead time is tested only after C2 is fixed warning-blind
@@ -29,10 +30,12 @@ The original warning-blind calibration classified five-block candidates as R1, R
 
 Final inference therefore separates:
 
-- **loss incidence**;
-- **between-block heterogeneity**;
-- **trajectory-identity sensitivity**;
-- **warning performance**.
+- **state feasibility** — whether the interaction-supported high-function state exists;
+- **joint-state sufficiency** — whether the retained state representation determines the relevant transition law;
+- **loss incidence** — how often realised function is lost;
+- **between-block heterogeneity** — whether comparable blocks plausibly share a loss probability;
+- **trajectory-identity sensitivity** — whether paired perturbations change which realisations fail;
+- **warning performance** — whether genetic change precedes the already fixed event.
 
 R1–R4 remain historical screening labels and do not replace these estimands.
 
@@ -45,7 +48,7 @@ The pinned parent repository (`eco-genetic-criticality`, scientific commit `dd8e
 
 ## C2 — conditions generating functional loss
 
-All C2 campaigns are warning-blind. Warning times, genetic lead/lag ordering and lead time are unavailable during condition selection or replication.
+All C2 campaigns are warning-blind. Warning times, genetic lead/lag ordering and lead time are unavailable during condition selection, replication or state-sufficiency testing.
 
 ### C2a — recurrent turnover changes source feasibility
 
@@ -122,11 +125,37 @@ Phases R/S used the historical Phase-M seed family and compared the historical a
 
 `migration_rate` remains allele-frequency mixing, not demographic, pollinator, pollen, seed or recolonisation movement.
 
+### C2g — marginal-equivalent snapshots are not dynamically state-equivalent
+
+Phase V tested whether an operational functional-fragmentation regime can be defined from independent layer-wise snapshot summaries. Two four-patch states had identical habitat area, census, interaction-state multiset, allele-frequency multiset, realised high-trait-mass multiset, global trait-bin totals, `H_alpha`, `H_gamma` and `FST`. Only the patchwise alignment between interaction support and the paired eco-genetic/trait-support bundle differed.
+
+The exact local interaction update is
+
+\[
+q_i^+=\sigma\{\kappa[\alpha q_i+\beta x_i+\gamma p_i-b]\}.
+\]
+
+Whenever the local transition couples layers (`beta` or `gamma` nonzero), independent layer marginals do not in general determine the patchwise feedback inputs. A permutation of the `(x,p)` bundle relative to `q` can preserve every marginal and still change `q_i^+`. This is an exact state-sufficiency boundary for the declared update.
+
+The preregistered constructive certificate gave:
+
+| quantity | aligned | anti-aligned |
+|---|---:|---:|
+| q × eco-genetic-bundle covariance | +.025 | −.025 |
+| pooled 60-generation realised loss | .678 | .722 |
+| loss count / 500 | 339 | 361 |
+
+Maximum patchwise generation-1 interaction difference was **.2543**, proving that the matched marginal summaries were not transition-sufficient. The 500-pair long-horizon loss contrast was not detected as directional (`92` aligned-loss→anti-no-loss versus `114` aligned-no-loss→anti-loss; exact McNemar `p=.143`).
+
+**Conclusion:** separate static indicators can define the same marginal snapshot while representing different ecological transition states. The stronger claim that cross-layer alignment alone changes long-horizon loss incidence is not supported by this one fixed schedule.
+
+**Status: exact joint-state/transition-representation boundary + bounded null long-horizon incidence result.**
+
 ## C3 — genetic warning only after C2
 
 The inherited symmetric benchmark remains a proof of possibility. In one independently calibrated domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
 
-Phases R/S/T/U add no warning claims. They constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
+Phases R/S/T/U/V add no warning claims. They constrain, replicate or test sufficiency of the upstream loss-generating closure. A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
 
 **C3: conditional possibility recovered; universal thresholds unresolved.**
 
@@ -138,7 +167,13 @@ Historical Protocol 003 recovered two domains by separate warning-blind calibrat
 
 ## Urban and island application
 
-Urban and island systems are contrasting empirical routes through the condition space, not ecological equivalents. The empirical question is whether distinct fragmentation mechanisms converge on similar combinations of functional-state feasibility, realised interaction support, loss incidence and temporal stability when pollen, seed/propagule, demographic and partner movement are measured as separate processes rather than collapsed into one connectivity scalar.
+Urban and island systems are contrasting causal routes, not ecological equivalents. Phase V sharpens the prospective convergence question:
+
+> **Do distinct fragmentation mechanisms converge on a sufficiently equivalent joint eco-genetic-interaction state and a comparable downstream functional transition/loss process?**
+
+Matching habitat amount, population size, mean interaction support, species richness, neutral genetic diversity or even the separate distributions of those layers is not enough when the transition law couples them locally. A cross-system regime must retain the relevant patchwise joint organization—or a lower-dimensional statistic proven sufficient—and then test **transition invariance/transport**. After conditioning on that state, route identity (`urban`, `island`, or a finer mechanism label) should add little predictive information if convergence is real.
+
+The empirical design should therefore measure habitat amount/configuration and matrix quality; demography; partner identity/interaction strength; functional diversity, turnover and rewiring; realised function; pollen, seed/propagule, demographic and partner movement separately; reproductive assurance; genetic state; and the cross-layer alignment among these quantities through time.
 
 ## Recovery ledger
 
@@ -152,6 +187,7 @@ Urban and island systems are contrasting empirical routes through the condition 
 | C2d aggregate interaction support | bounded negative result | all predeclared kappa values remain intermediate/homogeneous at high precision |
 | C2e partner architecture | bounded negative result | reduced-form and temporal partner perturbations change some histories but not detected population-level loss process; rewiring remains closed |
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
+| C2g state sufficiency | exact boundary + bounded null | matching separate snapshot marginals does not ensure transition equivalence; Phase V did not detect a directional long-horizon incidence effect |
 | C3 conditional warning | bounded support | baseline-relative genetic erosion can lead loss in one calibrated benchmark; absolute thresholds are not robust |
 | C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
 
@@ -169,5 +205,8 @@ Do not:
 8. call interaction `kappa` network simplification;
 9. call the Phase-N/T partner layers a full dynamic multispecies network;
 10. open adaptive rewiring after the Phase-T null result merely to rescue an effect;
-11. open a direction-only warning test without prospectively matched conditions;
-12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
+11. treat matching layer-wise marginal indicators as proof that two systems occupy the same functional-fragmentation regime;
+12. claim that Phase V proves alignment raises long-horizon loss risk;
+13. rerun Phase V with replacement seeds, alternate permutations, schedules, horizons or precision to obtain a directional endpoint effect;
+14. open a direction-only warning test without prospectively matched conditions;
+15. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
