@@ -1,6 +1,8 @@
 from contextlib import contextmanager
+from dataclasses import replace
 
 from causal_model import multipatch_criticality_dynamics as dynamics
+from causal_model import multipatch_criticality_experiments as experiments
 from causal_model import symmetric_allele_mutation_closure as mutation
 
 from eco_genetic_warning_extensions.mutation_coordinates import MutationCoordinates
@@ -23,7 +25,11 @@ def patched_coordinate(coordinate: MutationCoordinates):
 
 def main() -> None:
     coordinate = MutationCoordinates(kappa_mu=0.35, p_star=0.35)
-    parameters = dynamics.DynamicsParameters(
+    # Phase R is defined on the same finite-bin standard closure used by the
+    # Phase-E/M anchor.  The zero-equivalence invariant is therefore checked on
+    # that closure rather than on the legacy deterministic quick-profile mode.
+    parameters = replace(
+        experiments.standard_profile().base_parameters,
         patch_areas=(0.25, 0.25, 0.25, 0.25),
         generations=8,
         initial_population=(18, 17, 19, 16),
@@ -51,7 +57,7 @@ def main() -> None:
     if process.diagnostics.total_movers != 0:
         raise SystemExit("zero dispersal unexpectedly moved individuals")
     if process.simulation.snapshots != legacy.snapshots:
-        raise SystemExit("zero-dispersal process closure does not reproduce the pinned parent life cycle")
+        raise SystemExit("zero-dispersal process closure does not reproduce the pinned finite-bin parent life cycle")
     print("PHASE_R_ZERO_DISPERSAL_EQUIVALENCE_PASS")
 
 
