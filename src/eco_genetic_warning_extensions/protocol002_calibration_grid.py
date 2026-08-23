@@ -141,7 +141,7 @@ def planned_calibration_grid_lock_artifact() -> dict[str, Any]:
     artifact = planned_calibration_grid_artifact()
     return {
         "artifact": "Protocol 002 Stage II calibration grid lock",
-        "full_manifest_path": str(DEFAULT_CALIBRATION_GRID_PATH),
+        "full_manifest_path": DEFAULT_CALIBRATION_GRID_PATH.as_posix(),
         "full_manifest_sha256": artifact_sha256(artifact),
         "candidate_cell_count": artifact["candidate_cell_count"],
         "attempt_count": artifact["attempt_count"],

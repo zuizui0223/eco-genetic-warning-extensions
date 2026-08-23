@@ -12,8 +12,11 @@ from eco_genetic_warning_extensions.publication_figures import (
     _stage1_svg,
     write_stage3_figures,
 )
-from eco_genetic_warning_extensions.stage3_trajectory_records import build_records, write_records
-from eco_genetic_warning_extensions.stage3_review_audit import audit as stage3_review_audit, write_outputs as write_stage3_review_outputs
+from eco_genetic_warning_extensions.stage3_review_audit import (
+    audit as stage3_review_audit,
+    load_records as load_stage3_records,
+    write_outputs as write_stage3_review_outputs,
+)
 
 
 def _figure1(path: Path) -> None:
@@ -117,8 +120,7 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument('--stage1-dir', required=True)
     parser.add_argument('--stage2-dir', required=True)
-    parser.add_argument('--stage3-domain0', required=True)
-    parser.add_argument('--stage3-domain1', required=True)
+    parser.add_argument('--stage3-records', required=True)
     parser.add_argument('--h3-gradient-dir', required=True)
     parser.add_argument('--repo-root', default='.')
     parser.add_argument('--output', required=True)
@@ -126,8 +128,7 @@ def main() -> int:
     root = Path(args.repo_root)
     stage1 = Path(args.stage1_dir)
     stage2 = Path(args.stage2_dir)
-    stage3_domain0 = Path(args.stage3_domain0)
-    stage3_domain1 = Path(args.stage3_domain1)
+    stage3_records = Path(args.stage3_records)
     h3_gradient = Path(args.h3_gradient_dir)
     out = Path(args.output)
     if out.exists():
@@ -144,6 +145,8 @@ def main() -> int:
     for name in required_stage2:
         if not (stage2 / name).exists():
             raise FileNotFoundError(stage2 / name)
+    if not stage3_records.exists():
+        raise FileNotFoundError(stage3_records)
 
     shutil.copy2(stage1 / 'stage1_publication_summary.json', out / 'tables')
     shutil.copy2(stage1 / 'stage1_coordinate_summary.csv', out / 'tables')
@@ -151,8 +154,12 @@ def main() -> int:
     shutil.copy2(root / 'manuscript/tables/stage3_endpoint_summary.csv', out / 'tables')
     shutil.copy2(root / 'manuscript/tables/inherited_h3_effect_summary.csv', out / 'tables')
 
-    records = build_records([stage3_domain0, stage3_domain1])
-    write_records(records, out / 'tables/stage3_trajectory_endpoint_records.csv')
+    # Stage III is vendored as a lossless trajectory-endpoint table derived from
+    # the two immutable historical artifacts. The materializer verifies its
+    # source artifact IDs/digests, decoded checksum, row counts and headline
+    # lead/tie/lag totals before this script receives it.
+    shutil.copy2(stage3_records, out / 'tables/stage3_trajectory_endpoint_records.csv')
+    records = load_stage3_records(stage3_records)
     audit_result = stage3_review_audit(records)
     audit_path = out / 'tables/stage3_review_audit.json'
     review_csv = out / 'tables/stage3_review_summary.csv'

@@ -1,68 +1,77 @@
 # Manuscript workspace
 
-**Working title:** *Genetic warning emerges from eco-genetic closure in fragmented systems*
+**Working title:** *Eco-genetic regimes govern when genetic early warning can be validated*
 
-## Publication source of truth
+The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology.
 
-The publication manuscript is [`main_text.md`](main_text.md), synchronized with [`supervisor_first_draft.md`](supervisor_first_draft.md). [`claim_evidence_map.md`](claim_evidence_map.md) defines the current permitted and prohibited claims. Older exploratory notes in this directory are not publication sources when they conflict with those files.
+## Publication logic
 
-## Paper identity
+```text
+C0  interaction-dependent functional state exists
+ ↓
+C1  fragmentation / deterioration can disrupt it
+ ↓
+C2  biological conditions determine whether functional loss is reproducible
+ ↓
+C3  only then test whether genetic change precedes that loss
+ ↓
+C4  finally test portability across calibrated regimes
+```
 
-This manuscript integrates two computational phases of one study while preserving their repositories and evidence ledgers as separate provenance units. The first phase supplies the theorem-guided ecological mechanism, locked fragmentation experiment, and inherited symmetric warning benchmark. The recurrent-transition phase supplies independent source reconstruction, strict common-grid warning-blind calibration, separately declared Protocol 003 recalibration/confirmation/validation, and the post-review Stage III uncertainty audit.
+The central extension is **C2: condition recovery**. Genetic warning is a conditional consequence, not the first question.
 
-Parent trajectories remain parent evidence; extension trajectories remain extension evidence. Integration occurs at the level of the ecological argument, figures, claim–evidence map, and submission bundle.
+## Current evidence
 
-## Central conceptual claim
+- **C0/C1 — inherited mechanism:** H1/H3 establish the declared interaction-feedback mechanism and paired fragmentation effect.
+- **C2a — recurrent state turnover:** the common grid changed source feasibility and functional-loss regime; the original strict candidate family yielded 15/15 `no_domain_selected`.
+- **C2b — narrow event-regime recovery:** prospective warning-blind high-rep runs independently recovered R4 at `kappa_mu=0.35, p_star=0.35`; immediate neighbours were R3-highrep.
+- **C2c — effective genetic connectivity:** allele-frequency mixing moved the same anchor from R4 to R3 at stronger tested mixing without a simple rescue/collapse sign.
+- **C2d — aggregate interaction support:** the predeclared `kappa=3.0,4.5,6.0` test is closed. All three levels remained R4-highrep; source/baseline eligibility was 0.77, 0.94 and 0.87. This is a bounded negative condition result, not a universal invariance theorem.
+- **C3 — proof of possibility:** the inherited symmetric benchmark shows that relative genetic erosion can precede functional loss in one calibrated regime; absolute thresholds are not portable.
+- **C4 — portability:** Protocol 003 compares independently calibrated domains and is not a matched single-factor recurrent-transition-direction experiment.
 
-Genetic-warning reliability is not a portable property of a diversity statistic. It emerges from the full eco-genetic closure linking fragmentation, interaction state, realised functional-trait occupancy, local effective size, recurrent state turnover, deterioration, calibration, and observation.
+## Interaction-support interpretation boundary
 
-Recurrent-transition direction is one mechanism that reshapes this closure. The **common-grid** Stage I/II analyses identify its association with source feasibility and functional-loss regimes. Strict Protocol 002 selected no common warning-validation domain. Protocol 003 then used a separately declared warning-blind candidate expansion and revised event-risk gate before warning values were calculated.
+`interaction kappa` is aggregate positive-feedback/effective interaction-support strength. It is **not** partner richness, connectance, pollinator diversity or network dimensionality. Urban/island discussion may treat those processes as empirical mechanisms that alter effective interaction support, but Phase F does not itself model network simplification.
 
-The two final Stage III domains differ in ecological parameters and deterioration schedules as well as recurrent-transition parameters. Stage III therefore tests **warning portability across calibrated eco-genetic domains**, not a single-factor direction effect. The apparent absolute lead-time reduction also reverses after normalization by the calibrated horizon, so the manuscript does not attribute intervention-time differences to transition direction alone.
+The Phase-F result is committed at `artifacts/interaction_support/phase_f_summary.json`. Per the prospective stop rule, the kappa search is closed rather than widened or refined to manufacture an R4 boundary.
+
+## Publication sources of truth
+
+Use this hierarchy:
+
+1. [`main_text.md`](main_text.md) — publication manuscript;
+2. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited claims;
+3. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → condition → boundary;
+4. [`ecological_grounding.md`](ecological_grounding.md) and [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — ecological translation;
+5. [`artifact_index.md`](artifact_index.md) — provenance.
+
+Deleted working drafts, phase-specific result notes, editorial passes and protocol chronology are available through Git history only and must not compete with the current sources above.
+
+## Main line
+
+- concise inherited interaction/fragmentation mechanism;
+- recurrent-turnover source/loss condition map;
+- narrow R4 recovery and independent replay;
+- genetic-connectivity boundary;
+- bounded interaction-support robustness result;
+- conditional warning proof of possibility;
+- bounded portability result.
+
+Detailed 1–16-patch sensitivity, low-rep frontier bookkeeping, amendment chronology, implementation debugging and conditional lead-time detail belong in Supplement/provenance rather than the central narrative.
 
 ## Claims not made
 
-- This paper does not establish a universal genetic-warning theorem.
-- It does not estimate biological mutation rates.
-- `p_mu*` is an effective recurrent-transition equilibrium, not a species-specific mutation estimate.
-- `no_domain_selected` is not interpreted as absence of ecological change or as warning failure.
-- Protocol 003 results are not retroactively attributed to Protocol 002 or the first-phase evidence ledger.
-- Protocol 003 did not retain the Protocol 002 gate unchanged; Amendment 001 altered the candidate family and event-risk gate before warning inspection.
-- Stage III does not identify the isolated causal effect of recurrent-transition direction.
-- Endpoint-level counts are correlated within trajectories and are not treated as independent replicates.
-- Post-review bootstrap intervals are finite-campaign descriptive uncertainty, not population-level confidence intervals.
-- Finite-model results remain Type S evidence for declared closures.
+- No universal genetic-warning theorem.
+- No universal numerical meaning for R4 or any tested migration/kappa value.
+- No claim that `p_star` is an empirical mutation rate.
+- No claim that the original no-domain result is warning failure.
+- No claim that allele-frequency `migration_rate` is demographic, pollinator, pollen or seed movement.
+- No claim that interaction `kappa` is interaction-network simplification.
+- No claim that all interaction-support values preserve R4.
+- No claim that Protocol 003 identifies a direction-only causal effect.
+- No assumption that lower genetic diversity always means poorer ecological function.
 
-## Evidence completed
+## Editorial rule
 
-- Theorem-guided first-phase mechanism and 1,055 H1-qualified paired fragmentation projections.
-- Inherited symmetric warning benchmark: 100 attempted, 83 available, 35 observed trait-loss events; all six relative-warning endpoints led in all 35 valid event pairs; fixed absolute thresholds produced lags.
-- 3,375 independent recurrent-transition source-reconstruction and projection attempts.
-- 20,250 strict warning-blind Protocol 002 calibration attempts.
-- 648 complete candidates: 322 rapid-loss-side, 242 persistence-side, 84 seed-heterogeneous.
-- Zero Protocol 002 eligible candidates and 15/15 coordinates `no_domain_selected`.
-- Separately declared Protocol 003 bracket/calibration/confirmation/validation with disjoint seed families and documented amendments.
-- 200 fresh-seed Stage III attempted trajectories.
-- Post-review secondary audit of the immutable Stage III artifacts: conventional medians, horizon normalization, cumulative event incidence, and 20,000 whole-trajectory bootstrap resamples.
-
-## Main-text structure
-
-1. Ecological function may disappear before population extinction.
-2. Interaction feedback and fragmentation create an eco-genetic route from ecological deterioration to genetic erosion.
-3. Relative genetic erosion can precede functional loss, but warning definition matters.
-4. Recurrent-transition parameters reorganise source feasibility and functional-loss regimes on a common grid.
-5. Strict common-family calibration can fail entirely; that failure is itself a biological result.
-6. A separately declared warning-blind recalibration can recover validation domains, but those domains must be disclosed as complete eco-genetic settings rather than a single-factor contrast.
-7. Warning availability, censoring, ordering, and timing are evaluated using the full attempted denominator and trajectory-cluster uncertainty.
-8. The conclusion is system-level non-portability, not a universal mutation-direction effect.
-
-## Display allocation
-
-- Figure 1: eco-genetic causal architecture.
-- Figure 2: common-grid source feasibility.
-- Figure 3: common-grid loss regimes + candidate composition.
-- Figure 4: cumulative warning and functional-loss incidence.
-- Figure 5: full attempted denominator, censoring and ordering.
-- Figure 6: absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals.
-
-All tables are supplementary.
+Results sections are named by biological result, not `Stage I/II/III` or `Phase A/B/...`. Protocol labels belong in Methods, Supplement and provenance only.

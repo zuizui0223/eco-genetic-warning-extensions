@@ -1,0 +1,78 @@
+name: Warning-blind frontier refinement Phase A
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  phase-a:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+        with:
+          path: extension
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install packages and test runner
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - name: Verify locked manifest and frontier theory tests
+        working-directory: extension
+        run: |
+          python -m pytest -q \
+            tests/test_frontier_refinement_manifest.py \
+            tests/test_recurrent_transition_frontier.py
+      - name: Run ten warning-blind Phase-A cells
+        working-directory: extension
+        run: |
+          mkdir -p artifacts/frontier_refinement/phase_a
+          for i in $(seq 0 9); do
+            python scripts/run_frontier_refinement_phase_a.py \
+              --upstream-checkout ../upstream \
+              --cell-index "$i" \
+              --output "artifacts/frontier_refinement/phase_a/cell_${i}.json"
+          done
+      - name: Aggregate event-regime result
+        working-directory: extension
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          rows=[]
+          for p in sorted(Path('artifacts/frontier_refinement/phase_a').glob('cell_*.json')):
+              a=json.loads(p.read_text())
+              assert a['calibration_scope'] == 'trait_loss_only'
+              rows.append({**a['cell'], 'regime':a['regime'], 'pooled_trait_loss_rate':a['pooled_trait_loss_rate'], 'seed_rates':[b['trait_loss_rate'] for b in a['seed_blocks']], 'status_counts':a['status_counts']})
+          summary={
+              'stage':'recurrent-transition frontier refinement Phase A summary',
+              'calibration_scope':'trait_loss_only',
+              'cell_count':len(rows),
+              'cells':rows,
+          }
+          out=Path('artifacts/frontier_refinement/phase_a_summary.json')
+          out.write_text(json.dumps(summary, indent=2, sort_keys=True)+'\n')
+          for row in rows:
+              print(row)
+          PY
+      - name: Upload Phase-A artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: warning-blind-frontier-refinement-phase-a
+          path: |
+            extension/artifacts/frontier_refinement/phase_a/*.json
+            extension/artifacts/frontier_refinement/phase_a_summary.json
+          if-no-files-found: error
+          retention-days: 90

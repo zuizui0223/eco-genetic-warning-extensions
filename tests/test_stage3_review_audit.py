@@ -53,10 +53,7 @@ def test_direct_between_domain_bootstrap_is_reported_without_interval_overlap_he
         if row["absolute_generations_ci_includes_zero"] == "False"
     }
     assert separated_absolute == {"H_alpha_0.05", "H_alpha_0.10"}
-    assert all(
-        row["horizon_fraction_ci_includes_zero"] == "True"
-        for row in rows.values()
-    )
+    assert all(row["horizon_fraction_ci_includes_zero"] == "True" for row in rows.values())
     assert all(
         float(row["horizon_fraction_difference_directional_minus_symmetric"]) > 0
         for row in rows.values()
@@ -65,17 +62,35 @@ def test_direct_between_domain_bootstrap_is_reported_without_interval_overlap_he
 
 def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
     text = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8")
+    lower = text.lower()
     forbidden = (
         "altered only recurrent transition direction",
         "changing one genetic boundary condition while holding the ecological life cycle fixed",
         "shortened the intervention window in the tested closure",
     )
     for phrase in forbidden:
-        assert phrase not in text
-    for required in (
-        "portability", "210-generation hold", "90-generation hold",
-        "four of five seed-block", "weaker directional schedule",
-        "0.540", "0.335", "directional-minus-symmetric",
-        "all six", "41 of 81", "event-regime feasibility precedes warning comparison",
-    ):
-        assert required in text
+        assert phrase not in lower
+
+    required = (
+        "portability across calibrated eco-genetic domains",
+        "0.540",
+        "0.335",
+        "valid-pair availability",
+        "all six horizon-normalised direct bootstrap contrasts included zero",
+        "the domains also differ in ecological parameters and deterioration schedules",
+        "not a single-factor effect of transition direction",
+        "protocol 003 attempted 100 fresh trajectories",
+    )
+    for phrase in required:
+        assert phrase in lower or phrase in text
+
+
+def test_publication_metadata_preserves_conditional_timing_as_secondary() -> None:
+    captions = (ROOT / "manuscript/figure_captions.md").read_text(encoding="utf-8").lower()
+    allocation = (ROOT / "manuscript/display_allocation.md").read_text(encoding="utf-8").lower()
+    manuscript = (ROOT / "manuscript/main_text.md").read_text(encoding="utf-8").lower()
+    assert "conditional positive lead-time" in allocation
+    assert "positive warning lead time" in captions or "positive lead time" in captions
+    assert "valid-pair availability" in manuscript
+    assert "horizon-normalised direct bootstrap contrasts" in manuscript
+    assert "conditional uncertainty" not in manuscript

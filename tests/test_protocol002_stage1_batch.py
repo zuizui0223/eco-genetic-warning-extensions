@@ -54,8 +54,8 @@ def test_stage1_batch_index_validation() -> None:
 
 
 def test_default_stage1_batch_path_is_zero_padded() -> None:
-    assert str(default_stage1_batch_path(0)).endswith("stage1_batches/batch_000.json")
-    assert str(default_stage1_batch_path(42)).endswith("stage1_batches/batch_042.json")
+    assert default_stage1_batch_path(0).as_posix().endswith("stage1_batches/batch_000.json")
+    assert default_stage1_batch_path(42).as_posix().endswith("stage1_batches/batch_042.json")
 
 
 def test_batch_artifact_locks_campaign_denominators() -> None:

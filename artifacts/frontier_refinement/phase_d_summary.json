@@ -1,0 +1,71 @@
+{
+  "calibration_scope": "trait_loss_only",
+  "cell_count": 3,
+  "cells": [
+    {
+      "anchor_id": "B1",
+      "area_reference": 1.0,
+      "baseline_eligible_by_seed": [17, 19, 20, 18, 18],
+      "cell_index": 0,
+      "highrep_support_sufficient": true,
+      "hold_generations": 90,
+      "horizon": 120,
+      "kappa": 4.5,
+      "kappa_mu": 0.35,
+      "normalised_barrier_increase": 0.3,
+      "p_star": 0.325,
+      "pooled_trait_loss_rate": 0.6630434782608695,
+      "ramp_generations": 30,
+      "regime": "R3_highrep",
+      "seed_rate_range": 0.27368421052631586,
+      "seed_rates": [0.5294117647058824, 0.5263157894736842, 0.8, 0.6666666666666666, 0.7777777777777778],
+      "status_counts": {"attempted": 100, "baseline_eligible": 92, "projection_supported": 92, "source_prepared": 92, "trait_loss": 61}
+    },
+    {
+      "anchor_id": "B1",
+      "area_reference": 1.0,
+      "baseline_eligible_by_seed": [16, 18, 17, 17, 19],
+      "cell_index": 1,
+      "highrep_support_sufficient": true,
+      "hold_generations": 90,
+      "horizon": 120,
+      "kappa": 4.5,
+      "kappa_mu": 0.35,
+      "normalised_barrier_increase": 0.3,
+      "p_star": 0.35,
+      "pooled_trait_loss_rate": 0.6091954022988506,
+      "ramp_generations": 30,
+      "regime": "R4_highrep",
+      "seed_rate_range": 0.16666666666666663,
+      "seed_rates": [0.5, 0.6666666666666666, 0.6470588235294118, 0.5882352941176471, 0.631578947368421],
+      "status_counts": {"attempted": 100, "baseline_eligible": 87, "projection_supported": 87, "source_prepared": 87, "trait_loss": 53}
+    },
+    {
+      "anchor_id": "B1",
+      "area_reference": 1.0,
+      "baseline_eligible_by_seed": [17, 18, 17, 18, 17],
+      "cell_index": 2,
+      "highrep_support_sufficient": true,
+      "hold_generations": 90,
+      "horizon": 120,
+      "kappa": 4.5,
+      "kappa_mu": 0.35,
+      "normalised_barrier_increase": 0.3,
+      "p_star": 0.375,
+      "pooled_trait_loss_rate": 0.39080459770114945,
+      "ramp_generations": 30,
+      "regime": "R3_highrep",
+      "seed_rate_range": 0.29411764705882354,
+      "seed_rates": [0.4117647058823529, 0.3888888888888889, 0.5294117647058824, 0.3888888888888889, 0.23529411764705882],
+      "status_counts": {"attempted": 100, "baseline_eligible": 87, "projection_supported": 87, "source_prepared": 87, "trait_loss": 34}
+    }
+  ],
+  "r4_p_star_values": [0.35],
+  "stage": "warning-blind R4 width refinement Phase D summary",
+  "provenance": {
+    "workflow_run": 32352987752,
+    "artifact_id": 9401002111,
+    "artifact_digest": "sha256:f56ffb7dcbccdca1d681145b4fcfe01b88389d0e7be66b16adaa41df3a0b1000",
+    "head_sha": "f7ab41a06e9ffbb60b295d68f1fb52b357c26a4a"
+  }
+}

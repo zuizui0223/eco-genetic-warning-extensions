@@ -1,67 +1,95 @@
 # Artifact and workflow index
 
+Protocol and Phase identifiers are retained because they are necessary for provenance. Biological Results use the current condition-first interpretation.
+
 ## Core evidence provenance
 
 | Campaign | Evidence | Workflow run / artifact |
 |---|---|---|
-| Inherited H1/H3 finite chain | paired one-large versus equal-isolated outcomes used for the fragmentation effect-size audit | parent run `28456092898`, artifact `7987193632`, digest `sha256:b74b604f3233fa6086e2afa39cd780fa375aac4b1abd8c63e6f5ed8b3a467d2c` |
-| Post-review H3 fragmentation gradient | fresh fixed-area paired projections at 1, 2, 3, 4, 6, 8, 12, and 16 isolated patches; 1,200 attempted / 1,037 prepared sources | parent run `31937210601`, run head `2e1b98b05346342062f6e6e233d791036dcc97cc`, artifact `9261157020`, digest `sha256:424031d0f6bcdf75c13e03deb35324f0d3f6fd46f58ff7b34961bbd00556537c`; integrated parent merge `b5a92ccc4bfb23da80ab8aee3e12f1c3700fcdaa` |
-| Inherited relative-warning benchmark | trait-loss-only calibration and fresh-seed H2-R validation | parent calibration run `28496735824`; parent validation run `28500796310` |
-| Source reconstruction and projection | 135 batches, 3,375 attempts over the common 15-coordinate transition grid | runs `29177214259`, `29186610167`, `29188592519`, `29188748077`, `29190149319`, `29190149344` |
-| Source-feasibility publication outputs | coordinate CSV and summary JSON | run `29422431944`, artifact `8345805712`, digest `sha256:fc9b9a410908cf4446b65d5caee8de8d731734f0fae47e69c94cddc830a814e9` |
-| Protocol 002 warning-blind calibration | 810 batches, 20,250 attempts; 648 complete candidates; 15/15 coordinates `no_domain_selected` | locked Stage II audit and selection artifacts |
-| Trait-loss-regime publication outputs | coordinate regime CSV and regime map inputs | run `29399936061`, artifact `8336631530`, digest `sha256:3c7f63b5bc054c37012bb448ad1dc5e9bf45a4ec79737520390b576079ccc8f7` |
-| Protocol 003 Amendment 001 | warning-blind candidate-family extension and event-risk gate | `docs/PROTOCOL_003_AMENDMENT_001.md` |
-| Protocol 003 Amendment 002 | unchanged gate, increased replication, fresh confirmation seeds | `docs/PROTOCOL_003_AMENDMENT_002.md` |
-| Protocol 003 validation | 200 attempted fresh-seed trajectories | run `29417632137` |
-| Recalibrated symmetric validation domain | 100 attempts; `A_ref=0.8`, `kappa=6.0`, `kappa_mu=0.20`, `p_star=0.50`, ramp 30 + hold 210, increase 0.20 | artifact `8343958766`, digest `sha256:c1b42fc9e6ac912a44667ef4cee02090fab37d50fc3a9928c46ae728c0610f58` |
-| Directional calibrated validation domain | 100 attempts; `A_ref=1.0`, `kappa=4.5`, `kappa_mu=0.05`, `p_star=0.90`, ramp 30 + hold 90, increase 0.10 | artifact `8343922879`, digest `sha256:0a994bea874fc9c47544169cd31bbc317c88690dfe1b6fa7548516e35fd7bca8` |
-| Post-review Stage III secondary audit | conventional medians, horizon-normalized lead times, whole-trajectory bootstrap, cumulative event incidence, and direct directional-minus-symmetric timing differences | regenerated from the two immutable Stage III artifacts above during publication builds |
+| Inherited H1/H3 chain | paired one-large versus equal-isolated outcomes | parent run `28456092898`, artifact `7987193632` |
+| Fresh H3 fragmentation gradient | 1–16 equal isolated patches; 1,200 attempted / 1,037 prepared | parent run `31937210601`, artifact `9261157020` |
+| Inherited relative-warning benchmark | trait-loss-only calibration and fresh validation | parent calibration `28496735824`; validation `28500796310` |
+| Common source reconstruction | 3,375 attempts over 15 recurrent-transition coordinates | historical Protocol 002 source runs |
+| Common warning-blind loss calibration | 20,250 attempts; 648 complete candidates; 15/15 `no_domain_selected` | locked Stage II artifacts |
+| Historical frontier recovery | low-replicate Phase C/D R1–R4 screen | `artifacts/frontier_refinement/phase_c_summary.json`, `phase_d_summary.json` |
+| Historical connectivity condition | low-replicate paired Phase E | run `32376912392`, artifact `9409687687` |
+| Historical aggregate interaction support | low-replicate Phase F | run `32441549848`, artifact `9432854668` |
+| Historical reduced-form partner loss | low-replicate Phase G | run `32450362310`, artifact `9435520830` |
+| R4/R3 finite-sample audit | exact gate validity and cross-campaign headline audit | Phase J/L; L run `32557903970`, artifact `9471949092` |
+| Conflicting seed-family precision replay | exact Phase-H/I seed families, 100 attempts/block | Phase K run `32557289628`, artifact `9471883061` |
+| Connectivity precision replay | exact Phase-E seeds, all migration levels, 100 attempts/block | Phase M run `32558147960`, artifact `9472067167`, digest `sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6` |
+| Partner-loss precision replay | exact Phase-G seeds and architectures | Phase N run `32558466157`, artifact `9472148035`, digest `sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0` |
+| Immediate-frontier precision replay | exact Phase-D seeds at `.325/.350/.375` | Phase O run `32558742101`, artifact `9472838181`, digest `sha256:4b39d7df5d60b08bef0f78eb59524510c5549bae9199064f5a9841164db9a610` |
+| Outer-frontier precision replay | actual Phase-C seeds `20290210–20290214` at `.35/.40` | Phase P scientific run `32562175464`; five seed artifacts locked in `artifacts/high_precision_condition_map.json` |
+| Aggregate-support precision replay | exact Phase-F seeds at `kappa=3/4.5/6` | Phase Q run `32559058069`, artifact `9472941879`, digest `sha256:7ccaf8efd253499f047de2a40a35eaab6007292005814fc2f9539b66891d3df7` |
+| Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
-Protocol and stage identifiers remain in workflow metadata and Methods because they are necessary for provenance. Biological Results and figure titles use reader-facing ecological language.
+## Historical evidence versus current inference
 
-## Machine-readable manuscript and bundle tables
+Historical Phase C–G artifacts are **not overwritten**. They preserve the preregistered low-replicate R1–R4 screen and source-preparation history.
 
-- `manuscript/tables/inherited_h3_effect_summary.csv` — paired first-phase H3 descriptive effects from the locked parent artifact.
-- `h3_fragmentation_gradient_records.csv` in the checksummed submission bundle — 9,600 post-review repeated-measures rows from 1,200 attempted fresh sources across eight patch counts.
-- `h3_fragmentation_gradient_cell_summary.csv` and `h3_fragmentation_gradient_pooled_summary.csv` — cell-level and pooled paired gradient summaries underlying Supplementary Figure S1.
-- Stage I `stage1_coordinate_summary.csv` — source feasibility over the common 15-coordinate grid; generated from locked publication artifact `8345805712` and included in the bundle.
-- Stage II `stage2_coordinate_regimes.csv` — strict Protocol 002 loss-regime map; generated from locked publication artifact `8336631530` and included in the bundle.
-- `manuscript/tables/stage3_endpoint_summary.csv` — historical Stage III compact summary retained for provenance.
-- `stage3_trajectory_endpoint_records.csv` in the checksummed submission bundle — generated full 100-attempt denominator for every Stage III endpoint (1,200 rows).
-- `stage3_review_audit.json` in the checksummed submission bundle — complete fixed secondary audit including within-domain bootstrap summaries, cumulative incidence and direct between-domain differences.
-- `manuscript/tables/stage3_review_summary.csv` — committed compact publication summary; bundle generation rejects a regenerated table that is not byte-identical.
-- `manuscript/tables/stage3_between_domain_differences.csv` — committed directional-minus-symmetric median differences for absolute, full-horizon-normalized and hold-normalized lead time; publication builds regenerate and byte-compare this file from the immutable Stage III trajectories.
+The precision layer is additive. Every high-precision replay reused all historical master seeds for the relevant contrast, expanded each block to 100 attempted replicates, required the first 20 attempts to reproduce locked historical eligible/loss counts exactly, retained the historical `[0.30,0.70]` screen, and added separate pooled-incidence and equal-rate inference. Paired contrasts additionally used exact McNemar tests.
 
-The historical Stage III summary is not silently overwritten. Corrected conventional medians, normalized timing, and direct timing differences are labelled as a post-review secondary analysis of immutable validation artifacts.
+This distinction is essential because R3/R4 labels are now treated as historical screen outcomes rather than latent biological classes.
 
-## Main figures
+## Current high-precision condition map
 
-1. **Eco-genetic closure and the emergence of genetic warning.** Conceptual synthesis linking fragmentation, interaction state, high-trait state, local effective size, genetic diversity, relative warning and realised functional-trait loss.
-2. **High-trait source feasibility across recurrent-transition coordinates.** Common-grid source reconstruction; direct transition-coordinate evidence.
-3. **Functional-loss regimes and candidate composition across recurrent-transition coordinates.** The 15-cell regime map and complete-candidate composition are combined; 322 rapid-loss-side, 84 seed-heterogeneous and 242 persistence-side candidates are shown together with the 0/15 selection result.
-4. **Cumulative warning and functional-loss incidence in the two calibrated validation domains.** Administrative censoring is retained over each domain-specific horizon; warning and loss are paired repeatable events rather than classical competing-risk outcomes.
-5. **Warning availability, censoring and ordering from the full attempted denominator.** Each endpoint bar retains 100 attempts, source failure, baseline ineligibility, both-censored, warning-censored, trait-loss-censored, lead, tie and lag categories.
-6. **Absolute and horizon-normalized positive warning lead time.** Conventional medians and whole-trajectory bootstrap intervals are shown; the direct between-domain audit demonstrates endpoint-dependent absolute contrasts and no separated full-horizon-normalized contrast.
+### Recurrent turnover
 
-### Supplementary figure
+| `p_star` | pooled loss | historical screen | equal-rate p |
+|---:|---:|---|---:|
+| .325 | .682 | outside R4 | .295 |
+| .350 | .546 / .538 in two seed families | R4 | .370 / .252 |
+| .375 | .407 | R4 | .693 |
+| .400 | .273 | outside R4 | .151 |
 
-S1. **Fixed-area fragmentation gradient from paired H1-prepared sources.** Fresh-seed repeated-measures sensitivity across 1, 2, 3, 4, 6, 8, 12, and 16 isolated equal patches; interaction and local effective size decline after the first split, while realised high-trait mass is non-monotonic.
+Interpretation: high-to-low **incidence frontier**, not a two-sided seed-heterogeneity window.
 
-## Figure-caption boundaries
+### Allele-frequency connectivity
 
-Every numerical figure caption states the statistical unit and relevant evidence boundary. Figures 4–6 distinguish the **recalibrated symmetric domain** and **directional calibrated domain**. Figure 6 must not be described as identifying a transition-direction timing effect: the validation domains differ in transition parameters, ecological parameters and deterioration schedules, and every full-horizon-normalized direct difference interval includes zero. Figure 1 is conceptual and does not claim a universal causal theorem. Supplementary Figure S1 is a new post-review finite sensitivity and must not be described as replacing the historical H1/H3 evidence ledger or as a universal monotone fragmentation response.
+| `m` | pooled loss | historical screen | equal-rate p |
+|---:|---:|---|---:|
+| 0 | .559 | R4 | .710 |
+| .025 | .548 | R4 | .779 |
+| .05 | .564 | R4 | .702 |
+| .10 | .557 | R3 | **.0205** |
+| .20 | .541 | R4 | .923 |
 
-## Evidence rules
+Only `m=.10` retains high-precision excess between-block heterogeneity. Paired marginal-risk tests versus isolation are non-significant at every nonzero level.
 
-- The two repositories are computational phases of one manuscript but remain separate provenance ledgers; trajectories are never pooled across phases.
-- The post-review H3 fragmentation gradient is a separately declared fresh-seed Type S sensitivity; its 9,600 rows are repeated measures over 1,200 attempted source replicates and do not replace the historical H1/H3 ledger.
-- Direct recurrent-transition-coordinate effects are supported by the common-grid source-feasibility and loss-regime analyses, not by a single-factor Stage III contrast.
-- Protocol 002 remains closed with 15/15 `no_domain_selected` under its strict all-seed rule.
-- Protocol 003 is separately declared. Amendment 001 expanded the candidate family and changed the event-risk eligibility gate before any warning outcome was calculated; Amendment 002 did not relax that gate further and instead increased replication with fresh seeds.
-- The two Protocol 003 validation domains differ in `A_ref`, interaction-feedback `kappa`, `kappa_mu`, `p_star`, deterioration horizon and barrier increase. Their Stage III contrast is therefore a portability comparison across independently calibrated eco-genetic domains.
-- The shared Protocol 002 deterioration family is the matched-schedule experiment; because it selected no validation domain at any coordinate, a matched Stage III warning comparison was not available without changing the event-risk regime.
-- Endpoint comparisons from the same trajectory are correlated. Post-review uncertainty intervals resample whole trajectories, never endpoint rows independently.
-- Direct timing contrasts resample the two independent domains separately and calculate the difference itself; marginal interval overlap is not used as the difference test.
-- Historical Stage III artifacts remain immutable. The conventional-median correction and timing audit are explicitly labelled as post-review secondary analyses.
-- `p_mu*` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
+### Aggregate interaction feedback
+
+| `kappa` | pooled loss | historical screen | equal-rate p |
+|---:|---:|---|---:|
+| 3.0 | .499 | R4 | .063 |
+| 4.5 | .573 | R4 | .623 |
+| 6.0 | .598 | R4 | .543 |
+
+Interpretation: bounded high-precision robustness across the three predeclared scalar feedback values.
+
+### Reduced-form partner loss
+
+| condition | pooled loss | historical screen | equal-rate p |
+|---|---:|---|---:|
+| intact | .556 | R4 | .117 |
+| even loss | .544 | R4 | .488 |
+| graded loss | .565 | R4 | .263 |
+| dominant loss | .549 | R4 | .121 |
+
+Interpretation: no detected high-precision incidence or block-heterogeneity effect; many paired trajectory identities change in both directions.
+
+## Submission-bundle evidence rules
+
+- Parent and extension trajectories are never pooled.
+- Historical 15/15 `no_domain_selected` remains immutable for the original candidate family.
+- Historical R3/R4 labels are retained but are not biological estimands.
+- Phase M `migration_rate` is allele-frequency mixing only.
+- Phase Q `interaction kappa` is aggregate feedback, not network richness/connectance.
+- Phase N is a reduced-form partner-contribution perturbation, not an explicit network model.
+- Protocol 003 domains differ in multiple parameters and therefore support bounded portability rather than a direction-only causal claim.
+- Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
+- `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
+
+## Publication display rule
+
+The six-display limit is controlled by `manuscript/display_allocation.md`. Phase N partner-loss detail is supplementary because its high-precision population-level result is negative. Phase Q remains a bounded robustness result rather than a seventh main display.

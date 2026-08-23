@@ -1,109 +1,108 @@
 # Claim–evidence map
 
-## Study phases and provenance
+This file is the manuscript claim gate. Detailed numerical provenance lives in `artifact_index.md`; the condition hierarchy lives in `docs/HYPOTHESIS_PROGRAM.md`.
 
-| manuscript statement | evidence boundary |
-|---|---|
-| The manuscript integrates a theorem-guided first phase and an independently declared recurrent-transition extension as one study. | Keep the two repositories as separate computational provenance units; do not pool their trajectories. |
-| The first phase provides the analytical interaction mechanism, locked H1/H3 fragmentation campaign, and inherited symmetric warning benchmark. | `eco-genetic-criticality` canonical scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc` and final evidence ledger. |
-| The extension reconstructs sources, maps common-grid loss regimes, and performs separately declared warning-blind recalibration and validation. | Protocol 002/003 documents, amendments, locked artifacts, and fresh validation seeds. |
+Parent and extension repositories are separate computational provenance units and their trajectories are never pooled. The pinned parent scientific commit is `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
-## Permitted first-phase claims
+## Interpretation rule for historical R1–R4 labels
 
-| ID | permitted claim | required evidence | status |
+R1–R4 remain immutable labels from the preregistered warning-blind screen. They are **not** latent biological classes. Historical R3 is described as a mixed-block screen failure unless independent high-precision evidence supports excess between-block heterogeneity. Historical R4 means every observed block lay within the fixed intermediate-incidence band; it does not itself prove warning success or biological exchangeability.
+
+## Permitted inherited claims
+
+| ID | permitted claim | evidence | status |
 |---|---|---|---|
-| P1 | Equal isolation from an H1-prepared full state lowers final interaction, local effective size, and realised high-trait mass relative to the matched one-large projection. | Parent workflow run `28456092898`, artifact `7987193632`; 1,055 H1-qualified paired replicates across 12 primary cells. | supported, finite Type S |
-| P2 | In the inherited symmetric benchmark, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10%, and 20% preceded all 35 observed realised trait-loss events. | Parent H2-R trait-loss-only calibration and independent fresh-seed validation. | supported conditionally, finite Type S |
-| P3 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that same benchmark. | Stored-trajectory H2-A audit: 14/0/6 and 8/0/8 lead/tie/lag. | negative robustness result |
-| P4 | A fresh fixed-area fragmentation sensitivity shows that the historical four-patch contrast was already present after the first split to two isolated patches; interaction and local effective size then declined further, whereas realised high-trait mass was non-monotonic. | Parent run `31937210601`, artifact `9261157020`; 1,037 prepared sources projected across eight patch counts. | new supplementary finite Type S sensitivity |
+| P1 | Equal isolation from the same H1-prepared state lowers final interaction, local effective size and realised high-trait mass relative to the matched one-large projection. | Parent locked H1/H3 campaign; 1,055 qualified pairs. | finite Type S |
+| P2 | A fresh fixed-area 1–16-patch sensitivity shows the main interaction/Ne disruption after the first split; realised high-trait mass is not universally monotone across patch number. | Parent fresh gradient; 1,037 prepared sources. | supplementary Type S |
+| P3 | In one independently calibrated symmetric benchmark, 5%, 10% and 20% baseline-relative `H_alpha` and `H_gamma` erosion preceded all 35 observed realised functional losses. | Parent H2-R calibration and fresh validation. | bounded proof of possibility |
+| P4 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that benchmark. | Stored-trajectory absolute-threshold audit. | negative robustness result |
 
 ## Permitted extension claims
 
-| ID | permitted claim | required evidence | status |
+| ID | permitted claim | evidence | status |
 |---|---|---|---|
-| S1 | At fixed `kappa_mu`, recurrent-transition direction changes high-state source feasibility. | Common Stage I coordinate grid; 3,375 source attempts and 2,269 supported projections. | supported for declared closure |
-| S2 | The common deterioration family partitions candidates into rapid-loss, persistence, and seed-heterogeneous regimes. | Stage II complete candidate rates and regime audit. | supported for declared closure |
-| S3 | No Protocol 002 coordinate had an eligible warning-validation domain under the strict all-seed rule. | 648 complete candidates, zero eligible, 15 `no_domain_selected`. | supported for declared closure |
-| S4 | Protocol 003 used a separately declared, warning-blind amendment that expanded the candidate family and replaced the Protocol 002 all-seed gate before warning values were calculated. | `PROTOCOL_003_AMENDMENT_001.md` and `PROTOCOL_003_AMENDMENT_002.md`. | documented design fact |
-| S5 | The two Stage III validation domains differ in recurrent-transition parameters, `A_ref`, interaction-feedback `kappa`, barrier increase, and calibrated horizon. | Locked confirmation cells and Stage III domain identities. | documented design fact |
-| S6 | Warning availability and ordering differ between the recalibrated symmetric domain and directional calibrated domain. | Locked Stage III trajectories plus trajectory-cluster secondary audit. | supported as a calibrated-domain portability result |
-| S7 | Stage III timing point estimates are schedule-dependent; direct between-domain bootstrap differences are endpoint-dependent for absolute time and include zero for all six full-horizon-normalized contrasts. | Immutable Stage III trajectories, conventional-median audit, and `stage3_between_domain_differences.csv`. | supported uncertainty / identification statement |
-| S8 | Censoring and warning availability are part of the finite ecological outcome rather than discarded missing data. | Full 100-attempt endpoint denominators and cumulative event-incidence summaries. | supported as bounded interpretation |
-| S9 | Under the strict common deterioration family, no matched validation domain was available at any of the 15 coordinates; coordinate-specific recalibration restored evaluability at the cost of single-factor identification. | Protocol 002 no-domain audit plus separately declared Protocol 003 amendments. | supported design/biology boundary |
+| S1 | Recurrent state-transition coordinates change high-function source feasibility. | Common source grid: 2,269/3,375 supported. | finite Type S |
+| S2 | The original common deterioration family partitions complete candidates into 322 rapid-loss, 242 persistence and 84 historical R3/mixed-block candidates. | 648 complete candidates. | historical finite screen result |
+| S3 | No coordinate in the original strict common family had an R4 validation domain; all 15 remain historically `no_domain_selected`. | Locked Protocol 002 selection. | bounded negative historical result |
+| S4 | The original no-domain result was not structural impossibility: warning-blind refinement recovered intermediate-incidence R4 conditions without inspecting warning variables. | Phase C/D historical recovery plus high-precision replays. | positive placement result |
+| S5 | The tested recurrent-turnover frontier is an incidence gradient rather than a two-sided seed-heterogeneity window: pooled loss is about .682 at `p_star=.325`, .54 at `.350`, .407 at `.375`, and .273 at `.400`. | Phase O/P high-precision replays with exact historical prefixes. | high-precision incidence boundary |
+| S6 | None of the high-precision `.325/.350/.375/.400` frontier conditions shows detectable excess equal-rate heterogeneity. | Phase O/P equal-rate diagnostics. | negative heterogeneity result |
+| S7 | Allele-frequency mixing has a non-monotone block-heterogeneity effect at the tested anchor: only `m=.10` shows high-precision excess between-block heterogeneity; `m=.20` returns to homogeneous behaviour. | Phase M, run `32558147960`, artifact `9472067167`. | finite connectivity boundary |
+| S8 | Across tested migration rates, pooled loss stays near .54–.56 and exact paired McNemar tests versus isolation are non-significant, despite many bidirectional trajectory switches. | Phase M paired records. | trajectory-identity / marginal-risk distinction |
+| S9 | Across predeclared `kappa=3.0,4.5,6.0`, high-precision pooled loss remains intermediate and no tested level shows detectable excess block heterogeneity. | Phase Q, run `32559058069`, artifact `9472941879`. | bounded negative condition result |
+| S10 | Aggregate interaction feedback changes source feasibility in the historical Phase-F preparation layer, but the tested post-source loss process remains intermediate across all three predeclared kappa values at high precision. | Phase F historical source eligibility + Phase Q precision validation. | source/loss separation |
+| S11 | Historical Protocol 003 used separate warning-blind recalibration to recover two domains. | Protocol 003 declarations and locked cells. | design fact |
+| S12 | Warning availability and ordering differ across the two independently calibrated Protocol 003 domains. | Locked Stage III trajectories. | bounded portability result |
+| S13 | Stage III is not a matched recurrent-transition-direction experiment because domains also differ in ecological parameters, deterioration strength and horizon. | Locked domain identities. | identification boundary |
+| S14 | All six full-horizon-normalised direct between-domain bootstrap timing contrasts include zero. | Trajectory-level secondary audit. | uncertainty result |
+| S15 | Censoring, source failure and baseline ineligibility affect warning availability and remain in the attempted denominator. | Full Stage III records. | bounded interpretation |
+| S16 | Under the tested reduced-form partner-loss closure, intact/even/graded/dominant conditions all have similar high-precision pooled loss (.544–.565), remain inside the historical intermediate-incidence screen and show no detectable excess block heterogeneity. | Phase N, run `32558466157`, artifact `9472148035`. | high-precision negative partner result |
+| S17 | Partner loss changes many individual paired trajectory outcomes in both directions, but exact McNemar tests against intact are non-significant. | Phase N paired records. | trajectory-identity / marginal-risk distinction |
+| S18 | Low-replicate R3/R4 labels cannot by themselves identify biological heterogeneity: 0/10 audited load-bearing R3 cases showed detectable excess equal-rate heterogeneity at historical precision, and an exact Phase-H/I conflict converged to R4 in both seed families at 100 attempts/block. | Phases J–L and K. | statistical interpretation correction |
 
-## Locked and corrected numerical facts
+## Exact operator claims
+
+| ID | permitted claim | evidence |
+|---|---|---|
+| T1 | Increasing `p_star` has no universal signed effect on heterozygosity because `dH(M(p))/dp_star = 2*kappa_mu*(1-2M(p))`. | `docs/RECURRENT_TRANSITION_DIVERSITY_THEORY.md` + tests. |
+| T2 | With fixed patch weights and a common affine transition, the one-step alpha–gamma diversity gap contracts by `(1-kappa_mu)^2`, independently of `p_star`. | Same derivation/tests. |
+| T3 | Increasing `p_star` strengthens local high-associated allele support but can lower heterozygosity when post-transition frequency exceeds 0.5. | Same derivation/tests. |
+| T4 | The declared allele-frequency mixing operator contracts among-patch frequency deviations toward the weighted mean without imposing a universal sign on realised functional loss. | Parent migration theorem + Phase M. |
+
+## Locked headline facts
 
 | fact | value |
 |---|---:|
-| first-phase primary H1/H3 attempted replicates | 1,200 |
-| first-phase H1-qualified paired replicates | 1,055 |
-| H3 pattern supported among H1-qualified replicates | 1,055 / 1,055 |
-| median paired interaction reduction after isolation | 99.86% |
-| median paired local effective-size reduction | 88.73% |
-| median paired realised high-trait-mass reduction | 68.87% |
-| fresh fragmentation-gradient attempted / prepared sources | 1,200 / 1,037 |
-| fresh n=2 paired reductions: interaction / local effective size / realised high-trait mass | 99.83% / 77.87% / 71.71% |
-| fresh n=4 paired reductions: interaction / local effective size / realised high-trait mass | 99.86% / 88.73% / 69.82% |
-| potential high-trait viability: n=1 / every n>=2 | 1,037/1,037 / 0/1,037 |
+| parent H1/H3 attempted / H1-qualified pairs | 1,200 / 1,055 |
+| fresh fragmentation-gradient attempted / prepared | 1,200 / 1,037 |
 | inherited symmetric benchmark attempted / available / trait loss | 100 / 83 / 35 |
-| inherited symmetric benchmark censored for trait loss | 48 |
-| inherited relative-warning lead/tie/lag per endpoint | 35 / 0 / 0 |
-| Protocol 002 batches | 810 |
-| Protocol 002 complete five-seed candidates | 648 |
-| Protocol 002 rapid-loss / heterogeneous / persistence candidates | 322 / 84 / 242 |
-| Protocol 002 eligible candidates | 0 |
-| Protocol 002 no-domain coordinates | 15 |
-| Stage III attempted trajectories | 100 + 100 |
-| recalibrated symmetric domain completed trajectories | 82 |
-| directional calibrated domain completed trajectories | 91 |
-| recalibrated symmetric valid endpoint comparisons | 324 |
-| recalibrated symmetric lead / tie / lag | 323 / 1 / 0 |
-| directional calibrated valid endpoint comparisons | 201 |
-| directional calibrated lead / tie / lag | 184 / 5 / 12 |
-| valid-pair availability per attempted endpoint | 0.540 vs 0.335 |
-| trajectory-bootstrap lead fraction | 0.997 [0.990, 1.000] vs 0.915 [0.848, 0.971] |
-| directional lag fraction | 0.060 [0.016, 0.112] |
-| conventional median positive lead-time range | 106–109 vs 72.5–77.5 generations |
-| median positive lead fraction of calibrated horizon | 0.442–0.454 vs 0.604–0.646 |
-| absolute D−S 95% difference intervals exclude zero | H-alpha 5% and H-alpha 10% only |
-| horizon-normalized D−S 95% difference intervals include zero | all six endpoints |
-| directional H-gamma 20% final warning / trait-loss incidence | 41/81 (0.506) / 52/81 (0.642) |
-| Stage III calibrated horizons | 240 vs 120 generations |
-
-The historical Stage III source artifacts used the upper middle order statistic for even `n` while calling it a median. The source artifacts remain immutable; publication timing values come from the post-review secondary audit, which uses the conventional median. Repository-wide inspection found the historical definition only in that Stage III timing-summary path. The paired fragmentation reductions were calculated separately from locked parent outcomes and are not affected by this correction.
+| Protocol 002 complete candidates | 648 |
+| historical rapid-loss / R3-mixed / persistence | 322 / 84 / 242 |
+| original eligible candidates / no-domain coordinates | 0 / 15 |
+| high-precision `p_star=.325/.350/.375/.400` pooled loss | .682 / ~.54 / .407 / .273 |
+| high-precision frontier equal-rate heterogeneity | none detected at .325/.350/.375/.400 |
+| Phase M `m=0/.025/.05/.10/.20` pooled loss | .559 / .548 / .564 / .557 / .541 |
+| Phase M excess block heterogeneity | detected only at `m=.10` (`p=.0205`) |
+| Phase Q `kappa=3.0/4.5/6.0` pooled loss | .499 / .573 / .598 |
+| Phase N intact/even/graded/dominant pooled loss | .556 / .544 / .565 / .549 |
+| Phase N paired McNemar p values | .757 / .809 / .861 |
+| Stage III valid-pair availability | .540 vs .335 |
+| Stage III lead/tie/lag | 323/1/0 vs 184/5/12 |
+| horizon-normalised Stage III timing contrasts | all six include zero |
 
 ## Prohibited claims
 
-- Recurrent-transition direction alone caused the Stage III warning-ordering difference.
-- Recurrent-transition direction alone shortened or lengthened intervention time.
-- The horizon-normalized Stage III timing difference is separated at any of the six endpoints.
-- All six absolute Stage III timing contrasts are separated.
-- Overlap or non-overlap of marginal bootstrap intervals is a test of the between-domain difference.
-- Stage III changed only one biological parameter.
-- The Stage III domains are matched except for `p_star`.
-- Protocol 003 retained the Protocol 002 eligibility rule unchanged.
-- Protocol 003 never expanded its candidate family.
-- Directional mutation universally causes ecological collapse or rescue.
-- Genetic diversity warning universally fails or succeeds under directional mutation.
-- `p_star` is an empirically estimated mutation rate.
-- Protocol 003 changes the historical Protocol 002 `no_domain_selected` result.
-- Endpoint-level comparisons are independent biological replicates.
-- Bootstrap intervals are population-level confidence intervals.
-- Two calibrated domains constitute a complete phase diagram of warning performance.
-- The fragmentation sensitivity is a universal monotone dose-response.
-- `K=4` is the observed finite fragmentation threshold.
-- The post-review fragmentation sensitivity replaces the historical H1/H3 evidence ledger.
+Do not claim that:
 
-## Required figure-to-claim mapping
+- the historical 15/15 `no_domain_selected` result proves an intermediate-incidence domain cannot exist;
+- R4 itself means genetic warning succeeds;
+- R3 itself demonstrates biological seed heterogeneity;
+- the recurrent-turnover R4 region is a razor-thin two-sided biological regime;
+- `m=.10–.20` forms a monotone connectivity R4→R3 boundary;
+- connectivity universally rescues or harms function;
+- `migration_rate` is demographic, pollinator, pollen, seed or recolonisation movement;
+- Phase F proves interaction support is irrelevant or that all feedback strengths preserve the same behaviour;
+- interaction `kappa` is partner richness, connectance, pollinator diversity, network dimensionality or direct network simplification;
+- the reduced-form partner test is a full network/connectance/rewiring experiment;
+- tested partner loss raises average loss probability or reduces warning estimability;
+- contribution concentration alone determines the loss process;
+- recurrent-transition direction alone caused the Stage III warning difference;
+- `p_star` is an empirically estimated mutation rate;
+- genetic diversity is a monotone proxy for local functional support;
+- endpoint rows sharing trajectories are independent biological replicates;
+- finite Type S results are universal ecological thresholds or theorems.
 
-| figure | content | claims supported |
-|---|---|---|
-| Figure 1 | integrated fragmentation-to-warning causal architecture | conceptual mechanism; no numerical effect size |
-| Figure 2 | common-grid source feasibility | S1 |
-| Figure 3 | common-grid loss regimes plus 648-candidate composition | S2, S3, S9 |
-| Figure 4 | cumulative warning and functional-loss incidence with administrative censoring | S6, S8 |
-| Figure 5 | full attempted denominator: source failure, ineligibility, censoring, lead/tie/lag | S6, S8 |
-| Figure 6 | corrected absolute and horizon-normalized positive lead time with trajectory-bootstrap intervals | S7 |
-| Supplementary Figure S1 | fresh fixed-area paired fragmentation gradient | P4 |
+## Current story-to-evidence spine
 
-Every finite numerical caption must be interpreted within the manuscript's Type S evidence boundary for the declared model closures.
+| narrative step | evidence |
+|---|---|
+| Interaction-dependent function can exist and fragmentation can degrade it before population disappearance | P1–P2 |
+| Recurrent turnover changes source feasibility and shifts functional-loss incidence from high to low | S1–S6 |
+| Historical screen labels are calibration tools, not biological estimands | S18 |
+| Allele-frequency connectivity can produce non-monotone block heterogeneity without a marginal-risk gradient | S7–S8 + T4 |
+| Scalar aggregate feedback is robust across the three predeclared levels | S9–S10 |
+| Reduced-form partner loss changes trajectory identity but not high-precision incidence or block heterogeneity | S16–S17 |
+| Only after the downstream loss process is fixed does genetic warning become a meaningful question | P3–P4 |
+| Warning behaviour is not automatically portable across independently calibrated domains | S11–S15 |
+
+Every finite numerical claim retains the declared model closure. Explicit network dynamics and process-resolved biological movement remain next-model hypotheses.

@@ -1,0 +1,200 @@
+"""Predeclared manifests for warning-blind recurrent-transition frontier refinement."""
+from __future__ import annotations
+
+from dataclasses import dataclass
+
+from .mutation_coordinates import MutationCoordinates
+
+PHASE_A_KAPPA_MU = 0.05
+PHASE_A_P_STAR = (0.775, 0.800, 0.825, 0.850, 0.875)
+PHASE_A_MASTER_SEEDS = (20281010, 20281011, 20281012, 20281013, 20281014)
+PHASE_A_REPLICATES_PER_SEED = 5
+PHASE_A_CONFIRMATION_MASTER_SEEDS = (20281110, 20281111, 20281112, 20281113, 20281114)
+PHASE_A_CONFIRMATION_REPLICATES_PER_SEED = 20
+PHASE_A_RAMP_GENERATIONS = 30
+PHASE_A_HOLD_GENERATIONS = 90
+
+PHASE_B_KAPPA_MU = 0.35
+PHASE_B_P_STAR = (0.30, 0.35, 0.40, 0.45)
+PHASE_B_MASTER_SEEDS = (20281210, 20281211, 20281212, 20281213, 20281214)
+PHASE_B_REPLICATES_PER_SEED = 5
+PHASE_B_CONFIRMATION_MASTER_SEEDS = (20290110, 20290111, 20290112, 20290113, 20290114)
+PHASE_B_CONFIRMATION_REPLICATES_PER_SEED = 20
+PHASE_B_RAMP_GENERATIONS = 30
+PHASE_B_HOLD_GENERATIONS = 90
+
+PHASE_C_KAPPA_MU = 0.35
+PHASE_C_P_STAR = (0.35, 0.40)
+PHASE_C_MASTER_SEEDS = (20290210, 20290211, 20290212, 20290213, 20290214)
+PHASE_C_REPLICATES_PER_SEED = 20
+PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED = 10
+PHASE_C_RAMP_GENERATIONS = 30
+PHASE_C_HOLD_GENERATIONS = 90
+
+PHASE_D_KAPPA_MU = 0.35
+PHASE_D_P_STAR = (0.325, 0.350, 0.375)
+PHASE_D_MASTER_SEEDS = (20290310, 20290311, 20290312, 20290313, 20290314)
+PHASE_D_REPLICATES_PER_SEED = 20
+PHASE_D_MIN_BASELINE_ELIGIBLE_PER_SEED = 10
+PHASE_D_RAMP_GENERATIONS = 30
+PHASE_D_HOLD_GENERATIONS = 90
+
+
+@dataclass(frozen=True)
+class FrontierAnchor:
+    anchor_id: str
+    area_reference: float
+    interaction_kappa: float
+    normalised_barrier_increase: float
+
+
+PHASE_A_ANCHORS = (
+    FrontierAnchor("A1", area_reference=0.8, interaction_kappa=4.5, normalised_barrier_increase=0.45),
+    FrontierAnchor("A2", area_reference=0.8, interaction_kappa=3.0, normalised_barrier_increase=0.15),
+)
+
+PHASE_B_ANCHOR = FrontierAnchor(
+    "B1", area_reference=1.0, interaction_kappa=4.5, normalised_barrier_increase=0.30
+)
+PHASE_C_ANCHOR = PHASE_B_ANCHOR
+PHASE_D_ANCHOR = PHASE_B_ANCHOR
+
+
+@dataclass(frozen=True)
+class FrontierRefinementCell:
+    cell_index: int
+    anchor: FrontierAnchor
+    coordinate: MutationCoordinates
+    ramp_generations: int = 30
+    hold_generations: int = 90
+
+    @property
+    def horizon(self) -> int:
+        return self.ramp_generations + self.hold_generations
+
+    def identity(self) -> dict[str, int | float | str]:
+        return {
+            "cell_index": self.cell_index,
+            "anchor_id": self.anchor.anchor_id,
+            "kappa_mu": self.coordinate.kappa_mu,
+            "p_star": self.coordinate.p_star,
+            "area_reference": self.anchor.area_reference,
+            "kappa": self.anchor.interaction_kappa,
+            "ramp_generations": self.ramp_generations,
+            "hold_generations": self.hold_generations,
+            "horizon": self.horizon,
+            "normalised_barrier_increase": self.anchor.normalised_barrier_increase,
+        }
+
+
+def _cells(*, kappa_mu: float, p_stars: tuple[float, ...], anchor: FrontierAnchor, ramp: int, hold: int) -> tuple[FrontierRefinementCell, ...]:
+    return tuple(
+        FrontierRefinementCell(
+            cell_index=index,
+            anchor=anchor,
+            coordinate=MutationCoordinates(kappa_mu=kappa_mu, p_star=p_star),
+            ramp_generations=ramp,
+            hold_generations=hold,
+        )
+        for index, p_star in enumerate(p_stars)
+    )
+
+
+def phase_a_cells() -> tuple[FrontierRefinementCell, ...]:
+    cells: list[FrontierRefinementCell] = []
+    for anchor in PHASE_A_ANCHORS:
+        for p_star in PHASE_A_P_STAR:
+            cells.append(
+                FrontierRefinementCell(
+                    cell_index=len(cells),
+                    anchor=anchor,
+                    coordinate=MutationCoordinates(kappa_mu=PHASE_A_KAPPA_MU, p_star=p_star),
+                    ramp_generations=PHASE_A_RAMP_GENERATIONS,
+                    hold_generations=PHASE_A_HOLD_GENERATIONS,
+                )
+            )
+    return tuple(cells)
+
+
+def phase_b_cells() -> tuple[FrontierRefinementCell, ...]:
+    return _cells(kappa_mu=PHASE_B_KAPPA_MU, p_stars=PHASE_B_P_STAR, anchor=PHASE_B_ANCHOR, ramp=PHASE_B_RAMP_GENERATIONS, hold=PHASE_B_HOLD_GENERATIONS)
+
+
+def phase_c_cells() -> tuple[FrontierRefinementCell, ...]:
+    return _cells(kappa_mu=PHASE_C_KAPPA_MU, p_stars=PHASE_C_P_STAR, anchor=PHASE_C_ANCHOR, ramp=PHASE_C_RAMP_GENERATIONS, hold=PHASE_C_HOLD_GENERATIONS)
+
+
+def phase_d_cells() -> tuple[FrontierRefinementCell, ...]:
+    return _cells(kappa_mu=PHASE_D_KAPPA_MU, p_stars=PHASE_D_P_STAR, anchor=PHASE_D_ANCHOR, ramp=PHASE_D_RAMP_GENERATIONS, hold=PHASE_D_HOLD_GENERATIONS)
+
+
+def phase_a_manifest() -> dict[str, object]:
+    cells = phase_a_cells()
+    return {
+        "protocol": "warning-blind recurrent-transition frontier refinement Phase A",
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_A_MASTER_SEEDS) * PHASE_A_REPLICATES_PER_SEED,
+        "planned_refinement_attempts": len(cells) * len(PHASE_A_MASTER_SEEDS) * PHASE_A_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_A_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_A_REPLICATES_PER_SEED,
+        "confirmation_master_seeds": list(PHASE_A_CONFIRMATION_MASTER_SEEDS),
+        "confirmation_replicates_per_seed": PHASE_A_CONFIRMATION_REPLICATES_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }
+
+
+def phase_b_manifest() -> dict[str, object]:
+    cells = phase_b_cells()
+    return {
+        "protocol": "warning-blind recurrent-transition frontier refinement Phase B",
+        "historical_bracket": {
+            "low": {"batch_index": 619, "p_star": 0.25, "seed_rates": [1.0] * 5, "regime": "rapid_loss"},
+            "high": {"batch_index": 673, "p_star": 0.50, "seed_rates": [0.0] * 5, "regime": "persistence"},
+        },
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_B_MASTER_SEEDS) * PHASE_B_REPLICATES_PER_SEED,
+        "planned_refinement_attempts": len(cells) * len(PHASE_B_MASTER_SEEDS) * PHASE_B_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_B_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_B_REPLICATES_PER_SEED,
+        "confirmation_master_seeds": list(PHASE_B_CONFIRMATION_MASTER_SEEDS),
+        "confirmation_replicates_per_seed": PHASE_B_CONFIRMATION_REPLICATES_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }
+
+
+def phase_c_manifest() -> dict[str, object]:
+    cells = phase_c_cells()
+    return {
+        "protocol": "warning-blind frontier reproducibility audit Phase C",
+        "phase_b_parent_cells": [0.35, 0.40],
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_C_MASTER_SEEDS) * PHASE_C_REPLICATES_PER_SEED,
+        "planned_attempts": len(cells) * len(PHASE_C_MASTER_SEEDS) * PHASE_C_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_C_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_C_REPLICATES_PER_SEED,
+        "minimum_baseline_eligible_per_seed": PHASE_C_MIN_BASELINE_ELIGIBLE_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }
+
+
+def phase_d_manifest() -> dict[str, object]:
+    cells = phase_d_cells()
+    return {
+        "protocol": "warning-blind R4 width refinement Phase D",
+        "phase_c_r4_replay": 0.35,
+        "cell_count": len(cells),
+        "attempts_per_cell": len(PHASE_D_MASTER_SEEDS) * PHASE_D_REPLICATES_PER_SEED,
+        "planned_attempts": len(cells) * len(PHASE_D_MASTER_SEEDS) * PHASE_D_REPLICATES_PER_SEED,
+        "master_seeds": list(PHASE_D_MASTER_SEEDS),
+        "replicates_per_seed": PHASE_D_REPLICATES_PER_SEED,
+        "minimum_baseline_eligible_per_seed": PHASE_D_MIN_BASELINE_ELIGIBLE_PER_SEED,
+        "warning_fields_available": False,
+        "diversity_fields_available": False,
+        "cells": [cell.identity() for cell in cells],
+    }

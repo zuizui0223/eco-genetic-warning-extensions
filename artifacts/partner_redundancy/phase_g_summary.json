@@ -1,0 +1,49 @@
+{
+  "claim_boundary": "Reduced-form partner-contribution / functional-redundancy closure only; not connectance, adaptive rewiring, partner population dynamics, pollen, seed, or pollinator movement.",
+  "fixed_design": {
+    "area_reference": 1.0,
+    "horizon": 120,
+    "interaction_kappa": 4.5,
+    "kappa_mu": 0.35,
+    "master_seeds": [20290610, 20290611, 20290612, 20290613, 20290614],
+    "migration_rate": 0.0,
+    "normalised_barrier_increase": 0.3,
+    "p_star": 0.35,
+    "replicates_per_seed": 20,
+    "source_preparations": 100
+  },
+  "matched_partner_loss_design": {
+    "losses_per_partner_per_seed": 5,
+    "lost_partner_assignment": "replicate_index mod 4",
+    "mean_retained_support_each_loss_architecture": 0.75,
+    "partner_count_after": 3,
+    "partner_count_before": 4
+  },
+  "opening_rule_satisfied": true,
+  "paired_vs_intact": [
+    {"comparable_pair_count":90,"loss_to_no_loss":18,"no_loss_to_loss":20,"partner_architecture":"even_redundant","reference":"intact_control","same_loss":31,"same_no_loss":21},
+    {"comparable_pair_count":90,"loss_to_no_loss":19,"no_loss_to_loss":20,"partner_architecture":"graded_contributions","reference":"intact_control","same_loss":30,"same_no_loss":21},
+    {"comparable_pair_count":90,"loss_to_no_loss":14,"no_loss_to_loss":17,"partner_architecture":"dominant_partner","reference":"intact_control","same_loss":35,"same_no_loss":24}
+  ],
+  "posthoc_descriptive_audit": {
+    "cochran_q_across_four_paired_conditions": 0.38461538461538464,
+    "cochran_q_df": 3,
+    "cochran_q_p": 0.9434019357843008,
+    "exact_mcnemar_p_vs_intact": {"dominant_partner":0.720100131817162,"even_redundant":0.8714146793645341,"graded_contributions":1.0},
+    "interpretation": "No evidence that pooled loss incidence differed across the four paired conditions; the predeclared R4-to-R3 changes are changes in block-level reproducibility, not a directional increase in average loss risk."
+  },
+  "results": [
+    {"attempted":100,"baseline_eligible":90,"partner_architecture":"intact_control","partner_contribution_cv":0.0,"partner_weights":[0.25,0.25,0.25,0.25],"pooled_trait_loss_rate":0.5444444444444444,"regime":"R4_highrep","retained_support_max":1.0,"retained_support_mean":1.0,"retained_support_min":1.0,"seed_block_loss_rates":[0.5,0.47058823529411764,0.5555555555555556,0.6,0.5882352941176471],"seed_rate_range":0.12941176470588234,"trait_loss":49},
+    {"attempted":100,"baseline_eligible":90,"partner_architecture":"even_redundant","partner_contribution_cv":0.0,"partner_weights":[0.25,0.25,0.25,0.25],"pooled_trait_loss_rate":0.5666666666666667,"regime":"R3_highrep","retained_support_max":0.75,"retained_support_mean":0.75,"retained_support_min":0.75,"seed_block_loss_rates":[0.5555555555555556,0.47058823529411764,0.4444444444444444,0.65,0.7058823529411765],"seed_rate_range":0.2614379084967321,"trait_loss":51},
+    {"attempted":100,"baseline_eligible":90,"partner_architecture":"graded_contributions","partner_contribution_cv":0.4472135954999579,"partner_weights":[0.4,0.3,0.2,0.1],"pooled_trait_loss_rate":0.5555555555555556,"regime":"R3_highrep","retained_support_max":0.9,"retained_support_mean":0.75,"retained_support_min":0.6,"seed_block_loss_rates":[0.5,0.4117647058823529,0.5555555555555556,0.55,0.7647058823529411],"seed_rate_range":0.3529411764705882,"trait_loss":50},
+    {"attempted":100,"baseline_eligible":90,"partner_architecture":"dominant_partner","partner_contribution_cv":1.0392304845413263,"partner_weights":[0.7,0.1,0.1,0.1],"pooled_trait_loss_rate":0.5777777777777777,"regime":"R3_highrep","retained_support_max":0.9,"retained_support_mean":0.7499999999999997,"retained_support_min":0.30000000000000004,"seed_block_loss_rates":[0.5,0.47058823529411764,0.6666666666666666,0.55,0.7058823529411765],"seed_rate_range":0.23529411764705888,"trait_loss":52}
+  ],
+  "run": {
+    "artifact_digest": "sha256:669cfc468f8a36e53ccc157aaa97e5a4de14f6ad7c09458ed105762e4d0d6ec7",
+    "artifact_id": 9435520830,
+    "extension_head_sha": "bc39c7003fb97dd10ee17034813c46f4ec85252d",
+    "parent_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "workflow_run_id": 32450362310
+  },
+  "stage": "warning-blind partner-redundancy Phase G"
+}

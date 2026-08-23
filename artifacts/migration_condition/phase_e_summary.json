@@ -1,0 +1,79 @@
+{
+  "stage": "warning-blind migration-condition Phase E",
+  "calibration_scope": "trait_loss_only",
+  "provenance": {
+    "workflow_run": 32376912392,
+    "artifact_id": 9409687687,
+    "artifact_digest": "sha256:b2464d1b415fa62c6d8335c4ac20cb324ea0bc7bfa04aa6ab686da66c83f5b98",
+    "head_sha": "423253e567edb92185ae4fc672920e5de0a29ef7"
+  },
+  "fixed_anchor": {
+    "area_reference": 1.0,
+    "interaction_kappa": 4.5,
+    "kappa_mu": 0.35,
+    "p_star": 0.35,
+    "ramp_generations": 30,
+    "hold_generations": 90,
+    "horizon": 120,
+    "normalised_barrier_increase": 0.30,
+    "fragmentation_geometry": "four_equal_patches_fixed_total_area"
+  },
+  "design": {
+    "migration_rates": [0.0, 0.025, 0.05, 0.10, 0.20],
+    "master_seeds": [20290410, 20290411, 20290412, 20290413, 20290414],
+    "replicates_per_seed": 20,
+    "prepared_source_count": 100,
+    "paired_across_migration_rates": true,
+    "trajectory_count": 500,
+    "migration_scope": "allele_frequency_mixing_only"
+  },
+  "migration_condition_summaries": [
+    {
+      "migration_rate": 0.0,
+      "regime": "R4_highrep",
+      "pooled_trait_loss_rate": 0.5714285714285714,
+      "seed_rates": [0.4666666666666667, 0.6111111111111112, 0.55, 0.6666666666666666, 0.55],
+      "baseline_eligible": 91,
+      "trait_loss": 52
+    },
+    {
+      "migration_rate": 0.025,
+      "regime": "R4_highrep",
+      "pooled_trait_loss_rate": 0.5494505494505495,
+      "seed_rates": [0.5333333333333333, 0.5555555555555556, 0.45, 0.6111111111111112, 0.6],
+      "baseline_eligible": 91,
+      "trait_loss": 50
+    },
+    {
+      "migration_rate": 0.05,
+      "regime": "R4_highrep",
+      "pooled_trait_loss_rate": 0.5934065934065934,
+      "seed_rates": [0.5333333333333333, 0.6666666666666666, 0.5, 0.6666666666666666, 0.6],
+      "baseline_eligible": 91,
+      "trait_loss": 54
+    },
+    {
+      "migration_rate": 0.10,
+      "regime": "R3_highrep",
+      "pooled_trait_loss_rate": 0.6263736263736264,
+      "seed_rates": [0.6666666666666666, 0.7222222222222222, 0.6, 0.5555555555555556, 0.6],
+      "baseline_eligible": 91,
+      "trait_loss": 57
+    },
+    {
+      "migration_rate": 0.20,
+      "regime": "R3_highrep",
+      "pooled_trait_loss_rate": 0.6043956043956044,
+      "seed_rates": [0.6, 0.7222222222222222, 0.45, 0.6666666666666666, 0.6],
+      "baseline_eligible": 91,
+      "trait_loss": 55
+    }
+  ],
+  "paired_loss_status_vs_isolation": [
+    {"migration_rate": 0.025, "comparable_pair_count": 91, "loss_to_no_loss": 5, "no_loss_to_loss": 3, "same_loss": 47, "same_no_loss": 36},
+    {"migration_rate": 0.05, "comparable_pair_count": 91, "loss_to_no_loss": 5, "no_loss_to_loss": 7, "same_loss": 47, "same_no_loss": 32},
+    {"migration_rate": 0.10, "comparable_pair_count": 91, "loss_to_no_loss": 8, "no_loss_to_loss": 13, "same_loss": 44, "same_no_loss": 26},
+    {"migration_rate": 0.20, "comparable_pair_count": 91, "loss_to_no_loss": 11, "no_loss_to_loss": 14, "same_loss": 41, "same_no_loss": 25}
+  ],
+  "interpretation_boundary": "Phase E maps realised functional-loss event regimes under allele-frequency mixing only. It does not inspect genetic diversity or warning outcomes and does not represent demographic, pollinator, seed, recolonisation or trait-bin dispersal."
+}

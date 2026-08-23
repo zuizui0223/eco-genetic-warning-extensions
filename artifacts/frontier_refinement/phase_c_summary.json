@@ -1,0 +1,51 @@
+{
+  "calibration_scope": "trait_loss_only",
+  "cell_count": 2,
+  "cells": [
+    {
+      "anchor_id": "B1",
+      "area_reference": 1.0,
+      "baseline_eligible_by_seed": [19, 17, 19, 17, 19],
+      "cell_index": 0,
+      "highrep_support_sufficient": true,
+      "hold_generations": 90,
+      "horizon": 120,
+      "kappa": 4.5,
+      "kappa_mu": 0.35,
+      "normalised_barrier_increase": 0.3,
+      "p_star": 0.35,
+      "pooled_trait_loss_rate": 0.5054945054945055,
+      "ramp_generations": 30,
+      "regime": "R4_highrep",
+      "seed_rate_range": 0.21981424148606815,
+      "seed_rates": [0.5789473684210527, 0.5294117647058824, 0.47368421052631576, 0.5882352941176471, 0.3684210526315789],
+      "status_counts": {"attempted": 100, "baseline_eligible": 91, "projection_supported": 91, "source_prepared": 91, "trait_loss": 46}
+    },
+    {
+      "anchor_id": "B1",
+      "area_reference": 1.0,
+      "baseline_eligible_by_seed": [20, 15, 18, 20, 19],
+      "cell_index": 1,
+      "highrep_support_sufficient": true,
+      "hold_generations": 90,
+      "horizon": 120,
+      "kappa": 4.5,
+      "kappa_mu": 0.35,
+      "normalised_barrier_increase": 0.3,
+      "p_star": 0.4,
+      "pooled_trait_loss_rate": 0.30434782608695654,
+      "ramp_generations": 30,
+      "regime": "R3_highrep",
+      "seed_rate_range": 0.2,
+      "seed_rates": [0.3, 0.4, 0.3888888888888889, 0.2, 0.2631578947368421],
+      "status_counts": {"attempted": 100, "baseline_eligible": 92, "projection_supported": 92, "source_prepared": 92, "trait_loss": 28}
+    }
+  ],
+  "stage": "warning-blind frontier reproducibility audit Phase C summary",
+  "provenance": {
+    "workflow_run": 32351311692,
+    "artifact_id": 9400398146,
+    "artifact_digest": "sha256:598334369bcc00e8a977500b20e7f0f561f964b79193cf2cbb870f21e636a1c8",
+    "head_sha": "e228bee01165289674f044de0997fc6afaf30afb"
+  }
+}

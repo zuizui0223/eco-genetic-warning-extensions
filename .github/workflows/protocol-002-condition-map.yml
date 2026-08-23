@@ -1,0 +1,68 @@
+name: Protocol 002 warning-blind condition map
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  condition-map:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      GH_TOKEN: ${{ github.token }}
+      WAVE001_RUN_ID: "29192237756"
+      BULK_RUN_ID: "29192711417"
+    steps:
+      - name: Checkout extension repo
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install extension and test runner
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+
+      - name: Run condition-map tests
+        run: python -m pytest -q tests/test_protocol002_condition_map.py
+
+      - name: Download locked Protocol 002 Stage II batches
+        run: |
+          mkdir -p collected/wave001 collected/bulk
+          gh run download "$WAVE001_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/wave001
+          gh run download "$BULK_RUN_ID" --repo "$GITHUB_REPOSITORY" --dir collected/bulk
+          test "$(find collected -name 'batch_*.json' | wc -l)" -eq 810
+
+      - name: Build warning-blind condition map
+        run: |
+          python scripts/analyze_protocol002_condition_map.py \
+            --batch-root collected \
+            --output artifacts/protocol002/stage2_condition_map.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/protocol002/stage2_condition_map.json')
+          a = json.loads(p.read_text())
+          print('global_regime_counts=', a['global_regime_counts'])
+          print('closest_candidates_to_evaluable_band:')
+          for row in a['closest_candidates_to_evaluable_band'][:10]:
+              print(row)
+          print('adjacent factor effects:')
+          for factor, rows in a['adjacent_factor_effects'].items():
+              print(factor)
+              for row in rows:
+                  print(' ', row)
+          PY
+
+      - name: Upload condition-map artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: protocol002-warning-blind-condition-map
+          path: artifacts/protocol002/stage2_condition_map.json
+          if-no-files-found: error
+          retention-days: 90

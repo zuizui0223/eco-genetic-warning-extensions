@@ -1,220 +1,189 @@
-# Independent hypothesis program
+# Condition-first hypothesis program
 
-## Current scientific question
+## Central hypothesis
 
-`eco-genetic-warning-extensions` does **not** reopen the completed H1/H3 evidence ledger in `eco-genetic-criticality`. It changes the recurrent state-transition closure and asks, in order:
+> **Spatial fragmentation becomes interaction-mediated functional fragmentation when it weakens the process maintaining realised ecological function. Genetic warning is interpretable only after the downstream loss process has been characterised independently in terms of state feasibility, loss incidence and between-block exchangeability.**
 
-```text
-H-MD-1  Can the high-function source state be established?
-   ↓
-H-MD-2  What realised functional-loss regime is generated?
-   ↓
-H-MD-3a Does a matched warning-validation domain exist?
-   ↓
-H-MD-3b If it exists, does transition direction itself change warning performance?
-```
-
-H-MD-1/2/3 were present in the pre-campaign Paper 001 design. The split of H-MD-3 into **3a/3b is post hoc logical decomposition**, used only to state clearly which part of the completed evidence is resolved. It is not retroactive preregistration.
-
-## Inherited parent result, not extension evidence
-
-The parent finite program established its own bounded chain:
+The repository follows one rule: if a proposition is not general, recover its **condition or boundary** rather than widening the search until a desired warning result appears.
 
 ```text
-interaction feedback can support distinct functional states
-→ fragmentation can disrupt the high-function state and reduce local effective size
-→ relative genetic erosion can precede realised functional-trait loss in one calibrated symmetric domain
+C0  FUNCTION EXISTS
+    interaction-dependent high-function state
+        ↓
+C1  FUNCTION IS VULNERABLE
+    fragmentation / deterioration can disrupt it
+        ↓
+C2  LOSS PROCESS IS CONDITIONED
+    source feasibility + loss incidence + block heterogeneity + trajectory identity
+        ↓
+C3  WARNING IS CONDITIONAL
+    genetic lead time is tested only after C2 is fixed warning-blind
+        ↓
+C4  PORTABILITY IS BOUNDED
+    warning need not transfer across calibrated eco-genetic domains
 ```
 
-Those parent trajectories are never pooled with extension trajectories. The canonical parent scientific state remains `dd8ee379d0d3518194c767d16402042525bc00dc`.
+## Historical screen versus biological estimands
 
-## H-MD-1 — source feasibility
+The original warning-blind calibration classified five-block candidates as R1, R2, R3 or R4 using fixed block-rate boundaries at 0.30 and 0.70. Those labels remain immutable protocol facts. The historical implementation calls R3 `seed_heterogeneous` and R4 `warning_evaluable`.
 
-**Proposition.** At fixed recurrent-transition relaxation strength `kappa_mu`, changing directional equilibrium `p_star` changes the finite region in which a prepared high-function source can be established.
+Phases J–L showed that those names cannot be read literally at the original block sizes. The all-five-block screen has substantial finite-sample failure probability when each block contains only about 15–20 eligible trajectories. Across ten previously load-bearing low-replicate R3 cases, none independently showed detectable excess equal-rate heterogeneity. Phase K further showed that a Phase-H R3 condition converged to R4 in the exact same historical seed family when precision increased to 100 attempted replicates per block.
 
-For
+The final programme therefore separates four quantities:
 
-\[
-M(p)=\kappa_\mu p_\mu^*+(1-\kappa_\mu)p,
-\]
+- **loss incidence** — the pooled probability of realised post-baseline functional loss;
+- **between-block heterogeneity** — whether comparable seed blocks plausibly share a loss probability;
+- **trajectory-identity sensitivity** — whether a paired perturbation changes which realisations fail;
+- **warning performance** — whether genetic change precedes the already fixed downstream event.
 
-a local post-transition requirement \(M(p)\ge p_c\) requires, for \(\kappa_\mu<1\),
+R1–R4 remain historical screening labels and are reported for reproducibility, but they do not replace these estimands.
 
-\[
-p\ge\theta(p_c)=\frac{p_c-\kappa_\mu p_\mu^*}{1-\kappa_\mu}.
-\]
+## C0–C1 — inherited mechanism
 
-Increasing `p_star` lowers this required pre-transition frequency.
+The pinned parent repository (`eco-genetic-criticality`, scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`) supplies the bounded mechanism:
 
-**Test.** Protocol 002 Stage I, common `3 kappa_mu × 5 p_star` grid with independent source reconstruction.
+- the declared positive-feedback interaction map can support a high-function state;
+- projecting the same prepared state into equal isolated fragments lowers interaction, local effective size and realised high-trait mass;
+- the fresh fixed-area 1–16-patch gradient shows that the main interaction/Ne disruption already occurs after the first split;
+- population persistence, realised function, allele state and genetic diversity remain distinct.
 
-**Result.** 2,269 of 3,375 attempts supported source preparation/projection; coordinate support ranged from 44.89% to 86.67% and generally increased with `p_star` within fixed-`kappa_mu` rows.
+**C0: recovered for the declared model closure.**  
+**C1: recovered as bounded parent theory plus finite Type S fragmentation evidence.**
+
+## C2 — conditions generating functional loss
+
+All C2 campaigns are warning-blind. Warning times, genetic lead/lag ordering and lead time are unavailable during condition selection.
+
+### C2a — recurrent turnover changes source feasibility
+
+Across the original 15 recurrent-transition coordinates, **2,269/3,375** source attempts supported preparation/projection. Coordinate support ranged from **44.89% to 86.67%**.
 
 **Status: supported, finite Type S.**
 
-## H-MD-2 — functional-loss regime
+### C2b — recurrent turnover primarily changes loss incidence along the tested frontier
 
-**Proposition.** Under the same deterioration candidate family, recurrent-transition coordinates change the realised high-trait-loss regime.
+The original common deterioration family contained 648 complete candidates: 322 historical rapid-loss, 242 persistence and 84 historical R3/mixed-block candidates. No candidate met the original strict R4 screen, so the historical 15/15 `no_domain_selected` result remains immutable for that candidate family.
 
-**Test.** Protocol 002 Stage II used the same warning-blind deterioration family across all 15 coordinates. Diversity and warning fields were unavailable to calibration.
+Prospective high-replicate recovery showed that this was not structural impossibility. The subsequent precision programme changed the interpretation more substantially. Exact historical master seeds were expanded to 100 attempted replicates per block with mandatory first-20 prefix reproduction.
 
-**Result.** Among 648 complete five-seed candidates:
+High-precision pooled loss at the local frontier was:
 
-- 322 rapid-loss-side;
-- 242 persistence-side;
-- 84 seed-heterogeneous.
+| `p_star` | pooled loss | historical screen at high precision | equal-rate p |
+|---:|---:|---|---:|
+| 0.325 | 0.682 | outside R4 | 0.295 |
+| 0.350 | 0.546 / 0.538 in two independent seed families | R4 | 0.370 / 0.252 |
+| 0.375 | 0.407 | R4 | 0.693 |
+| 0.400 | 0.273 | outside R4 | 0.151 |
 
-**Status: supported, finite Type S.**
+The lower boundary is high incidence and the upper boundary is low incidence. None of these high-precision conditions shows detectable excess block heterogeneity.
 
-This is an upstream result: recurrent-transition dynamics changed how functional loss was generated before genetic warning was evaluated.
+**Conclusion:** the old “narrow R4 bounded by seed-heterogeneous neighbours” interpretation is withdrawn. The supported result is an **asymmetric recurrent-turnover incidence frontier**.
 
-## H-MD-3a — matched-domain evaluability
+**Status: supported finite incidence boundary; no high-precision heterogeneity boundary detected on the tested `p_star` sequence.**
 
-For coordinate \(\theta\), define the strict Protocol 002 eligible set
+### C2c — allele-frequency connectivity can create non-monotone block heterogeneity
 
-\[
-E_\theta=\{c:0.30\le r_{c,b}\le0.70\text{ for every one of five seed blocks }b\}.
-\]
+At the fixed recurrent-turnover anchor, the high-precision connectivity replay used the exact five historical master seeds and 100 attempted replicates per block. Pooled loss was:
 
-The locked selector can choose a warning-validation domain **if and only if** \(E_\theta\neq\varnothing\).
+| `m` | pooled loss | historical screen | equal-rate p |
+|---:|---:|---|---:|
+| 0.000 | 0.559 | R4 | 0.710 |
+| 0.025 | 0.548 | R4 | 0.779 |
+| 0.050 | 0.564 | R4 | 0.702 |
+| 0.100 | 0.557 | R3 | **0.0205** |
+| 0.200 | 0.541 | R4 | 0.923 |
 
-**Result.** Across the completed Stage II evidence:
+Only `m=0.10` retains detectable excess between-block heterogeneity at high precision. The historical `m=0.20` R3 call disappears. Exact paired McNemar tests versus isolation are non-significant at every nonzero level, although many trajectories switch loss status in both directions.
 
-- eligible candidate count = 0;
-- selected domain count = 0;
-- `no_domain_selected` = 15/15 coordinates.
+**Conclusion:** allele-frequency mixing changes stochastic histories and can create block dependence at a specific tested level, but the response is non-monotone and is not a directional marginal-risk effect.
 
-Thus \(E_\theta=\varnothing\) for every tested coordinate in the declared common candidate family.
+`migration_rate` is allele-frequency mixing only, not demographic, pollen, seed, pollinator or recolonisation movement.
 
-**Status: negative result, recovered for the declared finite grid/family.**
+**Status: supported at one anchor, finite Type S; no universal connectivity threshold.**
 
-This is a finite **no-domain/evaluability certificate**, not evidence that genetic warning itself failed. Warning values were not inspected during this selection.
+### C2d — aggregate interaction support remains intermediate across the predeclared range
 
-## H-MD-3b — direction-only warning effect
+Phase Q precision-expanded the original Phase-F seeds at `kappa=3.0,4.5,6.0`, with independent source reconstruction and first-20 provenance audits.
 
-**Proposition.** Conditional on matched evaluable domains existing under a common deterioration family, recurrent-transition direction changes warning availability, lead/lag ordering, or lead time.
+| interaction `kappa` | pooled loss | historical screen | equal-rate p |
+|---:|---:|---|---:|
+| 3.0 | 0.499 | R4 | 0.063 |
+| 4.5 | 0.573 | R4 | 0.623 |
+| 6.0 | 0.598 | R4 | 0.543 |
 
-### Finite empirical status
+Thus **all predeclared kappa 3.0/4.5/6.0 remain R4** at high precision and none shows detectable excess block heterogeneity. This is a bounded negative condition result, not evidence that interaction support is irrelevant.
 
-**Bounded unresolved / not identified.** Protocol 002 never instantiated the matched domains required for this contrast. Therefore the current finite evidence cannot assign a direction-only warning effect or null effect.
+`interaction kappa` is aggregate positive-feedback strength. It is **not partner richness, connectance, pollinator diversity or network dimensionality**. The kappa axis is closed rather than widened to manufacture a boundary.
 
-### Type T boundary 1 — no universal direction-to-diversity sign
+**Status: high-precision bounded robustness result.**
 
-For \(H(p)=2p(1-p)\), write \(k=\kappa_\mu\), \(s=p_\mu^*\), and \(M(p)=p+k(s-p)\). Then
+### C2e — tested reduced-form partner loss does not alter high-precision incidence or block heterogeneity
 
-\[
-H(M(p))-H(p)=2k(s-p)[1-2p-k(s-p)],
-\]
+Phase N precision-expanded the exact Phase-G master seeds and all four paired architectures. All first-20 prefixes reproduced the historical Phase-G counts.
 
-and
+| condition | pooled loss | historical screen | equal-rate p |
+|---|---:|---|---:|
+| intact | 0.556 | R4 | 0.117 |
+| even one-partner loss | 0.544 | R4 | 0.488 |
+| graded one-partner loss | 0.565 | R4 | 0.263 |
+| dominant-partner loss | 0.549 | R4 | 0.121 |
 
-\[
-\frac{\partial H(M(p))}{\partial s}=2k[1-2M(p)].
-\]
+Exact McNemar tests against intact are non-significant. Partner loss nevertheless changes many paired trajectory identities in both directions.
 
-So increasing `p_star` can increase or decrease heterozygosity depending on the current allele-frequency state; the sign changes at \(M(p)=1/2\).
+**Conclusion:** the historical low-replicate claim that one-partner loss moved R4→R3 by reducing warning estimability is withdrawn. Under this reduced-form closure, partner loss changes individual stochastic histories without a detected population-level incidence or block-heterogeneity effect.
 
-### Type T boundary 2 — direction and among-patch contraction are separable
+**Interpretation boundary:** this is not an explicit connectance, rewiring, coextinction or partner-demography model.
 
-With fixed patch weights,
+**Status: high-precision negative condition result.**
 
-\[
-H_\gamma-H_\alpha=2\operatorname{Var}_w(p_j),
-\]
+## C3 — genetic warning only after C2
 
-and a common affine transition gives
+The inherited symmetric benchmark remains a proof of possibility. In one independently calibrated domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
 
-\[
-H_\gamma'-H_\alpha'=(1-k)^2(H_\gamma-H_\alpha).
-\]
+The precision correction narrows what “warning evaluability” means: intermediate event incidence is useful for calibration, but biological exchangeability must be assessed separately when a claim depends on it. Condition-recovery campaigns still withhold warning outcomes.
 
-This contraction depends on `kappa_mu` but not on `p_star`. Direction shifts the weighted mean allele state; transition strength contracts among-patch deviations.
+A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
 
-### Type T boundary 3 — local function-support and diversity can oppose each other
+**C3: conditional possibility recovered; universal threshold and direction-only causal effects unresolved.**
 
-For local high-associated allele support margin
+## C4 — warning portability
 
-\[
-S=M(p)-p_c,
-\]
+Historical Protocol 003 recovered two domains by separate warning-blind calibration. They differ in recurrent-transition, ecological and deterioration parameters. Their fresh-seed warning differences are therefore **bounded portability evidence across calibrated eco-genetic domains**, not a single-factor effect of transition direction.
 
-\[
-\frac{\partial S}{\partial s}=k>0.
-\]
+**C4: bounded non-portability result; causal attribution intentionally limited.**
 
-Thus increasing `p_star` always strengthens this local post-transition high-state support condition. But diversity follows the derivative above. Therefore:
+## Urban and island application
 
-- \(M(p)<1/2\): support and heterozygosity increase together;
-- \(M(p)=1/2\): support increases while heterozygosity is stationary to first order;
-- \(M(p)>1/2\): support increases while heterozygosity **decreases**.
+Urban and island systems are contrasting empirical routes through the condition space, not ecological equivalents. The next empirical question is:
 
-So genetic diversity is **not a monotone proxy for local functional support** under this recurrent-transition operator. Full realised ecological function still depends on the complete stochastic life cycle; this is a local Type T support boundary, not a warning theorem.
+> **Do different fragmentation mechanisms converge on similar combinations of functional-state feasibility, realised interaction support, loss incidence and temporal stability once biological movement and genetic state are measured separately?**
 
-The exact derivations and executable tests are in [`RECURRENT_TRANSITION_DIVERSITY_THEORY.md`](RECURRENT_TRANSITION_DIVERSITY_THEORY.md) and `src/eco_genetic_warning_extensions/mutation_coordinates.py`.
+A field test should estimate habitat amount/configuration and matrix quality; partner identity and interaction strength; functional diversity, contribution evenness and rewiring; pollen, seed/propagule, demographic and partner movement separately; reproductive assurance; realised ecological function through time; and genetic state through time.
 
-## Protocol 003 — portability, not H-MD-3b recovery
+## Recovery ledger
 
-Protocol 003 was declared only after Protocol 002 closed. Warning-blind recalibration recovered two evaluable domains, but they differ in recurrent-transition parameters **and** `A_ref`, interaction-feedback `kappa`, deterioration strength, and horizon.
-
-Observed Stage III:
-
-- recalibrated symmetric: 323 lead / 1 tie / 0 lag, valid-pair availability 0.540;
-- directional calibrated: 184 lead / 5 tie / 12 lag, availability 0.335;
-- directional `H_gamma` 20%: warning 41/81 versus realised functional loss 52/81;
-- all six full-horizon-normalized direct timing-difference intervals include zero.
-
-**Status: separate portability/boundary result.** Warning behaviour is not invariant across the two recalibrated domains, but the contrast does not identify recurrent-transition direction alone.
-
-## Historical H2-R-AS
-
-H2-R-AS was the original Protocol 001 special-case warning formulation. It remains part of protocol history, not the final organising hypothesis. The completed campaigns showed that source feasibility, functional-loss regime, and matched-domain evaluability must be resolved before a direction-only warning comparison is meaningful.
-
-## Final recovery ledger
-
-| item | status | current conclusion |
+| condition | final status | conclusion |
 |---|---|---|
-| **H-MD-1** | **supported** | recurrent-transition coordinates change high-function source feasibility |
-| **H-MD-2** | **supported** | recurrent-transition coordinates change functional-loss regime |
-| **H-MD-3a** | **negative / recovered** | no eligible matched common-family warning domain exists in the tested 15-coordinate design |
-| **H-MD-3b finite effect** | **bounded unresolved** | matched direction-only warning effect was not instantiated |
-| **H-MD-3b theory** | **Type T boundaries recovered** | direction has no universal diversity sign; diversity and local high-state support can move in opposite directions |
-| **Protocol 003** | **portability result** | warning availability/ordering differ across two non-matched recalibrated domains; cause is not isolated to direction |
+| C0 functional-state existence | recovered | high-function state is possible under the declared interaction closure |
+| C1 fragmentation vulnerability | recovered | fragmentation can lower interaction, local effective size and realised function |
+| C2a source feasibility | supported | recurrent-transition coordinates change source feasibility |
+| C2b recurrent-turnover loss | supported | tested `p_star` frontier is an incidence gradient, not a seed-heterogeneity window |
+| C2c allele-frequency connectivity | supported at one anchor | `m=.10` shows non-monotone high-precision block heterogeneity without marginal-risk shift |
+| C2d aggregate interaction support | bounded negative result | all predeclared `kappa=3.0/4.5/6.0` remain intermediate and homogeneous at high precision |
+| C2e reduced-form partner loss | negative result | partner loss changes trajectory identity but not high-precision incidence or block heterogeneity |
+| C3 conditional warning | bounded support | baseline-relative genetic erosion can lead loss in one calibrated benchmark; absolute thresholds are not robust |
+| C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
 
-## Stop rule before any new protocol
+## Global stop rules
 
-Do not open a new finite campaign merely by widening schedules or relaxing the Protocol 002 gate. A future H-MD-3b campaign is scientifically justified only after it predeclares:
+Do not:
 
-1. a matched deterioration family with non-direction parameters fixed across compared coordinates;
-2. a warning-blind evaluability rule;
-3. a specified allele-frequency state/path region;
-4. a directional prediction derived from the Type T identities above;
-5. fresh calibration and validation seeds.
-
-Until then, H-MD-3b is **scientifically bounded rather than unfinished**.
-
-## Protocol map
-
-- **Protocol 001:** historical bridge/pilot; H2-R-AS provenance.
-- **Protocol 002 Stage I:** H-MD-1.
-- **Protocol 002 Stage II:** H-MD-2 + H-MD-3a.
-- **Protocol 003:** separately declared evaluability recovery + non-matched portability validation.
-- **Secondary review audit:** locked-record uncertainty/timing/censoring analysis; no simulation rerun.
-
-## Current interpretation boundary
-
-Permitted:
-
-- source feasibility and functional-loss regime change across recurrent-transition coordinates;
-- the strict common candidate family contains no eligible warning-validation domain at all 15 tested coordinates;
-- direction alone has no universal signed one-step effect on diversity;
-- stronger local high-state allele support can coincide with lower genetic diversity;
-- warning portability differs across the two separately recalibrated domains.
-
-Not permitted:
-
-- H-MD-3b is false merely because no Protocol 002 domain was selected;
-- Protocol 003 identifies a direction-only causal warning effect;
-- lower genetic diversity necessarily means poorer ecological function;
-- the local transition theorem determines full warning first-passage ordering;
-- `p_star` is an empirical biological mutation-rate estimate;
-- extension evidence replaces the parent H1/H3 ledger.
+1. inspect warning/diversity fields while selecting C2 conditions;
+2. reinterpret historical R1–R4 labels as latent biological classes;
+3. refine `p_star`, migration, interaction kappa, partner weights or the historical screen merely to obtain a desired result;
+4. overwrite the historical 15/15 Protocol 002 no-domain result;
+5. call allele-frequency mixing demographic, pollinator, pollen, seed or recolonisation movement;
+6. call interaction `kappa` network simplification;
+7. call the reduced-form partner layer a full network/connectance/rewiring experiment;
+8. open a direction-only warning test without prospectively matched conditions;
+9. retain a mechanistic claim solely because a low-replicate R3/R4 label crossed the historical hard screen.

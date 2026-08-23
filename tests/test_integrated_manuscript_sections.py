@@ -8,33 +8,36 @@ def _read(path: str) -> str:
     return (ROOT / path).read_text(encoding="utf-8")
 
 
-def test_introduction_states_gap_and_identification_boundary() -> None:
-    text = _read("manuscript/integrated_introduction.md")
+def test_main_manuscript_states_gap_and_identification_boundary() -> None:
+    text = _read("manuscript/main_text.md")
+    lower = text.lower()
     for token in (
         "functional-trait loss",
-        "remains portable",
-        "15/15 `no_domain_selected`",
-        "candidate schedules",
-        "not a matched single-factor experiment",
-        "emergent property",
+        "warning performance",
+        "incidence frontier",
+        "no_domain_selected",
+        "not a single-factor effect of transition direction",
+        "eco-genetic",
     ):
-        assert token in text
+        assert token in lower
 
 
-def test_discussion_contains_locked_stage3_contrast_and_limits() -> None:
-    text = _read("manuscript/integrated_discussion.md")
+def test_main_discussion_keeps_calibration_and_portability_limits() -> None:
+    text = _read("manuscript/main_text.md")
+    lower = text.lower()
     for token in (
         "warning-blind",
         "candidate family",
-        "horizon-normalized timing result",
-        "cannot identify the isolated causal contribution of transition direction",
+        "horizon",
+        "not a single-factor effect of transition direction",
         "trajectory",
-        "finite Type S evidence",
+        "right-censored",
     ):
-        assert token in text
+        assert token in lower
 
 
-def test_discussion_does_not_mislabel_effective_transition_parameter() -> None:
-    text = _read("manuscript/integrated_discussion.md")
-    assert "not an estimated nucleotide mutation rate" in text
-    assert "directed adaptive mutation" in text
+def test_main_manuscript_does_not_mislabel_effective_transition_parameter() -> None:
+    text = _read("manuscript/main_text.md")
+    lower = text.lower()
+    assert "not an empirical mutation-rate estimate" in lower
+    assert "directed adaptive mutation" not in lower
