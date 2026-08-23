@@ -2,15 +2,6 @@ name: Cross-layer alignment Phase V
 
 on:
   workflow_dispatch:
-  pull_request:
-    branches: [main]
-    paths:
-      - 'src/eco_genetic_warning_extensions/cross_layer_alignment_phase_v.py'
-      - 'src/eco_genetic_warning_extensions/cross_layer_alignment_phase_v_runner.py'
-      - 'scripts/run_cross_layer_alignment_phase_v.py'
-      - 'tests/test_cross_layer_alignment_phase_v.py'
-      - 'docs/CROSS_LAYER_ALIGNMENT_PHASE_V_PROTOCOL.md'
-      - '.github/workflows/cross-layer-alignment-phase-v.yml'
 
 permissions:
   contents: read
