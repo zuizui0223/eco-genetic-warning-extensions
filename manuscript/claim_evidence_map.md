@@ -39,6 +39,12 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | S16 | Under the tested reduced-form partner-loss closure, intact/even/graded/dominant conditions all have similar high-precision pooled loss (.544–.565), remain inside the historical intermediate-incidence screen and show no detectable excess block heterogeneity. | Phase N, run `32558466157`, artifact `9472148035`. | high-precision negative partner result |
 | S17 | Partner loss changes many individual paired trajectory outcomes in both directions, but exact McNemar tests against intact are non-significant. | Phase N paired records. | trajectory-identity / marginal-risk distinction |
 | S18 | Low-replicate R3/R4 labels cannot by themselves identify biological heterogeneity: 0/10 audited load-bearing R3 cases showed detectable excess equal-rate heterogeneity at historical precision, and an exact Phase-H/I conflict converged to R4 in both seed families at 100 attempts/block. | Phases J–L and K. | statistical interpretation correction |
+| S19 | The high-precision `m=.10` block-heterogeneity result does not port to preregistered post-recruitment whole-individual dispersal at nominal `d=.10`: pooled loss is .606, the five blocks are homogeneous (`p=.811`), and the paired marginal-risk contrast versus no connectivity is non-significant (`p=.143`). | Phase R, run `32613357637`, artifact `9486225034`, digest `sha256:13474765636fe839f4953a94618cfdf1dc7bd145f029ae97df26ced32443c143`. | process-resolved negative portability result |
+| S20 | The same legacy `m=.10` heterogeneity does not port to pollen-only paternal gene flow at `g=.20`: pooled loss is .532, equal-rate `p=.728`, and exact McNemar tests versus no connectivity and allele-only mixing are non-significant. | Phase S, run `32613877695`, artifact `9486401100`, digest `sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04`. | process-resolved negative portability result |
+| S21 | Because both whole-individual and pollen-only operators fail to reproduce the Phase-M heterogeneity, the legacy allele-frequency mixing result is operator-specific within the tested connectivity closures and cannot be interpreted as biological connectivity in general. | Joint Phase M/R/S comparison. | representation boundary |
+| S22 | At matched expected support 0.75, increasing temporal support variance from 0 to .04684 to .09702 and increasing partner-contribution concentration does not produce a detected change in pooled loss (.5442/.5488/.5533), block heterogeneity, or paired marginal risk. | Phase T, run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c`. | dynamic-partner bounded negative result |
+| S23 | Phase T leaves the adaptive-rewiring gate closed: no rewiring parameter search is opened because no matched-expected-support dynamic-network effect was established to decompose. | Phase T preregistered stop rule and locked result. | stop-rule result |
+| S24 | Phases R/S/T narrow the ecological interpretation of earlier scalar/reduced-form results without changing the warning conclusions: process-resolved movement and temporal partner availability are robustness boundaries, not new warning-validation campaigns. | Integrated R/S/T closure. | manuscript-scope boundary |
 
 ## Exact operator claims
 
@@ -66,6 +72,13 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | Phase Q `kappa=3.0/4.5/6.0` pooled loss | .499 / .573 / .598 |
 | Phase N intact/even/graded/dominant pooled loss | .556 / .544 / .565 / .549 |
 | Phase N paired McNemar p values | .757 / .809 / .861 |
+| Phase R no-connectivity / allele-only / individual-dispersal pooled loss | .559 / .557 / .606 |
+| Phase R individual-dispersal equal-rate / vs no-connectivity McNemar p | .811 / .143 |
+| Phase S no-connectivity / allele-only / pollen-only pooled loss | .559 / .557 / .532 |
+| Phase S pollen equal-rate / vs no-connectivity / vs allele-only McNemar p | .728 / .311 / .266 |
+| Phase T constant / even-dynamic / dominant-dynamic pooled loss | .5442 / .5488 / .5533 |
+| Phase T realised support variance | 0 / .04684 / .09702 |
+| Phase T paired McNemar p values | .896 / .762 / .883 |
 | Stage III valid-pair availability | .540 vs .335 |
 | Stage III lead/tie/lag | 323/1/0 vs 184/5/12 |
 | horizon-normalised Stage III timing contrasts | all six include zero |
@@ -81,11 +94,14 @@ Do not claim that:
 - `m=.10–.20` forms a monotone connectivity R4→R3 boundary;
 - connectivity universally rescues or harms function;
 - `migration_rate` is demographic, pollinator, pollen, seed or recolonisation movement;
+- the Phase-M `m=.10` heterogeneity is a generic property of whole-individual dispersal, pollen gene flow, or biological connectivity;
 - Phase F proves interaction support is irrelevant or that all feedback strengths preserve the same behaviour;
 - interaction `kappa` is partner richness, connectance, pollinator diversity, network dimensionality or direct network simplification;
 - the reduced-form partner test is a full network/connectance/rewiring experiment;
 - tested partner loss raises average loss probability or reduces warning estimability;
 - contribution concentration alone determines the loss process;
+- Phase T establishes that partner dynamics are universally irrelevant;
+- adaptive rewiring was tested or should be tuned after the Phase-T null result;
 - recurrent-transition direction alone caused the Stage III warning difference;
 - `p_star` is an empirically estimated mutation rate;
 - genetic diversity is a monotone proxy for local functional support;
@@ -100,9 +116,11 @@ Do not claim that:
 | Recurrent turnover changes source feasibility and shifts functional-loss incidence from high to low | S1–S6 |
 | Historical screen labels are calibration tools, not biological estimands | S18 |
 | Allele-frequency connectivity can produce non-monotone block heterogeneity without a marginal-risk gradient | S7–S8 + T4 |
+| That scalar connectivity result is operator-specific: it does not port to tested individual dispersal or pollen-only gene flow | S19–S21 |
 | Scalar aggregate feedback is robust across the three predeclared levels | S9–S10 |
 | Reduced-form partner loss changes trajectory identity but not high-precision incidence or block heterogeneity | S16–S17 |
+| Matched-expected-support partner dynamics increase support variance without a detected population-level loss effect, so rewiring remains closed | S22–S23 |
 | Only after the downstream loss process is fixed does genetic warning become a meaningful question | P3–P4 |
 | Warning behaviour is not automatically portable across independently calibrated domains | S11–S15 |
 
-Every finite numerical claim retains the declared model closure. Explicit network dynamics and process-resolved biological movement remain next-model hypotheses.
+Every finite numerical claim retains the declared model closure. Process-resolved movement and dynamic partner availability have now been tested as bounded robustness closures; explicit partner abundance dynamics, coextinction, spatial partner movement and adaptive rewiring remain outside the current model.
