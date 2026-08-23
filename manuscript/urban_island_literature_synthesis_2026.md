@@ -1,177 +1,225 @@
 # Urban–island literature synthesis for interaction-mediated functional fragmentation
 
-## Claim discipline
+## Executive synthesis
 
-The present model does **not** show that urban and island systems occupy the same functional-fragmentation regime. The defensible cross-system statement is prospective:
+Urban and island systems are **contrasting causal routes, not ecological equivalents**. The cross-system question is therefore not whether cities resemble islands, but whether different fragmentation processes can converge on the same **operational interaction-mediated functional-fragmentation regime**.
 
-> Urban and island landscapes provide contrasting causal decompositions with which to test whether different fragmentation mechanisms can converge on the same operational functional-fragmentation regime.
+Phase V changes the definition of that regime. Two model states were constructed with identical habitat area, census, separate interaction-state marginals, allele-frequency marginals, realised high-trait-mass marginals, complete global trait-bin totals, `H_alpha`, `H_gamma` and `FST`. Only the spatial alignment of interaction support with the eco-genetic/trait-support bundle differed. Their exact next interaction states differed by as much as `.2543`, proving for the declared local-feedback map that **matching layer-wise snapshot indicators is not sufficient to define the same dynamical state**. The 60-generation paired functional-loss contrast was `.678` versus `.722` with McNemar `p=.143`, so Phase V does not claim that alignment alone causes a directional long-horizon loss-incidence difference under this one schedule.
 
-The operational regime is defined by state establishment, realised function, loss incidence/reproducibility, biological connectivity and genetic state—not by the labels `urban` or `island` and not by one network metric.
+The resulting cross-system hypothesis is sharper:
 
-### Terminology boundary
+> **Different fragmentation mechanisms converge on the same functional-fragmentation regime only if they converge on a sufficiently equivalent joint state and generate comparable downstream transition/loss dynamics.**
 
-`Functional fragmentation` is not a novel phrase. Recent landscape-ecology work uses a **functional approach to fragmentation** primarily in the movement/connectivity sense: vegetation geometry alone can misclassify whether habitat is functionally connected. To avoid conflating that literature with the present mechanism, manuscript prose should normally use **interaction-mediated functional fragmentation** when referring specifically to loss or destabilisation of the realised interaction support needed to maintain a focal ecological function.
+This document separates external evidence, present-model implications, empirical predictions and a concrete urban–island transport test.
 
-Keep three objects distinct:
+## 1. Terminology and novelty boundary
 
-1. **structural fragmentation** — habitat amount/configuration/geometry;
-2. **functional connectivity** — movement through a landscape from the organism's perspective;
-3. **interaction-mediated functional fragmentation** — loss or destabilisation of the effective biotic interaction support required for realised function, even while populations or patches remain present.
+`Functional fragmentation` already has a landscape-ecology meaning related to organism-centred landscape functionality and connectivity. Benitez et al. (2025) argue that vegetation geometry alone is insufficient for identifying fragmentation in patchy systems and advocate defining fragmentation through landscape function, particularly connectivity. The focal concept here is narrower and should normally be called **interaction-mediated functional fragmentation**: weakening or destabilisation of the biotic interaction support required for a realised ecological function while habitat patches or focal populations may remain present.
 
-This note separates **established external evidence**, **implications of the present finite results**, and **future convergence hypotheses**.
+Keep four objects separate:
 
-## 1. Established external evidence
+1. **structural fragmentation** — habitat amount, configuration, patch geometry and isolation;
+2. **matrix/process connectivity** — movement through the matrix for a specified organism or propagule;
+3. **interaction-mediated functional fragmentation** — weakening of the local interaction-supported process maintaining realised function;
+4. **genetic state** — allele frequencies, diversity and differentiation, which may respond to movement but are not identical to interaction state or realised function.
 
-### 1.1 Spatial fragmentation does not imply one interaction-network response
+The study's novelty is not that fragmentation, ecological networks, rewiring or genetic early warning exist. It is the **ordering and state-sufficiency problem** linking them: what ecological state and transition process must be defined before a genetic warning of functional loss is scientifically interpretable?
 
-Recent synthesis rejects a one-dimensional `fragmentation -> network simplification` rule. A global meta-analysis of anthropogenic effects on plant–pollinator networks found reductions in richness and changes in nestedness/specialisation, while connectance and modularity were often unchanged and responses were heterogeneous. A 2025 plant–vertebrate pollinator study explicitly separated habitat amount from fragmentation and found that habitat loss, not fragmentation per se, predicted richness and structural change; about 90% of interaction dissimilarity between strongly contrasting landscapes was attributed to species turnover, while rewiring mattered more when species pools overlapped. A 2025 global meta-analysis of insect pollinators likewise found negative fragmentation associations but identified reduced habitat area as the strongest component.
+## 2. Landscape literature: fragmentation is multicausal and process-specific
 
-A 2026 manipulative landscape experiment further showed that habitat loss, fragmentation and surrounding matrix quality can interact, reinforcing that configuration and matrix permeability cannot be reduced to a single patch-count axis.
+### 2.1 Habitat amount, configuration and matrix quality cannot be collapsed
 
-**Implication for this study:** define the focal outcome by loss or destabilisation of effective interaction-supported function, not by connectance, partner richness, patch count or one structural metric alone.
+Benitez et al. (2025) show conceptually why vegetation structure alone can misidentify fragmentation when different barriers alter connectivity without producing the same structural pattern. Fletcher et al. (2026) provide unusually strong experimental evidence: in 27 large landscapes comprising more than 3,000 patches, habitat loss, fragmentation and matrix quality all affected demographic performance, with important interactions among them. Their literature review found very few experiments that jointly manipulated habitat and matrix, emphasizing how weak the empirical basis remains for treating these dimensions as interchangeable.
 
-### 1.2 Network structure, partner identity and redundancy can matter beyond species counts
+A 2025 global meta-analysis of insect pollinators (Olhnuud et al. 2025; 80 studies across 28 countries) identified reduced habitat area as the strongest fragmentation component associated with pollinator decline. In plant–vertebrate pollination networks, Gama et al. (2025) likewise found habitat loss, rather than fragmentation per se, associated with network structural change; approximately 90% of interaction dissimilarity between strongly contrasting landscapes was attributed to species turnover, while rewiring mattered more where species pools overlapped.
 
-Empirical and theoretical work separates species richness from interaction architecture and partner function. Across 40 coastal plant–pollinator networks, loss of pollinator functional diversity—not pollinator species diversity itself—reduced community-wide trait matching and pollination success. Landscape simplification can reduce interaction diversity and flower visitation even when abundant generalist pollinators buffer conventional network robustness. Empirical plant–pollinator network structure has predicted temporal persistence, and multi-habitat landscapes can show higher interaction evenness, complementarity, robustness and pollination success than expected by simply summing component habitat webs.
+**Connection to the present model:** patch number or geographic isolation is not a general ecological state variable. Habitat amount, configuration, matrix quality and movement must remain separable causal inputs.
 
-Experiments also show why partner loss has no universal sign. Removal of one pollinator species can reduce floral fidelity and plant reproductive function, whereas experimental removal of a dominant seed disperser produced extensive rewiring that maintained seed-dispersal function. A 2026 network-rewiring review therefore treats changes in both topology and interaction strength as central to resilience under environmental change.
+## 3. Network and function literature: species counts are not the functional state
 
-**Implication for this study:** neither Phase-F scalar `kappa` nor Phase-G reduced-form partner weights stand in for a real network. Partner identity, functional diversity, rewiring and redundancy are distinct causal coordinates.
+### 3.1 Functional diversity and interaction complementarity matter
 
-### 1.3 Urban systems decouple spatial patchiness, interaction turnover and gene flow
+Hiraiwa & Ushimaru (2024) quantified 40 spatiotemporally variable coastal plant–pollinator networks and found that low pollinator **functional diversity**, rather than pollinator species diversity itself, reduced community-wide trait matching and pollination success. This directly supports separating partner counts from functional partner identity.
 
-Urban ecology is not a simple isolation gradient. A 2025 framework treats urbanization as consecutive filters on species presence, co-occurrence and relationships. Plant–pollinator studies show strong local and temporal context dependence: along one urbanisation gradient, conventional network metrics and pollinator guild responses did not move in one common direction; in Bengaluru, interaction turnover varied more with season and local urbanization than with spatial distance, with environmental filtering and rewiring contributing to turnover.
+Hackett et al. (2024) showed that multi-habitat landscapes can have greater species and interaction evenness, complementary interactions, robustness to species loss and pollination success than expected from simply summing component habitat webs. This is especially relevant to Phase V: ecological function can be an emergent property of how components are jointly assembled, not merely of the component totals.
 
-A 2026 urban eco-evolution review is especially useful for avoiding the city–island equivalence: cities can be island-like in some respects, yet are heterogeneous mosaics connected by human infrastructure and cannot be reduced to oceanic-island geometry.
+### 3.2 Interaction networks are dynamic
 
-Crucially, a 2026 review of urban plant population genetics found that urban populations often retain genetic diversity comparable to non-urban populations and that gene flow can remain high despite spatial fragmentation through long-distance and anthropogenic dispersal. Cities therefore should not be treated as isolated genetic islands.
+Ward et al. (2026) synthesize rewiring as changes in network topology and/or interaction strengths and argue that it is central to ecosystem functioning and resilience in variable environments. Domínguez-Garcia et al. (2026), using eight years across 12 sites, found that most year-to-year interaction changes arose from species turnover, while rewiring among persistent species was particularly important for predicted pollinator persistence. Their result is a useful warning against treating a one-time interaction matrix as a full dynamic state.
 
-**Implication for this study:** an urban population can plausibly remain genetically connected while realised interaction structure or ecological function changes. Neutral-genetic isolation is not a safe proxy for interaction-mediated functional isolation.
+**Connection to the present model:** the negative Phase N/T results do not imply that networks are irrelevant. They establish only that the tested reduced-form partner loss and matched-expected-support temporal variability did not create a detected population-level loss-incidence or block-heterogeneity effect. A real network requires partner identity, abundance, functional traits, turnover and rewiring to be measured rather than silently represented by model `kappa` or a partner count.
 
-### 1.4 Island systems combine physical isolation with mutualist and reproductive filters
+## 4. Urban route: local interaction dynamics can decouple from spatial and genetic isolation
 
-Across 52 quantitative pollination networks, oceanic-island networks were on average smaller and topologically simplified with lower interaction diversity than mainland/continental-island networks, but area did not explain every network property. More recent spatial-network work in the Canary Islands found that both regional species turnover and local interaction structure mattered, with species turnover rather than rewiring dominating regional distance decay in modular structure.
+### 4.1 Cities are mosaics, not oceanic islands
 
-A 2024 global analysis found mutualist-associated plants disproportionately underrepresented on oceanic islands and argued that mutualism filters explain part of island species deficits beyond area/isolation. This result has an explicit statistical critique and author response, so it should be cited as evidence that mutualist availability is a serious candidate filter rather than as an uncontested universal law.
+Alaasam et al. (2026) explicitly note that cities can be island-like in some respects but are heterogeneous mosaics linked by human infrastructure, with species-specific ecological and evolutionary histories operating across hierarchical scales. Moreno-Garcia et al. (2025) frame urbanization as consecutive filters on species presence, co-occurrence and realised relationships. These are different causal operations and map naturally onto the present distinction between source feasibility and post-establishment loss.
 
-Reproductive assurance supplies another route through the condition space. Baker's-law theory predicts enrichment of the **capacity for uniparental reproduction** under colonisation/mate limitation, not universal high selfing on islands. Mutualist dependence and reproductive assurance must therefore be measured rather than inferred from island status.
+### 4.2 Interaction turnover need not follow geographic distance
 
-**Implication for this study:** geographic isolation alone should not determine an island's expected functional-loss regime. Mutualist availability, interaction identity, functional redundancy, reproductive assurance and biological connectivity are distinct coordinates.
+Marcacci et al. (2023), across 36 farms and three seasons in Bengaluru, found plant–pollinator interaction turnover to vary more with season and local urbanization intensity than with spatial distance. Interaction beta diversity was dominated by rewiring (~48% spatial/environmental; ~50% temporal) and plant turnover, and urbanization amplified seasonal interaction turnover. This provides a direct empirical example in which **interaction state is reorganised without being a simple function of distance**.
 
-### 1.5 Genetic structure is not a universal readout of habitat fragmentation or ecological function
+### 4.3 Genetic exchange can remain high
 
-A global meta-analysis of fine-scale plant genetic structure found no consistent overall difference among fragmented, degraded and undisturbed habitats; seed-dispersal vector explained variation and effect sizes were highly heterogeneous. A separate meta-analysis of ecological effects of plant genetic diversity found small positive associations for adaptive/genotypic diversity but no overall relationship between neutral molecular diversity and ecological structure/function.
+Hardion et al. (2026) review urban plant population genetics and report that urban plant populations often retain genetic diversity comparable with non-urban populations and that gene flow can remain high through long-distance and anthropogenic dispersal. Cities therefore cannot be assumed to be isolated genetic islands.
 
-These results align with the urban genetics review: spatial fragmentation, neutral genetic structure, gene flow, adaptive diversity and realised ecological function are related but non-interchangeable measurements.
+**Urban implication:** a patch may retain abundance and substantial gene flow while its realised interaction support changes rapidly. The natural Phase-V analogue is a **joint-state mismatch**: demographic/genetic support and interaction/function support occupy different places or change on different timescales.
 
-### 1.6 Genetic early warning under fragmentation already has a close network-based literature
+### Urban predictions generated by the present results
 
-Peled, Kim & Greenbaum (2026, PNAS) integrated network theory and population genetics to model heterogeneous connectivity during landscape fragmentation. Different fragmentation trajectories produced qualitatively different genetic-monitoring trajectories, classical connectivity–diversity expectations could fail, and distributional moments of genetic metrics provided early-warning signals before rapid **genetic** transitions.
+- Neutral genetic connectivity can remain high while interaction-mediated functional fragmentation develops.
+- Local urbanization, management, heat, pollution and plant-community turnover may shift interaction state more strongly than geographic distance.
+- The most informative monitoring sites may be **mismatch patches**: high census/genetic support but low interaction or realised function, or the reverse.
+- Seasonal and multi-year interaction measurements are necessary because static network snapshots can miss transition structure.
+- Management should target process-specific bottlenecks—resource continuity, matrix permeability for the relevant organism, compatible pollination or partner functional diversity—rather than maximizing one generic connectivity or richness score.
 
-This is important for novelty discipline. The present study should **not** claim that genetic early-warning signals under fragmentation are unprecedented. Its distinct target is a realised **interaction-dependent functional loss**, and its main contribution is to ask upstream whether the eco-genetic event process is reproducible enough for genetic warning to be estimable at all.
+## 5. Island route: colonisation, turnover, mutualist filters and reproductive assurance
 
-## 2. What the present results actually imply in nature
+### 5.1 Oceanic islands differ in interaction structure, but area alone is not enough
 
-### Result A — fragmentation can reduce interaction-supported function before population disappearance
+Traveset et al. (2016) compared 52 quantitative pollination networks. Oceanic-island networks were smaller, lower in interaction diversity and more topologically simplified than mainland/continental-island networks, yet island area had no significant effect on the measured network metrics. Isolation and elevational range affected some properties. This already argues against defining an island functional regime by area or distance alone.
 
-The strongest empirical implication is not that every fragmented system should lose network complexity. It is that monitoring should include a **realised functional endpoint**—for example compatible pollen delivery, successful seed set attributable to a focal pollinator guild, dispersal effectiveness or another service—because presence or abundance can remain positive after function becomes weak.
+### 5.2 Regional turnover and local interaction structure both matter
 
-This gives a concrete observational prediction: landscapes with similar focal-species occupancy can differ in realised function if interaction support differs.
+Vitali et al. (2024) represented five Canary Islands as a spatial multilayer plant–pollinator network. Distance decay in modular structure was driven primarily by species turnover rather than interaction rewiring, while **local interaction structure also remained essential**. This is highly compatible with a joint-state view: regional spatial history controls which components are present, but local interaction organization still affects community structure.
 
-### Result B — source establishment and post-establishment loss are different stages
+### 5.3 Mutualist availability is a candidate biogeographic filter
 
-Phase F retained R4 across `kappa=3.0–6.0` while source/baseline eligibility varied. In natural systems this implies that interaction change may first be expressed as inability to establish or maintain the functional state rather than as altered warning lead time. Urban species/co-occurrence filters and island colonisation/mutualist filters therefore map naturally onto the **state-feasibility/source boundary**.
+Delavaux et al. (2024) analysed 212 oceanic islands and reported that plants associated with mutualists were disproportionately underrepresented, arguing that mutualist filters contribute to island species deficits beyond area/isolation. A published statistical critique and author response followed; the safe use here is not as a universal law, but as evidence that mutualist availability is a serious candidate island-biogeographic process that should be measured rather than inferred from geography.
 
-### Result C — connectivity can change loss-regime reproducibility without a universal rescue sign
+Reproductive-assurance theory supplies another route: the capacity for uniparental reproduction can be favoured under colonisation or mate limitation, without implying universal high selfing. This can decouple demographic persistence from maintenance of the focal interaction-dependent function.
 
-Phase E is allele-frequency mixing only, so it cannot be translated directly into seed, pollen or pollinator dispersal. Its defensible implication is conceptual: connectivity can alter stochastic histories and among-population heterogeneity without guaranteeing rescue. Empirical studies should therefore distinguish pollen-mediated gene flow, seed/propagule movement, demographic recolonisation and pollinator/partner movement.
+**Island implication:** physical isolation, mutualist availability, local network organization, stepping-stone movement and reproductive assurance can place populations with similar census or neutral genetic diversity into different functional states.
 
-### Result D — partner loss can alter warning estimability without changing mean risk much
+### Island predictions generated by the present results
 
-Phase G provides a new bounded result. The fresh intact control was R4 (`49/90`, pooled loss `0.544`). Every predeclared one-partner-loss architecture became R3, even though pooled loss remained similar (`0.556–0.578`) and paired loss status changed in both directions. The three loss architectures were matched for partner-richness change (`4→3`) and mean retained support (`0.75`) but differed in contribution concentration; all three nonetheless shared R3.
+- Geographic isolation alone will not rank functional vulnerability consistently.
+- Mutualist availability is especially important at the **source-feasibility** boundary: some islands may fail to establish/maintain the interaction-supported high-function state before any warning question is meaningful.
+- Species turnover and local interaction architecture should be analysed jointly rather than treating island distance as the causal state.
+- Reproductive assurance can maintain plant populations after loss of the focal interaction, making occupancy a poor proxy for interaction-dependent function.
+- Among-island gene flow, pollen flow, seed/propagule movement and pollinator/partner movement should be measured separately.
 
-The most useful ecological implication is therefore **not** `specialist loss raises extinction risk`. It is:
+## 6. Genetic state is not a universal proxy for function
 
-> loss of an interaction partner can change the reproducibility of functional failure—and therefore the feasibility of validating an early warning—even when average failure incidence barely changes.
+Miguel-Penaloza et al. (2023) synthesized 116 plant populations from 31 studies and found no significant overall difference in fine-scale spatial genetic structure among undisturbed, degraded and fragmented habitats; seed-dispersal vectors explained some variation and effect sizes were highly heterogeneous. Whitlock (2014) similarly distinguished adaptive/genotypic from neutral molecular diversity when relating genetic diversity to ecological structure and function; neutral molecular diversity did not show a general positive ecological relationship.
 
-The architecture-specific result is negative: the tested even/graded/dominant concentration structures did not separate regimes. Real rewiring remains untested and may buffer or worsen functional effects, exactly as field experiments and recent reviews suggest.
+This is exactly the measurement discipline required by the present framework: neutral genetic diversity, functional/adaptive state, interaction support and realised ecological function are related but non-interchangeable variables.
 
-### Result E — warning requires an independently evaluable loss process
+Peled, Kim & Greenbaum (2026) further show why genetic monitoring itself is process-dependent: different network fragmentation trajectories can create different genetic trajectories and genetic early-warning signals before rapid **genetic** transitions. The present study asks a complementary question with a different endpoint: whether the **functional-loss process** is sufficiently defined before any genetic precursor is judged.
 
-The practical implication is a sampling design. Before asking whether genetic change predicts loss, replicated populations, fragments or population-years should first be classified by realised functional risk **and its reproducibility**. Genetic lead time is interpretable only after that upstream event-generating process has been defined independently of the warning statistic.
+## 7. What the current results now imply in nature
 
-This is where the current study differs most sharply from genetic-monitoring frameworks whose transition target is itself genetic: here the warning statistic and the functional endpoint are deliberately different state variables.
+### A. Occupancy can survive after function weakens
 
-## 3. Prospective urban–island convergence hypothesis
+The parent fragmentation experiment supports the possibility that interaction, local effective size and realised high-trait mass can collapse while the focal population remains present. Natural monitoring should therefore record a realised functional endpoint, not only presence, abundance or diversity.
 
-The next cross-system question is deliberately **not** `city versus island`:
+### B. State establishment and state loss are separate ecological problems
 
-> Do distinct fragmentation mechanisms map onto the same operational state once local habitat support, realised interactions, functional redundancy, biological connectivity, reproductive assurance and realised function are measured separately?
+Recurrent-transition coordinates alter whether a high-function state can be prepared. Interaction conditions can therefore operate first as filters on **state feasibility**, which maps naturally onto urban presence/co-occurrence filters and island colonisation/mutualist filters.
 
-Possible routes are different:
+### C. Connectivity has no generic scalar meaning
 
-- **Urban route:** habitat amount/configuration + matrix/heat/pollution/disturbance filters + partner turnover/rewiring + corridors and anthropogenic movement.
-- **Island route:** colonisation and area/isolation filters + mutualist availability + regional species turnover + stepping-stone connectivity + reproductive assurance.
+The historical allele-only `m=.10` heterogeneity observation failed a preregistered fresh-seed replication and did not port to whole-individual or pollen-only movement. The ecological implication is not a particular migration threshold; it is that **the movement process itself must be named and represented**.
 
-Convergence would mean that these different causal routes produce similar combinations of:
+### D. Partner perturbation does not justify a simple richness-risk rule
 
-1. functional-state feasibility;
-2. realised functional level;
-3. loss incidence and among-replicate/among-year reproducibility.
+High-precision reduced-form partner-loss and temporal partner tests were bounded negative results. This blocks a tempting but unsupported translation such as “one partner lost means warning becomes unreliable”. Real systems should instead quantify functional identity, contribution, turnover and rewiring.
 
-It does **not** require similar network topology, similar genetic differentiation, similar species composition or similar geography. This remains a future empirical/model hypothesis, not a conclusion of the current simulation.
+### E. Phase V identifies the missing state concept
 
-## 4. Measurement design implied by the literature and model
+Phase V gives the clearest bridge from the finite theory to natural systems. Separate snapshot indicators can match while the exact next ecological transition differs. Thus the practical target is not a vector of independent means, but the **joint organization of the layers that enter the transition law**.
 
-For both urban and island systems, retain separate measurements of:
+The finite endpoint result also limits overreach: Phase V did not detect a directional 60-generation loss-incidence effect of alignment (`.678` versus `.722`, McNemar `p=.143`). The claim is state sufficiency, not a universal alignment-risk law.
 
-1. **spatial support** — habitat amount, patch geometry, matrix quality/resistance;
-2. **interaction support** — partner identity, visitation/interaction strength, effective partner function;
-3. **interaction architecture** — contribution evenness, functional diversity, specialisation, turnover and rewiring;
-4. **biological connectivity** — pollen, seed/propagule, demographic and partner movement measured separately where relevant;
-5. **reproductive assurance / alternative functional routes**;
-6. **realised function through time**;
-7. **genetic state through time**, distinguishing neutral from adaptive/functional information where possible.
+## 8. Refined urban–island convergence hypothesis
 
-The shared comparison is then a **regime map**, not a habitat-category contrast. A particularly strong design would estimate whether the same functional-state/loss regime can be reached through high spatial isolation plus mutualist filtering on islands versus weaker genetic isolation but stronger local interaction filtering in cities.
+The old wording “similar feasibility + function + incidence” is still too weak if those quantities are treated as separate summaries.
 
-## 5. Manuscript positioning after the literature audit
+The refined hypothesis is:
 
-The strongest defensible conceptual contribution is now:
+> **Different fragmentation mechanisms converge on one operational functional-fragmentation regime when their joint transition-relevant state is sufficiently equivalent and the downstream functional transition/loss process is invariant to causal-route label.**
 
-> **Fragmentation should be evaluated not only by whether it changes population connectivity or average loss risk, but by whether it destabilises the interaction-supported process that makes functional loss reproducible. Genetic early warning becomes meaningful only downstream of that event-generating regime.**
+In practice, after conditioning on the joint state, knowing that a site is `urban`, `island`, or belongs to a finer fragmentation-mechanism category should add little predictive information about the next functional transition. Conversely, if route identity still improves prediction, the proposed state representation is incomplete.
 
-This sits between three literatures that are usually treated separately:
+This definition permits genuine convergence without claiming that cities and islands share geography, species composition, network topology, colonisation history or neutral genetic differentiation.
 
-- landscape fragmentation / functional connectivity;
-- ecological-network function and rewiring;
-- conservation genetic monitoring / early warning.
+## 9. Empirical design: test convergence as transport/invariance
 
-The novelty is the **ordering and closure among these layers**, not a claim to have invented functional fragmentation, network rewiring, or genetic early warning individually.
+### 9.1 Sampling
 
-## 6. High-priority references from the audit
+Use repeated patches/populations/population-years from multiple independent urban landscapes and island archipelagos. Within each system, sample enough spatial units to estimate within-system cross-layer covariance and enough repeated times to estimate transitions rather than static associations. Controlled lineages or clades are preferable where feasible, but the framework can also be hierarchical across species.
 
-- Galiana, N. & Araújo, M.B. (2026). Biotic interactions biogeography: A framework for understanding how species interactions shape biodiversity patterns across scales. *PLOS Biology* 24:e3003813. doi:10.1371/journal.pbio.3003813.
-- Ward, C.A. et al. (2026). The rewiring of ecological networks in a variable world. *Nature Reviews Biodiversity* 2:355–369. doi:10.1038/s44358-026-00159-9.
+### 9.2 Minimum joint state
+
+Measure at least:
+
+1. habitat amount, configuration and matrix quality/resistance;
+2. local population size/demography;
+3. partner identity and realised interaction strength;
+4. partner functional diversity, contribution evenness, turnover and rewiring;
+5. realised focal ecological function;
+6. pollen, seed/propagule, demographic and partner movement separately;
+7. reproductive assurance/alternative functional routes;
+8. neutral and, where possible, adaptive/functional genetic state.
+
+Then retain **joint spatial alignment**, not only layer marginals: interaction support × realised function; interaction support × functional/adaptive genetic support; demography × interaction support; and process-specific movement × local interaction support. A mechanistically derived sufficient statistic is preferable to arbitrary correlations if the transition law can be estimated.
+
+### 9.3 Analysis
+
+1. Define the functional-loss endpoint without inspecting genetic-warning outcomes.
+2. Estimate the joint state at time `t`.
+3. Model the transition or hazard over `t→t+1...`.
+4. Test whether causal-route identity (`urban`, `island`, or finer mechanism labels) improves prediction after conditioning on state.
+5. Perform **out-of-route transport**: fit/calibrate in one causal route and test predictive calibration in another.
+6. Diagnose failure by layer: source feasibility, interaction support, movement, alternative functional routes, or transition instability.
+7. Only where event-process transport is adequate should genetic warning be compared across routes.
+
+A non-significant city-versus-island coefficient is **not** sufficient evidence for convergence. The stronger target is calibrated transition invariance/transport conditional on the joint state.
+
+## 10. Conservation and monitoring implications
+
+The current theory suggests a management hierarchy rather than a new single index.
+
+1. **Verify realised function.** Do not infer function from occupancy, network richness or neutral diversity.
+2. **Locate mismatch.** Identify patches where demographic/genetic support and interaction/function support are spatially or temporally misaligned.
+3. **Identify the process-specific bottleneck.** The intervention may be habitat amount, matrix permeability, partner functional diversity, resource continuity, pollen/seed movement, mutualist availability or reproductive assurance depending on the route.
+4. **Monitor transitions, not snapshots.** Repeated interaction and functional measurements are needed to estimate whether the system is moving toward loss.
+5. **Use genetic warning downstream.** Genetic monitoring becomes an early-warning tool only after the functional event process is independently defined and shown to transport to the target system.
+
+This is the concrete ecological value of the framework: it shifts conservation diagnosis from “how fragmented is this landscape?” to **“which joint ecological relation is failing to maintain function, and does that failure process recur across causal settings?”**
+
+## 11. Literature-supported positioning
+
+The study now sits at the intersection of four literatures:
+
+- landscape fragmentation and functional connectivity;
+- ecological interaction networks, functional diversity and rewiring;
+- spatial metacommunity/island biogeography;
+- conservation genetics and early-warning monitoring.
+
+The strongest contribution is the closure among them:
+
+> **A genetic warning is not a property of a genetic statistic or of a static fragmentation score alone. It is conditional on a sufficiently specified joint eco-genetic-interaction state and on the transition process that generates realised functional loss.**
+
+Phase V supplies the exact state-sufficiency boundary behind that statement; the urban and island literatures provide contrasting natural routes for testing whether the same dynamical regime can arise from different causes.
+
+## Core references
+
 - Alaasam, V. et al. (2026). Eco-evolutionary dynamics shaping biodiversity in the urban mosaic. *Nature Reviews Biodiversity* 2:170–185. doi:10.1038/s44358-026-00138-0.
-- Hardion, L., Sotillo, A. & Muratet, A. (2026). Urban plant population genetics: A review. *Perspectives in Plant Ecology, Evolution and Systematics* 70:125920. doi:10.1016/j.ppees.2025.125920.
-- Fletcher, R.J. Jr. et al. (2026). Landscape quality drives ecological responses to habitat loss and fragmentation. *Nature Ecology & Evolution*. doi:10.1038/s41559-026-03095-1.
-- Peled, O., Kim, J. & Greenbaum, G. (2026). Network-based genetic monitoring of landscape fragmentation. *PNAS* 123:e2515033123. doi:10.1073/pnas.2515033123.
-- Moreno-García, P. et al. (2025). The effects of urbanization on species interactions. *Nature Cities* 2:693–702. doi:10.1038/s44284-025-00288-w.
+- Benitez, L.M. et al. (2025). Fragmentation in patchy ecosystems: a call for a functional approach. *Trends in Ecology & Evolution* 40:27–36. doi:10.1016/j.tree.2024.09.004.
+- Delavaux, C.S. et al. (2024). Mutualisms weaken the latitudinal diversity gradient among oceanic islands. *Nature* 627:335–339. doi:10.1038/s41586-024-07110-y. Interpret with the subsequent critique and response.
+- Dominguez-Garcia, V. et al. (2026). Plant-Pollinator Interaction Rewiring Boosts Year-to-Year Community Persistence. *Ecology Letters* 29:e70293. doi:10.1111/ele.70293.
+- Fletcher, R.J. Jr. et al. (2026). Landscape quality drives ecological responses to habitat loss and fragmentation. *Nature Ecology & Evolution* 10:1265–1272. doi:10.1038/s41559-026-03095-1.
 - Gama, M. et al. (2025). Habitat loss, not fragmentation per se, drives structural changes and species turnover in plant–vertebrate pollinator networks. *Biological Conservation* 311:111419. doi:10.1016/j.biocon.2025.111419.
-- Olhnuud, A. et al. (2025). Responses of insect pollinators to habitat fragmentation: A global meta-analysis. *Journal of Applied Ecology* 62:2502–2514. doi:10.1111/1365-2664.70161.
-- Benitez, L.M. et al. (2024/2025). Fragmentation in patchy ecosystems: a call for a functional approach. *Trends in Ecology & Evolution*. Use to delimit the existing functional-connectivity meaning of `functional fragmentation`.
-- Delavaux, C.S. et al. (2024). Mutualisms weaken the latitudinal diversity gradient among oceanic islands. *Nature* 627:335–339. doi:10.1038/s41586-024-07110-y. Interpret alongside the subsequent critique/response.
-- Hiraiwa, M.K. & Ushimaru, A. (2024). Loss of functional diversity rather than species diversity of pollinators decreases community-wide trait matching and pollination function. *Functional Ecology* 38:1296–1308. doi:10.1111/1365-2435.14527.
-- Domínguez-Garcia, V. et al. (2024). Interaction network structure explains species' temporal persistence in empirical plant–pollinator communities. *Nature Ecology & Evolution* 8:423–429. doi:10.1038/s41559-023-02314-3.
-- Maurer, C. et al. (2024). Landscape simplification leads to loss of plant–pollinator interaction diversity and flower visitation frequency despite buffering by abundant generalist pollinators. *Diversity and Distributions*. doi:10.1111/ddi.13853.
 - Hackett, T.D. et al. (2024). Multi-habitat landscapes are more diverse and stable with improved function. *Nature* 633:114–119. doi:10.1038/s41586-024-07825-y.
+- Hardion, L., Sotillo, A. & Muratet, A. (2026). Urban plant population genetics: A review. *Perspectives in Plant Ecology, Evolution and Systematics* 70:125920. doi:10.1016/j.ppees.2025.125920.
+- Hiraiwa, M.K. & Ushimaru, A. (2024). Loss of functional diversity rather than species diversity of pollinators decreases community-wide trait matching and pollination function. *Functional Ecology* 38:1296–1308. doi:10.1111/1365-2435.14527.
+- Marcacci, G. et al. (2023). Urbanization alters the spatiotemporal dynamics of plant–pollinator networks in a tropical megacity. *Ecology Letters* 26:1951–1962. doi:10.1111/ele.14324.
+- Miguel-Penaloza, A. et al. (2023). Do habitat fragmentation and degradation influence the strength of fine-scale spatial genetic structure in plants? *AoB PLANTS* 15:plad019. doi:10.1093/aobpla/plad019.
+- Moreno-Garcia, P. et al. (2025). The effects of urbanization on species interactions. *Nature Cities* 2:693–702. doi:10.1038/s44284-025-00288-w.
+- Olhnuud, A. et al. (2025). Responses of insect pollinators to habitat fragmentation: A global meta-analysis. *Journal of Applied Ecology* 62:2502–2514. doi:10.1111/1365-2664.70161.
+- Peled, O., Kim, J. & Greenbaum, G. (2026). Network-based genetic monitoring of landscape fragmentation. *PNAS* 123:e2515033123. doi:10.1073/pnas.2515033123.
+- Traveset, A. et al. (2016). Global patterns of mainland and insular pollination networks. *Global Ecology and Biogeography* 25:880–890. doi:10.1111/geb.12362.
 - Vitali, A. et al. (2024). Local and regional processes drive distance decay in structure in a spatial multilayer plant–pollinator network. *Journal of Animal Ecology*. doi:10.1111/1365-2656.14174.
-- Miguel-Peñaloza, A. et al. (2023). Do habitat fragmentation and degradation influence the strength of fine-scale spatial genetic structure in plants? A global meta-analysis. *AoB PLANTS* 15:plad019. doi:10.1093/aobpla/plad019.
-- Marcacci, G. et al. (2023). Urbanization alters the spatiotemporal dynamics of plant–pollinator networks in a tropical megacity. *Ecology Letters*. doi:10.1111/ele.14324.
-- Udy, K.L. et al. (2020). Plant–pollinator interactions along an urbanization gradient from cities and villages to farmland landscapes. *Ecosphere* 11:e03020. doi:10.1002/ecs2.3020.
-- Timóteo, S. et al. (2016). High resilience of seed dispersal webs highlighted by the experimental removal of the dominant disperser. *Current Biology* 26:910–915. doi:10.1016/j.cub.2016.01.046.
-- Traveset, A. et al. (2016). Global patterns of mainland and insular pollination networks. *Global Ecology and Biogeography*. doi:10.1111/geb.12362.
-- Pannell, J.R. et al. (2015). The scope of Baker's law. *New Phytologist* 208:656–667. doi:10.1111/nph.13539.
+- Ward, C.A. et al. (2026). The rewiring of ecological networks in a variable world. *Nature Reviews Biodiversity* 2:355–369. doi:10.1038/s44358-026-00159-9.
 - Whitlock, R. (2014). Relationships between adaptive and neutral genetic diversity and ecological structure and functioning: a meta-analysis. *Journal of Ecology* 102:857–872. doi:10.1111/1365-2745.12240.
-- Brosi, B.J. & Briggs, H.M. (2013). Single pollinator species losses reduce floral fidelity and plant reproductive function. *PNAS*.
