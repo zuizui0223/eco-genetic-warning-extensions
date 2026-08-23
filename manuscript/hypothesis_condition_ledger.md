@@ -1,6 +1,6 @@
 # Hypothesis-by-condition recovery ledger
 
-This ledger records each proposition as **recovered result → conditions → remaining boundary**. Historical protocol labels are retained for provenance, but final inference separates loss incidence, between-block heterogeneity, trajectory identity and warning performance.
+This ledger records each proposition as **recovered result → conditions → remaining boundary**. Historical protocol labels are retained for provenance, but final inference separates state feasibility, joint-state sufficiency, loss incidence, between-block heterogeneity, trajectory identity and warning performance.
 
 ## C0 — an interaction-dependent high-function state can exist
 
@@ -54,17 +54,29 @@ Within the historical Phase-M seed family, whole-individual dispersal `d=.10` yi
 
 **Conclusion.** The historical-family allele-mixing pattern did not port to these two process-resolved closures. Combined with the Phase-U non-replication, no robust portable connectivity heterogeneity effect is established.
 
+### C2g joint-state sufficiency
+
+**Exact boundary recovered.** Phase V constructed aligned and anti-aligned four-patch states with the same habitat area, census, q multiset, allele-frequency multiset, realised high-trait-mass multiset, global trait-bin totals, `H_alpha`, `H_gamma` and `FST`. Only cross-patch alignment differed.
+
+For the declared local feedback `q_i^+=sigma(kappa[alpha q_i+beta x_i+gamma p_i-b])`, separate layer-wise marginals do not in general determine the next transition because local feedback depends on the patchwise pairing of those layers. The Phase-V certificate changed q×bundle covariance from `+.025` to `-.025` and produced a maximum exact generation-1 interaction difference of **`.2543`** despite matched marginals.
+
+The fixed 60-generation finite campaign yielded realised functional loss `.678` versus `.722`. Discordant paired outcomes were `92` versus `114`; exact McNemar `p=.143`.
+
+**Conclusion.** Marginal-equivalent snapshots are not necessarily dynamically state-equivalent. However, Phase V did not detect a directional long-horizon loss-incidence effect of alignment under this one schedule.
+
+**Boundary.** Operational regime equivalence needs the transition-relevant **joint state** (or a proven sufficient lower-dimensional statistic) plus comparable downstream dynamics. Phase V is not an empirical urban/island test and does not prove a universal alignment-risk direction.
+
 ## Statistical correction — historical screen is not the estimand
 
 The historical all-five-block `[0.30,0.70]` screen remains a legitimate prospective calibration rule but is sampling-sensitive at small block sizes. Final analysis separates pooled incidence, equal-rate heterogeneity, paired trajectory switching and downstream warning performance.
 
-Phase U adds a second correction: even a high-precision significance result from one finite seed family is not automatically a portable mechanistic effect. A load-bearing stochastic pattern should be replicated prospectively where feasible.
+Phase U adds a replication correction: even a high-precision significance result from one finite seed family is not automatically a portable mechanistic effect. Phase V adds a state-representation correction: even exact agreement in separate static indicators does not establish dynamic equivalence when the transition law couples layers locally.
 
 ## C3 — genetic warning is a conditional possibility
 
 **Recovered proof of possibility.** In one independently calibrated symmetric benchmark, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
 
-**Boundary.** Warning was not inspected during C2 selection, R/S/T robustness tests or Phase-U replication. A matched direction-only warning effect remains unresolved.
+**Boundary.** Warning was not inspected during C2 selection, R/S/T robustness tests, Phase-U replication or Phase-V state-sufficiency testing. A matched direction-only warning effect remains unresolved.
 
 ## C4 — warning portability is bounded
 
@@ -74,7 +86,9 @@ Phase U adds a second correction: even a high-precision significance result from
 
 ## Cross-system application
 
-Urban and island systems are contrasting causal routes, not ecological equivalents. Empirical comparison should map functional-state feasibility, realised interaction support, loss incidence and temporal stability while pollen, seed/propagule, demographic and partner movement are measured separately.
+Urban and island systems are contrasting causal routes, not ecological equivalents. The refined convergence test is not “urban versus island”. It asks whether different fragmentation mechanisms yield a sufficiently equivalent **joint transition-relevant state** and whether the downstream functional transition/loss process transports across routes.
+
+Evidence for convergence requires more than matching habitat amount, abundance, species richness, mean interaction strength or neutral genetic diversity. After conditioning on the joint state, route identity should add little predictive information about the next functional transition; out-of-route predictive calibration is the stronger test.
 
 ## Stop rules
 
@@ -86,4 +100,6 @@ Urban and island systems are contrasting causal routes, not ecological equivalen
 - No claim that historical Phase-M `m=.10` heterogeneity is independently replicated.
 - No network-simplification meaning assigned to interaction kappa.
 - No full-network/connectance/rewiring meaning assigned to Phase N/T.
-- Record failed generality or replication as a boundary rather than continuing until the hypothesis appears true.
+- No use of matching independent layer marginals as proof of functional-fragmentation regime equivalence.
+- No rerun or redesign of Phase V to manufacture a directional long-horizon endpoint effect.
+- Record failed generality, replication or state sufficiency as a boundary rather than continuing until the hypothesis appears true.
