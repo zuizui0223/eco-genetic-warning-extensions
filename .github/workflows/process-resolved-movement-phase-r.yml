@@ -1,0 +1,107 @@
+name: Process-resolved movement Phase R
+
+on:
+  pull_request:
+    branches:
+      - "agent/unify-paper-storyline"
+    paths:
+      - "src/eco_genetic_warning_extensions/process_resolved_movement.py"
+      - "src/eco_genetic_warning_extensions/process_resolved_movement_phase_r.py"
+      - "src/eco_genetic_warning_extensions/process_resolved_movement_phase_r_runner.py"
+      - "scripts/check_process_resolved_movement_zero_equivalence.py"
+      - "scripts/run_process_resolved_movement_phase_r_seed.py"
+      - "scripts/aggregate_process_resolved_movement_phase_r.py"
+      - "tests/test_process_resolved_movement_phase_r.py"
+      - "docs/PROCESS_RESOLVED_MOVEMENT_PHASE_R.md"
+      - ".github/workflows/process-resolved-movement-phase-r.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: extension
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - working-directory: extension
+        run: |
+          python -m pytest -q tests/test_process_resolved_movement_phase_r.py
+          python scripts/check_process_resolved_movement_zero_equivalence.py
+
+  seed-block:
+    needs: contract
+    strategy:
+      fail-fast: false
+      matrix:
+        master_seed: [20290410, 20290411, 20290412, 20290413, 20290414]
+    runs-on: ubuntu-latest
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: extension
+      - uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e extension
+      - working-directory: extension
+        run: |
+          mkdir -p artifacts/process_resolved_movement/seeds
+          python scripts/run_process_resolved_movement_phase_r_seed.py \
+            --upstream-checkout ../upstream \
+            --master-seed ${{ matrix.master_seed }} \
+            --output artifacts/process_resolved_movement/seeds/seed_${{ matrix.master_seed }}.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: phase-r-seed-${{ matrix.master_seed }}
+          path: extension/artifacts/process_resolved_movement/seeds/seed_${{ matrix.master_seed }}.json
+          if-no-files-found: error
+          retention-days: 90
+
+  aggregate:
+    needs: seed-block
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - run: python -m pip install -e .
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: phase-r-seed-*
+          path: artifacts/process_resolved_movement/seeds
+          merge-multiple: true
+      - run: |
+          python scripts/aggregate_process_resolved_movement_phase_r.py \
+            --input-glob 'artifacts/process_resolved_movement/seeds/seed_*.json' \
+            --output artifacts/process_resolved_movement/phase_r_summary.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: process-resolved-movement-phase-r
+          path: artifacts/process_resolved_movement/phase_r_summary.json
+          if-no-files-found: error
+          retention-days: 90
