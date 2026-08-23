@@ -38,7 +38,9 @@ def test_readme_reports_closed_condition_first_state() -> None:
     assert "fresh `m=0/.10` equal-rate p values were `.134/.745`" in lower
     assert "no robust portable connectivity heterogeneity effect is established" in lower
     assert "adaptive-rewiring gate remains closed" in lower
-    assert "warning remains conditional and portability bounded" in lower
+    assert "baseline-relative warning strictly replicated within the frozen symmetric domain" in lower
+    assert "33/33 leads, 0 ties and 0 lags" in lower
+    assert "portability remains bounded" in lower
     assert "active missing condition" not in lower
 
 
@@ -55,6 +57,7 @@ def test_submission_bundle_adds_both_packages_and_condition_evidence() -> None:
     assert "high_precision_condition_map.json" in replacer
     assert "partner_phase_g_summary.json" in replacer
     assert "phase_u_fresh_connectivity_replication.json" in replacer
+    assert "phase_v_fresh_warning_replication.json" in replacer
     assert "phase_r_process_resolved_movement.json" in replacer
     assert "--upstream upstream" in workflow
     assert "software_dist/parent" in workflow
@@ -120,6 +123,8 @@ def test_reproducibility_guide_retains_current_boundaries() -> None:
         "no robust portable connectivity heterogeneity effect is established",
         "all three predeclared `kappa=3.0/4.5/6.0` remain intermediate",
         "adaptive-rewiring gate remains closed",
+        "phase v is strict within-domain c3 replication only",
+        "33/33 leads with 0 ties/0 lags at every endpoint",
         "protocol 003 tests bounded portability across non-matched calibrated domains",
         "finite type s results",
     ):
@@ -135,6 +140,18 @@ def test_phase_u_locked_summary_matches_reproducibility_claim() -> None:
     assert conditions[0.0]["pearson_equal_rate_p"] > 0.05
     assert conditions[0.1]["pearson_equal_rate_p"] > 0.05
     assert phase_u["paired_m010_vs_zero"]["exact_mcnemar_p"] > 0.05
+
+
+def test_phase_v_locked_summary_matches_within_domain_replication_claim() -> None:
+    phase_v = json.loads((ROOT / "artifacts/fresh_warning_replication/phase_v_locked_summary.json").read_text(encoding="utf-8"))
+    assert phase_v["decision"] == "strict_replication"
+    assert phase_v["provenance"]["workflow_run"] == 32636847803
+    assert phase_v["provenance"]["aggregate_artifact"] == 9492587604
+    assert phase_v["denominators"]["trajectory_available_count"] == 82
+    assert phase_v["denominators"]["trait_loss_observed_count"] == 33
+    assert len(phase_v["endpoint_family"]) == 6
+    assert all(row["valid_pairs"] == 33 and row["leads"] == 33 for row in phase_v["endpoint_family"])
+    assert all(row["ties"] == 0 and row["lags"] == 0 for row in phase_v["endpoint_family"])
 
 
 def test_committed_phase_f_summary_matches_historical_provenance() -> None:
