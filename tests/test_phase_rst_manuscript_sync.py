@@ -40,7 +40,7 @@ def test_old_next_model_and_replicated_connectivity_boundaries_are_removed() -> 
     assert "## prohibited claims" in claims
     assert "`m=.10` is a reproducible or established connectivity heterogeneity threshold" in claims
     assert "no robust portable connectivity heterogeneity effect is established" in claims
-    assert "one independent fresh-seed ensemble" in claims
+    assert "one preregistered independent fresh-seed ensemble" in claims
     assert "one non-replication" in claims
 
 
