@@ -47,6 +47,9 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | S24 | Phases R/S/T narrow the ecological interpretation of earlier scalar/reduced-form results without adding new warning claims. | Integrated R/S/T closure. | manuscript-scope boundary |
 | S25 | The historical Phase-M `m=.10` heterogeneity did **not** reproduce in one preregistered independent fresh-seed ensemble: fresh `m=0` equal-rate `p=.134`, fresh `m=.10` `p=.745`; pooled loss .540/.551; paired McNemar `p=.694`. | Phase U, run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`. | fresh non-replication result |
 | S26 | The strongest connectivity conclusion is now negative: no robust portable block-heterogeneity effect was established across the historical Phase-M family, the independent Phase-U allele-only replication, and the process-resolved R/S closures. | Integrated M/U/R/S evidence. | claim ceiling |
+| S27 | Two Phase-V states with identical habitat/census marginals, interaction-state multiset, allele-frequency multiset, realised high-trait-mass multiset, complete global trait-bin totals, `H_alpha`, `H_gamma` and `FST` nevertheless generated different exact generation-1 interaction transitions when only cross-patch layer alignment was reversed; the maximum patchwise difference was .2543. | Phase V opening certificate, run `32636913615`, artifact `9492558602`. | exact state-representation boundary |
+| S28 | Under the one preregistered 60-generation Phase-V deterioration schedule, aligned versus anti-aligned states had pooled realised functional loss .678 versus .722, but the paired occurrence contrast was not detected as directional (92 vs 114 discordant pairs; exact McNemar `p=.143`). | Phase V locked campaign, 500 paired trajectories. | bounded null long-horizon incidence result |
+| S29 | Urban/island regime convergence cannot be inferred from matching independent static indicators alone; the operational cross-system hypothesis is joint-state plus transition/loss invariance conditional on state. | Phase V state-sufficiency boundary + literature bridge. | prospective cross-system inference rule |
 
 ## Exact operator claims
 
@@ -56,6 +59,7 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | T2 | With fixed patch weights and a common affine transition, the one-step alpha–gamma diversity gap contracts by `(1-kappa_mu)^2`, independently of `p_star`. | Same derivation/tests. |
 | T3 | Increasing `p_star` strengthens local high-associated allele support but can lower heterozygosity when post-transition frequency exceeds 0.5. | Same derivation/tests. |
 | T4 | The declared allele-frequency mixing operator contracts among-patch frequency deviations toward the weighted mean without imposing a universal sign on realised functional loss. | Parent migration theorem + Phase M/U. |
+| T5 | For the declared local update `q_i^+=sigma(kappa[alpha q_i+beta x_i+gamma p_i-b])`, separate layer-wise multisets and permutation-invariant summaries are not a sufficient Markov state in general when `beta` or `gamma` is non-zero: permuting the paired `(x,p)` bundle relative to `q` can preserve all marginals while changing the next `q` vector. | `docs/CROSS_LAYER_ALIGNMENT_STATE_SUFFICIENCY_THEOREM.md` + Phase V certificate. |
 
 ## Locked headline facts
 
@@ -79,6 +83,9 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | Phase R no-connectivity / allele-only / individual-dispersal pooled loss | .559 / .557 / .606 |
 | Phase S no-connectivity / allele-only / pollen-only pooled loss | .559 / .557 / .532 |
 | Phase T constant / even-dynamic / dominant-dynamic pooled loss | .5442 / .5488 / .5533 |
+| Phase V max generation-1 q difference under matched marginals | .2543 |
+| Phase V aligned / anti-aligned pooled loss | .678 / .722 |
+| Phase V paired McNemar p | .143 |
 | Stage III valid-pair availability | .540 vs .335 |
 | Stage III lead/tie/lag | 323/1/0 vs 184/5/12 |
 | horizon-normalised Stage III timing contrasts | all six include zero |
@@ -103,6 +110,9 @@ Do not claim that:
 - contribution concentration alone determines the loss process;
 - Phase T establishes that partner dynamics are universally irrelevant;
 - adaptive rewiring was tested or should be tuned after the Phase-T null result;
+- matching separate habitat, interaction, genetic and trait marginals proves that two systems occupy the same functional-fragmentation regime;
+- Phase V proves that anti-alignment or any specific cross-layer alignment universally raises long-horizon functional-loss risk;
+- Phase V establishes empirical urban–island equivalence;
 - recurrent-transition direction alone caused the Stage III warning difference;
 - `p_star` is an empirically estimated mutation rate;
 - genetic diversity is a monotone proxy for local functional support;
@@ -121,7 +131,10 @@ Do not claim that:
 | No robust portable connectivity heterogeneity effect is established | S26 |
 | Scalar aggregate feedback is robust across the three predeclared levels | S9–S10 |
 | Reduced-form and temporal partner perturbations are bounded negative results | S16–S17 + S22–S23 |
+| Matching separate static layer marginals does not ensure the same ecological transition state | S27 + T5 |
+| Phase V did not establish a directional long-horizon loss-incidence effect of alignment | S28 |
+| Cross-system regime convergence must therefore be posed as joint-state and transition/loss invariance, not static-index similarity | S29 |
 | Only after the downstream loss process is fixed does genetic warning become a meaningful question | P3–P4 |
 | Warning behaviour is not automatically portable across independently calibrated domains | S11–S15 |
 
-Every finite numerical claim retains the declared model closure. Phase U is one independent replication: its non-replication limits the historical Phase-M claim but is not a theorem that heterogeneity can never occur at `m=.10`.
+Every finite numerical claim retains the declared model closure. Phase U is one independent replication, and Phase V is one preregistered alignment contrast and deterioration schedule; neither negative result is a universal impossibility theorem.
