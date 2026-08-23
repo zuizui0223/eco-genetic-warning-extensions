@@ -38,6 +38,6 @@ def test_opening_rule_is_frozen_before_warning_is_read() -> None:
 
 def test_failed_generality_and_nonreplication_are_closed_as_boundaries() -> None:
     text = _ledger().lower()
-    assert "record a failed generality or replication as a boundary rather than continuing until the hypothesis appears true" in text
+    assert "record failed generality or replication as a boundary rather than continuing until the hypothesis appears true" in text
     assert "not supported as a reproducible parameter-specific connectivity heterogeneity effect" in text
     assert "no robust portable connectivity heterogeneity effect is established" in text
