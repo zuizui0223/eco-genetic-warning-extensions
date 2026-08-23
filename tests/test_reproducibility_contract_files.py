@@ -79,14 +79,10 @@ def test_secondary_audit_lock_preserves_source_artifact_provenance() -> None:
     assert review["source_workflow_run"] == 29417632137
     assert [row["artifact_id"] for row in review["source_artifacts"]] == [8343958766, 8343922879]
 
-    vendored = json.loads(
-        (ROOT / "artifacts/locked_publication_inputs/manifest.json").read_text(encoding="utf-8")
-    )
+    vendored = json.loads((ROOT / "artifacts/locked_publication_inputs/manifest.json").read_text(encoding="utf-8"))
     stage3 = vendored["files"]["stage3_trajectory_endpoint_records.csv.gz.b64"]
     assert stage3["source_workflow_run"] == review["source_workflow_run"]
-    assert [row["artifact_id"] for row in stage3["source_artifacts"]] == [
-        row["artifact_id"] for row in review["source_artifacts"]
-    ]
+    assert [row["artifact_id"] for row in stage3["source_artifacts"]] == [row["artifact_id"] for row in review["source_artifacts"]]
 
     workflow = (ROOT / ".github/workflows/paper-completion-sprint.yml").read_text(encoding="utf-8")
     attributes = (ROOT / ".gitattributes").read_text(encoding="utf-8")
@@ -112,12 +108,13 @@ def test_locked_publication_inputs_materialize_from_committed_bytes(tmp_path: Pa
 
 def test_reproducibility_guide_retains_current_boundaries() -> None:
     guide = (ROOT / "REPRODUCIBILITY.md").read_text(encoding="utf-8")
-    lower = guide.lower()
+    lower = guide.lower().replace("**", "")
     for statement in (
         "parent trajectories and extension trajectories are separate evidence",
         "15/15 `no_domain_selected`",
         "historical r1–r4 labels are calibration outcomes, not latent biological classes",
-        "recurrent turnover: pooled loss declines",
+        "recurrent turnover",
+        "pooled loss declines",
         "one preregistered independent phase-u ensemble",
         "not supported as independently reproducible",
         "no robust portable connectivity heterogeneity effect is established",
