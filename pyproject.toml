@@ -7,6 +7,8 @@ name = "eco-genetic-warning-extensions"
 version = "0.1.0"
 description = "Recurrent-transition tests of high-function-state feasibility, functional-loss regimes, and genetic-warning evaluability"
 readme = "README.md"
+license = { file = "LICENSE" }
+classifiers = ["License :: OSI Approved :: MIT License"]
 requires-python = ">=3.11"
 
 [project.optional-dependencies]
