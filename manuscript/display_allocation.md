@@ -10,7 +10,7 @@ Conceptual condition-first architecture. Historical R1–R4 labels are shown onl
 
 ### Figure 2 — fragmentation creates vulnerability and genetic warning is conditionally possible
 
-Parent fragmentation evidence plus the inherited conditional relative-warning benchmark. Table S1 retains the paired fragmentation effect sizes.
+Parent fragmentation evidence plus the inherited conditional relative-warning benchmark. The plotted warning panel remains the parent 35/35 benchmark; Phase V provides an independently preregistered same-domain replication (33/33 fresh leads at all six relative endpoints) in Results/caption and machine-readable supplementary evidence rather than adding a new main panel. Table S1 retains the paired fragmentation effect sizes.
 
 ### Figure 3 — recurrent state turnover reorganises source feasibility and historical loss-screen placement
 
@@ -35,10 +35,10 @@ Warning availability, censoring and ordering across independently calibrated non
 - Supplementary Figure S3: conditional positive lead-time diagnostic.
 - Supplementary condition panel/table: Phase Q aggregate-interaction robustness and Phase N/T partner negative results.
 - Tables S1–S6: model, fragmentation, source feasibility, historical screen, portability and high-precision/fresh-replication condition records.
-- Machine-readable precision evidence: consolidated high-precision condition map plus original Phase E–G provenance and locked Phase-U fresh-replication evidence.
+- Machine-readable evidence: consolidated high-precision condition map; original Phase E–G provenance; locked Phase R/S/T/U robustness/replication summaries; and `phase_v_fresh_warning_replication.json` for the strict within-domain C3 replication.
 
 ## Integration rule
 
-Phase Q, N and T do not justify additional main figures. Phases R/S are process-resolved representation boundaries and Phase U is incorporated into the existing connectivity Figure 5 rather than added as a seventh display. The main six-display allocation therefore prioritises fragmentation, recurrent-turnover incidence, connectivity reproducibility and warning portability.
+Phase Q, N and T do not justify additional main figures. Phases R/S are process-resolved representation boundaries and Phase U is incorporated into the existing connectivity Figure 5 rather than added as a seventh display. Phase V strengthens the Figure-2 warning bridge without a seventh display because it repeats the same frozen domain and endpoint family rather than introducing a new mechanism. The main six-display allocation therefore prioritises fragmentation, recurrent-turnover incidence, connectivity reproducibility, within-domain warning evidence and cross-domain portability.
 
 Implementation debugging, obsolete figure versions, failed preregistration plumbing and PR chronology remain repository history and stay out of the scientific manuscript.
