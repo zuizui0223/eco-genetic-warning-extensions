@@ -38,7 +38,8 @@ def test_condition_recovered_manuscript_follows_current_condition_first_science(
         "Recurrent turnover changed source feasibility and historical loss-screen placement",
         "High-precision recurrent-turnover replays recovered an incidence frontier",
         "Allele-frequency connectivity produced non-monotone block heterogeneity, not a marginal-risk gradient",
-        "Aggregate feedback was robust across the tested range; partner loss was a high-precision negative condition result",
+        "The connectivity heterogeneity did not port to whole-individual or pollen-only movement",
+        "Aggregate feedback, partner loss and temporal partner variability were bounded negative condition results",
         "Genetic erosion could precede functional loss, but not by a universal absolute threshold",
         "Warning behaviour was not fully portable across independently calibrated domains",
     )
@@ -56,6 +57,8 @@ def test_condition_recovered_manuscript_retains_evidence_and_new_interpretation_
     assert "not partner richness, connectance, pollinator diversity or network dimensionality" in lower
     assert "bounded negative condition result" in lower
     assert "the kappa search was closed rather than widened to manufacture a boundary" in lower
+    assert "operator-specific within the tested connectivity closures" in lower
+    assert "adaptive-rewiring gate therefore remains **closed**" in lower
     assert "not a single-factor effect of transition direction" in lower
     assert "r4 itself means genetic warning succeeds" not in lower
     assert "universal connectivity threshold" not in lower
