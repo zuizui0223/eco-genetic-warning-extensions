@@ -1,0 +1,58 @@
+{
+  "stage": "fresh connectivity replication Phase U",
+  "scientific_head": "d9c5c7852f86d78572d42b98f42c0c307fae3e2d",
+  "workflow_run": 32615044162,
+  "aggregate_artifact": 9486740313,
+  "artifact_digest": "sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756",
+  "master_seeds": [20291010, 20291011, 20291012, 20291013, 20291014],
+  "replicates_per_seed": 100,
+  "opening": {
+    "all_blocks_precision_sufficient": true,
+    "baseline_pairing_passed": true
+  },
+  "decision": "historical_m010_heterogeneity_not_freshly_replicated",
+  "condition_summaries": [
+    {
+      "migration_rate": 0.0,
+      "blocks": [
+        {"master_seed": 20291010, "losses": 48, "eligible": 89, "rate": 0.5393258426966292},
+        {"master_seed": 20291011, "losses": 38, "eligible": 86, "rate": 0.4418604651162791},
+        {"master_seed": 20291012, "losses": 54, "eligible": 91, "rate": 0.5934065934065934},
+        {"master_seed": 20291013, "losses": 49, "eligible": 97, "rate": 0.5051546391752577},
+        {"master_seed": 20291014, "losses": 55, "eligible": 89, "rate": 0.6179775280898876}
+      ],
+      "pooled_loss_rate": 0.5398230088495575,
+      "historical_screen": "R4_highrep",
+      "pearson_equal_rate_statistic": 7.031892217056864,
+      "pearson_equal_rate_df": 4,
+      "pearson_equal_rate_p": 0.13421243537094518,
+      "precision_sufficient": true
+    },
+    {
+      "migration_rate": 0.1,
+      "blocks": [
+        {"master_seed": 20291010, "losses": 46, "eligible": 89, "rate": 0.5168539325842697},
+        {"master_seed": 20291011, "losses": 50, "eligible": 86, "rate": 0.5813953488372093},
+        {"master_seed": 20291012, "losses": 50, "eligible": 91, "rate": 0.5494505494505495},
+        {"master_seed": 20291013, "losses": 50, "eligible": 97, "rate": 0.5154639175257731},
+        {"master_seed": 20291014, "losses": 53, "eligible": 89, "rate": 0.5955056179775281}
+      ],
+      "pooled_loss_rate": 0.5508849557522124,
+      "historical_screen": "R4_highrep",
+      "pearson_equal_rate_statistic": 1.949048358009855,
+      "pearson_equal_rate_df": 4,
+      "pearson_equal_rate_p": 0.7451298863527918,
+      "precision_sufficient": true
+    }
+  ],
+  "paired_m010_vs_zero": {
+    "comparable": 452,
+    "loss_to_no_loss": 49,
+    "no_loss_to_loss": 54,
+    "same_loss": 195,
+    "same_no_loss": 154,
+    "exact_mcnemar_p": 0.6936859650244837
+  },
+  "interpretation": "The historical Phase-M m=0.10 excess between-block heterogeneity did not reproduce in the one preregistered independent fresh-seed ensemble. The original Phase-M result remains a valid observation in its historical seed family but is not supported as a reproducible m=0.10 heterogeneity effect across independent seed ensembles.",
+  "stop_rule": "No replacement seeds, added migration levels, fresh reruns, changed alpha or historical screen, or precision increase are opened after this result."
+}
