@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Habitat fragmentation can leave populations present while interaction-dependent function weakens, but genetic warning is meaningful only if downstream loss is characterised independently. In a finite model, fragmentation reduced interaction, local effective size and realised high-trait mass. Warning-blind calibration located intermediate-loss conditions, while a finite-sample audit separated loss incidence from block heterogeneity. Recurrent turnover shifted loss incidence. A historical allele-mixing heterogeneity observation failed one preregistered fresh-seed replication; process-resolved movement, aggregate feedback and partner-dynamic tests yielded bounded negative results. Baseline-relative genetic erosion preceded observed losses in one calibrated benchmark, whereas absolute thresholds and portability were limited. Genetic warning is therefore downstream of the eco-genetic process generating functional loss.
+Habitat fragmentation can leave populations present while interaction-dependent function weakens, but genetic warning is meaningful only if downstream loss is characterised independently. In a finite model, fragmentation reduced interaction, local effective size and realised high-trait mass. Warning-blind calibration separated loss incidence from block heterogeneity. Recurrent turnover shifted loss incidence, whereas connectivity, movement and partner-dynamic effects were bounded or non-replicating. In a frozen symmetric domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% strictly replicated across two independent seed ensembles: all 35/35 historical and 33/33 fresh valid warning/loss pairs were leads at every endpoint. Absolute thresholds remained unreliable and cross-domain portability remained bounded. Genetic warning is therefore reproducible within a calibrated eco-genetic domain but downstream of the process generating functional loss.
 
 ## Introduction
 
@@ -16,15 +16,15 @@ Genetic early-warning studies usually begin downstream of these ecological proce
 
 Warning validation can fail for several reasons that should not be collapsed into one label. The functional state may not be feasible; loss may be too rare or nearly deterministic; finite blocks may cross a calibration threshold by sampling variation; true block probabilities may differ; or a perturbation may change which individual trajectories fail without changing population-level incidence. We therefore distinguish **loss incidence**, **between-block heterogeneity**, **trajectory-identity sensitivity** and **warning performance**.
 
-The study follows a condition-first hierarchy (Figure 1). First, can an interaction-supported functional state exist and be disrupted by fragmentation? Second, how do recurrent turnover, connectivity representation and interaction conditions alter source feasibility and functional loss? Third, after the loss process is fixed warning-blind, can genetic erosion precede functional loss? Fourth, is warning behaviour portable across independently calibrated eco-genetic domains? Failed generality is retained as a boundary rather than followed by outcome-informed tuning.
+The study follows a condition-first hierarchy (Figure 1). First, can an interaction-supported functional state exist and be disrupted by fragmentation? Second, how do recurrent turnover, connectivity representation and interaction conditions alter source feasibility and functional loss? Third, after the loss process is fixed warning-blind, can genetic erosion precede functional loss, and does that ordering reproduce in fresh stochastic realisations? Fourth, is warning behaviour portable across independently calibrated eco-genetic domains? Failed generality is retained as a boundary rather than followed by outcome-informed tuning.
 
 ## Model and methods
 
 ### Condition-first architecture
 
-The study uses two computational provenance units. The parent repository supplies the theorem-guided interaction mechanism, paired fragmentation experiment and inherited symmetric warning benchmark. The extension independently reconstructs high-function sources, maps functional loss and performs robustness and portability tests. Parent and extension trajectories are never pooled. All extension analyses using the parent life cycle load scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
+The study uses two computational provenance units. The parent repository supplies the theorem-guided interaction mechanism, paired fragmentation experiment and inherited symmetric warning benchmark. The extension independently reconstructs high-function sources, maps functional loss and performs robustness, replication and portability tests. Parent and extension trajectories are never pooled. All extension analyses using the parent life cycle load scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
-Condition recovery is **warning-blind**: genetic-diversity decline, warning times, lead/lag ordering and lead time are unavailable while loss conditions are selected or replicated.
+Condition recovery is **warning-blind**: genetic-diversity decline, warning times, lead/lag ordering and lead time are unavailable while loss conditions are selected or replicated. Warning outcomes are inspected only in separately frozen C3 validation/replication campaigns.
 
 ### Interaction-supported function and fragmentation
 
@@ -73,9 +73,11 @@ The aggregate-support precision replay used the three interaction-feedback value
 
 A reduced-form partner-contribution test represented four contributions summing to one and compared intact, even-loss, graded-loss and dominant-loss architectures. Phase T then tested temporal partner availability while holding expected aggregate support at 0.75. Four partners were independently available each generation with probability 0.75 under even or dominant contribution weights, producing increasing support variance while sharing identical availability draws within each paired trajectory. Adaptive rewiring was preregistered to open only if this matched-expected-support test established a dynamic-network effect.
 
-### Conditional warning and portability
+### Conditional warning, fresh replication and portability
 
-A separate trait-loss-only calibration fixed one symmetric deterioration domain before warning values were evaluated. Relative warnings were first post-baseline generations at which `H_alpha` or `H_gamma` declined 5%, 10% or 20% from their own baselines. Non-events remained right-censored. Predeclared absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` were audited on the same stored trajectories.
+A separate trait-loss-only calibration fixed one symmetric deterioration domain before warning values were evaluated. Relative warnings were first post-baseline generations at which `H_alpha` or `H_gamma` declined 5%, 10% or 20% from their own baselines. Non-events remained right-censored. The original independent parent validation used fresh seeds after calibration. Predeclared absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` were audited on those stored trajectories.
+
+Phase V then independently replicated the relative-warning ordering in the **same frozen domain** without recalibration. Before execution, fresh master seeds `20291110–20291114` were confirmed absent from both repositories and fixed prospectively; the standard finite-bin profile retained 20 attempts per seed for 100 attempted trajectories. The six endpoint definitions (`H_alpha/H_gamma × 5/10/20%` relative decline), deterioration schedule, source reconstruction and censoring rules were unchanged. The preregistered strict-replication criterion required at least 20 valid same-trajectory warning/loss pairs at each endpoint and every valid pair to be a lead with zero ties and zero lags. A weaker directional criterion, used only if strict replication failed, required every endpoint to have at least 20 valid pairs, lead fraction >0.5 and a one-sided exact binomial `p<.05` against lead probability 0.5. No seed replacement, endpoint changes, recalibration or precision escalation was permitted after outcomes were seen.
 
 Protocol 003 separately recalibrated two evaluable domains. They differ in recurrent-transition, ecological and deterioration parameters, so their fresh-seed contrast is bounded portability evidence and not a single-factor effect of transition direction. Secondary uncertainty analyses resample whole attempted trajectories rather than endpoint rows (Field & Welsh 2007).
 
@@ -117,9 +119,13 @@ For reduced-form partner loss, pooled loss was 0.556, 0.544, 0.565 and 0.549 for
 
 Phase T increased realised temporal support variance from 0 to 0.04684 to 0.09702 while expected support remained approximately 0.75. Pooled loss was 0.5442, 0.5488 and 0.5533; equal-rate `p=.488,.299,.208`, and paired McNemar `p=.896,.762,.883`. Because no matched-support dynamic-network effect was detected, the preregistered adaptive-rewiring gate remained closed.
 
-### Genetic erosion could precede functional loss, but not by a universal threshold
+### Baseline-relative genetic warning strictly replicated within the frozen domain
 
-Only after warning-blind loss calibration did we inspect genetic warning. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available and 35 reached realised functional-trait loss. For each of six baseline-relative `H_alpha`/`H_gamma` endpoints, all 35 valid same-trajectory pairs had genetic erosion before functional loss. Fixed absolute thresholds were not robust: `H_alpha <= 0.20` produced 14 leads and six lags among 20 valid pairs, while `H_gamma <= 0.20` produced eight leads and eight lags among 16 (Figure 2).
+Only after warning-blind loss calibration did we inspect genetic warning. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available and 35 reached realised functional-trait loss. At each of the six predeclared baseline-relative `H_alpha/H_gamma` endpoints, all **35/35** valid same-trajectory pairs had genetic erosion before functional loss. Fixed absolute thresholds were not robust: `H_alpha <= 0.20` produced 14 leads and six lags among 20 valid pairs, while `H_gamma <= 0.20` produced eight leads and eight lags among 16 (Figure 2).
+
+Phase V then tested the same six relative endpoints in the same frozen symmetric domain using one independently preregistered fresh-seed ensemble. Of 100 attempts, 82 trajectories were available and 33 realised functional losses were observed. Every endpoint had **33 valid warning/loss pairs, 33 leads, 0 ties and 0 lags**; the lead fraction was 1.0 and the exact one-sided binomial `p` against 0.5 was `1.1641532182693481e-10` for each endpoint. The five fresh seed blocks contributed `7/7, 7/7, 7/7, 7/7, 5/5` leads among valid pairs. The preregistered decision was **`strict_replication`**.
+
+Thus the relative warning-ordering result is no longer supported by only one finite ensemble: within the frozen symmetric H2-R domain it is supported across two independent stochastic ensembles (historical 35/35 and fresh 33/33 leads at every endpoint). The result remains domain-specific and does not convert the failed absolute thresholds into robust rules.
 
 ### Warning behaviour was not fully portable across calibrated domains
 
@@ -149,11 +155,13 @@ The aggregate-feedback, reduced-form partner-loss and matched-support temporal-p
 
 Real networks add partner abundance dynamics, topology, coextinction, trait constraints, spatial movement and adaptive rewiring. Experimental and synthetic studies show that compensation is context dependent (Brosi & Briggs 2013; Timóteo et al. 2016; Brosi et al. 2017; Leimberger et al. 2023; Ward et al. 2026). Because Phase T did not establish a dynamic-network effect to decompose, rewiring remains closed rather than being tuned to rescue a preferred result.
 
-### Genetic warning is downstream of the loss-generating process
+### Genetic warning is reproducible within a fixed domain, but remains downstream
 
-The inherited benchmark proves that baseline-relative genetic erosion can precede realised functional loss in one calibrated domain. It does not provide a universal threshold: absolute cut-offs produced both leads and lags, and warning availability differed across recalibrated domains.
+The strongest positive result is now the strict replication of baseline-relative genetic warning within the frozen symmetric H2-R domain. The historical ensemble yielded 35/35 leads at all six `H_alpha/H_gamma × 5/10/20%` endpoints; an independently preregistered fresh ensemble yielded 33/33 leads at all six endpoints with no ties or lags. This makes the ordering robust to a second stochastic seed ensemble **within that calibrated closure**.
 
-The condition-first ordering therefore survives every robustness correction. Before asking whether a genetic statistic leads loss, establish whether the functional state exists, estimate loss incidence, distinguish sampling variation from block heterogeneity, replicate load-bearing stochastic findings where possible, and verify that the ecological operator represents the biological process being claimed. Only then should lead time and ordering be evaluated.
+That strength should not be confused with universality. Fixed absolute thresholds produced leads and lags, and warning availability/ordering differed across separately calibrated domains. Phase V did not change the ecological domain, movement representation or network closure. It therefore establishes within-domain reproducibility of a baseline-relative warning definition, not a portable genetic threshold.
+
+The condition-first ordering survives every robustness correction. Before asking whether a genetic statistic leads loss, establish whether the functional state exists, estimate loss incidence, distinguish sampling variation from block heterogeneity, replicate load-bearing stochastic findings where possible, and verify that the ecological operator represents the biological process being claimed. Only then should lead time and ordering be evaluated.
 
 ### Urban and island systems are contrasting routes through the same condition space
 
@@ -165,8 +173,8 @@ The model is finite and its numerical coordinates are not transferable ecologica
 
 The process-resolved movement closures are partial. Whole-individual dispersal does not preserve explicit migrant genotype–trait covariance because the parent representation stores those objects separately. The pollen closure represents paternal gamete origin but not flowers, selfing, incompatibility, pollen limitation, carryover or pollinator behaviour. Phase T represents stochastic partner availability but not explicit partner abundance dynamics, coextinction, spatial partner movement or a full multispecies network. Adaptive rewiring was not tested because its preregistered opening condition was not met.
 
-Warning succeeds only in the inherited calibrated benchmark; condition-recovery, movement, partner and fresh-replication campaigns withheld warning outcomes. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. Finite-horizon non-events remain right-censored.
+Warning ordering is now independently replicated only **within the frozen symmetric H2-R domain**. C2 condition-recovery, movement, partner and Phase-U connectivity campaigns withheld warning outcomes; Phase V was a separately preregistered C3 warning replication. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. Finite-horizon non-events remain right-censored.
 
 ## Data and code availability
 
-The parent and extension repositories are separate computational provenance units. The extension pins the parent scientific state at `dd8ee379d0d3518194c767d16402042525bc00dc`. Machine-readable evidence, workflow/artifact provenance, condition ledgers and submission-build instructions are version controlled. Historical low-replicate and Phase-M results are retained unchanged; high-precision replays, process-resolved robustness closures, dynamic-partner tests and the preregistered Phase-U fresh replication are additive evidence layers and do not overwrite historical provenance.
+The parent and extension repositories are separate computational provenance units. The extension pins the parent scientific state at `dd8ee379d0d3518194c767d16402042525bc00dc`. Machine-readable evidence, workflow/artifact provenance, condition ledgers and submission-build instructions are version controlled. Historical low-replicate and Phase-M results are retained unchanged; high-precision replays, process-resolved robustness closures, dynamic-partner tests, the preregistered Phase-U connectivity replication and the Phase-V strict warning replication are additive evidence layers and do not overwrite historical provenance.
