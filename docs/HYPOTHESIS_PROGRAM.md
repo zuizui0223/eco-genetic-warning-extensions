@@ -122,13 +122,17 @@ Phases R/S used the historical Phase-M seed family and compared the historical a
 
 `migration_rate` remains allele-frequency mixing, not demographic, pollinator, pollen, seed or recolonisation movement.
 
-## C3 — genetic warning only after C2
+## C3 — genetic warning strictly replicates within the frozen symmetric domain
 
-The inherited symmetric benchmark remains a proof of possibility. In one independently calibrated domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
+The inherited parent benchmark first established a conditional warning result in the frozen symmetric H2-R domain: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all **35/35** observed realised functional losses at each of the six predeclared relative endpoints. Fixed absolute thresholds produced both leads and lags.
 
-Phases R/S/T/U add no warning claims. They constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
+Phase V then froze that same domain and endpoint family, selected one independently preregistered fresh master-seed ensemble (`20291110–20291114`) with no prior repository use, and ran 100 attempted trajectories without recalibration or endpoint selection. Eighty-two trajectories were available and 33 realised functional losses were observed. At **all six** relative endpoints there were 33 valid warning/loss pairs, and all **33/33** were warning leads with **0 ties and 0 lags**. The exact one-sided binomial probability against a 0.5 lead probability was `1.1641532182693481e-10` for every endpoint. Each fresh seed block also contained only leads among valid pairs (`7/7, 7/7, 7/7, 7/7, 5/5`). The preregistered Phase-V decision is **`strict_replication`**.
 
-**C3: conditional possibility recovered; universal thresholds unresolved.**
+**Conclusion:** within the already calibrated symmetric H2-R domain, baseline-relative `H_alpha`/`H_gamma` erosion at 5%, 10% and 20% is now supported across **two independent seed ensembles** (historical 35/35 and fresh 33/33 lead ordering). This upgrades C3 from a single-ensemble proof of possibility to a strict within-domain replication.
+
+The claim remains bounded. Phase V does not establish a universal relative threshold, does not rescue the failed absolute-threshold rule, does not identify a recurrent-transition-direction effect, and does not establish portability across different eco-genetic domains or movement/network closures.
+
+**C3: strictly replicated within one frozen calibrated domain; universal thresholds and cross-domain portability remain unresolved/bounded.**
 
 ## C4 — warning portability
 
@@ -152,7 +156,7 @@ Urban and island systems are contrasting empirical routes through the condition 
 | C2d aggregate interaction support | bounded negative result | all predeclared kappa values remain intermediate/homogeneous at high precision |
 | C2e partner architecture | bounded negative result | reduced-form and temporal partner perturbations change some histories but not detected population-level loss process; rewiring remains closed |
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
-| C3 conditional warning | bounded support | baseline-relative genetic erosion can lead loss in one calibrated benchmark; absolute thresholds are not robust |
+| C3 conditional warning | **strict within-domain replication** | historical 35/35 and fresh Phase-V 33/33 valid pairs lead at all six baseline-relative endpoints; absolute thresholds remain non-robust |
 | C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
 
 ## Global stop rules
@@ -170,4 +174,5 @@ Do not:
 9. call the Phase-N/T partner layers a full dynamic multispecies network;
 10. open adaptive rewiring after the Phase-T null result merely to rescue an effect;
 11. open a direction-only warning test without prospectively matched conditions;
-12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
+12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold;
+13. rerun Phase V with replacement seeds, changed relative endpoints, recalibration or higher precision merely to alter the strict-replication result.
