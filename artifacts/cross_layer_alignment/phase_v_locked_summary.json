@@ -1,0 +1,50 @@
+{
+  "phase": "V",
+  "decision": "coarse_marginals_not_transition_sufficient_but_no_detected_loss_incidence_effect",
+  "upstream_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+  "workflow_run_id": 32636913615,
+  "scientific_head": "260a03220bf09d5f4a4d8cb55ec21062bf120c55",
+  "artifact_id": 9492558602,
+  "artifact_digest": "sha256:a5754ab2d54dea868a72fed582a9862cbc88b83510e1cf81e0a872f56b70a1bd",
+  "opening_certificate": {
+    "coarse_marginal_signatures_identical": true,
+    "aligned_cross_layer_covariance": 0.024999999999999994,
+    "anti_aligned_cross_layer_covariance": -0.024999999999999994,
+    "aligned_support_signal": [0.47000000000000003, 0.61, 0.75, 0.8899999999999999],
+    "anti_aligned_support_signal": [0.71, 0.69, 0.67, 0.6499999999999999],
+    "aligned_generation1_interaction": [0.4635025307087563, 0.6186329907974643, 0.7528275661600562, 0.851162759021216],
+    "anti_aligned_generation1_interaction": [0.7178354594975404, 0.6992544210587585, 0.6799952557842817, 0.6601022701532934],
+    "maximum_patchwise_generation1_difference": 0.25433292878878405,
+    "coarse_marginals_are_transition_sufficient": false
+  },
+  "aligned": {
+    "attempted": 500,
+    "trait_loss_count": 339,
+    "pooled_trait_loss_rate": 0.678,
+    "seed_block_loss_rates": [0.63, 0.74, 0.73, 0.64, 0.65],
+    "mean_restricted_loss_time": 34.332,
+    "median_restricted_loss_time": 25.0
+  },
+  "anti_aligned": {
+    "attempted": 500,
+    "trait_loss_count": 361,
+    "pooled_trait_loss_rate": 0.722,
+    "seed_block_loss_rates": [0.70, 0.71, 0.77, 0.71, 0.72],
+    "mean_restricted_loss_time": 32.1,
+    "median_restricted_loss_time": 23.0
+  },
+  "paired": {
+    "comparable_pairs": 500,
+    "aligned_loss_anti_no_loss": 92,
+    "aligned_no_loss_anti_loss": 114,
+    "same_loss": 247,
+    "same_no_loss": 47,
+    "mcnemar_exact_p": 0.14324485626490824,
+    "aligned_earlier_restricted_time": 215,
+    "anti_aligned_earlier_restricted_time": 221,
+    "restricted_time_ties": 64,
+    "mean_aligned_minus_anti_restricted_loss_time": 2.232
+  },
+  "claim_ceiling": "Layer-wise coarse marginals are not a sufficient Markov state for the declared local interaction dynamics, because opposite cross-layer spatial alignment changes the exact next interaction transition. Under the one preregistered 60-generation deterioration schedule, however, the paired difference in realised functional-loss occurrence was not detected at alpha=0.05. Phase V therefore supports a joint-state/transition representation boundary, not a directional long-term loss-incidence effect.",
+  "stop_rule": "No replacement seeds, added alignment permutations, altered state values, horizon, barrier schedule, feedback weights, alpha or precision are opened after the Phase-V result."
+}
