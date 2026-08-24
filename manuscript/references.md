@@ -2,6 +2,8 @@
 
 Bibliographic metadata below has been checked against publisher, PubMed, or institutional records. DOI strings are canonical identifiers; final punctuation and author truncation can be adjusted by the journal production system without changing the underlying records.
 
+Abe, H., Ueno, S., Takahashi, T., Tsumura, Y. & Hasegawa, M. (2013). Resilient plant–bird interactions in a volcanic island ecosystem: pollination of Japanese camellia mediated by the Japanese white-eye. *PLOS ONE*, **8**, e62696. doi:10.1371/journal.pone.0062696
+
 Alaasam, V., Snead, A., Thonis, A., et al. (2026). Eco-evolutionary dynamics shaping biodiversity in the urban mosaic. *Nature Reviews Biodiversity*, **2**, 170–185. doi:10.1038/s44358-026-00138-0
 
 Benitez, L.M., Parr, C.L., Sankaran, M. & Ryan, C.M. (2025). Fragmentation in patchy ecosystems: a call for a functional approach. *Trends in Ecology & Evolution*, **40**, 27–36. doi:10.1016/j.tree.2024.09.004
@@ -14,9 +16,13 @@ Brosi, B.J. & Briggs, H.M. (2013). Single pollinator species losses reduce flora
 
 Brosi, B.J., Niezgoda, K. & Briggs, H.M. (2017). Experimental species removals impact the architecture of pollination networks. *Biology Letters*, **13**, 20170243. doi:10.1098/rsbl.2017.0243
 
+Cheptou, P.-O. & Avendaño V, L.G. (2006). Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist*, **172**, 774–783. doi:10.1111/j.1469-8137.2006.01880.x
+
 Delavaux, C.S., Crowther, T.W., Bever, J.D., Weigelt, P. & Gora, E.M. (2024). Mutualisms weaken the latitudinal diversity gradient among oceanic islands. *Nature*, **627**, 335–339. doi:10.1038/s41586-024-07110-y
 
 Domínguez-Garcia, V., Molina, F.P., Godoy, O. & Bartomeus, I. (2024). Interaction network structure explains species' temporal persistence in empirical plant–pollinator communities. *Nature Ecology & Evolution*, **8**, 423–429. doi:10.1038/s41559-023-02314-3
+
+Dornier, A. & Cheptou, P.-O. (2013). Inferring contemporary dispersal processes in plant metapopulations: comparison of direct and indirect estimates of dispersal for the annual species *Crepis sancta*. *Heredity*, **111**, 1–7. doi:10.1038/hdy.2013.3
 
 Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
 
