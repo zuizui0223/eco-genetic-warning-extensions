@@ -30,11 +30,11 @@ No additional response or landscape variable is selected after the result.
 
 ## Schema correction before outcome analysis
 
-The first locked workflow successfully downloaded the MD5-matched source file and stopped during schema validation **before fitting M0/M1, permutation testing or producing an outcome summary**. It revealed that `plantID` is repeated (first detected duplicate: `5854`), so multiple fruit/seed-family rows can belong to one maternal plant.
+The first locked workflow successfully downloaded the MD5-matched source file and stopped during schema validation **before fitting M0/M1, permutation testing or producing an outcome summary**. It revealed that `plantID` is repeated (first detected duplicate: `5854`), consistent with the archive description that each row is a sample from one fruit while `plantID` identifies the maternal line.
 
-This changes only the validation grouping, not the scientific contrast. To avoid training on one fruit family from a maternal plant while predicting another from the same plant, all rows sharing one `plantID` are now held out together. The response remains row-level `correlatedPaternity`; rows are not averaged or removed.
+This changes only the validation grouping, not the scientific contrast. To avoid training on one fruit family from a maternal plant while predicting another from the same plant, all rows sharing one `plantID` are held out together. The response remains row-level `correlatedPaternity`; rows are not averaged or removed.
 
-The implementation also requires `treatment` and `isolation20` to be constant within each repeated `plantID`. If they are not, the archive is classified `not_identifiable_from_archive` rather than repaired post hoc.
+`isolation20` must be constant within each repeated `plantID`, because it is an individual-level spatial property of the maternal plant. `treatment` is allowed to differ among fruit rows of the same maternal plant because pollinator-exclusion treatments are fruit/flower-level experimental states. If repeated rows disagree on `isolation20`, the archive is classified `not_identifiable_from_archive` rather than repaired post hoc.
 
 ## Biological interpretation of variables
 
@@ -69,19 +69,21 @@ Secondary summaries:
 - mean absolute error;
 - full-data OLS coefficient on standardized `isolation20`;
 - treatment-level sample sizes and response means;
-- number of fruit/seed-family rows and unique maternal plants.
+- number of fruit/seed-family rows and unique maternal plants;
+- maternal-plant treatment profiles.
 
 ## Permutation test
 
-Incremental isolation information is also tested with a fixed 10,000-permutation procedure, random seed `20260824`.
+Incremental isolation information is tested with a fixed 10,000-permutation procedure, random seed `20260824`.
 
 - fit M0 and M1 to the observed data;
 - statistic: `RSS(M0) - RSS(M1)`;
-- permute `isolation20` at the **maternal-plant level within treatment groups**, preserving all repeated rows of each maternal plant together;
-- refit M1 for every permutation;
+- define each maternal plant's **treatment profile** as the sorted multiset of treatment labels across its fruit rows (thus retaining both treatment identities and repeated-row counts);
+- permute the plant-level `isolation20` values **only among maternal plants with identical treatment profiles**;
+- assign the permuted plant value back to all rows of that plant and refit M1;
 - one-sided permutation p-value = `(1 + number(permuted statistic >= observed statistic)) / 10001`.
 
-This tests the incremental isolation term without converting the source data into arbitrary isolation classes or breaking the repeated-maternal-plant structure.
+This preserves the row-level treatment structure exactly while testing whether maternal spatial isolation adds information beyond treatment. Strata with one maternal plant remain unchanged; they are not dropped or merged.
 
 ## Decision rule
 
@@ -89,7 +91,7 @@ This tests the incremental isolation term without converting the source data int
 - **`predictive_residual_isolation_only`**: M1 improves held-out MSE but the coefficient/permutation criterion is not met.
 - **`model_residual_isolation_only`**: coefficient is positive with permutation `p < .05`, but held-out MSE does not improve.
 - **`no_detected_residual_isolation`**: neither predictive nor permutation criterion is met.
-- **`not_identifiable_from_archive`**: required source columns are absent, contain unrecoverable missingness, repeated `plantID` rows disagree on treatment/isolation, or grouped leave-one-plant-out fitting is not defined.
+- **`not_identifiable_from_archive`**: required source columns are absent, contain unrecoverable missingness, repeated `plantID` rows disagree on `isolation20`, or grouped leave-one-plant-out fitting is not defined.
 
 All classifications are retained. No alternative response, isolation metric or subset is opened because the primary result is weak or strong.
 
