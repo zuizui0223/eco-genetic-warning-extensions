@@ -6,7 +6,9 @@ import hashlib
 import io
 import json
 import zipfile
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 from urllib.request import Request, urlopen
 
 DATASETS = (
@@ -35,25 +37,70 @@ DATA_ROOT = "https://data-package.ceh.ac.uk/data"
 USER_AGENT = "eco-genetic-warning-extensions/1.0"
 
 
-def _download(uuid: str) -> tuple[str, str, bytes]:
-    url = f"{DATA_ROOT}/{uuid}"
+class _LinkParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.targets: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        for key, value in attrs:
+            if key.lower() in {"href", "action"} and value:
+                self.targets.append(value)
+
+
+def _request(url: str) -> tuple[str, bytes]:
     request = Request(
         url,
         headers={
             "User-Agent": USER_AGENT,
-            "Accept": "application/zip,text/csv,application/octet-stream,*/*",
+            "Accept": "application/zip,text/csv,application/octet-stream,text/html,*/*",
         },
     )
     with urlopen(request, timeout=180) as response:
         content_type = str(response.headers.get("Content-Type", ""))
         payload = response.read()
-    return url, content_type, payload
+    return content_type, payload
+
+
+def _looks_like_csv(content_type: str, payload: bytes) -> bool:
+    if "csv" in content_type.lower():
+        return True
+    lines = payload.splitlines()
+    if not lines:
+        return False
+    first = lines[0]
+    return b"," in first or b"\t" in first
+
+
+def _candidate_links(landing_url: str, html_payload: bytes, uuid: str) -> list[str]:
+    parser = _LinkParser()
+    parser.feed(html_payload.decode("utf-8", errors="replace"))
+    out: set[str] = set()
+    for target in parser.targets:
+        url = urljoin(landing_url, target)
+        parsed = urlparse(url)
+        host = parsed.netloc.lower()
+        path_lower = parsed.path.lower()
+        if parsed.scheme != "https" or not host.endswith("ceh.ac.uk"):
+            continue
+        if url.rstrip("/") == landing_url.rstrip("/"):
+            continue
+        # Access-route selection is based only on URL/link structure. Every
+        # same-EIDC candidate that looks like a data/download route is fetched;
+        # no candidate is selected from file contents or outcome values.
+        if (
+            uuid.lower() in url.lower()
+            or path_lower.endswith((".csv", ".zip"))
+            or "/download" in path_lower
+            or "/data/" in path_lower
+        ):
+            out.add(url)
+    return sorted(out)
 
 
 def _csv_header(payload: bytes) -> list[str]:
     text = payload.decode("utf-8-sig")
-    stream = io.StringIO(text)
-    reader = csv.reader(stream)
+    reader = csv.reader(io.StringIO(text))
     try:
         header = next(reader)
     except StopIteration as exc:
@@ -64,7 +111,7 @@ def _csv_header(payload: bytes) -> list[str]:
 def _archive_schema(payload: bytes) -> list[dict[str, object]]:
     buffer = io.BytesIO(payload)
     if not zipfile.is_zipfile(buffer):
-        raise RuntimeError("payload is neither recognized ZIP nor direct CSV")
+        raise RuntimeError("payload is not a ZIP archive")
     members: list[dict[str, object]] = []
     with zipfile.ZipFile(buffer) as archive:
         for info in archive.infolist():
@@ -83,50 +130,106 @@ def _archive_schema(payload: bytes) -> list[dict[str, object]]:
     return members
 
 
-def _direct_schema(content_type: str, payload: bytes) -> list[dict[str, object]]:
-    lowered = content_type.lower()
-    if "csv" not in lowered:
-        # Some package servers return octet-stream for CSV. Only accept it if
-        # the first line parses as a non-trivial CSV header; do not inspect rows.
-        first_line = payload.splitlines()[0] if payload.splitlines() else b""
-        if b"," not in first_line and b"\t" not in first_line:
-            raise RuntimeError(
-                f"unexpected non-ZIP package response: content_type={content_type!r}, bytes={len(payload)}"
-            )
-    return [
-        {
-            "member_name": "direct_response.csv",
-            "member_bytes": len(payload),
-            "sha256": hashlib.sha256(payload).hexdigest(),
-            "columns": _csv_header(payload),
+def _payload_schema(url: str, content_type: str, payload: bytes) -> dict[str, object] | None:
+    package_sha = hashlib.sha256(payload).hexdigest()
+    buffer = io.BytesIO(payload)
+    if zipfile.is_zipfile(buffer):
+        return {
+            "resolved_url": url,
+            "content_type": content_type,
+            "response_kind": "zip",
+            "package_bytes": len(payload),
+            "package_sha256": package_sha,
+            "members": _archive_schema(payload),
         }
-    ]
+    if _looks_like_csv(content_type, payload):
+        return {
+            "resolved_url": url,
+            "content_type": content_type,
+            "response_kind": "direct_csv",
+            "package_bytes": len(payload),
+            "package_sha256": package_sha,
+            "members": [
+                {
+                    "member_name": Path(urlparse(url).path).name or "direct_response.csv",
+                    "member_bytes": len(payload),
+                    "sha256": package_sha,
+                    "columns": _csv_header(payload),
+                }
+            ],
+        }
+    return None
+
+
+def _resolve_dataset(uuid: str) -> tuple[str, str, int, str, list[dict[str, object]], list[str]]:
+    landing_url = f"{DATA_ROOT}/{uuid}"
+    landing_type, landing_payload = _request(landing_url)
+    direct = _payload_schema(landing_url, landing_type, landing_payload)
+    if direct is not None:
+        return (
+            landing_url,
+            landing_type,
+            len(landing_payload),
+            hashlib.sha256(landing_payload).hexdigest(),
+            [direct],
+            [],
+        )
+
+    if "html" not in landing_type.lower():
+        raise RuntimeError(
+            f"unexpected EIDC landing response: content_type={landing_type!r}, bytes={len(landing_payload)}"
+        )
+
+    candidates = _candidate_links(landing_url, landing_payload, uuid)
+    if not candidates:
+        raise RuntimeError(
+            f"EIDC landing HTML exposed no same-service data/download candidates: uuid={uuid}, "
+            f"bytes={len(landing_payload)}"
+        )
+
+    resolved_payloads: list[dict[str, object]] = []
+    attempted: list[str] = []
+    for url in candidates:
+        attempted.append(url)
+        try:
+            content_type, payload = _request(url)
+        except Exception:
+            continue
+        schema = _payload_schema(url, content_type, payload)
+        if schema is not None:
+            resolved_payloads.append(schema)
+
+    if not resolved_payloads:
+        raise RuntimeError(
+            "EIDC landing candidates yielded no verifiable ZIP/CSV payload; "
+            f"uuid={uuid}, candidates={attempted!r}"
+        )
+
+    return (
+        landing_url,
+        landing_type,
+        len(landing_payload),
+        hashlib.sha256(landing_payload).hexdigest(),
+        resolved_payloads,
+        attempted,
+    )
 
 
 def discover(manifest_path: Path) -> dict[str, object]:
     datasets: list[dict[str, object]] = []
     for role, doi, uuid in DATASETS:
-        url, content_type, payload = _download(uuid)
-        package_sha = hashlib.sha256(payload).hexdigest()
-        buffer = io.BytesIO(payload)
-        if zipfile.is_zipfile(buffer):
-            response_kind = "zip"
-            members = _archive_schema(payload)
-        else:
-            response_kind = "direct_csv"
-            members = _direct_schema(content_type, payload)
-
+        landing_url, landing_type, landing_bytes, landing_sha, payloads, attempted = _resolve_dataset(uuid)
         datasets.append(
             {
                 "role": role,
                 "doi": doi,
                 "uuid": uuid,
-                "package_url": url,
-                "content_type": content_type,
-                "response_kind": response_kind,
-                "package_bytes": len(payload),
-                "package_sha256": package_sha,
-                "members": members,
+                "landing_url": landing_url,
+                "landing_content_type": landing_type,
+                "landing_bytes": landing_bytes,
+                "landing_sha256": landing_sha,
+                "access_candidates_attempted": attempted,
+                "payloads": payloads,
             }
         )
 
@@ -134,7 +237,7 @@ def discover(manifest_path: Path) -> dict[str, object]:
         "status": "schema_only_discovery_complete",
         "datasets": datasets,
         "inspection_boundary": (
-            "Only package/file identifiers, byte hashes/sizes, archive member names and CSV header labels were inspected. "
+            "Only EIDC landing-link attributes, package/file identifiers, byte hashes/sizes, archive member names and CSV header labels were inspected. "
             "No data rows, outcome values, descriptive outcome statistics, correlations, model fits, p-values or effect directions were read or computed."
         ),
         "next_gate": (
@@ -160,14 +263,17 @@ def main() -> int:
         json.dumps(
             {
                 "status": result["status"],
-                "datasets": [
-                    {
-                        "role": row["role"],
-                        "kind": row["response_kind"],
-                        "members": [m["member_name"] for m in row["members"]],
-                    }
+                "datasets": {
+                    row["role"]: [
+                        {
+                            "kind": payload["response_kind"],
+                            "url": payload["resolved_url"],
+                            "members": [m["member_name"] for m in payload["members"]],
+                        }
+                        for payload in row["payloads"]
+                    ]
                     for row in result["datasets"]
-                ],
+                },
             },
             sort_keys=True,
         )
