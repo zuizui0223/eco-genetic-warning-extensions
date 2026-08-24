@@ -1,0 +1,85 @@
+name: E1 Izu Figshare discovery
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_e1_izu_figshare.py'
+      - 'scripts/run_e1_izu_residual_origin.py'
+      - 'manuscript/empirical_e1_residual_origin_preregistration.md'
+      - '.github/workflows/e1-izu-figshare-discovery.yml'
+      - 'tests/test_e1_figshare_discovery_contract.py'
+      - 'tests/test_e1_residual_origin_preregistration.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install public-data analysis dependencies
+        run: python -m pip install --upgrade pandas numpy
+
+      - name: Fetch public Figshare archive and inventory schema
+        run: |
+          python scripts/fetch_e1_izu_figshare.py \
+            --output-root _external/e1_izu_figshare \
+            --manifest artifacts/empirical/e1_figshare_discovery.json
+
+      - name: Validate discovery manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/e1_figshare_discovery.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert data['resource_doi'] == '10.6084/m9.figshare.25025000.v1'
+          assert data['status'] == 'public_figshare_archive_discovered'
+          assert data['source_files'], 'Figshare item returned no files'
+          assert data['inventory'], 'archive inventory is empty'
+          print('source files:', [f['name'] for f in data['source_files']])
+          print('structured candidates:', [f['path'] for f in data['structured_candidates']])
+          PY
+
+      - name: Run preregistered residual-origin analysis
+        run: |
+          python scripts/run_e1_izu_residual_origin.py \
+            --data-root _external/e1_izu_figshare/downloads \
+            --output artifacts/empirical/e1_residual_origin_result.json
+
+      - name: Validate residual-origin result contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          result = json.loads(Path('artifacts/empirical/e1_residual_origin_result.json').read_text(encoding='utf-8'))
+          assert result['source_lock']['doi'] == '10.6084/m9.figshare.25025000.v1'
+          assert result['schema_mapping']['row_count'] == 572
+          assert result['schema_mapping']['site_count'] == 8
+          assert result['schema_mapping']['models']['C0'] == ['richness']
+          assert result['schema_mapping']['models']['C1'] == ['TM_z', 'FDQ', 'FEve']
+          assert result['schema_mapping']['models']['C2'] == ['TM_z', 'FDQ', 'FEve', 'dist']
+          assert len(result['folds']) == 8
+          assert result['validation'].startswith('leave-one-site-out')
+          print('C2 vs C1:', result['c2_vs_c1'])
+          PY
+
+      - name: Upload discovery and E1 result snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: e1-izu-figshare-discovery
+          path: |
+            artifacts/empirical/e1_figshare_discovery.json
+            artifacts/empirical/e1_residual_origin_result.json
+            _external/e1_izu_figshare
+          if-no-files-found: error
+          retention-days: 30

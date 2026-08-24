@@ -1,0 +1,83 @@
+{
+  "stage": "E1 Honshu-Izu ecological partial-state residual-origin test",
+  "decision": "ecological_partial_state_convergence_supported",
+  "decision_caveat": "The preregistered functional-state model itself improved only modestly over the richness comparator. This supports absence of transferable mainland-distance gain at the tested ecological partial-state layer, not full state sufficiency or full eco-genetic convergence.",
+  "source_lock": {
+    "doi": "10.6084/m9.figshare.25025000.v1",
+    "article_id": 25025000,
+    "version": 1,
+    "discovery_workflow_run": 32698949654,
+    "discovery_artifact_id": 9510855695,
+    "discovery_artifact_digest": "sha256:5589e73dcf417122f844d8abe5583d8fa16a848838d206ef6ea4af75c987fb23",
+    "source_sha256": {
+      "code.R": "2434867ef108f09d9ac36ec69d2c7972265f0160ca454b5025d6bd494de5a91a",
+      "data_main.csv": "b508f9d1314c48d1eb7cee33b636d42b78c6808d841ce046b66c336a59764f39",
+      "data_pollen.csv": "b78537aada9a61600d173a260d9deb206423d5dca7ac4260b4cb051b8a29e173",
+      "data_sp_plant.csv": "d3c59dd1cdc847f910530338eac9fe24e02c4f5ca11a51d7111861ce9b808e04",
+      "data_sp_pollinator.csv": "261a59febc28f7bdfc7fa6e489f3d0fef0947adcce35cb3f30ef00a44a49c627"
+    }
+  },
+  "analysis_lock": {
+    "branch_head_before_result_lock": "bcc4a87ee71201d1014c0020172a13cc9f5e753c",
+    "runner_blob_sha": "0cd94722d2559ab868c58dc46314809a68f4fd3c",
+    "validation": "leave-one-site-out; all observations from each of 8 sites held out together",
+    "response": "pollen_z",
+    "models": {
+      "C0": ["richness", "season", "plant"],
+      "C1": ["TM_z", "FDQ", "FEve", "season", "plant"],
+      "C2": ["TM_z", "FDQ", "FEve", "dist", "season", "plant"]
+    },
+    "row_count": 572,
+    "site_count": 8,
+    "site_alias_mapping": {
+      "ishihama": "hitachi",
+      "ibaraki": "hitachinaka",
+      "chiba": "tateyama",
+      "oshima": "oshima",
+      "nii": "niijima",
+      "kozu": "kozu",
+      "miyake": "miyake",
+      "hachijo": "hachijo"
+    }
+  },
+  "aggregate_metrics": {
+    "C0": {
+      "row_weighted_mse": 1.1096278221501876,
+      "mean_site_mse": 1.111501564211292
+    },
+    "C1": {
+      "row_weighted_mse": 1.0877352926660404,
+      "mean_site_mse": 1.089115444966739
+    },
+    "C2": {
+      "row_weighted_mse": 1.1320924612331091,
+      "mean_site_mse": 1.1298495645322992
+    }
+  },
+  "C1_vs_C0": {
+    "C1_lower_mse_fold_count": 4,
+    "row_weighted_mse_change_C1_minus_C0": -0.021892529484147216
+  },
+  "C2_vs_C1": {
+    "C2_lower_mse_fold_count": 3,
+    "row_weighted_mse_change_C2_minus_C1": 0.04435716856706873,
+    "row_weighted_mse_percent_change": 4.077937791128323,
+    "mean_site_mse_change_C2_minus_C1": 0.04073411956556017
+  },
+  "fold_mse": [
+    {"site": "hachijo", "dist": 178, "C1": 0.621202149492476, "C2": 0.8660129529876732},
+    {"site": "hitachi", "dist": 0, "C1": 0.8301817518101923, "C2": 0.816745107448538},
+    {"site": "hitachinaka", "dist": 0, "C1": 0.9643608227248059, "C2": 0.9648931447278188},
+    {"site": "kozu", "dist": 47, "C1": 0.891135866443482, "C2": 0.8921441972738491},
+    {"site": "miyake", "dist": 75, "C1": 1.372637550221497, "C2": 1.3673222211311609},
+    {"site": "niijima", "dist": 35, "C1": 1.8462292304430958, "C2": 1.8418738997445312},
+    {"site": "oshima", "dist": 22, "C1": 0.9247542413064579, "C2": 0.9444545280045771},
+    {"site": "tateyama", "dist": 0, "C1": 1.2624219472919052, "C2": 1.3453504649402466}
+  ],
+  "held_out_residual_distance": {
+    "C1_spearman": -0.3903600291794133,
+    "C2_spearman": 0.07319250547113999
+  },
+  "claim_boundary": "Mainland distance did not add transferable predictive accuracy after the preregistered I/T partial state; adding it worsened aggregate held-out MSE. This does not show that C1 is a complete sufficient state, because C1 only modestly outperformed the richness comparator and G/C/R/M are not synchronized in this archive.",
+  "execution_note": "Numbers were reproduced deterministically from the successful locked Figshare discovery artifact using the committed runner while the updated GitHub Actions run remained queued. The workflow is retained as an independent reproduction gate."
+}
