@@ -1,0 +1,51 @@
+name: Miconia joint-state schema discovery
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install schema dependency
+        run: python -m pip install --upgrade openpyxl
+
+      - name: Fetch fixed Dryad workbooks and inspect schema only
+        run: |
+          python scripts/fetch_miconia_joint_state_schema.py \
+            --output-dir _external/miconia_joint_state \
+            --manifest artifacts/empirical/miconia_joint_state_schema.json
+
+      - name: Validate schema-only boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/miconia_joint_state_schema.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['status'] == 'schema_only_discovery_complete'
+          assert d['dataset_doi'] == '10.5061/dryad.1cm80'
+          assert [f['file_stream_id'] for f in d['files']] == [30526, 30527, 30528, 30529]
+          assert all(f['sha256'] and f['workbook_schema'] for f in d['files'])
+          assert 'No data-cell values' in d['inspection_boundary']
+          print(json.dumps({'files': [(f['filename'], f['sha256']) for f in d['files']]}, sort_keys=True))
+          PY
+
+      - name: Upload schema manifest only
+        uses: actions/upload-artifact@v4
+        with:
+          name: miconia-joint-state-schema
+          path: artifacts/empirical/miconia_joint_state_schema.json
+          if-no-files-found: error
+          retention-days: 30
