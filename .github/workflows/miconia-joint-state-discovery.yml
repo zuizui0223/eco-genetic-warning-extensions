@@ -1,12 +1,6 @@
 name: Miconia joint-state schema discovery
 
 on:
-  pull_request:
-    paths:
-      - 'scripts/fetch_miconia_joint_state_schema.py'
-      - 'manuscript/empirical_miconia_joint_state_preregistration.md'
-      - '.github/workflows/miconia-joint-state-discovery.yml'
-      - 'tests/test_miconia_joint_state_discovery_contract.py'
   workflow_dispatch:
 
 permissions:
