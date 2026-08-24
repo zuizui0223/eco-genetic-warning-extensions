@@ -4,21 +4,26 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urljoin
 from urllib.request import Request, urlopen
 
 DOI = "10.5061/dryad.d51c59zzj"
-API_ROOT = "https://datadryad.org/api/v2"
+DRYAD_ROOT = "https://datadryad.org"
+API_ROOT = f"{DRYAD_ROOT}/api/v2"
+
+
+def _absolute(url: str) -> str:
+    return urljoin(DRYAD_ROOT, url)
 
 
 def _json(url: str) -> dict:
-    req = Request(url, headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
+    req = Request(_absolute(url), headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
     with urlopen(req, timeout=60) as response:
         return json.load(response)
 
 
 def _bytes(url: str) -> bytes:
-    req = Request(url, headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
+    req = Request(_absolute(url), headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
     with urlopen(req, timeout=120) as response:
         return response.read()
 
@@ -28,12 +33,14 @@ def _href(obj: dict, relation: str) -> str | None:
     value = links.get(relation)
     if isinstance(value, dict):
         href = value.get("href")
-        return str(href) if href else None
+        return _absolute(str(href)) if href else None
     return None
 
 
 def discover(output_root: Path, manifest_path: Path) -> dict:
-    dataset_url = f"{API_ROOT}/datasets/doi:{quote(DOI, safe='/:')}"
+    # Dryad expects the entire `doi:<DOI>` path segment URL-encoded, including `/`.
+    dataset_key = quote(f"doi:{DOI}", safe="")
+    dataset_url = f"{API_ROOT}/datasets/{dataset_key}"
     dataset = _json(dataset_url)
 
     version_url = _href(dataset, "stash:version") or _href(dataset, "version")
@@ -78,11 +85,11 @@ def discover(output_root: Path, manifest_path: Path) -> dict:
             "name": target.name,
             "size": len(payload),
             "sha256": digest,
-            "download_url": download_url,
+            "download_url": _absolute(download_url),
         })
         inventory.append({"path": str(target.relative_to(output_root)), "size": len(payload), "sha256": digest})
 
-    # Optional structured inventory after the locked bytes have been fetched.
+    # Structured inventory is descriptive only and does not alter the preregistered model set.
     try:
         import pandas as pd
         for row in inventory:
@@ -96,14 +103,14 @@ def discover(output_root: Path, manifest_path: Path) -> dict:
                         "rows": int(len(frame)),
                         "columns": [str(c) for c in frame.columns],
                     }
-    except Exception as exc:  # discovery must preserve raw bytes even if structured inspection fails
+    except Exception as exc:  # preserve the locked bytes even if workbook inspection itself fails
         inventory.append({"structured_inventory_error": repr(exc)})
 
     result = {
         "status": "public_dryad_archive_discovered",
         "resource_doi": DOI,
         "dataset_api_url": dataset_url,
-        "version_api_url": version_url,
+        "version_api_url": _absolute(version_url),
         "title": dataset.get("title") or version.get("title"),
         "source_files": source_files,
         "inventory": inventory,
