@@ -2,13 +2,13 @@
 
 ## Purpose
 
-The mathematical condition map is now paired with a **natural-system condition map**. The aim is not to invent universal field regimes from four case studies. It is to identify which measured ecological coordinates repeatedly separate functionally different outcomes and which coarse descriptors repeatedly fail.
+The mathematical condition map is now paired with a **natural-system condition map**. The aim is not to invent universal field regimes from a small set of case studies. It is to identify which measured ecological coordinates repeatedly separate functionally different outcomes and which coarse descriptors repeatedly fail.
 
 The common question is:
 
 > **When apparently similar spatial fragmentation or local interaction loss produces different realised functions, which measured state coordinates explain the difference?**
 
-## Four natural mechanisms already visible in published systems
+## Six natural mechanisms already visible in published systems
 
 ### 1. Density–interaction limitation — urban *Crepis sancta*
 
@@ -62,6 +62,40 @@ Important boundary: neither urban intensity nor total pollinator abundance/richn
 
 **Measured state coordinates:** spatial context, `I/T/F`; natural focal-plant `G/C/R/M` are absent because phytometer material is standardised.
 
+### 5. Cohort/history lag — Perth *Conospermum undulatum*
+
+Across an urban-fragmentation study programme, reproductive performance and contemporary pollen flow respond to the present built matrix while standing adult neutral genetics can retain the signature of an older, more connected landscape.
+
+Observed temporal pattern:
+
+`historical connectivity -> adult genetic legacy`
+
+while
+
+`current built matrix -> current pollen connectivity/function declines`.
+
+Important boundary: a genetic measurement is not interpretable without its **cohort and temporal reference**. Adult neutral diversity can describe past connectivity rather than the contemporary interaction/mating process.
+
+**Measured state coordinates:** strong `D/I/C/R/G/F/M`, but temporal layers span related studies and must not be naively row-joined.
+
+### 6. Joint interaction–connectivity limitation with cohort-emergent genetics — *Spondias purpurea*
+
+In Mexican tropical dry forest, one fragmentation comparison jointly measured pollinator visitation, male/female reproductive performance, paternity-derived pollen flow, correlated paternity/effective sire number, and adult/seed/juvenile genetics.
+
+Observed chain:
+
+`fragmentation -> realised visitation ↓ + pollen-flow kernel contracts + donor diversity ↓ + reproductive function ↓`
+
+followed by
+
+`seed/juvenile heterozygosity ↓ and inbreeding ↑ before standing adult genetics necessarily shows the same magnitude of change`.
+
+Mean realised pollen-flow distance was about 209.15 m in continuous versus 44.91 m in fragmented forest. The numerical values are one-system anchors, not transferable thresholds.
+
+Important boundary: this study shows why adult neutral genetics, contemporary mating connectivity, interaction support and direct function should be measured as **different but aligned state coordinates**.
+
+**Measured state coordinates:** near-synchronized `D/I/C/R/G/F/M`, with cohort-specific `G`; it is currently the strongest natural bridge to the joint-state logic.
+
 ## What these systems jointly falsify
 
 The empirical literature already rejects several possible coarse definitions of a functional-fragmentation regime:
@@ -70,14 +104,15 @@ The empirical literature already rejects several possible coarse definitions of 
 2. **local interaction/resource density alone** — Miyake-jima shows that movement can offset lower local floral support;
 3. **species richness alone** — Izu functional diversity and trait matching are more informative for pollination function;
 4. **urban/island label alone** — both categories contain different functional outcomes and mechanisms;
-5. **one connectivity scalar** — urban plant movement, pollinator movement and pollen flow can decouple;
-6. **neutral genetic diversity alone** — it is neither equivalent to interaction support nor sufficient to describe the joint spatial state.
+5. **one connectivity scalar** — plant movement, pollinator movement and pollen flow can decouple;
+6. **neutral genetic diversity alone** — it is neither equivalent to interaction support nor sufficient to describe the joint spatial state;
+7. **one genetic cohort alone** — *Conospermum* and *Spondias* show that adult standing diversity and contemporary offspring/mating state can encode different time layers.
 
 ## Empirical core state suggested by the evidence
 
 The smallest **current candidate**, before any prospective sufficiency test, is:
 
-`S_emp(t) = {D, I, T, C, R, G, F_baseline, M, joint spatial alignment}_t`
+`S_emp(t) = {D, I, T, C, R, G_by_cohort, F_baseline, M, joint spatial alignment}_t`
 
 where:
 
@@ -86,7 +121,7 @@ where:
 - `T` = functional/trait matching or equivalent mechanism-specific trait state;
 - `C` = process-specific movement/connectivity;
 - `R` = compensatory/alternative routes;
-- `G` = genetic/mating state;
+- `G_by_cohort` = genetic/mating state indexed to the cohort and process represented;
 - `F_baseline` = realised function at the start of the prediction window;
 - `M` = plausible ecological memory/history;
 - joint spatial alignment retains whether these supports co-occur in the same patches.
@@ -95,7 +130,7 @@ This is deliberately larger than the model state. Natural systems contain proces
 
 ## Natural candidate states, not habitat classes
 
-The present literature suggests three broad candidate state patterns that can be searched for across habitats:
+The present literature suggests five broad candidate state patterns that can be searched for across habitats.
 
 ### A. Uncompensated interaction limitation
 
@@ -123,6 +158,24 @@ Miyake-jima camellia is the clearest current example.
 
 Zurich provides the clearest current example.
 
+### D. Cohort/history-lag fragmentation
+
+- current interaction/connectivity/function is degraded;
+- adult standing genetics still records an older landscape state;
+- offspring or paternity layers are required to diagnose the current process.
+
+*Conospermum* is the clearest current example.
+
+### E. Joint interaction–connectivity deterioration
+
+- realised interaction support declines;
+- process-specific connectivity contracts;
+- direct function declines;
+- mating/donor diversity narrows;
+- genetic deterioration emerges most clearly in new cohorts.
+
+*Spondias* is the strongest current near-synchronized example.
+
 These patterns are **search templates, not universal biological classes**. They become regimes only if they predict future functional trajectories and replicate across independent systems.
 
 ## Stronger convergence test implied by the natural examples
@@ -132,9 +185,10 @@ The cross-system test should not compare raw metric values across unrelated ecos
 1. define a focal function in each system;
 2. estimate its local interaction-support state and direct function;
 3. measure process-specific connectivity/compensation;
-4. retain the spatial alignment among interaction, demography and genetics;
-5. predict future change/loss in function;
-6. then ask whether habitat origin/history still improves prediction.
+4. align genetic measurements to the relevant cohort and outcome window;
+5. retain spatial alignment among interaction, demography and genetics;
+6. predict future change/loss in function;
+7. then ask whether habitat origin/history still improves prediction.
 
 The central statistical null is conditional independence:
 
@@ -146,21 +200,23 @@ A residual origin/history effect identifies a missing state coordinate. It is no
 
 ### Existing-data tier
 
-- **Zurich E2:** already audited from openly released model outputs; next required calculation is a joint `interaction state + Urban_500` held-out predictive comparison once the raw EnviDat reproductive observations are loaded.
-- **Izu E1:** published 40-network results identify `FD_Q + trait matching + season` as the ecological partial state; next calculation is the held-out residual mainland-distance/origin test on the archived Figshare data.
-- **Miyake-jima:** use disturbance, flower density, pollen immigration/donor diversity, offspring genetic diversity and reproductive success to quantify the compensation axis directly from the published study or underlying data if available.
+- **Honshu–Izu E1:** the public 40-network archive is now prospectively targeted for a leave-one-site-out residual mainland-distance/origin test after conditioning on `FD_Q + FEve + trait matching + season`.
+- **Zurich E2:** next calculation is a joint `interaction state + Urban_500` held-out predictive comparison once the raw EnviDat reproductive observations are loaded.
+- **Miyake-jima:** published values support a quantitative compensation-axis audit; strict prospective sufficiency requires synchronized repeated site-years.
 - **Crepis:** use parentage/dispersal datasets to quantify connectivity separately from density–pollination limitation; do not merge unmatched years/populations as one experiment.
+- **Conospermum:** current reproduction/paternity and adult historical genetics establish a lag mechanism; synchronize cohorts and interactions prospectively.
+- **Spondias E6:** use the already-rich joint comparison as the template for a temporal residual-history test and for designing future urban/island sampling.
 
 ### New-measurement tier
 
-The highest-value missing measurement is **matched genetics/connectivity in the same population-years as direct interaction and function**. For the Honshu–Izu coastal system this means adding focal-plant adult/offspring genotyping and parentage/pollen-flow inference to the existing repeated network design.
+The highest-value missing measurement across most systems is **matched interaction + function + genetics/connectivity in the same population-years and cohorts**. For the Honshu–Izu coastal system this means adding focal-plant adult/offspring genotyping and parentage/pollen-flow inference to the existing repeated network design.
 
 That single addition would connect the strongest existing island interaction–function dataset to the eco-genetic state directly, rather than treating genetics as a separate monitoring layer.
 
 ## Current empirical conclusion
 
-The literature already supports a stronger ecological statement than “fragmentation effects are context dependent”:
+The literature supports a stronger ecological statement than “fragmentation effects are context dependent”:
 
-> **The same coarse fragmentation signal can map to function loss, compensation, or focal-function-specific responses depending on the joint configuration of local interaction support, functional partner identity, movement/compensation and genetic–demographic state.**
+> **The same coarse fragmentation signal can map to function loss, compensation, focal-function-specific responses, temporal genetic lag, or joint interaction–connectivity deterioration depending on the measured configuration of interaction support, functional partner identity, movement/compensation, cohort-specific genetics and demographic state.**
 
-What remains untested is whether those measured configurations are sufficient to erase predictive information about their urban, island or disturbance origins. That residual-origin test is now the empirical counterpart of the model's state-sufficiency theorem.
+What remains directly untested is whether those measured configurations are sufficient to erase predictive information about their urban, island or disturbance origins. The preregistered Honshu–Izu residual-origin analysis is the first direct data test of that criterion; *Spondias* provides the strongest natural joint-state template for extending it to an eco-genetic test.
