@@ -61,7 +61,16 @@ The falsifiable convergence criterion is:
 
 If origin/history remains predictive, the state representation is incomplete and the missing process or memory variable must be sought.
 
-Concrete natural systems and open-data opportunities are registered in [`empirical_regime_candidates.md`](empirical_regime_candidates.md). The strongest current candidates include the Montpellier *Crepis sancta* urban programme, the Miyake-jima *Camellia japonica*–*Zosterops japonicus* system, Izu coastal plant–pollinator networks, Chicago green roofs, Perth *Conospermum undulatum*, Zurich urban gardens and fragmented Dutch *Primula elatior* populations.
+Concrete natural systems and open-data opportunities are registered in [`empirical_regime_candidates.md`](empirical_regime_candidates.md), with measurement completeness and synchronization tracked in [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md).
+
+Two natural quantitative anchors now make the condition language operational:
+
+- [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md): Montpellier *Crepis sancta* identifies **interaction-limited local fragmentation** — low local flowering support is accompanied by reduced pollinator activity and reproductive function, without strong autonomous-selfing compensation, even though the wider urban metapopulation has nonzero pollen/seed immigration.
+- [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md): Miyake-jima *Camellia japonica*–*Zosterops japonicus* identifies **movement-compensated local fragmentation** — volcanic damage reduces local floral resources while broader partner movement and pollen mixing maintain or enhance the pollination component and next-generation genetic mixing.
+
+These anchors show why `low local support` is not itself a regime: the downstream functional state depends on whether compensatory movement or alternative interaction routes are actually operating.
+
+Other strong candidates include Izu coastal plant–pollinator networks, Chicago green roofs, Perth *Conospermum undulatum*, Zurich urban gardens and fragmented Dutch *Primula elatior* populations.
 
 ## Publication sources of truth
 
@@ -72,8 +81,10 @@ Use this hierarchy when files disagree:
 3. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → condition → boundary;
 4. [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — state-sufficiency convergence logic;
 5. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) — real-system measurements, candidate regimes and open-data tests;
-6. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
-7. [`artifact_index.md`](artifact_index.md) — numerical provenance.
+6. [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — measurement completeness, synchronization and field identification rules;
+7. [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md) and [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md) — quantitative natural anchor conditions;
+8. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
+9. [`artifact_index.md`](artifact_index.md) — numerical provenance.
 
 Historical phase documents and **phase-specific result notes** remain provenance only and **must not compete with the current sources**; they do not override the current condition map or publication sources of truth.
 
@@ -85,6 +96,7 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - connectivity is process-specific and the historical allele-mixing signal is non-replicated/non-portable;
 - complete future-relevant state is sufficient under the declared model, while coarse averages and standard genetic summaries can hide dynamically distinct spatial alignments;
 - genetic warning is meaningful only downstream of the independently characterised loss-generating state;
+- natural systems already show opposite outcomes from superficially similar local-support loss, depending on interaction limitation versus movement compensation;
 - urban, island and other fragmented ecosystems become direct empirical tests of whether different causal histories converge on a common measured state.
 
 ## Claims not made
@@ -99,6 +111,8 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - No claim that cities and islands already occupy the same regime.
 - No assumption that matching occupancy, mean interaction or genetic diversity is enough to establish dynamic equivalence.
 - No assumption that lower neutral genetic diversity always means poorer ecological function.
+- No claim that the separate *Crepis* publications form one synchronized population-year state table.
+- No claim that Miyake-style movement compensation is a universal island response.
 
 ## Editorial rule
 
