@@ -2,6 +2,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = (ROOT / "manuscript" / "empirical_regime_candidates.md").read_text(encoding="utf-8")
+MAIN = (ROOT / "manuscript" / "main_text.md").read_text(encoding="utf-8")
+REFERENCES = (ROOT / "manuscript" / "references.md").read_text(encoding="utf-8")
 
 
 def test_registry_uses_real_ecosystems_not_habitat_labels_as_regimes() -> None:
@@ -47,3 +49,24 @@ def test_convergence_is_future_predictive_not_city_vs_island() -> None:
     assert "The goal is not to label habitats as `urban`, `island` or `fragmented`" in REGISTRY
     assert "future-relevant ecological state" in REGISTRY
     assert "smallest measured joint state" in REGISTRY
+
+
+def test_main_discussion_uses_measured_ecosystems_as_mechanistic_examples() -> None:
+    assert "Different fragmentation routes can converge only through a common measured state" in MAIN
+    for system in ("Crepis sancta", "Camellia japonica", "Zosterops japonicus", "Honshu–Izu"):
+        assert system in MAIN
+    assert "interaction–genetic alignment" in MAIN
+    assert "Residual history would indicate a missing process or ecological memory variable" in MAIN
+
+
+def test_empirical_main_text_citations_are_in_reference_ledger() -> None:
+    for token in (
+        "Abe, H.",
+        "Cheptou, P.-O.",
+        "Dornier, A.",
+        "Hiraiwa, M.K.",
+        "10.1371/journal.pone.0062696",
+        "10.1111/j.1469-8137.2006.01880.x",
+        "10.1038/hdy.2013.3",
+    ):
+        assert token in REFERENCES
