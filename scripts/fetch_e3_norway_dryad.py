@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 from pathlib import Path
+from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urljoin
 from urllib.request import Request, urlopen
 
@@ -16,15 +17,23 @@ def _absolute(url: str) -> str:
     return urljoin(DRYAD_ROOT, url)
 
 
+def _request(url: str) -> Request:
+    return Request(
+        _absolute(url),
+        headers={
+            "User-Agent": "eco-genetic-warning-extensions/1.0",
+            "Accept": "*/*",
+        },
+    )
+
+
 def _json(url: str) -> dict:
-    req = Request(_absolute(url), headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
-    with urlopen(req, timeout=60) as response:
+    with urlopen(_request(url), timeout=60) as response:
         return json.load(response)
 
 
 def _bytes(url: str) -> bytes:
-    req = Request(_absolute(url), headers={"User-Agent": "eco-genetic-warning-extensions/1.0"})
-    with urlopen(req, timeout=120) as response:
+    with urlopen(_request(url), timeout=120) as response:
         return response.read()
 
 
@@ -35,6 +44,28 @@ def _href(obj: dict, relation: str) -> str | None:
         href = value.get("href")
         return _absolute(str(href)) if href else None
     return None
+
+
+def _public_file_bytes(file_id: int) -> tuple[bytes, str]:
+    """Download public bytes from Dryad's landing-page file stream.
+
+    Dryad's REST metadata endpoints are anonymously readable for published data,
+    while `/api/v2/files/{id}/download` currently requires bearer auth. The
+    public landing page exposes the same published file through file_stream.
+    Both observed public route shapes are tried without credentials; this does
+    not change the locked DOI, file id, or preregistered analysis.
+    """
+    candidates = (
+        f"{DRYAD_ROOT}/stash/downloads/file_stream/{file_id}",
+        f"{DRYAD_ROOT}/downloads/file_stream/{file_id}",
+    )
+    failures: list[str] = []
+    for url in candidates:
+        try:
+            return _bytes(url), url
+        except (HTTPError, URLError) as exc:
+            failures.append(f"{url}: {exc!r}")
+    raise RuntimeError("public Dryad file stream failed; " + " | ".join(failures))
 
 
 def discover(output_root: Path, manifest_path: Path) -> dict:
@@ -70,22 +101,28 @@ def discover(output_root: Path, manifest_path: Path) -> dict:
     inventory = []
 
     for item in files:
-        name = str(item.get("path") or item.get("name") or f"dryad_file_{item.get('id')}")
-        download_url = _href(item, "stash:download") or _href(item, "download")
-        if download_url is None and item.get("id") is not None:
-            download_url = f"{API_ROOT}/files/{item['id']}/download"
-        if download_url is None:
-            raise RuntimeError(f"no download URL for {name}")
-        payload = _bytes(download_url)
+        file_id = item.get("id")
+        if file_id is None:
+            raise RuntimeError(f"Dryad file metadata has no id: {item!r}")
+        file_id = int(file_id)
+        name = str(item.get("path") or item.get("name") or f"dryad_file_{file_id}")
+        api_download_url = _href(item, "stash:download") or _href(item, "download")
+        if api_download_url is None:
+            api_download_url = f"{API_ROOT}/files/{file_id}/download"
+
+        # Do not call the authenticated API download endpoint. Resolve the
+        # exact file id from public metadata, then fetch the public file stream.
+        payload, public_download_url = _public_file_bytes(file_id)
         target = downloads / Path(name).name
         target.write_bytes(payload)
         digest = hashlib.sha256(payload).hexdigest()
         source_files.append({
-            "id": item.get("id"),
+            "id": file_id,
             "name": target.name,
             "size": len(payload),
             "sha256": digest,
-            "download_url": _absolute(download_url),
+            "metadata_api_download_url": _absolute(api_download_url),
+            "public_download_url": public_download_url,
         })
         inventory.append({"path": str(target.relative_to(output_root)), "size": len(payload), "sha256": digest})
 
