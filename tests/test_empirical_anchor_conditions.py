@@ -3,6 +3,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 CREPIS = (ROOT / "manuscript" / "empirical_e3_crepis_audit.md").read_text(encoding="utf-8")
 MIYAKE = (ROOT / "manuscript" / "empirical_e4_miyake_audit.md").read_text(encoding="utf-8")
+CONOSPERMUM = (ROOT / "manuscript" / "empirical_e5_conospermum_audit.md").read_text(encoding="utf-8")
 CROSSWALK = (ROOT / "manuscript" / "empirical_measurement_crosswalk.md").read_text(encoding="utf-8")
 
 
@@ -42,6 +43,22 @@ def test_anchor_pair_establishes_opposite_natural_routes() -> None:
     assert "D↓ -> I↓ -> F↓" in MIYAKE
     assert "D↓ -> C_partner/C_pollen↑" in MIYAKE
     assert "local density/resource support cannot be the functional-fragmentation regime by itself" in MIYAKE
+
+
+def test_conospermum_anchor_preserves_cohort_history_lag() -> None:
+    for phrase in (
+        "35% to <20%",
+        "880 to 5 plants",
+        "6% to 3%",
+        "strictly self-incompatible",
+        "near-complete to complete loss of inter-fragment pollen immigration",
+        "cohort/history-lag functional fragmentation",
+        "G_adult legacy",
+        "C_pollen current ↓",
+    ):
+        assert phrase in CONOSPERMUM
+    assert "adult neutral genetic state is partly a memory variable" in CONOSPERMUM
+    assert "cohort identity and habitat history belong in the empirical state" in CONOSPERMUM
 
 
 def test_crosswalk_preserves_measurement_synchronization() -> None:
