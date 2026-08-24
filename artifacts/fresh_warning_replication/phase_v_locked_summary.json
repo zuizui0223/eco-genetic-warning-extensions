@@ -1,0 +1,41 @@
+{
+  "stage": "fresh fixed-domain genetic-warning replication Phase V",
+  "decision": "strict_replication",
+  "provenance": {
+    "workflow_run": 32636847803,
+    "scientific_head": "a199e179b71e640d038bc235948e596b660a98ff",
+    "aggregate_artifact": 9492587604,
+    "artifact_digest": "sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031",
+    "parent_commit": "dd8ee379d0d3518194c767d16402042525bc00dc"
+  },
+  "master_seeds": [20291110, 20291111, 20291112, 20291113, 20291114],
+  "frozen_domain": {
+    "mutation_rate": 0.10,
+    "area_reference": 0.8,
+    "interaction_feedback": 6.0,
+    "ramp_generations": 30,
+    "hold_generations": 90,
+    "total_generations": 120,
+    "total_normalized_barrier_increase": 0.15,
+    "profile": "standard"
+  },
+  "denominators": {
+    "attempted_seed_replicates": 100,
+    "h1_full_state_source_prepared_count": 82,
+    "projection_supported_count": 82,
+    "trajectory_available_count": 82,
+    "trait_loss_observed_count": 33
+  },
+  "endpoint_family": [
+    {"diversity_id": "H_alpha", "relative_decline_fraction": 0.05, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10},
+    {"diversity_id": "H_alpha", "relative_decline_fraction": 0.10, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10},
+    {"diversity_id": "H_alpha", "relative_decline_fraction": 0.20, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10},
+    {"diversity_id": "H_gamma", "relative_decline_fraction": 0.05, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10},
+    {"diversity_id": "H_gamma", "relative_decline_fraction": 0.10, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10},
+    {"diversity_id": "H_gamma", "relative_decline_fraction": 0.20, "valid_pairs": 33, "leads": 33, "ties": 0, "lags": 0, "one_sided_binomial_p_vs_half": 1.1641532182693481e-10}
+  ],
+  "seed_block_valid_pairs_each_endpoint": [7, 7, 7, 7, 5],
+  "seed_block_leads_each_endpoint": [7, 7, 7, 7, 5],
+  "interpretation": "The original baseline-relative H_alpha/H_gamma warning ordering strictly replicated in one independent fresh-seed ensemble within the same frozen symmetric H2-R domain. All six predeclared endpoints had 33 valid warning/loss pairs and all 33 were leads, with zero ties and zero lags.",
+  "claim_boundary": "This is within-domain fresh-seed replication only. It does not establish a universal warning threshold, portability across eco-genetic domains, an isolated recurrent-transition-direction effect, or warning validity under every fragmentation, movement, or network closure."
+}
