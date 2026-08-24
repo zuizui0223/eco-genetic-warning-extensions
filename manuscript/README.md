@@ -36,7 +36,7 @@ The central contribution is no longer a particular migration threshold or histor
 - **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established.
 - **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced bounded negative population-level results. Adaptive rewiring remains closed because its prospective opening condition was not met.
 - **C2e — state sufficiency:** under the declared parent Markov closure, complete present-state equality is future-sufficient, but common coarse summaries are not. A constructive two-patch counterexample preserves census, interaction and allele marginals/means, `H_alpha`, `H_gamma`, `F_ST` and realised trait state while changing patchwise interaction–genetic alignment; the next interaction field changes.
-- **C3 — conditional warning:** baseline-relative genetic erosion can precede functional loss in one calibrated benchmark; fixed absolute thresholds are not robust.
+- **C3 — conditional warning:** baseline-relative genetic erosion can precede functional loss in one calibrated benchmark; fixed absolute thresholds are not robust. A separate locked fresh-seed replication exists and is being integrated separately rather than used to alter the empirical-state definitions.
 - **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment.
 
 ## Empirical extension: find the state in nature
@@ -63,15 +63,18 @@ If origin/history remains predictive, the state representation is incomplete and
 
 Concrete natural systems and open-data opportunities are registered in [`empirical_regime_candidates.md`](empirical_regime_candidates.md), with measurement completeness and synchronization tracked in [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md).
 
-Three quantitative natural anchors now make the condition language operational:
+Four quantitative natural anchors now make the condition language operational:
 
 - [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md): Montpellier *Crepis sancta* identifies **interaction-limited local fragmentation** — low local flowering support is accompanied by reduced pollinator activity and reproductive function, without strong autonomous-selfing compensation, even though the wider urban metapopulation has nonzero pollen/seed immigration.
 - [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md): Miyake-jima *Camellia japonica*–*Zosterops japonicus* identifies **movement-compensated local fragmentation** — volcanic damage reduces local floral resources while broader partner movement and pollen mixing maintain or enhance the pollination component and next-generation genetic mixing.
 - [`empirical_e5_conospermum_audit.md`](empirical_e5_conospermum_audit.md): Perth *Conospermum undulatum* identifies **cohort/history-lag functional fragmentation** — contemporary pollen connectivity and reproductive function respond to recent built-matrix fragmentation while standing adult neutral genetics still retains the signature of the historically connected landscape.
+- [`empirical_e6_spondias_audit.md`](empirical_e6_spondias_audit.md): Mexican tropical dry-forest *Spondias purpurea* identifies **joint interaction–connectivity limitation with cohort-emergent genetic deterioration** — realised visitation, paternity-derived pollen flow, reproductive success, sire diversity and adult/seed/juvenile genetics are measured within one fragmentation comparison.
 
-Together these anchors show three different reasons why a coarse state fails: low local support can be uncompensated or movement-compensated, and standing genetics can be temporally out of phase with the current interaction/connectivity process.
+Together these anchors show four different reasons why a coarse state fails: local interaction support can be uncompensated or movement-compensated, standing adult genetics can be temporally out of phase with the contemporary process, and synchronized interaction/connectivity deterioration can first become most visible in offspring cohorts.
 
-Other strong candidates include Izu coastal plant–pollinator networks, Chicago green roofs, Zurich urban gardens and fragmented Dutch *Primula elatior* populations.
+The *Spondias* study is currently the strongest natural bridge to the full state logic because `I`, `C`, `F` and cohort-specific `G` are not assembled from unrelated study years. It is therefore useful as a model for future urban/island sampling even though it is neither an urban nor an island system.
+
+Other strong candidates include Izu coastal plant–pollinator networks, Chicago green roofs, Zurich urban gardens and fragmented Dutch *Primula elatior* populations. The Honshu–Izu E1 public-data residual-origin test is now preregistered and being executed separately.
 
 ## Publication sources of truth
 
@@ -83,7 +86,7 @@ Use this hierarchy when files disagree:
 4. [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — state-sufficiency convergence logic;
 5. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) — real-system measurements, candidate regimes and open-data tests;
 6. [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — measurement completeness, synchronization and field identification rules;
-7. [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md), [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md) and [`empirical_e5_conospermum_audit.md`](empirical_e5_conospermum_audit.md) — quantitative natural anchor conditions;
+7. [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md), [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md), [`empirical_e5_conospermum_audit.md`](empirical_e5_conospermum_audit.md) and [`empirical_e6_spondias_audit.md`](empirical_e6_spondias_audit.md) — quantitative natural anchor conditions;
 8. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
 9. [`artifact_index.md`](artifact_index.md) — numerical provenance.
 
@@ -98,7 +101,8 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - complete future-relevant state is sufficient under the declared model, while coarse averages and standard genetic summaries can hide dynamically distinct spatial alignments;
 - genetic warning is meaningful only downstream of the independently characterised loss-generating state;
 - natural systems already show opposite outcomes from superficially similar local-support loss, depending on interaction limitation versus movement compensation;
-- long-lived natural populations can also retain historical genetic structure after contemporary interaction/connectivity has already changed, so cohort and memory must be aligned to the outcome window;
+- long-lived natural populations can retain historical genetic structure after contemporary interaction/connectivity has already changed, so cohort and memory must be aligned to the outcome window;
+- a near-synchronized natural system (*Spondias*) shows that reduced realised visitation, contracted pollen flow, lower function and next-generation genetic deterioration can form one joint fragmentation state;
 - urban, island and other fragmented ecosystems become direct empirical tests of whether different causal histories converge on a common measured state.
 
 ## Claims not made
@@ -116,6 +120,7 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - No claim that the separate *Crepis* publications form one synchronized population-year state table.
 - No claim that Miyake-style movement compensation is a universal island response.
 - No claim that every adult neutral marker must lag recent fragmentation; *Conospermum* is an explicit natural example of cohort/history mismatch, not a universal lag constant.
+- No claim that the *Spondias* numerical pollen-distance or heterozygosity contrasts are transferable thresholds; they are one observed joint-state anchor.
 
 ## Editorial rule
 
