@@ -1,0 +1,89 @@
+{
+  "stage": "matched recurrent-transition direction identifiability audit Phase W",
+  "simulation_added": false,
+  "warning_outcomes_inspected": false,
+  "source_workflow_run": 29192711417,
+  "decision": "direction_only_warning_comparison_not_identifiable_under_frozen_common_schedule",
+  "direction_only_warning_comparison_opened": false,
+  "fixed_common_context": {
+    "kappa_mu": 0.20,
+    "area_reference": 0.8,
+    "interaction_kappa": 6.0,
+    "ramp_generations": 30,
+    "hold_generations": 90,
+    "horizon": 120,
+    "normalised_barrier_increase": 0.15,
+    "projection": "equal_isolated",
+    "historical_intermediate_loss_band": [0.30, 0.70]
+  },
+  "same_strength_cells": [
+    {
+      "p_star": 0.10,
+      "batch_index": 282,
+      "artifact_id": 8260028479,
+      "artifact_digest": "sha256:a88a1c5614054263ad08290acadb671977ae1d66e428c2c2dcc9936c5d21a0a9",
+      "baseline_eligible": 22,
+      "trait_loss": 22,
+      "pooled_loss": 1.0,
+      "seed_block_rates": [1.0, 1.0, 1.0, 1.0, 1.0],
+      "extreme_reference_interval_95": [0.8456274871844254, 1.0]
+    },
+    {
+      "p_star": 0.25,
+      "batch_index": 336,
+      "artifact_id": 8260079020,
+      "artifact_digest": "sha256:07201c3e7704b60eb85961390ab9641267279f520574b67b619237606578e2e9",
+      "baseline_eligible": 17,
+      "trait_loss": 17,
+      "pooled_loss": 1.0,
+      "seed_block_rates": [1.0, 1.0, 1.0, 1.0, 1.0],
+      "extreme_reference_interval_95": [0.8049356770309067, 1.0]
+    },
+    {
+      "p_star": 0.50,
+      "batch_index": 390,
+      "artifact_id": 8260125567,
+      "artifact_digest": "sha256:4b842a4ccc113309623c87d1c2228dfa9abc36d93d4598b28c4bc72fc984a42e",
+      "baseline_eligible": 20,
+      "trait_loss": 8,
+      "pooled_loss": 0.4,
+      "seed_block_rates": [0.6, 0.6666666666666666, 0.0, 0.6, 0.0]
+    },
+    {
+      "p_star": 0.75,
+      "batch_index": 444,
+      "artifact_id": 8260180102,
+      "artifact_digest": "sha256:df96e9d5951b1f9a03afed3efbf9a86f973d2ec62cbe041d221cada341020d5b",
+      "baseline_eligible": 21,
+      "trait_loss": 0,
+      "pooled_loss": 0.0,
+      "seed_block_rates": [0.0, 0.0, 0.0, 0.0, 0.0],
+      "extreme_reference_interval_95": [0.0, 0.16109761521907962]
+    },
+    {
+      "p_star": 0.90,
+      "batch_index": 498,
+      "artifact_id": 8260233506,
+      "artifact_digest": "sha256:fc8b53ef8a24038d6f728655d2bec20bd5acbd01812c6439ae08e07a7c23fd83",
+      "baseline_eligible": 22,
+      "trait_loss": 0,
+      "pooled_loss": 0.0,
+      "seed_block_rates": [0.0, 0.0, 0.0, 0.0, 0.0],
+      "extreme_reference_interval_95": [0.0, 0.15437251281557463]
+    }
+  ],
+  "same_strength_directional_candidates_inside_band": [],
+  "cross_strength_bridge": {
+    "kappa_mu": 0.05,
+    "p_star": 0.90,
+    "batch_index": 228,
+    "artifact_id": 8260226534,
+    "artifact_digest": "sha256:3e1795a43f0afb5bc528be62513f40860950f2ba6d58ab4eaff4a52f0f97662b",
+    "baseline_eligible": 21,
+    "trait_loss": 10,
+    "pooled_loss": 0.47619047619047616,
+    "identification_role": "Intermediate incidence under the exact ecology/schedule is recovered only after changing kappa_mu as well as p_star, so this is not a direction-only comparator."
+  },
+  "conclusion": "At fixed kappa_mu=0.20 and exact Phase-V ecology/deterioration, the predeclared p_star grid moves from all observed losses at 0.10/0.25 through intermediate loss at 0.50 to no observed losses at 0.75/0.90. No same-strength directional coordinate therefore supplies a matched intermediate-loss process for a direction-only warning comparison.",
+  "boundary": "A matched direction-only warning test would require finer p_star refinement or retuning kappa_mu, ecology, deterioration magnitude, or horizon. Those changes are not opened because they would either be outcome-guided refinement or destroy single-factor identification."
+}
