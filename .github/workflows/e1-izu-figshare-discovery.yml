@@ -1,0 +1,55 @@
+name: E1 Izu Figshare discovery
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_e1_izu_figshare.py'
+      - '.github/workflows/e1-izu-figshare-discovery.yml'
+      - 'tests/test_e1_figshare_discovery_contract.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch public Figshare archive and inventory schema
+        run: |
+          python scripts/fetch_e1_izu_figshare.py \
+            --output-root _external/e1_izu_figshare \
+            --manifest artifacts/empirical/e1_figshare_discovery.json
+
+      - name: Validate discovery manifest
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/e1_figshare_discovery.json')
+          data = json.loads(p.read_text(encoding='utf-8'))
+          assert data['resource_doi'] == '10.6084/m9.figshare.25025000.v1'
+          assert data['status'] == 'public_figshare_archive_discovered'
+          assert data['source_files'], 'Figshare item returned no files'
+          assert data['inventory'], 'archive inventory is empty'
+          print('source files:', [f['name'] for f in data['source_files']])
+          print('structured candidates:', [f['path'] for f in data['structured_candidates']])
+          PY
+
+      - name: Upload discovery snapshot
+        uses: actions/upload-artifact@v4
+        with:
+          name: e1-izu-figshare-discovery
+          path: |
+            artifacts/empirical/e1_figshare_discovery.json
+            _external/e1_izu_figshare
+          if-no-files-found: error
+          retention-days: 30
