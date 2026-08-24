@@ -45,4 +45,4 @@ def test_candidate_patterns_are_not_promoted_to_universal_classes() -> None:
 def test_empirical_convergence_is_residual_origin_test() -> None:
     assert "future functional trajectory ⟂ fragmentation origin/history" in TEXT
     assert "A residual origin/history effect identifies a missing state coordinate" in TEXT
-    assert "residual-origin test" in TEXT
+    assert "residual-origin analysis" in TEXT
