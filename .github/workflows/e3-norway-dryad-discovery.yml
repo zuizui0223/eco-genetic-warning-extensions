@@ -1,12 +1,9 @@
 name: E3 Norway Dryad discovery
 
+# Access gate closed after the three declared diagnosis attempts. Keep this
+# workflow for provenance/manual inspection only; ordinary PR edits must not
+# trigger replacement download attempts.
 on:
-  pull_request:
-    paths:
-      - 'scripts/fetch_e3_norway_dryad.py'
-      - 'manuscript/empirical_e3_norway_preregistration.md'
-      - '.github/workflows/e3-norway-dryad-discovery.yml'
-      - 'tests/test_e3_norway_discovery_contract.py'
   workflow_dispatch:
 
 permissions:
