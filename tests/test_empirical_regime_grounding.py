@@ -53,10 +53,13 @@ def test_convergence_is_future_predictive_not_city_vs_island() -> None:
 
 def test_main_discussion_uses_measured_ecosystems_as_mechanistic_examples() -> None:
     assert "Different fragmentation routes can converge only through a common measured state" in MAIN
-    for system in ("Crepis sancta", "Camellia japonica", "Zosterops japonicus", "Honshu–Izu"):
+    for system in ("Crepis sancta", "Camellia japonica", "Honshu–Izu", "Spondias purpurea"):
         assert system in MAIN
-    assert "interaction–genetic alignment" in MAIN
-    assert "Residual history would indicate a missing process or ecological memory variable" in MAIN
+    assert "Miyake-jima" in MAIN
+    assert "partner and pollen movement" in MAIN
+    assert "cross-layer spatial alignment" in MAIN
+    assert "A residual origin effect is evidence to search for a missing process" in MAIN
+    assert "habitat label itself is the mechanistic state" in MAIN
 
 
 def test_empirical_main_text_citations_are_in_reference_ledger() -> None:
