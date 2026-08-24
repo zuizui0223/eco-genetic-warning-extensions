@@ -1,0 +1,61 @@
+{
+  "decision": "residual_isolation_detected",
+  "source_lock": {
+    "publication_doi": "10.1111/mec.14115",
+    "dataset_doi": "10.5061/dryad.p24q3",
+    "zenodo_record": 4942351,
+    "file": "multiplePaternity.csv",
+    "published_md5": "600f6f370ffa8ad205d0ccb6bc92ab65",
+    "observed_md5": "600f6f370ffa8ad205d0ccb6bc92ab65"
+  },
+  "schema": {
+    "n_seed_family_rows": 60,
+    "n_maternal_plants": 23,
+    "repeated_plant_rows": 37,
+    "treatment_levels": ["c", "de", "ne"],
+    "treatment_profile_counts": {
+      "c/de": 4,
+      "c/de/ne": 14,
+      "c/ne": 3,
+      "de/ne": 2
+    },
+    "response": "correlatedPaternity",
+    "residual_state_coordinate": "isolation20",
+    "validation_unit": "maternal plant; all repeated fruit/seed-family rows held out together",
+    "permutation_unit": "maternal-plant isolation values permuted within identical treatment-profile strata"
+  },
+  "models": {
+    "M0": {
+      "formula": "correlatedPaternity ~ treatment",
+      "loo_mse": 0.11618622977542375,
+      "loo_mae": 0.2851546978557505,
+      "fold_count": 23,
+      "rss": 6.286538900877193
+    },
+    "M1": {
+      "formula": "correlatedPaternity ~ treatment + z(isolation20)",
+      "loo_mse": 0.09186971001970597,
+      "loo_mae": 0.24107069101430603,
+      "fold_count": 23,
+      "rss": 4.830062225587706,
+      "isolation_beta": 0.1563778919007158
+    }
+  },
+  "incremental_isolation": {
+    "loo_mse_change_M1_minus_M0": -0.02431651975571779,
+    "loo_mse_percent_change": -20.928917138217813,
+    "rss_gain_M0_minus_M1": 1.4564766752894869,
+    "treatment_profile_stratified_plant_permutation_p": 0.0012998700129987,
+    "permutations": 10000,
+    "rng_seed": 20260824,
+    "permuted_gain_95pct": [0.00029211473077304093, 0.9021544105271179]
+  },
+  "workflow_provenance": {
+    "run_id": 32721630217,
+    "job_id": 97414084955,
+    "head_sha": "d9688dae3ec609376d36ee4a7df9b193137938fb",
+    "artifact_id": 9519204842,
+    "artifact_digest": "sha256:97a2b2359ec44b2fbd94ecd54975f206f240be3c994ef2a50c636678ee882eb1"
+  },
+  "claim_boundary": "This is a contemporary mating-state (G_mating/C_pollen) result. It does not use a direct ecological-function endpoint and does not establish a universal fragmentation or isolation threshold."
+}
