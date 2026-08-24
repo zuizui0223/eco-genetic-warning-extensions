@@ -43,10 +43,22 @@ jobs:
               'seed_function_exposed_excluded',
               'paternity',
           }
-          assert all(x['package_sha256'] and x['members'] for x in d['datasets'])
-          assert all(any('columns' in m for m in x['members']) for x in d['datasets'])
+          assert all(x['landing_sha256'] and x['payloads'] for x in d['datasets'])
+          for dataset in d['datasets']:
+              assert all(payload['package_sha256'] and payload['members'] for payload in dataset['payloads'])
+              assert any(
+                  'columns' in member
+                  for payload in dataset['payloads']
+                  for member in payload['members']
+              )
           assert 'No data rows' in d['inspection_boundary']
-          print(json.dumps({x['role']: [m['member_name'] for m in x['members']] for x in d['datasets']}, sort_keys=True))
+          print(json.dumps({
+              x['role']: [
+                  {'url': p['resolved_url'], 'members': [m['member_name'] for m in p['members']]}
+                  for p in x['payloads']
+              ]
+              for x in d['datasets']
+          }, sort_keys=True))
           PY
 
       - name: Upload schema manifest only
