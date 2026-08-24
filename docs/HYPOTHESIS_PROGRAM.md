@@ -124,6 +124,8 @@ Phases R/S used the historical Phase-M seed family and compared the historical a
 
 ## C3 — genetic warning strictly replicates within the frozen symmetric domain
 
+Phases R/S/T/U add no warning claims: they constrain or replicate C2 loss-generating closures while warning outcomes remain outside their selection and interpretation rules. Phase V is a separate C3 campaign opened only after those upstream boundaries were fixed.
+
 The inherited parent benchmark first established a conditional warning result in the frozen symmetric H2-R domain: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all **35/35** observed realised functional losses at each of the six predeclared relative endpoints. Fixed absolute thresholds produced both leads and lags.
 
 Phase V then froze that same domain and endpoint family, selected one independently preregistered fresh master-seed ensemble (`20291110–20291114`) with no prior repository use, and ran 100 attempted trajectories without recalibration or endpoint selection. Eighty-two trajectories were available and 33 realised functional losses were observed. At **all six** relative endpoints there were 33 valid warning/loss pairs, and all **33/33** were warning leads with **0 ties and 0 lags**. The exact one-sided binomial probability against a 0.5 lead probability was `1.1641532182693481e-10` for every endpoint. Each fresh seed block also contained only leads among valid pairs (`7/7, 7/7, 7/7, 7/7, 5/5`). The preregistered Phase-V decision is **`strict_replication`**.
