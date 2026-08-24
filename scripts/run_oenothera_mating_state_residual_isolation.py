@@ -45,15 +45,11 @@ def _load(payload: bytes) -> list[dict[str, object]]:
         raise RuntimeError(f"required source columns absent: {missing_columns}; fields={reader.fieldnames}")
 
     rows: list[dict[str, object]] = []
-    seen_ids: set[str] = set()
-    for raw in reader:
+    for row_id, raw in enumerate(reader):
         plant_id = str(raw["plantID"]).strip()
         treatment = str(raw["treatment"]).strip().lower()
         if not plant_id or not treatment:
             raise RuntimeError(f"blank plantID/treatment in row {raw!r}")
-        if plant_id in seen_ids:
-            raise RuntimeError(f"plantID is not unique at family level: {plant_id}")
-        seen_ids.add(plant_id)
         try:
             isolation = float(str(raw["isolation20"]).strip())
             paternity = float(str(raw["correlatedPaternity"]).strip())
@@ -63,14 +59,33 @@ def _load(payload: bytes) -> list[dict[str, object]]:
             raise RuntimeError(f"non-finite primary value in row {raw!r}")
         rows.append(
             {
+                "row_id": row_id,
                 "plantID": plant_id,
                 "treatment": treatment,
                 "isolation20": isolation,
                 "correlatedPaternity": paternity,
             }
         )
+
     if len(rows) < 12:
-        raise RuntimeError(f"too few seed families for declared test: n={len(rows)}")
+        raise RuntimeError(f"too few seed-family rows for declared test: n={len(rows)}")
+
+    # Schema correction fixed after the first workflow stopped before model fitting:
+    # repeated fruit/seed-family rows may share one maternal plant. Treatment and
+    # spatial isolation must therefore be coherent within plantID; otherwise the
+    # declared grouped validation is not identifiable.
+    for plant_id in sorted({str(row["plantID"]) for row in rows}):
+        group = [row for row in rows if str(row["plantID"]) == plant_id]
+        treatments = {str(row["treatment"]) for row in group}
+        isolations = {float(row["isolation20"]) for row in group}
+        if len(treatments) != 1 or len(isolations) != 1:
+            raise RuntimeError(
+                f"repeated plantID disagrees on treatment/isolation: plantID={plant_id}, "
+                f"treatments={sorted(treatments)}, isolation20={sorted(isolations)}"
+            )
+
+    if len({str(row["plantID"]) for row in rows}) < 10:
+        raise RuntimeError("too few unique maternal plants for grouped validation")
     return rows
 
 
@@ -85,7 +100,6 @@ def _design(
     n = len(rows)
     blocks = [np.ones((n, 1), dtype=float)]
     names = ["intercept"]
-    base = treatment_levels[0]
     for level in treatment_levels[1:]:
         blocks.append(np.array([[float(str(row["treatment"]) == level)] for row in rows]))
         names.append(f"treatment={level}")
@@ -127,43 +141,54 @@ def _fit_predict(
     return y_test, x_test @ beta
 
 
-def _loo(rows: list[dict[str, object]], include_isolation: bool, treatment_levels: list[str]) -> dict[str, object]:
+def _grouped_loo(
+    rows: list[dict[str, object]], include_isolation: bool, treatment_levels: list[str]
+) -> dict[str, object]:
     observed: list[float] = []
     predicted: list[float] = []
     residual_rows: list[dict[str, object]] = []
-    for index, held in enumerate(rows):
-        train = [row for j, row in enumerate(rows) if j != index]
+    plant_ids = sorted({str(row["plantID"]) for row in rows})
+
+    for held_out_plant in plant_ids:
+        train = [row for row in rows if str(row["plantID"]) != held_out_plant]
+        test = [row for row in rows if str(row["plantID"]) == held_out_plant]
         y, pred = _fit_predict(
             train,
-            [held],
+            test,
             include_isolation=include_isolation,
             treatment_levels=treatment_levels,
         )
-        o = float(y[0])
-        p = float(pred[0])
-        observed.append(o)
-        predicted.append(p)
-        residual_rows.append(
-            {
-                "plantID": held["plantID"],
-                "treatment": held["treatment"],
-                "isolation20": held["isolation20"],
-                "observed": o,
-                "predicted": p,
-                "residual": o - p,
-            }
-        )
+        for held, o_raw, p_raw in zip(test, y, pred, strict=True):
+            o = float(o_raw)
+            p = float(p_raw)
+            observed.append(o)
+            predicted.append(p)
+            residual_rows.append(
+                {
+                    "row_id": held["row_id"],
+                    "plantID": held["plantID"],
+                    "treatment": held["treatment"],
+                    "isolation20": held["isolation20"],
+                    "observed": o,
+                    "predicted": p,
+                    "residual": o - p,
+                }
+            )
+
     obs = np.array(observed)
     pred = np.array(predicted)
     residual = obs - pred
     return {
         "mse": float(np.mean(residual**2)),
         "mae": float(np.mean(np.abs(residual))),
+        "fold_count": len(plant_ids),
         "predictions": residual_rows,
     }
 
 
-def _rss_and_beta(rows: list[dict[str, object]], include_isolation: bool, treatment_levels: list[str]) -> tuple[float, np.ndarray, list[str]]:
+def _rss_and_beta(
+    rows: list[dict[str, object]], include_isolation: bool, treatment_levels: list[str]
+) -> tuple[float, np.ndarray, list[str]]:
     x, _, _, names = _design(
         rows,
         include_isolation=include_isolation,
@@ -175,17 +200,34 @@ def _rss_and_beta(rows: list[dict[str, object]], include_isolation: bool, treatm
     return float(np.sum(residual**2)), beta, names
 
 
+def _plant_level_table(rows: list[dict[str, object]]) -> list[dict[str, object]]:
+    plants: list[dict[str, object]] = []
+    for plant_id in sorted({str(row["plantID"]) for row in rows}):
+        group = [row for row in rows if str(row["plantID"]) == plant_id]
+        plants.append(
+            {
+                "plantID": plant_id,
+                "treatment": str(group[0]["treatment"]),
+                "isolation20": float(group[0]["isolation20"]),
+            }
+        )
+    return plants
+
+
 def _permute_isolation_within_treatment(
     rows: list[dict[str, object]], rng: np.random.Generator
 ) -> list[dict[str, object]]:
     copied = [dict(row) for row in rows]
-    levels = sorted({str(row["treatment"]) for row in rows})
-    for level in levels:
-        indices = [i for i, row in enumerate(rows) if str(row["treatment"]) == level]
-        values = np.array([float(rows[i]["isolation20"]) for i in indices])
+    plants = _plant_level_table(rows)
+    replacement: dict[str, float] = {}
+    for level in sorted({str(plant["treatment"]) for plant in plants}):
+        group = [plant for plant in plants if str(plant["treatment"]) == level]
+        plant_ids = [str(plant["plantID"]) for plant in group]
+        values = np.array([float(plant["isolation20"]) for plant in group], dtype=float)
         shuffled = rng.permutation(values)
-        for idx, value in zip(indices, shuffled, strict=True):
-            copied[idx]["isolation20"] = float(value)
+        replacement.update({plant_id: float(value) for plant_id, value in zip(plant_ids, shuffled, strict=True)})
+    for row in copied:
+        row["isolation20"] = replacement[str(row["plantID"])]
     return copied
 
 
@@ -196,8 +238,8 @@ def run() -> dict[str, object]:
     if len(treatment_levels) < 2:
         raise RuntimeError(f"expected >=2 treatments, got {treatment_levels}")
 
-    m0_loo = _loo(rows, False, treatment_levels)
-    m1_loo = _loo(rows, True, treatment_levels)
+    m0_loo = _grouped_loo(rows, False, treatment_levels)
+    m1_loo = _grouped_loo(rows, True, treatment_levels)
     rss0, beta0, names0 = _rss_and_beta(rows, False, treatment_levels)
     rss1, beta1, names1 = _rss_and_beta(rows, True, treatment_levels)
     isolation_idx = names1.index("z_isolation20")
@@ -231,11 +273,13 @@ def run() -> dict[str, object]:
     for level in treatment_levels:
         group = [row for row in rows if str(row["treatment"]) == level]
         treatment_summary[level] = {
-            "n": len(group),
+            "n_rows": len(group),
+            "n_maternal_plants": len({str(row["plantID"]) for row in group}),
             "mean_correlated_paternity": float(np.mean([float(row["correlatedPaternity"]) for row in group])),
             "mean_isolation20": float(np.mean([float(row["isolation20"]) for row in group])),
         }
 
+    unique_plants = len({str(row["plantID"]) for row in rows})
     return {
         "stage": "Oenothera harringtonii mating-state residual-isolation test",
         "decision": decision,
@@ -249,10 +293,13 @@ def run() -> dict[str, object]:
             "download_url": DOWNLOAD_URL,
         },
         "schema": {
-            "n_seed_families": len(rows),
+            "n_seed_family_rows": len(rows),
+            "n_maternal_plants": unique_plants,
+            "repeated_plant_rows": len(rows) - unique_plants,
             "treatment_levels": treatment_levels,
             "response": "correlatedPaternity",
             "residual_state_coordinate": "isolation20",
+            "validation_unit": "maternal plant; all repeated fruit/seed-family rows held out together",
         },
         "treatment_summary": treatment_summary,
         "models": {
@@ -260,6 +307,7 @@ def run() -> dict[str, object]:
                 "formula": "correlatedPaternity ~ treatment",
                 "loo_mse": m0_loo["mse"],
                 "loo_mae": m0_loo["mae"],
+                "fold_count": m0_loo["fold_count"],
                 "rss": rss0,
                 "design_columns": names0,
                 "beta": [float(v) for v in beta0],
@@ -268,6 +316,7 @@ def run() -> dict[str, object]:
                 "formula": "correlatedPaternity ~ treatment + z(isolation20)",
                 "loo_mse": m1_loo["mse"],
                 "loo_mae": m1_loo["mae"],
+                "fold_count": m1_loo["fold_count"],
                 "rss": rss1,
                 "design_columns": names1,
                 "beta": [float(v) for v in beta1],
@@ -278,7 +327,7 @@ def run() -> dict[str, object]:
             "loo_mse_change_M1_minus_M0": float(m1_loo["mse"] - m0_loo["mse"]),
             "loo_mse_percent_change": float(100.0 * (m1_loo["mse"] - m0_loo["mse"]) / m0_loo["mse"]),
             "rss_gain_M0_minus_M1": observed_gain,
-            "within_treatment_permutation_p": permutation_p,
+            "within_treatment_plant_level_permutation_p": permutation_p,
             "permutations": N_PERMUTATIONS,
             "rng_seed": RNG_SEED,
             "permuted_gain_95pct": [float(np.quantile(gains, 0.025)), float(np.quantile(gains, 0.975))],
