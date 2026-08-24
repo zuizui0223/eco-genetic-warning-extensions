@@ -1,0 +1,48 @@
+{
+  "audit": "E2 Zurich urban garden empirical partial-state audit",
+  "status": "secondary_audit_of_open_source_model_outputs_not_raw_data_refit",
+  "source": {
+    "repository": "mrejichacko/BetterBlooms",
+    "dataset_doi": "10.16904/envidat.676",
+    "analysis_article_doi": "10.1111/1365-2664.70384",
+    "landscape_coefficients": "results/beta_coefficients_reproductive_success_garden_landscape.txt",
+    "interaction_coefficients": "results/beta_coefficients_reproductive_success_all.txt",
+    "urban_gradient": "raw_data/explanatory_variables.txt"
+  },
+  "urban_500_observed_range": {
+    "minimum": 0.1908,
+    "maximum": 0.8176,
+    "garden_count_in_explanatory_table": 24
+  },
+  "urban_500_function_effects": [
+    {"function": "carrot_seed_set", "mean": -0.1451206100, "lower": -0.2600909017, "upper": -0.0318802821, "classification": "negative_interval_excludes_zero"},
+    {"function": "radish_fruit_set", "mean": -0.1337630458, "lower": -0.2148022162, "upper": -0.0499777220, "classification": "negative_interval_excludes_zero"},
+    {"function": "radish_seed_set", "mean": -0.0169617642, "lower": -0.0526460604, "upper": 0.0179627303, "classification": "interval_includes_zero"},
+    {"function": "sainfoin_fruit_set", "mean": -0.0089325653, "lower": -0.3005739757, "upper": 0.2794196556, "classification": "interval_includes_zero"},
+    {"function": "comfrey_fruit_set", "mean": -0.4443495896, "lower": -0.7440593206, "upper": -0.1428749931, "classification": "negative_interval_excludes_zero"},
+    {"function": "comfrey_seed_set", "mean": -0.0437054823, "lower": -0.0871156589, "upper": 0.0001955577, "classification": "borderline_interval_includes_zero"}
+  ],
+  "clear_negative_urban_500_count": 3,
+  "selected_interaction_effects": [
+    {"function": "carrot_seed_set", "guild": "hoverflies_abundance", "mean": 0.26, "lower": 0.09, "upper": 0.42, "classification": "positive_interval_excludes_zero"},
+    {"function": "carrot_seed_set", "guild": "beetles_abundance", "mean": 0.20, "lower": 0.03, "upper": 0.37, "classification": "positive_interval_excludes_zero"},
+    {"function": "carrot_seed_set", "guild": "honeybees_abundance", "mean": -0.15, "lower": -0.25, "upper": -0.05, "classification": "negative_interval_excludes_zero"},
+    {"function": "sainfoin_fruit_set", "guild": "all_bees_abundance", "mean": 0.34, "lower": 0.05, "upper": 0.63, "classification": "positive_interval_excludes_zero"},
+    {"function": "comfrey_fruit_set", "guild": "social_bees_abundance", "mean": 0.44, "lower": 0.15, "upper": 0.73, "classification": "positive_interval_excludes_zero"},
+    {"function": "carrot_seed_set", "guild": "social_bees_species_richness", "mean": -0.96, "lower": -1.36, "upper": -0.54, "classification": "negative_interval_excludes_zero"},
+    {"function": "carrot_seed_set", "guild": "hoverflies_species_richness", "mean": 0.52, "lower": 0.28, "upper": 0.75, "classification": "positive_interval_excludes_zero"},
+    {"function": "radish_fruit_set", "guild": "social_bees_species_richness", "mean": 0.32, "lower": 0.10, "upper": 0.54, "classification": "positive_interval_excludes_zero"}
+  ],
+  "state_mapping": {
+    "spatial_context": "Urban_500 and garden coordinates",
+    "interaction_support": "plant-specific guild abundance/richness",
+    "trait_state": "pollinator trait filtering available in source programme",
+    "realised_function": "plant-specific fruit/seed set",
+    "natural_plant_genetic_state": "not available because phytometers are standardised",
+    "process_specific_pollen_seed_connectivity": "not available",
+    "ecological_memory": "not resolved"
+  },
+  "identification_boundary": "The released stored model families estimate F~urban/local context and F~pollinator guilds separately. They do not constitute the joint state-sufficiency model F~interaction_state+Urban_500+context. Therefore mediation or residual urban-history irrelevance is not claimed.",
+  "next_model": "Compare held-out predictive performance for M1=local_context+interaction_state versus M2=M1+Urban_500+local_context_x_Urban_500, preserving focal-plant/function identity and spatial structure.",
+  "headline": "Within one city, urban intensity and interaction support are function-specific; neither an urban scalar nor total pollinator abundance/richness defines a universal functional-fragmentation state."
+}
