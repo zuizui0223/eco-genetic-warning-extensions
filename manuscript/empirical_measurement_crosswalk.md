@@ -37,11 +37,12 @@ Legend: `●` = directly measured in the cited design/programme; `◐` = partial
 | Zurich 24 garden phytometers | ● | ● | ● | ○ | ○ | ○ | ● | ◐ | ◐ | **Immediate urban ecological partial-state test.** Raw design can test whether urban intensity adds prediction beyond `I/T`; standardized plants intentionally remove natural plant `G`. |
 | Chicago *Penstemon hirsutus* green roofs | ● | ◐ | ◐ | ● | ● | ● | ● | ◐ | ◐ | **Connectivity/function-rich partial state.** Add standardized pollinator identity, visitation and effectiveness per roof. |
 | Perth *Conospermum undulatum* fragments | ● | ● | ◐ | ● | ● | ● | ● | ● | ◐ | **Cohort/history-lag anchor.** Reproduction, historic adult genetics and contemporary offspring paternity are rich but temporally layered; synchronize adult/offspring/interactions in one outcome window for strict sufficiency. |
+| Mexican tropical dry forest *Spondias purpurea* | ● | ● | ◐ | ● | ● | ● | ● | ● | ● | **Near-complete synchronized joint-state anchor.** Visitation, reproduction, paternity-derived pollen flow, sire diversity and adult/seed/juvenile genetics were measured within the same fragmentation comparison. Best current natural bridge from `I/C/F` to cohort-specific `G`. |
 | fragmented Dutch *Primula elatior* | ● | ● | ● | ◐ | ● | ● | ● | ◐ | ◐ | **Strong terrestrial bridge.** Population size, genetics, morph balance, landscape, pollinators and seed production are jointly informative outside the urban/island framing. |
 
 The matrix is a **measurement registry**, not an evidence score. A system with fewer filled cells can still be the best test of one causal coordinate.
 
-## Three quantitative natural anchor conditions
+## Four quantitative natural anchor conditions
 
 ### Anchor U-LIM — uncompensated interaction limitation (*Crepis*)
 
@@ -85,6 +86,22 @@ Published anchors include fruit production decreasing from about 35% to <20% wit
 
 **Identification rule in nature:** a candidate cohort-lag condition requires direct evidence that the genetic cohort being monitored records an older landscape state than the contemporary interaction/mating process. Do not infer lag merely because adult neutral diversity is high.
 
+### Anchor T-JOINT — joint interaction–connectivity limitation with cohort-emergent genetic deterioration (*Spondias*)
+
+Observed pattern:
+
+`I_realised ↓ + C_pollen kernel contracts + donor diversity ↓ + F_reproduction ↓`
+
+followed by
+
+`G_seed/juvenile deteriorates before G_adult necessarily shows the same magnitude of change`.
+
+Published anchors include mean realised pollen-flow distance of about **209.15 m** in continuous versus **44.91 m** in fragmented forest, a narrower effective paternal pool in fragments (`N_ep` about **2.58** versus **1.58**), and much stronger heterozygosity loss/inbreeding in fragmented seed and juvenile cohorts than is evident from adult standing diversity.
+
+**Identification rule in nature:** call this a candidate joint-deterioration state only when interaction support, direct function, contemporary mating/connectivity and at least one next-generation genetic cohort are measured in a common fragmentation comparison. Adult neutral genetics alone is insufficient.
+
+This anchor is especially valuable because it links the state coordinates in one study rather than assembling a mechanism from companion publications.
+
 ## What counts as the same functional-fragmentation regime
 
 Two natural systems should not be matched by raw units such as flowers ha⁻¹, kilometres of isolation or heterozygosity. Cross-system convergence is a **predictive equivalence claim**:
@@ -106,13 +123,14 @@ The target is the **smallest sufficient measured state**, not the largest covari
 
 ## Existing-data versus new-measurement frontier
 
-### Can be tested now as partial state
+### Can be tested now as partial or joint state
 
-- **E1 Honshu–Izu:** ecological residual-origin test using functional diversity, trait matching, season and direct pollination success; no matched genetics.
+- **E1 Honshu–Izu:** ecological residual-origin test using functional diversity, trait matching, season and direct pollination success; no matched genetics. A preregistered public-data discovery/residual-origin workflow is now the first direct test.
 - **E2 Zurich:** urban residual-context test using local ecological context, guild-/trait-specific interaction support and direct fruit/seed set; no natural plant genetics.
 - **E3 *Crepis*:** process audit can be done from existing open parentage/dispersal data, but full state cannot be synchronized retrospectively from the separate 2006 and 2013 studies.
 - **E4 Miyake:** published tables permit a quantitative compensation-axis audit; a strict prospective sufficiency test needs repeated synchronized site-years.
 - **E5 *Conospermum*:** existing reproductive, historical-genetic and contemporary-parentage studies establish the temporal mismatch mechanism, but a strict state test needs the three layers aligned to the same populations, cohorts and years.
+- **E6 *Spondias*:** the published study already contains the strongest near-synchronized `I/C/F/G` bridge. The next step is a reanalysis/temporal extension that asks whether habitat class/history adds predictive information after the measured joint state, rather than merely re-testing fragmentation effects one variable at a time.
 
 ### Highest-value new measurement
 
@@ -122,7 +140,8 @@ The largest common gap is **interaction + function + genetics/connectivity measu
 2. resurvey *Crepis* patches with interaction/function and parentage in the same season;
 3. repeat Miyake site-years with movement, pollen flow, reproduction and offspring genetics synchronized;
 4. align adult, offspring and pollinator observations in *Conospermum* remnants to distinguish current state from historical genetic memory;
-5. add direct pollinator observation/effectiveness to Chicago roofs where paternity and reproduction are already available.
+5. add direct pollinator observation/effectiveness to Chicago roofs where paternity and reproduction are already available;
+6. revisit *Spondias* populations through time so the already-rich joint state can be tested prospectively against future reproduction/recruitment rather than cross-sectionally only.
 
 ## Interpretation boundary
 
