@@ -1,0 +1,58 @@
+name: Eschscholzia joint-state schema discovery
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/fetch_eschscholzia_joint_state_schema.py'
+      - 'manuscript/empirical_eschscholzia_joint_state_preregistration.md'
+      - '.github/workflows/eschscholzia-joint-state-discovery.yml'
+      - 'tests/test_eschscholzia_joint_state_discovery_contract.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch fixed EIDC packages and inspect headers only
+        run: |
+          python scripts/fetch_eschscholzia_joint_state_schema.py \
+            --manifest artifacts/empirical/eschscholzia_joint_state_schema.json
+
+      - name: Validate schema-only contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/eschscholzia_joint_state_schema.json').read_text(encoding='utf-8'))
+          assert d['status'] == 'schema_only_discovery_complete'
+          assert len(d['datasets']) == 4
+          assert {x['role'] for x in d['datasets']} == {
+              'pollinator_availability',
+              'seed_function_supplemented_exposed',
+              'seed_function_exposed_excluded',
+              'paternity',
+          }
+          assert all(x['package_sha256'] and x['members'] for x in d['datasets'])
+          assert all(any('columns' in m for m in x['members']) for x in d['datasets'])
+          assert 'No data rows' in d['inspection_boundary']
+          print(json.dumps({x['role']: [m['member_name'] for m in x['members']] for x in d['datasets']}, sort_keys=True))
+          PY
+
+      - name: Upload schema manifest only
+        uses: actions/upload-artifact@v4
+        with:
+          name: eschscholzia-joint-state-schema
+          path: artifacts/empirical/eschscholzia_joint_state_schema.json
+          if-no-files-found: error
+          retention-days: 30
