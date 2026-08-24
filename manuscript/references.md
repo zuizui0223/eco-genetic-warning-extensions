@@ -18,6 +18,8 @@ Brosi, B.J., Niezgoda, K. & Briggs, H.M. (2017). Experimental species removals i
 
 Cheptou, P.-O. & Avendaño V, L.G. (2006). Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist*, **172**, 774–783. doi:10.1111/j.1469-8137.2006.01880.x
 
+Cristóbal-Pérez, E.J., Fuchs, E.J., Martén-Rodríguez, S. & Quesada, M. (2021). Habitat fragmentation negatively affects effective gene flow via pollen, and male and female fitness in the dioecious tree, *Spondias purpurea* (Anacardiaceae). *Biological Conservation*, **256**, 109007. doi:10.1016/j.biocon.2021.109007
+
 Delavaux, C.S., Crowther, T.W., Bever, J.D., Weigelt, P. & Gora, E.M. (2024). Mutualisms weaken the latitudinal diversity gradient among oceanic islands. *Nature*, **627**, 335–339. doi:10.1038/s41586-024-07110-y
 
 Domínguez-Garcia, V., Molina, F.P., Godoy, O. & Bartomeus, I. (2024). Interaction network structure explains species' temporal persistence in empirical plant–pollinator communities. *Nature Ecology & Evolution*, **8**, 423–429. doi:10.1038/s41559-023-02314-3
@@ -65,6 +67,10 @@ Olhnuud, A., Wen, J., Yu, J., Lyu, F. & Zhang, Q. (2025). Responses of insect po
 Pannell, J.R., Auld, J.R., Brandvain, Y., et al. (2015). The scope of Baker's law. *New Phytologist*, **208**, 656–667. doi:10.1111/nph.13539
 
 Peled, O., Kim, J. & Greenbaum, G. (2026). Network-based genetic monitoring of landscape fragmentation. *Proceedings of the National Academy of Sciences USA*, **123**, e2515033123. doi:10.1073/pnas.2515033123
+
+Reji Chacko, M., Moretti, M. & Frey, D.J. (2025). Comprehensive dataset of pollinator diversity and visitation rates with individual-based traits and pollination success across four urban garden plant species [Dataset]. *EnviDat*. doi:10.16904/envidat.676
+
+Reji Chacko, M., Frey, D.J., Albrecht, M., Ghazoul, J. & Moretti, M. (2026). No one-size-fits-all: Trait-dependent effects of local plant diversity on pollinators and pollination service in a densifying city. *Journal of Applied Ecology*, **63**, e70384. doi:10.1111/1365-2664.70384
 
 Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
 
