@@ -194,7 +194,7 @@ The central statistical null is conditional independence:
 
 `future functional trajectory ⟂ fragmentation origin/history | measured joint state at t`.
 
-A residual origin/history effect identifies a missing state coordinate. It is not evidence that `urban` or `island` itself is a causal state variable.
+A residual origin/history effect identifies a missing state coordinate. It is not evidence that `urban` or `island` itself is a causal state variable. The direct empirical implementation is therefore a **residual-origin test**: add origin/history only after the candidate state and ask whether held-out prediction improves.
 
 ## Immediate empirical programme
 
