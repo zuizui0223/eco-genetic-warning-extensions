@@ -2,7 +2,7 @@
 
 ## Central hypothesis
 
-> **Spatial fragmentation becomes interaction-mediated functional fragmentation when it weakens the process maintaining realised ecological function. Genetic warning is interpretable only after the downstream loss process has been characterised independently in terms of state feasibility, loss incidence, block heterogeneity and trajectory identity.**
+> **Spatial fragmentation becomes interaction-mediated functional fragmentation when it weakens the process maintaining realised ecological function. Genetic warning is interpretable only after the downstream loss-generating eco-genetic state has been characterised independently, and warning portability requires that the compared systems share a future-relevant joint state rather than only coarse summaries or habitat labels.**
 
 The repository follows one rule: if a proposition is not general, recover its **condition or boundary** rather than widening the search until a desired result appears.
 
@@ -14,13 +14,17 @@ C1  FUNCTION IS VULNERABLE
     fragmentation / deterioration can disrupt it
         ↓
 C2  LOSS PROCESS IS CONDITIONED
-    source feasibility + loss incidence + block heterogeneity + trajectory identity
+    source feasibility + incidence + heterogeneity + trajectory identity
+    + future-relevant joint spatial state
         ↓
-C3  WARNING IS CONDITIONAL
-    genetic lead time is tested only after C2 is fixed warning-blind
+C3  WARNING IS REPRODUCIBLE WITHIN A FIXED DOMAIN
+    genetic lead ordering is tested only after C2 is fixed warning-blind
         ↓
-C4  PORTABILITY IS BOUNDED
-    warning need not transfer across calibrated eco-genetic domains
+C4  PORTABILITY / CAUSAL ATTRIBUTION IS BOUNDED
+    another domain must first preserve a comparable loss-generating process
+        ↓
+E1  FIND THE STATE IN NATURE
+    test whether measured state removes residual information from origin/history
 ```
 
 ## Historical screen versus biological estimands
@@ -32,7 +36,8 @@ Final inference therefore separates:
 - **loss incidence**;
 - **between-block heterogeneity**;
 - **trajectory-identity sensitivity**;
-- **warning performance**.
+- **state sufficiency / representation**;
+- **warning performance and replication**.
 
 R1–R4 remain historical screening labels and do not replace these estimands.
 
@@ -45,7 +50,7 @@ The pinned parent repository (`eco-genetic-criticality`, scientific commit `dd8e
 
 ## C2 — conditions generating functional loss
 
-All C2 campaigns are warning-blind. Warning times, genetic lead/lag ordering and lead time are unavailable during condition selection or replication.
+All C2 campaigns are warning-blind. Warning times, genetic lead/lag ordering and lead time are unavailable during condition selection, representation tests or replication.
 
 ### C2a — recurrent turnover changes source feasibility
 
@@ -72,7 +77,7 @@ High-precision exact-seed replays recovered an incidence frontier:
 
 In the exact historical Phase-E/M seed family, high-precision pooled loss remained near .54–.56 across `m=0,.025,.05,.10,.20`. Only `m=.10` showed excess equal-rate heterogeneity (`p=.0205`); paired marginal-risk tests were null.
 
-Phase U then preregistered one independent fresh five-seed replication at the same anchor with only `m=0` and `m=.10`, 100 attempted replicates per seed, at least 70 eligible trajectories per block, identical paired eligibility and no requirement that the control pass R4.
+Phase U preregistered one independent fresh five-seed replication at the same anchor with only `m=0` and `m=.10`, 100 attempted replicates per seed, at least 70 eligible trajectories per block, identical paired eligibility and no requirement that the control pass R4.
 
 | ensemble / condition | pooled loss | screen | equal-rate p |
 |---|---:|---|---:|
@@ -83,9 +88,7 @@ Phase U then preregistered one independent fresh five-seed replication at the sa
 
 Fresh paired McNemar `p=.694`. The preregistered decision is **`historical_m010_heterogeneity_not_freshly_replicated`**.
 
-**Conclusion:** the Phase-M `m=.10` signal remains a valid observation in its historical seed family, but it is not supported as an independently reproducible parameter-specific heterogeneity effect. Phase U is one replication and does not prove that no future seed family could ever show heterogeneity.
-
-**Status: historical seed-family observation + one preregistered fresh non-replication; no reproducible connectivity heterogeneity threshold recovered.**
+**Status:** historical seed-family observation + one preregistered fresh non-replication; no reproducible connectivity heterogeneity threshold recovered.
 
 ### C2d — aggregate interaction support remains intermediate across the predeclared range
 
@@ -105,40 +108,100 @@ Phase N high-precision pooled loss was .556/.544/.565/.549 for intact/even/grade
 
 Phase T held expected support at .75 while realised support variance increased `0 → .04684 → .09702`. Pooled loss was `.5442/.5488/.5533`; equal-rate and paired McNemar tests were non-significant.
 
-**Conclusion:** the historical low-replicate partner-loss R4→R3 claim is withdrawn. Temporal support variance and contribution concentration did not produce a detected population-level loss-process effect under the declared closure. The preregistered adaptive-rewiring gate remains **closed**.
+**Conclusion:** temporal support variance and contribution concentration did not produce a detected population-level loss-process effect under the declared closure. The preregistered adaptive-rewiring gate remains **closed**.
 
 ### C2f — process-resolved movement narrows the historical connectivity interpretation
 
 Phases R/S used the historical Phase-M seed family and compared the historical allele-only `m=.10` observation with two more explicit movement closures.
 
-| closure | pooled loss | historical screen | equal-rate p | paired marginal result |
-|---|---:|---|---:|---|
-| no connectivity | .559 | R4 | .710 | reference |
-| historical-family allele-only `m=.10` | .557 | R3 | .0205 | null vs isolation |
-| whole-individual dispersal `d=.10` | .606 | R4 | .811 | McNemar `p=.143` vs no connectivity |
-| pollen-only paternal gene flow `g=.20` | .532 | R4 | .728 | McNemar `p=.311` vs no connectivity; `.266` vs allele-only |
+| closure | pooled loss | equal-rate p | paired marginal result |
+|---|---:|---:|---|
+| no connectivity | .559 | .710 | reference |
+| historical-family allele-only `m=.10` | .557 | .0205 | null vs isolation |
+| whole-individual dispersal `d=.10` | .606 | .811 | McNemar `p=.143` vs no connectivity |
+| pollen-only paternal gene flow `g=.20` | .532 | .728 | McNemar `p=.311` vs no connectivity; `.266` vs allele-only |
 
-**Conclusion:** within the historical Phase-M seed family, the heterogeneity pattern did not port to whole-individual or pollen-only movement. Combined with Phase U, the strongest supported statement is now negative: **no robust portable connectivity heterogeneity effect was established across the tested ensembles and operators.**
+**Conclusion:** the heterogeneity pattern did not port to whole-individual or pollen-only movement. Combined with Phase U, **no robust portable connectivity heterogeneity effect was established across the tested ensembles and operators.**
 
 `migration_rate` remains allele-frequency mixing, not demographic, pollinator, pollen, seed or recolonisation movement.
 
-## C3 — genetic warning only after C2
+### C2g — coarse layer marginals are not transition-sufficient
 
-The inherited symmetric benchmark remains a proof of possibility. In one independently calibrated domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
+The state-sufficiency programme now contains two complementary results.
 
-Phases R/S/T/U add no warning claims. They constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
+**Parent theorem/construction:** under the declared Markov simulator, complete present-state equality plus the same future forcing/stochastic law is future-sufficient; different histories that arrive at the same full state have the same future distribution. A constructive counterexample shows that common coarse summaries can match while patchwise interaction–genetic alignment changes the next transition.
 
-**C3: conditional possibility recovered; universal thresholds unresolved.**
+**Finite alignment campaign:** four equal patches were assigned the same census, interaction multiset, allele-frequency multiset, realised high-trait-mass multiset, global trait-bin totals, `H_alpha=.4`, `H_gamma=.5` and `F_ST=.2`. Only cross-layer spatial alignment changed.
 
-## C4 — warning portability
+- aligned covariance: `+.025`;
+- anti-aligned covariance: `-.025`;
+- maximum exact generation-1 interaction difference: **`.2543`**;
+- aligned loss: `339/500=.678`;
+- anti-aligned loss: `361/500=.722`;
+- paired switches: `92` versus `114`;
+- exact McNemar: **`p=.143`**.
+
+**Conclusion:** layer-wise coarse marginals are not a sufficient state representation for the exact local transition. Under the one preregistered 60-generation deterioration schedule, however, no directional effect on realised functional-loss incidence was detected.
+
+**Status:** positive state-representation boundary + bounded null long-term incidence result. Do not reinterpret alignment as a universal signed risk axis.
+
+## C3 — genetic warning is reproducible within the frozen symmetric domain
+
+The inherited parent benchmark yielded **35/35 warning leads** at each of six baseline-relative `H_alpha/H_gamma × 5/10/20%` endpoints after warning-blind calibration. Fixed absolute thresholds produced both leads and lags.
+
+A separately preregistered fresh-seed replication then kept the symmetric H2-R domain and all six endpoint definitions frozen. Of 100 new attempts, 82 trajectories were available and 33 realised functional losses occurred. At every endpoint:
+
+- valid pairs: **33**;
+- leads: **33**;
+- ties/lags: **0/0**;
+- exact one-sided binomial `p` against .5: `1.1641532182693481e-10`.
+
+The five fresh seed blocks contributed `7,7,7,7,5` valid pairs and every pair was a lead. The preregistered decision was **`strict_replication`**.
+
+**Conclusion:** baseline-relative warning ordering is no longer merely a one-ensemble proof of possibility. It strictly replicated across **two independent stochastic ensembles within the same frozen domain** (historical 35/35 and fresh 33/33 at all six endpoints).
+
+**C3: strong within-domain replication; universal thresholds unresolved.**
+
+## C4 — portability and direction-only causal attribution remain bounded
 
 Historical Protocol 003 recovered two domains by separate warning-blind calibration. They differ in recurrent-transition, ecological and deterioration parameters. Their fresh-seed warning differences are therefore **bounded portability evidence across calibrated eco-genetic domains**, not a single-factor effect of transition direction.
 
-**C4: bounded non-portability result; causal attribution intentionally limited.**
+A later identifiability audit asked whether recurrent-transition direction could be varied while holding `kappa_mu=.20`, ecology and the Phase-V deterioration schedule fixed **and** retaining a comparable intermediate loss process. The predeclared same-strength grid gave pooled loss:
 
-## Urban and island application
+| `p_star` | .10 | .25 | .50 | .75 | .90 |
+|---:|---:|---:|---:|---:|---:|
+| pooled loss | 1.0 | 1.0 | .4 | 0 | 0 |
 
-Urban and island systems are contrasting empirical routes through the condition space, not ecological equivalents. The empirical question is whether distinct fragmentation mechanisms converge on similar combinations of functional-state feasibility, realised interaction support, loss incidence and temporal stability when pollen, seed/propagule, demographic and partner movement are measured as separate processes rather than collapsed into one connectivity scalar.
+Only the symmetric `.50` cell lay in the historical intermediate band. Intermediate loss at `.90` was recoverable only after also changing `kappa_mu` to `.05` (`10/21=.476`), so it is not a direction-only comparator.
+
+**Decision:** `direction_only_warning_comparison_not_identifiable_under_frozen_common_schedule`.
+
+Finer `p_star` search after observing the incidence split would be outcome-guided; retuning `kappa_mu`, ecology, deterioration or horizon destroys single-factor identification. Neither route is opened.
+
+**C4: bounded portability; isolated direction-only warning effect unresolved by design.**
+
+## E1 — empirical state search
+
+Urban and island systems are contrasting causal routes through the condition space, not ecological equivalents. The empirical question is now operational:
+
+> **Do distinct fragmentation mechanisms converge after conditioning on the same future-relevant measured joint functional state?**
+
+Convergence is supported only if system origin or fragmentation history no longer improves out-of-sample prediction of subsequent realised function after conditioning on the measured state.
+
+The current empirical candidate retains:
+
+`S_emp(t) = {D, I, T, C, R, G, F_baseline, M, joint spatial alignment}_t`
+
+where demographic/resource support, realised interactions, functional/trait state, process-specific connectivity, compensatory routes, genetic/mating state, baseline function, plausible ecological memory and cross-layer spatial alignment are measured separately before reduction.
+
+Current natural evidence identifies at least four mechanistic search templates:
+
+- urban *Crepis sancta*: density–interaction limitation;
+- Honshu–Izu networks: functional-partner / trait-matching limitation;
+- Miyake-jima *Camellia japonica*–*Zosterops japonicus*: movement-mediated compensation;
+- Zurich gardens: focal-function-specific urban filtering.
+
+These are **search templates, not universal classes**. Detailed measurement audits live in `manuscript/empirical_regime_candidates.md`, `empirical_condition_map.md`, `empirical_e1_izu_audit.md` and `empirical_e2_zurich_audit.md`.
 
 ## Recovery ledger
 
@@ -148,12 +211,14 @@ Urban and island systems are contrasting empirical routes through the condition 
 | C1 fragmentation vulnerability | recovered | fragmentation can lower interaction, local effective size and realised function |
 | C2a source feasibility | supported | recurrent-transition coordinates change source feasibility |
 | C2b recurrent-turnover loss | supported | tested `p_star` frontier is an incidence gradient, not a seed-heterogeneity window |
-| C2c allele-frequency connectivity | non-replicated historical observation | historical `m=.10` heterogeneity failed one independent fresh replication; no reproducible threshold recovered |
-| C2d aggregate interaction support | bounded negative result | all predeclared kappa values remain intermediate/homogeneous at high precision |
-| C2e partner architecture | bounded negative result | reduced-form and temporal partner perturbations change some histories but not detected population-level loss process; rewiring remains closed |
-| C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
-| C3 conditional warning | bounded support | baseline-relative genetic erosion can lead loss in one calibrated benchmark; absolute thresholds are not robust |
-| C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
+| C2c allele-frequency connectivity | non-replicated historical observation | historical `m=.10` heterogeneity failed one independent fresh replication |
+| C2d aggregate interaction support | bounded negative | predeclared kappa values remain intermediate/homogeneous |
+| C2e partner architecture | bounded negative | no detected population-level effect; rewiring remains closed |
+| C2f process-resolved connectivity | negative portability boundary | historical pattern did not port to individual or pollen movement |
+| C2g state representation | recovered boundary | coarse marginals fail exact transition sufficiency; alignment did not show detected long-term incidence effect under one schedule |
+| C3 conditional warning | **strict within-domain replication** | 35/35 historical and 33/33 fresh leads at all six relative endpoints |
+| C4 portability / direction | bounded / not identifiable | cross-domain portability limited; direction-only comparator unavailable under frozen schedule |
+| E1 empirical convergence | open empirical programme | measured state must remove residual origin/history information before convergence is claimed |
 
 ## Global stop rules
 
@@ -161,13 +226,15 @@ Do not:
 
 1. inspect warning/diversity fields while selecting or replicating C2 conditions;
 2. reinterpret historical R1–R4 labels as latent biological classes;
-3. refine `p_star`, migration, interaction kappa, partner weights or the historical screen merely to obtain a desired result;
+3. refine `p_star`, migration, interaction kappa, partner weights or screens merely to obtain a desired result;
 4. overwrite the historical 15/15 Protocol 002 no-domain result;
 5. call allele-frequency mixing demographic, pollinator, pollen, seed or recolonisation movement;
 6. describe `m=.10` heterogeneity as independently replicated or an established connectivity threshold;
-7. rerun fresh Phase-U ensembles or replace seeds merely to recover significance;
-8. call interaction `kappa` network simplification;
-9. call the Phase-N/T partner layers a full dynamic multispecies network;
+7. rerun fresh Phase-U connectivity ensembles merely to recover significance;
+8. rerun the fresh warning replication, replace seeds or change endpoints merely to alter its `strict_replication` decision;
+9. call interaction `kappa` network simplification or partner layers a full dynamic multispecies network;
 10. open adaptive rewiring after the Phase-T null result merely to rescue an effect;
-11. open a direction-only warning test without prospectively matched conditions;
-12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
+11. add alignment permutations, state values or deterioration schedules after the finite alignment result merely to obtain a long-term effect;
+12. open finer `p_star` or retune other parameters to manufacture a direction-only comparator;
+13. claim urban/island convergence from matched averages alone; test residual origin/history prediction instead;
+14. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
