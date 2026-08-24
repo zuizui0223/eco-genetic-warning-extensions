@@ -38,7 +38,7 @@ The first machine-access route is the EIDC data-package service:
 
 `https://data-package.ceh.ac.uk/data/<dataset UUID>`
 
-where the UUID is the DOI suffix. This is an access/schema gate, not an outcome analysis. If the service returns an archive, only archive member names, byte hashes/sizes and CSV header labels may be inspected. If it returns one CSV directly, only the first header row may be read. If this route cannot produce a verifiable data payload, the failure is recorded before any alternative access route is considered.
+where the UUID is the DOI suffix. This is an access/schema gate, not an outcome analysis. Run `32734878637` showed that this route returns a small HTML landing document rather than the data payload directly. The second access adapter therefore reads only that landing document's `href` / form `action` attributes and follows every same-CEH link attached to the same UUID or an explicit CSV/ZIP/download route. Candidate selection is URL-structural and occurs without data-row inspection. Every verifiable CSV/ZIP candidate is retained rather than selecting among them by content.
 
 ## Schema-only boundary
 
@@ -73,15 +73,40 @@ No new endpoint family may be selected from values after the schema is seen.
 
 This question is intentionally multi-endpoint. It does not assume that one sufficient state exists for every downstream process.
 
-## Required discovery decision
+## Frozen identifiability rule
 
-After schema-only inspection, the campaign must be classified as exactly one of:
+The classification is determined from **column/key presence only**.
 
-- **`joint_state_identifiable`** — block/array/plant keys permit direct synchronization of `I/T`, `F_seed`, `R`, and `G_mating/C` at a defensible common hierarchy;
-- **`partial_joint_state_identifiable`** — the same field experiment and array/block structure are represented but at least one endpoint cannot be mapped to the same focal-plant level; a prospectively declared hierarchical multi-endpoint test may still be possible;
-- **`not_identifiable_from_archive`** — required keys or process variables cannot be mapped without inspecting outcomes or inventing post hoc joins.
+### `joint_state_identifiable`
 
-All outcomes are acceptable.
+Call this only if:
+
+1. all four process products (`I/T`, `F_seed`, `R`, `G_mating/C`) expose a common experiment **block + array** identifier or an unambiguous header-level equivalent; **and**
+2. both seed-function products and the paternity product expose a common focal-plant identifier or an unambiguous header-level equivalent, so plant-level outcomes can be nested under the same array; **and**
+3. habitat/context is explicitly represented in the endpoint datasets or can be attached by the same declared block/array key without reading values.
+
+The pollinator product need not have focal-plant identity because pan traps are array-level availability measurements; it must, however, attach to the exact array hierarchy.
+
+### `partial_joint_state_identifiable`
+
+Call this when:
+
+1. all four products expose a common block/array hierarchy, so the same field arrays can be synchronized; but
+2. at least one of `F_seed`, `R`, or `G_mating/C` lacks a common focal-plant key.
+
+This permits only an explicitly hierarchical array-level or mixed-resolution second preregistration. Missing plant identity may not be reconstructed from row order, outcome values, or sample counts.
+
+### `not_identifiable_from_archive`
+
+Call this if:
+
+- the four products do not expose a defensible common block/array key; or
+- a required process product is absent; or
+- synchronization would require guessing IDs from row order, values, distributions, or post hoc combinations.
+
+Thus a common block/array key is the minimum admissible bridge; shared plant identity in the three plant-level endpoint products separates `joint` from `partial`.
+
+All three outcomes are acceptable and may not be changed after outcome values are seen.
 
 ## Claim ceiling
 
