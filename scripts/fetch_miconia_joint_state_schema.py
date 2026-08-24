@@ -2,10 +2,8 @@ from __future__ import annotations
 
 import argparse
 import hashlib
-import io
 import json
 import re
-import zipfile
 from pathlib import Path
 from urllib.parse import quote, urljoin
 from urllib.request import Request, urlopen
@@ -21,23 +19,27 @@ FILES = (
     (30528, "pollen_dispersal_analysis_data.xlsx"),
     (30529, "seed_viability_analysis_data.xlsx"),
 )
+BROWSER_UA = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/139.0 Safari/537.36"
+)
 
 
-def _request_bytes(url: str, *, accept: str) -> bytes:
-    request = Request(
-        url,
-        headers={
-            "User-Agent": "eco-genetic-warning-extensions/1.0",
-            "Accept": accept,
-            "X-API-Version": "2.1.0",
-        },
-    )
+def _request_bytes(url: str, *, accept: str, api: bool = False) -> bytes:
+    headers = {
+        "User-Agent": BROWSER_UA,
+        "Accept": accept,
+        "Referer": "https://datadryad.org/",
+    }
+    if api:
+        headers["X-API-Version"] = "2.1.0"
+    request = Request(url, headers=headers)
     with urlopen(request, timeout=180) as response:
         return response.read()
 
 
 def _json(url: str) -> dict:
-    return json.loads(_request_bytes(url, accept="application/json").decode("utf-8"))
+    return json.loads(_request_bytes(url, accept="application/json", api=True).decode("utf-8"))
 
 
 def _absolute(href: str) -> str:
@@ -52,7 +54,6 @@ def _href(obj: dict, relation: str) -> str | None:
 
 
 def _file_id(item: dict) -> int | None:
-    # Current Dryad HAL file records may expose the id only in the self link.
     if item.get("id") is not None:
         return int(item["id"])
     self_href = _href(item, "self")
@@ -70,15 +71,13 @@ def _resolve_public_metadata() -> tuple[str, str, list[dict[str, object]]]:
 
     version_url = _href(dataset, "stash:version") or _href(dataset, "version")
     if version_url is None:
-        versions_url = f"{dataset_url}/versions"
-        versions = _json(versions_url)
+        versions = _json(f"{dataset_url}/versions")
         embedded = versions.get("_embedded", {}).get("stash:versions", [])
         if not embedded:
             raise RuntimeError("Dryad dataset metadata exposed no public versions")
-        version = embedded[0]
-        version_url = _href(version, "self")
-        if version_url is None and version.get("id") is not None:
-            version_url = f"{API_ROOT}/versions/{version['id']}"
+        version_url = _href(embedded[0], "self")
+        if version_url is None and embedded[0].get("id") is not None:
+            version_url = f"{API_ROOT}/versions/{embedded[0]['id']}"
         if version_url is None:
             raise RuntimeError("could not resolve Dryad version URL")
     version = _json(version_url)
@@ -122,29 +121,13 @@ def _resolve_public_metadata() -> tuple[str, str, list[dict[str, object]]]:
     return dataset_url, files_url, resolved
 
 
-def _download_public_package() -> tuple[str, bytes]:
-    dataset_key = quote(f"doi:{DOI}", safe="")
-    url = f"{API_ROOT}/datasets/{dataset_key}/download"
-    payload = _request_bytes(url, accept="application/zip,application/octet-stream,*/*")
-    if not zipfile.is_zipfile(io.BytesIO(payload)):
-        raise RuntimeError("Dryad public dataset download did not return a ZIP package")
-    return url, payload
-
-
-def _extract_locked_files(package: bytes) -> dict[str, bytes]:
-    expected = {filename for _, filename in FILES}
-    found: dict[str, bytes] = {}
-    with zipfile.ZipFile(io.BytesIO(package)) as archive:
-        for info in archive.infolist():
-            basename = Path(info.filename).name
-            if basename in expected:
-                if basename in found:
-                    raise RuntimeError(f"duplicate locked filename in Dryad package: {basename}")
-                found[basename] = archive.read(info)
-    missing = expected - set(found)
-    if missing:
-        raise RuntimeError(f"locked Miconia files absent from Dryad package: {sorted(missing)}")
-    return found
+def _download_public_file(file_id: int) -> tuple[str, bytes]:
+    # The landing-page/public Stash route is distinct from authenticated REST file download.
+    url = f"{DRYAD_ROOT}/stash/downloads/file_stream/{file_id}"
+    return url, _request_bytes(
+        url,
+        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/octet-stream,*/*",
+    )
 
 
 def _schema(path: Path) -> list[dict[str, object]]:
@@ -171,30 +154,33 @@ def _schema(path: Path) -> list[dict[str, object]]:
 
 def discover(output_dir: Path, manifest_path: Path) -> dict[str, object]:
     output_dir.mkdir(parents=True, exist_ok=True)
-
     dataset_api_url, files_api_url, metadata = _resolve_public_metadata()
-    package_url, package = _download_public_package()
-    extracted = _extract_locked_files(package)
-
     metadata_by_name = {str(item["filename"]): item for item in metadata}
+
     inventory: list[dict[str, object]] = []
     for file_id, filename in FILES:
-        payload = extracted[filename]
-        target = output_dir / filename
-        target.write_bytes(payload)
+        download_url, payload = _download_public_file(file_id)
         meta = metadata_by_name[filename]
         digest = hashlib.sha256(payload).hexdigest()
         metadata_digest = meta.get("metadata_digest")
         metadata_digest_type = str(meta.get("metadata_digest_type") or "").lower()
         if metadata_digest and metadata_digest_type in {"sha-256", "sha256"} and digest != metadata_digest:
             raise RuntimeError(
-                f"Dryad package checksum mismatch for {filename}: metadata={metadata_digest}, observed={digest}"
+                f"Dryad checksum mismatch for {filename}: metadata={metadata_digest}, observed={digest}"
             )
+        metadata_size = meta.get("metadata_size")
+        if metadata_size is not None and int(metadata_size) != len(payload):
+            raise RuntimeError(
+                f"Dryad size mismatch for {filename}: metadata={metadata_size}, observed={len(payload)}"
+            )
+        target = output_dir / filename
+        target.write_bytes(payload)
         inventory.append(
             {
                 **meta,
                 "file_stream_id": file_id,
                 "filename": filename,
+                "public_download_url": download_url,
                 "bytes": len(payload),
                 "sha256": digest,
                 "workbook_schema": _schema(target),
@@ -206,8 +192,6 @@ def discover(output_dir: Path, manifest_path: Path) -> dict[str, object]:
         "dataset_doi": DOI,
         "dataset_api_url": dataset_api_url,
         "files_api_url": files_api_url,
-        "package_download_url": package_url,
-        "package_sha256": hashlib.sha256(package).hexdigest(),
         "files": inventory,
         "inspection_boundary": (
             "Only public metadata, workbook names, hashes, dimensions and first-row column labels were inspected. "
