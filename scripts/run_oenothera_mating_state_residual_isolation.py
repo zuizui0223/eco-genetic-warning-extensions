@@ -70,18 +70,16 @@ def _load(payload: bytes) -> list[dict[str, object]]:
     if len(rows) < 12:
         raise RuntimeError(f"too few seed-family rows for declared test: n={len(rows)}")
 
-    # Schema correction fixed after the first workflow stopped before model fitting:
-    # repeated fruit/seed-family rows may share one maternal plant. Treatment and
-    # spatial isolation must therefore be coherent within plantID; otherwise the
-    # declared grouped validation is not identifiable.
+    # Each row is one fruit/seed-family sample; multiple treatments may occur on
+    # one maternal plant. Spatial isolation, however, is an individual property
+    # and must agree across every row sharing plantID.
     for plant_id in sorted({str(row["plantID"]) for row in rows}):
         group = [row for row in rows if str(row["plantID"]) == plant_id]
-        treatments = {str(row["treatment"]) for row in group}
         isolations = {float(row["isolation20"]) for row in group}
-        if len(treatments) != 1 or len(isolations) != 1:
+        if len(isolations) != 1:
             raise RuntimeError(
-                f"repeated plantID disagrees on treatment/isolation: plantID={plant_id}, "
-                f"treatments={sorted(treatments)}, isolation20={sorted(isolations)}"
+                f"repeated plantID disagrees on isolation20: plantID={plant_id}, "
+                f"isolation20={sorted(isolations)}"
             )
 
     if len({str(row["plantID"]) for row in rows}) < 10:
@@ -204,27 +202,30 @@ def _plant_level_table(rows: list[dict[str, object]]) -> list[dict[str, object]]
     plants: list[dict[str, object]] = []
     for plant_id in sorted({str(row["plantID"]) for row in rows}):
         group = [row for row in rows if str(row["plantID"]) == plant_id]
+        profile = tuple(sorted(str(row["treatment"]) for row in group))
         plants.append(
             {
                 "plantID": plant_id,
-                "treatment": str(group[0]["treatment"]),
+                "treatment_profile": profile,
                 "isolation20": float(group[0]["isolation20"]),
+                "row_count": len(group),
             }
         )
     return plants
 
 
-def _permute_isolation_within_treatment(
+def _permute_isolation_within_profile(
     rows: list[dict[str, object]], rng: np.random.Generator
 ) -> list[dict[str, object]]:
     copied = [dict(row) for row in rows]
     plants = _plant_level_table(rows)
     replacement: dict[str, float] = {}
-    for level in sorted({str(plant["treatment"]) for plant in plants}):
-        group = [plant for plant in plants if str(plant["treatment"]) == level]
+    profiles = sorted({tuple(plant["treatment_profile"]) for plant in plants})
+    for profile in profiles:
+        group = [plant for plant in plants if tuple(plant["treatment_profile"]) == profile]
         plant_ids = [str(plant["plantID"]) for plant in group]
         values = np.array([float(plant["isolation20"]) for plant in group], dtype=float)
-        shuffled = rng.permutation(values)
+        shuffled = rng.permutation(values) if len(group) > 1 else values
         replacement.update({plant_id: float(value) for plant_id, value in zip(plant_ids, shuffled, strict=True)})
     for row in copied:
         row["isolation20"] = replacement[str(row["plantID"])]
@@ -250,7 +251,7 @@ def run() -> dict[str, object]:
     extreme = 0
     gains: list[float] = []
     for _ in range(N_PERMUTATIONS):
-        permuted = _permute_isolation_within_treatment(rows, rng)
+        permuted = _permute_isolation_within_profile(rows, rng)
         perm_rss1, _, _ = _rss_and_beta(permuted, True, treatment_levels)
         gain = float(rss0 - perm_rss1)
         gains.append(gain)
@@ -279,7 +280,13 @@ def run() -> dict[str, object]:
             "mean_isolation20": float(np.mean([float(row["isolation20"]) for row in group])),
         }
 
-    unique_plants = len({str(row["plantID"]) for row in rows})
+    plants = _plant_level_table(rows)
+    profile_summary: dict[str, int] = {}
+    for plant in plants:
+        key = "/".join(str(value) for value in plant["treatment_profile"])
+        profile_summary[key] = profile_summary.get(key, 0) + 1
+
+    unique_plants = len(plants)
     return {
         "stage": "Oenothera harringtonii mating-state residual-isolation test",
         "decision": decision,
@@ -297,9 +304,11 @@ def run() -> dict[str, object]:
             "n_maternal_plants": unique_plants,
             "repeated_plant_rows": len(rows) - unique_plants,
             "treatment_levels": treatment_levels,
+            "treatment_profile_counts": profile_summary,
             "response": "correlatedPaternity",
             "residual_state_coordinate": "isolation20",
             "validation_unit": "maternal plant; all repeated fruit/seed-family rows held out together",
+            "permutation_unit": "maternal-plant isolation values permuted within identical treatment-profile strata",
         },
         "treatment_summary": treatment_summary,
         "models": {
@@ -327,7 +336,7 @@ def run() -> dict[str, object]:
             "loo_mse_change_M1_minus_M0": float(m1_loo["mse"] - m0_loo["mse"]),
             "loo_mse_percent_change": float(100.0 * (m1_loo["mse"] - m0_loo["mse"]) / m0_loo["mse"]),
             "rss_gain_M0_minus_M1": observed_gain,
-            "within_treatment_plant_level_permutation_p": permutation_p,
+            "treatment_profile_stratified_plant_permutation_p": permutation_p,
             "permutations": N_PERMUTATIONS,
             "rng_seed": RNG_SEED,
             "permuted_gain_95pct": [float(np.quantile(gains, 0.025)), float(np.quantile(gains, 0.975))],
