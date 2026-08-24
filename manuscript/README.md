@@ -75,7 +75,7 @@ Use this hierarchy when files disagree:
 6. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
 7. [`artifact_index.md`](artifact_index.md) — numerical provenance.
 
-Historical phase documents and **phase-specific result notes** remain provenance only; they do not override the current condition map or publication sources of truth.
+Historical phase documents and **phase-specific result notes** remain provenance only and **must not compete with the current sources**; they do not override the current condition map or publication sources of truth.
 
 ## Main line
 
