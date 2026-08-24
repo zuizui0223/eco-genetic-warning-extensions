@@ -122,23 +122,46 @@ Phases R/S used the historical Phase-M seed family and compared the historical a
 
 `migration_rate` remains allele-frequency mixing, not demographic, pollinator, pollen, seed or recolonisation movement.
 
-## C3 — genetic warning only after C2
+## C3 — genetic warning after C2, replicated inside one frozen state
 
-The inherited symmetric benchmark remains a proof of possibility. In one independently calibrated domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed functional losses. Fixed absolute thresholds produced both leads and lags.
+The inherited symmetric benchmark established the first positive warning ordering. In the frozen H2-R domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all **35/35** observed functional losses at each of the six endpoints. Fixed absolute thresholds produced both leads and lags.
 
-Phases R/S/T/U add no warning claims. They constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved; no outcome-informed tuning is opened to obtain one.
+Phase V prospectively repeated exactly that relative-warning family in one independent fresh seed ensemble (`20291110–20291114`) without recalibrating the loss domain, changing the deterioration schedule or selecting warning endpoints after outcomes. Of 100 attempted trajectories, 82 were available and 33 reached realised functional loss. For **all six** endpoints, the same-trajectory ordering was:
 
-**C3: conditional possibility recovered; universal thresholds unresolved.**
+- valid pairs: **33**;
+- leads: **33**;
+- ties: **0**;
+- lags: **0**;
+- exact one-sided binomial `p=1.1641532182693481e-10`.
+
+The preregistered decision was **`strict_replication`**. Thus the positive result is no longer only a single-ensemble proof of possibility:
+
+> **Within the frozen symmetric H2-R loss-generating state, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% strictly replicated as leading realised functional-trait loss across two independent seed ensembles.**
+
+This is precisely why the domain/state definition matters. Phase V does not make the 5/10/20% endpoints universal thresholds and does not establish portability to other eco-genetic states. It shows that once the loss-generating state is held fixed, the warning ordering itself can be reproducible.
+
+Phases R/S/T/U add no warning claims; they constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved, and no outcome-informed tuning is opened to obtain one.
+
+**C3: strict within-state replication recovered; universal thresholds and cross-state portability unresolved.**
 
 ## C4 — warning portability
 
 Historical Protocol 003 recovered two domains by separate warning-blind calibration. They differ in recurrent-transition, ecological and deterioration parameters. Their fresh-seed warning differences are therefore **bounded portability evidence across calibrated eco-genetic domains**, not a single-factor effect of transition direction.
 
+The combination of C3 and C4 is the key result: **warning ordering can replicate inside a frozen loss-generating state without being guaranteed to transfer across differently calibrated states.**
+
 **C4: bounded non-portability result; causal attribution intentionally limited.**
 
-## Urban and island application
+## Urban, island and other natural applications
 
-Urban and island systems are contrasting empirical routes through the condition space, not ecological equivalents. The empirical question is whether distinct fragmentation mechanisms converge on similar combinations of functional-state feasibility, realised interaction support, loss incidence and temporal stability when pollen, seed/propagule, demographic and partner movement are measured as separate processes rather than collapsed into one connectivity scalar.
+Urban and island systems are contrasting empirical routes through the condition space, not ecological equivalents. Natural measurement now follows a common sequence: define direct function, measure the synchronized process state, add upstream origin/history last, and test whether it improves held-out prediction.
+
+Two direct open-data partial-state tests now implement that logic:
+
+- Honshu–Izu E1: mainland distance did not improve leave-one-site-out pollen-function prediction after `TM_z + FDQ + FEve + season + focal plant`; aggregate MSE was about 4.08% worse after adding distance. The partial state itself remained only modestly predictive.
+- Zurich E2: 0/6 fixed reproductive endpoints showed a preregistered positive held-out gain from `PlantS + Urban_500 + PlantS×Urban_500` after the source-defined interaction state.
+
+Neither is a full eco-genetic convergence proof because synchronized `G/C/R/M` layers are incomplete. They are direct tests of whether habitat/context labels retain transferable information after measured process state.
 
 ## Recovery ledger
 
@@ -152,8 +175,8 @@ Urban and island systems are contrasting empirical routes through the condition 
 | C2d aggregate interaction support | bounded negative result | all predeclared kappa values remain intermediate/homogeneous at high precision |
 | C2e partner architecture | bounded negative result | reduced-form and temporal partner perturbations change some histories but not detected population-level loss process; rewiring remains closed |
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
-| C3 conditional warning | bounded support | baseline-relative genetic erosion can lead loss in one calibrated benchmark; absolute thresholds are not robust |
-| C4 portability | bounded | warning behaviour differs across non-matched calibrated domains |
+| C3 conditional warning | **strict within-state replication** | six baseline-relative endpoints lead loss in both original 35/35 and independent fresh 33/33 ensembles inside the frozen H2-R state; absolute thresholds are not universal |
+| C4 portability | bounded | warning behaviour is not established as portable across non-matched calibrated domains |
 
 ## Global stop rules
 
@@ -170,4 +193,6 @@ Do not:
 9. call the Phase-N/T partner layers a full dynamic multispecies network;
 10. open adaptive rewiring after the Phase-T null result merely to rescue an effect;
 11. open a direction-only warning test without prospectively matched conditions;
-12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold.
+12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold;
+13. rerun Phase V, replace its fresh seeds, alter the frozen domain or add warning endpoints merely to obtain a different replication classification;
+14. infer cross-state warning portability from the within-state Phase-V replication.

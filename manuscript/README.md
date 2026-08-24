@@ -36,8 +36,8 @@ The central contribution is no longer a particular migration threshold or histor
 - **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established.
 - **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced bounded negative population-level results. Adaptive rewiring remains closed because its prospective opening condition was not met.
 - **C2e — state sufficiency:** under the declared parent Markov closure, complete present-state equality is future-sufficient, but common coarse summaries are not. A constructive two-patch counterexample preserves census, interaction and allele marginals/means, `H_alpha`, `H_gamma`, `F_ST` and realised trait state while changing patchwise interaction–genetic alignment; the next interaction field changes.
-- **C3 — conditional warning:** baseline-relative genetic erosion can precede functional loss in one calibrated benchmark; fixed absolute thresholds are not robust. A separate locked fresh-seed replication exists and is being integrated separately rather than used to alter the empirical-state definitions.
-- **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment.
+- **C3 — within-state warning replication:** the inherited frozen H2-R benchmark had 35/35 leads at all six baseline-relative `H_alpha/H_gamma × 5/10/20%` endpoints, and one independent preregistered fresh-seed ensemble strictly replicated the ordering with 33/33 leads, 0 ties and 0 lags at every endpoint. Fixed absolute thresholds remain non-robust; this is within-domain replication, not a universal threshold.
+- **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment. Within-state replication therefore does not imply cross-state portability.
 
 ## Empirical extension: find the state in nature
 
@@ -74,7 +74,10 @@ Together these anchors show four different reasons why a coarse state fails: loc
 
 The *Spondias* study is currently the strongest natural bridge to the full state logic because `I`, `C`, `F` and cohort-specific `G` are not assembled from unrelated study years. It is therefore useful as a model for future urban/island sampling even though it is neither an urban nor an island system.
 
-Other strong candidates include Izu coastal plant–pollinator networks, Chicago green roofs, Zurich urban gardens and fragmented Dutch *Primula elatior* populations. The Honshu–Izu E1 public-data residual-origin test is now preregistered and being executed separately.
+Two direct open-data residual-context tests are now available:
+
+- **Honshu–Izu E1:** in 572 pollen-receipt observations across eight held-out sites, adding mainland distance after `TM_z + FDQ + FEve + season + focal plant` worsened row-weighted MSE by about 4.08% and improved only 3/8 folds. The ecological partial state itself only modestly improved over richness, so this is absence of transferable distance gain, not proof of complete state sufficiency.
+- **Zurich E2:** across six fixed reproductive endpoints, adding `PlantS + Urban_500 + PlantS×Urban_500` after the source-defined function-specific interaction state produced 0/6 preregistered positive residual-context detections. This is absence of detected transferable urban/context information, not proof that urban context is ecologically irrelevant.
 
 ## Publication sources of truth
 
@@ -87,8 +90,9 @@ Use this hierarchy when files disagree:
 5. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) — real-system measurements, candidate regimes and open-data tests;
 6. [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — measurement completeness, synchronization and field identification rules;
 7. [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md), [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md), [`empirical_e5_conospermum_audit.md`](empirical_e5_conospermum_audit.md) and [`empirical_e6_spondias_audit.md`](empirical_e6_spondias_audit.md) — quantitative natural anchor conditions;
-8. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
-9. [`artifact_index.md`](artifact_index.md) — numerical provenance.
+8. [`state_reproducibility_bridge.md`](state_reproducibility_bridge.md) — current synthesis connecting E1/E2 natural-state tests to within-state warning replication;
+9. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
+10. [`artifact_index.md`](artifact_index.md) — numerical provenance.
 
 Historical phase documents and **phase-specific result notes** remain provenance only and **must not compete with the current sources**; they do not override the current condition map or publication sources of truth.
 
@@ -100,9 +104,11 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - connectivity is process-specific and the historical allele-mixing signal is non-replicated/non-portable;
 - complete future-relevant state is sufficient under the declared model, while coarse averages and standard genetic summaries can hide dynamically distinct spatial alignments;
 - genetic warning is meaningful only downstream of the independently characterised loss-generating state;
+- **inside one frozen loss-generating state, baseline-relative genetic-warning ordering strictly replicates across independent seed ensembles; portability across states remains bounded**;
 - natural systems already show opposite outcomes from superficially similar local-support loss, depending on interaction limitation versus movement compensation;
 - long-lived natural populations can retain historical genetic structure after contemporary interaction/connectivity has already changed, so cohort and memory must be aligned to the outcome window;
 - a near-synchronized natural system (*Spondias*) shows that reduced realised visitation, contracted pollen flow, lower function and next-generation genetic deterioration can form one joint fragmentation state;
+- E1 and E2 directly test whether upstream island/urban context retains transferable information after a measured ecological process state, rather than treating habitat labels as regimes;
 - urban, island and other fragmented ecosystems become direct empirical tests of whether different causal histories converge on a common measured state.
 
 ## Claims not made
@@ -121,6 +127,8 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - No claim that Miyake-style movement compensation is a universal island response.
 - No claim that every adult neutral marker must lag recent fragmentation; *Conospermum* is an explicit natural example of cohort/history mismatch, not a universal lag constant.
 - No claim that the *Spondias* numerical pollen-distance or heterozygosity contrasts are transferable thresholds; they are one observed joint-state anchor.
+- No claim that E1/E2 establish a complete natural sufficient state or full urban–island convergence.
+- No claim that the Phase V 5%, 10% or 20% relative declines are universal thresholds; they are replicated endpoints inside one frozen domain.
 
 ## Editorial rule
 
