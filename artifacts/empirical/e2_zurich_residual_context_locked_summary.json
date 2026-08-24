@@ -1,0 +1,61 @@
+{
+  "stage": "E2 Zurich urban residual-context test",
+  "decision_counts": {
+    "ecological_partial_state_incomplete": 0,
+    "no_detected_residual_urban_information": 6
+  },
+  "decision_rule": {
+    "ecological_partial_state_incomplete": "mean Delta_g > 0 and garden-bootstrap 95% interval wholly above zero",
+    "no_detected_residual_urban_information": "otherwise; not proof of equivalence"
+  },
+  "delta_definition": "Delta_g = held-out NLL(S1 interaction state) - held-out NLL(S2 interaction state + PlantS + Urban_500 + PlantS_x_Urban_500); positive favors residual context information",
+  "endpoint_results": [
+    {
+      "endpoint": "daucus_seed_set",
+      "mean_delta_nll_s1_minus_s2": -3.1047047938746046,
+      "bootstrap_95_interval_mean_delta": [-6.116904076614611, -0.7893194129685024],
+      "decision": "no_detected_residual_urban_information"
+    },
+    {
+      "endpoint": "raphanus_fruit_set",
+      "mean_delta_nll_s1_minus_s2": 0.00027200616728099194,
+      "bootstrap_95_interval_mean_delta": [-0.0035665322052451163, 0.003757441500843669],
+      "decision": "no_detected_residual_urban_information"
+    },
+    {
+      "endpoint": "raphanus_seed_set",
+      "mean_delta_nll_s1_minus_s2": -0.005427774791663178,
+      "bootstrap_95_interval_mean_delta": [-0.010385072496191671, -0.0009373266849191137],
+      "decision": "no_detected_residual_urban_information"
+    },
+    {
+      "endpoint": "onobrychis_fruit_set",
+      "mean_delta_nll_s1_minus_s2": -0.003145399664243066,
+      "bootstrap_95_interval_mean_delta": [-0.01607565675117281, 0.009408783143348552],
+      "decision": "no_detected_residual_urban_information"
+    },
+    {
+      "endpoint": "symphytum_fruit_set",
+      "mean_delta_nll_s1_minus_s2": 0.008379341385010583,
+      "bootstrap_95_interval_mean_delta": [-0.00726029611888987, 0.02332548169201514],
+      "decision": "no_detected_residual_urban_information"
+    },
+    {
+      "endpoint": "symphytum_seed_set",
+      "mean_delta_nll_s1_minus_s2": -0.00014321583360348182,
+      "bootstrap_95_interval_mean_delta": [-0.0006859407647217342, 0.0003410831682820041],
+      "decision": "no_detected_residual_urban_information"
+    }
+  ],
+  "provenance": {
+    "dataset_doi": "10.16904/envidat.676",
+    "resource_sha256": "b1ea0dc54d0c6e33bfacb44d7285377ec3e113807cc945fc2dfbfcc3e534bcc9",
+    "betterblooms_commit": "d6361f6874398e797322afe07a8fea85a3c7e927",
+    "workflow_run": 32701131992,
+    "artifact_id": 9511364032,
+    "artifact_digest": "sha256:7023a893fc63777790d1fc885f9adb62a5c80d74deae968619bce0df77313ed0",
+    "bootstrap_replicates": 10000,
+    "bootstrap_seed": 20260824
+  },
+  "claim_boundary": "No endpoint showed reproducible positive held-out gain from the locked urban/context layer after the source-defined interaction state. This is not proof that the interaction state is sufficient or that urban context is biologically irrelevant."
+}
