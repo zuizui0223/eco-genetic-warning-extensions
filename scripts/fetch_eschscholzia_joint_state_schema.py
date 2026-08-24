@@ -75,7 +75,13 @@ def _looks_like_csv(content_type: str, payload: bytes) -> bool:
 def _candidate_links(landing_url: str, html_payload: bytes, uuid: str) -> list[str]:
     parser = _LinkParser()
     parser.feed(html_payload.decode("utf-8", errors="replace"))
-    out: set[str] = set()
+
+    # NERC-CEH catalogue's own download-service tests use the canonical
+    # downloadable-package form `https://data-package.ceh.ac.uk/data/<id>.zip`.
+    # Add this metadata-defined route prospectively alongside every relevant
+    # href/action exposed by the landing HTML.
+    out: set[str] = {f"{DATA_ROOT}/{uuid}.zip"}
+
     for target in parser.targets:
         url = urljoin(landing_url, target)
         parsed = urlparse(url)
@@ -181,12 +187,6 @@ def _resolve_dataset(uuid: str) -> tuple[str, str, int, str, list[dict[str, obje
         )
 
     candidates = _candidate_links(landing_url, landing_payload, uuid)
-    if not candidates:
-        raise RuntimeError(
-            f"EIDC landing HTML exposed no same-service data/download candidates: uuid={uuid}, "
-            f"bytes={len(landing_payload)}"
-        )
-
     resolved_payloads: list[dict[str, object]] = []
     attempted: list[str] = []
     for url in candidates:
@@ -201,7 +201,7 @@ def _resolve_dataset(uuid: str) -> tuple[str, str, int, str, list[dict[str, obje
 
     if not resolved_payloads:
         raise RuntimeError(
-            "EIDC landing candidates yielded no verifiable ZIP/CSV payload; "
+            "EIDC landing/package candidates yielded no verifiable ZIP/CSV payload; "
             f"uuid={uuid}, candidates={attempted!r}"
         )
 
