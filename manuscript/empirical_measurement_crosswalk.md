@@ -7,7 +7,7 @@ A natural functional-fragmentation condition is not identified by a habitat labe
 This crosswalk separates two questions that are easy to conflate:
 
 1. **Is a coordinate measured somewhere in the study programme?**
-2. **Is it measured in the same population/site-year as the other coordinates and the future functional outcome?**
+2. **Is it measured in the same population/site-year and cohort as the other coordinates and the future functional outcome?**
 
 Only the second supports a strict empirical state-sufficiency test.
 
@@ -22,7 +22,7 @@ Only the second supports a strict empirical state-sufficiency test.
 | `R` | compensatory route | selfing, reproductive assurance, alternative partners, rewiring |
 | `G` | genetic / mating state | heterozygosity, inbreeding, donor diversity, offspring genetics, functional alleles |
 | `F` | realised ecological function | pollination rate, seed/fruit set, dispersal effectiveness, recruitment |
-| `M` | ecological memory / history | prior disturbance, colonisation history, age/seed-bank/resource legacy |
+| `M` | ecological memory / history / cohort | prior disturbance, colonisation age, cohort age, seed-bank/resource legacy |
 | `A` | joint spatial alignment | co-location/covariance among `D/I/T/C/G/F`, not separate marginal means |
 
 ## Cross-system measurement matrix
@@ -36,12 +36,12 @@ Legend: `●` = directly measured in the cited design/programme; `◐` = partial
 | Honshu–Izu coastal 40 networks | ◐ | ● | ● | ○ | ○ | ○ | ● | ◐ | ◐ | **Immediate ecological partial-state test.** `I/T/F + season/geography` are matched across 40 site-seasons; add focal-plant genetics/parentage for full eco-genetic state. |
 | Zurich 24 garden phytometers | ● | ● | ● | ○ | ○ | ○ | ● | ◐ | ◐ | **Immediate urban ecological partial-state test.** Raw design can test whether urban intensity adds prediction beyond `I/T`; standardized plants intentionally remove natural plant `G`. |
 | Chicago *Penstemon hirsutus* green roofs | ● | ◐ | ◐ | ● | ● | ● | ● | ◐ | ◐ | **Connectivity/function-rich partial state.** Add standardized pollinator identity, visitation and effectiveness per roof. |
-| Perth *Conospermum undulatum* fragments | ● | ◐ | ◐ | ● | ◐ | ● | ● | ◐ | ◐ | **Interaction-vector / pollen-flow candidate.** Contemporary paternity and genetics are strong; align detailed visitation/effectiveness with the same reproductive windows. |
+| Perth *Conospermum undulatum* fragments | ● | ● | ◐ | ● | ● | ● | ● | ● | ◐ | **Cohort/history-lag anchor.** Reproduction, historic adult genetics and contemporary offspring paternity are rich but temporally layered; synchronize adult/offspring/interactions in one outcome window for strict sufficiency. |
 | fragmented Dutch *Primula elatior* | ● | ● | ● | ◐ | ● | ● | ● | ◐ | ◐ | **Strong terrestrial bridge.** Population size, genetics, morph balance, landscape, pollinators and seed production are jointly informative outside the urban/island framing. |
 
 The matrix is a **measurement registry**, not an evidence score. A system with fewer filled cells can still be the best test of one causal coordinate.
 
-## Two quantitative natural anchor conditions
+## Three quantitative natural anchor conditions
 
 ### Anchor U-LIM — uncompensated interaction limitation (*Crepis*)
 
@@ -71,6 +71,20 @@ Published anchors include flower density from 21 to 2,544 flowers ha⁻¹, *Zost
 
 **Identification rule in nature:** call this a candidate compensation condition only when movement/alternative-route variables change in the compensating direction and direct function is measured. Low local resource density plus stable function without a measured compensation process is not enough.
 
+### Anchor U-LAG — contemporary-connectivity / adult-genetic lag (*Conospermum*)
+
+Observed temporal pattern:
+
+`M_historical connectivity -> G_adult legacy`
+
+while
+
+`built matrix -> C_pollen current ↓ -> F_reproduction ↓`, with little/no selfing rescue.
+
+Published anchors include fruit production decreasing from about 35% to <20% with lower floral display, seed output approximately halving across strong isolation, adult genetic diversity remaining broadly similar under recent fragmentation, and contemporary paternity showing essentially no pollen immigration between remnants separated by built residential matrix.
+
+**Identification rule in nature:** a candidate cohort-lag condition requires direct evidence that the genetic cohort being monitored records an older landscape state than the contemporary interaction/mating process. Do not infer lag merely because adult neutral diversity is high.
+
 ## What counts as the same functional-fragmentation regime
 
 Two natural systems should not be matched by raw units such as flowers ha⁻¹, kilometres of isolation or heterozygosity. Cross-system convergence is a **predictive equivalence claim**:
@@ -81,11 +95,12 @@ A practical workflow is:
 
 1. define the focal function and prediction window;
 2. measure the candidate state before the outcome;
-3. compress each ecological coordinate only with predeclared, biologically interpretable summaries;
-4. preserve spatial alignment/covariance across patches;
-5. fit the future-function model without habitat origin;
-6. add origin/history last and assess held-out prediction/calibration;
-7. if origin/history helps, identify the missing process/memory coordinate.
+3. ensure genetic, interaction and demographic measurements refer to the correct cohort/time layer;
+4. compress each ecological coordinate only with predeclared, biologically interpretable summaries;
+5. preserve spatial alignment/covariance across patches;
+6. fit the future-function model without habitat origin;
+7. add origin/history last and assess held-out prediction/calibration;
+8. if origin/history helps, identify the missing process/memory coordinate.
 
 The target is the **smallest sufficient measured state**, not the largest covariate set.
 
@@ -97,15 +112,17 @@ The target is the **smallest sufficient measured state**, not the largest covari
 - **E2 Zurich:** urban residual-context test using local ecological context, guild-/trait-specific interaction support and direct fruit/seed set; no natural plant genetics.
 - **E3 *Crepis*:** process audit can be done from existing open parentage/dispersal data, but full state cannot be synchronized retrospectively from the separate 2006 and 2013 studies.
 - **E4 Miyake:** published tables permit a quantitative compensation-axis audit; a strict prospective sufficiency test needs repeated synchronized site-years.
+- **E5 *Conospermum*:** existing reproductive, historical-genetic and contemporary-parentage studies establish the temporal mismatch mechanism, but a strict state test needs the three layers aligned to the same populations, cohorts and years.
 
 ### Highest-value new measurement
 
-The largest common gap is **interaction + function + genetics/connectivity measured in the same population-years**. The most efficient additions are:
+The largest common gap is **interaction + function + genetics/connectivity measured in the same population-years and cohorts**. The most efficient additions are:
 
 1. genotype focal plants and offspring/pollen pools in the existing Honshu–Izu repeated network design;
 2. resurvey *Crepis* patches with interaction/function and parentage in the same season;
 3. repeat Miyake site-years with movement, pollen flow, reproduction and offspring genetics synchronized;
-4. add direct pollinator observation/effectiveness to Chicago roofs where paternity and reproduction are already available.
+4. align adult, offspring and pollinator observations in *Conospermum* remnants to distinguish current state from historical genetic memory;
+5. add direct pollinator observation/effectiveness to Chicago roofs where paternity and reproduction are already available.
 
 ## Interpretation boundary
 
