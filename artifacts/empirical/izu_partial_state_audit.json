@@ -1,0 +1,43 @@
+{
+  "audit": "E1 Honshu-Izu coastal empirical ecological-state audit",
+  "status": "secondary_audit_of_published_results_not_raw_data_refit",
+  "source": {
+    "article_doi": "10.1111/1365-2435.14527",
+    "data_code_doi": "10.6084/m9.figshare.25025000.v1"
+  },
+  "design": {
+    "network_count": 40,
+    "site_count": 8,
+    "season_count": 5,
+    "system": "Japanese coastal continental and oceanic island plant-pollinator networks"
+  },
+  "published_state_results": {
+    "distance_from_mainland_in_best_models_for": [
+      "pollinator_species_richness",
+      "pollinator_FEve",
+      "pollinator_FD_Q",
+      "community_trait_matching"
+    ],
+    "direction_with_distance": "reported values decrease with increasing distance for the listed metrics",
+    "community_trait_matching_best_model": "functional diversity metrics FEve and FD_Q rather than pollinator species diversity",
+    "species_trait_matching_best_model": "FD_Q retained",
+    "pollination_function_result": "lower community-level trait matching is associated with lower community-level plant pollination success",
+    "functional_interpretation": "low FD_Q partly reflects low abundance of long-tongued pollinators"
+  },
+  "candidate_ecological_state": [
+    "pollinator_functional_composition_FD_Q_FEve",
+    "flower_pollinator_trait_matching",
+    "seasonal_state",
+    "direct_pollination_function"
+  ],
+  "missing_full_state_axes": [
+    "matched_focal_plant_genetics",
+    "parentage_based_pollen_connectivity",
+    "seed_or_propagule_connectivity",
+    "reproductive_assurance",
+    "long_term_ecological_memory"
+  ],
+  "identification_boundary": "Published results support geography-to-functional-state and functional-state-to-function associations, but do not by themselves prove that mainland/island origin or distance has no residual predictive information after conditioning on FD_Q, FEve, trait matching and season.",
+  "next_model": "Compare held-out prediction of pollination success for E1-M1=functional_state+season versus E1-M2=E1-M1+origin_or_distance, holding out whole sites or site-seasons.",
+  "headline": "In the Izu system, island geography is an upstream filter, while pollinator functional diversity and flower-pollinator trait matching are the measured conditions most directly linked to pollination function; species richness alone is insufficient."
+}
