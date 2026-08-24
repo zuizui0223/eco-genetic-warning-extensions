@@ -72,7 +72,9 @@ Reji Chacko, M., Moretti, M. & Frey, D.J. (2025). Comprehensive dataset of polli
 
 Reji Chacko, M., Frey, D.J., Albrecht, M., Ghazoul, J. & Moretti, M. (2026). No one-size-fits-all: Trait-dependent effects of local plant diversity on pollinators and pollination service in a densifying city. *Journal of Applied Ecology*, **63**, e70384. doi:10.1111/1365-2664.70384
 
-Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
+Rhodes, M.K., Fant, J.B. & Skogen, K.A. (2017). Pollinator identity and spatial isolation influence multiple paternity in an annual plant. *Molecular Ecology*, **26**, 4296–4308. doi:10.1111/mec.14115
+
+Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/s41586-024-07110-y
 
 Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
 
