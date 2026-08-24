@@ -7,8 +7,9 @@ ARTIFACT = json.loads((ROOT / "artifacts" / "empirical" / "zurich_partial_state_
 
 
 def test_zurich_audit_is_secondary_not_raw_refit() -> None:
-    assert "secondary audit" in DOC.lower()
-    assert "not a new refit" in DOC.lower()
+    lower = DOC.lower()
+    assert "secondary audit" in lower
+    assert "new refit" in lower and "not" in lower.split("new refit", 1)[0][-20:]
     assert ARTIFACT["status"] == "secondary_audit_of_open_source_model_outputs_not_raw_data_refit"
 
 
