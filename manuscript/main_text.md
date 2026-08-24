@@ -2,7 +2,7 @@
 
 ## Abstract
 
-Habitat fragmentation can leave populations present while interaction-dependent function weakens, but genetic warning is meaningful only after the process generating functional loss has been characterised independently. In a finite multipatch model, fragmentation reduced interaction, local effective size and realised high-trait mass before demographic disappearance. Warning-blind calibration recovered a recurrent-turnover loss-incidence frontier, while a historical allele-mixing heterogeneity observation failed one independent fresh-seed replication and did not port to whole-individual or pollen-only movement. A state-sufficiency audit then showed that complete present-state equality is future-sufficient under the declared Markov closure, whereas common coarse ecological and genetic summaries can conceal dynamically distinct spatial alignments. The alignment contrast changed the exact next interaction transition but did not produce a detected long-term loss-incidence difference under one fixed deterioration schedule. Genetic warning was nevertheless reproducible inside one frozen loss-generating state: all six baseline-relative `H_alpha`/`H_gamma` endpoints led functional loss in the original 35/35 pairs and again in 33/33 fresh-seed pairs, whereas fixed absolute thresholds and cross-domain portability remained bounded. Two preregistered natural-data tests further found no transferable gain from adding mainland distance or urban context after measured interaction-functional states. Together these results support **state-defined reproducibility**: warning and functional risk should be evaluated within a future-relevant eco-genetic state, not inferred from habitat labels, one connectivity scalar or a genetic statistic alone.
+Habitat fragmentation can leave populations present while interaction-dependent function weakens. We asked when genetic change can reproducibly precede realised functional loss. In a finite multipatch model, fragmentation reduced interaction, local effective size and high-trait mass before demographic disappearance. Warning-blind calibration recovered a loss-incidence frontier, while a historical allele-mixing heterogeneity signal failed fresh replication and process-resolved portability tests. Complete present-state equality was future-sufficient under the declared Markov closure, but coarse ecological and genetic summaries were not transition-sufficient. Within one frozen loss-generating state, all six baseline-relative `H_alpha/H_gamma` warnings led loss in both the original 35/35 and fresh 33/33 valid pairs. In two natural-data tests, adding mainland distance or urban context after measured interaction-functional states did not improve held-out prediction. These results support state-defined reproducibility: warning should be evaluated within a future-relevant eco-genetic state, not inferred from habitat labels, connectivity scalars or genetic statistics alone.
 
 ## Introduction
 
@@ -63,7 +63,7 @@ p_i'=(1-m)p_i+m\bar p.
 
 This `migration_rate` is allele-frequency mixing, not demographic migration, pollen or seed dispersal, pollinator movement, recolonisation or trait-bin movement. Phase M precision-expanded the five historical Phase-E master seeds to 100 attempts per block across `m=0,.025,.05,.10,.20`.
 
-Because only the historical `m=.10` condition showed an equal-rate signal, one independent replication used fresh seeds `20291010–20291014`, 100 attempts per seed and exactly two paired conditions: `m=0` and `m=.10`. Interpretation required at least 70 baseline-eligible trajectories in every block and identical paired eligibility. No replacement seeds, repeated fresh ensembles or post-result precision increase were allowed.
+Because only the historical `m=.10` condition showed an equal-rate signal, **Phase U is one preregistered independent replication** using fresh seeds `20291010–20291014`, 100 attempts per seed and exactly two paired conditions: `m=0` and `m=.10`. Interpretation required at least 70 baseline-eligible trajectories in every block and identical paired eligibility. No replacement seeds, repeated fresh ensembles or post-result precision increase were allowed. Phase U replicated the upstream loss-generating closure without inspecting warning outcomes.
 
 Process-resolved tests asked whether the historical allele-only pattern ported to two more explicit movement closures using the same historical seed family. Whole-individual dispersal (`d=.10`) moved integer post-recruitment individuals and realised trait-bin abundance among patches before recurrent transition and drift. Pollen-only gene flow (`g=.20`) replaced a fraction of paternal gamete contributions with external donors while census and realised trait-bin abundance remained local. These nominal comparisons were preregistered robustness tests, not calibrated operator equivalence.
 
@@ -117,9 +117,9 @@ Exact seed-family replays then recovered a high-to-low incidence frontier. Poole
 
 In the historical seed family, pooled loss remained near 0.54–0.56 across `m=0,.025,.05,.10,.20`. Only `m=.10` showed excess equal-rate heterogeneity (`p=0.0205`); `m=.20` returned to homogeneous behaviour. Paired McNemar tests versus isolation were non-significant at every nonzero level.
 
-The independent fresh ensemble changed the interpretation of that result. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=0.134` for `m=0` and `p=0.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=0.694`.
+The independent fresh Phase-U ensemble changed the interpretation of that result. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=0.134` for `m=0` and `p=0.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=0.694`.
 
-The preregistered decision was **`historical_m010_heterogeneity_not_freshly_replicated`**. The `p=0.0205` result remains a valid historical seed-family observation, but it is not supported as an independently reproducible `m=.10` heterogeneity effect (Figure 5).
+The preregistered decision was **`historical_m010_heterogeneity_not_freshly_replicated`**. The `p=0.0205` result remains a valid historical seed-family observation, but it is not supported as an independently reproducible `m=.10` heterogeneity effect (Figure 5). **The defensible conclusion is therefore not that `m=.10` is a reproducible heterogeneity threshold.**
 
 ### Process-resolved movement also did not establish a portable connectivity effect
 
@@ -141,11 +141,11 @@ The aligned and anti-aligned states had identical declared coarse marginal signa
 
 The long-horizon result was deliberately weaker. Across 500 paired trajectories, realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`). There were 92 aligned-loss/anti-no-loss switches and 114 aligned-no-loss/anti-loss switches; exact McNemar `p=.143`. The fixed campaign therefore established a **representation boundary**, not a detected directional long-term loss-incidence effect of alignment.
 
-### Baseline-relative genetic warning strictly replicated inside the frozen state
+### Genetic erosion could precede functional loss, but not by a universal threshold
 
 Only after warning-blind loss calibration did we inspect genetic warning. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available and 35 reached realised functional-trait loss. For each of six baseline-relative `H_alpha`/`H_gamma` endpoints, all 35 valid same-trajectory pairs had genetic erosion before functional loss. Fixed absolute thresholds were not robust: `H_alpha <= 0.20` produced 14 leads and six lags among 20 valid pairs, while `H_gamma <= 0.20` produced eight leads and eight lags among 16 (Figure 2).
 
-The independent fresh-seed replication attempted 100 trajectories, retained 82 available trajectories and observed 33 realised functional losses. At **all six** predeclared relative endpoints, all 33 valid warning/loss pairs were leads, with zero ties and zero lags. The five seed blocks contributed `7,7,7,7,5` valid pairs at every endpoint, and the exact one-sided binomial `p` versus a 0.5 lead probability was `1.1641532182693481e-10` per endpoint. The preregistered decision was **`strict_replication`**.
+The independent fixed-domain fresh-warning replication attempted 100 trajectories, retained 82 available trajectories and observed 33 realised functional losses. At **all six** predeclared relative endpoints, all 33 valid warning/loss pairs were leads, with zero ties and zero lags. The five seed blocks contributed `7,7,7,7,5` valid pairs at every endpoint, and the exact one-sided binomial `p` versus a 0.5 lead probability was `1.1641532182693481e-10` per endpoint. The preregistered decision was **`strict_replication`**.
 
 The supported C3 statement is therefore within-state: baseline-relative genetic erosion strictly replicated as leading functional loss across two independent seed ensembles under the same frozen H2-R loss-generating state. It is not a universal percentage threshold.
 
@@ -199,7 +199,7 @@ Conditionality is therefore not merely a limitation. It identifies the domain in
 
 A genetic statistic should not be asked to carry information that belongs to an unmeasured ecological state.
 
-### Natural ecosystems provide partial support for state-defined equivalence
+### Different fragmentation routes can converge only through a common measured state
 
 The natural-data tests make the state-sufficiency argument empirically falsifiable. In Honshu–Izu networks, mainland distance is a known upstream filter of network properties, yet adding it after functional diversity and trait matching did not improve transfer to unseen sites. In Zurich, urban/local context has function-specific marginal associations, yet no one of six reproductive endpoints showed reproducible positive held-out gain from adding that context after a function-specific pollinator interaction state.
 
@@ -211,13 +211,13 @@ The cross-system hypothesis is therefore not that cities behave like islands. It
 
 ### Limits
 
-The model is finite and its numerical coordinates are not transferable ecological thresholds. Failure to detect block heterogeneity is not a theorem of universal homogeneity. The fresh `m=.10` replication is one independent ensemble, so non-replication limits the historical connectivity claim but does not prove that no other seed family could ever show heterogeneity.
+The model is finite and its numerical coordinates are not transferable ecological thresholds. Failure to detect block heterogeneity is not a theorem of universal homogeneity. Phase U is one preregistered independent replication of the upstream loss-process contrast, so its non-replication limits the historical connectivity claim but does not prove that no other seed family could ever show heterogeneity.
 
 The process-resolved movement closures are partial. Whole-individual dispersal does not preserve explicit migrant genotype–trait covariance because the parent representation stores those objects separately. The pollen closure represents paternal gamete origin but not flowers, selfing, incompatibility, pollen limitation, carryover or pollinator behaviour. The partner closure represents stochastic availability rather than a full multispecies dynamic network.
 
 The alignment campaign establishes transition-level insufficiency of coarse marginals but not a detected directional long-term loss-incidence effect. The Honshu–Izu and Zurich analyses are ecological partial-state tests: neither synchronizes the full candidate `D/I/T/C/R/G_by_cohort/M/A` state, and absence of residual context does not prove state completeness. Conversely, a future dataset in which landscape context improves prediction after the measured process state would identify an incomplete state representation rather than contradict the condition-first framework.
 
-Within-state warning replication does not establish a universal relative or absolute threshold and does not imply portability across eco-genetic states. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. Finite-horizon non-events remain right-censored.
+Within-state warning replication does not establish a universal relative or absolute threshold and does not imply portability across eco-genetic states. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. The condition-recovery, movement, partner and Phase U **fresh-replication campaigns withheld warning outcomes**; the separate fixed-domain fresh-warning replication is the campaign that inspected warning ordering. Finite-horizon non-events remain right-censored.
 
 ## Data and code availability
 
