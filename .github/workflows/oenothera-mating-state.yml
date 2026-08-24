@@ -1,0 +1,62 @@
+name: Oenothera mating-state residual isolation
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/run_oenothera_mating_state_residual_isolation.py'
+      - 'manuscript/empirical_oenothera_mating_state_preregistration.md'
+      - '.github/workflows/oenothera-mating-state.yml'
+      - 'tests/test_oenothera_mating_state_contract.py'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install analysis dependency
+        run: python -m pip install --upgrade numpy
+
+      - name: Run locked public-data analysis
+        run: |
+          python scripts/run_oenothera_mating_state_residual_isolation.py \
+            --output artifacts/empirical/oenothera_mating_state_result.json
+
+      - name: Validate result contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/oenothera_mating_state_result.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['source_lock']['dataset_doi'] == '10.5061/dryad.p24q3'
+          assert d['source_lock']['observed_md5'] == '600f6f370ffa8ad205d0ccb6bc92ab65'
+          assert d['schema']['response'] == 'correlatedPaternity'
+          assert d['schema']['residual_state_coordinate'] == 'isolation20'
+          assert d['decision'] in {
+              'residual_isolation_detected',
+              'predictive_residual_isolation_only',
+              'model_residual_isolation_only',
+              'no_detected_residual_isolation',
+          }
+          assert d['incremental_isolation']['permutations'] == 10000
+          print(json.dumps({'decision': d['decision'], **d['incremental_isolation']}, sort_keys=True))
+          PY
+
+      - name: Upload locked derived result
+        uses: actions/upload-artifact@v4
+        with:
+          name: oenothera-mating-state-result
+          path: artifacts/empirical/oenothera_mating_state_result.json
+          if-no-files-found: error
+          retention-days: 30
