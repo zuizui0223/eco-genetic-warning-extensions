@@ -21,12 +21,20 @@ The source is fixed before refitting to:
 
 The public metadata defines the primary columns:
 
-- `plantID` — maternal family identifier;
+- `plantID` — maternal plant identifier;
 - `treatment` — pollinator-exclusion treatment (`c`, `de`, `ne`);
 - `isolation20` — summed Euclidean distance to the twenty nearest neighbours;
-- `correlatedPaternity` — MLTR correlated-paternity estimate for the seed family.
+- `correlatedPaternity` — MLTR correlated-paternity estimate for a fruit/seed-family sample.
 
 No additional response or landscape variable is selected after the result.
+
+## Schema correction before outcome analysis
+
+The first locked workflow successfully downloaded the MD5-matched source file and stopped during schema validation **before fitting M0/M1, permutation testing or producing an outcome summary**. It revealed that `plantID` is repeated (first detected duplicate: `5854`), so multiple fruit/seed-family rows can belong to one maternal plant.
+
+This changes only the validation grouping, not the scientific contrast. To avoid training on one fruit family from a maternal plant while predicting another from the same plant, all rows sharing one `plantID` are now held out together. The response remains row-level `correlatedPaternity`; rows are not averaged or removed.
+
+The implementation also requires `treatment` and `isolation20` to be constant within each repeated `plantID`. If they are not, the archive is classified `not_identifiable_from_archive` rather than repaired post hoc.
 
 ## Biological interpretation of variables
 
@@ -52,15 +60,16 @@ No treatment × isolation interaction is opened for the primary test. The publis
 
 ## Validation
 
-Primary prediction uses leave-one-maternal-family-out cross-validation. Each seed-family row is held out once; no offspring within a family are split across train/test because the response is already family-level.
+Primary prediction uses **leave-one-maternal-plant-out** cross-validation. Every row sharing the held-out `plantID` is excluded from fitting in that fold. This grouping is stricter than row-wise leave-one-seed-family-out and follows directly from the locked source schema revealed before any model result existed.
 
-Primary predictive score: mean squared prediction error (MSE).
+Primary predictive score: mean squared prediction error (MSE) across all held-out row predictions.
 
 Secondary summaries:
 
 - mean absolute error;
 - full-data OLS coefficient on standardized `isolation20`;
-- treatment-level sample sizes and response means.
+- treatment-level sample sizes and response means;
+- number of fruit/seed-family rows and unique maternal plants.
 
 ## Permutation test
 
@@ -68,19 +77,19 @@ Incremental isolation information is also tested with a fixed 10,000-permutation
 
 - fit M0 and M1 to the observed data;
 - statistic: `RSS(M0) - RSS(M1)`;
-- permute `isolation20` **within treatment groups**, preserving treatment composition and the response;
+- permute `isolation20` at the **maternal-plant level within treatment groups**, preserving all repeated rows of each maternal plant together;
 - refit M1 for every permutation;
 - one-sided permutation p-value = `(1 + number(permuted statistic >= observed statistic)) / 10001`.
 
-This tests the incremental isolation term without converting the source data into arbitrary isolation classes.
+This tests the incremental isolation term without converting the source data into arbitrary isolation classes or breaking the repeated-maternal-plant structure.
 
 ## Decision rule
 
-- **`residual_isolation_detected`**: M1 has lower leave-one-family-out MSE than M0, the full-data isolation coefficient is positive on the correlated-paternity scale, and permutation `p < .05`.
+- **`residual_isolation_detected`**: M1 has lower leave-one-maternal-plant-out MSE than M0, the full-data isolation coefficient is positive on the correlated-paternity scale, and permutation `p < .05`.
 - **`predictive_residual_isolation_only`**: M1 improves held-out MSE but the coefficient/permutation criterion is not met.
 - **`model_residual_isolation_only`**: coefficient is positive with permutation `p < .05`, but held-out MSE does not improve.
 - **`no_detected_residual_isolation`**: neither predictive nor permutation criterion is met.
-- **`not_identifiable_from_archive`**: required source columns are absent, contain unrecoverable missingness, or leave-one-family-out fitting is not defined.
+- **`not_identifiable_from_archive`**: required source columns are absent, contain unrecoverable missingness, repeated `plantID` rows disagree on treatment/isolation, or grouped leave-one-plant-out fitting is not defined.
 
 All classifications are retained. No alternative response, isolation metric or subset is opened because the primary result is weak or strong.
 
@@ -94,4 +103,4 @@ It does **not** establish a general fragmentation threshold, a direct functional
 
 ## Stop rule
 
-Run the locked public file once. Do not replace the correlated-paternity endpoint, dichotomise isolation, remove treatments, search alternative neighbourhood definitions, or use the offspring genotypes to create a new primary endpoint after seeing the result.
+Run the locked public file once after the schema-only grouping correction. Do not replace the correlated-paternity endpoint, dichotomise isolation, remove treatments, search alternative neighbourhood definitions, average repeated fruit families merely to improve fit, or use the offspring genotypes to create a new primary endpoint after seeing the result.
