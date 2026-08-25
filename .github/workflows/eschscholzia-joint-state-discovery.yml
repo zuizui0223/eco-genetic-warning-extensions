@@ -1,12 +1,6 @@
 name: Eschscholzia joint-state schema discovery
 
 on:
-  pull_request:
-    paths:
-      - 'scripts/fetch_eschscholzia_joint_state_schema.py'
-      - 'manuscript/empirical_eschscholzia_joint_state_preregistration.md'
-      - '.github/workflows/eschscholzia-joint-state-discovery.yml'
-      - 'tests/test_eschscholzia_joint_state_discovery_contract.py'
   workflow_dispatch:
 
 permissions:
