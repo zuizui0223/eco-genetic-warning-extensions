@@ -1,0 +1,59 @@
+{
+  "decision": "joint_state_identifiable",
+  "source": "June 2015 Hillesden Eschscholzia californica experiment",
+  "workflow_provenance": {
+    "run_id": 32736330920,
+    "job_id": 97459926747,
+    "head_sha": "6b016b41bffb1232cc619dd83b48570b87e9e756",
+    "artifact_id": 9523523742,
+    "artifact_digest": "sha256:d33b6542c715eba77d1e1bff38942cd474daaf3d8b3ca9f25774d41dce266d79"
+  },
+  "identifiability_rule": {
+    "joint": "common Block + Experimental array across all four products and common focal-plant key across both seed products and paternity",
+    "partial": "common Block + Experimental array across all four products but at least one missing common focal-plant key among the two seed products and paternity",
+    "not_identifiable": "no defensible common array bridge across all four products"
+  },
+  "datasets": [
+    {
+      "role": "pollinator_availability",
+      "doi": "10.5285/01906784-6742-44bf-b244-a4b63bed8d82",
+      "package_sha256": "66b0b9eec2ffcf6df8bc19f4677c159e5f574a4a23aa452221cc2b552b01f0c5",
+      "csv": "data/Pantrap_catches_from_Buckinghamshire_UK.csv",
+      "csv_sha256": "db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef",
+      "columns": ["Block", "Experimental array", "Grid reference", "Habitat", "Treatment", "Survey date", "Pollinator species", "Intertegular span (mm)"],
+      "hierarchy": ["Block", "Experimental array"],
+      "process_role": "array-level pollinator availability/community and ITD trait state; not direct focal-plant visitation"
+    },
+    {
+      "role": "seed_function_supplemented_exposed",
+      "doi": "10.5285/8caf2d8a-564d-4f2e-a797-174165a83796",
+      "package_sha256": "b541f46ecee09ba7c5dbbcbe06f30f343e2620e3942289c5839f98382d089859",
+      "csv": "data/The_seed_set_of_supplemented_and_pollinator_exposed_Ecalifornica_flowers.csv",
+      "csv_sha256": "83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f",
+      "columns": ["Block", "Experimental_array", "Plant_identification_number", "Habitat", "Treatment", "Mean_number_of_seeds_from_field_exposed_flowers", "Number_of_fruits", "Number_of_seeds_from_supplemented_flowers"],
+      "hierarchy": ["Block", "Experimental_array", "Plant_identification_number"],
+      "process_role": "plant-level direct seed function and supplemented reproductive ceiling"
+    },
+    {
+      "role": "seed_function_exposed_excluded",
+      "doi": "10.5285/5b400b69-b828-45e8-b04e-7ccbfdb0987f",
+      "package_sha256": "6781fed48c9c7b8a293e713434a02769a2490d68c6f2e218167f623af1c60ec1",
+      "csv": "data/Eschscholzia_californica_seed_set.csv",
+      "csv_sha256": "ad52e8b52885cde66a0ed5476bffb0e9894b4d0429e42d927ea72b388b3ea27b",
+      "columns": ["Block", "Experimental array", "Plant identification number", "Sample type", "Fruit number", "Habitat", "Treatment", "Number of seeds"],
+      "hierarchy": ["Block", "Experimental array", "Plant identification number"],
+      "process_role": "plant/fruit-level pollinator-exposed versus pollinator-excluded seed function / reproductive assurance"
+    },
+    {
+      "role": "paternity",
+      "doi": "10.5285/7b721c07-bc38-4815-8669-4675867663d0",
+      "package_sha256": "e785a2aad2ba43ef5a5a6b90122badc2b70b1682a4ada5719e8a2ed25cddf033",
+      "csv": "data/Paternity_analysis_of_introduced_Eschscholzia_californica_plants.csv",
+      "csv_sha256": "6805ceb4164fefa373ba758a0fcf0a58fe67624b432d3aea6d344d690efd71f2",
+      "columns": ["Block", "Experimental_array", "Plant_identification_number", "Fruit_number", "Habitat", "Treatment", "Sample_identification", "loci1_Allele_1", "loci1_Allele_2", "loci2_Allele_1", "loci2_Allele_2", "loci3_Allele_1", "loci3_Allele_2", "loci4_Allele_1", "loci4_Allele_2", "loci5_Allele_1", "loci5_Allele_2", "loci6_Allele_1", "loci6_Allele_2", "loci7_Allele_1", "loci7_Allele_2", "Parentage", "Paternity_analysis", "Distance_of_pollen_movement", "Habitat_crossed"],
+      "hierarchy": ["Block", "Experimental_array", "Plant_identification_number"],
+      "process_role": "plant/progeny-level mating outcome, source-coded self/outcross parentage and pollen-movement fields"
+    }
+  ],
+  "inspection_boundary": "Only package/file identifiers, hashes/sizes, archive member names and CSV header labels were inspected. No data row or outcome value was inspected before this decision."
+}
