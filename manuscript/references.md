@@ -28,6 +28,14 @@ Dornier, A. & Cheptou, P.-O. (2013). Inferring contemporary dispersal processes 
 
 Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
 
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017a). Paternity of *Eschscholzia californica* plants introduced to habitats comprising different floral cover [Dataset]. NERC Environmental Information Data Centre. doi:10.5285/7b721c07-bc38-4815-8669-4675867663d0
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017b). Pollinator data from pan traps located in habitats comprising different floral cover in Buckinghamshire, UK [Dataset]. NERC Environmental Information Data Centre. doi:10.5285/01906784-6742-44bf-b244-a4b63bed8d82
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017c). The seed set of *Eschscholzia californica* plants introduced into habitats comprising different floral cover [Dataset]. NERC Environmental Information Data Centre. doi:10.5285/5b400b69-b828-45e8-b04e-7ccbfdb0987f
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017d). The seed set of supplemented and pollinator exposed flowers from *Eschscholzia californica* plants located within habitats comprising different floral cover [Dataset]. NERC Environmental Information Data Centre. doi:10.5285/8caf2d8a-564d-4f2e-a797-174165a83796
+
 Field, C.A. & Welsh, A.H. (2007). Bootstrapping clustered data. *Journal of the Royal Statistical Society: Series B*, **69**, 369–390. doi:10.1111/j.1467-9868.2007.00593.x
 
 Fletcher, R.J. Jr., Smith, T.A.H., Jones, M., et al. (2026). Landscape quality drives ecological responses to habitat loss and fragmentation. *Nature Ecology & Evolution*, **10**, 1265–1272. doi:10.1038/s41559-026-03095-1
@@ -71,6 +79,8 @@ Peled, O., Kim, J. & Greenbaum, G. (2026). Network-based genetic monitoring of l
 Reji Chacko, M., Moretti, M. & Frey, D.J. (2025). Comprehensive dataset of pollinator diversity and visitation rates with individual-based traits and pollination success across four urban garden plant species [Dataset]. *EnviDat*. doi:10.16904/envidat.676
 
 Reji Chacko, M., Frey, D.J., Albrecht, M., Ghazoul, J. & Moretti, M. (2026). No one-size-fits-all: Trait-dependent effects of local plant diversity on pollinators and pollination service in a densifying city. *Journal of Applied Ecology*, **63**, e70384. doi:10.1111/1365-2664.70384
+
+Rhodes, M.K., Fant, J.B. & Skogen, K.A. (2017). Pollinator identity and spatial isolation influence multiple paternity in an annual plant. *Molecular Ecology*, **26**, 4296–4308. doi:10.1111/mec.14115
 
 Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
 
