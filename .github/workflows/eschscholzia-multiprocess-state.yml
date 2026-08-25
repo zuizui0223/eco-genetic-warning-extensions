@@ -1,14 +1,6 @@
 name: Eschscholzia multi-process state test
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_eschscholzia_multiprocess_test_preregistration.md'
-      - 'manuscript/empirical_eschscholzia_source_lock_correction.md'
-      - 'scripts/run_eschscholzia_multiprocess_state_test.py'
-      - 'scripts/run_eschscholzia_multiprocess_state_test_locked_source.py'
-      - 'tests/test_eschscholzia_multiprocess_state_contract.py'
-      - '.github/workflows/eschscholzia-multiprocess-state.yml'
   workflow_dispatch:
 
 permissions:
