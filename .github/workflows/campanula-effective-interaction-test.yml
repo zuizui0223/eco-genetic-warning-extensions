@@ -1,0 +1,69 @@
+name: Campanula effective-interaction predictive test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install --upgrade numpy pandas scikit-learn openpyxl
+
+      - name: Run preregistered effective-interaction analysis
+        run: |
+          python scripts/run_campanula_effective_interaction_test.py \
+            --output artifacts/empirical/campanula_effective_interaction_result.json
+
+      - name: Validate source and decision contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/campanula_effective_interaction_result.json').read_text(encoding='utf-8'))
+          assert d['bootstrap']['held_out_unit'] == 'Population'
+          assert d['bootstrap']['replicates'] == 10000
+          assert d['bootstrap']['rng_seed'] == 20260825
+          assert d['decision'] in {
+              'effective_interaction_supported_over_raw',
+              'effective_interaction_supported_no_gain_over_raw',
+              'phase_matched_visitation_supported_no_effective_support',
+              'raw_visitation_supported_no_effective_support',
+              'no_interaction_representation_supported',
+              'not_identifiable_for_primary_endpoint',
+          }
+          if d['decision'] != 'not_identifiable_for_primary_endpoint':
+              assert d['source_lock']['md5'] == '2d26307743e8a22384781854b8f2f33b'
+              assert d['source_lock']['sha256'] == 'b81b77248b75330049e1ddd8ae026db127f838e979620a0415a5addb9a7e8f27'
+              assert d['sample']['n_populations'] == 23
+              assert set(d['lopo_mse']) == {'M0', 'M_raw', 'M_phase', 'M_effective'}
+              assert set(d['comparisons']) == {
+                  'raw_adequacy', 'phase_adequacy', 'effective_adequacy',
+                  'phase_gain_over_raw', 'effective_gain_over_raw', 'effective_gain_over_phase'
+              }
+          print(json.dumps({
+              'decision': d['decision'],
+              'reason': d.get('reason'),
+              'mse': d.get('lopo_mse'),
+              'comparisons': d.get('comparisons'),
+          }, sort_keys=True))
+          PY
+
+      - name: Upload derived result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: campanula-effective-interaction-result
+          path: artifacts/empirical/campanula_effective_interaction_result.json
+          if-no-files-found: error
+          retention-days: 30
