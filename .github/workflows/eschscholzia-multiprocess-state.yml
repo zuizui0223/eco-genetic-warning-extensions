@@ -1,0 +1,76 @@
+name: Eschscholzia multi-process state test
+
+on:
+  pull_request:
+    paths:
+      - 'manuscript/empirical_eschscholzia_multiprocess_test_preregistration.md'
+      - 'scripts/run_eschscholzia_multiprocess_state_test.py'
+      - 'tests/test_eschscholzia_multiprocess_state_contract.py'
+      - '.github/workflows/eschscholzia-multiprocess-state.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install --upgrade numpy pandas scikit-learn
+
+      - name: Run preregistered multi-process analysis
+        run: |
+          python scripts/run_eschscholzia_multiprocess_state_test.py \
+            --output artifacts/empirical/eschscholzia_multiprocess_state_result.json
+
+      - name: Validate source and decision contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('artifacts/empirical/eschscholzia_multiprocess_state_result.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['bootstrap']['replicates'] == 10000
+          assert d['bootstrap']['rng_seed'] == 20260825
+          assert d['bootstrap']['held_out_unit'] == 'Experimental array'
+          assert d['decision'] in {
+              'multi_endpoint_partial_state_convergence_supported',
+              'multi_endpoint_state_insufficiency_detected',
+              'multi_endpoint_convergence_not_established',
+              'multi_endpoint_not_identifiable',
+          }
+          expected = {
+              'pollinator': '66b0b9eec2ffcf6df8bc19f4677c159e5f574a4a23aa452221cc2b552b01f0c5',
+              'f_seed': 'b541f46ecee09ba7c5dbbcbe06f30f343e2620e3942289c5839f98382d089859',
+              'r_seed': '6781fed48c9c7b8a293e713434a02769a2490d68c6f2e218167f623af1c60ec1',
+              'g_paternity': 'e785a2aad2ba43ef5a5a6b90122badc2b70b1682a4ada5719e8a2ed25cddf033',
+          }
+          for role, sha in expected.items():
+              assert d['source_lock'][role]['package_sha256'] == sha
+          print(json.dumps({
+              'decision': d['decision'],
+              'primary_endpoint_decisions': d.get('primary_endpoint_decisions'),
+              'F_process': d.get('F_seed', {}).get('comparisons', {}).get('S0_to_S1'),
+              'F_habitat': d.get('F_seed', {}).get('comparisons', {}).get('S1_to_S2'),
+              'G_process': d.get('G_mating', {}).get('comparisons', {}).get('S0_to_S1'),
+              'G_habitat': d.get('G_mating', {}).get('comparisons', {}).get('S1_to_S2'),
+          }, sort_keys=True))
+          PY
+
+      - name: Upload derived result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: eschscholzia-multiprocess-state-result
+          path: artifacts/empirical/eschscholzia_multiprocess_state_result.json
+          if-no-files-found: error
+          retention-days: 30
