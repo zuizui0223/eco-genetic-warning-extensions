@@ -3,6 +3,7 @@ from __future__ import annotations
 import argparse
 import csv
 import hashlib
+import html as html_module
 import io
 import json
 import re
@@ -32,20 +33,19 @@ RECORDS = (
     },
 )
 ROOT = "https://research-explorer.ista.ac.at"
+OAI_ROOT = "https://research-explorer.app.ist.ac.at/oai"
 UA = "eco-genetic-warning-extensions/1.0"
 
 
-class LinkParser(HTMLParser):
+class MetadataParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
-        self.links: list[str] = []
+        self.values: list[str] = []
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
-        if tag.lower() != "a":
-            return
-        for key, value in attrs:
-            if key.lower() == "href" and value:
-                self.links.append(value)
+        for _, value in attrs:
+            if value:
+                self.values.append(value)
 
 
 def _request(url: str, *, accept: str) -> bytes:
@@ -54,26 +54,65 @@ def _request(url: str, *, accept: str) -> bytes:
         return response.read()
 
 
-def _resolve_archive(record: dict[str, object]) -> tuple[str, bytes]:
-    landing = f"{ROOT}/record/{record['record_id']}"
-    html = _request(landing, accept="text/html,*/*")
-    parser = LinkParser()
-    parser.feed(html.decode("utf-8", errors="replace"))
-    exact = str(record["filename"])
-    candidates: list[str] = []
-    for href in parser.links:
-        url = urljoin(landing, href)
-        parsed = urlparse(url)
-        if parsed.scheme != "https" or not parsed.netloc.endswith("ista.ac.at"):
+def _extract_exact_url_candidates(text: str, base_url: str, exact: str) -> list[str]:
+    decoded = html_module.unescape(text).replace("\\/", "/")
+    parser = MetadataParser()
+    try:
+        parser.feed(decoded)
+    except Exception:
+        pass
+
+    values = list(parser.values)
+    values.extend(re.findall(r"https?://[^\s\"'<>]+", decoded))
+    values.extend(re.findall(r"(?:href|url|download|file)\s*[:=]\s*[\"']([^\"']+)[\"']", decoded, re.I))
+
+    candidates: set[str] = set()
+    for value in values:
+        value = value.strip()
+        if exact not in value:
             continue
-        if exact in url or Path(parsed.path).name == exact:
-            candidates.append(url)
-    candidates = sorted(set(candidates))
+        url = urljoin(base_url, value)
+        parsed = urlparse(url)
+        if parsed.scheme == "https" and (parsed.netloc.endswith("ista.ac.at") or parsed.netloc.endswith("ist.ac.at")):
+            candidates.add(url)
+    return sorted(candidates)
+
+
+def _oai_url(record_id: int) -> str:
+    identifier = f"oai:pub.research-explorer.ista.ac.at:{record_id}"
+    return f"{OAI_ROOT}?verb=GetRecord&metadataPrefix=oai_dc&identifier={identifier}"
+
+
+def _resolve_archive(record: dict[str, object]) -> tuple[str, bytes, list[dict[str, object]]]:
+    landing = f"{ROOT}/record/{record['record_id']}"
+    exact = str(record["filename"])
+    attempts: list[dict[str, object]] = []
+    candidates: set[str] = set()
+
+    # Attempt 1 showed that the visible file name is not represented as a
+    # normal <a href>. The second resolver therefore uses only embedded landing
+    # metadata plus the OAI metadata endpoint independently advertised for the
+    # same ISTA record by B2FIND. It never guesses a download route.
+    landing_html = _request(landing, accept="text/html,*/*")
+    landing_text = landing_html.decode("utf-8", errors="replace")
+    candidates.update(_extract_exact_url_candidates(landing_text, landing, exact))
+    attempts.append({"metadata_source": landing, "exact_url_candidates": len(candidates)})
+
+    oai = _oai_url(int(record["record_id"]))
+    try:
+        oai_payload = _request(oai, accept="application/xml,text/xml,*/*")
+        oai_text = oai_payload.decode("utf-8", errors="replace")
+        before = len(candidates)
+        candidates.update(_extract_exact_url_candidates(oai_text, oai, exact))
+        attempts.append({"metadata_source": oai, "exact_url_candidates_added": len(candidates) - before})
+    except Exception as exc:
+        attempts.append({"metadata_source": oai, "status": f"error:{type(exc).__name__}"})
+
     if not candidates:
-        raise RuntimeError(f"landing page exposed no exact archive link for {exact}")
+        raise RuntimeError(f"ISTA public landing/OAI metadata exposed no exact archive URL for {exact}; attempts={attempts!r}")
 
     failures: list[str] = []
-    for url in candidates:
+    for url in sorted(candidates):
         try:
             payload = _request(url, accept="application/zip,application/octet-stream,*/*")
         except Exception as exc:
@@ -86,8 +125,8 @@ def _resolve_archive(record: dict[str, object]) -> tuple[str, bytes]:
         if not zipfile.is_zipfile(io.BytesIO(payload)):
             failures.append(f"{url}:not_zip")
             continue
-        return url, payload
-    raise RuntimeError(f"no exact MD5-locked archive resolved for {exact}: {failures!r}")
+        return url, payload, attempts
+    raise RuntimeError(f"no exact MD5-locked archive resolved for {exact}: candidates={sorted(candidates)!r}, failures={failures!r}")
 
 
 def _decode_text(raw: bytes) -> str:
@@ -158,7 +197,7 @@ def _member_schema(name: str, raw: bytes) -> dict[str, object]:
 def discover(manifest_path: Path) -> dict[str, object]:
     records: list[dict[str, object]] = []
     for record in RECORDS:
-        url, payload = _resolve_archive(record)
+        url, payload, resolution_attempts = _resolve_archive(record)
         members: list[dict[str, object]] = []
         with zipfile.ZipFile(io.BytesIO(payload)) as archive:
             for info in archive.infolist():
@@ -169,6 +208,7 @@ def discover(manifest_path: Path) -> dict[str, object]:
         records.append({
             **record,
             "resolved_archive_url": url,
+            "resolution_attempts": resolution_attempts,
             "archive_bytes": len(payload),
             "observed_md5": hashlib.md5(payload).hexdigest(),
             "sha256": hashlib.sha256(payload).hexdigest(),
@@ -179,7 +219,7 @@ def discover(manifest_path: Path) -> dict[str, object]:
         "status": "schema_only_discovery_complete",
         "records": records,
         "inspection_boundary": (
-            "Only ISTA landing links, MD5-locked archive bytes, archive member names/sizes/hashes, and first header rows or workbook header rows were inspected. "
+            "Only ISTA landing/OAI metadata, exact MD5-locked archive bytes, archive member names/sizes/hashes, and first header rows or workbook header rows were inspected. "
             "No data-row value, visitation outcome, reproductive value, paternity assignment, genotype value, effect direction, coefficient, p-value or descriptive outcome statistic was read or computed."
         ),
         "next_gate": (
