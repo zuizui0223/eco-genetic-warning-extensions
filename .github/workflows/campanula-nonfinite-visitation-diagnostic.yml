@@ -1,0 +1,51 @@
+name: Campanula nonfinite visitation diagnostic
+
+on:
+  pull_request:
+    paths:
+      - 'scripts/diagnose_campanula_nonfinite_visitation.py'
+      - '.github/workflows/campanula-nonfinite-visitation-diagnostic.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run predictor-only diagnostic
+        run: |
+          python scripts/diagnose_campanula_nonfinite_visitation.py \
+            --output artifacts/empirical/campanula_nonfinite_visitation_diagnostic.json
+
+      - name: Validate diagnostic boundary
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/campanula_nonfinite_visitation_diagnostic.json').read_text(encoding='utf-8'))
+          assert d['source']['md5'] == '81e0deaa78a6a97e1211484cb9d0d3b3'
+          assert d['decision_effect'] == 'none; the locked decision remains not_identifiable_for_primary_endpoint'
+          assert 'No seed outcome' in d['diagnostic_scope']
+          print(json.dumps({
+              'nonfinite_count': d['nonfinite_visits_per_flower_count'],
+              'nonfinite_rows': d['nonfinite_rows'],
+          }, sort_keys=True))
+          PY
+
+      - name: Upload diagnostic only
+        uses: actions/upload-artifact@v4
+        with:
+          name: campanula-nonfinite-visitation-diagnostic
+          path: artifacts/empirical/campanula_nonfinite_visitation_diagnostic.json
+          if-no-files-found: error
+          retention-days: 30
