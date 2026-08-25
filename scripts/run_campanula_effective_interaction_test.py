@@ -146,8 +146,12 @@ def _lopo(frame: pd.DataFrame) -> dict[str, object]:
     return {"mse": mse, "squared_errors": squared_errors}
 
 
-def _bootstrap_gain(gains: np.ndarray, rng: np.random.Generator) -> dict[str, object]:
+def _bootstrap_gain(gains: np.ndarray) -> dict[str, object]:
     n = gains.size
+    # The preregistration fixes the same seed for every contrast. Reinitializing
+    # here also applies the same bootstrap population-index draws to every paired
+    # contrast, which preserves comparability across representations.
+    rng = np.random.default_rng(RNG_SEED)
     samples = rng.integers(0, n, size=(N_BOOT, n))
     boot = gains[samples].mean(axis=1)
     ci_low, ci_high = np.quantile(boot, [0.025, 0.975])
@@ -173,12 +177,9 @@ def _comparisons(squared_errors: dict[str, list[float]]) -> dict[str, object]:
         "effective_gain_over_phase": ("M_phase", "M_effective"),
     }
     result: dict[str, object] = {}
-    for offset, (name, (smaller, larger)) in enumerate(contrast_defs.items()):
-        # Separate deterministic generators avoid dependence on dictionary/order
-        # implementation while retaining the preregistered root seed.
-        rng = np.random.default_rng(RNG_SEED + offset)
+    for name, (smaller, larger) in contrast_defs.items():
         gains = arrays[smaller] - arrays[larger]
-        result[name] = _bootstrap_gain(gains, rng)
+        result[name] = _bootstrap_gain(gains)
     return result
 
 
@@ -238,8 +239,8 @@ def run() -> dict[str, object]:
         "bootstrap": {
             "held_out_unit": "Population",
             "replicates": N_BOOT,
-            "root_rng_seed": RNG_SEED,
-            "note": "contrast-specific deterministic generators use root seed + fixed contrast offset",
+            "rng_seed": RNG_SEED,
+            "note": "each contrast reinitializes the same fixed seed and therefore uses identical bootstrap population-index draws",
         },
         "claim_boundary": (
             "This test evaluates predictive adequacy of source-defined raw, phase-matched, and independently "
@@ -266,7 +267,7 @@ def main() -> int:
             "bootstrap": {
                 "held_out_unit": "Population",
                 "replicates": N_BOOT,
-                "root_rng_seed": RNG_SEED,
+                "rng_seed": RNG_SEED,
             },
         }
     output = Path(args.output)
