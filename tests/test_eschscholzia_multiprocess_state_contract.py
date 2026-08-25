@@ -1,8 +1,11 @@
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOC = (ROOT / "manuscript" / "empirical_eschscholzia_multiprocess_test_preregistration.md").read_text(encoding="utf-8")
 CORRECTION = (ROOT / "manuscript" / "empirical_eschscholzia_source_lock_correction.md").read_text(encoding="utf-8")
+RESULT_DOC = (ROOT / "manuscript" / "empirical_eschscholzia_multiprocess_result.md").read_text(encoding="utf-8")
+LOCKED_RESULT = json.loads((ROOT / "artifacts" / "empirical" / "eschscholzia_multiprocess_state_locked_result.json").read_text(encoding="utf-8"))
 SCRIPT = (ROOT / "scripts" / "run_eschscholzia_multiprocess_state_test.py").read_text(encoding="utf-8")
 ADAPTER = (ROOT / "scripts" / "run_eschscholzia_multiprocess_state_test_locked_source.py").read_text(encoding="utf-8")
 WORKFLOW = (ROOT / ".github" / "workflows" / "eschscholzia-multiprocess-state.yml").read_text(encoding="utf-8")
@@ -90,10 +93,29 @@ def test_source_identity_is_csv_member_locked_after_transport_correction() -> No
     assert "not** an identity criterion" in CORRECTION
     assert "base._download_source = _download_source_member_locked" in ADAPTER
     assert "No model, endpoint, key, seed, validation unit or" in ADAPTER
+    assert "sys.modules[spec.name] = base" in ADAPTER
 
 
-def test_workflow_runs_only_derived_result() -> None:
-    assert "Run preregistered multi-process analysis" in WORKFLOW
-    assert "run_eschscholzia_multiprocess_state_test_locked_source.py" in WORKFLOW
+def test_locked_result_preserves_preregistered_nonidentifiability() -> None:
+    assert LOCKED_RESULT["decision"] == "multi_endpoint_not_identifiable"
+    assert LOCKED_RESULT["F_seed"]["decision"] == "not_identifiable_for_endpoint"
+    assert "Fallow graound vs Fallow ground" in LOCKED_RESULT["F_seed"]["reason"]
+    assert "not repaired" in RESULT_DOC
+    assert LOCKED_RESULT["G_mating"]["decision"] == "process_state_not_predictively_supported"
+    assert LOCKED_RESULT["C_pollen"]["decision"] == "process_state_not_predictively_supported"
+    assert LOCKED_RESULT["R_state"]["G_extension"]["semantic_decision"] == "no_detected_R_gain"
+    assert LOCKED_RESULT["result_generating_provenance"]["workflow_run"] == 32801092027
+    assert LOCKED_RESULT["result_generating_provenance"]["artifact_id"] == 9546498746
+
+
+def test_result_keeps_measurement_boundary_not_ecological_null() -> None:
+    assert "measurement boundary" in RESULT_DOC
+    assert "availability proxy" in RESULT_DOC
+    assert "It is not interpreted as biological irrelevance of habitat" in RESULT_DOC
+    assert "Do not claim" in RESULT_DOC
+
+
+def test_workflow_is_frozen_after_locked_result() -> None:
+    assert "workflow_dispatch:" in WORKFLOW
+    assert "pull_request:" not in WORKFLOW
     assert "Upload derived result only" in WORKFLOW
-    assert "eschscholzia_multiprocess_state_result.json" in WORKFLOW
