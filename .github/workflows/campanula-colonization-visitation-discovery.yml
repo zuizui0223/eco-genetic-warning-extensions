@@ -1,0 +1,48 @@
+name: Campanula colonization realised-visitation schema discovery
+
+# Manual-only after workflow 32819251801 locked the schema result.
+# Subsequent documentation/provenance edits must not re-open source inspection.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Fetch fixed Zenodo files and inspect headers only
+        run: |
+          python scripts/fetch_campanula_colonization_visitation_schema.py \
+            --manifest artifacts/empirical/campanula_colonization_visitation_schema.json
+      - name: Validate schema-only contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/campanula_colonization_visitation_schema.json').read_text(encoding='utf-8'))
+          assert d['status'] == 'schema_only_discovery_complete'
+          assert d['zenodo_record'] == 10814705
+          assert [f['filename'] for f in d['files']] == ['PLdataindividual.csv', 'pollinator.csv']
+          assert [f['md5'] for f in d['files']] == [
+              'b84fa5c83513dbe75c0bf7840d1c74aa',
+              '81e0deaa78a6a97e1211484cb9d0d3b3',
+          ]
+          assert all(f['columns'] for f in d['files'])
+          assert 'No data row' in d['inspection_boundary']
+          print(json.dumps({f['filename']: f['columns'] for f in d['files']}, sort_keys=True))
+          PY
+      - name: Upload schema manifest only
+        uses: actions/upload-artifact@v4
+        with:
+          name: campanula-colonization-visitation-schema
+          path: artifacts/empirical/campanula_colonization_visitation_schema.json
+          if-no-files-found: error
+          retention-days: 30
