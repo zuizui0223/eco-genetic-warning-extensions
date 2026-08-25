@@ -1,12 +1,6 @@
 name: Witheringia direct-interaction schema discovery
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_witheringia_direct_interaction_preregistration.md'
-      - 'scripts/fetch_witheringia_direct_interaction_schema.py'
-      - 'tests/test_witheringia_direct_interaction_discovery_contract.py'
-      - '.github/workflows/witheringia-direct-interaction-discovery.yml'
   workflow_dispatch:
 
 permissions:
