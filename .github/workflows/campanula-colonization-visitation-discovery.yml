@@ -1,12 +1,8 @@
 name: Campanula colonization realised-visitation schema discovery
 
+# Manual-only after workflow 32819251801 locked the schema result.
+# Subsequent documentation/provenance edits must not re-open source inspection.
 on:
-  pull_request:
-    paths:
-      - 'scripts/fetch_campanula_colonization_visitation_schema.py'
-      - 'manuscript/empirical_campanula_colonization_visitation_preregistration.md'
-      - 'tests/test_campanula_colonization_visitation_discovery_contract.py'
-      - '.github/workflows/campanula-colonization-visitation-discovery.yml'
   workflow_dispatch:
 
 permissions:
