@@ -1,12 +1,6 @@
 name: Antirrhinum realised-visitation schema discovery
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_antirrhinum_realised_visitation_preregistration.md'
-      - 'scripts/fetch_antirrhinum_realised_visitation_schema.py'
-      - 'tests/test_antirrhinum_realised_visitation_discovery_contract.py'
-      - '.github/workflows/antirrhinum-realised-visitation-discovery.yml'
   workflow_dispatch:
 
 permissions:
