@@ -27,10 +27,21 @@ def test_eschscholzia_preserves_preregistered_nonidentifiability() -> None:
     assert "process_state_not_predictively_supported" in MAIN
 
 
-def test_candidate_state_must_earn_endpoint_relevance() -> None:
-    assert "candidate-state adequacy -> residual-origin/history test" in MAIN
+def test_empirical_gate_requires_measurement_and_representation_adequacy() -> None:
+    assert "measurement adequacy -> representation/information preservation -> residual origin/history test" in MAIN
     assert "cannot simply be assumed to constitute an effective-interaction state" in MAIN
     assert "Pan traps are treated as an array-level pollinator availability/community proxy" in MAIN
+    assert "Only a candidate state that is endpoint-informative and remains distinguishable after preprocessing" in MAIN
+
+
+def test_campanula_records_representation_failure_not_efficiency_irrelevance() -> None:
+    assert "Mechanistic weighting was erased by the declared *Campanula* representation" in MAIN
+    assert "no_interaction_representation_supported" in MAIN
+    assert "constant positive rescalings" in MAIN
+    assert "8.88e-16" in MAIN
+    assert "representation/information-preservation failure" in MAIN
+    assert "not evidence that per-visit efficiency is biologically irrelevant" in MAIN
+    assert "10.1098/rspb.2018.0635" in REFS
 
 
 def test_eschscholzia_eidc_sources_are_cited() -> None:
