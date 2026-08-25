@@ -23,7 +23,8 @@ def test_pollinator_state_is_fixed_and_proxy_bounded() -> None:
     assert "I_count" in DOC
     assert "T_mean_ITD" in DOC
     assert "Species richness" in DOC
-    assert "not direct focal-plant visitation" in DOC
+    assert "not a claim that pan traps measure direct visitation to focal plants" in DOC
+    assert "availability proxy" in DOC
     assert "I_log_count" in SCRIPT
     assert "T_mean_ITD" in SCRIPT
 
