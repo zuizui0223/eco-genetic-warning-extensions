@@ -5,6 +5,7 @@ import hashlib
 import io
 import json
 import re
+import zipfile
 from pathlib import Path
 from urllib.error import HTTPError
 from urllib.parse import quote, urljoin
@@ -122,7 +123,7 @@ def _resolve_metadata() -> tuple[str, str, list[dict[str, object]]]:
     return dataset_url, files_url, resolved
 
 
-def _download_file(meta: dict[str, object]) -> tuple[str, bytes, list[dict[str, object]]]:
+def _try_individual(meta: dict[str, object]) -> tuple[str, bytes, list[dict[str, object]]] | None:
     file_id = int(meta["file_id"])
     candidates: list[str] = []
     relation = meta.get("metadata_download_relation")
@@ -152,8 +153,36 @@ def _download_file(meta: dict[str, object]) -> tuple[str, bytes, list[dict[str, 
             attempts[-1]["metadata_size"] = int(metadata_size)
             continue
         return url, payload, attempts
+    meta["individual_access_attempts"] = attempts
+    return None
 
-    raise RuntimeError(f"no validated public file payload for {meta['filename']}: {attempts!r}")
+
+def _download_dataset_bundle(files: list[dict[str, object]]) -> tuple[str, bytes, dict[str, bytes]]:
+    # Fixed second access route declared after run 1 showed that anonymous
+    # metadata works while both individual download relations are blocked.
+    # The DOI and filenames are unchanged; bundle contents are accepted only
+    # when every predeclared filename exists and matches Dryad metadata size.
+    url = f"{DRYAD_ROOT}/stash/downloads/dataset/doi:{DOI}"
+    payload = _request(url, accept="application/zip,application/octet-stream,*/*")
+    if not zipfile.is_zipfile(io.BytesIO(payload)):
+        raise RuntimeError(f"Dryad dataset bundle is not a ZIP: bytes={len(payload)}")
+
+    by_name: dict[str, bytes] = {}
+    with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+        members = {Path(name).name: name for name in archive.namelist() if not name.endswith("/")}
+        for meta in files:
+            filename = str(meta["filename"])
+            member = members.get(filename)
+            if member is None:
+                raise RuntimeError(f"locked file absent from Dryad dataset bundle: {filename}")
+            raw = archive.read(member)
+            metadata_size = meta.get("metadata_size")
+            if metadata_size is not None and int(metadata_size) != len(raw):
+                raise RuntimeError(
+                    f"Dryad bundle size mismatch for {filename}: metadata={metadata_size}, observed={len(raw)}"
+                )
+            by_name[filename] = raw
+    return url, payload, by_name
 
 
 def _xlsx_schema(payload: bytes) -> list[dict[str, object]]:
@@ -193,16 +222,42 @@ def _xls_schema(payload: bytes) -> list[dict[str, object]]:
 
 def discover(manifest_path: Path) -> dict[str, object]:
     dataset_url, files_url, files = _resolve_metadata()
+
+    individual_payloads: dict[str, tuple[str, bytes, list[dict[str, object]]]] = {}
+    need_bundle = False
+    for meta in files:
+        found = _try_individual(meta)
+        if found is None:
+            need_bundle = True
+        else:
+            individual_payloads[str(meta["filename"])] = found
+
+    bundle_url = None
+    bundle_sha256 = None
+    bundle_members: dict[str, bytes] = {}
+    if need_bundle:
+        bundle_url, bundle_payload, bundle_members = _download_dataset_bundle(files)
+        bundle_sha256 = hashlib.sha256(bundle_payload).hexdigest()
+
     inventory: list[dict[str, object]] = []
     for meta in files:
-        url, payload, attempts = _download_file(meta)
         filename = str(meta["filename"])
+        if filename in individual_payloads:
+            url, payload, attempts = individual_payloads[filename]
+            access_mode = "individual"
+        else:
+            payload = bundle_members[filename]
+            url = str(bundle_url)
+            attempts = list(meta.get("individual_access_attempts", []))
+            access_mode = "dataset_bundle"
+
         schema = _xls_schema(payload) if filename.lower().endswith(".xls") else _xlsx_schema(payload)
         inventory.append(
             {
                 **meta,
+                "access_mode": access_mode,
                 "resolved_download_url": url,
-                "access_attempts": attempts,
+                "individual_access_attempts": attempts,
                 "observed_bytes": len(payload),
                 "sha256": hashlib.sha256(payload).hexdigest(),
                 "workbook_schema": schema,
@@ -214,6 +269,8 @@ def discover(manifest_path: Path) -> dict[str, object]:
         "dataset_doi": DOI,
         "dataset_metadata_url": dataset_url,
         "files_metadata_url": files_url,
+        "dataset_bundle_url": bundle_url,
+        "dataset_bundle_sha256": bundle_sha256,
         "files": inventory,
         "inspection_boundary": (
             "Only Dryad metadata, exact filenames/file ids, file hashes/sizes, workbook sheet names/dimensions and first-row column labels were inspected. "
@@ -239,10 +296,12 @@ def main() -> int:
         json.dumps(
             {
                 "status": result["status"],
+                "bundle_used": result["dataset_bundle_url"] is not None,
                 "files": [
                     {
                         "filename": row["filename"],
                         "file_id": row["file_id"],
+                        "access_mode": row["access_mode"],
                         "sheets": [sheet["sheet"] for sheet in row["workbook_schema"]],
                     }
                     for row in result["files"]
