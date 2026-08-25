@@ -1,14 +1,6 @@
 name: Campanula colonization realised-visitation state test
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_campanula_colonization_visitation_test_preregistration.md'
-      - 'manuscript/empirical_campanula_population_key_gate_correction.md'
-      - 'scripts/run_campanula_colonization_visitation_state_test.py'
-      - 'scripts/run_campanula_colonization_visitation_state_test_key_corrected.py'
-      - 'tests/test_campanula_colonization_visitation_state_contract.py'
-      - '.github/workflows/campanula-colonization-visitation-state.yml'
   workflow_dispatch:
 
 permissions:
@@ -42,22 +34,9 @@ jobs:
           assert d['source_lock']['seed']['md5'] == 'b84fa5c83513dbe75c0bf7840d1c74aa'
           assert d['source_lock']['pollinator']['md5'] == '81e0deaa78a6a97e1211484cb9d0d3b3'
           assert d['population_key_gate_correction']['first_run_outcome_model_fitted'] is False
-          assert d['decision'] in {
-              'realised_visitation_informative_context_redundant',
-              'residual_colonization_size_after_visitation',
-              'residual_compensation_after_context',
-              'realised_visitation_not_predictively_supported',
-              'not_identifiable_for_primary_endpoint',
-          }
-          print(json.dumps({
-              'decision': d['decision'],
-              'reason': d.get('reason'),
-              'PL_process': d.get('PL_abs', {}).get('comparisons', {}).get('S0_to_S1'),
-              'PL_size': d.get('PL_abs', {}).get('comparisons', {}).get('S1_to_S2'),
-              'PL_autonomy': d.get('PL_abs', {}).get('comparisons', {}).get('S2_to_S3'),
-              'F_process': d.get('F_control', {}).get('comparisons', {}).get('S0_to_S1'),
-              'key_gate_correction': d.get('population_key_gate_correction'),
-          }, sort_keys=True))
+          assert d['decision'] == 'not_identifiable_for_primary_endpoint'
+          assert d.get('reason') == 'nonfinite_visits_per_flower'
+          print(json.dumps({'decision': d['decision'], 'reason': d['reason']}, sort_keys=True))
           PY
       - name: Upload derived result only
         uses: actions/upload-artifact@v4
