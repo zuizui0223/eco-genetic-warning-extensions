@@ -1,12 +1,8 @@
 name: Carphephorus realised-interaction schema discovery
 
+# Manual-only after run 32818704134 established the public Dryad byte-access
+# boundary. Do not retrigger automatically while editing provenance/docs.
 on:
-  pull_request:
-    paths:
-      - 'scripts/fetch_carphephorus_effective_interaction_schema.py'
-      - 'manuscript/empirical_carphephorus_effective_interaction_preregistration.md'
-      - 'tests/test_carphephorus_effective_interaction_discovery_contract.py'
-      - '.github/workflows/carphephorus-effective-interaction-discovery.yml'
   workflow_dispatch:
 
 permissions:
