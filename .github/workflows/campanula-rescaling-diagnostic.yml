@@ -1,0 +1,51 @@
+name: Campanula predictor-only rescaling diagnostic
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install locked diagnostic dependencies
+        run: python -m pip install --upgrade numpy openpyxl
+
+      - name: Run predictor-only rescaling diagnostic
+        run: |
+          python scripts/run_campanula_rescaling_diagnostic.py \
+            --output artifacts/empirical/campanula_rescaling_diagnostic.json
+
+      - name: Validate diagnostic contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/campanula_rescaling_diagnostic.json').read_text(encoding='utf-8'))
+          assert d['decision'] in {'constant_rescaling_confirmed', 'not_constant_rescaling', 'not_identifiable'}
+          if d['decision'] != 'not_identifiable':
+              assert d['source_lock']['md5'] == '2d26307743e8a22384781854b8f2f33b'
+              assert d['source_lock']['sha256'] == 'b81b77248b75330049e1ddd8ae026db127f838e979620a0415a5addb9a7e8f27'
+              assert d['sample']['n_rows'] == 23
+              assert len(d['pairs']) == 6
+              assert 'no outcome column values were read or used' in d['response_firewall']
+          print(json.dumps({'decision': d['decision'], 'reason': d.get('reason'), 'pairs': d.get('pairs')}, sort_keys=True))
+          PY
+
+      - name: Upload derived diagnostic only
+        uses: actions/upload-artifact@v4
+        with:
+          name: campanula-rescaling-diagnostic
+          path: artifacts/empirical/campanula_rescaling_diagnostic.json
+          if-no-files-found: error
+          retention-days: 30
