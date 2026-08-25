@@ -1,0 +1,71 @@
+name: Eschscholzia multi-process state test
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install --upgrade numpy pandas scikit-learn
+
+      - name: Run preregistered multi-process analysis
+        run: |
+          python scripts/run_eschscholzia_multiprocess_state_test_locked_source.py \
+            --output artifacts/empirical/eschscholzia_multiprocess_state_result.json
+
+      - name: Validate source and decision contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('artifacts/empirical/eschscholzia_multiprocess_state_result.json')
+          d = json.loads(p.read_text(encoding='utf-8'))
+          assert d['bootstrap']['replicates'] == 10000
+          assert d['bootstrap']['rng_seed'] == 20260825
+          assert d['bootstrap']['held_out_unit'] == 'Experimental array'
+          assert d['source_lock_correction']['outer_zip_sha_policy'] == 'record_only_not_identity'
+          assert d['decision'] in {
+              'multi_endpoint_partial_state_convergence_supported',
+              'multi_endpoint_state_insufficiency_detected',
+              'multi_endpoint_convergence_not_established',
+              'multi_endpoint_not_identifiable',
+          }
+          expected_csv = {
+              'pollinator': 'db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef',
+              'f_seed': '83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f',
+              'r_seed': 'ad52e8b52885cde66a0ed5476bffb0e9894b4d0429e42d927ea72b388b3ea27b',
+              'g_paternity': '6805ceb4164fefa373ba758a0fcf0a58fe67624b432d3aea6d344d690efd71f2',
+          }
+          for role, sha in expected_csv.items():
+              assert d['source_lock'][role]['csv_sha256'] == sha
+          print(json.dumps({
+              'decision': d['decision'],
+              'primary_endpoint_decisions': d.get('primary_endpoint_decisions'),
+              'F_process': d.get('F_seed', {}).get('comparisons', {}).get('S0_to_S1'),
+              'F_habitat': d.get('F_seed', {}).get('comparisons', {}).get('S1_to_S2'),
+              'G_process': d.get('G_mating', {}).get('comparisons', {}).get('S0_to_S1'),
+              'G_habitat': d.get('G_mating', {}).get('comparisons', {}).get('S1_to_S2'),
+          }, sort_keys=True))
+          PY
+
+      - name: Upload derived result only
+        uses: actions/upload-artifact@v4
+        with:
+          name: eschscholzia-multiprocess-state-result
+          path: artifacts/empirical/eschscholzia_multiprocess_state_result.json
+          if-no-files-found: error
+          retention-days: 30
