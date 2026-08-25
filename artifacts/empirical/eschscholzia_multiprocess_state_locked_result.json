@@ -1,0 +1,93 @@
+{
+  "decision": "multi_endpoint_not_identifiable",
+  "result_generating_provenance": {
+    "head_sha": "51b516fd9511dc0f18c236e91a17d88453a76b06",
+    "workflow_run": 32801092027,
+    "job_id": 97661887837,
+    "artifact_id": 9546498746,
+    "artifact_digest": "sha256:455ffe9a1c075d2c92b6e36c06cbc3c495255b241097c479628cf186af55e79b"
+  },
+  "validation": {
+    "held_out_unit": "Experimental array",
+    "bootstrap_replicates": 10000,
+    "rng_seed": 20260825,
+    "result_head_workflows": {
+      "Eschscholzia multi-process state test": "success",
+      "Protocol invariant CI": "success",
+      "Two-repository reproducibility contract": "success",
+      "Paper completion sprint": "success"
+    }
+  },
+  "source_identity": {
+    "policy": "EIDC DOI/UUID + exact CSV member path + locked CSV-member SHA-256; outer ZIP SHA is transport provenance only",
+    "pollinator_csv_sha256": "db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef",
+    "F_csv_sha256": "83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f",
+    "R_csv_sha256": "ad52e8b52885cde66a0ed5476bffb0e9894b4d0429e42d927ea72b388b3ea27b",
+    "G_C_csv_sha256": "6805ceb4164fefa373ba758a0fcf0a58fe67624b432d3aea6d344d690efd71f2"
+  },
+  "schema_counts": {
+    "pollinator_rows": 213,
+    "pollinator_arrays": 16,
+    "paternity_rows": 505,
+    "recognized_G_rows": 457,
+    "unrecognized_parentage_rows": 48
+  },
+  "F_seed": {
+    "decision": "not_identifiable_for_endpoint",
+    "reason": "F: Habitat mismatch for 1||3: Fallow graound vs Fallow ground",
+    "boundary": "The preregistration required exact within-source/cross-source Habitat agreement and prohibited majority-vote repair. F was therefore closed without fitting S0/S1/S2; D_capacity was not evaluated."
+  },
+  "G_mating": {
+    "decision": "process_state_not_predictively_supported",
+    "n_rows": 457,
+    "n_arrays": 16,
+    "equal_array_scores": {
+      "S0_Block": 0.3873465750816276,
+      "S1_Block_plus_pollinator_state": 0.3837955143644146,
+      "S2_S1_plus_Habitat": 0.38584485874050917
+    },
+    "gain_process_S0_minus_S1": {
+      "mean": 0.003551060717212985,
+      "ci95": [-0.0063852353176895036, 0.013203008639888965],
+      "supported_positive_gain": false
+    },
+    "gain_habitat_S1_minus_S2": {
+      "mean": -0.002049344376094565,
+      "ci95": [-0.006579366760737215, 0.0012047491894555788],
+      "supported_positive_gain": false
+    }
+  },
+  "R_state": {
+    "decision": "R_state_identified",
+    "n_plants": 48,
+    "n_arrays": 16,
+    "G_extension": {
+      "semantic_decision": "no_detected_R_gain",
+      "mean_gain_S2_minus_S3": 0.00169901247859731,
+      "ci95": [-0.00409539813204489, 0.00759638885750842],
+      "supported_positive_gain": false
+    }
+  },
+  "C_pollen": {
+    "decision": "process_state_not_predictively_supported",
+    "n_rows": 254,
+    "n_arrays": 16,
+    "equal_array_scores": {
+      "S0_Block": 1.7039509479333426,
+      "S1_Block_plus_pollinator_state": 1.6682847078522507,
+      "S2_S1_plus_Habitat": 1.7269783510409127
+    },
+    "gain_process_S0_minus_S1": {
+      "mean": 0.03566624008109184,
+      "ci95": [-0.12347340002722498, 0.17057128899057938],
+      "supported_positive_gain": false
+    },
+    "gain_habitat_S1_minus_S2": {
+      "mean": -0.058693643188661965,
+      "ci95": [-0.09452843111250427, -0.028380700538945834],
+      "supported_positive_gain": false,
+      "interpretation": "Habitat addition caused reproducible held-out predictive harm on this secondary C endpoint; this is not evidence that habitat is biologically irrelevant."
+    }
+  },
+  "scientific_boundary": "The primary F+G multi-endpoint state-sufficiency claim is not identifiable because F closed at the preregistered metadata-consistency gate. Independently, the array-level pan-trap count/mean-ITD state did not receive positive held-out support for G_mating or secondary C_pollen. This supports a measurement boundary: pollinator availability/community proxies cannot be assumed to be an effective-interaction state."
+}
