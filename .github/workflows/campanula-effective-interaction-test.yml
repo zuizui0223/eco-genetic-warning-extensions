@@ -1,12 +1,6 @@
 name: Campanula effective-interaction predictive test
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_campanula_effective_interaction_test_preregistration.md'
-      - 'scripts/run_campanula_effective_interaction_test.py'
-      - 'tests/test_campanula_effective_interaction_test_contract.py'
-      - '.github/workflows/campanula-effective-interaction-test.yml'
   workflow_dispatch:
 
 permissions:
