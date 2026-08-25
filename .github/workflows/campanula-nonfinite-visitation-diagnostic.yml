@@ -1,10 +1,6 @@
 name: Campanula nonfinite visitation diagnostic
 
 on:
-  pull_request:
-    paths:
-      - 'scripts/diagnose_campanula_nonfinite_visitation.py'
-      - '.github/workflows/campanula-nonfinite-visitation-diagnostic.yml'
   workflow_dispatch:
 
 permissions:
@@ -35,11 +31,14 @@ jobs:
           d = json.loads(Path('artifacts/empirical/campanula_nonfinite_visitation_diagnostic.json').read_text(encoding='utf-8'))
           assert d['source']['md5'] == '81e0deaa78a6a97e1211484cb9d0d3b3'
           assert d['decision_effect'] == 'none; the locked decision remains not_identifiable_for_primary_endpoint'
-          assert 'No seed outcome' in d['diagnostic_scope']
-          print(json.dumps({
-              'nonfinite_count': d['nonfinite_visits_per_flower_count'],
-              'nonfinite_rows': d['nonfinite_rows'],
-          }, sort_keys=True))
+          assert d['nonfinite_visits_per_flower_count'] == 9
+          assert {row['experimental.population'] for row in d['nonfinite_rows']} == {
+              '49', '50', '51', '52', '53', '54', '55', '56', '57'
+          }
+          assert all(row['raw_visits_per_flower'] == 'NA' for row in d['nonfinite_rows'])
+          assert all(row['total_poll_visits'] == 'NA' for row in d['nonfinite_rows'])
+          assert all(not row['all_finite_flower_counts_zero'] for row in d['nonfinite_rows'])
+          print(json.dumps({'nonfinite_count': 9, 'decision_effect': 'none'}, sort_keys=True))
           PY
 
       - name: Upload diagnostic only
