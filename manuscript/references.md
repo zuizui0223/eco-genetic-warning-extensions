@@ -58,6 +58,8 @@ Hiraiwa, M.K. & Ushimaru, A. (2024). Loss of functional diversity rather than sp
 
 Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, **11**, 609–623. doi:10.1111/j.1461-0248.2008.01179.x
 
+Koski, M.H., Ison, J.L., Padilla, A., Pham, A.Q. & Galloway, L.F. (2018). Linking pollinator efficiency to patterns of pollen limitation: small bees exploit the plant–pollinator mutualism. *Proceedings of the Royal Society B*, **285**, 20180635. doi:10.1098/rspb.2018.0635
+
 Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N., Travis, J.M.J. & Clobert, J. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
 
 Leimberger, K.G., Hadley, A.S. & Betts, M.G. (2023). Plant–hummingbird pollination networks exhibit limited rewiring after experimental removal of a locally abundant plant species. *Journal of Animal Ecology*, **92**, 1680–1694. doi:10.1111/1365-2656.13935
