@@ -1,0 +1,51 @@
+name: Carphephorus realised-interaction schema discovery
+
+# Manual-only after run 32818704134 established the public Dryad byte-access
+# boundary. Do not retrigger automatically while editing provenance/docs.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Fetch fixed Dryad files and inspect headers only
+        run: |
+          python scripts/fetch_carphephorus_effective_interaction_schema.py \
+            --manifest artifacts/empirical/carphephorus_effective_interaction_schema.json
+
+      - name: Validate schema-only contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d = json.loads(Path('artifacts/empirical/carphephorus_effective_interaction_schema.json').read_text(encoding='utf-8'))
+          assert d['status'] == 'schema_only_discovery_complete'
+          assert d['dataset_doi'] == '10.5061/dryad.w9ghx3g48'
+          assert d['author_code_commit'] == '622e5266db24e99a983bcf89d63a2258ebf93662'
+          assert [f['filename'] for f in d['files']] == [
+              'CARBEL-arthropods.csv', 'CARBEL-floral.csv', 'CARBEL-seeds.csv', 'Patch_type.csv'
+          ]
+          assert all(f['columns'] and f['sha256'] for f in d['files'])
+          assert 'No data row' in d['inspection_boundary']
+          print(json.dumps({f['filename']: f['columns'] for f in d['files']}, sort_keys=True))
+          PY
+
+      - name: Upload schema manifest only
+        uses: actions/upload-artifact@v4
+        with:
+          name: carphephorus-effective-interaction-schema
+          path: artifacts/empirical/carphephorus_effective_interaction_schema.json
+          if-no-files-found: error
+          retention-days: 30
