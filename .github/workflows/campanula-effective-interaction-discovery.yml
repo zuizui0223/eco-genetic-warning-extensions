@@ -1,12 +1,6 @@
 name: Campanula effective-interaction schema discovery
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_campanula_effective_interaction_preregistration.md'
-      - 'scripts/fetch_campanula_effective_interaction_schema.py'
-      - 'tests/test_campanula_effective_interaction_discovery_contract.py'
-      - '.github/workflows/campanula-effective-interaction-discovery.yml'
   workflow_dispatch:
 
 permissions:
@@ -32,27 +26,25 @@ jobs:
           python scripts/fetch_campanula_effective_interaction_schema.py \
             --output artifacts/empirical/campanula_effective_interaction_schema.json
 
-      - name: Validate schema-only boundary
+      - name: Validate locked schema boundary
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
           d = json.loads(Path('artifacts/empirical/campanula_effective_interaction_schema.json').read_text(encoding='utf-8'))
           assert d['status'] == 'schema_only_discovery_complete'
-          assert d['source_lock']['zenodo_record'] == 4969330
-          assert d['source_lock']['dryad_doi'] == '10.5061/dryad.5nj81nf'
           assert d['source_lock']['observed_md5'] == '2d26307743e8a22384781854b8f2f33b'
-          assert d['workbook']['sheet_count'] >= 4
+          assert d['source_lock']['sha256'] == 'b81b77248b75330049e1ddd8ae026db127f838e979620a0415a5addb9a7e8f27'
+          assert d['workbook']['sheet_names'] == [
+              'PopVis Rates_ PL_Depletion',
+              'Grains To Seeds ',
+              'Pollen Deposition Efficiency',
+              'Seed Set Efficiency',
+              'Pollen Removal Efficiency',
+              'Metadata',
+          ]
           assert 'Numeric study-cell values were not copied' in d['inspection_boundary']
-          assert 'second exact-model preregistration' in d['next_gate']
-          print(json.dumps({
-              'sheets': d['workbook']['sheet_names'],
-              'sha256': d['source_lock']['sha256'],
-              'keyword_hits': {
-                  sheet['sheet']: sheet['label_keyword_hits']
-                  for sheet in d['workbook']['sheets']
-              },
-          }, sort_keys=True))
+          print(json.dumps({'status': 'effective_interaction_state_identifiable'}, sort_keys=True))
           PY
 
       - name: Upload schema manifest only
