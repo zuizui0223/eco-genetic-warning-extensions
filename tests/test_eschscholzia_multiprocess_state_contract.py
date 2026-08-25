@@ -2,7 +2,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOC = (ROOT / "manuscript" / "empirical_eschscholzia_multiprocess_test_preregistration.md").read_text(encoding="utf-8")
+CORRECTION = (ROOT / "manuscript" / "empirical_eschscholzia_source_lock_correction.md").read_text(encoding="utf-8")
 SCRIPT = (ROOT / "scripts" / "run_eschscholzia_multiprocess_state_test.py").read_text(encoding="utf-8")
+ADAPTER = (ROOT / "scripts" / "run_eschscholzia_multiprocess_state_test_locked_source.py").read_text(encoding="utf-8")
 WORKFLOW = (ROOT / ".github" / "workflows" / "eschscholzia-multiprocess-state.yml").read_text(encoding="utf-8")
 
 
@@ -10,6 +12,7 @@ def test_second_preregistration_precedes_outcome_analysis() -> None:
     assert "second exact-model preregistration" in DOC
     assert "No data row" in DOC
     assert "No data row" in DOC.split("## Scientific question")[0]
+    assert "before any outcome row was opened" in CORRECTION
 
 
 def test_locked_hierarchy_and_held_out_unit() -> None:
@@ -74,17 +77,23 @@ def test_bootstrap_and_decisions_are_fixed() -> None:
         assert token in SCRIPT
 
 
-def test_source_hashes_are_hard_locked() -> None:
+def test_source_identity_is_csv_member_locked_after_transport_correction() -> None:
     for sha in (
-        "66b0b9eec2ffcf6df8bc19f4677c159e5f574a4a23aa452221cc2b552b01f0c5",
-        "b541f46ecee09ba7c5dbbcbe06f30f343e2620e3942289c5839f98382d089859",
-        "6781fed48c9c7b8a293e713434a02769a2490d68c6f2e218167f623af1c60ec1",
-        "e785a2aad2ba43ef5a5a6b90122badc2b70b1682a4ada5719e8a2ed25cddf033",
+        "db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef",
+        "83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f",
+        "ad52e8b52885cde66a0ed5476bffb0e9894b4d0429e42d927ea72b388b3ea27b",
+        "6805ceb4164fefa373ba758a0fcf0a58fe67624b432d3aea6d344d690efd71f2",
     ):
         assert sha in SCRIPT
+        assert sha in CORRECTION
+    assert "outer ZIP SHA" in CORRECTION
+    assert "not** an identity criterion" in CORRECTION
+    assert "base._download_source = _download_source_member_locked" in ADAPTER
+    assert "No model, endpoint, key, seed, validation unit or" in ADAPTER
 
 
 def test_workflow_runs_only_derived_result() -> None:
     assert "Run preregistered multi-process analysis" in WORKFLOW
+    assert "run_eschscholzia_multiprocess_state_test_locked_source.py" in WORKFLOW
     assert "Upload derived result only" in WORKFLOW
     assert "eschscholzia_multiprocess_state_result.json" in WORKFLOW
