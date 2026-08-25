@@ -4,7 +4,9 @@ on:
   pull_request:
     paths:
       - 'manuscript/empirical_eschscholzia_multiprocess_test_preregistration.md'
+      - 'manuscript/empirical_eschscholzia_source_lock_correction.md'
       - 'scripts/run_eschscholzia_multiprocess_state_test.py'
+      - 'scripts/run_eschscholzia_multiprocess_state_test_locked_source.py'
       - 'tests/test_eschscholzia_multiprocess_state_contract.py'
       - '.github/workflows/eschscholzia-multiprocess-state.yml'
   workflow_dispatch:
@@ -29,7 +31,7 @@ jobs:
 
       - name: Run preregistered multi-process analysis
         run: |
-          python scripts/run_eschscholzia_multiprocess_state_test.py \
+          python scripts/run_eschscholzia_multiprocess_state_test_locked_source.py \
             --output artifacts/empirical/eschscholzia_multiprocess_state_result.json
 
       - name: Validate source and decision contract
@@ -43,20 +45,21 @@ jobs:
           assert d['bootstrap']['replicates'] == 10000
           assert d['bootstrap']['rng_seed'] == 20260825
           assert d['bootstrap']['held_out_unit'] == 'Experimental array'
+          assert d['source_lock_correction']['outer_zip_sha_policy'] == 'record_only_not_identity'
           assert d['decision'] in {
               'multi_endpoint_partial_state_convergence_supported',
               'multi_endpoint_state_insufficiency_detected',
               'multi_endpoint_convergence_not_established',
               'multi_endpoint_not_identifiable',
           }
-          expected = {
-              'pollinator': '66b0b9eec2ffcf6df8bc19f4677c159e5f574a4a23aa452221cc2b552b01f0c5',
-              'f_seed': 'b541f46ecee09ba7c5dbbcbe06f30f343e2620e3942289c5839f98382d089859',
-              'r_seed': '6781fed48c9c7b8a293e713434a02769a2490d68c6f2e218167f623af1c60ec1',
-              'g_paternity': 'e785a2aad2ba43ef5a5a6b90122badc2b70b1682a4ada5719e8a2ed25cddf033',
+          expected_csv = {
+              'pollinator': 'db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef',
+              'f_seed': '83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f',
+              'r_seed': 'ad52e8b52885cde66a0ed5476bffb0e9894b4d0429e42d927ea72b388b3ea27b',
+              'g_paternity': '6805ceb4164fefa373ba758a0fcf0a58fe67624b432d3aea6d344d690efd71f2',
           }
-          for role, sha in expected.items():
-              assert d['source_lock'][role]['package_sha256'] == sha
+          for role, sha in expected_csv.items():
+              assert d['source_lock'][role]['csv_sha256'] == sha
           print(json.dumps({
               'decision': d['decision'],
               'primary_endpoint_decisions': d.get('primary_endpoint_decisions'),
