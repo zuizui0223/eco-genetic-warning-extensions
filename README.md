@@ -53,7 +53,7 @@ Fragmenting the same prepared full state lowers interaction, local effective siz
 
 ### Loss-process calibration
 
-The original R1–R4 block-rate labels remain historical protocol provenance, not biological regimes. High-precision replay separates pooled functional-loss incidence, between-block heterogeneity, and paired trajectory identity.
+**Source feasibility is conditional:** `2,269/3,375` original recurrent-transition source attempts supported preparation/projection. The original R1–R4 block-rate labels remain historical protocol provenance, not biological regimes. High-precision replay separates pooled functional-loss incidence, between-block heterogeneity, and paired trajectory identity.
 
 The recurrent-turnover frontier spans pooled loss from about `.682` at `p_star=.325` through `.407` at `.375` to `.273` at `.400`, without detected excess block heterogeneity at the tested frontier coordinates.
 
@@ -62,6 +62,8 @@ The recurrent-turnover frontier spans pooled loss from about `.682` at `p_star=.
 The historical allele-frequency-mixing `m=.10` equal-rate signal did not reproduce in one independent fresh Phase-U ensemble and did not port to whole-individual or pollen-only movement closures. No robust portable connectivity heterogeneity effect is established.
 
 `migration_rate` in the legacy operator means **allele-frequency mixing only**. It is not demographic migration, pollen or seed dispersal, pollinator movement, or recolonisation.
+
+`interaction kappa` is an aggregate positive-feedback/effective-interaction-support parameter. It is **not partner richness**, connectance, pollinator diversity, or network dimensionality.
 
 ### State representation matters
 
