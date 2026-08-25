@@ -75,6 +75,17 @@ In the inherited symmetric benchmark, all 35 valid same-trajectory pairs showed 
 
 This supports **within-state reproducibility**, not a universal percentage threshold. Fixed absolute thresholds were not robust, and warning was not fully portable across separately calibrated domains.
 
+### Closed condition-map invariants retained for release
+
+The historical calibration language is kept explicit so release-facing summaries cannot silently turn screen labels or one finite seed-family result into biology:
+
+- **Historical R3 is not automatically “seed heterogeneity”.** Historical R3/R4 remain warning-blind screen labels, not biological regimes.
+- In the aggregate-feedback precision replay, **pooled loss is `.499/.573/.598`** at `kappa=3.0/4.5/6.0` and the tested conditions remained block-homogeneous.
+- The **historical `m=.10` connectivity signal did not freshly replicate**. In the independent Phase-U ensemble, **fresh `m=0/.10` equal-rate p values were `.134/.745`**, pooled loss was `.540/.551`, and paired McNemar `p=.694`.
+- **No robust portable connectivity heterogeneity effect is established** across the tested allele-only, whole-individual, and pollen-only closures.
+- Reduced-form and matched-expected-support partner tests were bounded negative results; the **adaptive-rewiring gate remains closed**.
+- **Warning remains conditional and portability bounded** even though the six relative warning orderings strictly reproduced within the frozen H2-R state.
+
 ## Natural-data programme
 
 Natural systems are not pooled. Each test preserves its own ecological unit and holds out whole ecological units when evaluating transferable prediction.
