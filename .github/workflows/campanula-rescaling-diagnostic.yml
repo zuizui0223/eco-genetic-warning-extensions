@@ -1,12 +1,6 @@
 name: Campanula predictor-only rescaling diagnostic
 
 on:
-  pull_request:
-    paths:
-      - 'manuscript/empirical_campanula_rescaling_diagnostic_preregistration.md'
-      - 'scripts/run_campanula_rescaling_diagnostic.py'
-      - 'tests/test_campanula_rescaling_diagnostic_contract.py'
-      - '.github/workflows/campanula-rescaling-diagnostic.yml'
   workflow_dispatch:
 
 permissions:
