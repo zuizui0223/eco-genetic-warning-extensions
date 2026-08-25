@@ -1,10 +1,12 @@
+import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DOC = (ROOT / "manuscript" / "empirical_eschscholzia_joint_state_preregistration.md").read_text(encoding="utf-8")
+RESULT = (ROOT / "manuscript" / "empirical_eschscholzia_joint_state_discovery_result.md").read_text(encoding="utf-8")
+LOCK = json.loads((ROOT / "artifacts" / "empirical" / "eschscholzia_joint_state_schema_locked.json").read_text(encoding="utf-8"))
 SCRIPT = (ROOT / "scripts" / "fetch_eschscholzia_joint_state_schema.py").read_text(encoding="utf-8")
 WORKFLOW = (ROOT / ".github" / "workflows" / "eschscholzia-joint-state-discovery.yml").read_text(encoding="utf-8")
-
 
 DOIS = (
     "10.5285/01906784-6742-44bf-b244-a4b63bed8d82",
@@ -36,15 +38,38 @@ def test_schema_gate_cannot_read_outcomes() -> None:
     assert "Upload schema manifest only" in WORKFLOW
 
 
-def test_discovery_decisions_and_second_preregistration_are_fixed() -> None:
-    for decision in (
-        "joint_state_identifiable",
-        "partial_joint_state_identifiable",
-        "not_identifiable_from_archive",
+def test_discovery_decision_is_locked_from_headers_only() -> None:
+    assert LOCK["decision"] == "joint_state_identifiable"
+    assert "joint_state_identifiable" in RESULT
+    assert "Block + Experimental array" in RESULT
+    assert "Plant identification number" in RESULT
+    assert "No row values were used" in RESULT
+    assert LOCK["workflow_provenance"]["run_id"] == 32736330920
+    assert LOCK["workflow_provenance"]["artifact_id"] == 9523523742
+
+
+def test_locked_schema_preserves_array_to_plant_hierarchy() -> None:
+    by_role = {row["role"]: row for row in LOCK["datasets"]}
+    assert by_role["pollinator_availability"]["hierarchy"] == ["Block", "Experimental array"]
+    for role in (
+        "seed_function_supplemented_exposed",
+        "seed_function_exposed_excluded",
+        "paternity",
     ):
-        assert decision in DOC
+        assert len(by_role[role]["hierarchy"]) == 3
+    assert "array-level pollinator availability" in by_role["pollinator_availability"]["process_role"]
+
+
+def test_second_preregistration_is_still_required_before_outcomes() -> None:
     assert "exact second preregistration" in DOC
     assert "before any outcome row is inspected" in DOC
+    assert "second exact-model preregistration" in RESULT
+    assert "leave-one-array-out" in RESULT
+
+
+def test_discovery_workflow_is_frozen_manual_only() -> None:
+    assert "workflow_dispatch:" in WORKFLOW
+    assert "pull_request:" not in WORKFLOW
 
 
 def test_primary_question_preserves_endpoint_specific_sufficiency() -> None:
