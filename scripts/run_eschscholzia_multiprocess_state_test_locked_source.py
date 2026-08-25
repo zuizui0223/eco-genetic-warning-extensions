@@ -5,6 +5,7 @@ import hashlib
 import importlib.util
 import io
 import json
+import sys
 import zipfile
 from pathlib import Path
 from urllib.request import Request, urlopen
@@ -14,6 +15,10 @@ spec = importlib.util.spec_from_file_location("esch_base", BASE_PATH)
 if spec is None or spec.loader is None:
     raise RuntimeError("could not load locked Eschscholzia analysis module")
 base = importlib.util.module_from_spec(spec)
+# dataclasses resolves annotation/module metadata through sys.modules while the
+# module body executes. Register the module before exec_module; this is a pure
+# loader fix and does not modify any preregistered scientific logic.
+sys.modules[spec.name] = base
 spec.loader.exec_module(base)
 
 
