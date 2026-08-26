@@ -7,7 +7,9 @@ on:
     paths:
       - "manuscript/N2_OPEN_DATA_STATE_LAYER_AUDIT_PREREGISTRATION.md"
       - "artifacts/empirical/n2_open_data_state_layer_registry.json"
+      - "artifacts/empirical/n2_open_data_state_layer_summary.json"
       - "scripts/summarize_n2_state_layer_registry.py"
+      - "tests/test_n2_open_data_state_layer_audit.py"
       - ".github/workflows/n2-open-data-state-layer-audit.yml"
   workflow_dispatch:
 
