@@ -1,0 +1,58 @@
+name: N3 Mallorca network schema audit
+
+on:
+  push:
+    branches:
+      - agent/n3-mallorca-network-schema
+      - main
+    paths:
+      - "scripts/audit_mallorca_network_schema.py"
+      - ".github/workflows/n3-mallorca-network-schema-audit.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "scripts/audit_mallorca_network_schema.py"
+      - ".github/workflows/n3-mallorca-network-schema-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Compile response-firewalled auditor
+        run: python -m py_compile scripts/audit_mallorca_network_schema.py
+      - name: Run fixed schema audit
+        run: python scripts/audit_mallorca_network_schema.py --output artifacts/empirical/n3_mallorca_network_schema_audit.json
+      - name: Validate decision ceiling
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x = json.loads(Path('artifacts/empirical/n3_mallorca_network_schema_audit.json').read_text())
+          allowed = {
+              'required_files_missing_from_archive',
+              'locked_archive_bytes_not_acquired',
+              'bundle_identity_or_structure_failed',
+              'species_year_alignment_demonstrated',
+              'species_year_alignment_not_yet_demonstrated',
+              'schema_audit_error',
+          }
+          assert x['decision'] in allowed, x
+          assert x['doi'] == '10.5061/dryad.9cnp5hqjn'
+          assert 'response_firewall' in x
+          print(json.dumps(x, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n3-mallorca-network-schema-audit
+          path: artifacts/empirical/n3_mallorca_network_schema_audit.json
+          if-no-files-found: error
+          retention-days: 30
