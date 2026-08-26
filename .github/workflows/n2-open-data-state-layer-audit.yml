@@ -1,0 +1,58 @@
+name: N2 open-data state-layer audit
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "manuscript/N2_OPEN_DATA_STATE_LAYER_AUDIT_PREREGISTRATION.md"
+      - "artifacts/empirical/n2_open_data_state_layer_registry.json"
+      - "scripts/summarize_n2_state_layer_registry.py"
+      - ".github/workflows/n2-open-data-state-layer-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  summarize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile response-firewalled summarizer
+        run: python -m py_compile scripts/summarize_n2_state_layer_registry.py
+
+      - name: Generate N2 summary
+        run: python scripts/summarize_n2_state_layer_registry.py
+
+      - name: Validate fixed registry decision
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/n2_open_data_state_layer_summary.json')
+          x = json.loads(p.read_text())
+          assert x['n_systems'] == 10
+          assert x['by_origin']['urban']['n_systems'] == 5
+          assert x['by_origin']['island']['n_systems'] == 5
+          assert x['by_origin']['urban']['direct_I_and_F_public_yes'] == 3
+          assert x['by_origin']['island']['direct_I_and_F_public_yes'] == 0
+          assert x['full_proximal_state_public_yes_all_systems'] == 0
+          assert x['public_connectivity_C_yes_all_systems'] == 0
+          assert x['public_genetic_G_yes_all_systems'] == 0
+          assert x['direct_cross_origin_residual_context_ready'] is False
+          assert x['decision'] == 'N2_measurement_representation_gap_prevents_direct_cross_origin_test'
+          print(json.dumps(x, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n2-open-data-state-layer-summary
+          path: artifacts/empirical/n2_open_data_state_layer_summary.json
+          if-no-files-found: error
+          retention-days: 30
