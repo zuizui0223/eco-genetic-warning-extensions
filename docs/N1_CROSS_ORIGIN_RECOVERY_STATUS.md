@@ -6,7 +6,7 @@ The direct urban–island convergence hypothesis remains open:
 
 `F_future ⟂ origin | S_measured`.
 
-Two distinct boundaries are now fixed and must not be conflated.
+Three distinct boundaries are now fixed and must not be conflated.
 
 ### 1. Scientific identifiability boundary
 
@@ -43,21 +43,47 @@ Decision:
 
 This is an archive-access boundary only. No candidate reproductive outcome values were parsed or modelled, and no ecological null or origin effect was estimated.
 
+### 3. Public-metadata feasibility boundary
+
+The preregistered Stage A explicitly permits archive file names, README/metadata definitions and join feasibility to be inspected before outcome values are opened. A subsequent public-metadata audit therefore asked whether each locked archive even demonstrates both sides of the minimal bridge.
+
+The key result is `I2_hawaii2019`:
+
+- Dryad lists `Pollination visitation obs for dryad.xlsx` and its README;
+- the usage note defines the deposited dataset as raw flower-visitation observations;
+- the source paper reports bagging/manual-treatment seed-set results, but the locked Dryad archive does not identify a realised reproductive-response table/file.
+
+The preregistration requires every admitted archive to separately demonstrate a realised reproductive endpoint from the same or defensibly joinable ecological unit. `I2_hawaii2019` therefore fails Stage A from metadata alone, without opening any reproductive outcome values.
+
+Decision for I2:
+
+`minimal_bridge_not_identifiable_from_archive`
+
+Because the candidate lock contains only two island systems, this leaves at most one island archive still eligible. The required two-island/two-urban replication can no longer be met inside this locked four-archive programme.
+
+Programme decision:
+
+`minimal_bridge_origin_replication_not_met_from_locked_archives`
+
+This is a design/data-availability boundary, not evidence for an island–urban ecological difference. No fifth archive is added and no locked study is replaced after this result.
+
 ## Invalidated attempt
 
 One intermediate schema-audit run initially treated an HTTP 200 anti-bot challenge page as a successful file transfer. That attempt was explicitly invalidated and the corresponding schema-audit implementation was removed before merge. HTTP status alone is therefore not accepted as evidence of archive acquisition.
 
 ## Response firewall
 
-Do not open outcome modelling until the exact locked archive bytes are obtained through a legitimate access route and verified against the stored Dryad metadata. After that, the order remains:
+The locked four-archive cross-origin programme is now stopped before outcome modelling. Exact archive bytes are no longer required to decide whether the current candidate set can provide a two-versus-two origin contrast: it cannot.
+
+If the unresolved systems are pursued for within-system or descriptive transport work, the order remains:
 
 1. verify exact file identity/size/digest;
 2. perform schema-only inspection;
 3. freeze exact visitation, effort, reproduction and join-key mappings;
-4. decide whether at least two systems per origin truly share a common minimal biological bridge;
-5. only then open outcome values and run whole-system held-out validation.
+4. run only the within-system analysis justified by the source design;
+5. do not reinterpret those results as restoring the preregistered two-island/two-urban contrast.
 
-Do not replace any of the four locked studies after seeing outcome directions merely to obtain a cross-origin result.
+Do not replace any of the four locked studies after this Stage-A failure merely to obtain a cross-origin result.
 
 ## What is already supported
 
@@ -67,8 +93,10 @@ The narrower within-system evidence remains unchanged:
 - Zurich: none of six fixed reproductive endpoints showed reproducible held-out gain from the preregistered urban/local context layer after the source-defined interaction state;
 - *Oenothera harringtonii*: spatial isolation retained endpoint-relevant mating information after pollinator treatment, showing that interaction state alone need not be complete.
 
+The locked minimal-bridge metadata audit additionally shows that even a deliberately weak common bridge can fail before modelling because comparable process and response data are not jointly archived across enough independent systems.
+
 These results justify the measurement-order rule but do not establish urban–island convergence.
 
 ## Remaining decisive test
 
-A positive convergence claim still requires matched state semantics, matched direct function, and origin replicated independently of study identity. The full-state target remains the coordinated `D/I/T/C/R/G/A` design with whole-system or whole-landscape transfer validation.
+A positive convergence claim still requires a new, prospectively declared matched design rather than opportunistic replacement inside the failed four-archive programme: matched state semantics, matched direct function, and origin replicated independently of study identity. The full-state target remains the coordinated `D/I/T/C/R/G/A` design with whole-system or whole-landscape transfer validation.
