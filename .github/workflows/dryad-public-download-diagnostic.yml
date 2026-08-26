@@ -1,0 +1,57 @@
+name: Dryad public download diagnostic
+
+on:
+  push:
+    branches:
+      - agent/cross-origin-minimal-bridge-audit
+    paths:
+      - "scripts/diagnose_dryad_public_downloads.py"
+      - ".github/workflows/dryad-public-download-diagnostic.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout transport diagnostic
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Compile transport diagnostic
+        run: python -m py_compile scripts/diagnose_dryad_public_downloads.py
+
+      - name: Probe public Dryad download links without parsing outcomes
+        run: |
+          python scripts/diagnose_dryad_public_downloads.py \
+            --output artifacts/empirical/dryad_public_download_diagnostic.json
+
+      - name: Validate transport-only contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          data = json.loads(Path('artifacts/empirical/dryad_public_download_diagnostic.json').read_text())
+          assert data['analysis'] == 'dryad_public_download_diagnostic'
+          assert data['summary']['candidate_count'] == 4
+          assert 'no dataset outcome values are parsed' in data['boundary'].lower()
+          assert set(data['candidates']) == {
+              'U1_commelina', 'U2_chicago', 'I1_hiraiwa2017', 'I2_hawaii2019'
+          }
+          print(json.dumps(data['summary'], indent=2, sort_keys=True))
+          PY
+
+      - name: Upload transport diagnostic
+        uses: actions/upload-artifact@v4
+        with:
+          name: dryad-public-download-diagnostic
+          path: artifacts/empirical/dryad_public_download_diagnostic.json
+          if-no-files-found: error
+          retention-days: 30
