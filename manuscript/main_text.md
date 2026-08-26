@@ -183,7 +183,7 @@ This is a mating-state result, not a direct functional-loss result. Higher corre
 
 The *Eschscholzia californica* multi-process analysis first passed a schema-only synchronization gate, but the preregistered F endpoint was subsequently closed by its exact metadata-consistency rule: array `1||3` was encoded as `Fallow ground` in the pollinator source and `Fallow graound` in the seed-function source. Because post hoc typo repair was prohibited, `F_seed` was classified `not_identifiable_for_endpoint` and the overall primary decision was **`multi_endpoint_not_identifiable`**.
 
-The primary lock is permanent. A separate post-review F-only sensitivity may correct exactly that one declared key/value mapping under a prospective protocol, with the original endpoint, LOAO folds, model sequence, regularization and bootstrap seed unchanged. It cannot rescue or relabel the primary F+G decision.
+The primary lock is permanent. A prospective F-only sensitivity permitted only the declared correction at `1||3`, but metadata preflight found the same mismatch at `1||4` and triggered `stop_pre_model_unexpected_second_metadata_mismatch`. No F model or bootstrap ran, and no secondary estimate exists.
 
 The independently estimable mating and pollen-movement endpoints provided a measurement boundary. For 457 progeny across 16 arrays, adding pan-trap `log1p(count) + mean ITD` changed held-out negative log likelihood from `0.387347` to `0.383796`; the array-bootstrap gain was `0.003551`, 95% CI `[-0.006385,0.013203]`, so `G_mating` was `process_state_not_predictively_supported`. Adding Habitat after that proxy gave gain `-0.002049 [-0.006579,0.001205]`. Adding the preregistered `R_auto` coordinate to G gave `0.001699 [-0.004095,0.007596]`.
 

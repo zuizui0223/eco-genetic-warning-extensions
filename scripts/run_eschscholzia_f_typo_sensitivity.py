@@ -88,6 +88,46 @@ def run() -> dict[str, object]:
         TARGET_KEY: {"f_seed": [OBSERVED_VALUE], "pollinator": REPLACEMENT_VALUE}
     }
     if mismatches != expected_mismatch:
+        stopped_mismatches = {
+            "1||3": {"f_seed": [OBSERVED_VALUE], "pollinator": REPLACEMENT_VALUE},
+            "1||4": {"f_seed": [OBSERVED_VALUE], "pollinator": REPLACEMENT_VALUE},
+        }
+        if mismatches == stopped_mismatches:
+            return {
+                "analysis": "postreview_secondary_typo_sensitivity",
+                "decision": "stop_pre_model_unexpected_second_metadata_mismatch",
+                "prospective_protocol_commit": "ae0d70a",
+                "primary_lock": {
+                    "decision": "multi_endpoint_not_identifiable",
+                    "status": "unchanged_not_rescued_or_reclassified",
+                },
+                "source_lock": source_info,
+                "declared_correction": {
+                    "array_key": TARGET_KEY,
+                    "field": "Habitat",
+                    "observed": OBSERVED_VALUE,
+                    "replacement": REPLACEMENT_VALUE,
+                },
+                "metadata_preflight": {
+                    "distinct_mismatch_keys": list(stopped_mismatches),
+                    "mismatches": stopped_mismatches,
+                },
+                "information_boundary": {
+                    "f_model_fitted": False,
+                    "model_score_calculated": False,
+                    "bootstrap_run": False,
+                    "other_endpoints_rerun": False,
+                    "fields_used_before_stop": ["Block", "Experimental_array", "Habitat"],
+                },
+                "stop_rule": (
+                    "The preregistration permits only the exact key-specific correction at array 1||3 "
+                    "and requires a stop if more than one metadata discrepancy is present."
+                ),
+                "claim_boundary": (
+                    "No F secondary sensitivity estimate exists. The stopped candidate is not expanded "
+                    "to repair array 1||4, and the locked primary result remains non-identifiable."
+                ),
+            }
         raise base.NotIdentifiable(f"unexpected metadata mismatch set: {mismatches!r}")
 
     corrected_rows = int(target.sum())
@@ -152,19 +192,24 @@ def main() -> int:
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(
-        json.dumps(
-            {
-                "analysis": result["analysis"],
-                "primary_lock": result["primary_lock"],
-                "correction": result["correction"],
-                "F_decision": result["F_seed_secondary_sensitivity"]["decision"],
-                "F_process": result["F_seed_secondary_sensitivity"]["comparisons"]["S0_to_S1"],
-                "F_habitat": result["F_seed_secondary_sensitivity"]["comparisons"]["S1_to_S2"],
-            },
-            sort_keys=True,
-        )
-    )
+    if result.get("decision") == "stop_pre_model_unexpected_second_metadata_mismatch":
+        summary = {
+            "analysis": result["analysis"],
+            "decision": result["decision"],
+            "primary_lock": result["primary_lock"],
+            "metadata_preflight": result["metadata_preflight"],
+            "information_boundary": result["information_boundary"],
+        }
+    else:
+        summary = {
+            "analysis": result["analysis"],
+            "primary_lock": result["primary_lock"],
+            "correction": result["correction"],
+            "F_decision": result["F_seed_secondary_sensitivity"]["decision"],
+            "F_process": result["F_seed_secondary_sensitivity"]["comparisons"]["S0_to_S1"],
+            "F_habitat": result["F_seed_secondary_sensitivity"]["comparisons"]["S1_to_S2"],
+        }
+    print(json.dumps(summary, sort_keys=True))
     return 0
 
 

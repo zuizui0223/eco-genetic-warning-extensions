@@ -28,6 +28,7 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | Fresh allele-only connectivity replication | preregistered independent seeds `20291010–20291014`, paired `m=0/.10`, 100 attempts/block | Phase U run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756` |
 | Full-denominator symmetric warning audit | all baseline-eligible saved trajectories; six unchanged relative endpoints; non-events retained | parent run `28500796310`, artifact `8003007618`; Phase V run `32636847803`, artifact `9492587604`; compact record SHA-256 `65295c612042557abb46115a2c408b883f0b516c8d5af974423b895f54a7c7ab` |
 | Precision-bounded null audit | whole-trajectory paired risk-difference intervals for Phase U/N/T | immutable Phase U/N/T aggregate artifacts; `artifacts/prepublication_review/precision_bounded_null_audit.json` |
+| Eschscholzia F typo sensitivity STOP | prospective one-key sensitivity found a second metadata mismatch before model fitting | protocol commit `ae0d70a`; `artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
 ## Historical evidence versus current inference

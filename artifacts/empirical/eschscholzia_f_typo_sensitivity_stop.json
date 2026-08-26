@@ -1,0 +1,48 @@
+{
+  "analysis": "postreview_secondary_typo_sensitivity",
+  "decision": "stop_pre_model_unexpected_second_metadata_mismatch",
+  "prospective_protocol_commit": "ae0d70a",
+  "primary_lock": {
+    "decision": "multi_endpoint_not_identifiable",
+    "status": "unchanged_not_rescued_or_reclassified"
+  },
+  "declared_correction": {
+    "array_key": "1||3",
+    "field": "Habitat",
+    "observed": "Fallow graound",
+    "replacement": "Fallow ground"
+  },
+  "metadata_preflight": {
+    "distinct_mismatch_keys": [
+      "1||3",
+      "1||4"
+    ],
+    "mismatches": {
+      "1||3": {
+        "f_seed": [
+          "Fallow graound"
+        ],
+        "pollinator": "Fallow ground"
+      },
+      "1||4": {
+        "f_seed": [
+          "Fallow graound"
+        ],
+        "pollinator": "Fallow ground"
+      }
+    }
+  },
+  "information_boundary": {
+    "f_model_fitted": false,
+    "model_score_calculated": false,
+    "bootstrap_run": false,
+    "other_endpoints_rerun": false,
+    "fields_used_before_stop": [
+      "Block",
+      "Experimental_array",
+      "Habitat"
+    ]
+  },
+  "stop_rule": "The preregistration permits only the exact key-specific correction at array 1||3 and requires a stop if more than one metadata discrepancy is present.",
+  "claim_boundary": "No F secondary sensitivity estimate exists. The stopped candidate is not expanded to repair array 1||4, and the locked primary result remains non-identifiable."
+}

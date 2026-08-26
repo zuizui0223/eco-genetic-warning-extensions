@@ -114,7 +114,7 @@ This is a `C/G_mating` result, not direct ecological functional loss. It shows t
 
 Four EIDC products from the same 2015 Hillesden experiment were synchronized prospectively at `Block -> Experimental array -> focal plant -> fruit/progeny`. The candidate array-level pollinator state was fixed as `log1p(pan-trap count) + mean ITD`, with leave-one-array-out validation.
 
-The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on the source labels `Fallow ground` versus `Fallow graound`; post hoc typo repair was prohibited. That primary lock remains unchanged. A separate prospectively declared F-only sensitivity permits exactly the one literal key/value correction and cannot rescue or relabel the primary result.
+The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on `Fallow ground` versus `Fallow graound`. A prospectively declared F-only sensitivity permitted the correction only at `1||3`; pre-model metadata inspection found the same mismatch at `1||4`, so it stopped without fitting F. The primary lock remains unchanged and no sensitivity estimate exists.
 
 For the estimable endpoints, the candidate pan-trap state did not show reproducible held-out gain for either mating (`G_mating`) or outcross pollen movement (`C_pollen`). This is a **measurement boundary**: pan-trap availability/trait summaries are not automatically equivalent to effective interaction.
 

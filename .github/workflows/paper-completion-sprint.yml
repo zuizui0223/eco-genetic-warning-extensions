@@ -156,6 +156,7 @@ jobs:
           test -f submission_bundle/provenance/warning_validity_source_manifest.json
           test -f submission_bundle/provenance/precision_bounded_null_source_counts.json
           test -f submission_bundle/provenance/PREPUBLICATION_REVIEW_AUDIT.md
+          test -f submission_bundle/provenance/eschscholzia_f_typo_sensitivity_stop.json
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q 'incidence frontier' submission_bundle/manuscript/main_text.md
           grep -q '0.0205' submission_bundle/manuscript/main_text.md

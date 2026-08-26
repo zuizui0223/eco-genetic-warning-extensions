@@ -227,9 +227,14 @@ def main() -> int:
         'table_captions.md', 'supplementary_methods.md', 'submission_metadata.md',
         'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md',
         'main_story_revision.md', 'empirical_eschscholzia_f_typo_sensitivity_preregistration.md',
+        'empirical_eschscholzia_f_typo_sensitivity_stop.md',
     )
     for name in manuscript_files:
         shutil.copy2(root / 'manuscript' / name, out / 'manuscript')
+    shutil.copy2(
+        root / 'artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json',
+        out / 'provenance/eschscholzia_f_typo_sensitivity_stop.json',
+    )
 
     manifest = {'files': {}}
     for file in sorted(p for p in out.rglob('*') if p.is_file()):

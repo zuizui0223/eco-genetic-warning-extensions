@@ -57,9 +57,9 @@ Paired risk differences use whole trajectories as the unit. The intervals are tw
 
 The allowed wording is **precision-bounded null**: the fixed trials did not detect paired marginal-risk differences and constrain them only to the displayed compatible ranges. They do not establish equivalence or biological absence.
 
-## Eschscholzia compatibility decision
+## Eschscholzia compatibility decision and STOP
 
-The primary exact-metadata result remains `multi_endpoint_not_identifiable`; it cannot be repaired or reclassified. A separate post-review F-only sensitivity is compatible with the scientific stop rule only if it prospectively fixes the single key-specific literal mapping `Fallow graound -> Fallow ground` at array `1||3`, verifies that no other metadata mismatch exists, changes no model/endpoint/held-out unit/bootstrap seed, and cannot rescue the primary decision. The separate preregistration records those constraints before any F model is run.
+The primary exact-metadata result remains `multi_endpoint_not_identifiable`; it cannot be repaired or reclassified. A post-review F-only sensitivity was prospectively restricted to the single key-specific mapping `Fallow graound -> Fallow ground` at array `1||3`, with no model/endpoint/held-out unit/bootstrap change and no authority to rescue the primary decision. Pre-model metadata inspection then found the same mismatch at `1||4`. The sensitivity stopped as declared before any F fit, score or bootstrap. It is not widened after that STOP, and no secondary estimate is reported.
 
 ## Main-story consequence
 

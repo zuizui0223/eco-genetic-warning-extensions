@@ -17,7 +17,7 @@ The title above is synchronized to `manuscript/main_text.md`; final author appro
 Repository-tokenizer counts for the Phase R/S/T-integrated manuscript are:
 
 - **Abstract:** 150 words
-- **Main text (Introduction through Limits):** 4,995 words
+- **Main text (Introduction through Limits):** 4,985 words
 - **References:** 21
 - **Main figures:** 6
 - **Main tables:** 0
