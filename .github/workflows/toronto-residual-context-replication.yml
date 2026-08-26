@@ -1,0 +1,83 @@
+name: Toronto residual-context replication
+
+on:
+  push:
+    branches:
+      - main
+      - agent/n2-results-toronto-prereg
+    paths:
+      - "manuscript/empirical_toronto_residual_context_preregistration.md"
+      - "scripts/run_toronto_residual_context.py"
+      - "tests/test_toronto_residual_context_preregistration.py"
+      - ".github/workflows/toronto-residual-context-replication.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "manuscript/empirical_toronto_residual_context_preregistration.md"
+      - "scripts/run_toronto_residual_context.py"
+      - "tests/test_toronto_residual_context_preregistration.py"
+      - ".github/workflows/toronto-residual-context-replication.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install frozen analysis dependencies
+        run: python -m pip install pytest pandas numpy scipy statsmodels
+
+      - name: Guard preregistered contract
+        run: python -m pytest tests/test_toronto_residual_context_preregistration.py
+
+      - name: Compile analysis
+        run: python -m py_compile scripts/run_toronto_residual_context.py
+
+      - name: Acquire locked Dryad file and run frozen analysis if available
+        run: |
+          python scripts/run_toronto_residual_context.py \
+            --download \
+            --input .tmp/toronto/data.csv \
+            --output artifacts/empirical/toronto_residual_context_result.json
+
+      - name: Validate response-firewalled decision
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = Path('artifacts/empirical/toronto_residual_context_result.json')
+          x = json.loads(p.read_text())
+          allowed = {
+              'locked_archive_bytes_not_acquired',
+              'primary_model_not_identifiable',
+              'residual_urban_context_information_detected',
+              'no_detected_residual_urban_context_information',
+          }
+          assert x['decision'] in allowed, x
+          assert x['doi'] == '10.5061/dryad.b8gtht7r4'
+          assert 'response_firewall' in x
+          if x['decision'] in {
+              'residual_urban_context_information_detected',
+              'no_detected_residual_urban_context_information',
+          }:
+              assert x['schema_audit']['site_count'] >= 5
+              assert len(x['garden_records']) == x['schema_audit']['site_count']
+              assert x['bootstrap_seed'] == 20260827
+          print(json.dumps(x, indent=2, sort_keys=True))
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: toronto-residual-context-result
+          path: artifacts/empirical/toronto_residual_context_result.json
+          if-no-files-found: error
+          retention-days: 30
