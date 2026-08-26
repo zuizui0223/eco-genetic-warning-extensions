@@ -19,3 +19,5 @@ Permitted repair: rerun the same response-firewalled schema audit using semicolo
 ## Stop rule
 
 Neither repair may change a scientific model or select a favorable endpoint. If Toronto still fails after exact code canonicalization, preserve that failure. If Mallorca still lacks demonstrable species-by-year alignment after correct delimiter parsing, preserve that boundary and do not invent a join.
+
+Operational rerun trigger: this post-merge branch-only line exists solely to emit the configured push event; it adds no scientific or analytical change and will not be merged back to `main`.
