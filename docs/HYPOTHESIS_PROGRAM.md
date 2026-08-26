@@ -163,6 +163,25 @@ Two direct open-data partial-state tests now implement that logic:
 
 Neither is a full eco-genetic convergence proof because synchronized `G/C/R/M` layers are incomplete. They are direct tests of whether habitat/context labels retain transferable information after measured process state.
 
+### N1 — direct urban–island convergence is not identifiable from the existing archives
+
+The stronger hypothesis is whether a common future-relevant state makes fragmentation origin redundant across systems:
+
+`F_future ⟂ origin | S_measured`.
+
+A prospective cross-origin identifiability gate compared the already locked Honshu–Izu and Zurich designs before fitting any pooled outcome model. The direct test stopped for four linked reasons:
+
+1. **state semantics are not aligned:** Honshu–Izu uses `TM_z + FDQ + FEve`, whereas Zurich uses focal-function-specific effort-standardised pollinator-guild visitation vectors;
+2. **responses are not aligned:** standardized pollen receipt is not prospectively interchangeable with the Zurich Poisson/binomial fruit and seed endpoints;
+3. **origin is perfectly confounded with study/protocol identity:** there is only one archive per origin;
+4. therefore a genuine whole-system cross-origin validation is not available.
+
+Generic z-scoring is explicitly prohibited as a repair because numerical scaling does not establish biological equivalence of state coordinates. No pooled urban-versus-island outcome model was fitted.
+
+**N1 status: `cross_origin_convergence_not_identifiable_from_existing_archives`.** This is a design/identifiability boundary, not evidence that urban and island systems differ.
+
+The minimum identifiable future design is now fixed: the same biological state coordinates, the same direct realised-function endpoint, and origin replicated independently of study identity — at least two independent systems per origin or one coordinated multi-origin protocol — followed by whole-system/landscape transfer validation. The *Oenothera* counterexample also requires process-specific connectivity/mating opportunity to be retained when the endpoint depends on pollen or mate movement.
+
 ## Recovery ledger
 
 | condition | final status | conclusion |
@@ -177,6 +196,7 @@ Neither is a full eco-genetic convergence proof because synchronized `G/C/R/M` l
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
 | C3 conditional warning | **predictive validation failed** | six endpoints lead 35/35 and 33/33 losses but also fire in 48/48 and 49/49 non-events; specificity 0, binary-marker AUC .5 |
 | C4 portability | bounded | warning behaviour is not established as portable across non-matched calibrated domains |
+| N1 urban–island cross-origin convergence | **not identifiable from existing archives** | state semantics and responses are unmatched and origin is confounded with study identity; matched replicated design is required |
 
 ## Global stop rules
 
@@ -195,4 +215,5 @@ Do not:
 11. open a direction-only warning test without prospectively matched conditions;
 12. retain a mechanistic claim solely because a finite seed family crosses a significance or historical screen threshold;
 13. rerun Phase V, replace its fresh seeds, alter the frozen domain or add warning endpoints merely to obtain a different replication classification;
-14. infer cross-state warning portability from the within-state Phase-V replication.
+14. infer cross-state warning portability from the within-state Phase-V replication;
+15. pool urban and island archives by generic z-scoring of semantically different state variables or infer a cross-origin effect when origin equals study identity.
