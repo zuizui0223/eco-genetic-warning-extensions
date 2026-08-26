@@ -1,0 +1,59 @@
+{
+  "analysis": "N3_response_firewalled_island_process_function_registry",
+  "search_cutoff": "2026-08-27",
+  "response_firewall": "Stage-A scores use public study/archive descriptions only. Published effect direction, p-value, fitted coefficient, and project-computed outcome association are not scoring fields.",
+  "status_vocabulary": ["yes", "partial", "no", "unclear"],
+  "fields": ["O", "D", "I", "F", "A", "n_holdout"],
+  "systems": [
+    {
+      "id": "I3_MALLORCA_CAROB_2025",
+      "source": "Gomez-Martinez et al. 2025",
+      "setting": "20 carob orchards, Mallorca, Spain",
+      "data_id": "10.5281/zenodo.13939479",
+      "study_measurement": {"O": "yes", "D": "partial", "I": "yes", "F": "yes", "A": "yes", "n_holdout": 20},
+      "public_reusable": {"O": "partial", "D": "unclear", "I": "partial", "F": "partial", "A": "unclear", "n_holdout": 20},
+      "process_function_gate": "partial",
+      "residual_context_gate": "partial",
+      "gate_reason": "The source design explicitly measures landscape/local management, direct pollinator visitation and fruit/seed production at orchard scale across 20 orchards, and identifies an open Zenodo deposit. The public article establishes the biological design, but the exact deposited file/column/join schema has not yet been independently verified by this project, so reusable O/I/F/A are not promoted to yes.",
+      "evidence": ["https://doi.org/10.1371/journal.pone.0307357", "https://doi.org/10.5281/zenodo.13939479"]
+    },
+    {
+      "id": "I3_MALLORCA_CNEORUM_2020",
+      "source": "Fuster and Traveset 2020",
+      "setting": "Balearic Islands Cneorum tricoccon-Podarcis lilfordi system",
+      "data_id": "10.5061/dryad.2ngf1vhj1",
+      "study_measurement": {"O": "no", "D": "partial", "I": "yes", "F": "yes", "A": "partial", "n_holdout": null},
+      "public_reusable": {"O": "no", "D": "unclear", "I": "yes", "F": "yes", "A": "unclear", "n_holdout": null},
+      "process_function_gate": "partial",
+      "residual_context_gate": "no",
+      "gate_reason": "Dryad publicly exposes separate pollination-census and fruits/seeds files, so direct process and realised reproduction are demonstrably co-archived. A common ecological join key and independent holdout count still require schema inspection, and no comparable upstream fragmentation/landscape context coordinate is preregistered for a residual-context test.",
+      "public_files": ["Pollination_censues_2015_16.csv", "Fruits-seeds_database.csv", "Exclusions.csv", "Germination_15_16.csv", "Seed_dispersal_censuses.csv"],
+      "evidence": ["https://doi.org/10.5061/dryad.2ngf1vhj1", "https://doi.org/10.1111/oik.06659"]
+    },
+    {
+      "id": "I3_MALLORCA_NETWORK_FITNESS_2020",
+      "source": "Lazaro et al. 2020",
+      "setting": "Mallorca coastal plant community, 23 abundant plant species across two field seasons",
+      "data_id": "10.5061/dryad.hqbzkh1bm",
+      "study_measurement": {"O": "no", "D": "yes", "I": "yes", "F": "yes", "A": "yes", "n_holdout": 23},
+      "public_reusable": {"O": "no", "D": "yes", "I": "partial", "F": "yes", "A": "partial", "n_holdout": 23},
+      "process_function_gate": "partial",
+      "residual_context_gate": "no",
+      "gate_reason": "Dryad contains a workbook for the 23-species/two-season study, and the public dataset description explicitly includes floral abundance, pollination-network information, seeds per flower and seed weight. Exact direct-visitation and species-year join columns still require workbook schema inspection. Species are potential process-function holdout units within one system, not 23 independent island systems.",
+      "public_files": ["Dryad.xlsx", "Dryad_notes.docx"],
+      "evidence": ["https://doi.org/10.5061/dryad.hqbzkh1bm", "https://doi.org/10.1111/1365-2745.13334"]
+    },
+    {
+      "id": "I3_AZORES_APPLE_2020",
+      "source": "Pardo et al. 2020",
+      "setting": "6 apple orchards, Terceira Island, Azores",
+      "data_id": "10.3390/insects11060351",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "F": "yes", "A": "yes", "n_holdout": 6},
+      "public_reusable": {"O": "partial", "D": "partial", "I": "partial", "F": "partial", "A": "unclear", "n_holdout": 6},
+      "process_function_gate": "partial",
+      "residual_context_gate": "partial",
+      "gate_reason": "The open source study measures orchard management/landscape context, visitation and fruit/seed/apple outcomes at six orchards. Public article/supplement access demonstrates the study design but has not yet demonstrated to this project a reusable same-orchard row-level join table, so Stage A remains partial pending schema inspection.",
+      "evidence": ["https://doi.org/10.3390/insects11060351"]
+    }
+  ]
+}
