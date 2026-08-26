@@ -1,0 +1,69 @@
+{
+  "analysis": "N2_response_firewalled_open_data_state_layer_summary",
+  "search_cutoff": "2026-08-26",
+  "n_systems": 10,
+  "by_origin": {
+    "urban": {
+      "n_systems": 5,
+      "public_layer_counts": {
+        "O": {"yes": 2, "partial": 1, "no": 0, "unclear": 2},
+        "D": {"yes": 2, "partial": 1, "no": 0, "unclear": 2},
+        "I": {"yes": 4, "partial": 1, "no": 0, "unclear": 0},
+        "T": {"yes": 2, "partial": 2, "no": 1, "unclear": 0},
+        "F": {"yes": 4, "partial": 1, "no": 0, "unclear": 0},
+        "C": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "R": {"yes": 1, "partial": 1, "no": 2, "unclear": 1},
+        "G": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "A": {"yes": 3, "partial": 1, "no": 0, "unclear": 1}
+      },
+      "study_measurement_layer_counts": {
+        "O": {"yes": 5, "partial": 0, "no": 0, "unclear": 0},
+        "D": {"yes": 2, "partial": 2, "no": 0, "unclear": 1},
+        "I": {"yes": 4, "partial": 1, "no": 0, "unclear": 0},
+        "T": {"yes": 2, "partial": 2, "no": 1, "unclear": 0},
+        "F": {"yes": 5, "partial": 0, "no": 0, "unclear": 0},
+        "C": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "R": {"yes": 1, "partial": 2, "no": 2, "unclear": 0},
+        "G": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "A": {"yes": 4, "partial": 1, "no": 0, "unclear": 0}
+      },
+      "direct_I_and_F_public_yes": 3,
+      "direct_residual_context_gate": {"yes": 1, "partial": 3, "no": 1},
+      "full_proximal_state_public_yes": 0
+    },
+    "island": {
+      "n_systems": 5,
+      "public_layer_counts": {
+        "O": {"yes": 4, "partial": 1, "no": 0, "unclear": 0},
+        "D": {"yes": 3, "partial": 1, "no": 0, "unclear": 1},
+        "I": {"yes": 5, "partial": 0, "no": 0, "unclear": 0},
+        "T": {"yes": 2, "partial": 3, "no": 0, "unclear": 0},
+        "F": {"yes": 0, "partial": 2, "no": 2, "unclear": 1},
+        "C": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "R": {"yes": 0, "partial": 1, "no": 4, "unclear": 0},
+        "G": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "A": {"yes": 0, "partial": 5, "no": 0, "unclear": 0}
+      },
+      "study_measurement_layer_counts": {
+        "O": {"yes": 4, "partial": 1, "no": 0, "unclear": 0},
+        "D": {"yes": 3, "partial": 1, "no": 0, "unclear": 1},
+        "I": {"yes": 5, "partial": 0, "no": 0, "unclear": 0},
+        "T": {"yes": 2, "partial": 3, "no": 0, "unclear": 0},
+        "F": {"yes": 3, "partial": 1, "no": 1, "unclear": 0},
+        "C": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "R": {"yes": 2, "partial": 0, "no": 3, "unclear": 0},
+        "G": {"yes": 0, "partial": 0, "no": 5, "unclear": 0},
+        "A": {"yes": 2, "partial": 3, "no": 0, "unclear": 0}
+      },
+      "direct_I_and_F_public_yes": 0,
+      "direct_residual_context_gate": {"yes": 0, "partial": 2, "no": 3},
+      "full_proximal_state_public_yes": 0
+    }
+  },
+  "full_proximal_state_public_yes_all_systems": 0,
+  "public_connectivity_C_yes_all_systems": 0,
+  "public_genetic_G_yes_all_systems": 0,
+  "direct_cross_origin_residual_context_ready": false,
+  "decision": "N2_measurement_representation_gap_prevents_direct_cross_origin_test",
+  "claim_ceiling": "Bounded candidate-registry statement only: public co-availability of future-relevant layers is incomplete; missing/repository-undemonstrated layers are measurement/representation boundaries, not ecological absence."
+}
