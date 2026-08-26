@@ -1,0 +1,78 @@
+name: Response-firewalled schema normalization repairs
+
+on:
+  push:
+    branches:
+      - agent/schema-normalization-repair
+      - main
+    paths:
+      - "docs/SCHEMA_NORMALIZATION_REPAIR_20260827.md"
+      - "scripts/run_toronto_residual_context_v2.py"
+      - "scripts/audit_mallorca_network_schema_v2.py"
+      - ".github/workflows/schema-normalization-repairs.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "docs/SCHEMA_NORMALIZATION_REPAIR_20260827.md"
+      - "scripts/run_toronto_residual_context_v2.py"
+      - "scripts/audit_mallorca_network_schema_v2.py"
+      - ".github/workflows/schema-normalization-repairs.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  repair-and-run:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen Toronto analysis dependencies
+        run: python -m pip install pandas numpy scipy statsmodels
+      - name: Compile repair programs and frozen Toronto analysis
+        run: |
+          python -m py_compile scripts/run_toronto_residual_context_v2.py
+          python -m py_compile scripts/run_toronto_residual_context.py
+          python -m py_compile scripts/audit_mallorca_network_schema_v2.py
+      - name: Run exact Toronto schema repair and frozen LOGO analysis
+        run: |
+          python scripts/run_toronto_residual_context_v2.py \
+            --output artifacts/empirical/toronto_residual_context_result_v2.json \
+            --repair-audit artifacts/empirical/toronto_schema_repair_audit.json
+      - name: Run semicolon-aware Mallorca schema audit
+        run: python scripts/audit_mallorca_network_schema_v2.py --output artifacts/empirical/n3_mallorca_network_schema_audit_v2.json
+      - name: Validate fixed decision space
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          toronto = json.loads(Path('artifacts/empirical/toronto_residual_context_result_v2.json').read_text())
+          repair = json.loads(Path('artifacts/empirical/toronto_schema_repair_audit.json').read_text())
+          mallorca = json.loads(Path('artifacts/empirical/n3_mallorca_network_schema_audit_v2.json').read_text())
+          assert repair['repair']['repair'] == 'species_phytometer_case_only'
+          assert repair['repair']['canonical_codes'] == ['DECA', 'LOSI', 'PEHI', 'SYNO']
+          assert toronto['decision'] in {
+              'primary_model_not_identifiable',
+              'residual_urban_context_information_detected',
+              'no_detected_residual_urban_context_information',
+          }
+          assert mallorca['decision'] in {
+              'species_year_alignment_demonstrated',
+              'species_year_alignment_not_yet_demonstrated',
+              'schema_audit_error',
+          }
+          print(json.dumps({'toronto': toronto['decision'], 'mallorca': mallorca['decision']}, indent=2))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: schema-normalization-repair-results
+          path: |
+            artifacts/empirical/toronto_residual_context_result_v2.json
+            artifacts/empirical/toronto_schema_repair_audit.json
+            artifacts/empirical/n3_mallorca_network_schema_audit_v2.json
+          if-no-files-found: error
+          retention-days: 30
