@@ -1,0 +1,73 @@
+name: Eschscholzia post-lock descriptive F metadata repair
+
+on:
+  workflow_dispatch:
+    inputs:
+      protocol_commit:
+        description: Prospective protocol commit that must be an ancestor of the recorder
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout result-recording code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Verify prospective protocol ancestry
+        run: |
+          git cat-file -e "${{ inputs.protocol_commit }}^{commit}"
+          git merge-base --is-ancestor "${{ inputs.protocol_commit }}" HEAD
+          git show "${{ inputs.protocol_commit }}:manuscript/empirical_eschscholzia_f_full_metadata_repair_preregistration.md" > /dev/null
+          git show "${{ inputs.protocol_commit }}:scripts/run_eschscholzia_f_full_metadata_repair.py" > /dev/null
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install locked analysis dependencies
+        run: python -m pip install --upgrade numpy pandas scikit-learn
+
+      - name: Run exact two-key descriptive reconstruction
+        run: |
+          python scripts/run_eschscholzia_f_full_metadata_repair.py \
+            --protocol-commit "${{ inputs.protocol_commit }}"
+
+      - name: Validate separation from prior decisions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path('artifacts/empirical/eschscholzia_f_full_metadata_repair_result.json').read_text())
+          assert data['analysis'] == 'postlock_descriptive_full_metadata_repair'
+          assert data['prospective_protocol_commit'] == '${{ inputs.protocol_commit }}'
+          assert data['primary_lock']['decision'] == 'multi_endpoint_not_identifiable'
+          assert data['primary_lock']['status'] == 'unchanged_not_rescued_or_reclassified'
+          assert data['prior_one_key_sensitivity']['decision'] == 'stop_pre_model_unexpected_second_metadata_mismatch'
+          assert data['prior_one_key_sensitivity']['status'] == 'unchanged_not_reopened_or_expanded'
+          assert data['correction']['array_keys'] == ['1||3', '1||4']
+          assert data['correction']['mismatch_count_after'] == 0
+          assert data['decision'] == 'postlock_descriptive_reconstruction_not_estimable'
+          assert data['information_boundary']['failure_stage'] == 'locked_prepare_f'
+          assert data['information_boundary']['f_model_fitted'] is False
+          assert data['information_boundary']['model_score_calculated'] is False
+          assert data['information_boundary']['bootstrap_run'] is False
+          assert data['information_boundary']['other_endpoints_rerun'] is False
+          assert 'F_seed_descriptive_reconstruction' not in data
+          PY
+
+      - name: Upload descriptive reconstruction only
+        uses: actions/upload-artifact@v4
+        with:
+          name: eschscholzia-f-full-metadata-repair
+          path: artifacts/empirical/eschscholzia_f_full_metadata_repair_result.json
+          if-no-files-found: error
+          retention-days: 30

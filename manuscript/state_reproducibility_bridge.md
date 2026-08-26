@@ -99,7 +99,7 @@ Fresh Phase V:
 
 The denominator-restored result is:
 
-> **All six thresholds led 35/35 and 33/33 observed losses, but also fired in 48/48 and 49/49 non-events; full-horizon specificity was zero and binary-marker AUC was 0.5.**
+> **All six thresholds led 35/35 and 33/33 observed losses, but generation-30 binary AUC was near chance and all rules eventually fired in 48/48 and 49/49 non-events. Exploratory continuous erosion showed time-specific but non-replicated separation.**
 
 This is replicated event-conditional temporal ordering, not predictive warning validity. The frozen protocol label remains historical provenance and does not override the full-denominator interpretation.
 

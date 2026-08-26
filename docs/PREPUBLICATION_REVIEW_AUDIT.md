@@ -2,7 +2,7 @@
 
 ## Decision
 
-The reviewer concern is confirmed. The frozen relative-diversity rules reproduce temporal ordering **conditional on observed functional loss**, but they do not discriminate event from non-event trajectories in either saved symmetric H2-R ensemble.
+The reviewer concern is confirmed. The frozen relative-diversity rules reproduce temporal ordering **conditional on observed functional loss**, but their fixed generation-30 binary markers do not discriminate events usefully in either saved symmetric H2-R ensemble. By the common horizon every marker is positive, so full-horizon AUC 0.5 is a degenerate consequence rather than the main evidence.
 
 The current warning claim is therefore reduced to:
 
@@ -21,7 +21,13 @@ The population is all available baseline-eligible trajectories: 83 inherited and
 
 The six endpoints are repeated observations of each trajectory. They are reported separately and are never treated as six independent replicates in inference or confidence intervals.
 
-## Full-denominator warning validity
+## Fixed-landmark classification
+
+The schedule-derived ramp end (generation 30) is the primary binary landmark. Generations 60 and 90 are retained as fixed half- and three-quarter-horizon audits; no favourable landmark is selected.
+
+At generation 30, inherited binary-marker AUC ranged from `0.500` to `0.538` across the six endpoints. Fresh AUC ranged from `0.500` to `0.510`. The largest combined descriptive value was `0.521` for the 20% `H_gamma` endpoint. These non-degenerate fixed-time values do not support useful discrimination.
+
+## Full-horizon degeneration
 
 The counts below are identical for all six locked 5%, 10% and 20% `H_alpha`/`H_gamma` endpoints within each ensemble.
 
@@ -33,13 +39,15 @@ The counts below are identical for all six locked 5%, 10% and 20% `H_alpha`/`H_g
 
 The 95% Wilson interval for the combined lead sensitivity is `[0.947, 1.000]`; for the combined non-event false-positive rate it is `[0.962, 1.000]`. PPV equals the event prevalence because every trajectory is warning-positive. NPV and full-horizon risk separation are unidentified because there are no warning-negative trajectories.
 
-## Fixed-landmark classification
+The full-horizon table is retained because it documents false-positive burden and event-only denominator selection. Its `1/1/0/0.5` pattern mainly restates that every frozen binary rule became a constant positive by generation 120.
 
-The schedule-derived ramp end (generation 30) is the primary landmark. Generations 60 and 90 are retained as fixed half- and three-quarter-horizon audits; no favourable landmark is selected.
+## Separately preregistered exploratory continuous audit
 
-At generation 30, inherited binary-marker AUC ranged from `0.500` to `0.538` across the six endpoints. Fresh AUC ranged from `0.500` to `0.510`. The largest combined descriptive value was `0.521` for the 20% `H_gamma` endpoint. These values do not support useful discrimination.
+After the binary review, commit `bf9f492996cfb57718e03edd4a3620c0756b32c4` prospectively fixed `1 - H(t)/H(0)` for both diversity coordinates at all three landmarks. No slope, transformation, selected landmark or endpoint pooling was allowed. Cumulative/dynamic AUC used cases in `(t,120]`, controls event-free through 120, and 10,000 stratified trajectory-level bootstrap samples.
 
-A continuous cumulative/dynamic AUC is not introduced. The locked endpoint family defines six binary first-passage rules, not a preregistered continuous risk score at a common prediction time. Deriving and selecting a new continuous score from the stored series would add an outcome-facing endpoint after results were known. Binary-marker cumulative/dynamic performance at the three fixed landmarks is the defensible alternative.
+At generation 30, continuous AUC remained near chance: `0.535/0.533` inherited and `0.522/0.556` fresh for `H_alpha/H_gamma`. Across all landmarks, inherited AUC ranged `0.418–0.692` and fresh AUC `0.422–0.687`. Inherited generation-90 `H_alpha` was `0.692 [0.523,0.840]`; fresh generation-60 `H_gamma` was `0.687 [0.504,0.848]`. These were different coordinate/time cells and neither reproduced in the other ensemble. Fresh generation 90 had only three future cases and wide intervals.
+
+The exploratory result does not support a portable continuous warning score. It also prevents the overbroad claim that `H_alpha/H_gamma` contain no information: time-specific separation is possible, but was not stable across the fixed ensembles and landmarks.
 
 ## Precision-bounded negative results
 
@@ -59,7 +67,9 @@ The allowed wording is **precision-bounded null**: the fixed trials did not dete
 
 ## Eschscholzia compatibility decision and STOP
 
-The primary exact-metadata result remains `multi_endpoint_not_identifiable`; it cannot be repaired or reclassified. A post-review F-only sensitivity was prospectively restricted to the single key-specific mapping `Fallow graound -> Fallow ground` at array `1||3`, with no model/endpoint/held-out unit/bootstrap change and no authority to rescue the primary decision. Pre-model metadata inspection then found the same mismatch at `1||4`. The sensitivity stopped as declared before any F fit, score or bootstrap. It is not widened after that STOP, and no secondary estimate is reported.
+The primary exact-metadata result remains `multi_endpoint_not_identifiable`; it cannot be repaired or reclassified. A post-review F-only sensitivity was prospectively restricted to the single key-specific mapping `Fallow graound -> Fallow ground` at array `1||3`, with no model/endpoint/held-out unit/bootstrap change and no authority to rescue the primary decision. Pre-model metadata inspection then found the same mismatch at `1||4`. The one-key sensitivity remains stopped.
+
+A third, separately labelled post-lock descriptive reconstruction was then fixed at commit `bf9f492996cfb57718e03edd4a3620c0756b32c4`. It corrected exactly `1||3` and `1||4` (three rows each) and verified zero remaining Habitat mismatches. The unchanged `_prepare_f` gate stopped because the F primary response contained a missing, non-finite or negative value. No response repair, row exclusion, model, score or bootstrap followed. Decision: `postlock_descriptive_reconstruction_not_estimable`; no F estimate exists.
 
 ## Main-story consequence
 

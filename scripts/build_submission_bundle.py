@@ -201,6 +201,18 @@ def main() -> int:
     (out / 'provenance').mkdir(parents=True, exist_ok=True)
     shutil.copy2(warning_manifest_path, out / 'provenance/warning_validity_source_manifest.json')
 
+    continuous_warning_json = root / 'artifacts/prepublication_review/continuous_warning_landmark_auc.json'
+    continuous_warning_csv = root / 'manuscript/tables/continuous_warning_landmark_auc.csv'
+    continuous_warning = json.loads(continuous_warning_json.read_text(encoding='utf-8'))
+    if continuous_warning['analysis'] != 'postreview_exploratory_continuous_landmark_auc':
+        raise RuntimeError('unexpected continuous-warning analysis label')
+    if continuous_warning['prospective_protocol_commit'] != 'bf9f492996cfb57718e03edd4a3620c0756b32c4':
+        raise RuntimeError('continuous-warning protocol commit mismatch')
+    if any(len(item['cells']) != 6 for item in continuous_warning['ensembles'].values()):
+        raise RuntimeError('continuous-warning fixed cell set is incomplete')
+    shutil.copy2(continuous_warning_json, out / 'tables/continuous_warning_landmark_auc.json')
+    shutil.copy2(continuous_warning_csv, out / 'tables/continuous_warning_landmark_auc.csv')
+
     precision_source = json.loads(
         (root / 'artifacts/precision_bounded_null/source_counts.json').read_text(encoding='utf-8')
     )
@@ -217,6 +229,10 @@ def main() -> int:
         root / 'docs/PREPUBLICATION_REVIEW_AUDIT.md',
         out / 'provenance/PREPUBLICATION_REVIEW_AUDIT.md',
     )
+    shutil.copy2(
+        root / 'docs/POSTREVIEW_RESULT_DATA_QUALITY.md',
+        out / 'provenance/POSTREVIEW_RESULT_DATA_QUALITY.md',
+    )
 
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
     _regenerate_publication_figures(stage1, stage2, audit_path, out)
@@ -228,6 +244,10 @@ def main() -> int:
         'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md',
         'main_story_revision.md', 'empirical_eschscholzia_f_typo_sensitivity_preregistration.md',
         'empirical_eschscholzia_f_typo_sensitivity_stop.md',
+        'warning_continuous_landmark_exploratory_preregistration.md',
+        'warning_continuous_landmark_exploratory_result.md',
+        'empirical_eschscholzia_f_full_metadata_repair_preregistration.md',
+        'empirical_eschscholzia_f_full_metadata_repair_result.md',
     )
     for name in manuscript_files:
         shutil.copy2(root / 'manuscript' / name, out / 'manuscript')
@@ -235,6 +255,15 @@ def main() -> int:
         root / 'artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json',
         out / 'provenance/eschscholzia_f_typo_sensitivity_stop.json',
     )
+    full_repair_path = root / 'artifacts/empirical/eschscholzia_f_full_metadata_repair_result.json'
+    full_repair = json.loads(full_repair_path.read_text(encoding='utf-8'))
+    if full_repair['decision'] != 'postlock_descriptive_reconstruction_not_estimable':
+        raise RuntimeError('unexpected Eschscholzia full-repair decision')
+    if full_repair['prospective_protocol_commit'] != 'bf9f492996cfb57718e03edd4a3620c0756b32c4':
+        raise RuntimeError('Eschscholzia full-repair protocol commit mismatch')
+    if full_repair['information_boundary']['f_model_fitted'] is not False:
+        raise RuntimeError('Eschscholzia full-repair information barrier failed')
+    shutil.copy2(full_repair_path, out / 'provenance/eschscholzia_f_full_metadata_repair_result.json')
 
     manifest = {'files': {}}
     for file in sorted(p for p in out.rglob('*') if p.is_file()):

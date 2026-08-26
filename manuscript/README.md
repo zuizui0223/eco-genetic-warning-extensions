@@ -1,6 +1,6 @@
 # Manuscript workspace
 
-**Working title:** *Joint state representation and empirical measurement gates define eco-genetic predictability*
+**Working title:** *Matching genetic diversity and interaction summaries can hide different ecological transitions*
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
@@ -36,7 +36,7 @@ The central contribution is the **state and measurement definition**: common mar
 - **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established.
 - **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced precision-bounded nulls, not equivalence results. Adaptive rewiring remains closed because its prospective opening condition was not met.
 - **C2e — state sufficiency:** under the declared parent Markov closure, complete present-state equality is future-sufficient, but common coarse summaries are not. A constructive two-patch counterexample preserves census, interaction and allele marginals/means, `H_alpha`, `H_gamma`, `F_ST` and realised trait state while changing patchwise interaction–genetic alignment; the next interaction field changes.
-- **C3 — full-denominator warning failure:** the inherited/fresh frozen H2-R benchmarks retained 35/35 and 33/33 event-conditional leads, but the same six thresholds fired in 48/48 and 49/49 non-events. Full-horizon specificity was zero and binary-marker AUC was 0.5; predictive early-warning validity is not supported.
+- **C3 — full-denominator warning failure:** the inherited/fresh frozen H2-R benchmarks retained 35/35 and 33/33 event-conditional leads, but generation-30 binary AUC was near chance and the same six thresholds eventually fired in 48/48 and 49/49 non-events. An exploratory continuous audit produced time-specific but non-replicated separation across fixed landmarks; no portable warning score is established.
 - **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment. This remains a supporting boundary after the within-state predictive claim failed.
 
 ## Empirical extension: find the state in nature

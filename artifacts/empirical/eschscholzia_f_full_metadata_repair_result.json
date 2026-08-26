@@ -1,0 +1,71 @@
+{
+  "analysis": "postlock_descriptive_full_metadata_repair",
+  "claim_boundary": "The exact two-key metadata repair removed the cross-source Habitat mismatch, but the unchanged F preparation gate found an invalid primary response. No additional response repair, row exclusion, model, score or bootstrap is opened.",
+  "correction": {
+    "array_keys": [
+      "1||3",
+      "1||4"
+    ],
+    "corrected_rows_by_key": {
+      "1||3": 3,
+      "1||4": 3
+    },
+    "field": "Habitat",
+    "mismatch_count_after": 0,
+    "mismatches_before": {
+      "1||3": {
+        "f_seed": [
+          "Fallow graound"
+        ],
+        "pollinator": "Fallow ground"
+      },
+      "1||4": {
+        "f_seed": [
+          "Fallow graound"
+        ],
+        "pollinator": "Fallow ground"
+      }
+    },
+    "observed": "Fallow graound",
+    "replacement": "Fallow ground",
+    "source_role": "f_seed"
+  },
+  "decision": "postlock_descriptive_reconstruction_not_estimable",
+  "information_boundary": {
+    "bootstrap_run": false,
+    "f_model_fitted": false,
+    "f_preparation_completed": false,
+    "failure_stage": "locked_prepare_f",
+    "model_score_calculated": false,
+    "other_endpoints_rerun": false,
+    "reason": "F primary response has missing/non-finite/negative value"
+  },
+  "preregistration": "manuscript/empirical_eschscholzia_f_full_metadata_repair_preregistration.md",
+  "primary_lock": {
+    "decision": "multi_endpoint_not_identifiable",
+    "locked_result": "artifacts/empirical/eschscholzia_multiprocess_state_locked_result.json",
+    "status": "unchanged_not_rescued_or_reclassified"
+  },
+  "prior_one_key_sensitivity": {
+    "decision": "stop_pre_model_unexpected_second_metadata_mismatch",
+    "locked_result": "artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json",
+    "status": "unchanged_not_reopened_or_expanded"
+  },
+  "prospective_protocol_commit": "bf9f492996cfb57718e03edd4a3620c0756b32c4",
+  "source_lock": {
+    "f_seed": {
+      "csv_member": "data/The_seed_set_of_supplemented_and_pollinator_exposed_Ecalifornica_flowers.csv",
+      "csv_sha256": "83ab56cc8b3e4b2ae2b7141e55683b1cff2734006d4fa4f6735605d3a2be379f",
+      "doi": "10.5285/8caf2d8a-564d-4f2e-a797-174165a83796",
+      "transport_package_sha256_record_only": "39e292363d31dd5ceec6da22734bba1240d163a8919e26424cc4ffe00bf6d4df",
+      "url": "https://data-package.ceh.ac.uk/data/8caf2d8a-564d-4f2e-a797-174165a83796.zip"
+    },
+    "pollinator": {
+      "csv_member": "data/Pantrap_catches_from_Buckinghamshire_UK.csv",
+      "csv_sha256": "db063840850fb4f358db7e99271feb9b9a92f6701b889d1b59a1348ffada89ef",
+      "doi": "10.5285/01906784-6742-44bf-b244-a4b63bed8d82",
+      "transport_package_sha256_record_only": "3b3f090007fdea7ed5771900cae9eaeb8bbf1fb0d98226ff3b7afd63a2b2e61d",
+      "url": "https://data-package.ceh.ac.uk/data/01906784-6742-44bf-b244-a4b63bed8d82.zip"
+    }
+  }
+}

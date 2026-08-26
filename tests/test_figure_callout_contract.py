@@ -37,3 +37,4 @@ def test_supplementary_table_links_follow_current_figure_spine() -> None:
     assert "Table S6 retains both historical and fresh connectivity records" in allocation
     assert "Table S5 retains the endpoint, censoring and timing audit" in allocation
     assert "Table S7 retains warning validity" in allocation
+    assert "Table S8 retains the exploratory continuous landmark audit" in allocation

@@ -10,7 +10,7 @@ The preregistered event-pair criterion was met at all six endpoints. A later ful
 
 ## Post-review interpretation correction
 
-All six thresholds also fired in all 49 non-event trajectories in this ensemble; in the inherited ensemble they fired in all 48 non-events. Full-horizon specificity was therefore zero and binary-marker AUC was 0.5 in both ensembles. The allowed current claim is replicated **event-conditional ordering without event discrimination**, not validated predictive early warning. See `docs/PREPUBLICATION_REVIEW_AUDIT.md`.
+All six thresholds also fired in all 49 non-event trajectories in this ensemble; in the inherited ensemble they fired in all 48 non-events. Fixed generation-30 binary-marker AUC was near chance. By the full horizon every marker was a constant positive; specificity was therefore zero and AUC was 0.5. The allowed current claim is replicated **event-conditional ordering without event discrimination**, not validated predictive early warning. A later separately preregistered exploratory continuous audit found no portable coordinate/time signal; see `docs/PREPUBLICATION_REVIEW_AUDIT.md`.
 
 ## Denominators
 

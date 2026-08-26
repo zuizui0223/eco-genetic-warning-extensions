@@ -1,0 +1,269 @@
+{
+  "analysis": "postreview_exploratory_continuous_landmark_auc",
+  "claim_boundary": "Exploratory fixed-score evidence only. It cannot restore the frozen binary rules as validated predictive warning or characterize genetic diversity in general.",
+  "endpoint_dependence": "Six cells reuse each ensemble's trajectories and are not independent replicates; no pooled endpoint p-value is calculated.",
+  "ensembles": {
+    "fresh_202911": {
+      "auc_range": [
+        0.4217687074829932,
+        0.6865889212827988
+      ],
+      "baseline_eligible_trajectories": 82,
+      "cells": [
+        {
+          "administrative_horizon": 120,
+          "auc": 0.5222978080120937,
+          "auc_ci95_percentile": [
+            0.3847316704459562,
+            0.6606198034769464
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260926,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 6,
+          "future_cases": 27,
+          "landmark": 30,
+          "risk_set": 76,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.6530612244897959,
+          "auc_ci95_percentile": [
+            0.49416909620991256,
+            0.7973760932944607
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260927,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 19,
+          "future_cases": 14,
+          "landmark": 60,
+          "risk_set": 63,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.5102040816326531,
+          "auc_ci95_percentile": [
+            0.10204081632653061,
+            0.8979591836734694
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260928,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 30,
+          "future_cases": 3,
+          "landmark": 90,
+          "risk_set": 52,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.5563114134542706,
+          "auc_ci95_percentile": [
+            0.42101284958427815,
+            0.690098261526833
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260936,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 6,
+          "future_cases": 27,
+          "landmark": 30,
+          "risk_set": 76,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.6865889212827988,
+          "auc_ci95_percentile": [
+            0.5043731778425656,
+            0.8483965014577259
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260937,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 19,
+          "future_cases": 14,
+          "landmark": 60,
+          "risk_set": 63,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.4217687074829932,
+          "auc_ci95_percentile": [
+            0.08163265306122448,
+            0.8979591836734694
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260938,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 49,
+          "excluded_losses_at_or_before_landmark": 30,
+          "future_cases": 3,
+          "landmark": 90,
+          "risk_set": 52,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        }
+      ]
+    },
+    "inherited_202611": {
+      "auc_range": [
+        0.4178921568627451,
+        0.6916666666666667
+      ],
+      "baseline_eligible_trajectories": 83,
+      "cells": [
+        {
+          "administrative_horizon": 120,
+          "auc": 0.5353535353535354,
+          "auc_ci95_percentile": [
+            0.4065656565656566,
+            0.6622474747474747
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260826,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 2,
+          "future_cases": 33,
+          "landmark": 30,
+          "risk_set": 81,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.4178921568627451,
+          "auc_ci95_percentile": [
+            0.2659313725490196,
+            0.5759803921568627
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260827,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 18,
+          "future_cases": 17,
+          "landmark": 60,
+          "risk_set": 65,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.6916666666666667,
+          "auc_ci95_percentile": [
+            0.5228645833333334,
+            0.8395833333333333
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260828,
+          "diversity_id": "H_alpha",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 25,
+          "future_cases": 10,
+          "landmark": 90,
+          "risk_set": 58,
+          "score": "1 - H_alpha(t) / H_alpha(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.5325126262626263,
+          "auc_ci95_percentile": [
+            0.4065656565656566,
+            0.6603535353535354
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260836,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 2,
+          "future_cases": 33,
+          "landmark": 30,
+          "risk_set": 81,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.43504901960784315,
+          "auc_ci95_percentile": [
+            0.2769607843137255,
+            0.5980392156862745
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260837,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 18,
+          "future_cases": 17,
+          "landmark": 60,
+          "risk_set": 65,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        },
+        {
+          "administrative_horizon": 120,
+          "auc": 0.59375,
+          "auc_ci95_percentile": [
+            0.38958333333333334,
+            0.7916666666666666
+          ],
+          "bootstrap_replicates": 10000,
+          "bootstrap_seed": 20260838,
+          "diversity_id": "H_gamma",
+          "dynamic_controls": 48,
+          "excluded_losses_at_or_before_landmark": 25,
+          "future_cases": 10,
+          "landmark": 90,
+          "risk_set": 58,
+          "score": "1 - H_gamma(t) / H_gamma(0)"
+        }
+      ]
+    }
+  },
+  "estimand": "landmark cumulative/dynamic concordance AUC through generation 120",
+  "frozen_domain": {
+    "area_reference": 0.8,
+    "hold_generations": 90,
+    "horizon": 120,
+    "interaction_feedback": 6.0,
+    "mutation_rate": 0.1,
+    "ramp_generations": 30,
+    "total_normalized_barrier_increase": 0.15
+  },
+  "preregistration": "manuscript/warning_continuous_landmark_exploratory_preregistration.md",
+  "prospective_protocol_commit": "bf9f492996cfb57718e03edd4a3620c0756b32c4",
+  "score_direction": "greater baseline-relative erosion predicts greater future-loss risk",
+  "source_manifest": {
+    "fresh_202911": {
+      "artifact_digest": "sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031",
+      "artifact_id": 9492587604,
+      "artifact_name": "fresh-warning-replication-phase-v",
+      "attempted_trajectories": 100,
+      "available_trajectories": 82,
+      "baseline_eligible_trajectories": 82,
+      "raw_member": "phase_v_raw.json",
+      "raw_member_sha256_verified": "1674c817b760f5a20320ffdf775181f3c3134d60cc977feffe76c9296c253fb9",
+      "source_repository": "zuizui0223/eco-genetic-warning-extensions",
+      "workflow_run": 32636847803
+    },
+    "inherited_202611": {
+      "artifact_digest": "sha256:7d2bbed84ddf57486896c0ca231fd82f2e0915699e391c155d288f5c9db8a6ff",
+      "artifact_id": 8003007618,
+      "artifact_name": "h2r-independent-relative-validation-seeds-20261110-20261114",
+      "attempted_trajectories": 100,
+      "available_trajectories": 83,
+      "baseline_eligible_trajectories": 83,
+      "raw_member": "independent_relative_warning_v1.json",
+      "raw_member_sha256_verified": "c1552616a94b23ffc1340580231d7d1b16bc7d84c951c3d2606cc437fb15673e",
+      "source_repository": "zuizui0223/eco-genetic-criticality",
+      "workflow_run": 28500796310
+    }
+  },
+  "uncertainty": "95% percentile interval from stratified trajectory-level bootstrap; cases and dynamic controls resampled separately"
+}

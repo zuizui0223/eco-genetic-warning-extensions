@@ -28,6 +28,10 @@ High-replicate seed-block and pooled realised functional-loss rates for the recu
 
 For each frozen symmetric ensemble and each of the six unchanged relative-diversity endpoints: all baseline-eligible trajectories, event-conditional lead sensitivity, non-event false-positive rate, full-horizon PPV/NPV/specificity/binary-marker AUC, and fixed-landmark cumulative/dynamic binary-marker performance. Non-events are right-censored for event-time claims but known event-free through the common administrative horizon. The six endpoint rows from one trajectory are repeated measurements and are not pooled as independent replicates.
 
+## Table S8. Exploratory continuous landmark warning audit
+
+For each frozen symmetric ensemble, both diversity coordinates and all fixed landmarks at generations 30/60/90: risk-set size, future cases, dynamic controls, excluded prior losses, baseline-relative erosion AUC and its 10,000-sample stratified trajectory-bootstrap interval. The analysis was prospectively fixed after the binary review and is explicitly exploratory. Cells reuse trajectories and are not independent replicates; no favourable coordinate or landmark is selected.
+
 ## Numbering rule
 
-The Letter uses Figures 1–6 as its six main display items and has no main-text tables or text boxes. Existing tabular syntheses are Tables S1–S6; the post-review full-denominator warning audit is Table S7. Any additional diagnostic table must be numbered from Table S8 onward and cited explicitly in the Supplement before inclusion in the submission bundle.
+The Letter uses Figures 1–6 as its six main display items and has no main-text tables or text boxes. Existing tabular syntheses are Tables S1–S6; the post-review full-denominator warning audit is Table S7 and the exploratory continuous landmark audit is Table S8. Any additional diagnostic table must be numbered from Table S9 onward and cited explicitly in the Supplement before inclusion in the submission bundle.

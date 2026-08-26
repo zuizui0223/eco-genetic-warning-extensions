@@ -138,7 +138,7 @@ The preregistered event-pair decision was **`strict_replication`**. The post-rev
 
 > **Within the frozen symmetric H2-R state, relative-diversity crossings reproduced event-conditional temporal ordering but did not discriminate losses from non-events.**
 
-The frozen protocol result remains provenance, but the predictive early-warning claim is withdrawn. No new continuous score, endpoint, threshold or favourable landmark is opened after this result.
+The frozen protocol result remains provenance, but the predictive early-warning claim is withdrawn. No new confirmatory score, endpoint, threshold or favourable landmark is opened after this result. A later, separately preregistered one-time exploratory audit fixed continuous baseline-relative `H_alpha/H_gamma` erosion at all three existing landmarks before calculation. Its AUC varied across coordinate, landmark and ensemble (`0.418–0.692` inherited; `0.422–0.687` fresh) without a replicated coordinate/time pattern, so no portable continuous warning score is promoted.
 
 Phases R/S/T/U add no warning claims; they constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved, and no outcome-informed tuning is opened to obtain one.
 
@@ -175,7 +175,7 @@ Neither is a full eco-genetic convergence proof because synchronized `G/C/R/M` l
 | C2d aggregate interaction support | precision-bounded null | all predeclared kappa values remain intermediate/homogeneous at high precision; no equivalence claim |
 | C2e partner architecture | precision-bounded null | paired intervals include zero but permit small effects; rewiring remains closed |
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
-| C3 conditional warning | **predictive validation failed** | six endpoints lead 35/35 and 33/33 losses but also fire in 48/48 and 49/49 non-events; specificity 0, binary-marker AUC .5 |
+| C3 conditional warning | **frozen-rule predictive validation failed** | generation-30 binary AUC near .5; six rules lead 35/35 and 33/33 losses but eventually fire in 48/48 and 49/49 non-events; exploratory continuous AUC is time-specific and non-portable |
 | C4 portability | bounded | warning behaviour is not established as portable across non-matched calibrated domains |
 
 ## Global stop rules

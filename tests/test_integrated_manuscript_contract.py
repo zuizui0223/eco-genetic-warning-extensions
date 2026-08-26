@@ -85,6 +85,9 @@ def test_submission_bundle_keeps_provenance_and_condition_evidence() -> None:
     assert "claim_evidence_map.md" in builder
     assert "artifact_index.md" in builder
     assert "stage3_trajectory_endpoint_records.csv" in builder
+    assert "continuous_warning_landmark_auc.json" in builder
+    assert "POSTREVIEW_RESULT_DATA_QUALITY.md" in builder
+    assert "eschscholzia_f_full_metadata_repair_result.json" in builder
     for number in range(1, 7):
         assert f"## Figure {number}." in captions
     assert "Endpoint rows share trajectories" in captions

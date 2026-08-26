@@ -29,6 +29,8 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | Full-denominator symmetric warning audit | all baseline-eligible saved trajectories; six unchanged relative endpoints; non-events retained | parent run `28500796310`, artifact `8003007618`; Phase V run `32636847803`, artifact `9492587604`; compact record SHA-256 `65295c612042557abb46115a2c408b883f0b516c8d5af974423b895f54a7c7ab` |
 | Precision-bounded null audit | whole-trajectory paired risk-difference intervals for Phase U/N/T | immutable Phase U/N/T aggregate artifacts; `artifacts/prepublication_review/precision_bounded_null_audit.json` |
 | Eschscholzia F typo sensitivity STOP | prospective one-key sensitivity found a second metadata mismatch before model fitting | protocol commit `ae0d70a`; `artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json` |
+| Exploratory continuous warning landmark audit | all fixed `H_alpha/H_gamma × 30/60/90` cells in both immutable ensembles | protocol commit `bf9f492`; `artifacts/prepublication_review/continuous_warning_landmark_auc.json` |
+| Eschscholzia F full-metadata repair STOP | exact two-key repair passed metadata but unchanged F response-validity gate stopped before model fitting | protocol commit `bf9f492`; `artifacts/empirical/eschscholzia_f_full_metadata_repair_result.json` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
 ## Historical evidence versus current inference
@@ -129,6 +131,7 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
 - Event-conditional 35/35 and 33/33 lead counts must be reported with the 48/48 and 49/49 non-event firing counts; they do not validate prediction.
 - Full-horizon relative-warning specificity is zero and binary-marker AUC is 0.5 in both frozen symmetric ensembles.
+- Fixed generation-30 binary-marker AUC is `.500–.538` inherited and `.500–.510` fresh; the continuous exploratory cells range `.418–.692` and `.422–.687` without coordinate/time replication.
 - Phase U/N/T negative results are precision-bounded nulls, not equivalence results.
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
 
