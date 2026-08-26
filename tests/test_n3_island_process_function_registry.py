@@ -41,11 +41,28 @@ def test_n3_corrects_scope_without_opening_outcome_models() -> None:
     summary = json.loads(SUMMARY.read_text(encoding="utf-8"))
     assert summary["n_systems"] == 4
     assert summary["study_level_direct_I_and_F_yes"] == 4
-    assert summary["public_reusable_direct_I_and_F_both_yes"] == 1
-    assert summary["public_reusable_direct_I_and_F_both_yes_systems"] == ["I3_MALLORCA_CNEORUM_2020"]
+    assert summary["public_reusable_direct_I_and_F_both_yes"] == 2
+    assert summary["public_reusable_direct_I_and_F_both_yes_systems"] == [
+        "I3_MALLORCA_CNEORUM_2020",
+        "I3_MALLORCA_NETWORK_FITNESS_2020",
+    ]
     assert summary["process_function_gate_yes"] == 0
     assert summary["process_function_gate_partial"] == 4
     assert summary["residual_context_gate_yes"] == 0
     assert summary["residual_context_gate_partial"] == 2
     assert summary["decision"] == "island_process_function_archives_recovered_but_schema_alignment_still_required"
     assert "not a general absence" in summary["interpretation"]
+
+
+def test_n3_same_archive_is_not_accepted_as_alignment() -> None:
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+    systems = {x["id"]: x for x in registry["systems"]}
+    cneorum = systems["I3_MALLORCA_CNEORUM_2020"]
+    assert cneorum["public_reusable"]["I"] == "yes"
+    assert cneorum["public_reusable"]["F"] == "yes"
+    assert cneorum["public_reusable"]["A"] == "unclear"
+    assert "same-publication or same-archive status is not a valid alignment key" in cneorum["source_design_boundary"]
+    mallorca = systems["I3_MALLORCA_NETWORK_FITNESS_2020"]
+    assert mallorca["public_reusable"]["I"] == "yes"
+    assert mallorca["public_reusable"]["F"] == "yes"
+    assert mallorca["public_reusable"]["A"] == "partial"
