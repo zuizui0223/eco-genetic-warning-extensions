@@ -1,0 +1,66 @@
+{
+  "analysis": "cross_origin_minimal_bridge_archive_access_gate",
+  "decision": "minimal_bridge_not_runnable_from_current_automated_archive_access",
+  "scientific_interpretation": "archive-access boundary only; no ecological null or cross-origin effect estimate",
+  "response_firewall": "No candidate reproductive outcome values were parsed or modeled.",
+  "candidate_lock": [
+    {
+      "id": "U1_commelina",
+      "origin": "urban",
+      "doi": "10.5061/dryad.pd775",
+      "metadata_files": [
+        {"file_id": 40996, "path": "DataUshimaru_etalFig2.csv", "expected_size": 113126},
+        {"file_id": 40997, "path": "DataUshimaru_etalFigs34.csv", "expected_size": 7167},
+        {"file_id": 40998, "path": "DataUshimaruetalFigs43.csv", "expected_size": 7296}
+      ]
+    },
+    {
+      "id": "U2_chicago",
+      "origin": "urban",
+      "doi": "10.5061/dryad.44j0zpcm6",
+      "metadata_files": [
+        {"file_id": 3653496, "path": "gopro_obs.csv", "expected_size": 28401},
+        {"file_id": 3653495, "path": "inperson_obs.csv", "expected_size": 8579},
+        {"file_id": 3653498, "path": "README.md", "expected_size": 4255},
+        {"file_id": 3653491, "path": "squash_fl.csv", "expected_size": 18113},
+        {"file_id": 3653493, "path": "squash_seeds.csv", "expected_size": 6130},
+        {"file_id": 3653492, "path": "tomato_fl.csv", "expected_size": 65480},
+        {"file_id": 3653494, "path": "tomato_seeds.csv", "expected_size": 168066}
+      ]
+    },
+    {
+      "id": "I1_hiraiwa2017",
+      "origin": "island",
+      "doi": "10.5061/dryad.pm29d",
+      "metadata_files": [
+        {"file_id": 45693, "path": "primary_data.xlsx", "expected_size": 93457}
+      ]
+    },
+    {
+      "id": "I2_hawaii2019",
+      "origin": "island",
+      "doi": "10.5061/dryad.tm575v4",
+      "metadata_files": [
+        {"file_id": 22438, "path": "Pollination visitation obs for dryad.xlsx", "expected_size": 579979},
+        {"file_id": 22439, "path": "README_for_Pollination visitation obs for dryad.docx", "expected_size": 59196}
+      ]
+    }
+  ],
+  "transport_diagnostic": {
+    "workflow_run": 32979406354,
+    "artifact_id": 9610795076,
+    "artifact_digest": "sha256:157bab1ce6b1b8c20173729752ef736ac7a67ee89eec71de2810a28f49d717fd",
+    "candidate_count": 4,
+    "candidate_with_full_public_file_probe_count": 0,
+    "metadata_manifest_resolved_for_all": true,
+    "api_download_behavior": "stash:download is bearer-token protected (HTTP 401 in ordinary probes; later Hawaii probes were rate-limited at HTTP 429)",
+    "browser_download_behavior": "new and legacy file_stream routes returned HTTP 200 anti-bot challenge HTML ('Validating...'), not the declared data MIME type/bytes"
+  },
+  "invalidated_attempt": {
+    "workflow_run": 32979005318,
+    "artifact_id": 9610645175,
+    "artifact_digest": "sha256:bbded2934ef726d4ae9c227a8cf5e625fb1493482eb74e0702910d4ed52210df",
+    "reason": "HTTP 200 challenge HTML was initially mistaken for a successful file transfer; the schema auditor and workflow were removed before merge"
+  },
+  "next_gate": "Obtain the exact locked archive bytes through a legitimate interactive/user-supplied access route, verify file size/digest against Dryad metadata, then perform schema-only mapping before any outcome modeling."
+}
