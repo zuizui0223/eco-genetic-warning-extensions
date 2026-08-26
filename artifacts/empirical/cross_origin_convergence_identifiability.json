@@ -1,0 +1,55 @@
+{
+  "analysis": "urban_island_cross_origin_convergence_identifiability",
+  "decision": "cross_origin_convergence_not_identifiable_from_existing_archives",
+  "pooled_outcome_model_fitted": false,
+  "primary_systems": {
+    "honshu_izu": {
+      "source": "10.6084/m9.figshare.25025000.v1",
+      "held_out_unit": "site",
+      "state": ["TM_z", "FDQ", "FEve"],
+      "response": "standardized pollen receipt pollen_z",
+      "origin_context": "distance from mainland"
+    },
+    "zurich": {
+      "source": "10.16904/envidat.676",
+      "source_code_commit": "d6361f6874398e797322afe07a8fea85a3c7e927",
+      "held_out_unit": "garden",
+      "state": "function-specific effort-standardized pollinator-guild visitation vector",
+      "response": "six source-defined Poisson/binomial fruit/seed endpoints",
+      "origin_context": "PlantS + Urban_500 + PlantS:Urban_500"
+    }
+  },
+  "gates": {
+    "semantic_state_alignment": {
+      "pass": false,
+      "reason": "Honshu-Izu trait matching/functional-diversity coordinates are not the same biological measurements as Zurich guild-specific visitation rates."
+    },
+    "response_alignment": {
+      "pass": false,
+      "reason": "Standardized pollen receipt is not prospectively interchangeable with the Zurich fruit/seed count and proportion endpoints."
+    },
+    "origin_independent_of_study_identity": {
+      "pass": false,
+      "reason": "One archive per origin makes island/urban origin perfectly confounded with study, taxa, protocol and response construction."
+    },
+    "genuine_cross_system_validation": {
+      "pass": false,
+      "reason": "Within-system site/garden holdout exists, but no replicated origin permits origin-separated whole-system transfer validation."
+    }
+  },
+  "permitted_narrower_claim": "Upstream habitat/context scalars can become predictively redundant after measured partial process states in some island and urban systems; this does not establish a shared cross-origin dynamical law.",
+  "counter_boundary": "Oenothera retains spatial-isolation information after pollinator treatment for contemporary mating state, so interaction state alone is not assumed complete.",
+  "minimum_identifiable_future_design": {
+    "shared_state_core": ["D", "I", "T", "C", "R", "G", "A"],
+    "shared_direct_function": true,
+    "origin_replication": "at least two independent systems per origin or one coordinated multi-origin protocol",
+    "validation": "hold out whole systems/landscapes",
+    "models": ["F_future ~ S", "F_future ~ S + origin", "F_future ~ S + origin + S:origin if prospectively declared"]
+  },
+  "stop_rules": {
+    "generic_zscore_harmonization": "prohibited",
+    "post_outcome_common_response_construction": "prohibited",
+    "origin_effect_when_origin_equals_study": "prohibited",
+    "zurich_endpoints_as_independent_urban_systems": "prohibited"
+  }
+}
