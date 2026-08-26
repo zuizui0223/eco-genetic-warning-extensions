@@ -38,12 +38,13 @@
       "setting": "Mallorca coastal plant community, 23 abundant plant species across two field seasons",
       "data_id": "10.5061/dryad.hqbzkh1bm",
       "study_measurement": {"O": "no", "D": "yes", "I": "yes", "F": "yes", "A": "yes", "n_holdout": 23},
-      "public_reusable": {"O": "no", "D": "yes", "I": "partial", "F": "yes", "A": "partial", "n_holdout": 23},
+      "public_reusable": {"O": "no", "D": "yes", "I": "yes", "F": "yes", "A": "partial", "n_holdout": 23},
       "process_function_gate": "partial",
       "residual_context_gate": "no",
-      "gate_reason": "Dryad contains a workbook for the 23-species/two-season study, and the public dataset description explicitly includes floral abundance, pollination-network information, seeds per flower and seed weight. Exact direct-visitation and species-year join columns still require workbook schema inspection. Species are potential process-function holdout units within one system, not 23 independent island systems.",
-      "public_files": ["Dryad.xlsx", "Dryad_notes.docx"],
-      "evidence": ["https://doi.org/10.5061/dryad.hqbzkh1bm", "https://doi.org/10.1111/1365-2745.13334"]
+      "gate_reason": "The original Dryad archive contains plant-pollinator/trait/fitness data for the 23-species two-season study. A later Dryad representation of the same Lázaro et al. 2020 observations (`10.5061/dryad.9cnp5hqjn`) explicitly exposes `dataset.csv` plus `rate_perflower2016.csv` and `rate_perflower2017.csv`, and its public methods define direct reproductive-organ-touching visits, visitation rate per flower, and fecundity as seeds per flower for the same 23 focal species in 2016 and 2017. Direct I and F are therefore reusable at the source-design level. Exact species/year key columns still require raw-file schema verification before A is promoted to yes or a held-out process-function model is opened. Species are holdout candidates within one island community, not 23 independent island systems.",
+      "public_files": ["Dryad.xlsx", "Dryad_notes.docx", "dataset.csv (same-data later representation)", "rate_perflower2016.csv (same-data later representation)", "rate_perflower2017.csv (same-data later representation)"],
+      "representation_source": "10.5061/dryad.9cnp5hqjn reuses the same 23 focal species / 2016-2017 Lázaro et al. 2020 observations and explicitly documents visit-rate and fecundity semantics",
+      "evidence": ["https://doi.org/10.5061/dryad.hqbzkh1bm", "https://doi.org/10.1111/1365-2745.13334", "https://doi.org/10.5061/dryad.9cnp5hqjn"]
     },
     {
       "id": "I3_AZORES_APPLE_2020",
