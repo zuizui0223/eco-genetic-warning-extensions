@@ -80,7 +80,20 @@ Not applicable to the present finite-model study unless additional empirical mat
 
 ## AI or automated-tool disclosure
 
-[Complete according to the journal/Wiley policy in force at submission. Describe any language, code, analysis, or figure assistance accurately and retain author responsibility for all content.]
+Wiley's current policy requires disclosure at submission when AI technology substantially drafts/edits text, generates supplementary material, or performs significant analysis. The final wording remains author-controlled, but the disclosure must not be left blank.
+
+**Draft for author review:**
+
+> OpenAI ChatGPT was used during preparation of this work to assist with drafting and revising text, organizing analysis and repository documentation, and supporting code/workflow development and review. AI-assisted outputs were checked by the authors against the underlying literature, version-controlled source code, locked analysis protocols, data products and workflow artifacts as applicable. The authors made all final scientific, interpretive and editorial decisions and take full responsibility for the accuracy and content of the manuscript. Before submission, the authors will verify and insert the exact AI tool/model version information required by the publisher.
+
+Before submission:
+
+- [ ] verify the complete list of AI tools/model versions materially used in manuscript preparation or analysis;
+- [ ] confirm the statement accurately describes where and how AI assistance was used;
+- [ ] confirm all authors approve the disclosure;
+- [ ] place the declaration in the location required by the journal's submission system/current Wiley guidance.
+
+Policy last checked against current Wiley author guidance on 2026-08-26; re-check at the actual submission date because publisher policy can change.
 
 ## Pre-submission completion gate
 
@@ -93,5 +106,5 @@ Not applicable to the present finite-model study unless additional empirical mat
 - [ ] Competing-interest statement approved.
 - [ ] Data and code statements point to permanent archived records/DOIs rather than repository commits alone.
 - [ ] Software/data licences and release versions approved.
-- [ ] Current journal/Wiley policy checked for automated-tool disclosure.
+- [ ] AI/automated-tool disclosure verified against current journal/Wiley policy and approved by all authors.
 - [ ] Final converted submission file re-counted and title-page counts updated if needed.
