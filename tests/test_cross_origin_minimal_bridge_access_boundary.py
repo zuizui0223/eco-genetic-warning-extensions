@@ -36,9 +36,9 @@ def test_candidate_lock_remains_two_per_origin() -> None:
 
 def test_preregistration_prohibits_outcome_facing_rescue() -> None:
     text = PREREG.read_text(encoding="utf-8")
-    assert "do not generic z-score unlike fruit/seed/pollen outcomes".lower() in text.lower()
+    assert "generic z-score merely to obtain a pooled model" in text
     assert "add a fifth study after results" in text
-    assert "endpoints within one study not independent systems".lower() in text.lower()
+    assert "Endpoint rows within one study are not treated as independent systems." in text
 
 
 def test_access_result_requires_verified_exact_bytes_before_schema_or_outcomes() -> None:
@@ -47,4 +47,4 @@ def test_access_result_requires_verified_exact_bytes_before_schema_or_outcomes()
     assert "Validating..." in text
     assert "verified against the recorded Dryad size/digest metadata" in text
     assert "only then open outcome values" in text
-    assert "is not evidence for or against an urban–island ecological difference" in text
+    assert "not evidence for or against an urban–island ecological difference" in text
