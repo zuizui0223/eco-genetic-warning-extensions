@@ -11,11 +11,12 @@
       "setting": "20 carob orchards, Mallorca, Spain",
       "data_id": "10.5281/zenodo.13939479",
       "study_measurement": {"O": "yes", "D": "partial", "I": "yes", "F": "yes", "A": "yes", "n_holdout": 20},
-      "public_reusable": {"O": "partial", "D": "unclear", "I": "partial", "F": "partial", "A": "unclear", "n_holdout": 20},
+      "public_reusable": {"O": "yes", "D": "partial", "I": "yes", "F": "partial", "A": "partial", "n_holdout": 20},
       "process_function_gate": "partial",
       "residual_context_gate": "partial",
-      "gate_reason": "The source design explicitly measures landscape/local management, direct pollinator visitation and fruit/seed production at orchard scale across 20 orchards, and identifies an open Zenodo deposit. The public article establishes the biological design, but the exact deposited file/column/join schema has not yet been independently verified by this project, so reusable O/I/F/A are not promoted to yes.",
-      "evidence": ["https://doi.org/10.1371/journal.pone.0307357", "https://doi.org/10.5281/zenodo.13939479"]
+      "gate_reason": "The source design measures landscape/local management, direct pollinator visitation and fruit/seed production at orchard scale across 20 orchards. PLOS S1 Table and S3 Table are also independently catalogued by Digital.CSIC as reusable XLSX datasets: landscape/local orchard characteristics (handle 10261/396616) and pollinator visits by group for the 20 orchards by year (handle 10261/396621). Methods fix visitation effort at five sampling days x three observers x one hour per orchard-year, so O and direct I can be treated as reusable without outcome inspection. Raw realised-production F and its exact orchard/year join to these tables remain pending verification in the Zenodo deposit, so the fitted gate remains closed.",
+      "public_files": ["pone.0307357.s003.xlsx", "pone.0307357.s005.xlsx"],
+      "evidence": ["https://doi.org/10.1371/journal.pone.0307357", "https://doi.org/10.5281/zenodo.13939479", "http://hdl.handle.net/10261/396616", "http://hdl.handle.net/10261/396621"]
     },
     {
       "id": "I3_MALLORCA_CNEORUM_2020",
