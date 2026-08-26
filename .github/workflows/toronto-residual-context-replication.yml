@@ -9,6 +9,14 @@ on:
       - "scripts/run_toronto_residual_context.py"
       - "tests/test_toronto_residual_context_preregistration.py"
       - ".github/workflows/toronto-residual-context-replication.yml"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "manuscript/empirical_toronto_residual_context_preregistration.md"
+      - "scripts/run_toronto_residual_context.py"
+      - "tests/test_toronto_residual_context_preregistration.py"
+      - ".github/workflows/toronto-residual-context-replication.yml"
   workflow_dispatch:
 
 permissions:
