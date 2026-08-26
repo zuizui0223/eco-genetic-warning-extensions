@@ -6,11 +6,14 @@ on:
     paths: &paper_paths
       - "README.md"
       - "REPRODUCIBILITY.md"
+      - "docs/PREPUBLICATION_REVIEW_AUDIT.md"
       - ".gitattributes"
       - "pyproject.toml"
       - "manuscript/**"
       - "reproducibility/**"
       - "scripts/build_submission_bundle.py"
+      - "scripts/build_prepublication_review_audits.py"
+      - "scripts/extract_warning_validity_records.py"
       - "scripts/materialize_locked_publication_inputs.py"
       - "scripts/replace_submission_figures.py"
       - "scripts/build_revised_publication_figures.py"
@@ -24,6 +27,8 @@ on:
       - "src/eco_genetic_warning_extensions/protocol002_publication_outputs.py"
       - "src/eco_genetic_warning_extensions/stage3_review_audit.py"
       - "src/eco_genetic_warning_extensions/stage3_trajectory_records.py"
+      - "src/eco_genetic_warning_extensions/warning_validity_audit.py"
+      - "src/eco_genetic_warning_extensions/precision_bounded_null.py"
       - "artifacts/protocol003/stage3_validation_summary.json"
       - "artifacts/locked_publication_inputs/**"
       - "artifacts/frontier_refinement/phase_b_summary.json"
@@ -37,6 +42,9 @@ on:
       - "artifacts/process_resolved_pollen/phase_s_locked_summary.json"
       - "artifacts/dynamic_partner_architecture/phase_t_locked_summary.json"
       - "artifacts/fresh_connectivity_replication/phase_u_locked_summary.json"
+      - "artifacts/warning_validity/**"
+      - "artifacts/precision_bounded_null/**"
+      - "artifacts/prepublication_review/**"
       - ".github/workflows/paper-completion-sprint.yml"
   pull_request:
     branches: [main]
@@ -141,6 +149,14 @@ jobs:
           test -f submission_bundle/tables/stage3_review_summary.csv
           test -f submission_bundle/tables/stage3_trajectory_endpoint_records.csv
           test -f submission_bundle/tables/inherited_h3_effect_summary.csv
+          test -f submission_bundle/tables/warning_validity_audit.json
+          test -f submission_bundle/tables/warning_validity_audit.csv
+          test -f submission_bundle/tables/warning_validity_trajectory_endpoint_records.csv
+          test -f submission_bundle/tables/precision_bounded_null_audit.json
+          test -f submission_bundle/provenance/warning_validity_source_manifest.json
+          test -f submission_bundle/provenance/precision_bounded_null_source_counts.json
+          test -f submission_bundle/provenance/PREPUBLICATION_REVIEW_AUDIT.md
+          test -f submission_bundle/provenance/eschscholzia_f_typo_sensitivity_stop.json
           grep -q '2,269' submission_bundle/manuscript/main_text.md
           grep -q 'incidence frontier' submission_bundle/manuscript/main_text.md
           grep -q '0.0205' submission_bundle/manuscript/main_text.md
@@ -151,7 +167,8 @@ jobs:
           grep -q '0.335' submission_bundle/manuscript/main_text.md
           grep -q '1,037' submission_bundle/manuscript/main_text.md
           grep -q 'Eco-genetic causal architecture and four-question hierarchy' submission_bundle/figures/figure1_eco_genetic_estimability.svg
-          grep -q 'Fragmentation creates vulnerability and genetic warning is conditionally possible' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
+          grep -q 'Fragmentation creates vulnerability; event-only warning ordering lacks discrimination' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
+          grep -q 'non-event firing 48/48' submission_bundle/figures/figure2_fragmentation_warning_bridge.svg
           grep -q 'historical loss-screen placement' submission_bundle/figures/figure3_source_loss_regimes.svg
           grep -q 'High-precision recurrent-turnover incidence frontier' submission_bundle/figures/figure4_r4_recovery.svg
           grep -q 'Historical m=.10 heterogeneity failed fresh-seed replication' submission_bundle/figures/figure5_connectivity_estimability.svg
@@ -199,6 +216,22 @@ jobs:
           assert phase_u['aggregate_artifact'] == 9486740313
           assert phase_u['artifact_digest'] == 'sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756'
 
+          warning=json.loads((bundle/'tables/warning_validity_audit.json').read_text())
+          for ensemble, non_events in [('inherited_202611', 48), ('fresh_202911', 49)]:
+              for endpoint in warning['ensembles'][ensemble]['endpoints'].values():
+                  assert endpoint['lead_sensitivity']['estimate'] == 1.0
+                  assert endpoint['non_event_false_positive_rate']['successes'] == non_events
+                  assert endpoint['non_event_false_positive_rate']['estimate'] == 1.0
+                  assert endpoint['full_horizon_classification']['specificity']['estimate'] == 0.0
+                  assert endpoint['full_horizon_classification']['binary_marker_auc'] == 0.5
+
+          precision=json.loads((bundle/'tables/precision_bounded_null_audit.json').read_text())
+          assert precision['claim_class'] == 'precision-bounded null; not equivalence'
+          for phase in precision['phases'].values():
+              for comparison in phase['paired_effect_95_ci'].values():
+                  lo, hi = comparison['paired_normal_95_ci']
+                  assert lo < 0 < hi
+
           for path in sorted((bundle / 'figures').glob('*.svg')) + sorted((bundle/'supplement').glob('*.svg')):
               text=path.read_text(encoding='utf-8')
               assert 'role="img"' in text, path
@@ -210,6 +243,8 @@ jobs:
               assert actual == expected, relative
           assert 'tables/high_precision_condition_map.json' in manifest['files']
           assert 'tables/phase_u_fresh_connectivity_replication.json' in manifest['files']
+          assert 'tables/warning_validity_audit.json' in manifest['files']
+          assert 'tables/precision_bounded_null_audit.json' in manifest['files']
           assert any(name.startswith('software/parent/') for name in manifest['files'])
           assert any(name.startswith('software/extension/') for name in manifest['files'])
           PY

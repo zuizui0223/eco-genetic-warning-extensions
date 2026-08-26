@@ -126,6 +126,16 @@ For a completed trajectory, categories are mutually exclusive at each endpoint:
 
 Source-preparation failure is retained separately in the full attempted denominator. A valid pair requires an eligible positive baseline, an observed warning crossing, and an observed post-baseline trait-loss time. Missing events are never assigned the final generation.
 
+### S8.1 Post-review full-denominator audit of the frozen symmetric benchmarks
+
+The full-denominator audit used only saved trajectories from the inherited parent benchmark (run `28500796310`, artifact `8003007618`) and the exact-domain fresh Phase-V benchmark (run `32636847803`, artifact `9492587604`). Thresholds, endpoints, seeds, domain, schedule and administrative horizon were unchanged. The population was every available baseline-eligible trajectory: 83 inherited and 82 fresh.
+
+For each of the six endpoints, event-conditional lead sensitivity is the fraction of loss trajectories whose first threshold crossing preceded functional loss. The non-event false-positive rate is the fraction of trajectories without observed loss by the common generation-120 horizon whose threshold crossed by that horizon. These non-events remain right-censored for event-time inference but are known controls for horizon-fixed classification. Full-horizon sensitivity, specificity, PPV, NPV and binary-marker AUC were calculated separately by endpoint and ensemble with two-sided Wilson intervals for binomial rates.
+
+Cumulative/dynamic binary classification was also fixed at generation 30 (the ramp end), 60 and 90. At each landmark, trajectories with loss at or before the landmark were removed from the risk set; cases were those with loss after the landmark and by generation 120, and controls were those event-free through generation 120. The predictor was whether the locked threshold had crossed by the landmark. Binary-marker AUC was `(sensitivity + specificity)/2`. No favourable landmark was selected.
+
+A continuous time-dependent AUC was not added because the locked endpoint family supplies binary first-passage rules rather than a preregistered continuous risk score measured at a common prediction time. Constructing a new continuous score from the stored diversity series after viewing results would create a new outcome-facing endpoint. The six endpoint rows from a trajectory are repeated measurements; no endpoint-pooled confidence interval or sample size treats them as independent replicates.
+
 ## S9. Post hoc secondary timing and uncertainty audit
 
 The manuscript-review audit is documented in `docs/PROTOCOL_003_SECONDARY_WARNING_AUDIT.md`. It uses only locked Stage III records from workflow run `29417632137`, artifacts `8343958766` and `8343922879`. It does not rerun trajectories or alter any domain or endpoint.

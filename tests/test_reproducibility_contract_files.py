@@ -38,7 +38,8 @@ def test_readme_reports_closed_condition_first_state() -> None:
     assert "fresh `m=0/.10` equal-rate p values were `.134/.745`" in lower
     assert "no robust portable connectivity heterogeneity effect is established" in lower
     assert "adaptive-rewiring gate remains closed" in lower
-    assert "warning remains conditional and portability bounded" in lower
+    assert "frozen relative thresholds are not validated predictors" in lower
+    assert "non-event false-positive rate was 1.0" in lower
     assert "active missing condition" not in lower
 
 

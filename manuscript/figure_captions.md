@@ -4,9 +4,9 @@
 
 Conceptual synthesis separating interaction-supported ecological function, population persistence, genetic state, functional loss and genetic-warning performance. The condition-first hierarchy asks whether function can exist, whether fragmentation can disrupt it, how the downstream loss process is characterised, and only then whether genetic change precedes loss and is portable. Historical R1–R4 labels are operational calibration-screen categories, not latent biological states or warning outcomes.
 
-## Figure 2. Fragmentation creates vulnerability and genetic warning is conditionally possible
+## Figure 2. Fragmentation creates vulnerability; event-only warning ordering lacks discrimination
 
-**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric warning benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed realised functional-loss pairs, whereas predeclared absolute thresholds produced both leads and lags. These are finite results under the declared parent closure and do not establish a universal warning rule.
+**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed losses, but every threshold also fired in all 48 non-event trajectories by the administrative horizon. Full-horizon specificity was zero and binary-marker AUC was 0.5. The panel therefore shows event-conditional ordering, not predictive warning validity.
 
 ## Figure 3. Recurrent state turnover reorganises source feasibility and historical loss-screen placement
 
@@ -24,9 +24,9 @@ Exact historical Phase-C/D master seeds were precision-expanded to 100 attempted
 
 **A**, full attempted-denominator warning availability, censoring and lead/tie/lag composition for the independently recalibrated symmetric and directional calibrated domains. **B**, cumulative observed warning and realised functional-loss incidence over each domain-specific administrative horizon. Endpoint rows share trajectories and are not independent biological replicates. The two domains differ in recurrent-transition, ecological and deterioration parameters; Stage III therefore tests bounded portability across calibrated eco-genetic domains and does **not** identify a single-factor effect of transition direction.
 
-## Supplementary Figure S3. Conditional positive lead-time diagnostic
+## Supplementary Figure S3. Event-conditional positive lead-time diagnostic
 
-Positive warning lead time is summarised only among trajectories in which both the warning endpoint and realised functional loss were observed and the warning preceded loss. This diagnostic is secondary to attempted-denominator warning availability and event incidence. Horizon-normalised direct between-domain bootstrap intervals include zero for all six endpoints.
+Positive warning lead time is summarised only among trajectories in which both the warning endpoint and realised functional loss were observed and the warning preceded loss. This selected diagnostic cannot measure specificity. In the frozen symmetric ensembles, the same relative thresholds fired in all right-censored non-event trajectories; full-denominator validity results are reported in Table S7. Horizon-normalised direct between-domain bootstrap intervals include zero for all six Protocol-003 endpoints.
 
 ## Caption rules retained for submission
 
@@ -36,6 +36,7 @@ Positive warning lead time is summarised only among trajectories in which both t
 - Describe `p_star` as an effective recurrent-transition equilibrium, not an empirical mutation-rate estimate.
 - Keep the original strict Protocol 002 15/15 no-domain outcome separate from later warning-blind refinement and precision validation.
 - Do not claim that R4 itself proves warning success.
+- Do not describe 35/35 or 33/33 event-conditional leads as predictive validation; report the 48/48 and 49/49 non-event firing counts beside them.
 - Describe the Phase-M `m=.10` heterogeneity as a historical seed-family observation that failed the one preregistered fresh Phase-U replication.
 - Do not describe Phase-E/M/U `migration_rate` as demographic, pollinator, pollen or seed movement or infer a universal threshold.
 - Do not describe interaction `kappa` as partner richness, connectance or network simplification.

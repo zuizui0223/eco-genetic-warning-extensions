@@ -1,0 +1,112 @@
+{
+  "analysis_input": "Counts transcribed from immutable high-replication aggregate artifacts; no simulation, condition, seed, or endpoint was changed.",
+  "phases": {
+    "phase_u_fresh_connectivity": {
+      "scope": "Fresh paired m=0 versus m=.10 allele-frequency-mixing replication",
+      "provenance": {
+        "workflow_run": 32615044162,
+        "artifact_id": 9486740313,
+        "artifact_digest": "sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756",
+        "raw_member": "phase_u_summary.json",
+        "raw_member_sha256": "43e66d20fb2fa945434e7e12b878cd614ae19dd1538abc3cfe876450d567e1a2"
+      },
+      "conditions": {
+        "m_0": {"events": 244, "eligible": 452},
+        "m_0.10": {"events": 249, "eligible": 452}
+      },
+      "paired_comparisons": {
+        "m_0.10_minus_m_0": {
+          "reference": "m_0",
+          "comparison": "m_0.10",
+          "comparable": 452,
+          "loss_to_no_loss": 49,
+          "no_loss_to_loss": 54,
+          "exact_mcnemar_p": 0.6936859650244837
+        }
+      }
+    },
+    "phase_n_partner_loss": {
+      "scope": "High-precision reduced-form partner-loss replay",
+      "provenance": {
+        "workflow_run": 32558466157,
+        "artifact_id": 9472148035,
+        "artifact_digest": "sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0",
+        "raw_member": "phase_n_summary.json",
+        "raw_member_sha256": "c951ee23e7e0c27173270655eed9f279c24b568f9acfc93a4e146e13a69d0925"
+      },
+      "conditions": {
+        "intact": {"events": 245, "eligible": 441},
+        "even_loss": {"events": 240, "eligible": 441},
+        "graded_loss": {"events": 249, "eligible": 441},
+        "dominant_loss": {"events": 242, "eligible": 441}
+      },
+      "paired_comparisons": {
+        "even_minus_intact": {
+          "reference": "intact",
+          "comparison": "even_loss",
+          "comparable": 441,
+          "loss_to_no_loss": 86,
+          "no_loss_to_loss": 81,
+          "exact_mcnemar_p": 0.757026167183961
+        },
+        "graded_minus_intact": {
+          "reference": "intact",
+          "comparison": "graded_loss",
+          "comparable": 441,
+          "loss_to_no_loss": 75,
+          "no_loss_to_loss": 79,
+          "exact_mcnemar_p": 0.8090726851888604
+        },
+        "dominant_minus_intact": {
+          "reference": "intact",
+          "comparison": "dominant_loss",
+          "comparable": 441,
+          "loss_to_no_loss": 67,
+          "no_loss_to_loss": 64,
+          "exact_mcnemar_p": 0.8613689310511555
+        }
+      }
+    },
+    "phase_t_dynamic_partner": {
+      "scope": "Matched-expected-support temporal partner-architecture test",
+      "provenance": {
+        "workflow_run": 32614486507,
+        "artifact_id": 9486577103,
+        "artifact_digest": "sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c",
+        "raw_member": "phase_t_summary.json",
+        "raw_member_sha256": "326f1ab82098ff5c3ed8c22174d856a9066db50a23d7964b5c7c862752e8b7ba"
+      },
+      "conditions": {
+        "constant_support_0.75": {"events": 240, "eligible": 441},
+        "even_dynamic": {"events": 242, "eligible": 441},
+        "dominant_dynamic": {"events": 244, "eligible": 441}
+      },
+      "paired_comparisons": {
+        "even_minus_constant": {
+          "reference": "constant_support_0.75",
+          "comparison": "even_dynamic",
+          "comparable": 441,
+          "loss_to_no_loss": 28,
+          "no_loss_to_loss": 30,
+          "exact_mcnemar_p": 0.8956832138895903
+        },
+        "dominant_minus_constant": {
+          "reference": "constant_support_0.75",
+          "comparison": "dominant_dynamic",
+          "comparable": 441,
+          "loss_to_no_loss": 47,
+          "no_loss_to_loss": 51,
+          "exact_mcnemar_p": 0.7620362195292433
+        },
+        "dominant_minus_even": {
+          "reference": "even_dynamic",
+          "comparison": "dominant_dynamic",
+          "comparable": 441,
+          "loss_to_no_loss": 22,
+          "no_loss_to_loss": 24,
+          "exact_mcnemar_p": 0.8829959121223965
+        }
+      }
+    }
+  }
+}

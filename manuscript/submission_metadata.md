@@ -4,8 +4,8 @@ This file separates fields already fixed by the manuscript/repository from field
 
 ## Manuscript identity
 
-- **Current manuscript title:** Eco-genetic conditions govern when genetic early warning of functional loss can be validated
-- **Running title:** Eco-genetic closure and warning
+- **Current manuscript title:** Joint state representation and empirical measurement gates define eco-genetic predictability
+- **Running title:** Future-relevant eco-genetic states
 - **Article type:** Letter
 - **Keywords:** early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss
 - **Corresponding author:** [name, complete postal address, telephone, email]
@@ -16,8 +16,8 @@ The title above is synchronized to `manuscript/main_text.md`; final author appro
 
 Repository-tokenizer counts for the Phase R/S/T-integrated manuscript are:
 
-- **Abstract:** 149 words
-- **Main text (Introduction through Limits):** 4,089 words
+- **Abstract:** 150 words
+- **Main text (Introduction through Limits):** 4,985 words
 - **References:** 21
 - **Main figures:** 6
 - **Main tables:** 0

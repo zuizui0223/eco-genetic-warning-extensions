@@ -6,7 +6,11 @@ Phase V prospectively tested whether the parent H2-R baseline-relative genetic-w
 
 **`strict_replication`**
 
-The preregistered strict criterion was met at all six endpoints.
+The preregistered event-pair criterion was met at all six endpoints. A later full-denominator audit supersedes its predictive interpretation but does not alter this historical protocol fact.
+
+## Post-review interpretation correction
+
+All six thresholds also fired in all 49 non-event trajectories in this ensemble; in the inherited ensemble they fired in all 48 non-events. Full-horizon specificity was therefore zero and binary-marker AUC was 0.5 in both ensembles. The allowed current claim is replicated **event-conditional ordering without event discrimination**, not validated predictive early warning. See `docs/PREPUBLICATION_REVIEW_AUDIT.md`.
 
 ## Denominators
 
@@ -32,7 +36,7 @@ The five fresh master-seed blocks contributed `7, 7, 7, 7, 5` valid pairs at eve
 
 The original parent benchmark contained 35/35 leads at all six relative endpoints. Phase V independently recovered the same ordering pattern as 33/33 leads at all six endpoints in fresh unused seeds.
 
-The appropriate claim is therefore strengthened from:
+The original protocol-level claim was strengthened from:
 
 > baseline-relative genetic erosion can precede functional loss in one finite calibrated benchmark
 
@@ -40,7 +44,7 @@ to:
 
 > **within the frozen symmetric H2-R domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% strictly replicated as leading realised functional-trait loss across two independent seed ensembles.**
 
-This is a within-domain replication, not a universal genetic-warning law.
+This remains a historical statement about event-conditional ordering. The post-review full-denominator audit withdraws the predictive-validity reading.
 
 ## Why this matters for the natural-state programme
 

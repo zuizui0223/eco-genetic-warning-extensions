@@ -1,8 +1,8 @@
-# Eco-genetic conditions govern when genetic early warning of functional loss can be validated
+# Joint state representation and empirical measurement gates define eco-genetic predictability
 
 ## Abstract
 
-Habitat fragmentation can leave populations present while interaction-dependent function weakens. We asked when genetic change can reproducibly precede realised functional loss. In a finite multipatch model, fragmentation reduced interaction, local effective size and high-trait mass before demographic disappearance. Warning-blind calibration recovered a loss-incidence frontier, while a historical allele-mixing heterogeneity signal failed fresh replication and process-resolved portability tests. Complete present-state equality was future-sufficient under the declared Markov closure, but coarse ecological and genetic summaries were not transition-sufficient. Within one frozen loss-generating state, all six baseline-relative `H_alpha/H_gamma` warnings led loss in both the original 35/35 and fresh 33/33 valid pairs. Natural-data tests showed both residual-context redundancy and candidate-state insufficiency across endpoints. These results support state-defined reproducibility: warning should be evaluated within a future-relevant eco-genetic state, not inferred from habitat labels, connectivity scalars or genetic statistics alone.
+Ecological forecasts depend on whether measured summaries preserve the state governing what happens next. In a finite multipatch model, we constructed two states with identical census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma` and `F_ST` but opposite patchwise cross-layer alignment. Their next interaction transition differed by 0.2543, establishing that coarse marginals were not transition-sufficient; a fixed 500-pair campaign did not establish a directional long-horizon risk effect. Natural-data tests then separated informative partial states, missing process coordinates, inadequate proxies and representations that erased mechanistic weighting. A post-review audit also revised the genetic-warning claim: six relative-diversity thresholds led every observed loss in two frozen ensembles (35/35 and 33/33), but fired in every non-event trajectory (48/48 and 49/49), yielding zero full-horizon specificity and AUC 0.5. Thus warning ordering was conditional but not discriminative. Future-relevant state inference requires joint representation and an empirical measurement/representation gate before origin or precursor claims.
 
 ## Introduction
 
@@ -83,7 +83,9 @@ To test whether commonly reported coarse summaries could substitute for that com
 
 A separate trait-loss-only calibration fixed one symmetric deterioration domain before warning values were evaluated. Relative warnings were first post-baseline generations at which `H_alpha` or `H_gamma` declined 5%, 10% or 20% from their own baselines. Non-events remained right-censored. Predeclared absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` were audited on the same stored trajectories.
 
-The strongest relative-warning result was then prospectively replicated without recalibration in one independent five-seed ensemble (`20291110–20291114`, 20 attempts per seed). The frozen domain retained mutation `0.10`, `A_ref=.8`, interaction feedback `6.0`, a 30-generation ramp plus 90-generation hold and total normalised barrier increase `.15`. The six endpoint definitions were unchanged. Strict replication required at least 20 valid warning/loss pairs at every endpoint and every valid pair to be a lead with zero ties and zero lags.
+The strongest relative-warning ordering was then prospectively replicated without recalibration in one independent five-seed ensemble (`20291110–20291114`, 20 attempts per seed). The frozen domain retained mutation `0.10`, `A_ref=.8`, interaction feedback `6.0`, a 30-generation ramp plus 90-generation hold and total normalised barrier increase `.15`. The six endpoint definitions were unchanged. The original strict-replication rule required at least 20 valid warning/loss pairs at every endpoint and every valid pair to be a lead with zero ties and zero lags.
+
+A post-review audit restored all baseline-eligible trajectories without changing endpoints. It reports lead sensitivity, non-event firing, horizon classification and binary-marker performance at generations 30/60/90. Endpoints sharing a trajectory are repeated measurements. Continuous AUC was not introduced because the locked rules lack a common-time continuous score.
 
 Protocol 003 separately recalibrated two evaluable domains. They differ in recurrent-transition, ecological and deterioration parameters, so their fresh-seed contrast is bounded portability evidence and not a single-factor effect of transition direction. Secondary uncertainty analyses resample whole attempted trajectories rather than endpoint rows (Field & Welsh 2007).
 
@@ -123,7 +125,7 @@ Exact seed-family replays then recovered a high-to-low incidence frontier. Poole
 
 In the historical seed family, pooled loss remained near 0.54–0.56 across `m=0,.025,.05,.10,.20`. Only `m=.10` showed excess equal-rate heterogeneity (`p=0.0205`); `m=.20` returned to homogeneous behaviour. Paired McNemar tests versus isolation were non-significant at every nonzero level.
 
-The independent fresh Phase-U ensemble changed the interpretation of that result. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=0.134` for `m=0` and `p=0.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=0.694`.
+The independent fresh Phase-U ensemble changed the interpretation of that result. Pooled loss was 0.540 at `m=0` and 0.551 at `m=.10`. Both fresh conditions were compatible with common block rates: `p=0.134` for `m=0` and `p=0.745` for `m=.10`. Across 452 comparable trajectories, 49 switched loss→no-loss and 54 no-loss→loss; exact McNemar `p=0.694`, and the paired risk difference was `+0.0111` with 95% CI `[-0.0330,0.0551]`. This is a precision-bounded null, not equivalence.
 
 The preregistered decision was **`historical_m010_heterogeneity_not_freshly_replicated`**. The `p=0.0205` result remains a valid historical seed-family observation, but it is not supported as an independently reproducible `m=.10` heterogeneity effect (Figure 5). **The defensible conclusion is therefore not that `m=.10` is a reproducible heterogeneity threshold.**
 
@@ -137,9 +139,9 @@ Thus the historical allele-mixing heterogeneity observation was absent under bot
 
 At `kappa=3.0,4.5,6.0`, pooled loss was 0.499, 0.573 and 0.598; all three conditions remained inside the historical intermediate-incidence screen and equal-rate diagnostics were non-significant (`p=.063,.623,.543`).
 
-For reduced-form partner loss, pooled loss was 0.556, 0.544, 0.565 and 0.549 for intact, even, graded and dominant conditions. Equal-rate and paired marginal-risk tests were non-significant despite many trajectory-status switches.
+For reduced-form partner loss, pooled loss was 0.556, 0.544, 0.565 and 0.549 for intact, even, graded and dominant conditions. Paired risk differences relative to intact were `-0.0113 [-0.0688,0.0462]`, `+0.0091 [-0.0461,0.0643]` and `-0.0068 [-0.0577,0.0441]` for even, graded and dominant loss. These are precision-bounded nulls, not equivalence results.
 
-The temporal-partner test increased realised support variance from 0 to 0.04684 to 0.09702 while expected support remained approximately 0.75. Pooled loss was 0.5442, 0.5488 and 0.5533; equal-rate `p=.488,.299,.208`, and paired McNemar `p=.896,.762,.883`. Because no matched-support dynamic-network effect was detected, the preregistered adaptive-rewiring gate remained closed.
+The temporal-partner test increased realised support variance from 0 to 0.04684 to 0.09702 while expected support remained approximately 0.75. Pooled loss was 0.5442, 0.5488 and 0.5533. Paired risk differences were `+0.0045 [-0.0293,0.0384]` for even minus constant, `+0.0091 [-0.0350,0.0531]` for dominant minus constant and `+0.0045 [-0.0256,0.0347]` for dominant minus even. Because the fixed trial detected no matched-support effect and did not establish equivalence, the preregistered adaptive-rewiring gate remained closed.
 
 ### Coarse state equality did not guarantee the same next transition
 
@@ -147,17 +149,17 @@ The aligned and anti-aligned states had identical declared coarse marginal signa
 
 The long-horizon result was deliberately weaker. Across 500 paired trajectories, realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`). There were 92 aligned-loss/anti-no-loss switches and 114 aligned-no-loss/anti-loss switches; exact McNemar `p=.143`. The fixed campaign therefore established a **representation boundary**, not a detected directional long-term loss-incidence effect of alignment.
 
-### Genetic erosion could precede functional loss, but not by a universal threshold
+### Relative diversity thresholds ordered observed losses but did not discriminate events
 
-Only after warning-blind loss calibration did we inspect genetic warning. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available and 35 reached realised functional-trait loss. For each of six baseline-relative `H_alpha`/`H_gamma` endpoints, all 35 valid same-trajectory pairs had genetic erosion before functional loss. Fixed absolute thresholds were not robust: `H_alpha <= 0.20` produced 14 leads and six lags among 20 valid pairs, while `H_gamma <= 0.20` produced eight leads and eight lags among 16 (Figure 2).
+Only after warning-blind loss calibration did we inspect genetic warning. In the inherited symmetric benchmark, 83 of 100 attempted trajectories were available and 35 reached realised functional-trait loss. For each of six baseline-relative `H_alpha`/`H_gamma` endpoints, all 35 event trajectories crossed before loss. However, every endpoint also crossed in all 48 non-event trajectories by the common administrative horizon.
 
-The independent fixed-domain fresh-warning replication attempted 100 trajectories, retained 82 available trajectories and observed 33 realised functional losses. At **all six** predeclared relative endpoints, all 33 valid warning/loss pairs were leads, with zero ties and zero lags. The five seed blocks contributed `7,7,7,7,5` valid pairs at every endpoint, and the exact one-sided binomial `p` versus a 0.5 lead probability was `1.1641532182693481e-10` per endpoint. The preregistered decision was **`strict_replication`**.
+The independent fixed-domain fresh-warning replication attempted 100 trajectories, retained 82 available trajectories and observed 33 realised functional losses. At all six endpoints, all 33 event trajectories crossed before loss, while all 49 non-event trajectories also crossed by the horizon. The historical preregistered decision **`strict_replication`** is retained as a protocol fact about valid-pair ordering, not as a current predictive-validity classification.
 
-The supported C3 statement is therefore within-state: baseline-relative genetic erosion strictly replicated as leading functional loss across two independent seed ensembles under the same frozen H2-R loss-generating state. It is not a universal percentage threshold.
+For every endpoint in both ensembles, full-horizon sensitivity and false-positive rate were 1.0, specificity was 0 and binary-marker AUC was 0.5. PPV equalled event prevalence (0.422 and 0.402); NPV was undefined. Fixed ramp-end AUC ranged `0.500–0.538` and `0.500–0.510`. Thus the result is **replicated event-conditional ordering without discrimination**, not validated predictive early warning.
 
 ### Warning behaviour was not fully portable across calibrated domains
 
-Protocol 003 attempted 100 fresh trajectories in each separately calibrated domain. Valid-pair availability across the six endpoints was 0.540 in the recalibrated symmetric domain and 0.335 in the directional calibrated domain. The two domains contained 323/1/0 versus 184/5/12 lead/tie/lag comparisons. **All six horizon-normalised direct bootstrap contrasts included zero.** The domains also differ in ecological parameters and deterioration schedules, so this is bounded non-portability across calibrated eco-genetic domains, not a single-factor effect of transition direction (Figure 6).
+Protocol 003 attempted 100 trajectories per separately calibrated domain. Valid-pair availability was 0.540 versus 0.335, with 323/1/0 versus 184/5/12 lead/tie/lag comparisons; all six horizon-normalised direct contrasts included zero. Because ecological parameters and schedules also differ, this is bounded portability rather than a direction-only effect (Figure 6).
 
 ### Upstream geography did not improve held-out prediction after the measured ecological partial state
 
@@ -180,6 +182,8 @@ This is a mating-state result, not a direct functional-loss result. Higher corre
 ### A plausible pollinator proxy did not earn general state status in *Eschscholzia*
 
 The *Eschscholzia californica* multi-process analysis first passed a schema-only synchronization gate, but the preregistered F endpoint was subsequently closed by its exact metadata-consistency rule: array `1||3` was encoded as `Fallow ground` in the pollinator source and `Fallow graound` in the seed-function source. Because post hoc typo repair was prohibited, `F_seed` was classified `not_identifiable_for_endpoint` and the overall primary decision was **`multi_endpoint_not_identifiable`**.
+
+The primary lock is permanent. A prospective F-only sensitivity permitted only the declared correction at `1||3`, but metadata preflight found the same mismatch at `1||4` and triggered `stop_pre_model_unexpected_second_metadata_mismatch`. No F model or bootstrap ran, and no secondary estimate exists.
 
 The independently estimable mating and pollen-movement endpoints provided a measurement boundary. For 457 progeny across 16 arrays, adding pan-trap `log1p(count) + mean ITD` changed held-out negative log likelihood from `0.387347` to `0.383796`; the array-bootstrap gain was `0.003551`, 95% CI `[-0.006385,0.013203]`, so `G_mating` was `process_state_not_predictively_supported`. Adding Habitat after that proxy gave gain `-0.002049 [-0.006579,0.001205]`. Adding the preregistered `R_auto` coordinate to G gave `0.001699 [-0.004095,0.007596]`.
 
@@ -209,19 +213,19 @@ The combined connectivity programme gives a clearer negative boundary than the h
 
 The cross-layer audit adds a second representation warning. Even when census, allele and interaction marginals, standard diversity statistics and realised trait state match, their patchwise alignment can change the exact next transition. Yet the same contrast did not establish a directional long-term loss-incidence effect under the single fixed schedule. The practical implication is narrow but important: **spatial co-location can be state information even when it is not itself a universal risk axis**.
 
-### Negative network tests delimit the model rather than the ecology
+### Precision-bounded negative tests delimit the model rather than the ecology
 
-The aggregate-feedback, reduced-form partner-loss and matched-support temporal-partner campaigns all returned bounded negative population-level results. These nulls do not show that ecological networks are dynamically irrelevant. Rather, the tested scalar feedback range, one-partner reductions and temporal support variance/concentration were insufficient to create a robust change in functional-loss incidence or between-block heterogeneity under their declared closures.
+The aggregate-feedback, reduced-form partner-loss and matched-support temporal-partner campaigns all returned precision-bounded negative population-level results. Their paired effect intervals include zero but still permit differences of several percentage points; they are not equivalence tests and do not show that ecological networks are dynamically irrelevant. Rather, the fixed trials did not detect robust changes in functional-loss incidence or between-block heterogeneity under their declared closures.
 
 Real networks add partner abundance dynamics, topology, coextinction, trait constraints, spatial movement and adaptive rewiring. Experimental and synthetic studies show that compensation is context dependent (Brosi & Briggs 2013; Timóteo et al. 2016; Brosi et al. 2017; Leimberger et al. 2023; Ward et al. 2026). Because the matched-support temporal test did not establish a dynamic-network effect to decompose, rewiring remains closed rather than being tuned to rescue a preferred result.
 
-### Reproducibility belongs to a loss-generating state
+### Event-only warning validation failed the full-denominator test
 
-The fresh warning replication changes the interpretation of conditionality. The result is no longer only that baseline-relative genetic erosion *can* precede functional loss. Within one frozen symmetric H2-R state, the same six relative-warning orderings were recovered as 35/35 leads in the inherited benchmark and 33/33 leads in an independent fresh-seed ensemble.
+The two frozen symmetric H2-R ensembles reproduced the same six event-conditional orderings as 35/35 and 33/33 leads. The full-denominator audit changed their interpretation: the same rules fired in 48/48 and 49/49 non-events, so selection on valid warning/loss pairs hid complete loss of specificity.
 
-Conditionality is therefore not merely a limitation. It identifies the domain in which the positive warning result is reproducible. At the same time, fixed absolute thresholds produced both leads and lags, and warning behaviour was not fully portable across separately calibrated domains. The supported ordering is:
+The warning result is therefore a supporting boundary, not a positive headline. Loss-process calibration remains necessary to define an endpoint population, but it is not sufficient to validate a predictor. The supported ordering is:
 
-`loss-generating state -> warning evaluability -> within-state replication -> cross-state portability test`.
+`future-relevant state -> full-denominator warning validation -> only then portability`.
 
 A genetic statistic should not be asked to carry information that belongs to an unmeasured ecological state.
 
@@ -237,19 +241,19 @@ The *Campanula* result adds a distinct analysis-layer boundary. Independent per-
 
 The empirical sequence is therefore **measurement adequacy -> representation/information preservation -> residual origin/history test**. These results are not demonstrations that geography, urbanisation or habitat context is irrelevant. Their common claim is narrower: upstream descriptors may become redundant after an informative preserved state, missing process coordinates may retain residual information, and neither plausible proxies nor mechanistically motivated measurements should be granted state status unless their endpoint-relevant information survives the analysis pipeline.
 
-Natural examples also show what remains outside these partial states. Low-density urban *Crepis sancta* can show reduced visitation and seed set despite nonzero wider movement; Miyake-jima *Camellia japonica* can retain pollination through broadened partner and pollen movement; *Conospermum undulatum* shows why standing adult genetics can lag the contemporary mating landscape; and *Spondias purpurea* links reduced visitation, contracted pollen flow, lower reproductive function and stronger seed/juvenile genetic deterioration within one near-synchronised fragmentation comparison (Cristóbal-Pérez et al. 2021). These mechanisms motivate an empirical search basis containing demographic support, effective interactions, trait matching, process-specific movement, compensation, cohort-specific genetics, ecological memory and cross-layer spatial alignment.
+Mechanistic anchors expose missing coordinates: *Crepis sancta* shows uncompensated interaction loss; Miyake-jima *Camellia japonica* retains partner and pollen movement; *Conospermum undulatum* exposes cohort lag; and *Spondias purpurea* links interaction, pollen flow, function and genetics. They motivate movement, memory and cross-layer spatial alignment.
 
 The cross-system hypothesis is therefore not that cities behave like islands. It is that **different fragmentation routes belong to the same operational functional-fragmentation regime only if a measured future-relevant state makes their origin or history dispensable for predicting what function happens next**. A residual origin effect is evidence to search for a missing process, cohort, alignment term or ecological memory variable—not evidence that the habitat label itself is the mechanistic state.
 
 ### Limits
 
-The model is finite and its numerical coordinates are not transferable ecological thresholds. Failure to detect block heterogeneity is not a theorem of universal homogeneity. Phase U is one preregistered independent replication of the upstream loss-process contrast, so its non-replication limits the historical connectivity claim but does not prove that no other seed family could ever show heterogeneity.
+Model coordinates are finite, not transferable ecological thresholds. Undetected block heterogeneity does not establish homogeneity. Phase U is one preregistered independent replication of the upstream loss-process contrast, so its non-replication limits the historical connectivity claim but does not prove that no other seed family could ever show heterogeneity.
 
 The process-resolved movement closures are partial. Whole-individual dispersal does not preserve explicit migrant genotype–trait covariance because the parent representation stores those objects separately. The pollen closure represents paternal gamete origin but not flowers, selfing, incompatibility, pollen limitation, carryover or pollinator behaviour. The partner closure represents stochastic availability rather than a full multispecies dynamic network.
 
 The alignment campaign establishes transition-level insufficiency of coarse marginals but not a detected directional long-term loss-incidence effect. The Honshu–Izu and Zurich analyses are ecological partial-state tests: neither synchronizes the full candidate `D/I/T/C/R/G_by_cohort/M/A` state, and absence of residual context does not prove state completeness. *Oenothera* evaluates a mating-state endpoint rather than direct ecological function, so its residual-isolation result does not establish a functional-loss effect. In *Eschscholzia*, the primary F endpoint remained non-identifiable under the preregistered metadata gate; pan traps are availability proxies rather than direct visitation, and failure of their count/ITD state to improve G/C prediction does not imply that pollinators are biologically irrelevant. In *Campanula*, none of the preregistered interaction representations earned held-out predictive adequacy for pollen limitation, and equality of phase/effective models resulted from feature-wise scaling of constant-rescaled predictors; the response-firewalled diagnostic does not authorize rerunning the same outcome with alternative scaling or aggregation. Conversely, a future dataset in which context improves prediction after a demonstrably informative and information-preserving process state would identify a missing state coordinate rather than contradict the condition-first framework.
 
-Within-state warning replication does not establish a universal relative or absolute threshold and does not imply portability across eco-genetic states. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. The condition-recovery, movement, partner and Phase U **fresh-replication campaigns withheld warning outcomes**; the separate fixed-domain fresh-warning replication is the campaign that inspected warning ordering. Finite-horizon non-events remain right-censored.
+The frozen relative thresholds do not currently support predictive early-warning validity: all six fired in every non-event trajectory in both symmetric ensembles, giving full-horizon specificity 0 and binary-marker AUC 0.5. Non-events remain right-censored for event-time inference but are known event-free controls at the common horizon. Protocol 003 compares non-matched calibrated domains, so its contrast cannot identify a direction-only causal effect. The condition-recovery, movement, partner and Phase U **fresh-replication campaigns withheld warning outcomes**; the separate fixed-domain fresh-warning replication is the campaign that inspected warning ordering.
 
 ## Data and code availability
 

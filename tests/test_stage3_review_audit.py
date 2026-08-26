@@ -72,14 +72,14 @@ def test_manuscript_discloses_identification_boundary_and_uncertainty() -> None:
         assert phrase not in lower
 
     required = (
-        "portability across calibrated eco-genetic domains",
+        "separately calibrated domain",
         "0.540",
         "0.335",
         "valid-pair availability",
-        "all six horizon-normalised direct bootstrap contrasts included zero",
-        "the domains also differ in ecological parameters and deterioration schedules",
-        "not a single-factor effect of transition direction",
-        "protocol 003 attempted 100 fresh trajectories",
+        "all six horizon-normalised direct contrasts included zero",
+        "ecological parameters and schedules also differ",
+        "bounded portability rather than a direction-only effect",
+        "protocol 003 attempted 100 trajectories",
     )
     for phrase in required:
         assert phrase in lower or phrase in text
@@ -92,5 +92,5 @@ def test_publication_metadata_preserves_conditional_timing_as_secondary() -> Non
     assert "conditional positive lead-time" in allocation
     assert "positive warning lead time" in captions or "positive lead time" in captions
     assert "valid-pair availability" in manuscript
-    assert "horizon-normalised direct bootstrap contrasts" in manuscript
+    assert "horizon-normalised direct contrasts" in manuscript
     assert "conditional uncertainty" not in manuscript

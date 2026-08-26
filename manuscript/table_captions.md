@@ -24,6 +24,10 @@ For each Stage III endpoint and calibrated domain: full attempted denominator, c
 
 High-replicate seed-block and pooled realised functional-loss rates for the recurrent-transition frontier, the historical Phase-M migration sweep, and the preregistered Phase-U fresh `m=0/.10` replication. The table retains the historical Phase-M `m=.10` equal-rate observation (`p=.0205`) but places it alongside the fresh Phase-U result (`p=.745` at `m=.10`), where the heterogeneity did not reproduce. Paired `loss→no loss` / `no loss→loss` switches and exact McNemar results are retained for both historical and fresh connectivity comparisons. Warning and diversity outcomes were unavailable during these condition analyses. `migration_rate` is allele-frequency mixing only and is not interpreted as demographic, pollinator, pollen or seed movement.
 
+## Table S7. Full-denominator warning-validity audit
+
+For each frozen symmetric ensemble and each of the six unchanged relative-diversity endpoints: all baseline-eligible trajectories, event-conditional lead sensitivity, non-event false-positive rate, full-horizon PPV/NPV/specificity/binary-marker AUC, and fixed-landmark cumulative/dynamic binary-marker performance. Non-events are right-censored for event-time claims but known event-free through the common administrative horizon. The six endpoint rows from one trajectory are repeated measurements and are not pooled as independent replicates.
+
 ## Numbering rule
 
-The Letter uses Figures 1–6 as its six main display items and has no main-text tables or text boxes. All tabular syntheses are supplementary and numbered Tables S1–S6. Any additional diagnostic table must be numbered from Table S7 onward and cited explicitly in the Supplement before inclusion in the submission bundle.
+The Letter uses Figures 1–6 as its six main display items and has no main-text tables or text boxes. Existing tabular syntheses are Tables S1–S6; the post-review full-denominator warning audit is Table S7. Any additional diagnostic table must be numbered from Table S8 onward and cited explicitly in the Supplement before inclusion in the submission bundle.

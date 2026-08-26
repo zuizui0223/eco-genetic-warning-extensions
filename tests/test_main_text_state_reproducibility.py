@@ -4,11 +4,15 @@ ROOT = Path(__file__).resolve().parents[1]
 TEXT = (ROOT / "manuscript" / "main_text.md").read_text(encoding="utf-8")
 
 
-def test_main_text_contains_within_state_warning_replication() -> None:
-    assert "35/35 leads" in TEXT
-    assert "33/33 leads" in TEXT
+def test_main_text_contains_full_denominator_warning_correction() -> None:
+    assert "all 35 event trajectories crossed before loss" in TEXT
+    assert "all 33 event trajectories crossed before loss" in TEXT
+    assert "all 48 non-event trajectories" in TEXT
+    assert "all 49 non-event trajectories" in TEXT
     assert "strict_replication" in TEXT
-    assert "Reproducibility belongs to a loss-generating state" in TEXT
+    assert "specificity was 0" in TEXT
+    assert "binary-marker AUC was 0.5" in TEXT
+    assert "not validated predictive early warning" in TEXT
 
 
 def test_main_text_contains_direct_natural_residual_origin_results() -> None:

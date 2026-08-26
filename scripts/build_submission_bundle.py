@@ -17,6 +17,15 @@ from eco_genetic_warning_extensions.stage3_review_audit import (
     load_records as load_stage3_records,
     write_outputs as write_stage3_review_outputs,
 )
+from eco_genetic_warning_extensions.precision_bounded_null import (
+    audit as precision_bounded_null_audit,
+    write_output as write_precision_bounded_null_output,
+)
+from eco_genetic_warning_extensions.warning_validity_audit import (
+    audit as warning_validity_audit,
+    load_records as load_warning_validity_records,
+    write_audit_outputs as write_warning_validity_outputs,
+)
 
 
 def _figure1(path: Path) -> None:
@@ -173,6 +182,42 @@ def main() -> int:
     if difference_csv.read_bytes() != committed_difference_csv.read_bytes():
         raise RuntimeError('generated Stage III difference bootstrap differs from committed publication summary')
 
+    warning_records = root / 'artifacts/warning_validity/trajectory_endpoint_records.csv'
+    warning_manifest_path = root / 'artifacts/warning_validity/source_manifest.json'
+    warning_manifest = json.loads(warning_manifest_path.read_text(encoding='utf-8'))
+    expected_warning_sha = warning_manifest['record_table']['sha256']
+    observed_warning_sha = hashlib.sha256(warning_records.read_bytes()).hexdigest()
+    if observed_warning_sha != expected_warning_sha:
+        raise RuntimeError('warning-validity record checksum differs from its source manifest')
+    warning_result = warning_validity_audit(load_warning_validity_records(warning_records))
+    warning_json = out / 'tables/warning_validity_audit.json'
+    warning_csv = out / 'tables/warning_validity_audit.csv'
+    write_warning_validity_outputs(warning_result, warning_json, warning_csv)
+    if warning_json.read_bytes() != (root / 'artifacts/prepublication_review/warning_validity_audit.json').read_bytes():
+        raise RuntimeError('generated warning-validity audit differs from committed review artifact')
+    if warning_csv.read_bytes() != (root / 'manuscript/tables/warning_validity_audit.csv').read_bytes():
+        raise RuntimeError('generated warning-validity table differs from committed publication table')
+    shutil.copy2(warning_records, out / 'tables/warning_validity_trajectory_endpoint_records.csv')
+    (out / 'provenance').mkdir(parents=True, exist_ok=True)
+    shutil.copy2(warning_manifest_path, out / 'provenance/warning_validity_source_manifest.json')
+
+    precision_source = json.loads(
+        (root / 'artifacts/precision_bounded_null/source_counts.json').read_text(encoding='utf-8')
+    )
+    precision_result = precision_bounded_null_audit(precision_source)
+    precision_json = out / 'tables/precision_bounded_null_audit.json'
+    write_precision_bounded_null_output(precision_result, precision_json)
+    if precision_json.read_bytes() != (root / 'artifacts/prepublication_review/precision_bounded_null_audit.json').read_bytes():
+        raise RuntimeError('generated precision-bounded-null audit differs from committed review artifact')
+    shutil.copy2(
+        root / 'artifacts/precision_bounded_null/source_counts.json',
+        out / 'provenance/precision_bounded_null_source_counts.json',
+    )
+    shutil.copy2(
+        root / 'docs/PREPUBLICATION_REVIEW_AUDIT.md',
+        out / 'provenance/PREPUBLICATION_REVIEW_AUDIT.md',
+    )
+
     _figure1(out / 'figures/figure1_eco_genetic_closure.svg')
     _regenerate_publication_figures(stage1, stage2, audit_path, out)
     _copy_h3_gradient(h3_gradient, out)
@@ -181,9 +226,15 @@ def main() -> int:
         'main_text.md', 'references.md', 'figure_captions.md', 'figure_accessibility_review.md',
         'table_captions.md', 'supplementary_methods.md', 'submission_metadata.md',
         'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md',
+        'main_story_revision.md', 'empirical_eschscholzia_f_typo_sensitivity_preregistration.md',
+        'empirical_eschscholzia_f_typo_sensitivity_stop.md',
     )
     for name in manuscript_files:
         shutil.copy2(root / 'manuscript' / name, out / 'manuscript')
+    shutil.copy2(
+        root / 'artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json',
+        out / 'provenance/eschscholzia_f_typo_sensitivity_stop.json',
+    )
 
     manifest = {'files': {}}
     for file in sorted(p for p in out.rglob('*') if p.is_file()):

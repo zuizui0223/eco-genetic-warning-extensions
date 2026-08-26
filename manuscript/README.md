@@ -1,6 +1,6 @@
 # Manuscript workspace
 
-**Working title:** *Eco-genetic conditions govern when genetic early warning of functional loss can be validated*
+**Working title:** *Joint state representation and empirical measurement gates define eco-genetic predictability*
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
@@ -26,7 +26,7 @@ E1  ask in nature whether different fragmentation mechanisms converge after
     conditioning on the same future-relevant measured ecological state
 ```
 
-The central contribution is no longer a particular migration threshold or historical R1–R4 label. It is the **ordering and state definition**: genetic warning is a conditional downstream property of a loss-generating eco-genetic state.
+The central contribution is the **state and measurement definition**: common marginals can omit transition-relevant joint structure, and candidate empirical states must demonstrate endpoint relevance without having their mechanistic information erased by the analysis representation.
 
 ## Current evidence
 
@@ -34,10 +34,10 @@ The central contribution is no longer a particular migration threshold or histor
 - **C2a — recurrent turnover:** recurrent-transition coordinates alter source feasibility and define a high-to-low functional-loss incidence frontier. High-precision frontier conditions do not show detectable excess block heterogeneity.
 - **C2b — historical screen correction:** R1–R4 remain protocol labels, not latent biological regimes. Low-replicate R3/R4 calls cannot establish heterogeneity by themselves.
 - **C2c — connectivity representation boundary:** the historical allele-only `m=.10` heterogeneity observation failed one preregistered fresh-seed replication (Phase U) and did not port to whole-individual dispersal (Phase R) or pollen-only gene flow (Phase S). No robust portable connectivity-heterogeneity effect is established.
-- **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced bounded negative population-level results. Adaptive rewiring remains closed because its prospective opening condition was not met.
+- **C2d — interaction / partner boundary:** the predeclared aggregate-feedback range and reduced-form / temporal partner perturbations produced precision-bounded nulls, not equivalence results. Adaptive rewiring remains closed because its prospective opening condition was not met.
 - **C2e — state sufficiency:** under the declared parent Markov closure, complete present-state equality is future-sufficient, but common coarse summaries are not. A constructive two-patch counterexample preserves census, interaction and allele marginals/means, `H_alpha`, `H_gamma`, `F_ST` and realised trait state while changing patchwise interaction–genetic alignment; the next interaction field changes.
-- **C3 — within-state warning replication:** the inherited frozen H2-R benchmark had 35/35 leads at all six baseline-relative `H_alpha/H_gamma × 5/10/20%` endpoints, and one independent preregistered fresh-seed ensemble strictly replicated the ordering with 33/33 leads, 0 ties and 0 lags at every endpoint. Fixed absolute thresholds remain non-robust; this is within-domain replication, not a universal threshold.
-- **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment. Within-state replication therefore does not imply cross-state portability.
+- **C3 — full-denominator warning failure:** the inherited/fresh frozen H2-R benchmarks retained 35/35 and 33/33 event-conditional leads, but the same six thresholds fired in 48/48 and 49/49 non-events. Full-horizon specificity was zero and binary-marker AUC was 0.5; predictive early-warning validity is not supported.
+- **C4 — bounded portability:** independently calibrated domains differ in warning availability/order, but the comparison is not a matched single-factor causal experiment. This remains a supporting boundary after the within-state predictive claim failed.
 
 ## Empirical extension: find the state in nature
 

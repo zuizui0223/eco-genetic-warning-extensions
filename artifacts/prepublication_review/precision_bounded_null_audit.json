@@ -1,0 +1,232 @@
+{
+  "analysis": "precision bounds for selected bounded-negative results",
+  "claim_class": "precision-bounded null; not equivalence",
+  "methods": {
+    "condition_risk": "two-sided 95% Wilson interval on the observed eligible trajectory denominator",
+    "interpretation": "Failure to detect a difference does not establish equivalence. The confidence interval states which paired marginal-risk differences remain compatible with the fixed trials.",
+    "paired_effect": "comparison-minus-reference paired risk difference with a two-sided 95% normal interval from whole-trajectory {-1,0,+1} differences"
+  },
+  "phases": {
+    "phase_n_partner_loss": {
+      "condition_risk_95_ci": {
+        "dominant_loss": {
+          "eligible": 441,
+          "events": 242,
+          "risk": 0.5487528344671202,
+          "wilson_95_ci": [
+            0.5020874319937878,
+            0.5945762200722675
+          ]
+        },
+        "even_loss": {
+          "eligible": 441,
+          "events": 240,
+          "risk": 0.54421768707483,
+          "wilson_95_ci": [
+            0.4975524370315417,
+            0.5901192474004618
+          ]
+        },
+        "graded_loss": {
+          "eligible": 441,
+          "events": 249,
+          "risk": 0.564625850340136,
+          "wilson_95_ci": [
+            0.5179902576867599,
+            0.610145281098476
+          ]
+        },
+        "intact": {
+          "eligible": 441,
+          "events": 245,
+          "risk": 0.5555555555555556,
+          "wilson_95_ci": [
+            0.5088971350234214,
+            0.6012544684937114
+          ]
+        }
+      },
+      "paired_effect_95_ci": {
+        "dominant_minus_intact": {
+          "comparable_trajectories": 441,
+          "comparison": "dominant_loss",
+          "exact_mcnemar_p": 0.8613689310511555,
+          "loss_to_no_loss": 67,
+          "no_loss_to_loss": 64,
+          "paired_normal_95_ci": [
+            -0.057724582947700526,
+            0.044119140770829776
+          ],
+          "reference": "intact",
+          "risk_difference_comparison_minus_reference": -0.006802721088435374,
+          "standard_error": 0.025981019172255364
+        },
+        "even_minus_intact": {
+          "comparable_trajectories": 441,
+          "comparison": "even_loss",
+          "exact_mcnemar_p": 0.757026167183961,
+          "loss_to_no_loss": 86,
+          "no_loss_to_loss": 81,
+          "paired_normal_95_ci": [
+            -0.06882716163576451,
+            0.04615142467431327
+          ],
+          "reference": "intact",
+          "risk_difference_comparison_minus_reference": -0.011337868480725623,
+          "standard_error": 0.029331810996787243
+        },
+        "graded_minus_intact": {
+          "comparable_trajectories": 441,
+          "comparison": "graded_loss",
+          "exact_mcnemar_p": 0.8090726851888604,
+          "loss_to_no_loss": 75,
+          "no_loss_to_loss": 79,
+          "paired_normal_95_ci": [
+            -0.04613893065978257,
+            0.06427952022894357
+          ],
+          "reference": "intact",
+          "risk_difference_comparison_minus_reference": 0.009070294784580499,
+          "standard_error": 0.028168489768101053
+        }
+      },
+      "provenance": {
+        "artifact_digest": "sha256:c55654b556280c5caa63ee1b9febe62a0b545da6227104799014484f65dc25c0",
+        "artifact_id": 9472148035,
+        "raw_member": "phase_n_summary.json",
+        "raw_member_sha256": "c951ee23e7e0c27173270655eed9f279c24b568f9acfc93a4e146e13a69d0925",
+        "workflow_run": 32558466157
+      },
+      "scope": "High-precision reduced-form partner-loss replay"
+    },
+    "phase_t_dynamic_partner": {
+      "condition_risk_95_ci": {
+        "constant_support_0.75": {
+          "eligible": 441,
+          "events": 240,
+          "risk": 0.54421768707483,
+          "wilson_95_ci": [
+            0.4975524370315417,
+            0.5901192474004618
+          ]
+        },
+        "dominant_dynamic": {
+          "eligible": 441,
+          "events": 244,
+          "risk": 0.5532879818594104,
+          "wilson_95_ci": [
+            0.5066262708384268,
+            0.59902934886168
+          ]
+        },
+        "even_dynamic": {
+          "eligible": 441,
+          "events": 242,
+          "risk": 0.5487528344671202,
+          "wilson_95_ci": [
+            0.5020874319937878,
+            0.5945762200722675
+          ]
+        }
+      },
+      "paired_effect_95_ci": {
+        "dominant_minus_constant": {
+          "comparable_trajectories": 441,
+          "comparison": "dominant_dynamic",
+          "exact_mcnemar_p": 0.7620362195292433,
+          "loss_to_no_loss": 47,
+          "no_loss_to_loss": 51,
+          "paired_normal_95_ci": [
+            -0.034968465982135655,
+            0.05310905555129665
+          ],
+          "reference": "constant_support_0.75",
+          "risk_difference_comparison_minus_reference": 0.009070294784580499,
+          "standard_error": 0.02246916836946408
+        },
+        "dominant_minus_even": {
+          "comparable_trajectories": 441,
+          "comparison": "dominant_dynamic",
+          "exact_mcnemar_p": 0.8829959121223965,
+          "loss_to_no_loss": 22,
+          "no_loss_to_loss": 24,
+          "paired_normal_95_ci": [
+            -0.02563924630814291,
+            0.03470954109272341
+          ],
+          "reference": "even_dynamic",
+          "risk_difference_comparison_minus_reference": 0.0045351473922902496,
+          "standard_error": 0.015395381720503507
+        },
+        "even_minus_constant": {
+          "comparable_trajectories": 441,
+          "comparison": "even_dynamic",
+          "exact_mcnemar_p": 0.8956832138895903,
+          "loss_to_no_loss": 28,
+          "no_loss_to_loss": 30,
+          "paired_normal_95_ci": [
+            -0.029347902379300888,
+            0.03841819716388139
+          ],
+          "reference": "constant_support_0.75",
+          "risk_difference_comparison_minus_reference": 0.0045351473922902496,
+          "standard_error": 0.017287587955113624
+        }
+      },
+      "provenance": {
+        "artifact_digest": "sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c",
+        "artifact_id": 9486577103,
+        "raw_member": "phase_t_summary.json",
+        "raw_member_sha256": "326f1ab82098ff5c3ed8c22174d856a9066db50a23d7964b5c7c862752e8b7ba",
+        "workflow_run": 32614486507
+      },
+      "scope": "Matched-expected-support temporal partner-architecture test"
+    },
+    "phase_u_fresh_connectivity": {
+      "condition_risk_95_ci": {
+        "m_0": {
+          "eligible": 452,
+          "events": 244,
+          "risk": 0.5398230088495575,
+          "wilson_95_ci": [
+            0.4937321551773753,
+            0.5852426710552703
+          ]
+        },
+        "m_0.10": {
+          "eligible": 452,
+          "events": 249,
+          "risk": 0.5508849557522124,
+          "wilson_95_ci": [
+            0.5047925977498136,
+            0.5961196802141226
+          ]
+        }
+      },
+      "paired_effect_95_ci": {
+        "m_0.10_minus_m_0": {
+          "comparable_trajectories": 452,
+          "comparison": "m_0.10",
+          "exact_mcnemar_p": 0.6936859650244837,
+          "loss_to_no_loss": 49,
+          "no_loss_to_loss": 54,
+          "paired_normal_95_ci": [
+            -0.03298264377739213,
+            0.05510653758270187
+          ],
+          "reference": "m_0",
+          "risk_difference_comparison_minus_reference": 0.011061946902654867,
+          "standard_error": 0.02247214286969818
+        }
+      },
+      "provenance": {
+        "artifact_digest": "sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756",
+        "artifact_id": 9486740313,
+        "raw_member": "phase_u_summary.json",
+        "raw_member_sha256": "43e66d20fb2fa945434e7e12b878cd614ae19dd1538abc3cfe876450d567e1a2",
+        "workflow_run": 32615044162
+      },
+      "scope": "Fresh paired m=0 versus m=.10 allele-frequency-mixing replication"
+    }
+  }
+}

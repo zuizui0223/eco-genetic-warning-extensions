@@ -18,7 +18,7 @@ def test_display_allocation_matches_current_figure_captions() -> None:
     captions = _read("manuscript/figure_captions.md")
     expected = {
         1: ("eco-genetic causal architecture and four-question hierarchy", "Eco-genetic causal architecture and four-question hierarchy"),
-        2: ("fragmentation creates vulnerability and genetic warning is conditionally possible", "Fragmentation creates vulnerability and genetic warning is conditionally possible"),
+        2: ("fragmentation creates vulnerability; event-only warning ordering lacks discrimination", "Fragmentation creates vulnerability; event-only warning ordering lacks discrimination"),
         3: ("recurrent state turnover reorganises source feasibility and historical loss-screen placement", "Recurrent state turnover reorganises source feasibility and historical loss-screen placement"),
         4: ("high-precision recurrent-turnover incidence frontier", "High-precision recurrent-turnover incidence frontier"),
         5: ("historical allele-mixing heterogeneity and fresh non-replication", "Historical allele-mixing heterogeneity failed fresh-seed replication"),
@@ -36,3 +36,4 @@ def test_supplementary_table_links_follow_current_figure_spine() -> None:
     assert "Table S6 retains the high-precision frontier records" in allocation
     assert "Table S6 retains both historical and fresh connectivity records" in allocation
     assert "Table S5 retains the endpoint, censoring and timing audit" in allocation
+    assert "Table S7 retains warning validity" in allocation
