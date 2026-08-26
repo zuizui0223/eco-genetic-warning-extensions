@@ -1,0 +1,79 @@
+name: Post-review exploratory continuous warning landmark audit
+
+on:
+  workflow_dispatch:
+    inputs:
+      protocol_commit:
+        description: Exact prospective protocol/code commit to execute
+        required: true
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout prospective protocol commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.protocol_commit }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install package
+        run: python -m pip install -e .
+
+      - name: Download both immutable raw artifacts
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p raw/inherited raw/fresh
+          gh run download 28500796310 \
+            -R zuizui0223/eco-genetic-criticality \
+            -n h2r-independent-relative-validation-seeds-20261110-20261114 \
+            -D raw/inherited
+          gh run download 32636847803 \
+            -R zuizui0223/eco-genetic-warning-extensions \
+            -n fresh-warning-replication-phase-v \
+            -D raw/fresh
+
+      - name: Run every fixed continuous landmark cell once
+        run: |
+          python scripts/run_continuous_warning_landmark.py \
+            --inherited-json raw/inherited/independent_relative_warning_v1.json \
+            --fresh-json raw/fresh/phase_v_raw.json \
+            --protocol-commit "${{ inputs.protocol_commit }}"
+
+      - name: Validate fixed output shape
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          data = json.loads(Path('artifacts/prepublication_review/continuous_warning_landmark_auc.json').read_text())
+          assert data['analysis'] == 'postreview_exploratory_continuous_landmark_auc'
+          assert data['prospective_protocol_commit'] == '${{ inputs.protocol_commit }}'
+          assert set(data['ensembles']) == {'inherited_202611', 'fresh_202911'}
+          assert all(len(item['cells']) == 6 for item in data['ensembles'].values())
+          assert all(
+              cell['bootstrap_replicates'] == 10_000
+              for item in data['ensembles'].values()
+              for cell in item['cells']
+          )
+          PY
+
+      - name: Upload exploratory outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: continuous-warning-landmark-audit
+          path: |
+            artifacts/prepublication_review/continuous_warning_landmark_auc.json
+            manuscript/tables/continuous_warning_landmark_auc.csv
+          if-no-files-found: error
+          retention-days: 30
