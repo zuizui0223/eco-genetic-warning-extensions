@@ -16,6 +16,7 @@ permissions:
 jobs:
   schema-audit:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout locked candidate protocol
         uses: actions/checkout@v4
