@@ -27,9 +27,10 @@
       "public_reusable": {"O": "no", "D": "unclear", "I": "yes", "F": "yes", "A": "unclear", "n_holdout": null},
       "process_function_gate": "partial",
       "residual_context_gate": "no",
-      "gate_reason": "Dryad publicly exposes separate pollination-census and fruits/seeds files, so direct process and realised reproduction are demonstrably co-archived. A common ecological join key and independent holdout count still require schema inspection, and no comparable upstream fragmentation/landscape context coordinate is preregistered for a residual-context test.",
+      "gate_reason": "Dryad publicly exposes separate pollination-census and fruits/seeds files, so direct process and realised reproduction are demonstrably co-archived. However, the source appendix shows that direct visit rate belongs to a pollinator-census analysis with Plant ID/Census ID, whereas fruit set and seed set are estimated in a separate lizard-exclusion pollination experiment with Treatment and Plant ID. Co-archival therefore does not establish that the observational visit-rate rows and experimental reproductive rows are the same biological unit. The common Plant ID semantics and any valid cross-experiment join must be verified from the raw schemas before an I_visit -> F model can be opened. No comparable upstream fragmentation/landscape context coordinate is preregistered for a residual-context test.",
       "public_files": ["Pollination_censues_2015_16.csv", "Fruits-seeds_database.csv", "Exclusions.csv", "Germination_15_16.csv", "Seed_dispersal_censuses.csv"],
-      "evidence": ["https://doi.org/10.5061/dryad.2ngf1vhj1", "https://doi.org/10.1111/oik.06659"]
+      "source_design_boundary": "pollinator census and lizard-exclusion reproductive experiment are distinct source-design components; same-publication or same-archive status is not a valid alignment key",
+      "evidence": ["https://doi.org/10.5061/dryad.2ngf1vhj1", "https://doi.org/10.1111/oik.06659", "https://www.oikosjournal.org/appendix/oik-06659"]
     },
     {
       "id": "I3_MALLORCA_NETWORK_FITNESS_2020",
@@ -53,8 +54,9 @@
       "public_reusable": {"O": "partial", "D": "partial", "I": "partial", "F": "partial", "A": "unclear", "n_holdout": 6},
       "process_function_gate": "partial",
       "residual_context_gate": "partial",
-      "gate_reason": "The open source study measures orchard management/landscape context, visitation and fruit/seed/apple outcomes at six orchards. Public article/supplement access demonstrates the study design but has not yet demonstrated to this project a reusable same-orchard row-level join table, so Stage A remains partial pending schema inspection.",
-      "evidence": ["https://doi.org/10.3390/insects11060351"]
+      "gate_reason": "The open source study measures orchard management/landscape context, visitation and fruit/seed/apple outcomes at six orchards. The public supplement explicitly exposes orchard landscape composition and orchard-level timed flower-visit counts, but its listed tables do not include a raw fruit-set, seed-set or apple-weight table. Reproductive function is therefore study-measured but not yet demonstrated as a reusable orchard-level F representation. The fitted gate remains closed pending an actual same-orchard F/A table rather than reconstruction from figures or model summaries.",
+      "public_supplement": ["Table S1: six-orchard coordinates and landscape composition", "Table S3: timed visits and pan-trap individuals by species/morphospecies in each orchard"],
+      "evidence": ["https://doi.org/10.3390/insects11060351", "http://hdl.handle.net/10400.3/5774"]
     }
   ]
 }
