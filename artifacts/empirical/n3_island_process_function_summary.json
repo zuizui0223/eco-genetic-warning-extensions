@@ -2,13 +2,14 @@
   "analysis": "N3_island_process_function_stage_A_summary",
   "claim_ceiling": "N3 establishes archive candidates and narrows the remaining obstacle to schema-level alignment; it does not establish an ecological island effect or urban-island convergence.",
   "decision": "island_process_function_archives_recovered_but_schema_alignment_still_required",
-  "interpretation": "The earlier N2 island 0/5 result is a bounded-registry measurement/representation result, not a general absence of island process-function archives. N3 prospectively recovers island studies measuring direct visitation and realised reproduction, including at least one archive that explicitly exposes both process and function files. No N3 system is promoted to a fitted process-function or residual-context analysis until the preregistered join/schema gate passes.",
+  "interpretation": "The earlier N2 island 0/5 result is a bounded-registry measurement/representation result, not a general absence of island process-function archives. N3 prospectively recovers island studies measuring direct visitation and realised reproduction. Public reusable direct I and F are now explicit for two of four N3 systems, but no N3 system is promoted to a fitted process-function or residual-context analysis until the preregistered join/schema gate passes.",
   "n_systems": 4,
   "process_function_gate_partial": 4,
   "process_function_gate_yes": 0,
-  "public_reusable_direct_I_and_F_both_yes": 1,
+  "public_reusable_direct_I_and_F_both_yes": 2,
   "public_reusable_direct_I_and_F_both_yes_systems": [
-    "I3_MALLORCA_CNEORUM_2020"
+    "I3_MALLORCA_CNEORUM_2020",
+    "I3_MALLORCA_NETWORK_FITNESS_2020"
   ],
   "residual_context_gate_partial": 2,
   "residual_context_gate_yes": 0,
