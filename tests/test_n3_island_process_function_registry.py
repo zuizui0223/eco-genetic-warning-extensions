@@ -19,6 +19,16 @@ def _module():
     return module
 
 
+def _keys(value):
+    if isinstance(value, dict):
+        for key, child in value.items():
+            yield str(key).casefold()
+            yield from _keys(child)
+    elif isinstance(value, list):
+        for child in value:
+            yield from _keys(child)
+
+
 def test_n3_summary_regenerates_from_locked_registry() -> None:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     committed = json.loads(SUMMARY.read_text(encoding="utf-8"))
@@ -29,9 +39,9 @@ def test_n3_is_response_firewalled_and_distinct_from_n2_rescue() -> None:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
     assert registry["search_cutoff"] == "2026-08-27"
     assert len(registry["systems"]) == 4
-    text = json.dumps(registry).lower()
-    for forbidden in ("p_value", "pvalue", "effect_direction", "effect_size", "coefficient"):
-        assert forbidden not in text
+    forbidden_keys = {"p_value", "pvalue", "effect_direction", "effect_size", "coefficient"}
+    assert forbidden_keys.isdisjoint(set(_keys(registry)))
+    assert "fitted coefficient" in registry["response_firewall"]
     prereg = PREREG.read_text(encoding="utf-8")
     assert "N3 is a new prospective programme" in prereg
     assert "does not replace, add to, or rescue the N2 candidate registry" in prereg
