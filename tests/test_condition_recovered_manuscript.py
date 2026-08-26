@@ -39,7 +39,7 @@ def test_condition_recovered_manuscript_follows_current_condition_first_science(
         "The historical `m=.10` connectivity heterogeneity did not replicate in fresh seeds",
         "Process-resolved movement also did not establish a portable connectivity effect",
         "Aggregate feedback and partner dynamics were bounded negative results",
-        "Genetic erosion could precede functional loss, but not by a universal threshold",
+        "Relative diversity thresholds ordered observed losses but did not discriminate events",
         "Warning behaviour was not fully portable across calibrated domains",
     )
     positions = [text.index(phrase) for phrase in required]

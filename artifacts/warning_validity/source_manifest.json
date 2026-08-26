@@ -1,0 +1,87 @@
+{
+  "analysis_input": "compact extraction from two immutable saved-trajectory artifacts",
+  "endpoint_family": [
+    {
+      "diversity_id": "H_alpha",
+      "relative_decline_fraction": 0.05
+    },
+    {
+      "diversity_id": "H_alpha",
+      "relative_decline_fraction": 0.1
+    },
+    {
+      "diversity_id": "H_alpha",
+      "relative_decline_fraction": 0.2
+    },
+    {
+      "diversity_id": "H_gamma",
+      "relative_decline_fraction": 0.05
+    },
+    {
+      "diversity_id": "H_gamma",
+      "relative_decline_fraction": 0.1
+    },
+    {
+      "diversity_id": "H_gamma",
+      "relative_decline_fraction": 0.2
+    }
+  ],
+  "frozen_domain": {
+    "area_reference": 0.8,
+    "hold_generations": 90,
+    "horizon": 120,
+    "interaction_feedback": 6.0,
+    "mutation_rate": 0.1,
+    "ramp_generations": 30,
+    "total_normalized_barrier_increase": 0.15
+  },
+  "record_table": {
+    "grain": "one attempted trajectory x one predeclared endpoint",
+    "path": "artifacts/warning_validity/trajectory_endpoint_records.csv",
+    "rows": 1200,
+    "sha256": "65295c612042557abb46115a2c408b883f0b516c8d5af974423b895f54a7c7ab"
+  },
+  "scientific_lock": "No threshold, seed, domain, schedule, endpoint, trajectory, or outcome is changed. Unavailable attempts and right-censored non-events are retained.",
+  "sources": {
+    "fresh_202911": {
+      "artifact_digest": "sha256:c1dd951c961999c42255b46327d4650d2298afa98ee4d0a45d04a1e1c5fe6031",
+      "artifact_id": 9492587604,
+      "artifact_name": "fresh-warning-replication-phase-v",
+      "attempted_trajectories": 100,
+      "master_seeds": [
+        20291110,
+        20291111,
+        20291112,
+        20291113,
+        20291114
+      ],
+      "raw_member": "phase_v_raw.json",
+      "raw_member_sha256": "1674c817b760f5a20320ffdf775181f3c3134d60cc977feffe76c9296c253fb9",
+      "raw_member_sha256_verified": "1674c817b760f5a20320ffdf775181f3c3134d60cc977feffe76c9296c253fb9",
+      "source_repository": "zuizui0223/eco-genetic-warning-extensions",
+      "trait_loss_observed": 33,
+      "trajectory_available": 82,
+      "workflow_run": 32636847803
+    },
+    "inherited_202611": {
+      "artifact_digest": "sha256:7d2bbed84ddf57486896c0ca231fd82f2e0915699e391c155d288f5c9db8a6ff",
+      "artifact_id": 8003007618,
+      "artifact_name": "h2r-independent-relative-validation-seeds-20261110-20261114",
+      "attempted_trajectories": 100,
+      "master_seeds": [
+        20261110,
+        20261111,
+        20261112,
+        20261113,
+        20261114
+      ],
+      "raw_member": "independent_relative_warning_v1.json",
+      "raw_member_sha256": "c1552616a94b23ffc1340580231d7d1b16bc7d84c951c3d2606cc437fb15673e",
+      "raw_member_sha256_verified": "c1552616a94b23ffc1340580231d7d1b16bc7d84c951c3d2606cc437fb15673e",
+      "source_repository": "zuizui0223/eco-genetic-criticality",
+      "trait_loss_observed": 35,
+      "trajectory_available": 83,
+      "workflow_run": 28500796310
+    }
+  }
+}

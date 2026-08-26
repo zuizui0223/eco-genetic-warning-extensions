@@ -2,3 +2,6 @@
 artifacts/locked_publication_inputs/** -text -diff
 manuscript/tables/stage3_review_summary.csv -text
 manuscript/tables/stage3_between_domain_differences.csv -text
+artifacts/warning_validity/trajectory_endpoint_records.csv -text
+manuscript/tables/warning_validity_audit.csv -text
+artifacts/precision_bounded_null/source_counts.json -text

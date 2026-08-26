@@ -100,7 +100,7 @@ def test_revised_publication_figure_titles_use_biological_language() -> None:
     figure1 = _read("src/eco_genetic_warning_extensions/condition_figure1.py")
     expected = (
         "Eco-genetic causal architecture and four-question hierarchy",
-        "Fragmentation creates vulnerability and genetic warning is conditionally possible",
+        "Fragmentation creates vulnerability; event-only warning ordering lacks discrimination",
         "Recurrent state turnover reorganises source feasibility and functional-loss regime",
         "Warning-blind recovery of a narrow reproducible event regime",
         "Effective genetic connectivity changes event-regime estimability",

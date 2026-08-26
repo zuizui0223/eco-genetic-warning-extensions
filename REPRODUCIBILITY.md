@@ -69,7 +69,9 @@ The precision-validation protocol is:
 
 **Aggregate feedback:** all three predeclared `kappa=3.0/4.5/6.0` remain intermediate at high precision with no detected block heterogeneity.
 
-**Partner architecture:** reduced-form partner loss and matched-expected-support temporal partner variability are bounded negative population-level results; the adaptive-rewiring gate remains closed.
+**Partner architecture:** reduced-form partner loss and matched-expected-support temporal partner variability are precision-bounded nulls, not equivalence results; the adaptive-rewiring gate remains closed.
+
+**Warning validity:** the post-review audit uses all baseline-eligible saved trajectories from parent run `28500796310` and Phase-V run `32636847803`. Each of the six frozen thresholds led all 35/35 and 33/33 losses but also fired in all 48/48 and 49/49 non-events. Full-horizon specificity is zero and binary-marker AUC is 0.5. The compact 1,200-row record table is checksummed in `artifacts/warning_validity/source_manifest.json`.
 
 ## Interpretation safeguards
 
@@ -87,6 +89,8 @@ Reproduction must preserve that:
 - no outcome-informed parameter, seed or precision refinement is opened to recover a preferred result;
 - Protocol 003 tests bounded portability across non-matched calibrated domains, not a single-factor effect of transition direction;
 - finite-horizon non-events remain right-censored;
+- event-conditional warning pairs are not used as the full performance denominator;
+- non-significant paired risk differences are not described as equivalence;
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate;
 - a successful build does not convert finite Type S results into a theorem.
 

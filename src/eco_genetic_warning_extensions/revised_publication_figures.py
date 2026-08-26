@@ -45,8 +45,8 @@ def figure2_parent_bridge_svg(h3_rows: Iterable[Mapping[str, Any]], h2_rows: Ite
     parts = _header(
         width,
         height,
-        "Fragmentation creates vulnerability and genetic warning is conditionally possible",
-        "Panel A shows paired median reductions under equal isolation for interaction, local effective size, and realised high-trait mass across 1,055 H1-qualified sources. Panel B shows lead and lag counts for relative and absolute genetic-warning definitions in the inherited symmetric benchmark.",
+        "Fragmentation creates vulnerability; event-only warning ordering lacks discrimination",
+        "Panel A shows paired median reductions under equal isolation for interaction, local effective size, and realised high-trait mass across 1,055 H1-qualified sources. Panel B retains event-conditional ordering in the inherited benchmark and reports that all relative thresholds also fired in all 48 non-event trajectories, giving zero full-horizon specificity and binary-marker AUC 0.5.",
         "figure2",
     )
     parts.append('<text x="55" y="75" font-family="sans-serif" font-size="14" font-weight="bold">A. Paired fragmentation effect</text>')
@@ -70,7 +70,7 @@ def figure2_parent_bridge_svg(h3_rows: Iterable[Mapping[str, Any]], h2_rows: Ite
     parts.append(f'<text x="{left}" y="520" font-family="sans-serif" font-size="11">Bars encode median paired fractional reduction; printed values are the primary reading channel.</text>')
 
     panel_x = 690
-    parts.append(f'<text x="{panel_x}" y="75" font-family="sans-serif" font-size="14" font-weight="bold">B. Genetic-warning ordering</text>')
+    parts.append(f'<text x="{panel_x}" y="75" font-family="sans-serif" font-size="14" font-weight="bold">B. Event-conditional ordering and false positives</text>')
     relative = {(r["diversity"]): r for r in h2_rows if r["endpoint_type"] == "relative" and r["threshold"] == "0.20"}
     absolute = {(r["diversity"]): r for r in h2_rows if r["endpoint_type"] == "absolute"}
     display = [
@@ -97,7 +97,8 @@ def figure2_parent_bridge_svg(h3_rows: Iterable[Mapping[str, Any]], h2_rows: Ite
         parts.append(f'<text x="{bar_left+bar_w+10}" y="{y+24}" font-family="sans-serif" font-size="11">valid n={valid}</text>')
         if row["endpoint_type"] == "relative":
             parts.append(f'<text x="{bar_left}" y="{y+58}" font-family="sans-serif" font-size="10">same 35/0/0 lead/tie/lag at 5%, 10% and 20%</text>')
-    parts.append(f'<text x="{panel_x}" y="570" font-family="sans-serif" font-size="11">Relative endpoints: 83 available trajectories, 35 observed functional losses, 48 loss-censored.</text>')
+    parts.append(f'<text x="{panel_x}" y="550" font-family="sans-serif" font-size="11" font-weight="bold">All relative endpoints: event lead 35/35; non-event firing 48/48.</text>')
+    parts.append(f'<text x="{panel_x}" y="570" font-family="sans-serif" font-size="11">Full-horizon specificity 0; binary-marker AUC 0.5. Ordering is not discrimination.</text>')
     parts.append('</svg>')
     return "\n".join(parts) + "\n"
 

@@ -14,7 +14,7 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 |---|---|---|---|
 | P1 | Equal isolation from the same H1-prepared state lowers final interaction, local effective size and realised high-trait mass relative to the matched one-large projection. | Parent locked H1/H3 campaign; 1,055 qualified pairs. | finite Type S |
 | P2 | A fresh fixed-area 1–16-patch sensitivity shows the main interaction/Ne disruption after the first split; realised high-trait mass is not universally monotone across patch number. | Parent fresh gradient; 1,037 prepared sources. | supplementary Type S |
-| P3 | In one independently calibrated symmetric benchmark, 5%, 10% and 20% baseline-relative `H_alpha` and `H_gamma` erosion preceded all 35 observed realised functional losses. | Parent H2-R calibration and fresh validation. | bounded proof of possibility |
+| P3 | In the inherited symmetric benchmark, each of six baseline-relative `H_alpha`/`H_gamma` thresholds crossed before all 35 observed losses, but also crossed in all 48 non-event trajectories by the common horizon. | Parent H2-R frozen trajectories and post-review full-denominator audit. | event-conditional ordering; no discrimination |
 | P4 | Fixed absolute thresholds `H_alpha <= 0.20` and `H_gamma <= 0.20` are not robust warning rules in that benchmark. | Stored-trajectory absolute-threshold audit. | negative robustness result |
 
 ## Permitted extension claims
@@ -36,17 +36,18 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | S13 | Stage III is not a matched recurrent-transition-direction experiment because domains also differ in ecological parameters, deterioration strength and horizon. | Locked domain identities. | identification boundary |
 | S14 | All six full-horizon-normalised direct between-domain bootstrap timing contrasts include zero. | Trajectory-level secondary audit. | uncertainty result |
 | S15 | Censoring, source failure and baseline ineligibility affect warning availability and remain in the attempted denominator. | Full Stage III records. | bounded interpretation |
-| S16 | Under the tested reduced-form partner-loss closure, intact/even/graded/dominant conditions all have similar high-precision pooled loss (.544–.565), remain inside the historical intermediate-incidence screen and show no detectable excess block heterogeneity. | Phase N, run `32558466157`, artifact `9472148035`. | high-precision negative partner result |
+| S16 | Under the tested reduced-form partner-loss closure, intact/even/graded/dominant pooled loss is .544–.565; paired differences versus intact have 95% intervals spanning approximately -0.069 to +0.064 across contrasts. | Phase N, run `32558466157`, artifact `9472148035`; precision audit. | precision-bounded null, not equivalence |
 | S17 | Partner loss changes many individual paired trajectory outcomes in both directions, but exact McNemar tests against intact are non-significant. | Phase N paired records. | trajectory-identity / marginal-risk distinction |
 | S18 | Low-replicate R3/R4 labels cannot by themselves identify biological heterogeneity: 0/10 audited load-bearing R3 cases showed detectable excess equal-rate heterogeneity at historical precision, and an exact Phase-H/I conflict converged to R4 in both seed families at 100 attempts/block. | Phases J–L and K. | statistical interpretation correction |
 | S19 | In the historical Phase-M seed family, the `m=.10` heterogeneity pattern did not port to preregistered post-recruitment whole-individual dispersal at nominal `d=.10`: pooled loss .606, equal-rate `p=.811`, McNemar vs no connectivity `p=.143`. | Phase R, run `32613357637`, artifact `9486225034`. | process-resolved negative portability result |
 | S20 | In the same historical seed family, the `m=.10` pattern did not port to pollen-only paternal gene flow at `g=.20`: pooled loss .532, equal-rate `p=.728`; McNemar contrasts were non-significant. | Phase S, run `32613877695`, artifact `9486401100`. | process-resolved negative portability result |
 | S21 | Phases R/S show that the historical Phase-M observation cannot be interpreted as biological connectivity in general; different movement closures are distinct operators. | Joint Phase M/R/S comparison. | representation boundary |
-| S22 | At matched expected support 0.75, increasing temporal support variance from 0 to .04684 to .09702 and increasing partner-contribution concentration does not produce a detected change in pooled loss (.5442/.5488/.5533), block heterogeneity, or paired marginal risk. | Phase T, run `32614486507`, artifact `9486577103`. | dynamic-partner bounded negative result |
+| S22 | At matched expected support 0.75, pooled loss is .5442/.5488/.5533; paired risk-difference intervals span -0.0350 to +0.0531 across fixed contrasts and all include zero. | Phase T, run `32614486507`, artifact `9486577103`; precision audit. | precision-bounded null, not equivalence |
 | S23 | Phase T leaves the adaptive-rewiring gate closed: no rewiring parameter search is opened because no matched-expected-support dynamic-network effect was established to decompose. | Phase T preregistered stop rule and locked result. | stop-rule result |
 | S24 | Phases R/S/T narrow the ecological interpretation of earlier scalar/reduced-form results without adding new warning claims. | Integrated R/S/T closure. | manuscript-scope boundary |
-| S25 | The historical Phase-M `m=.10` heterogeneity did **not** reproduce in one preregistered independent fresh-seed ensemble: fresh `m=0` equal-rate `p=.134`, fresh `m=.10` `p=.745`; pooled loss .540/.551; paired McNemar `p=.694`. | Phase U, run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`. | fresh non-replication result |
-| S26 | The strongest connectivity conclusion is now negative: no robust portable block-heterogeneity effect was established across the historical Phase-M family, the independent Phase-U allele-only replication, and the process-resolved R/S closures. | Integrated M/U/R/S evidence. | claim ceiling |
+| S25 | The historical Phase-M `m=.10` heterogeneity did **not** reproduce in one preregistered independent fresh-seed ensemble: fresh pooled loss .540/.551 and paired risk difference `+0.0111 [-0.0330,0.0551]`. | Phase U, run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`; precision audit. | fresh non-replication and precision-bounded null |
+| S26 | The strongest connectivity conclusion is now negative: no robust portable connectivity heterogeneity effect is established across the historical Phase-M family, the independent Phase-U allele-only replication, and the process-resolved R/S closures. | Integrated M/U/R/S evidence. | claim ceiling |
+| S27 | In the fresh frozen symmetric ensemble, every relative threshold crossed before all 33 losses and also crossed in all 49 non-events; full-horizon specificity was zero and binary-marker AUC was 0.5. | Phase V frozen trajectories and post-review full-denominator audit. | replicated ordering; predictive warning unsupported |
 
 ## Exact operator claims
 
@@ -64,6 +65,9 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | parent H1/H3 attempted / H1-qualified pairs | 1,200 / 1,055 |
 | fresh fragmentation-gradient attempted / prepared | 1,200 / 1,037 |
 | inherited symmetric benchmark attempted / available / trait loss | 100 / 83 / 35 |
+| inherited warning lead / non-event firing, each of six endpoints | 35/35 / 48/48 |
+| fresh warning lead / non-event firing, each of six endpoints | 33/33 / 49/49 |
+| full-horizon relative-warning specificity / binary-marker AUC | 0 / .5 in both ensembles |
 | Protocol 002 complete candidates | 648 |
 | historical rapid-loss / R3-mixed / persistence | 322 / 84 / 242 |
 | original eligible candidates / no-domain coordinates | 0 / 15 |
@@ -106,6 +110,9 @@ Do not claim that:
 - recurrent-transition direction alone caused the Stage III warning difference;
 - `p_star` is an empirically estimated mutation rate;
 - genetic diversity is a monotone proxy for local functional support;
+- the frozen 5/10/20% relative-diversity rules are validated predictive early warnings;
+- 35/35 or 33/33 event-conditional leads establish specificity, risk separation or prospective discrimination;
+- non-significant paired contrasts establish equivalence or biological absence;
 - endpoint rows sharing trajectories are independent biological replicates;
 - finite Type S results are universal ecological thresholds or theorems.
 
@@ -113,15 +120,10 @@ Do not claim that:
 
 | narrative step | evidence |
 |---|---|
-| Interaction-dependent function can exist and fragmentation can degrade it before population disappearance | P1–P2 |
-| Recurrent turnover changes source feasibility and shifts functional-loss incidence from high to low | S1–S6 |
-| Historical screen labels are calibration tools, not biological estimands | S18 |
-| One historical allele-mixing family showed `m=.10` block heterogeneity, but it did not freshly replicate and had no marginal-risk signal | S7–S8 + S25 + T4 |
-| Process-resolved individual and pollen closures also did not recover that historical heterogeneity pattern | S19–S21 |
-| No robust portable connectivity heterogeneity effect is established | S26 |
-| Scalar aggregate feedback is robust across the three predeclared levels | S9–S10 |
-| Reduced-form and temporal partner perturbations are bounded negative results | S16–S17 + S22–S23 |
-| Only after the downstream loss process is fixed does genetic warning become a meaningful question | P3–P4 |
-| Warning behaviour is not automatically portable across independently calibrated domains | S11–S15 |
+| Common ecological/genetic marginals can fail transition sufficiency when cross-layer alignment differs | constructive aligned/anti-aligned audit |
+| Empirical candidate states must earn endpoint-relevant predictive adequacy and retain mechanistic information through preprocessing | natural state-sufficiency programme |
+| Interaction-dependent function can degrade before population disappearance | P1–P2 |
+| Event-only warning ordering is not predictive validation | P3–P4 + S27 |
+| Recurrent-turnover, connectivity and partner campaigns bound the tested closures without proving equivalence | S1–S26 + T4 |
 
 Every finite numerical claim retains the declared model closure. Phase U is one independent replication: its non-replication limits the historical Phase-M claim but is not a theorem that heterogeneity can never occur at `m=.10`.

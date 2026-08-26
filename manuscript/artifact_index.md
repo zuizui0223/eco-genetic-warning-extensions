@@ -26,6 +26,8 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | Process-resolved pollen-only gene flow | paternal external-pollen closure `g=.20` against no connectivity and historical-family legacy `m=.10` | Phase S run `32613877695`, artifact `9486401100`, digest `sha256:a320527fbb737209c23cbf3376172f15c189e6c76125c69e90f135a74f70bc04` |
 | Dynamic partner architecture | constant/even/dominant conditions; common availability draws; 100 attempts/block | Phase T run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c` |
 | Fresh allele-only connectivity replication | preregistered independent seeds `20291010–20291014`, paired `m=0/.10`, 100 attempts/block | Phase U run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756` |
+| Full-denominator symmetric warning audit | all baseline-eligible saved trajectories; six unchanged relative endpoints; non-events retained | parent run `28500796310`, artifact `8003007618`; Phase V run `32636847803`, artifact `9492587604`; compact record SHA-256 `65295c612042557abb46115a2c408b883f0b516c8d5af974423b895f54a7c7ab` |
+| Precision-bounded null audit | whole-trajectory paired risk-difference intervals for Phase U/N/T | immutable Phase U/N/T aggregate artifacts; `artifacts/prepublication_review/precision_bounded_null_audit.json` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
 
 ## Historical evidence versus current inference
@@ -124,6 +126,9 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 - Adaptive rewiring remains unopened after the Phase-T negative result.
 - Protocol 003 supports bounded portability, not a direction-only causal claim.
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
+- Event-conditional 35/35 and 33/33 lead counts must be reported with the 48/48 and 49/49 non-event firing counts; they do not validate prediction.
+- Full-horizon relative-warning specificity is zero and binary-marker AUC is 0.5 in both frozen symmetric ensembles.
+- Phase U/N/T negative results are precision-bounded nulls, not equivalence results.
 - `p_star` is an effective recurrent-transition equilibrium, not an estimated biological mutation rate.
 
 ## Publication display rule

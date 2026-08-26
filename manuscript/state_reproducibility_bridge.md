@@ -10,7 +10,7 @@ Three evidence layers now point in the same direction.
 
 1. **Model state sufficiency:** under the declared Markov closure, complete equality of the present joint state makes prior history irrelevant for the future distribution, whereas coarse marginals and standard genetic summaries can hide dynamically different patchwise alignments.
 2. **Natural partial-state tests:** in two independent ecological datasets, adding an upstream habitat/context variable after a measured interaction-functional state did not improve transfer to unseen ecological units under the preregistered validation rule.
-3. **Within-state warning replication:** inside one frozen loss-generating H2-R domain, baseline-relative `H_alpha/H_gamma` warning ordering strictly replicated across an independent seed ensemble.
+3. **Full-denominator warning boundary:** event-conditional `H_alpha/H_gamma` ordering replicated, but the same thresholds fired in every non-event trajectory in both frozen ensembles.
 
 The scientific problem is therefore to **identify the smallest future-relevant state in nature**, then test warning inside that state, and only then ask whether it ports to other states.
 
@@ -79,9 +79,9 @@ The quantitative natural anchors prevent E1/E2 from being interpreted as a gener
 
 These examples show why a residual context term should be interpreted as **missing process information**, not as proof that a habitat category is itself the mechanistic state.
 
-## 4. Within-state genetic warning is reproducible
+## 4. Event-conditional ordering is reproducible but not discriminative
 
-The strongest positive C3 result has now been independently replicated under a frozen loss-generating domain.
+The original C3 valid-pair ordering was independently replicated under a frozen loss-generating domain, but the post-review full-denominator audit changes its scientific meaning.
 
 Original parent benchmark:
 
@@ -95,13 +95,13 @@ Fresh Phase V:
 - 33 realised functional losses;
 - for **all six endpoints: 33/33 leads, 0 ties, 0 lags**;
 - exact one-sided binomial `p=1.1641532182693481e-10` per endpoint;
-- preregistered decision: **`strict_replication`**.
+- preregistered decision: **`strict_replication`** under the original event-pair rule.
 
-Therefore the current C3 claim is:
+The denominator-restored result is:
 
-> **Within the frozen symmetric H2-R loss-generating state, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% strictly replicated as leading realised functional-trait loss across two independent seed ensembles.**
+> **All six thresholds led 35/35 and 33/33 observed losses, but also fired in 48/48 and 49/49 non-events; full-horizon specificity was zero and binary-marker AUC was 0.5.**
 
-This is a strong within-state result. It is not a universal threshold and does not establish portability across eco-genetic states.
+This is replicated event-conditional temporal ordering, not predictive warning validity. The frozen protocol label remains historical provenance and does not override the full-denominator interpretation.
 
 ## 5. Resulting causal and empirical ordering
 
@@ -115,14 +115,12 @@ fragmentation / disturbance / landscape history
                   ↓
        future realised function F(t+Δ)
                   ↓
-     warning evaluability inside S
-                  ↓
-  replicate warning inside the same state
+     full-denominator validation inside S
                   ↓
   only then test portability across states
 ```
 
-This ordering resolves the apparent tension between conditionality and usefulness. Conditionality is not merely a limitation: **it identifies the domain in which the positive warning result is reproducible.**
+This ordering shows that state restriction alone cannot rescue a non-discriminative threshold. Event and non-event trajectories must both enter warning validation.
 
 ## 6. Current cross-system hypothesis
 

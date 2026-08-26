@@ -122,9 +122,9 @@ Phases R/S used the historical Phase-M seed family and compared the historical a
 
 `migration_rate` remains allele-frequency mixing, not demographic, pollinator, pollen, seed or recolonisation movement.
 
-## C3 — genetic warning after C2, replicated inside one frozen state
+## C3 — full-denominator warning validity after C2
 
-The inherited symmetric benchmark established the first positive warning ordering. In the frozen H2-R domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all **35/35** observed functional losses at each of the six endpoints. Fixed absolute thresholds produced both leads and lags.
+The inherited symmetric benchmark established event-conditional warning ordering. In the frozen H2-R domain, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all **35/35** observed functional losses at each endpoint. Fixed absolute thresholds produced both leads and lags.
 
 Phase V prospectively repeated exactly that relative-warning family in one independent fresh seed ensemble (`20291110–20291114`) without recalibrating the loss domain, changing the deterioration schedule or selecting warning endpoints after outcomes. Of 100 attempted trajectories, 82 were available and 33 reached realised functional loss. For **all six** endpoints, the same-trajectory ordering was:
 
@@ -134,21 +134,21 @@ Phase V prospectively repeated exactly that relative-warning family in one indep
 - lags: **0**;
 - exact one-sided binomial `p=1.1641532182693481e-10`.
 
-The preregistered decision was **`strict_replication`**. Thus the positive result is no longer only a single-ensemble proof of possibility:
+The preregistered event-pair decision was **`strict_replication`**. The post-review audit then restored all baseline-eligible trajectories to the denominator. Each endpoint also fired in all 48 inherited and 49 fresh non-event trajectories. Full-horizon specificity was zero and binary-marker AUC was 0.5 in both ensembles.
 
-> **Within the frozen symmetric H2-R loss-generating state, baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% strictly replicated as leading realised functional-trait loss across two independent seed ensembles.**
+> **Within the frozen symmetric H2-R state, relative-diversity crossings reproduced event-conditional temporal ordering but did not discriminate losses from non-events.**
 
-This is precisely why the domain/state definition matters. Phase V does not make the 5/10/20% endpoints universal thresholds and does not establish portability to other eco-genetic states. It shows that once the loss-generating state is held fixed, the warning ordering itself can be reproducible.
+The frozen protocol result remains provenance, but the predictive early-warning claim is withdrawn. No new continuous score, endpoint, threshold or favourable landmark is opened after this result.
 
 Phases R/S/T/U add no warning claims; they constrain or replicate the upstream loss-generating closure. A direction-only causal warning effect remains unresolved, and no outcome-informed tuning is opened to obtain one.
 
-**C3: strict within-state replication recovered; universal thresholds and cross-state portability unresolved.**
+**C3: event-conditional ordering replicated; predictive warning validity not supported.**
 
 ## C4 — warning portability
 
 Historical Protocol 003 recovered two domains by separate warning-blind calibration. They differ in recurrent-transition, ecological and deterioration parameters. Their fresh-seed warning differences are therefore **bounded portability evidence across calibrated eco-genetic domains**, not a single-factor effect of transition direction.
 
-The combination of C3 and C4 is the key result: **warning ordering can replicate inside a frozen loss-generating state without being guaranteed to transfer across differently calibrated states.**
+After the full-denominator correction, C4 is supporting portability evidence rather than a positive warning headline. The stricter lesson is that event-only ordering can replicate inside a frozen state while predictive discrimination remains absent.
 
 **C4: bounded non-portability result; causal attribution intentionally limited.**
 
@@ -172,10 +172,10 @@ Neither is a full eco-genetic convergence proof because synchronized `G/C/R/M` l
 | C2a source feasibility | supported | recurrent-transition coordinates change source feasibility |
 | C2b recurrent-turnover loss | supported | tested `p_star` frontier is an incidence gradient, not a seed-heterogeneity window |
 | C2c allele-frequency connectivity | non-replicated historical observation | historical `m=.10` heterogeneity failed one independent fresh replication; no reproducible threshold recovered |
-| C2d aggregate interaction support | bounded negative result | all predeclared kappa values remain intermediate/homogeneous at high precision |
-| C2e partner architecture | bounded negative result | reduced-form and temporal partner perturbations change some histories but not detected population-level loss process; rewiring remains closed |
+| C2d aggregate interaction support | precision-bounded null | all predeclared kappa values remain intermediate/homogeneous at high precision; no equivalence claim |
+| C2e partner architecture | precision-bounded null | paired intervals include zero but permit small effects; rewiring remains closed |
 | C2f process-resolved connectivity | negative portability boundary | historical-family pattern did not port to whole-individual or pollen-only movement |
-| C3 conditional warning | **strict within-state replication** | six baseline-relative endpoints lead loss in both original 35/35 and independent fresh 33/33 ensembles inside the frozen H2-R state; absolute thresholds are not universal |
+| C3 conditional warning | **predictive validation failed** | six endpoints lead 35/35 and 33/33 losses but also fire in 48/48 and 49/49 non-events; specificity 0, binary-marker AUC .5 |
 | C4 portability | bounded | warning behaviour is not established as portable across non-matched calibrated domains |
 
 ## Global stop rules

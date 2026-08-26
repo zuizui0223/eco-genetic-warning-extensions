@@ -36,10 +36,12 @@ def test_locked_phase_v_result_is_strict_replication() -> None:
         assert row["lags"] == 0
 
 
-def test_phase_v_claim_is_within_state_not_universal() -> None:
+def test_phase_v_protocol_fact_is_retained_but_predictive_claim_is_corrected() -> None:
     assert "within the frozen symmetric H2-R domain" in RESULT
     assert "strictly replicated" in RESULT
-    assert "not a universal genetic-warning law" in RESULT
+    assert "all 49 non-event trajectories" in RESULT
+    assert "specificity was therefore zero" in RESULT
+    assert "not validated predictive early warning" in RESULT
     assert "which measured ecological state defines the domain" in RESULT
     assert "universal absolute or relative genetic-warning threshold" in RESULT
 

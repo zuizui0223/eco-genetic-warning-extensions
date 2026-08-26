@@ -2,7 +2,9 @@
 
 ## Question
 
-After Phase V strictly replicated baseline-relative genetic warning inside the frozen symmetric H2-R domain, can the existing warning-blind evidence support a **direction-only** warning comparison in which ecological parameters, deterioration schedule and recurrent-transition strength are all held fixed?
+After Phase V met its original event-pair ordering rule inside the frozen symmetric H2-R domain, can the existing warning-blind evidence support a **direction-only** warning comparison in which ecological parameters, deterioration schedule and recurrent-transition strength are all held fixed?
+
+**Post-review note:** the later full-denominator audit found that all relative thresholds also fired in every non-event trajectory in both frozen ensembles. Phase V therefore retains event-conditional ordering but no longer supports predictive warning validity.
 
 Phase W adds no simulation and inspects no warning outcome. It reuses immutable Protocol 002 Stage II trait-loss-only batches from workflow run `29192711417`.
 
@@ -59,7 +61,7 @@ Changing to finer `p_star` values would be a new outcome-guided refinement after
 
 Therefore the strongest current C4 statement is:
 
-> warning ordering is strictly replicated within the frozen symmetric domain, while cross-domain portability remains bounded and the isolated causal effect of recurrent-transition direction is not identifiable under the predeclared matched schedule because direction changes the loss-generating process itself.
+> event-conditional warning ordering replicated within the frozen symmetric domain but lacked non-event discrimination; cross-domain portability remains bounded and the isolated causal effect of recurrent-transition direction is not identifiable under the predeclared matched schedule because direction changes the loss-generating process itself.
 
 ## Provenance
 

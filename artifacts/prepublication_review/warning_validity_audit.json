@@ -1,0 +1,5240 @@
+{
+  "analysis": "post-review full-denominator warning-validity audit",
+  "auc_identifiability": "A full continuous time-dependent ROC/AUC was not introduced because the locked endpoint family supplies six binary first-passage rules, not a preregistered continuous risk score measured at a common time. The defensible alternative reports binary-marker AUC at the schedule-derived ramp-end landmark (30) and the fixed half/three-quarter horizon landmarks (60/90), without selecting a favourable landmark.",
+  "claim_rule": "Lead sensitivity establishes temporal ordering among event trajectories only. Predictive warning validity requires non-event specificity or horizon risk separation; it is not inferred from valid pairs alone.",
+  "endpoint_dependence": "The six endpoint rows from one trajectory are repeated measurements. No endpoint-pooled p-value, sample size, or confidence interval treats them as independent replicates.",
+  "ensembles": {
+    "combined_descriptive": {
+      "available_baseline_eligible_trajectories": 165,
+      "endpoints": {
+        "H_alpha_0.05": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 60
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.30983220362184355,
+                  0.46012760480511466
+                ],
+                "estimate": 0.3821656050955414,
+                "successes": 60,
+                "total": 157
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.30983220362184355,
+                  0.46012760480511466
+                ],
+                "estimate": 0.3821656050955414,
+                "successes": 60,
+                "total": 157
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.93982814785791,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 60,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 31
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.889744604539564,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 31,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        },
+        "H_alpha_0.10": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 60
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.30983220362184355,
+                  0.46012760480511466
+                ],
+                "estimate": 0.3821656050955414,
+                "successes": 60,
+                "total": 157
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.30983220362184355,
+                  0.46012760480511466
+                ],
+                "estimate": 0.3821656050955414,
+                "successes": 60,
+                "total": 157
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.93982814785791,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 60,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 31
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.889744604539564,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 31,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        },
+        "H_alpha_0.20": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5103092783505154,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 95,
+                "true_negative": 2,
+                "true_positive": 60
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.3423802275066532,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 2,
+                "total": 2
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3140299305665485,
+                  0.465624573617342
+                ],
+                "estimate": 0.3870967741935484,
+                "successes": 60,
+                "total": 155
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.3435898419267983,
+                0.465624573617342
+              ],
+              "risk_difference_positive_minus_negative": 0.3870967741935484,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.6576197724933468
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 2
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3140299305665485,
+                  0.465624573617342
+                ],
+                "estimate": 0.3870967741935484,
+                "successes": 60,
+                "total": 155
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.93982814785791,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 60,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.005672685102266338,
+                  0.07208758247415772
+                ],
+                "estimate": 0.020618556701030927,
+                "successes": 2,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5051546391752577,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 96,
+                "true_negative": 1,
+                "true_positive": 31
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17762354634586047,
+                  0.3255920201430736
+                ],
+                "estimate": 0.2440944881889764,
+                "successes": 31,
+                "total": 127
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.6158271392769021,
+                0.3255920201430736
+              ],
+              "risk_difference_positive_minus_negative": 0.2440944881889764,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17762354634586047,
+                  0.3255920201430736
+                ],
+                "estimate": 0.2440944881889764,
+                "successes": 31,
+                "total": 127
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.889744604539564,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 31,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.0018221648082868483,
+                  0.05610499024289902
+                ],
+                "estimate": 0.010309278350515464,
+                "successes": 1,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        },
+        "H_gamma_0.05": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5051546391752577,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 96,
+                "true_negative": 1,
+                "true_positive": 60
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.31191684770981487,
+                  0.4628599826218962
+                ],
+                "estimate": 0.38461538461538464,
+                "successes": 60,
+                "total": 156
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.4815338379129477,
+                0.4628599826218962
+              ],
+              "risk_difference_positive_minus_negative": 0.38461538461538464,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.31191684770981487,
+                  0.4628599826218962
+                ],
+                "estimate": 0.38461538461538464,
+                "successes": 60,
+                "total": 156
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.93982814785791,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 60,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.0018221648082868483,
+                  0.05610499024289902
+                ],
+                "estimate": 0.010309278350515464,
+                "successes": 1,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 31
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17618737999242146,
+                  0.3232113630861063
+                ],
+                "estimate": 0.2421875,
+                "successes": 31,
+                "total": 128
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.889744604539564,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 31,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        },
+        "H_gamma_0.10": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5122852233676976,
+              "confusion": {
+                "false_negative": 1,
+                "false_positive": 93,
+                "true_negative": 4,
+                "true_positive": 59
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.3755346297625255,
+                  0.9637758913675698
+                ],
+                "estimate": 0.8,
+                "successes": 4,
+                "total": 5
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3143529637892505,
+                  0.46747659390810614
+                ],
+                "estimate": 0.3881578947368421,
+                "successes": 59,
+                "total": 152
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.310112406448224,
+                0.431252485275676
+              ],
+              "risk_difference_positive_minus_negative": 0.18815789473684208,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.03622410863243014,
+                  0.6244653702374745
+                ],
+                "estimate": 0.2,
+                "successes": 1,
+                "total": 5
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3143529637892505,
+                  0.46747659390810614
+                ],
+                "estimate": 0.3881578947368421,
+                "successes": 59,
+                "total": 152
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.9114487027240993,
+                  0.9970518402052136
+                ],
+                "estimate": 0.9833333333333333,
+                "successes": 59,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.016151236586163208,
+                  0.10127525604073723
+                ],
+                "estimate": 0.041237113402061855,
+                "successes": 4,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5051546391752577,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 96,
+                "true_negative": 1,
+                "true_positive": 31
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17762354634586047,
+                  0.3255920201430736
+                ],
+                "estimate": 0.2440944881889764,
+                "successes": 31,
+                "total": 127
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.6158271392769021,
+                0.3255920201430736
+              ],
+              "risk_difference_positive_minus_negative": 0.2440944881889764,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17762354634586047,
+                  0.3255920201430736
+                ],
+                "estimate": 0.2440944881889764,
+                "successes": 31,
+                "total": 127
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.889744604539564,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 31,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.0018221648082868483,
+                  0.05610499024289902
+                ],
+                "estimate": 0.010309278350515464,
+                "successes": 1,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 97,
+                "true_negative": 0,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07038128226926789,
+                  0.19175045014023934
+                ],
+                "estimate": 0.11818181818181818,
+                "successes": 13,
+                "total": 110
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.038094042525947676
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        },
+        "H_gamma_0.20": {
+          "baseline_eligible_trajectories": 165,
+          "event_trajectories": 68,
+          "full_horizon_classification": {
+            "administrative_controls": 97,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 97,
+              "true_negative": 0,
+              "true_positive": 68
+            },
+            "future_cases": 68,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 165,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.33984909305823496,
+                0.4883921445941988
+              ],
+              "estimate": 0.4121212121212121,
+              "successes": 68,
+              "total": 165
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9465286634799296,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 68,
+              "total": 68
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.038094042525947676
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 97
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5213917525773195,
+              "confusion": {
+                "false_negative": 3,
+                "false_positive": 88,
+                "true_negative": 9,
+                "true_positive": 57
+              },
+              "future_cases": 60,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.4676946650664344,
+                  0.9110583316059453
+                ],
+                "estimate": 0.75,
+                "successes": 9,
+                "total": 12
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3173450841066292,
+                  0.47437961245560356
+                ],
+                "estimate": 0.3931034482758621,
+                "successes": 57,
+                "total": 145
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.21496025082693637,
+                0.3854379440615488
+              ],
+              "risk_difference_positive_minus_negative": 0.14310344827586208,
+              "risk_set": 157,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.08894166839405476,
+                  0.5323053349335656
+                ],
+                "estimate": 0.25,
+                "successes": 3,
+                "total": 12
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3173450841066292,
+                  0.47437961245560356
+                ],
+                "estimate": 0.3931034482758621,
+                "successes": 57,
+                "total": 145
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8629948352365148,
+                  0.9828504978356042
+                ],
+                "estimate": 0.95,
+                "successes": 57,
+                "total": 60
+              },
+              "specificity": {
+                "ci95": [
+                  0.04958321848144811,
+                  0.16700883677164327
+                ],
+                "estimate": 0.09278350515463918,
+                "successes": 9,
+                "total": 97
+              }
+            },
+            "60": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.4993348852677087,
+              "confusion": {
+                "false_negative": 1,
+                "false_positive": 94,
+                "true_negative": 3,
+                "true_positive": 30
+              },
+              "future_cases": 31,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.300641842582402,
+                  0.9544127391902995
+                ],
+                "estimate": 0.75,
+                "successes": 3,
+                "total": 4
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17504996704510795,
+                  0.3243299634533064
+                ],
+                "estimate": 0.24193548387096775,
+                "successes": 30,
+                "total": 124
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.52430819037249,
+                0.2787427026436058
+              ],
+              "risk_difference_positive_minus_negative": -0.008064516129032251,
+              "risk_set": 128,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0455872608097006,
+                  0.699358157417598
+                ],
+                "estimate": 0.25,
+                "successes": 1,
+                "total": 4
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17504996704510795,
+                  0.3243299634533064
+                ],
+                "estimate": 0.24193548387096775,
+                "successes": 30,
+                "total": 124
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.838058948352751,
+                  0.9942827784745831
+                ],
+                "estimate": 0.967741935483871,
+                "successes": 30,
+                "total": 31
+              },
+              "specificity": {
+                "ci95": [
+                  0.01057334494855243,
+                  0.08702003515310981
+                ],
+                "estimate": 0.030927835051546393,
+                "successes": 3,
+                "total": 97
+              }
+            },
+            "90": {
+              "administrative_controls": 97,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5051546391752577,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 96,
+                "true_negative": 1,
+                "true_positive": 13
+              },
+              "future_cases": 13,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.07103973893221355,
+                  0.19341500254815325
+                ],
+                "estimate": 0.11926605504587157,
+                "successes": 13,
+                "total": 109
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.7224109466905491,
+                0.19341500254815325
+              ],
+              "risk_difference_positive_minus_negative": 0.11926605504587157,
+              "risk_set": 110,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.07103973893221355,
+                  0.19341500254815325
+                ],
+                "estimate": 0.11926605504587157,
+                "successes": 13,
+                "total": 109
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7719046276458016,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 13,
+                "total": 13
+              },
+              "specificity": {
+                "ci95": [
+                  0.0018221648082868483,
+                  0.05610499024289902
+                ],
+                "estimate": 0.010309278350515464,
+                "successes": 1,
+                "total": 97
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9465286634799296,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 68,
+            "total": 68
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9619059574740523,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 97,
+            "total": 97
+          },
+          "right_censored_non_event_trajectories": 97
+        }
+      },
+      "scope": "trajectory-level descriptive pooling of the two independent ensembles within the identical frozen domain"
+    },
+    "fresh_202911": {
+      "attempted_trajectories": 100,
+      "available_baseline_eligible_trajectories": 82,
+      "endpoints": {
+        "H_alpha_0.05": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        },
+        "H_alpha_0.10": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        },
+        "H_alpha_0.20": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        },
+        "H_gamma_0.05": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        },
+        "H_gamma_0.10": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.2570177876603489,
+                  0.4674361448585067
+                ],
+                "estimate": 0.35526315789473684,
+                "successes": 27,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        },
+        "H_gamma_0.20": {
+          "baseline_eligible_trajectories": 82,
+          "event_trajectories": 33,
+          "full_horizon_classification": {
+            "administrative_controls": 49,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 49,
+              "true_negative": 0,
+              "true_positive": 33
+            },
+            "future_cases": 33,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 82,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3029744315621252,
+                0.5106354462310652
+              ],
+              "estimate": 0.4024390243902439,
+              "successes": 33,
+              "total": 82
+            },
+            "sensitivity": {
+              "ci95": [
+                0.895730002457548,
+                0.9999999999999999
+              ],
+              "estimate": 1.0,
+              "successes": 33,
+              "total": 33
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07269781922049635
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 49
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5102040816326531,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 1,
+                "true_positive": 27
+              },
+              "future_cases": 27,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.26064928908616347,
+                  0.47299338680902214
+                ],
+                "estimate": 0.36,
+                "successes": 27,
+                "total": 75
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.5328013965365991,
+                0.47299338680902214
+              ],
+              "risk_difference_positive_minus_negative": 0.36,
+              "risk_set": 76,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.26064928908616347,
+                  0.47299338680902214
+                ],
+                "estimate": 0.36,
+                "successes": 27,
+                "total": 75
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8754449702581331,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 27,
+                "total": 27
+              },
+              "specificity": {
+                "ci95": [
+                  0.0036116725898252544,
+                  0.10693521523391615
+                ],
+                "estimate": 0.02040816326530612,
+                "successes": 1,
+                "total": 49
+              }
+            },
+            "60": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 14
+              },
+              "future_cases": 14,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 63,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.1372500775261365,
+                  0.3391228111343366
+                ],
+                "estimate": 0.2222222222222222,
+                "successes": 14,
+                "total": 63
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7846891972623643,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 14,
+                "total": 14
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            },
+            "90": {
+              "administrative_controls": 49,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 49,
+                "true_negative": 0,
+                "true_positive": 3
+              },
+              "future_cases": 3,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 52,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.0198141721122706,
+                  0.15642511368960757
+                ],
+                "estimate": 0.057692307692307696,
+                "successes": 3,
+                "total": 52
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.4385029682449546,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 3,
+                "total": 3
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07269781922049635
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 49
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.895730002457548,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 33,
+            "total": 33
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9273021807795038,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 49,
+            "total": 49
+          },
+          "right_censored_non_event_trajectories": 49
+        }
+      }
+    },
+    "inherited_202611": {
+      "attempted_trajectories": 100,
+      "available_baseline_eligible_trajectories": 83,
+      "endpoints": {
+        "H_alpha_0.05": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 33
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3069627781339349,
+                  0.5162368673165124
+                ],
+                "estimate": 0.4074074074074074,
+                "successes": 33,
+                "total": 81
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3069627781339349,
+                  0.5162368673165124
+                ],
+                "estimate": 0.4074074074074074,
+                "successes": 33,
+                "total": 81
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.895730002457548,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 33,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 17
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8156818649911481,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 17,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        },
+        "H_alpha_0.10": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 33
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3069627781339349,
+                  0.5162368673165124
+                ],
+                "estimate": 0.4074074074074074,
+                "successes": 33,
+                "total": 81
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3069627781339349,
+                  0.5162368673165124
+                ],
+                "estimate": 0.4074074074074074,
+                "successes": 33,
+                "total": 81
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.895730002457548,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 33,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 17
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8156818649911481,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 17,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        },
+        "H_alpha_0.20": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5208333333333334,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 46,
+                "true_negative": 2,
+                "true_positive": 33
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.3423802275066532,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 2,
+                "total": 2
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.31526628140121804,
+                  0.5278074622886679
+                ],
+                "estimate": 0.4177215189873418,
+                "successes": 33,
+                "total": 79
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.34235349109212876,
+                0.5278074622886679
+              ],
+              "risk_difference_positive_minus_negative": 0.4177215189873418,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.6576197724933468
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 2
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.31526628140121804,
+                  0.5278074622886679
+                ],
+                "estimate": 0.4177215189873418,
+                "successes": 33,
+                "total": 79
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.895730002457548,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 33,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.011501893489386586,
+                  0.1397565587045544
+                ],
+                "estimate": 0.041666666666666664,
+                "successes": 2,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5104166666666666,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 47,
+                "true_negative": 1,
+                "true_positive": 17
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17296379074222612,
+                  0.38482873728565126
+                ],
+                "estimate": 0.265625,
+                "successes": 17,
+                "total": 64
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.6204868948805364,
+                0.38482873728565126
+              ],
+              "risk_difference_positive_minus_negative": 0.265625,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17296379074222612,
+                  0.38482873728565126
+                ],
+                "estimate": 0.265625,
+                "successes": 17,
+                "total": 64
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8156818649911481,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 17,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.003687110977510656,
+                  0.10899217995251859
+                ],
+                "estimate": 0.020833333333333332,
+                "successes": 1,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        },
+        "H_gamma_0.05": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5104166666666666,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 47,
+                "true_negative": 1,
+                "true_positive": 33
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.31105857612761884,
+                  0.5219595965410985
+                ],
+                "estimate": 0.4125,
+                "successes": 33,
+                "total": 80
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.4823921094951437,
+                0.5219595965410985
+              ],
+              "risk_difference_positive_minus_negative": 0.4125,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.31105857612761884,
+                  0.5219595965410985
+                ],
+                "estimate": 0.4125,
+                "successes": 33,
+                "total": 80
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.895730002457548,
+                  0.9999999999999999
+                ],
+                "estimate": 1.0,
+                "successes": 33,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.003687110977510656,
+                  0.10899217995251859
+                ],
+                "estimate": 0.020833333333333332,
+                "successes": 1,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 17
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17018193413221394,
+                  0.37950802696022545
+                ],
+                "estimate": 0.26153846153846155,
+                "successes": 17,
+                "total": 65
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8156818649911481,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 17,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        },
+        "H_gamma_0.10": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5265151515151515,
+              "confusion": {
+                "false_negative": 1,
+                "false_positive": 44,
+                "true_negative": 4,
+                "true_positive": 32
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.3755346297625255,
+                  0.9637758913675698
+                ],
+                "estimate": 0.8,
+                "successes": 4,
+                "total": 5
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3164861911803876,
+                  0.5332159538298973
+                ],
+                "estimate": 0.42105263157894735,
+                "successes": 32,
+                "total": 76
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.3079791790570869,
+                0.49699184519746714
+              ],
+              "risk_difference_positive_minus_negative": 0.22105263157894733,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.03622410863243014,
+                  0.6244653702374745
+                ],
+                "estimate": 0.2,
+                "successes": 1,
+                "total": 5
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3164861911803876,
+                  0.5332159538298973
+                ],
+                "estimate": 0.42105263157894735,
+                "successes": 32,
+                "total": 76
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8468127461788107,
+                  0.9946305894631281
+                ],
+                "estimate": 0.9696969696969697,
+                "successes": 32,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.032883756818091775,
+                  0.19553301790367278
+                ],
+                "estimate": 0.08333333333333333,
+                "successes": 4,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5104166666666666,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 47,
+                "true_negative": 1,
+                "true_positive": 17
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.17296379074222612,
+                  0.38482873728565126
+                ],
+                "estimate": 0.265625,
+                "successes": 17,
+                "total": 64
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.6204868948805364,
+                0.38482873728565126
+              ],
+              "risk_difference_positive_minus_negative": 0.265625,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.17296379074222612,
+                  0.38482873728565126
+                ],
+                "estimate": 0.265625,
+                "successes": 17,
+                "total": 64
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.8156818649911481,
+                  0.9999999999999998
+                ],
+                "estimate": 1.0,
+                "successes": 17,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.003687110977510656,
+                  0.10899217995251859
+                ],
+                "estimate": 0.020833333333333332,
+                "successes": 1,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 48,
+                "true_negative": 0,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "risk_difference_ci95_conservative_newcombe": null,
+              "risk_difference_positive_minus_negative": null,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": null,
+                "estimate": null,
+                "successes": 0,
+                "total": 0
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09644292662938804,
+                  0.2890825650932622
+                ],
+                "estimate": 0.1724137931034483,
+                "successes": 10,
+                "total": 58
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.0,
+                  0.07410012966611745
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        },
+        "H_gamma_0.20": {
+          "baseline_eligible_trajectories": 83,
+          "event_trajectories": 35,
+          "full_horizon_classification": {
+            "administrative_controls": 48,
+            "administrative_horizon": 120,
+            "binary_marker_auc": 0.5,
+            "confusion": {
+              "false_negative": 0,
+              "false_positive": 48,
+              "true_negative": 0,
+              "true_positive": 35
+            },
+            "future_cases": 35,
+            "landmark": null,
+            "negative_predictive_value": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "positive_predictive_value": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "risk_difference_ci95_conservative_newcombe": null,
+            "risk_difference_positive_minus_negative": null,
+            "risk_set": 83,
+            "risk_warning_negative": {
+              "ci95": null,
+              "estimate": null,
+              "successes": 0,
+              "total": 0
+            },
+            "risk_warning_positive": {
+              "ci95": [
+                0.3212301490182536,
+                0.5290717669497664
+              ],
+              "estimate": 0.42168674698795183,
+              "successes": 35,
+              "total": 83
+            },
+            "sensitivity": {
+              "ci95": [
+                0.9010990076755961,
+                1.0
+              ],
+              "estimate": 1.0,
+              "successes": 35,
+              "total": 35
+            },
+            "specificity": {
+              "ci95": [
+                0.0,
+                0.07410012966611745
+              ],
+              "estimate": 0.0,
+              "successes": 0,
+              "total": 48
+            }
+          },
+          "landmark_dynamic_classification": {
+            "30": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5378787878787878,
+              "confusion": {
+                "false_negative": 3,
+                "false_positive": 40,
+                "true_negative": 8,
+                "true_positive": 30
+              },
+              "future_cases": 33,
+              "landmark": 30,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.434354698823871,
+                  0.9025394070997511
+                ],
+                "estimate": 0.7272727272727273,
+                "successes": 8,
+                "total": 11
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.3193530887999687,
+                  0.5452216344014978
+                ],
+                "estimate": 0.42857142857142855,
+                "successes": 30,
+                "total": 70
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.2462922123761604,
+                0.4477610415012489
+              ],
+              "risk_difference_positive_minus_negative": 0.15584415584415584,
+              "risk_set": 81,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.09746059290024894,
+                  0.5656453011761291
+                ],
+                "estimate": 0.2727272727272727,
+                "successes": 3,
+                "total": 11
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.3193530887999687,
+                  0.5452216344014978
+                ],
+                "estimate": 0.42857142857142855,
+                "successes": 30,
+                "total": 70
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7642739435353028,
+                  0.9685960584754183
+                ],
+                "estimate": 0.9090909090909091,
+                "successes": 30,
+                "total": 33
+              },
+              "specificity": {
+                "ci95": [
+                  0.08695513576485567,
+                  0.2957782840125559
+                ],
+                "estimate": 0.16666666666666666,
+                "successes": 8,
+                "total": 48
+              }
+            },
+            "60": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5018382352941176,
+              "confusion": {
+                "false_negative": 1,
+                "false_positive": 45,
+                "true_negative": 3,
+                "true_positive": 16
+              },
+              "future_cases": 17,
+              "landmark": 60,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.300641842582402,
+                  0.9544127391902995
+                ],
+                "estimate": 0.75,
+                "successes": 3,
+                "total": 4
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.16838786362361485,
+                  0.38436741783614375
+                ],
+                "estimate": 0.26229508196721313,
+                "successes": 16,
+                "total": 61
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.5309702937939831,
+                0.33878015702644315
+              ],
+              "risk_difference_positive_minus_negative": 0.012295081967213128,
+              "risk_set": 65,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0455872608097006,
+                  0.699358157417598
+                ],
+                "estimate": 0.25,
+                "successes": 1,
+                "total": 4
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.16838786362361485,
+                  0.38436741783614375
+                ],
+                "estimate": 0.26229508196721313,
+                "successes": 16,
+                "total": 61
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.730179693624246,
+                  0.9895395990150022
+                ],
+                "estimate": 0.9411764705882353,
+                "successes": 16,
+                "total": 17
+              },
+              "specificity": {
+                "ci95": [
+                  0.0214832329083893,
+                  0.16835438054946347
+                ],
+                "estimate": 0.0625,
+                "successes": 3,
+                "total": 48
+              }
+            },
+            "90": {
+              "administrative_controls": 48,
+              "administrative_horizon": 120,
+              "binary_marker_auc": 0.5104166666666666,
+              "confusion": {
+                "false_negative": 0,
+                "false_positive": 47,
+                "true_negative": 1,
+                "true_positive": 10
+              },
+              "future_cases": 10,
+              "landmark": 90,
+              "negative_predictive_value": {
+                "ci95": [
+                  0.20654931437723745,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 1,
+                "total": 1
+              },
+              "positive_predictive_value": {
+                "ci95": [
+                  0.09818852239709965,
+                  0.2936735282969393
+                ],
+                "estimate": 0.17543859649122806,
+                "successes": 10,
+                "total": 57
+              },
+              "risk_difference_ci95_conservative_newcombe": [
+                -0.6952621632256629,
+                0.2936735282969393
+              ],
+              "risk_difference_positive_minus_negative": 0.17543859649122806,
+              "risk_set": 58,
+              "risk_warning_negative": {
+                "ci95": [
+                  0.0,
+                  0.7934506856227626
+                ],
+                "estimate": 0.0,
+                "successes": 0,
+                "total": 1
+              },
+              "risk_warning_positive": {
+                "ci95": [
+                  0.09818852239709965,
+                  0.2936735282969393
+                ],
+                "estimate": 0.17543859649122806,
+                "successes": 10,
+                "total": 57
+              },
+              "sensitivity": {
+                "ci95": [
+                  0.7224672001371109,
+                  1.0
+                ],
+                "estimate": 1.0,
+                "successes": 10,
+                "total": 10
+              },
+              "specificity": {
+                "ci95": [
+                  0.003687110977510656,
+                  0.10899217995251859
+                ],
+                "estimate": 0.020833333333333332,
+                "successes": 1,
+                "total": 48
+              }
+            }
+          },
+          "lead_sensitivity": {
+            "ci95": [
+              0.9010990076755961,
+              1.0
+            ],
+            "estimate": 1.0,
+            "successes": 35,
+            "total": 35
+          },
+          "non_event_false_positive_rate": {
+            "ci95": [
+              0.9258998703338824,
+              0.9999999999999999
+            ],
+            "estimate": 1.0,
+            "successes": 48,
+            "total": 48
+          },
+          "right_censored_non_event_trajectories": 48
+        }
+      }
+    }
+  },
+  "intervals": "two-sided 95% Wilson intervals for binomial rates; no multiplicity-based endpoint aggregation",
+  "population": "all baseline-eligible saved trajectories in each frozen symmetric H2-R ensemble",
+  "right_censoring": "All available trajectories share the fixed administrative horizon of 120 generations. No-loss trajectories remain right-censored for event-time claims and serve as known event-free controls only at that horizon."
+}

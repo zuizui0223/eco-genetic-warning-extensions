@@ -8,9 +8,9 @@ The Letter uses **exactly six main display items** and no main-text tables or te
 
 Conceptual condition-first architecture. Historical R1–R4 labels are shown only as calibration-screen categories.
 
-### Figure 2 — fragmentation creates vulnerability and genetic warning is conditionally possible
+### Figure 2 — fragmentation creates vulnerability; event-only warning ordering lacks discrimination
 
-Parent fragmentation evidence plus the inherited conditional relative-warning benchmark. Table S1 retains the paired fragmentation effect sizes.
+Parent fragmentation evidence plus the inherited relative-warning benchmark, now interpreted with the full-denominator audit: 35/35 event-conditional leads and 48/48 non-event firings. Table S1 retains the paired fragmentation effect sizes and Table S7 retains warning validity.
 
 ### Figure 3 — recurrent state turnover reorganises source feasibility and historical loss-screen placement
 
@@ -32,9 +32,9 @@ Warning availability, censoring and ordering across independently calibrated non
 
 - Supplementary Figure S1: fixed-area fragmentation gradient.
 - Supplementary Figure S2: historical frontier-search chronology and finite-sample R3/R4 audit if retained.
-- Supplementary Figure S3: conditional positive lead-time diagnostic.
+- Supplementary Figure S3: event-conditional positive lead-time diagnostic, explicitly selected on observed warning/loss pairs.
 - Supplementary condition panel/table: Phase Q aggregate-interaction robustness and Phase N/T partner negative results.
-- Tables S1–S6: model, fragmentation, source feasibility, historical screen, portability and high-precision/fresh-replication condition records.
+- Tables S1–S7: model, fragmentation, source feasibility, historical screen, portability, high-precision/fresh-replication condition records and the full-denominator warning audit.
 - Machine-readable precision evidence: consolidated high-precision condition map plus original Phase E–G provenance and locked Phase-U fresh-replication evidence.
 
 ## Integration rule

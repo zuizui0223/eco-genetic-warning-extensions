@@ -1,6 +1,6 @@
 # Eco-genetic warning extensions
 
-This repository tests **when a genetic warning question about ecological function is biologically and empirically well posed**. It is the condition-recovery, warning-validation, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality), pinned at scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
+This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality), pinned at scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
 ```text
 C0  Can an interaction-dependent high-function state exist?
@@ -69,11 +69,11 @@ The historical allele-frequency-mixing `m=.10` equal-rate signal did not reprodu
 
 A constructive aligned versus anti-aligned pair held the declared coarse marginals fixed while reversing patchwise interaction–genetic/trait alignment. The exact next interaction transition differed by as much as `0.2543`, demonstrating transition-level insufficiency of the coarse summaries. The fixed 60-generation campaign did not establish a directional long-horizon loss-incidence effect (`0.678` versus `0.722`; McNemar `p=.143`).
 
-### Genetic warning is reproducible within a frozen loss-generating state
+### Relative warning ordering reproduced but failed discrimination
 
-In the inherited symmetric benchmark, all 35 valid same-trajectory pairs showed baseline-relative `H_alpha/H_gamma` erosion before realised functional loss at each of six 5/10/20% endpoints. A prospectively fixed fresh ensemble reproduced the ordering at **33/33** valid losses for all six endpoints, with zero ties and zero lags.
+In the inherited symmetric benchmark, all 35 event trajectories showed baseline-relative `H_alpha/H_gamma` erosion before realised functional loss at each of six 5/10/20% endpoints. A prospectively fixed fresh ensemble reproduced that ordering at **33/33** losses.
 
-This supports **within-state reproducibility**, not a universal percentage threshold. Fixed absolute thresholds were not robust, and warning was not fully portable across separately calibrated domains.
+The full-denominator audit changed the interpretation: all six thresholds also fired in **48/48** inherited and **49/49** fresh non-event trajectories. Full-horizon specificity was zero and binary-marker AUC was 0.5. This supports replicated **event-conditional ordering**, not predictive warning validity or a universal percentage threshold.
 
 ### Closed condition-map invariants retained for release
 
@@ -84,7 +84,7 @@ The historical calibration language is kept explicit so release-facing summaries
 - The **historical `m=.10` connectivity signal did not freshly replicate**. In the independent Phase-U ensemble, **fresh `m=0/.10` equal-rate p values were `.134/.745`**, pooled loss was `.540/.551`, and paired McNemar `p=.694`.
 - **No robust portable connectivity heterogeneity effect is established** across the tested allele-only, whole-individual, and pollen-only closures.
 - Reduced-form and matched-expected-support partner tests were bounded negative results; the **adaptive-rewiring gate remains closed**.
-- **Warning remains conditional and portability bounded** even though the six relative warning orderings strictly reproduced within the frozen H2-R state.
+- **The frozen relative thresholds are not validated predictors**: event-conditional ordering reproduced, but non-event false-positive rate was 1.0 in both ensembles.
 
 ## Natural-data programme
 
@@ -114,7 +114,7 @@ This is a `C/G_mating` result, not direct ecological functional loss. It shows t
 
 Four EIDC products from the same 2015 Hillesden experiment were synchronized prospectively at `Block -> Experimental array -> focal plant -> fruit/progeny`. The candidate array-level pollinator state was fixed as `log1p(pan-trap count) + mean ITD`, with leave-one-array-out validation.
 
-The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on the source labels `Fallow ground` versus `Fallow graound`; post hoc typo repair was prohibited.
+The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on the source labels `Fallow ground` versus `Fallow graound`; post hoc typo repair was prohibited. That primary lock remains unchanged. A separate prospectively declared F-only sensitivity permits exactly the one literal key/value correction and cannot rescue or relabel the primary result.
 
 For the estimable endpoints, the candidate pan-trap state did not show reproducible held-out gain for either mating (`G_mating`) or outcross pollen movement (`C_pollen`). This is a **measurement boundary**: pan-trap availability/trait summaries are not automatically equivalent to effective interaction.
 

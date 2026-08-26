@@ -6,8 +6,9 @@ REFS = (ROOT / "manuscript" / "references.md").read_text(encoding="utf-8")
 
 
 def test_abstract_retains_state_defined_synthesis_and_new_boundary() -> None:
-    assert "Natural-data tests showed both residual-context redundancy and candidate-state insufficiency" in MAIN
-    assert "state-defined reproducibility" in MAIN
+    assert "Natural-data tests then separated informative partial states, missing process coordinates, inadequate proxies" in MAIN
+    assert "representations that erased mechanistic weighting" in MAIN
+    assert "Future-relevant state inference requires joint representation" in MAIN
 
 
 def test_oenothera_is_mating_state_not_direct_function() -> None:
