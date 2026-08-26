@@ -1,7 +1,6 @@
 from __future__ import annotations
 
 import argparse
-import io
 import json
 import re
 import shutil
@@ -68,19 +67,68 @@ def _norm(value: object) -> str:
     return re.sub(r"[^a-z0-9]+", "", text)
 
 
-def _download_dryad(doi: str, destination: Path) -> None:
+def _request(url: str) -> urllib.request.Request:
+    return urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "eco-genetic-warning-extensions-schema-audit/1.0",
+            "Accept": "application/json, text/html;q=0.9, */*;q=0.8",
+        },
+    )
+
+
+def _get_json(url: str) -> dict[str, Any]:
+    with urllib.request.urlopen(_request(url), timeout=120) as response:
+        return json.loads(response.read().decode("utf-8"))
+
+
+def _dryad_file_manifest(doi: str) -> list[dict[str, Any]]:
     encoded = urllib.parse.quote(f"doi:{doi}", safe="")
-    url = f"https://datadryad.org/api/v2/datasets/{encoded}/download"
-    request = urllib.request.Request(url, headers={"User-Agent": "eco-genetic-warning-extensions-schema-audit/1.0"})
-    with urllib.request.urlopen(request, timeout=120) as response, destination.open("wb") as handle:
-        shutil.copyfileobj(response, handle)
+    versions_url = f"https://datadryad.org/api/v2/datasets/{encoded}/versions"
+    versions = _get_json(versions_url).get("_embedded", {}).get("stash:versions", [])
+    if not versions:
+        raise RuntimeError(f"no Dryad versions returned for {doi}")
+    latest = versions[-1]
+    files_href = latest.get("_links", {}).get("stash:files", {}).get("href")
+    if not files_href:
+        raise RuntimeError(f"latest Dryad version lacks stash:files link for {doi}")
+    if str(files_href).startswith("/"):
+        files_url = "https://datadryad.org" + str(files_href)
+    else:
+        files_url = str(files_href)
+    files = _get_json(files_url).get("_embedded", {}).get("stash:files", [])
+    manifest: list[dict[str, Any]] = []
+    for item in files:
+        self_href = item.get("_links", {}).get("self", {}).get("href", "")
+        match = re.search(r"/files/(\d+)$", str(self_href))
+        if not match:
+            continue
+        manifest.append(
+            {
+                "file_id": int(match.group(1)),
+                "path": str(item.get("path") or f"file_{match.group(1)}"),
+                "size": item.get("size"),
+                "mime_type": item.get("mimeType"),
+                "digest": item.get("digest"),
+                "digest_type": item.get("digestType"),
+            }
+        )
+    if not manifest:
+        raise RuntimeError(f"no Dryad file ids returned for {doi}")
+    return manifest
 
 
-def _extract_all(zip_path: Path, destination: Path) -> None:
+def _download_dryad_files(doi: str, destination: Path) -> list[dict[str, Any]]:
     destination.mkdir(parents=True, exist_ok=True)
-    with zipfile.ZipFile(zip_path) as archive:
-        archive.extractall(destination)
-    # Dryad packages can themselves contain zip files. Expand them only for schema discovery.
+    manifest = _dryad_file_manifest(doi)
+    for item in manifest:
+        target = destination / item["path"]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        url = f"https://datadryad.org/stash/downloads/file_stream/{item['file_id']}"
+        with urllib.request.urlopen(_request(url), timeout=120) as response, target.open("wb") as handle:
+            shutil.copyfileobj(response, handle)
+
+    # Expand nested ZIPs only for schema discovery. Raw outcome values are never read by this script.
     for nested in list(destination.rglob("*.zip")):
         nested_dir = nested.with_suffix("")
         try:
@@ -89,6 +137,7 @@ def _extract_all(zip_path: Path, destination: Path) -> None:
                 archive.extractall(nested_dir)
         except zipfile.BadZipFile:
             continue
+    return manifest
 
 
 def _csv_columns(path: Path) -> list[str]:
@@ -100,10 +149,6 @@ def _csv_columns(path: Path) -> list[str]:
         except Exception as exc:  # pragma: no cover - archive dependent
             last = exc
     raise RuntimeError(f"could not read CSV header {path}: {last}")
-
-
-def _text_columns(path: Path) -> list[str]:
-    return _csv_columns(path)
 
 
 def _excel_schemas(path: Path) -> list[dict[str, Any]]:
@@ -138,9 +183,13 @@ def _inspect_archive(root: Path) -> list[dict[str, Any]]:
         relative = str(path.relative_to(root))
         suffix = path.suffix.lower()
         if suffix in {".xlsx", ".xls"}:
-            for sheet in _excel_schemas(path):
+            try:
+                sheets = _excel_schemas(path)
+            except Exception as exc:  # pragma: no cover - archive dependent
+                sheets = [{"sheet": None, "columns": [], "error": f"{type(exc).__name__}: {exc}"}]
+            for sheet in sheets:
                 columns = sheet["columns"]
-                label = f"{relative}::{sheet['sheet']}"
+                label = f"{relative}::{sheet['sheet']}" if sheet["sheet"] else relative
                 records.append(
                     {
                         "container": relative,
@@ -153,7 +202,7 @@ def _inspect_archive(root: Path) -> list[dict[str, Any]]:
                 )
         else:
             try:
-                columns = _csv_columns(path) if suffix != ".txt" else _text_columns(path)
+                columns = _csv_columns(path)
                 error = None
             except Exception as exc:  # pragma: no cover - archive dependent
                 columns = []
@@ -240,18 +289,17 @@ def run(work_root: Path) -> dict[str, Any]:
         "analysis": "response_firewalled_cross_origin_minimal_bridge_schema_audit",
         "candidate_lock": list(CANDIDATES),
         "inspection_boundary": (
-            "Only file/sheet names, column names and join-key structure are inspected. "
+            "Only repository metadata, file/sheet names, column names and join-key structure are inspected. "
             "No reproductive outcome values, associations, fitted effects or direction-based inclusion decisions are computed."
         ),
+        "download_method": "anonymous Dryad versions/files metadata + public stash file_stream endpoint",
         "candidates": {},
     }
 
     for candidate in CANDIDATES:
         candidate_dir = work_root / candidate["id"]
-        package = work_root / f"{candidate['id']}.zip"
         try:
-            _download_dryad(candidate["doi"], package)
-            _extract_all(package, candidate_dir)
+            manifest = _download_dryad_files(candidate["doi"], candidate_dir)
             records = _inspect_archive(candidate_dir)
             decision = _candidate_decision(records)
             output["candidates"][candidate["id"]] = {
@@ -259,6 +307,7 @@ def run(work_root: Path) -> dict[str, Any]:
                 "doi": candidate["doi"],
                 "source": candidate["source"],
                 "download_status": "success",
+                "file_manifest": manifest,
                 "schema_records": records,
                 "decision": decision,
             }
@@ -269,6 +318,7 @@ def run(work_root: Path) -> dict[str, Any]:
                 "source": candidate["source"],
                 "download_status": "failed",
                 "error": f"{type(exc).__name__}: {exc}",
+                "file_manifest": [],
                 "schema_records": [],
                 "decision": {
                     "schema_eligible_for_mapping_review": False,
