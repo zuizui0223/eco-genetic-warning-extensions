@@ -40,8 +40,8 @@ def summarize(registry: dict) -> dict:
         "interpretation": (
             "The earlier N2 island 0/5 result is a bounded-registry measurement/representation result, "
             "not a general absence of island process-function archives. N3 prospectively recovers island "
-            "studies measuring direct visitation and realised reproduction, including at least one archive "
-            "that explicitly exposes both process and function files. No N3 system is promoted to a fitted "
+            "studies measuring direct visitation and realised reproduction. Public reusable direct I and F "
+            "are now explicit for two of four N3 systems, but no N3 system is promoted to a fitted "
             "process-function or residual-context analysis until the preregistered join/schema gate passes."
         ),
         "claim_ceiling": (
