@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import argparse
+import http.cookiejar
 import json
 import re
 import shutil
+import urllib.error
 import urllib.parse
 import urllib.request
 import zipfile
@@ -61,24 +63,34 @@ PREFERRED_KEYS = {
     "block",
 }
 
+BROWSER_UA = (
+    "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 "
+    "(KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
+)
+
 
 def _norm(value: object) -> str:
     text = str(value).strip().lower()
     return re.sub(r"[^a-z0-9]+", "", text)
 
 
-def _request(url: str) -> urllib.request.Request:
-    return urllib.request.Request(
-        url,
-        headers={
-            "User-Agent": "eco-genetic-warning-extensions-schema-audit/1.0",
-            "Accept": "application/json, text/html;q=0.9, */*;q=0.8",
-        },
-    )
+def _request(url: str, *, referer: str | None = None, json_only: bool = False) -> urllib.request.Request:
+    headers = {
+        "User-Agent": BROWSER_UA,
+        "Accept-Language": "en-US,en;q=0.9",
+        "Cache-Control": "no-cache",
+    }
+    if json_only:
+        headers["Accept"] = "application/json"
+    else:
+        headers["Accept"] = "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
+    if referer:
+        headers["Referer"] = referer
+    return urllib.request.Request(url, headers=headers)
 
 
 def _get_json(url: str) -> dict[str, Any]:
-    with urllib.request.urlopen(_request(url), timeout=120) as response:
+    with urllib.request.urlopen(_request(url, json_only=True), timeout=120) as response:
         return json.loads(response.read().decode("utf-8"))
 
 
@@ -111,6 +123,7 @@ def _dryad_file_manifest(doi: str) -> list[dict[str, Any]]:
                 "mime_type": item.get("mimeType"),
                 "digest": item.get("digest"),
                 "digest_type": item.get("digestType"),
+                "download_attempts": [],
             }
         )
     if not manifest:
@@ -118,26 +131,88 @@ def _dryad_file_manifest(doi: str) -> list[dict[str, Any]]:
     return manifest
 
 
-def _download_dryad_files(doi: str, destination: Path) -> list[dict[str, Any]]:
+def _download_urls(file_id: int) -> tuple[str, ...]:
+    return (
+        f"https://datadryad.org/stash/downloads/file_stream/{file_id}",
+        f"https://datadryad.org/downloads/file_stream/{file_id}",
+        f"https://datadryad.org/stash/downloads/file_stream/{file_id}?download=1",
+        f"https://datadryad.org/downloads/file_stream/{file_id}?download=1",
+    )
+
+
+def _browser_opener(doi: str) -> tuple[urllib.request.OpenerDirector, str, dict[str, Any]]:
+    cookie_jar = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(urllib.request.HTTPCookieProcessor(cookie_jar))
+    landing_doi = urllib.parse.quote(f"doi:{doi}", safe="")
+    landing_url = f"https://datadryad.org/stash/dataset/{landing_doi}"
+    landing_status: dict[str, Any] = {"url": landing_url, "status": None, "error": None}
+    try:
+        with opener.open(_request(landing_url), timeout=120) as response:
+            # Read only a small prefix to establish the browser session/cookies. No dataset values live here.
+            response.read(4096)
+            landing_status["status"] = int(response.status)
+    except urllib.error.HTTPError as exc:
+        landing_status["status"] = int(exc.code)
+        landing_status["error"] = f"HTTPError: {exc.code} {exc.reason}"
+    except Exception as exc:  # pragma: no cover - network dependent
+        landing_status["error"] = f"{type(exc).__name__}: {exc}"
+    return opener, landing_url, landing_status
+
+
+def _download_one_file(
+    opener: urllib.request.OpenerDirector,
+    landing_url: str,
+    item: dict[str, Any],
+    target: Path,
+) -> bool:
+    for url in _download_urls(int(item["file_id"])):
+        attempt: dict[str, Any] = {"url": url, "status": None, "error": None}
+        try:
+            request = _request(url, referer=landing_url)
+            with opener.open(request, timeout=120) as response, target.open("wb") as handle:
+                attempt["status"] = int(response.status)
+                attempt["content_type"] = response.headers.get("Content-Type")
+                attempt["content_length"] = response.headers.get("Content-Length")
+                shutil.copyfileobj(response, handle)
+            item["download_attempts"].append(attempt)
+            item["download_url_used"] = url
+            item["download_status"] = "success"
+            return True
+        except urllib.error.HTTPError as exc:
+            attempt["status"] = int(exc.code)
+            attempt["error"] = f"HTTPError: {exc.code} {exc.reason}"
+            item["download_attempts"].append(attempt)
+        except Exception as exc:  # pragma: no cover - network dependent
+            attempt["error"] = f"{type(exc).__name__}: {exc}"
+            item["download_attempts"].append(attempt)
+    item["download_status"] = "failed"
+    return False
+
+
+def _download_dryad_files(doi: str, destination: Path) -> tuple[list[dict[str, Any]], dict[str, Any]]:
     destination.mkdir(parents=True, exist_ok=True)
     manifest = _dryad_file_manifest(doi)
+    opener, landing_url, landing_status = _browser_opener(doi)
+    all_success = True
     for item in manifest:
         target = destination / item["path"]
         target.parent.mkdir(parents=True, exist_ok=True)
-        url = f"https://datadryad.org/stash/downloads/file_stream/{item['file_id']}"
-        with urllib.request.urlopen(_request(url), timeout=120) as response, target.open("wb") as handle:
-            shutil.copyfileobj(response, handle)
+        success = _download_one_file(opener, landing_url, item, target)
+        all_success = all_success and success
+        if not success and target.exists():
+            target.unlink()
 
     # Expand nested ZIPs only for schema discovery. Raw outcome values are never read by this script.
-    for nested in list(destination.rglob("*.zip")):
-        nested_dir = nested.with_suffix("")
-        try:
-            with zipfile.ZipFile(nested) as archive:
-                nested_dir.mkdir(parents=True, exist_ok=True)
-                archive.extractall(nested_dir)
-        except zipfile.BadZipFile:
-            continue
-    return manifest
+    if all_success:
+        for nested in list(destination.rglob("*.zip")):
+            nested_dir = nested.with_suffix("")
+            try:
+                with zipfile.ZipFile(nested) as archive:
+                    nested_dir.mkdir(parents=True, exist_ok=True)
+                    archive.extractall(nested_dir)
+            except zipfile.BadZipFile:
+                continue
+    return manifest, {"landing": landing_status, "all_files_downloaded": all_success}
 
 
 def _csv_columns(path: Path) -> list[str]:
@@ -292,14 +367,32 @@ def run(work_root: Path) -> dict[str, Any]:
             "Only repository metadata, file/sheet names, column names and join-key structure are inspected. "
             "No reproductive outcome values, associations, fitted effects or direction-based inclusion decisions are computed."
         ),
-        "download_method": "anonymous Dryad versions/files metadata + public stash file_stream endpoint",
+        "download_method": "anonymous Dryad metadata + browser-session public file_stream fallback (new/legacy paths)",
         "candidates": {},
     }
 
     for candidate in CANDIDATES:
         candidate_dir = work_root / candidate["id"]
+        manifest: list[dict[str, Any]] = []
+        acquisition: dict[str, Any] = {}
         try:
-            manifest = _download_dryad_files(candidate["doi"], candidate_dir)
+            manifest, acquisition = _download_dryad_files(candidate["doi"], candidate_dir)
+            if not acquisition["all_files_downloaded"]:
+                output["candidates"][candidate["id"]] = {
+                    "origin": candidate["origin"],
+                    "doi": candidate["doi"],
+                    "source": candidate["source"],
+                    "download_status": "failed",
+                    "error": "public file-stream acquisition failed after browser-session new/legacy URL attempts",
+                    "acquisition": acquisition,
+                    "file_manifest": manifest,
+                    "schema_records": [],
+                    "decision": {
+                        "schema_eligible_for_mapping_review": False,
+                        "gates": {},
+                    },
+                }
+                continue
             records = _inspect_archive(candidate_dir)
             decision = _candidate_decision(records)
             output["candidates"][candidate["id"]] = {
@@ -307,6 +400,7 @@ def run(work_root: Path) -> dict[str, Any]:
                 "doi": candidate["doi"],
                 "source": candidate["source"],
                 "download_status": "success",
+                "acquisition": acquisition,
                 "file_manifest": manifest,
                 "schema_records": records,
                 "decision": decision,
@@ -318,7 +412,8 @@ def run(work_root: Path) -> dict[str, Any]:
                 "source": candidate["source"],
                 "download_status": "failed",
                 "error": f"{type(exc).__name__}: {exc}",
-                "file_manifest": [],
+                "acquisition": acquisition,
+                "file_manifest": manifest,
                 "schema_records": [],
                 "decision": {
                     "schema_eligible_for_mapping_review": False,
@@ -337,6 +432,7 @@ def run(work_root: Path) -> dict[str, Any]:
         "locked_candidates_by_origin": origin_counts,
         "schema_eligible_by_origin": eligible_by_origin,
         "all_four_downloaded": all(c["download_status"] == "success" for c in output["candidates"].values()),
+        "metadata_manifest_resolved_for_all": all(bool(c.get("file_manifest")) for c in output["candidates"].values()),
         "next_decision": (
             "freeze_exact_column_mappings_before_outcome_access"
             if eligible_by_origin["urban"] >= 2 and eligible_by_origin["island"] >= 2
