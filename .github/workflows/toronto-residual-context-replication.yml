@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - agent/n2-results-toronto-prereg
+      - agent/toronto-version-bundle
     paths:
       - "manuscript/empirical_toronto_residual_context_preregistration.md"
       - "scripts/run_toronto_residual_context.py"
@@ -42,10 +42,62 @@ jobs:
       - name: Compile analysis
         run: python -m py_compile scripts/run_toronto_residual_context.py
 
-      - name: Acquire locked Dryad file and run frozen analysis if available
+      - name: Acquire exact data.csv from locked Dryad version bundle
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          import hashlib
+          import io
+          import json
+          import urllib.request
+          import zipfile
+          from pathlib import Path
+
+          url = 'https://datadryad.org/api/v2/versions/393871/download'
+          expected_size = 5543
+          expected_sha256 = '0739cd11bf2afea3a8da7db953e7940fcde5570d5f7cb88e15f08a02140b3127'
+          out_dir = Path('.tmp/toronto')
+          out_dir.mkdir(parents=True, exist_ok=True)
+          audit = {'url': url, 'expected_size': expected_size, 'expected_sha256': expected_sha256}
+          try:
+              req = urllib.request.Request(
+                  url,
+                  headers={
+                      'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 Chrome/124 Safari/537.36',
+                      'Accept': 'application/zip,application/octet-stream,*/*;q=0.8',
+                  },
+              )
+              with urllib.request.urlopen(req, timeout=120) as response:
+                  payload = response.read()
+                  audit.update({
+                      'status': int(response.status),
+                      'content_type': response.headers.get('Content-Type'),
+                      'bundle_bytes': len(payload),
+                      'final_url': response.geturl(),
+                  })
+              with zipfile.ZipFile(io.BytesIO(payload)) as zf:
+                  matches = [name for name in zf.namelist() if Path(name).name == 'data.csv']
+                  audit['zip_members'] = zf.namelist()
+                  if len(matches) != 1:
+                      raise RuntimeError(f'expected exactly one data.csv in bundle, found {matches}')
+                  data = zf.read(matches[0])
+              digest = hashlib.sha256(data).hexdigest()
+              audit.update({'data_bytes': len(data), 'data_sha256': digest, 'member': matches[0]})
+              if len(data) != expected_size:
+                  raise RuntimeError(f'data.csv byte-size mismatch: {len(data)} != {expected_size}')
+              if digest != expected_sha256:
+                  raise RuntimeError(f'data.csv SHA256 mismatch: {digest} != {expected_sha256}')
+              (out_dir / 'data.csv').write_bytes(data)
+              audit['accepted'] = True
+          except Exception as exc:
+              audit.update({'accepted': False, 'error': f'{type(exc).__name__}: {exc}'})
+          (out_dir / 'version_bundle_acquisition.json').write_text(json.dumps(audit, indent=2, sort_keys=True) + '\n')
+          print(json.dumps(audit, indent=2, sort_keys=True))
+          PY
+
+      - name: Run frozen Toronto analysis or preserve access boundary
         run: |
           python scripts/run_toronto_residual_context.py \
-            --download \
             --input .tmp/toronto/data.csv \
             --output artifacts/empirical/toronto_residual_context_result.json
 
@@ -78,6 +130,8 @@ jobs:
       - uses: actions/upload-artifact@v4
         with:
           name: toronto-residual-context-result
-          path: artifacts/empirical/toronto_residual_context_result.json
+          path: |
+            artifacts/empirical/toronto_residual_context_result.json
+            .tmp/toronto/version_bundle_acquisition.json
           if-no-files-found: error
           retention-days: 30
