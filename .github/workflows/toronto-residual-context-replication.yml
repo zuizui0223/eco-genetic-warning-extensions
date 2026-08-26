@@ -3,6 +3,7 @@ name: Toronto residual-context replication
 on:
   push:
     branches:
+      - main
       - agent/n2-results-toronto-prereg
     paths:
       - "manuscript/empirical_toronto_residual_context_preregistration.md"
