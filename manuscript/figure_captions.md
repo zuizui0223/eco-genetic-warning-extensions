@@ -6,7 +6,7 @@ Conceptual synthesis separating interaction-supported ecological function, popul
 
 ## Figure 2. Fragmentation creates vulnerability; event-only warning ordering lacks discrimination
 
-**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed losses, but every threshold also fired in all 48 non-event trajectories by the administrative horizon. Full-horizon specificity was zero and binary-marker AUC was 0.5. The panel therefore shows event-conditional ordering, not predictive warning validity.
+**A**, paired effect of equal isolation versus the matched one-large projection across 1,055 H1-qualified sources, summarised for final interaction, local effective size and realised high-trait mass. **B**, inherited symmetric benchmark: baseline-relative `H_alpha` and `H_gamma` erosion at 5%, 10% and 20% preceded all 35 observed losses, but generation-30 binary-marker AUC was only `0.500–0.538`. Every threshold also fired in all 48 non-event trajectories by the administrative horizon, at which point the marker was a constant positive with specificity zero and AUC 0.5. The panel therefore shows event-conditional ordering, not predictive warning validity.
 
 ## Figure 3. Recurrent state turnover reorganises source feasibility and historical loss-screen placement
 

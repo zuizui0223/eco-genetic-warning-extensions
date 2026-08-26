@@ -10,7 +10,7 @@ Conceptual condition-first architecture. Historical R1–R4 labels are shown onl
 
 ### Figure 2 — fragmentation creates vulnerability; event-only warning ordering lacks discrimination
 
-Parent fragmentation evidence plus the inherited relative-warning benchmark, now interpreted with the full-denominator audit: 35/35 event-conditional leads and 48/48 non-event firings. Table S1 retains the paired fragmentation effect sizes and Table S7 retains warning validity.
+Parent fragmentation evidence plus the inherited relative-warning benchmark, now interpreted with the fixed-landmark and full-denominator audit: 35/35 event-conditional leads, generation-30 binary AUC near chance and 48/48 non-event firings by the horizon. Table S1 retains the paired fragmentation effect sizes, Table S7 retains warning validity and Table S8 retains the exploratory continuous landmark audit.
 
 ### Figure 3 — recurrent state turnover reorganises source feasibility and historical loss-screen placement
 

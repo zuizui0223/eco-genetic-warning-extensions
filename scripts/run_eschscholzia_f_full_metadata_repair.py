@@ -88,7 +88,54 @@ def run(protocol_commit: str) -> dict[str, object]:
             f"metadata mismatch remains after exact two-key correction: {mismatches_after!r}"
         )
     f_source = f_source.drop(columns=["array_key_repair"])
-    f = base._prepare_f(f_source, pstate)
+    try:
+        f = base._prepare_f(f_source, pstate)
+    except base.NotIdentifiable as exc:
+        return {
+            "analysis": "postlock_descriptive_full_metadata_repair",
+            "decision": "postlock_descriptive_reconstruction_not_estimable",
+            "prospective_protocol_commit": protocol_commit,
+            "preregistration": (
+                "manuscript/empirical_eschscholzia_f_full_metadata_repair_preregistration.md"
+            ),
+            "primary_lock": {
+                "decision": "multi_endpoint_not_identifiable",
+                "locked_result": (
+                    "artifacts/empirical/eschscholzia_multiprocess_state_locked_result.json"
+                ),
+                "status": "unchanged_not_rescued_or_reclassified",
+            },
+            "prior_one_key_sensitivity": {
+                "decision": "stop_pre_model_unexpected_second_metadata_mismatch",
+                "locked_result": "artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json",
+                "status": "unchanged_not_reopened_or_expanded",
+            },
+            "source_lock": source_info,
+            "correction": {
+                "source_role": "f_seed",
+                "array_keys": list(TARGET_KEYS),
+                "field": "Habitat",
+                "observed": OBSERVED_VALUE,
+                "replacement": REPLACEMENT_VALUE,
+                "corrected_rows_by_key": corrected_rows,
+                "mismatches_before": mismatches_before,
+                "mismatch_count_after": 0,
+            },
+            "information_boundary": {
+                "f_preparation_completed": False,
+                "f_model_fitted": False,
+                "model_score_calculated": False,
+                "bootstrap_run": False,
+                "other_endpoints_rerun": False,
+                "failure_stage": "locked_prepare_f",
+                "reason": str(exc),
+            },
+            "claim_boundary": (
+                "The exact two-key metadata repair removed the cross-source Habitat mismatch, "
+                "but the unchanged F preparation gate found an invalid primary response. No "
+                "additional response repair, row exclusion, model, score or bootstrap is opened."
+            ),
+        }
     primary = base._endpoint_to_dict(base._run_primary_endpoint(f, "y_F", "continuous"))
     capacity = base._secondary_extension(f, "y_F", "continuous", "D_capacity")
     capacity["semantic_decision"] = (
@@ -159,21 +206,24 @@ def main() -> int:
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
-    print(
-        json.dumps(
-            {
-                "analysis": result["analysis"],
-                "F_decision": result["F_seed_descriptive_reconstruction"]["decision"],
-                "F_process": result["F_seed_descriptive_reconstruction"]["comparisons"][
-                    "S0_to_S1"
-                ],
-                "F_habitat": result["F_seed_descriptive_reconstruction"]["comparisons"][
-                    "S1_to_S2"
-                ],
-            },
-            sort_keys=True,
-        )
-    )
+    if result.get("decision") == "postlock_descriptive_reconstruction_not_estimable":
+        summary = {
+            "analysis": result["analysis"],
+            "decision": result["decision"],
+            "information_boundary": result["information_boundary"],
+        }
+    else:
+        summary = {
+            "analysis": result["analysis"],
+            "F_decision": result["F_seed_descriptive_reconstruction"]["decision"],
+            "F_process": result["F_seed_descriptive_reconstruction"]["comparisons"][
+                "S0_to_S1"
+            ],
+            "F_habitat": result["F_seed_descriptive_reconstruction"]["comparisons"][
+                "S1_to_S2"
+            ],
+        }
+    print(json.dumps(summary, sort_keys=True))
     return 0
 
 

@@ -4,7 +4,7 @@ This file separates fields already fixed by the manuscript/repository from field
 
 ## Manuscript identity
 
-- **Current manuscript title:** Joint state representation and empirical measurement gates define eco-genetic predictability
+- **Current manuscript title:** Matching genetic diversity and interaction summaries can hide different ecological transitions
 - **Running title:** Future-relevant eco-genetic states
 - **Article type:** Letter
 - **Keywords:** early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss

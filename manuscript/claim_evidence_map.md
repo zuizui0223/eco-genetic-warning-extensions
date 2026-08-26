@@ -48,6 +48,9 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | S25 | The historical Phase-M `m=.10` heterogeneity did **not** reproduce in one preregistered independent fresh-seed ensemble: fresh pooled loss .540/.551 and paired risk difference `+0.0111 [-0.0330,0.0551]`. | Phase U, run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756`; precision audit. | fresh non-replication and precision-bounded null |
 | S26 | The strongest connectivity conclusion is now negative: no robust portable connectivity heterogeneity effect is established across the historical Phase-M family, the independent Phase-U allele-only replication, and the process-resolved R/S closures. | Integrated M/U/R/S evidence. | claim ceiling |
 | S27 | In the fresh frozen symmetric ensemble, every relative threshold crossed before all 33 losses and also crossed in all 49 non-events; full-horizon specificity was zero and binary-marker AUC was 0.5. | Phase V frozen trajectories and post-review full-denominator audit. | replicated ordering; predictive warning unsupported |
+| S28 | Fixed generation-30 binary-marker AUC was near chance in both frozen ensembles; full-horizon AUC 0.5 reflects degeneration to constant-positive markers. | Full-denominator landmark audit. | frozen binary rules not discriminative |
+| S29 | Prospectively fixed exploratory continuous erosion AUC varied across coordinate, landmark and ensemble (`.418–.692` inherited; `.422–.687` fresh); cells above .5 did not reproduce at the same coordinate/time. | Protocol commit `bf9f492`; immutable raw trajectories; continuous landmark artifact. | exploratory time-specific information; no portable score |
+| S30 | Exact repair of both known *Eschscholzia* Habitat typo keys removed metadata mismatch but the unchanged F response-validity gate stopped before model fitting. | Protocol commit `bf9f492`; post-lock descriptive result. | F remains non-estimable; no response rescue |
 
 ## Exact operator claims
 
@@ -68,6 +71,8 @@ R1–R4 remain immutable labels from the preregistered warning-blind screen. The
 | inherited warning lead / non-event firing, each of six endpoints | 35/35 / 48/48 |
 | fresh warning lead / non-event firing, each of six endpoints | 33/33 / 49/49 |
 | full-horizon relative-warning specificity / binary-marker AUC | 0 / .5 in both ensembles |
+| generation-30 binary-marker AUC range | .500–.538 inherited / .500–.510 fresh |
+| continuous landmark AUC range | .418–.692 inherited / .422–.687 fresh |
 | Protocol 002 complete candidates | 648 |
 | historical rapid-loss / R3-mixed / persistence | 322 / 84 / 242 |
 | original eligible candidates / no-domain coordinates | 0 / 15 |

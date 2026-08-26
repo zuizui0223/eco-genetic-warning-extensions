@@ -59,3 +59,28 @@ def test_protocol_rejects_rate_or_selected_landmark_language() -> None:
     assert "No absolute level, slope, windowed decline" in protocol
     assert "generations `30`, `60` and `90`" in protocol
     assert "not independent replicates" in protocol
+
+
+def test_locked_result_retains_all_cells_and_protocol_commit() -> None:
+    import json
+    from pathlib import Path
+
+    root = Path(__file__).resolve().parents[1]
+    result = json.loads(
+        (root / "artifacts/prepublication_review/continuous_warning_landmark_auc.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    assert result["prospective_protocol_commit"] == (
+        "bf9f492996cfb57718e03edd4a3620c0756b32c4"
+    )
+    assert set(result["ensembles"]) == {"inherited_202611", "fresh_202911"}
+    assert all(len(item["cells"]) == 6 for item in result["ensembles"].values())
+    assert result["ensembles"]["inherited_202611"]["auc_range"] == [
+        0.4178921568627451,
+        0.6916666666666667,
+    ]
+    assert result["ensembles"]["fresh_202911"]["auc_range"] == [
+        0.4217687074829932,
+        0.6865889212827988,
+    ]

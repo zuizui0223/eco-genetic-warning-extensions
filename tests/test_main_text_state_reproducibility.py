@@ -10,9 +10,12 @@ def test_main_text_contains_full_denominator_warning_correction() -> None:
     assert "all 48 non-event trajectories" in TEXT
     assert "all 49 non-event trajectories" in TEXT
     assert "strict_replication" in TEXT
-    assert "specificity was 0" in TEXT
-    assert "binary-marker AUC was 0.5" in TEXT
+    assert "inherited binary-marker AUC ranged" in TEXT
+    assert "binary-marker AUC was mechanically 0.5" in TEXT
     assert "not validated predictive early warning" in TEXT
+    assert "0.418–0.692" in TEXT
+    assert "0.422–0.687" in TEXT
+    assert "do not establish a portable continuous warning score" in TEXT
 
 
 def test_main_text_contains_direct_natural_residual_origin_results() -> None:
@@ -25,9 +28,17 @@ def test_main_text_contains_direct_natural_residual_origin_results() -> None:
 
 def test_main_text_retains_representation_boundary_without_overclaim() -> None:
     assert "0.2543" in TEXT
+    assert ".464/.619/.753/.851" in TEXT
+    assert ".718/.699/.680/.660" in TEXT
     assert "McNemar `p=.143`" in TEXT
     assert "representation boundary" in TEXT
     assert "not a detected directional long-term loss-incidence effect" in TEXT
+
+
+def test_main_text_records_full_eschscholzia_repair_stop() -> None:
+    assert "postlock_descriptive_reconstruction_not_estimable" in TEXT
+    assert "F primary response has missing/non-finite/negative value" in TEXT
+    assert "No additional response repair or row exclusion was allowed" in TEXT
 
 
 def test_main_text_keeps_cross_system_claim_conditional() -> None:

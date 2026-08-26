@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       protocol_commit:
-        description: Exact prospective protocol/code commit to execute
+        description: Prospective protocol commit that must be an ancestor of the recorder
         required: true
         type: string
 
@@ -15,10 +15,17 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout prospective protocol commit
+      - name: Checkout result-recording code
         uses: actions/checkout@v4
         with:
-          ref: ${{ inputs.protocol_commit }}
+          fetch-depth: 0
+
+      - name: Verify prospective protocol ancestry
+        run: |
+          git cat-file -e "${{ inputs.protocol_commit }}^{commit}"
+          git merge-base --is-ancestor "${{ inputs.protocol_commit }}" HEAD
+          git show "${{ inputs.protocol_commit }}:manuscript/empirical_eschscholzia_f_full_metadata_repair_preregistration.md" > /dev/null
+          git show "${{ inputs.protocol_commit }}:scripts/run_eschscholzia_f_full_metadata_repair.py" > /dev/null
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -48,7 +55,13 @@ jobs:
           assert data['prior_one_key_sensitivity']['status'] == 'unchanged_not_reopened_or_expanded'
           assert data['correction']['array_keys'] == ['1||3', '1||4']
           assert data['correction']['mismatch_count_after'] == 0
-          assert data['frozen_analysis']['other_endpoints_rerun'] is False
+          assert data['decision'] == 'postlock_descriptive_reconstruction_not_estimable'
+          assert data['information_boundary']['failure_stage'] == 'locked_prepare_f'
+          assert data['information_boundary']['f_model_fitted'] is False
+          assert data['information_boundary']['model_score_calculated'] is False
+          assert data['information_boundary']['bootstrap_run'] is False
+          assert data['information_boundary']['other_endpoints_rerun'] is False
+          assert 'F_seed_descriptive_reconstruction' not in data
           PY
 
       - name: Upload descriptive reconstruction only

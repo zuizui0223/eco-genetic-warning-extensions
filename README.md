@@ -73,7 +73,9 @@ A constructive aligned versus anti-aligned pair held the declared coarse margina
 
 In the inherited symmetric benchmark, all 35 event trajectories showed baseline-relative `H_alpha/H_gamma` erosion before realised functional loss at each of six 5/10/20% endpoints. A prospectively fixed fresh ensemble reproduced that ordering at **33/33** losses.
 
-The full-denominator audit changed the interpretation: all six thresholds also fired in **48/48** inherited and **49/49** fresh non-event trajectories. Full-horizon specificity was zero and binary-marker AUC was 0.5. This supports replicated **event-conditional ordering**, not predictive warning validity or a universal percentage threshold.
+At the fixed generation-30 landmark, binary-marker AUC was only `0.500–0.538` inherited and `0.500–0.510` fresh. The full-denominator audit then showed that all six thresholds fired in **48/48** inherited and **49/49** fresh non-event trajectories; by the horizon every marker was a constant positive, with specificity zero and AUC 0.5. This supports replicated **event-conditional ordering**, not predictive warning validity or a universal percentage threshold.
+
+A separately preregistered exploratory audit evaluated continuous baseline-relative diversity erosion at generations 30/60/90. AUC ranged `0.418–0.692` inherited and `0.422–0.687` fresh, but the coordinate/time combinations with separation did not reproduce between ensembles. This leaves open time-specific diversity information while providing no portable continuous warning score.
 
 ### Closed condition-map invariants retained for release
 
@@ -114,7 +116,9 @@ This is a `C/G_mating` result, not direct ecological functional loss. It shows t
 
 Four EIDC products from the same 2015 Hillesden experiment were synchronized prospectively at `Block -> Experimental array -> focal plant -> fruit/progeny`. The candidate array-level pollinator state was fixed as `log1p(pan-trap count) + mean ITD`, with leave-one-array-out validation.
 
-The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on `Fallow ground` versus `Fallow graound`. A prospectively declared F-only sensitivity permitted the correction only at `1||3`; pre-model metadata inspection found the same mismatch at `1||4`, so it stopped without fitting F. The primary lock remains unchanged and no sensitivity estimate exists.
+The primary multi-endpoint test was `multi_endpoint_not_identifiable` because the preregistered exact metadata-consistency gate closed the direct seed-function endpoint on `Fallow ground` versus `Fallow graound`. A prospectively declared F-only sensitivity permitted the correction only at `1||3`; pre-model metadata inspection found the same mismatch at `1||4`, so it stopped without fitting F.
+
+A third, fully separate post-lock descriptive path corrected both exact keys. The mismatch count became zero, but the unchanged F preparation gate then stopped because the primary response contained a missing, non-finite or negative value. No further response repair or row exclusion was allowed, and no F model, score or bootstrap ran. The primary and one-key STOP remain unchanged; no F estimate exists.
 
 For the estimable endpoints, the candidate pan-trap state did not show reproducible held-out gain for either mating (`G_mating`) or outcross pollen movement (`C_pollen`). This is a **measurement boundary**: pan-trap availability/trait summaries are not automatically equivalent to effective interaction.
 

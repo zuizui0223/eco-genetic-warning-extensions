@@ -71,7 +71,11 @@ The precision-validation protocol is:
 
 **Partner architecture:** reduced-form partner loss and matched-expected-support temporal partner variability are precision-bounded nulls, not equivalence results; the adaptive-rewiring gate remains closed.
 
-**Warning validity:** the post-review audit uses all baseline-eligible saved trajectories from parent run `28500796310` and Phase-V run `32636847803`. Each of the six frozen thresholds led all 35/35 and 33/33 losses but also fired in all 48/48 and 49/49 non-events. Full-horizon specificity is zero and binary-marker AUC is 0.5. The compact 1,200-row record table is checksummed in `artifacts/warning_validity/source_manifest.json`.
+**Warning validity:** the post-review audit uses all baseline-eligible saved trajectories from parent run `28500796310` and Phase-V run `32636847803`. Each of the six frozen thresholds led all 35/35 and 33/33 losses, but generation-30 binary AUC was near chance and every rule eventually fired in all 48/48 and 49/49 non-events. The compact 1,200-row record table is checksummed in `artifacts/warning_validity/source_manifest.json`.
+
+The one-time continuous landmark audit was prospectively fixed at commit `bf9f492996cfb57718e03edd4a3620c0756b32c4`. It verifies the two raw-member checksums, evaluates all `H_alpha/H_gamma × 30/60/90` cells and writes `artifacts/prepublication_review/continuous_warning_landmark_auc.json` plus `manuscript/tables/continuous_warning_landmark_auc.csv`. The fixed cells must not be filtered or rerun with a different score after inspection.
+
+The *Eschscholzia* post-lock descriptive reconstruction is fixed at the same commit and retained in `artifacts/empirical/eschscholzia_f_full_metadata_repair_result.json`. It corrects exactly `1||3` and `1||4`, then stops at the unchanged F response-validity gate. No F model or bootstrap is run.
 
 ## Interpretation safeguards
 

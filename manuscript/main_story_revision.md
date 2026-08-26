@@ -4,7 +4,7 @@
 
 ### 1. State sufficiency requires joint representation
 
-The constructive aligned/anti-aligned pair is the central model result. Common census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma` and `F_ST` can be identical while patchwise cross-layer alignment changes the exact next transition by `0.2543`. The fixed long-horizon comparison does not establish a directional loss-risk effect and remains explicitly bounded.
+The constructive aligned/anti-aligned pair is the central model result. Common census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma` and `F_ST` can be identical while patchwise cross-layer alignment changes the exact next transition by `0.2543`. The complete opening vectors provide its scale. The fixed long-horizon comparison does not establish a directional loss-risk effect and is placed as a coequal result rather than a deferred limitation.
 
 ### 2. Empirical state claims require measurement and representation gates
 
@@ -12,7 +12,7 @@ Natural analyses follow one sequence:
 
 `candidate-state adequacy -> information-preserving representation -> residual origin/history test`.
 
-Honshu–Izu and Zurich illustrate residual-context redundancy after partial states; *Oenothera* illustrates a missing mating-connectivity coordinate; *Eschscholzia* illustrates an inadequate availability proxy plus a primary metadata non-identifiability; *Campanula* illustrates loss of mechanistic distinction through preprocessing.
+Honshu–Izu and Zurich illustrate residual-context redundancy after partial states; *Oenothera* illustrates a missing mating-connectivity coordinate; *Eschscholzia* illustrates an inadequate availability proxy plus an F endpoint that remains non-estimable after exact metadata repair; *Campanula* illustrates loss of mechanistic distinction through preprocessing.
 
 ## Supporting boundaries
 
