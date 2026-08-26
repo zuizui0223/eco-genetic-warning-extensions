@@ -1,5 +1,6 @@
 name: Toronto residual-context replication
 
+# Operational runner-only diagnostic: science/model contract is unchanged.
 on:
   push:
     branches:
