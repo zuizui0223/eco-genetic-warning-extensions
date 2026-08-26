@@ -74,7 +74,7 @@ No `urban_cover × species` or `edge_density × species` interaction is opened i
 
 All continuous predictors are standardized from the training fold only. The offset is never standardized.
 
-If Poisson fitting fails numerically in a held-out fold, the analysis stops and records `primary_model_not_numerically_identifiable`; it does not switch likelihood after viewing performance. Overdispersion alone is not a post-hoc licence to change the primary model. A negative-binomial sensitivity may be designed only as a separately declared future analysis after the primary decision is frozen.
+If Poisson fitting fails numerically in a held-out fold, the analysis stops and records `primary_model_not_identifiable`; it does not switch likelihood after viewing performance. Overdispersion alone is not a post-hoc licence to change the primary model. A negative-binomial sensitivity may be designed only as a separately declared future analysis after the primary decision is frozen.
 
 ## Validation
 
