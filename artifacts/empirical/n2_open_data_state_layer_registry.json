@@ -1,0 +1,119 @@
+{
+  "analysis": "N2_response_firewalled_open_data_state_layer_registry",
+  "search_cutoff": "2026-08-26",
+  "status_vocabulary": ["yes", "partial", "no", "unclear"],
+  "layers": ["O", "D", "I", "T", "F", "C", "R", "G", "A"],
+  "response_firewall": "Registry scores use public measurement/archive descriptions only. No published effect direction, p-value or N2 outcome association is a scoring field.",
+  "systems": [
+    {
+      "id": "U_ZURICH_2025",
+      "origin_family": "urban",
+      "source": "Reji Chacko et al. 2025",
+      "data_id": "10.16904/envidat.676",
+      "study_measurement": {"O": "yes", "D": "partial", "I": "yes", "T": "yes", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "partial", "D": "partial", "I": "yes", "T": "yes", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "direct_residual_context_gate": "partial",
+      "gate_reason": "visitation, traits, fruit/seed outcomes and garden keys are explicitly archived; the urban-intensity coordinate is described as an associated BetterGardens context layer rather than demonstrated inside the same core archive",
+      "evidence": ["https://doi.org/10.1016/j.dib.2025.112013", "https://doi.org/10.16904/envidat.676"]
+    },
+    {
+      "id": "U_CHICAGO_2024",
+      "origin_family": "urban",
+      "source": "Zink et al. 2024",
+      "data_id": "10.5061/dryad.44j0zpcm6",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "partial", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "unclear", "D": "yes", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "partial", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "partial",
+      "gate_reason": "visitation effort, flower denominators and reproduction are explicit; public metadata does not demonstrate the impervious-surface values or prove that visitation plant IDs and reproductive individual IDs are an exact cross-file key",
+      "evidence": ["https://doi.org/10.5061/dryad.44j0zpcm6", "https://doi.org/10.1002/ecs2.70100"]
+    },
+    {
+      "id": "U_TORONTO_2025",
+      "origin_family": "urban",
+      "source": "Sookhan et al. 2025",
+      "data_id": "10.5061/dryad.b8gtht7r4",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "direct_residual_context_gate": "yes",
+      "gate_reason": "one public CSV explicitly contains site ID, urban cover, green-space edge density, floral units, visit count, survey effort, phytometer identity and reproductive outcomes across ten gardens",
+      "evidence": ["https://doi.org/10.5061/dryad.b8gtht7r4"]
+    },
+    {
+      "id": "U_COMMELINA_2014",
+      "origin_family": "urban",
+      "source": "Ushimaru et al. 2014",
+      "data_id": "10.5061/dryad.pd775",
+      "study_measurement": {"O": "yes", "D": "partial", "I": "yes", "T": "yes", "F": "yes", "C": "no", "R": "partial", "G": "no", "A": "partial"},
+      "public_reusable": {"O": "unclear", "D": "unclear", "I": "yes", "T": "yes", "F": "partial", "C": "no", "R": "unclear", "G": "no", "A": "unclear"},
+      "direct_residual_context_gate": "partial",
+      "gate_reason": "the study reports visitation and reproductive success, while public file descriptions clearly expose visitation, pollen counting, floral traits and pollen removal but do not resolve a common reproductive-response/context join without verified bytes",
+      "evidence": ["https://doi.org/10.5061/dryad.pd775", "https://doi.org/10.1086/676855"]
+    },
+    {
+      "id": "U_POLLEN_RECEIPT_2022",
+      "origin_family": "urban",
+      "source": "Carper et al. 2022",
+      "data_id": "10.5061/dryad.5mkkwh78r",
+      "study_measurement": {"O": "yes", "D": "unclear", "I": "partial", "T": "no", "F": "yes", "C": "no", "R": "yes", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "yes", "D": "unclear", "I": "partial", "T": "no", "F": "yes", "C": "no", "R": "yes", "G": "no", "A": "yes"},
+      "direct_residual_context_gate": "no",
+      "gate_reason": "the process variable is pollen receipt/deposition as a proxy for visitation rather than direct observed visitation; the system is retained as a proxy boundary rather than relabelled as I_visit",
+      "evidence": ["https://doi.org/10.5061/dryad.5mkkwh78r", "https://doi.org/10.1002/ajb2.16080"]
+    },
+    {
+      "id": "I_HIRAIWA_2017",
+      "origin_family": "island",
+      "source": "Hiraiwa & Ushimaru 2017",
+      "data_id": "10.5061/dryad.pm29d",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "T": "yes", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "yes", "D": "yes", "I": "yes", "T": "yes", "F": "unclear", "C": "no", "R": "no", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "partial",
+      "gate_reason": "the study explicitly measured visitation and fruit set across continental/oceanic sites, but Dryad publicly labels primary_data.xlsx as plant-pollinator interaction data and does not expose the fruit-set schema without opening the workbook",
+      "evidence": ["https://doi.org/10.5061/dryad.pm29d", "https://doi.org/10.1098/rspb.2016.2218"]
+    },
+    {
+      "id": "I_HAWAII_2019",
+      "origin_family": "island",
+      "source": "Aslan et al. 2019",
+      "data_id": "10.5061/dryad.tm575v4",
+      "study_measurement": {"O": "partial", "D": "partial", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "yes", "G": "no", "A": "partial"},
+      "public_reusable": {"O": "partial", "D": "partial", "I": "yes", "T": "partial", "F": "no", "C": "no", "R": "no", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "no",
+      "gate_reason": "the paper measured seed-set responses to exclusion/treatment, but the locked Dryad usage note defines the deposited files as raw flower-visitation observations and does not demonstrate a deposited reproductive response",
+      "evidence": ["https://doi.org/10.5061/dryad.tm575v4"]
+    },
+    {
+      "id": "I_WANG_2025",
+      "origin_family": "island",
+      "source": "Wang et al. 2025",
+      "data_id": "10.5061/dryad.t76hdr8bj",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "no", "C": "no", "R": "no", "G": "no", "A": "partial"},
+      "public_reusable": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "no", "C": "no", "R": "no", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "no",
+      "gate_reason": "the archive provides continental/oceanic island interaction matrices and standardized visitation, but no realised reproductive-response layer",
+      "evidence": ["https://doi.org/10.5061/dryad.t76hdr8bj"]
+    },
+    {
+      "id": "I_AZORES_2020",
+      "origin_family": "island",
+      "source": "Pardo et al. 2020",
+      "data_id": "10.3390/insects11060351",
+      "study_measurement": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "yes", "C": "no", "R": "no", "G": "no", "A": "yes"},
+      "public_reusable": {"O": "yes", "D": "yes", "I": "yes", "T": "partial", "F": "partial", "C": "no", "R": "no", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "partial",
+      "gate_reason": "the same marked branches were used for visitation and fruit-set measurement and supplementary material exposes orchard context and visit totals; a reusable individual/tree-level reproductive table is not demonstrated in the public supplement metadata",
+      "evidence": ["https://doi.org/10.3390/insects11060351"]
+    },
+    {
+      "id": "I_CARIBBEAN_2015",
+      "origin_family": "island",
+      "source": "Marten-Rodriguez et al. 2015",
+      "data_id": "10.1111/1365-2745.12457",
+      "study_measurement": {"O": "yes", "D": "unclear", "I": "yes", "T": "yes", "F": "partial", "C": "no", "R": "yes", "G": "no", "A": "partial"},
+      "public_reusable": {"O": "yes", "D": "unclear", "I": "yes", "T": "yes", "F": "partial", "C": "no", "R": "partial", "G": "no", "A": "partial"},
+      "direct_residual_context_gate": "no",
+      "gate_reason": "the matched island-mainland protocol provides visitation and an autofertility index from bagged/outcross fruit set; that reproductive-assurance response is retained as R and is not relabelled as the same open-pollinated F used by the direct visitation-function bridge",
+      "evidence": ["https://doi.org/10.1111/1365-2745.12457"]
+    }
+  ]
+}
