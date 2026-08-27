@@ -107,6 +107,8 @@ def audit() -> dict:
         plant_columns = {_norm(x) for x in m_header[1:] if _norm(x)}
         dataset_species = species_by_year[year]
         matched = sorted(dataset_species & plant_columns)
+        missing_dataset_species = sorted(dataset_species - plant_columns)
+        matrix_only_species = sorted(plant_columns - dataset_species)
         matrices[year] = {
             "row_count": max(0, len(rows) - 1),
             "plant_column_count": len(plant_columns),
@@ -118,6 +120,8 @@ def audit() -> dict:
             "matched_species_count": len(matched),
             "all_dataset_species_present": dataset_species.issubset(plant_columns),
             "matched_species": matched,
+            "missing_dataset_species": missing_dataset_species,
+            "matrix_only_species": matrix_only_species,
         }
 
     alignment = all(overlap[y]["all_dataset_species_present"] and overlap[y]["dataset_species_count"] > 0 for y in ("2016", "2017"))
@@ -136,7 +140,7 @@ def audit() -> dict:
         },
         "matrix_schemas": matrices,
         "alignment": overlap,
-        "response_firewall": "Only delimiter, file identity, headers, dimensions, species identifiers and year alignment were inspected. No visitation or fecundity values were inspected or modeled.",
+        "response_firewall": "Only delimiter, file identity, headers, dimensions, species identifiers and year alignment were inspected. Missing and matrix-only species identifiers are reported solely for schema diagnosis. No visitation or fecundity values were inspected or modeled.",
     }
 
 
