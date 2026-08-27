@@ -4,16 +4,19 @@ import argparse
 import hashlib
 import io
 import json
+import re
 import urllib.parse
 import urllib.request
 import zipfile
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from xml.etree import ElementTree as ET
-
-from openpyxl import load_workbook
 
 DOI = "10.5061/dryad.hqbzkh1bm"
 REQUIRED_FILES = {"Dryad.xlsx", "Dryad_notes.docx"}
+MAIN_NS = "http://schemas.openxmlformats.org/spreadsheetml/2006/main"
+REL_NS = "http://schemas.openxmlformats.org/package/2006/relationships"
+DOC_NS = "http://schemas.openxmlformats.org/wordprocessingml/2006/main"
+OFFICE_REL_NS = "http://schemas.openxmlformats.org/officeDocument/2006/relationships"
 
 
 def _request(url: str, *, json_only: bool = False) -> urllib.request.Request:
@@ -35,7 +38,7 @@ def _docx_text(data: bytes) -> str:
     with zipfile.ZipFile(io.BytesIO(data)) as zf:
         xml = zf.read("word/document.xml")
     root = ET.fromstring(xml)
-    ns = {"w": "http://schemas.openxmlformats.org/wordprocessingml/2006/main"}
+    ns = {"w": DOC_NS}
     paragraphs = []
     for paragraph in root.findall(".//w:p", ns):
         parts = [node.text or "" for node in paragraph.findall(".//w:t", ns)]
@@ -45,16 +48,91 @@ def _docx_text(data: bytes) -> str:
     return "\n".join(paragraphs)
 
 
-def _string_schema_rows(ws, limit: int = 12) -> list[dict]:
+def _column_number(cell_ref: str) -> int:
+    letters = re.match(r"([A-Z]+)", cell_ref.upper())
+    if not letters:
+        return 0
+    n = 0
+    for ch in letters.group(1):
+        n = n * 26 + (ord(ch) - 64)
+    return n
+
+
+def _shared_strings(zf: zipfile.ZipFile) -> list[str]:
+    if "xl/sharedStrings.xml" not in zf.namelist():
+        return []
+    root = ET.fromstring(zf.read("xl/sharedStrings.xml"))
     out = []
-    for row_i, row in enumerate(ws.iter_rows(min_row=1, max_row=min(ws.max_row, limit), values_only=True), start=1):
-        strings = []
-        for col_i, value in enumerate(row, start=1):
-            if isinstance(value, str) and value.strip():
-                strings.append({"column": col_i, "text": value.strip()})
-        if strings:
-            out.append({"row": row_i, "string_cells": strings})
+    for si in root.findall(f"{{{MAIN_NS}}}si"):
+        parts = [node.text or "" for node in si.findall(f".//{{{MAIN_NS}}}t")]
+        out.append("".join(parts))
     return out
+
+
+def _xlsx_schema(data: bytes, limit_rows: int = 12) -> dict:
+    with zipfile.ZipFile(io.BytesIO(data)) as zf:
+        shared = _shared_strings(zf)
+        workbook_root = ET.fromstring(zf.read("xl/workbook.xml"))
+        rel_root = ET.fromstring(zf.read("xl/_rels/workbook.xml.rels"))
+        rels = {
+            rel.attrib["Id"]: rel.attrib["Target"]
+            for rel in rel_root.findall(f"{{{REL_NS}}}Relationship")
+        }
+        sheets = []
+        for sheet in workbook_root.findall(f".//{{{MAIN_NS}}}sheet"):
+            rid = sheet.attrib.get(f"{{{OFFICE_REL_NS}}}id")
+            target = rels.get(rid, "")
+            if target.startswith("/"):
+                path = target.lstrip("/")
+            else:
+                path = str(PurePosixPath("xl") / target)
+            path = str(PurePosixPath(path))
+            sheets.append((sheet.attrib.get("name", ""), path))
+
+        output = {"sheetnames": [name for name, _ in sheets], "sheets": {}}
+        for name, path in sheets:
+            if path not in zf.namelist():
+                output["sheets"][name] = {"error": f"worksheet XML missing: {path}"}
+                continue
+            root = ET.fromstring(zf.read(path))
+            max_row = 0
+            max_col = 0
+            string_rows = []
+            for row in root.findall(f".//{{{MAIN_NS}}}row"):
+                row_num = int(row.attrib.get("r", "0") or 0)
+                max_row = max(max_row, row_num)
+                strings = []
+                for cell in row.findall(f"{{{MAIN_NS}}}c"):
+                    ref = cell.attrib.get("r", "")
+                    col_num = _column_number(ref)
+                    max_col = max(max_col, col_num)
+                    if row_num > limit_rows:
+                        continue
+                    cell_type = cell.attrib.get("t")
+                    text = None
+                    if cell_type == "s":
+                        v = cell.find(f"{{{MAIN_NS}}}v")
+                        if v is not None and v.text is not None:
+                            idx = int(v.text)
+                            if 0 <= idx < len(shared):
+                                text = shared[idx]
+                    elif cell_type == "inlineStr":
+                        parts = [node.text or "" for node in cell.findall(f".//{{{MAIN_NS}}}t")]
+                        text = "".join(parts)
+                    elif cell_type == "str":
+                        v = cell.find(f"{{{MAIN_NS}}}v")
+                        if v is not None:
+                            text = v.text
+                    if isinstance(text, str) and text.strip():
+                        strings.append({"column": col_num, "cell": ref, "text": text.strip()})
+                if strings and row_num <= limit_rows:
+                    string_rows.append({"row": row_num, "string_cells": strings})
+            output["sheets"][name] = {
+                "max_row": max_row,
+                "max_column": max_col,
+                "first_rows_string_cells_only": string_rows,
+            }
+        return output
 
 
 def audit() -> dict:
@@ -97,24 +175,15 @@ def audit() -> dict:
             payloads[name] = data
             verification[name] = {"bytes": len(data), "sha256": digest, "accepted": True}
 
-    workbook = load_workbook(io.BytesIO(payloads["Dryad.xlsx"]), read_only=True, data_only=False)
-    sheets = {}
-    for name in workbook.sheetnames:
-        ws = workbook[name]
-        sheets[name] = {
-            "max_row": int(ws.max_row or 0),
-            "max_column": int(ws.max_column or 0),
-            "first_rows_string_cells_only": _string_schema_rows(ws),
-        }
-
+    workbook = _xlsx_schema(payloads["Dryad.xlsx"])
     notes = _docx_text(payloads["Dryad_notes.docx"])
     terms = ["visit", "rate", "pollinator", "species", "year", "seed", "fitness", "flower", "network"]
     relevant_note_lines = [line for line in notes.splitlines() if any(term in line.casefold() for term in terms)]
 
     combined_text = "\n".join(
         cell["text"]
-        for sheet in sheets.values()
-        for row in sheet["first_rows_string_cells_only"]
+        for sheet in workbook["sheets"].values()
+        for row in sheet.get("first_rows_string_cells_only", [])
         for cell in row["string_cells"]
     ).casefold() + "\n" + notes.casefold()
     direct_visit_terms = any(term in combined_text for term in ["visitation rate", "visits per flower", "number of visits", "pollinator visits"])
@@ -126,14 +195,14 @@ def audit() -> dict:
         "version": latest["_links"]["self"]["href"],
         "download": download,
         "file_verification": verification,
-        "workbook": {"sheetnames": workbook.sheetnames, "sheets": sheets},
+        "workbook": workbook,
         "documentation": {"relevant_note_lines": relevant_note_lines},
         "schema_signals": {
             "direct_visitation_language_present": direct_visit_terms,
             "reproductive_function_language_present": function_terms,
         },
         "decision": "schema_documented_for_manual_gate_review",
-        "response_firewall": "Only archive identity, workbook sheet names/dimensions, string-only cells from the first 12 rows, and documentation text were inspected. Numeric visitation and reproductive outcome values were not read into the audit output or modeled.",
+        "response_firewall": "Only archive identity, workbook sheet names/dimensions, string-typed cells from the first 12 rows, and documentation text were surfaced. Numeric visitation and reproductive outcome cell values were not surfaced or modeled.",
     }
 
 
