@@ -1,0 +1,64 @@
+{
+  "analysis": "N3_carob_process_and_residual_context",
+  "frozen_date": "2026-08-27",
+  "data": {
+    "record_id": 13939480,
+    "doi": "10.5281/zenodo.13939480",
+    "file": "Dataset_CarobTree.xlsx",
+    "expected_md5": "9cf7668ae8d825c72edda3346ebf36a6"
+  },
+  "unit": {
+    "analysis_unit": "StudyOrchard_x_Year",
+    "holdout_unit": "StudyOrchard",
+    "tree_aggregation": {
+      "fruit_count": "sum(TotalFruits)",
+      "flower_exposure": "sum(TotalFlowers)"
+    }
+  },
+  "interaction_representations": {
+    "embedded": "FruitProduction.PolinAbun / 15",
+    "joined": "PollinatorAbundance.PolinAbun / 15 joined by exact StudyOrchard x Year"
+  },
+  "endpoint": "fruit_count",
+  "model_family": "NB2_log",
+  "offset": "log(flower_exposure)",
+  "preprocessing": "training_fold_standardization_only",
+  "B1": {
+    "baseline": ["Year"],
+    "process": ["Year", "z(I_visit)"],
+    "decision": "delta_total < 0 and orchard_bootstrap_95ci_upper < 0",
+    "require_both_interaction_representations": true
+  },
+  "B2": {
+    "opens_only_if_B1_both_pass": true,
+    "process": ["Year", "z(I_visit)"],
+    "context": [
+      "Year",
+      "z(I_visit)",
+      "z(Pnatur1k)",
+      "FarmSys",
+      "z(ratMF)",
+      "z(ratMF)^2",
+      "z(Pnatur1k):FarmSys"
+    ],
+    "decision": "delta_total < 0 and orchard_bootstrap_95ci_upper < 0",
+    "require_representation_agreement_for_claim": true
+  },
+  "validation": {
+    "method": "leave_one_orchard_out",
+    "score": "mean held-out NLL within orchard, then sum orchard deltas",
+    "bootstrap_seed": 20260827,
+    "bootstrap_n": 10000,
+    "bootstrap_unit": "orchard"
+  },
+  "forbidden_repairs": [
+    "alternate endpoint after result",
+    "Poisson or Gaussian fallback",
+    "alternate link",
+    "predictor deletion after result",
+    "outlier or orchard deletion after result",
+    "threshold or bootstrap seed change",
+    "fuzzy key matching",
+    "choosing the favorable PolinAbun representation"
+  ]
+}
