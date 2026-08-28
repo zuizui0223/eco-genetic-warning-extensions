@@ -1,0 +1,29 @@
+{
+  "analysis": "N3_Mallorca_network_fit_ready_stage_A",
+  "decision": "fit_ready_for_prospective_B1_preregistration",
+  "doi": "10.5061/dryad.hqbzkh1bm",
+  "eligible_distinct_species_count": 22,
+  "eligible_species_year_pair_count": 41,
+  "eligible_pair_counts_by_year": {"2016": 21, "2017": 20},
+  "excluded_species_year_pairs": [
+    "2016|blackstonia perfoliata",
+    "2016|centaurium pulchellum",
+    "2017|centaurium pulchellum",
+    "2017|gladiolus illyricus",
+    "2017|melilotus indica"
+  ],
+  "exclusion_reason": "species_absent_from_year_network",
+  "fitness_or_baseline_missingness_exclusions": 0,
+  "network_schema": {
+    "2016": {"plant_rows": 38, "pollinator_columns": 119},
+    "2017": {"plant_rows": 38, "pollinator_columns": 174}
+  },
+  "source_file_identity": {
+    "Dryad.xlsx": {"bytes": 60483, "sha256": "a6490b3699468898e99bb65b528d67e01d876dc85aec2847edf8191b806cb56f"},
+    "Dryad_notes.docx": {"bytes": 13257, "sha256": "35f5e5f512b2ac27f49c2663625aa2f46e831864ccc238f2bf1688e8498fa94b"}
+  },
+  "workflow_run": 33135325313,
+  "artifact_id": 9671801421,
+  "artifact_sha256": "e34d534d01283f5ab51f0660541244e7d444ff544087fc058af6d0eaba73750d",
+  "response_firewall": "Stage A inspected archive identity, headers, source units, process-row presence, missingness and species-year join structure only. It did not compute visitation row sums, inspect SeedsFlowerRounded values, calculate process-function associations or fit models."
+}
