@@ -1,0 +1,50 @@
+name: N3 Mallorca network Stage-A gate
+
+on:
+  push:
+    branches:
+      - agent/n3-mallorca-network-stage-a
+    paths:
+      - "scripts/audit_n3_mallorca_network_fit_ready.py"
+      - ".github/workflows/n3-mallorca-network-stage-a.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  stage-a:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install schema-only dependency
+        run: python -m pip install openpyxl
+      - name: Compile Stage-A audit
+        run: python -m py_compile scripts/audit_n3_mallorca_network_fit_ready.py
+      - name: Run response-firewalled Stage-A audit
+        run: python scripts/audit_n3_mallorca_network_fit_ready.py --output artifacts/empirical/n3_mallorca_network_fit_ready_stage_a.json
+      - name: Validate bounded Stage-A decision
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('artifacts/empirical/n3_mallorca_network_fit_ready_stage_a.json').read_text())
+          assert x['decision'] in {'fit_ready_for_prospective_B1_preregistration','stage_A_not_fit_ready','stage_A_audit_error'}
+          assert x['doi']=='10.5061/dryad.hqbzkh1bm'
+          assert 'response_firewall' in x
+          if x['decision']=='fit_ready_for_prospective_B1_preregistration':
+              s=x['sem_schema']
+              assert s['eligible_distinct_species_count'] >= 15
+              assert s['eligible_species_year_pair_count'] >= 25
+              assert min(s['eligible_pair_counts_by_year'].values()) >= 10
+          print(json.dumps(x, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n3-mallorca-network-stage-a
+          path: artifacts/empirical/n3_mallorca_network_fit_ready_stage_a.json
+          if-no-files-found: error
+          retention-days: 30
