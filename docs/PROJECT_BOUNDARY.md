@@ -44,6 +44,21 @@ mathematical closure, such as:
 Every extension needs a protocol that states its changed closure, unchanged
 components, calibration outcome, validation outcome, and evidence label.
 
+## Publication boundary inside this repository
+
+The repository now exposes exactly two active publication manuscripts:
+
+- `manuscript/warning_validity.md` owns the full-denominator warning audit;
+- `manuscript/state_validity_and_empirical_measurement_gates.md` owns joint-state,
+  process-portability, and empirical measurement/representation claims.
+
+`manuscript/main_text.md` is retained as an integrated source archive because
+historical validators and bundle provenance depend on it.  It is not an active
+third submission manuscript.  The binding router is
+`manuscript/publication_lanes.json`; splitting presentation does not overwrite
+the predecessor ledger, alter frozen evidence, or transfer a claim between
+lanes without an explicit registry change.
+
 ## Prohibited shortcuts
 
 This repository will not:

@@ -1,6 +1,17 @@
 # Manuscript workspace
 
-**Working title:** *Joint state representation and empirical measurement gates define eco-genetic predictability*
+## Active manuscripts
+
+| lane | active manuscript | owned conclusion |
+|---|---|---|
+| warning validity | [`warning_validity.md`](warning_validity.md) | Event-conditioned temporal precedence is not predictive warning validity. |
+| state validity | [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) | Candidate states require endpoint-relevant adequacy and information-preserving representation before residual origin/history is tested. |
+
+The binding router is [`publication_lanes.json`](publication_lanes.json); its
+human-readable claim-ownership contract is
+[`PUBLICATION_LANES.md`](PUBLICATION_LANES.md).  [`main_text.md`](main_text.md)
+is the integrated source archive retained for historical contracts, not an
+active third manuscript.
 
 The manuscript is downstream of the scientific condition map. Do not organise the paper around protocol chronology, and do not treat `urban`, `island` or another habitat label as a biological regime by itself.
 
@@ -83,16 +94,15 @@ Two direct open-data residual-context tests are now available:
 
 Use this hierarchy when files disagree:
 
-1. [`main_text.md`](main_text.md) — publication manuscript;
-2. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited claims;
-3. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → condition → boundary;
-4. [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — state-sufficiency convergence logic;
-5. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) — real-system measurements, candidate regimes and open-data tests;
-6. [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — measurement completeness, synchronization and field identification rules;
-7. [`empirical_e3_crepis_audit.md`](empirical_e3_crepis_audit.md), [`empirical_e4_miyake_audit.md`](empirical_e4_miyake_audit.md), [`empirical_e5_conospermum_audit.md`](empirical_e5_conospermum_audit.md) and [`empirical_e6_spondias_audit.md`](empirical_e6_spondias_audit.md) — quantitative natural anchor conditions;
-8. [`state_reproducibility_bridge.md`](state_reproducibility_bridge.md) — current synthesis connecting E1/E2 natural-state tests to within-state warning replication;
-9. [`ecological_grounding.md`](ecological_grounding.md) — broader ecological translation;
-10. [`artifact_index.md`](artifact_index.md) — numerical provenance.
+1. [`publication_lanes.json`](publication_lanes.json) and [`PUBLICATION_LANES.md`](PUBLICATION_LANES.md) — active path and claim ownership;
+2. [`warning_validity.md`](warning_validity.md) or [`state_validity_and_empirical_measurement_gates.md`](state_validity_and_empirical_measurement_gates.md) — lane-specific publication manuscript;
+3. [`claim_evidence_map.md`](claim_evidence_map.md) — permitted/prohibited claims;
+4. [`hypothesis_condition_ledger.md`](hypothesis_condition_ledger.md) — recovered result → condition → boundary;
+5. [`urban_island_regime_tests.md`](urban_island_regime_tests.md) — state-sufficiency convergence logic;
+6. [`empirical_regime_candidates.md`](empirical_regime_candidates.md) and [`empirical_measurement_crosswalk.md`](empirical_measurement_crosswalk.md) — natural-system measurements and field identification rules;
+7. locked preregistrations, result notes, and STOP artifacts;
+8. [`artifact_index.md`](artifact_index.md) — numerical provenance;
+9. [`main_text.md`](main_text.md) — integrated source archive only.
 
 Historical phase documents and **phase-specific result notes** remain provenance only and **must not compete with the current sources**; they do not override the current condition map or publication sources of truth.
 
@@ -104,7 +114,7 @@ Historical phase documents and **phase-specific result notes** remain provenance
 - connectivity is process-specific and the historical allele-mixing signal is non-replicated/non-portable;
 - complete future-relevant state is sufficient under the declared model, while coarse averages and standard genetic summaries can hide dynamically distinct spatial alignments;
 - genetic warning is meaningful only downstream of the independently characterised loss-generating state;
-- **inside one frozen loss-generating state, baseline-relative genetic-warning ordering strictly replicates across independent seed ensembles; portability across states remains bounded**;
+- **inside one frozen loss-generating state, event-conditioned ordering replicated across independent seed ensembles but full-denominator predictive validity failed**;
 - natural systems already show opposite outcomes from superficially similar local-support loss, depending on interaction limitation versus movement compensation;
 - long-lived natural populations can retain historical genetic structure after contemporary interaction/connectivity has already changed, so cohort and memory must be aligned to the outcome window;
 - a near-synchronized natural system (*Spondias*) shows that reduced realised visitation, contracted pollen flow, lower function and next-generation genetic deterioration can form one joint fragmentation state;

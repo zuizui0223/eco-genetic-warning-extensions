@@ -4,6 +4,18 @@ This file is the manuscript claim gate. Detailed numerical provenance lives in `
 
 Parent and extension repositories are separate computational provenance units and their trajectories are never pooled. The pinned parent scientific commit is `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
+## Publication-lane ownership
+
+| lane | active manuscript | owned claims |
+|---|---|---|
+| warning validity | `warning_validity.md` | P3, P4, S27; the full-denominator interpretation of the six frozen rules |
+| state validity | `state_validity_and_empirical_measurement_gates.md` | joint-state representation, process-specific portability boundaries, empirical measurement/representation gates, residual origin/history, and cross-origin identifiability |
+
+`main_text.md` is an integrated source archive, not an active submission path.
+The router in `publication_lanes.json` is fail-closed: a new reader-facing claim
+must be assigned to exactly one active lane before publication.  Lane ownership
+does not modify any evidence status below.
+
 ## Interpretation rule for historical R1–R4 labels
 
 R1–R4 remain immutable labels from the preregistered warning-blind screen. They are **not** latent biological classes. Historical R3 is described as a mixed-block screen failure unless independent high-precision evidence supports excess between-block heterogeneity. Historical R4 means every observed block lay within the fixed intermediate-incidence band; it does not itself prove warning success or biological exchangeability.

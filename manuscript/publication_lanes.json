@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "active_lanes": {
+    "warning_validity": {
+      "manuscript": "manuscript/warning_validity.md",
+      "status": "active",
+      "owned_claims": [
+        "P3",
+        "P4",
+        "S27"
+      ],
+      "sole_spine": "event-conditioned temporal precedence is not predictive warning validity",
+      "required_denominators": {
+        "inherited_event_leads": "35/35",
+        "inherited_non_event_firing": "48/48",
+        "fresh_event_leads": "33/33",
+        "fresh_non_event_firing": "49/49"
+      },
+      "claim_ceiling": "The six frozen rules have specificity 0 and binary-marker AUC 0.5 in both tested ensembles; this does not imply that genetic diversity contains no predictive information generally."
+    },
+    "state_validity": {
+      "manuscript": "manuscript/state_validity_and_empirical_measurement_gates.md",
+      "status": "active",
+      "owned_claims": [
+        "joint_state_representation",
+        "next_transition_insufficiency",
+        "process_specific_portability",
+        "empirical_measurement_adequacy",
+        "representation_preservation",
+        "residual_origin_history",
+        "cross_origin_identifiability"
+      ],
+      "sole_spine": "candidate states require endpoint-relevant adequacy and information-preserving representation before residual origin or history is tested",
+      "claim_ceiling": "Finite and system-specific tests do not establish state completeness, operator equivalence, habitat irrelevance, or validated predictive warning."
+    }
+  },
+  "archive": {
+    "manuscript": "manuscript/main_text.md",
+    "status": "integrated_source_archive_not_for_submission",
+    "purpose": "Preserves the pre-split integrated narrative required by historical manuscript and bundle contracts; it is not an active publication path."
+  },
+  "shared_sources": [
+    "manuscript/references.md",
+    "manuscript/claim_evidence_map.md",
+    "manuscript/artifact_index.md",
+    "REPRODUCIBILITY.md"
+  ]
+}
