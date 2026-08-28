@@ -95,7 +95,8 @@ def _download_locked_workbook() -> tuple[bytes, dict]:
 def audit() -> dict:
     payload, provenance = _download_locked_workbook()
     wb = load_workbook(io.BytesIO(payload), read_only=True, data_only=True)
-    missing_sheets = sorted(set(NETWORK_SHEETS.values()) | {SEM_SHEET} - set(wb.sheetnames))
+    required_sheets = set(NETWORK_SHEETS.values()) | {SEM_SHEET}
+    missing_sheets = sorted(required_sheets - set(wb.sheetnames))
     if missing_sheets:
         raise RuntimeError(f"missing required sheets: {missing_sheets}")
 
