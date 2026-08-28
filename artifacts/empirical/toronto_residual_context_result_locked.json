@@ -1,0 +1,33 @@
+{
+  "analysis": "prospectively_frozen_toronto_residual_urban_context_replication",
+  "decision": "no_detected_residual_urban_context_information",
+  "doi": "10.5061/dryad.b8gtht7r4",
+  "delta_NLL_total_M1_minus_M0": 4932.919464182949,
+  "garden_bootstrap_95ci": [603.9653825156055, 10953.661145191714],
+  "bootstrap_seed": 20260827,
+  "bootstrap_n": 10000,
+  "schema_audit": {
+    "raw_rows": 38,
+    "eligible_rows": 28,
+    "excluded_rows": 10,
+    "site_count": 10,
+    "species_counts": {"LOSI": 10, "PEHI": 8, "SYNO": 10}
+  },
+  "model_semantics": {
+    "M0": "species + I_visit + floral_units_array + matched_garden_richness",
+    "M1": "M0 + urban_cover + ugs_edge_density",
+    "holdout": "whole garden",
+    "score": "held-out Poisson negative log likelihood"
+  },
+  "interpretation": "Under the frozen whole-garden validation design, adding urban cover and green-space edge density after the partial pollination/floral state did not improve transfer and instead increased held-out NLL overall. This is not evidence that urban context is biologically irrelevant or that the measured partial state is complete.",
+  "provenance": {
+    "workflow_run": 32993817229,
+    "artifact_id": 9615678873,
+    "artifact_sha256": "07a0fe1ce25ed625cec03d73d3fa112ac6094328c5926d29d5581837147bef93",
+    "source_file_identity": {
+      "bytes": 5543,
+      "sha256": "0739cd11bf2afea3a8da7db953e7940fcde5570d5f7cb88e15f08a02140b3127"
+    },
+    "response_firewall": "Model, endpoint, mapping and holdout unit were committed before project-level access to Toronto reproductive outcome values. The only repair normalized the exact four phytometer codes by case after verifying their case-insensitive identity."
+  }
+}

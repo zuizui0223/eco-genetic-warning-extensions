@@ -1,0 +1,43 @@
+{
+  "analysis": "N3_carob_process_and_residual_context",
+  "decision": "process_measurement_not_supported_for_primary_endpoint",
+  "B1_gate": "process_measurement_not_supported_for_primary_endpoint",
+  "B2_opened": false,
+  "primary_endpoint": "TotalFruits with log(TotalFlowers) exposure",
+  "holdout": "whole orchard",
+  "model_family": "negative-binomial NB2",
+  "B1": {
+    "embedded": {
+      "representation": "FruitProduction.PolinAbun",
+      "decision": "no_detected_process_information",
+      "delta_NLL_total_full_minus_restricted": -0.10194675532516495,
+      "orchard_bootstrap_95ci": [-3.1220199572840612, 3.619192279373809]
+    },
+    "joined": {
+      "representation": "PollinatorAbundance.PolinAbun joined by orchard-year",
+      "decision": "no_detected_process_information",
+      "delta_NLL_total_full_minus_restricted": -0.09918573761290617,
+      "orchard_bootstrap_95ci": [-3.144150774778877, 3.664532700026798]
+    }
+  },
+  "data_audit": {
+    "orchard_count": 20,
+    "orchard_year_rows": 37,
+    "tree_rows": 568,
+    "years": ["2019", "2020"],
+    "interaction_representations_equal_key_count": 21,
+    "interaction_representations_different_key_count": 16,
+    "farm_levels": ["NO", "YES"]
+  },
+  "interpretation": "Direct pollinator abundance did not earn reproducible held-out predictive adequacy for fruit production under either preregistered source representation. The residual-context B2 test therefore remained closed by design. This is a measurement-adequacy boundary, not evidence that pollinators or landscape context are biologically irrelevant.",
+  "contract_sha256": "61be811be8789b86a3cdb019ba8ac1dbf487a6e776775eee982d045cc076084d",
+  "provenance": {
+    "zenodo_version_doi": "10.5281/zenodo.13939480",
+    "source_file": "Dataset_CarobTree.xlsx",
+    "source_md5": "9cf7668ae8d825c72edda3346ebf36a6",
+    "workflow_run": 33134449528,
+    "artifact_id": 9671498573,
+    "artifact_sha256": "288bd23faada1f5a3e24f3b624c80500afdbda2789cad9cce2a1811b63928346",
+    "response_firewall": "Endpoint, holdout unit, model family, two visitation representations, B1/B2 gates, bootstrap rule and no-rescue stop rules were committed before project-computed fitting/scoring of carob reproductive outcomes."
+  }
+}
