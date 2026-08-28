@@ -1,0 +1,51 @@
+{
+  "analysis_id": "N3_Mallorca_network_process_adequacy",
+  "source_doi": "10.5061/dryad.hqbzkh1bm",
+  "stage_a_locked_result": "artifacts/empirical/n3_mallorca_network_stage_a_locked.json",
+  "eligible_species_year_pairs": 41,
+  "eligible_distinct_species": 22,
+  "holdout_unit": "plant_species",
+  "holdout_scheme": "leave_one_species_out_all_years_together",
+  "process": {
+    "name": "I_visit",
+    "definition": "sum of all pollinator link weights in the focal plant row of the source year-specific quantitative network",
+    "unit": "visits_per_flower_per_5_min",
+    "forbidden_substitutes": ["LinkageLevel", "d_prime", "WeightedClosenessCentrality", "pollinator_richness", "Act_Rate", "Targ_Rate"]
+  },
+  "response": {
+    "name": "SeedsFlowerRounded",
+    "family": "Poisson",
+    "link": "log"
+  },
+  "baseline_predictors": ["Year", "DPD", "FloralUnitSize"],
+  "standardization": "continuous_predictors_train_fold_only",
+  "models": {
+    "M0": "SeedsFlowerRounded ~ Year + z(DPD) + z(FloralUnitSize)",
+    "M1": "SeedsFlowerRounded ~ Year + z(DPD) + z(FloralUnitSize) + z(I_visit)"
+  },
+  "score": "held_out_Poisson_negative_log_likelihood",
+  "delta_definition": "NLL_M1_minus_NLL_M0",
+  "bootstrap": {
+    "unit": "plant_species",
+    "draws": 10000,
+    "seed": 20260828,
+    "ci": [0.025, 0.975]
+  },
+  "decision_rule": {
+    "process_information_detected": "delta_NLL_total < 0 and bootstrap_95ci_upper < 0",
+    "no_detected_process_information": "otherwise after valid frozen scoring",
+    "primary_model_not_identifiable": "frozen model or LOSO scoring cannot be validly completed"
+  },
+  "forbidden_rescues": [
+    "seed_weight_endpoint",
+    "network_metric_substitution",
+    "flower_abundance_addition",
+    "year_interaction_addition",
+    "nonlinear_process_term",
+    "post_outcome_species_dropping",
+    "species_year_bootstrap",
+    "model_family_change",
+    "threshold_or_seed_tuning"
+  ],
+  "claim_ceiling": "within_one_Mallorca_community_process_adequacy_only_not_cross_origin_convergence"
+}
