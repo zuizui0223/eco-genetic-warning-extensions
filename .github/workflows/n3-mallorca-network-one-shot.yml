@@ -1,0 +1,52 @@
+name: N3 Mallorca network one-shot
+
+on:
+  push:
+    branches:
+      - agent/run-n3-mallorca-network-frozen
+    paths:
+      - ".github/workflows/n3-mallorca-network-one-shot.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install frozen analysis dependencies
+        run: python -m pip install pytest pandas numpy scipy statsmodels openpyxl
+      - name: Guard preregistered contract and implementation
+        run: python -m pytest tests/test_n3_mallorca_network_process_contract.py tests/test_n3_mallorca_network_process_implementation_static.py
+      - name: Compile frozen analysis
+        run: python -m py_compile scripts/run_n3_mallorca_network_process_adequacy.py
+      - name: Run one-shot source-data analysis
+        run: python scripts/run_n3_mallorca_network_process_adequacy.py --output artifacts/empirical/n3_mallorca_network_process_adequacy_result.json
+      - name: Validate frozen decision space
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path('artifacts/empirical/n3_mallorca_network_process_adequacy_result.json').read_text())
+          assert x['decision'] in {'process_information_detected','no_detected_process_information','primary_model_not_identifiable'}, x
+          assert x['doi']=='10.5061/dryad.hqbzkh1bm'
+          assert 'response_firewall' in x
+          if x['decision'] != 'primary_model_not_identifiable':
+              assert x['data_audit']['eligible_rows']==41
+              assert x['data_audit']['distinct_species']==22
+              assert x['bootstrap_seed']==20260828
+              assert x['bootstrap_n']==10000
+              assert len(x['species_records'])==22
+          print(json.dumps(x, indent=2, sort_keys=True))
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: n3-mallorca-network-one-shot
+          path: artifacts/empirical/n3_mallorca_network_process_adequacy_result.json
+          if-no-files-found: error
+          retention-days: 30
