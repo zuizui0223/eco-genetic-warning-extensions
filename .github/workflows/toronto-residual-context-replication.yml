@@ -18,7 +18,7 @@ jobs:
         with:
           python-version: '3.11'
       - name: Install frozen carob analysis dependencies
-        run: python -m pip install pandas numpy scipy statsmodels openpyxl
+        run: python -m pip install pytest pandas numpy scipy statsmodels openpyxl
       - name: Verify preregistration guards
         run: python -m pytest tests/test_n3_carob_predictive_contract.py tests/test_n3_carob_predictive_implementation_static.py
       - name: Compile frozen carob analysis
