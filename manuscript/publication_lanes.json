@@ -33,6 +33,7 @@
   "independent_development_programs": {
     "natural_data_four_gate_program": {
       "manuscript": "manuscript/natural_data_four_gate_program.md",
+      "submission_spine": "manuscript/natural_data_ecological_indicators_spine.md",
       "status": "development_go_primary_ecological_indicators",
       "publication_structure": "one_methodological_empirical_synthesis_without_cross_system_effect_pooling",
       "primary_target": "Ecological Indicators",
@@ -51,6 +52,8 @@
         "preprocessing_erases_mechanistic_information"
       ],
       "gate_registry": "manuscript/natural_data_gate_registry.json",
+      "figure_spec": "manuscript/natural_data_figure_spec.json",
+      "nearest_neighbor_audit": "manuscript/NATURAL_DATA_NEAREST_NEIGHBOR_AUDIT_2026-09-01.md",
       "publication_audit": "manuscript/NATURAL_DATA_PUBLICATION_AUDIT_2026-09-01.md",
       "venue_audit": "manuscript/NATURAL_DATA_VENUE_AUDIT_2026-09-01.md",
       "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure."
