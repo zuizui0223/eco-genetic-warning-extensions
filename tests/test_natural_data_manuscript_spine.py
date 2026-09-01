@@ -117,7 +117,7 @@ def test_nearest_neighbor_audit_blocks_false_methodological_firstness() -> None:
         "Scrupulous proxies",
         "Schielzeth",
         "Predictive validation",
-        "fail-closed sequence",
+        "fail-closed interpretation sequence",
         "Do **not** claim",
         "Ecological Indicators — primary",
         "Methods in Ecology and Evolution — conditional stretch only",
