@@ -5,7 +5,10 @@ This ledger separates repository facts that are already fixed from metadata deci
 ## Ready now
 
 - [x] extension scientific/manuscript state is synchronized through the natural measurement/representation boundary, including the locked *Campanula americana* result and response-firewalled rescaling diagnostic
-- [x] current manuscript title in the source-of-truth manuscript is **Eco-genetic conditions govern when genetic early warning of functional loss can be validated**
+- [x] two active manuscript paths and their disjoint claim ownership are fixed in `manuscript/publication_lanes.json`
+- [x] warning-validity title is **Event-conditioned temporal precedence is not predictive warning validity**
+- [x] state-validity title is **Joint state representation and empirical measurement gates define eco-genetic predictability**
+- [x] the former integrated `manuscript/main_text.md` is explicitly retained as a non-submission source archive
 - [x] `manuscript/cover_letter.md` is synchronized to the current title and state-defined reproducibility argument
 - [x] `manuscript/submission_metadata.md` contains a reviewable AI/automated-tool disclosure draft and explicit author-approval checklist; final wording and exact materially used tool/model versions remain author-controlled
 - [x] parent scientific commit used by the extension is pinned: `dd8ee379d0d3518194c767d16402042525bc00dc`
@@ -70,7 +73,9 @@ Mechanistic parent: theorem-guided interaction/fragmentation framework, finite-m
 
 ### `eco-genetic-warning-extensions`
 
-Condition-recovery, warning replication/portability, state-representation, natural state-sufficiency, integrated manuscript, submission metadata, and submission-bundle repository.
+Condition-recovery, warning replication/portability, state representation,
+natural state sufficiency, two active manuscript lanes, integrated source
+archive, submission metadata, and submission-bundle repository.
 
 ## Release gate
 

@@ -223,6 +223,8 @@ def main() -> int:
     _copy_h3_gradient(h3_gradient, out)
 
     manuscript_files = (
+        'warning_validity.md', 'state_validity_and_empirical_measurement_gates.md',
+        'PUBLICATION_LANES.md', 'publication_lanes.json',
         'main_text.md', 'references.md', 'figure_captions.md', 'figure_accessibility_review.md',
         'table_captions.md', 'supplementary_methods.md', 'submission_metadata.md',
         'claim_evidence_map.md', 'artifact_index.md', 'submission_checklist.md',

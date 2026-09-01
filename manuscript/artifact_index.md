@@ -2,6 +2,17 @@
 
 Protocol and Phase identifiers are retained because they are necessary for provenance. Biological Results use the current condition-first interpretation.
 
+## Publication routing
+
+| role | path | evidence effect |
+|---|---|---|
+| active warning-validity manuscript | `manuscript/warning_validity.md` | none; presents the frozen full-denominator audit |
+| active state-validity manuscript | `manuscript/state_validity_and_empirical_measurement_gates.md` | none; presents locked representation, portability, and empirical-gate results |
+| machine-readable lane registry | `manuscript/publication_lanes.json` | claim ownership only |
+| integrated source archive | `manuscript/main_text.md` | none; retained for historical validation and provenance, not submission |
+
+The split does not regenerate, replace, or reinterpret any artifact listed below.
+
 ## Core evidence provenance
 
 | Campaign | Evidence | Workflow run / artifact |

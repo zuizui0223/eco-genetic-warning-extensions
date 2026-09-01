@@ -1,5 +1,14 @@
 # Main-story revision after full-denominator audit
 
+## Publication split
+
+The two load-bearing claims below are now separate active publication lanes.
+The full-denominator result is presented only in `warning_validity.md`; the
+joint-state and empirical-gate result is presented only in
+`state_validity_and_empirical_measurement_gates.md`.  `main_text.md` preserves
+the integrated pre-split source for provenance and historical validators, but
+is not an active submission manuscript.  See `publication_lanes.json`.
+
 ## Two load-bearing claims
 
 ### 1. State sufficiency requires joint representation

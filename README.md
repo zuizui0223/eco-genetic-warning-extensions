@@ -2,6 +2,25 @@
 
 This repository tests **which eco-genetic state representations are future-relevant, and whether candidate measurements preserve enough information for prediction**. It is the condition-recovery, warning-audit, and natural state-sufficiency extension of [`eco-genetic-criticality`](https://github.com/zuizui0223/eco-genetic-criticality), pinned at scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`.
 
+## Active publication paths
+
+The former integrated narrative has been separated into two active manuscripts
+with disjoint claim ownership:
+
+1. [`manuscript/warning_validity.md`](manuscript/warning_validity.md) — the
+   full-denominator warning-validity result: 35/35 with 48/48, 33/33 with
+   49/49, specificity 0, and binary-marker AUC 0.5.
+2. [`manuscript/state_validity_and_empirical_measurement_gates.md`](manuscript/state_validity_and_empirical_measurement_gates.md)
+   — joint-state representation, next-transition insufficiency, process-
+   portability boundaries, and empirical measurement/representation gates.
+
+Claim ownership and machine-readable routing are fixed in
+[`manuscript/PUBLICATION_LANES.md`](manuscript/PUBLICATION_LANES.md) and
+[`manuscript/publication_lanes.json`](manuscript/publication_lanes.json).
+[`manuscript/main_text.md`](manuscript/main_text.md) is retained only as the
+integrated source archive required by historical validators and bundle
+provenance; it is not a third active submission manuscript.
+
 ```text
 C0  Can an interaction-dependent high-function state exist?
         ↓
@@ -161,9 +180,13 @@ Use this order when files disagree:
 1. `docs/HYPOTHESIS_PROGRAM.md`
 2. `manuscript/hypothesis_condition_ledger.md`
 3. `manuscript/claim_evidence_map.md`
-4. `manuscript/main_text.md`
-5. locked empirical preregistrations / result notes
-6. `manuscript/artifact_index.md` and `REPRODUCIBILITY.md`
+4. `manuscript/publication_lanes.json` and `manuscript/PUBLICATION_LANES.md`
+5. the lane-specific active manuscript named by that registry
+6. locked empirical preregistrations / result notes
+7. `manuscript/artifact_index.md` and `REPRODUCIBILITY.md`
+
+`manuscript/main_text.md` is an integrated source archive and does not override
+either active lane.
 
 Historical Phase documents are provenance only; they do not override the current condition map.
 

@@ -21,7 +21,7 @@ protocol002 = "eco_genetic_warning_extensions.protocol002_cli:main"
 [project.urls]
 Repository = "https://github.com/zuizui0223/eco-genetic-warning-extensions"
 "Mechanistic parent" = "https://github.com/zuizui0223/eco-genetic-criticality"
-"Integrated manuscript" = "https://github.com/zuizui0223/eco-genetic-warning-extensions/tree/main/manuscript"
+"Publication manuscripts" = "https://github.com/zuizui0223/eco-genetic-warning-extensions/tree/main/manuscript"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

@@ -1,5 +1,10 @@
 # Joint state representation and empirical measurement gates define eco-genetic predictability
 
+> **INTEGRATED SOURCE ARCHIVE — NOT AN ACTIVE SUBMISSION MANUSCRIPT.**  This
+> pre-split synthesis is retained for provenance and historical validation.
+> The two active publication paths are declared in `PUBLICATION_LANES.md` and
+> `publication_lanes.json`.
+
 ## Abstract
 
 Ecological forecasts depend on whether measured summaries preserve the state governing what happens next. In a finite multipatch model, we constructed two states with identical census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma` and `F_ST` but opposite patchwise cross-layer alignment. Their next interaction transition differed by 0.2543, establishing that coarse marginals were not transition-sufficient; a fixed 500-pair campaign did not establish a directional long-horizon risk effect. Natural-data tests then separated informative partial states, missing process coordinates, inadequate proxies and representations that erased mechanistic weighting. A post-review audit also revised the genetic-warning claim: six relative-diversity thresholds led every observed loss in two frozen ensembles (35/35 and 33/33), but fired in every non-event trajectory (48/48 and 49/49), yielding zero full-horizon specificity and AUC 0.5. Thus warning ordering was conditional but not discriminative. Future-relevant state inference requires joint representation and an empirical measurement/representation gate before origin or precursor claims.

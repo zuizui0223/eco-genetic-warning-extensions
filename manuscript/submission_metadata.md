@@ -4,17 +4,32 @@ This file separates fields already fixed by the manuscript/repository from field
 
 ## Manuscript identity
 
-- **Current manuscript title:** Joint state representation and empirical measurement gates define eco-genetic predictability
-- **Running title:** Future-relevant eco-genetic states
-- **Article type:** Letter
-- **Keywords:** early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss
+- **Active warning-validity title:** Event-conditioned temporal precedence is not predictive warning validity
+- **Warning-validity source:** `manuscript/warning_validity.md`
+- **Provisional running title:** Temporal precedence is not warning validity
+- **Active state-validity title:** Joint state representation and empirical measurement gates define eco-genetic predictability
+- **State-validity source:** `manuscript/state_validity_and_empirical_measurement_gates.md`
+- **Provisional running title:** Future-relevant eco-genetic states
+- **Article type:** [author/venue approval required separately for each lane]
+- **Keywords:** [final lane-specific keywords require author approval]
 - **Corresponding author:** [name, complete postal address, telephone, email]
 
-The title above is synchronized to `manuscript/main_text.md`; final author approval of the title remains required.
+The two titles above are synchronized to `manuscript/publication_lanes.json`.
+Final title, article type, and author approval are required independently for
+each lane.  `manuscript/main_text.md` is the integrated source archive and is
+not a title-page source.
 
-## Current Ecology Letters title-page counts
+## Active-lane title-page counts
 
-Repository-tokenizer counts for the Phase R/S/T-integrated manuscript are:
+Final journal-tokenizer counts, display allocations, and venue limits must be
+computed independently after each active manuscript receives its lane-specific
+references, figures, and supplement.  The split must not reuse the archived
+integrated count as if it described either active submission.
+
+## Historical integrated-source counts
+
+For provenance only, repository-tokenizer counts for the archived Phase
+R/S/T-integrated source were:
 
 - **Abstract:** 150 words
 - **Main text (Introduction through Limits):** 4,985 words
@@ -24,7 +39,9 @@ Repository-tokenizer counts for the Phase R/S/T-integrated manuscript are:
 - **Text boxes:** 0
 - **Running title length:** 31 characters including spaces
 
-These values satisfy the current Letter limits (abstract <=150 words; main text <=5,000 words; <=6 combined main figures/tables/text boxes; running title <45 characters). The final converted Word/submission file must be counted again because journal software may tokenize equations and hyphenation differently.
+These historical values do not certify either active lane.  Each final converted
+submission must be counted again because journal software may tokenize equations
+and hyphenation differently.
 
 ## Authors and affiliations
 
