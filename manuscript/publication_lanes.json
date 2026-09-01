@@ -1,5 +1,5 @@
 {
-  "schema_version": 1,
+  "schema_version": 2,
   "active_lanes": {
     "warning_validity": {
       "manuscript": "manuscript/warning_validity.md",
@@ -24,14 +24,30 @@
       "owned_claims": [
         "joint_state_representation",
         "next_transition_insufficiency",
-        "process_specific_portability",
-        "empirical_measurement_adequacy",
-        "representation_preservation",
-        "residual_origin_history",
+        "process_specific_portability"
+      ],
+      "sole_spine": "coarse marginal equality does not guarantee transition equality and scalar process labels do not transport across distinct operators",
+      "claim_ceiling": "Finite and closure-specific tests do not establish state completeness, operator equivalence, directional long-horizon risk, or validated predictive warning."
+    }
+  },
+  "deferred_programs": {
+    "natural_data_four_gate_program": {
+      "manuscript": "manuscript/natural_data_four_gate_program.md",
+      "status": "deferred_venue_and_structure_pending",
+      "owned_claims": [
+        "residual_context_redundancy",
+        "missing_process_coordinate",
+        "process_proxy_adequacy",
+        "representation_information_preservation",
         "cross_origin_identifiability"
       ],
-      "sole_spine": "candidate states require endpoint-relevant adequacy and information-preserving representation before residual origin or history is tested",
-      "claim_ceiling": "Finite and system-specific tests do not establish state completeness, operator equivalence, habitat irrelevance, or validated predictive warning."
+      "four_lines": [
+        "residual_context_no_transferable_gain_after_partial_state",
+        "missing_contemporary_process_coordinate",
+        "candidate_proxy_fails_endpoint_relevant_adequacy",
+        "preprocessing_erases_mechanistic_information"
+      ],
+      "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure."
     }
   },
   "archive": {
