@@ -6,6 +6,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = ROOT / "manuscript" / "publication_lanes.json"
+NATURAL_GATE_REGISTRY = ROOT / "manuscript" / "natural_data_gate_registry.json"
 
 
 def _read(relative: str) -> str:
@@ -18,7 +19,7 @@ def _flat(text: str) -> str:
 
 def main() -> int:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
-    assert registry["schema_version"] == 2
+    assert registry["schema_version"] == 3
 
     lanes = registry["active_lanes"]
     assert set(lanes) == {"warning_validity", "state_validity"}
@@ -29,14 +30,43 @@ def main() -> int:
     for path in active_paths:
         assert (ROOT / path).is_file(), path
 
-    deferred = registry["deferred_programs"]
-    assert set(deferred) == {"natural_data_four_gate_program"}
-    natural_lane = deferred["natural_data_four_gate_program"]
-    assert natural_lane["status"] == "deferred_venue_and_structure_pending"
+    development = registry["independent_development_programs"]
+    assert set(development) == {"natural_data_four_gate_program"}
+    natural_lane = development["natural_data_four_gate_program"]
+    assert natural_lane["status"] == "development_go_primary_ecological_indicators"
+    assert natural_lane["publication_structure"] == "one_methodological_empirical_synthesis_without_cross_system_effect_pooling"
+    assert natural_lane["primary_target"] == "Ecological Indicators"
     assert len(natural_lane["four_lines"]) == 4
     natural_path = natural_lane["manuscript"]
     assert natural_path not in active_paths
     assert (ROOT / natural_path).is_file()
+    for control_path in (
+        natural_lane["gate_registry"],
+        natural_lane["publication_audit"],
+        natural_lane["venue_audit"],
+    ):
+        assert (ROOT / control_path).is_file(), control_path
+
+    gate_registry = json.loads(NATURAL_GATE_REGISTRY.read_text(encoding="utf-8"))
+    assert gate_registry["schema_version"] == 1
+    systems = gate_registry["systems"]
+    assert len(systems) == 7
+    assert {record["line"] for record in systems} == {1, 2, 3, 4}
+    assert {record["holdout_unit"] for record in systems} == {
+        "site",
+        "garden",
+        "maternal plant",
+        "array",
+        "orchard",
+        "population",
+    }
+    assert gate_registry["cross_study"]["locked_outcome"] == "cross_origin_convergence_not_identifiable_from_existing_archives"
+    for record in systems:
+        assert record["candidate_state"]
+        assert record["declared_endpoint"]
+        assert record["gate_reached"] in gate_registry["shared_order"]
+        assert record["locked_outcome"]
+        assert record["claim_ceiling"]
 
     archive = registry["archive"]
     assert archive["status"] == "integrated_source_archive_not_for_submission"
@@ -101,13 +131,21 @@ def main() -> int:
     for warning_denominator in ("35/35", "48/48", "33/33", "49/49"):
         assert warning_denominator not in natural
 
+    publication_audit = _read(natural_lane["publication_audit"])
+    venue_audit = _read(natural_lane["venue_audit"])
+    assert "one methodological empirical synthesis" in publication_audit
+    assert "Why not four papers" in publication_audit
+    assert "Why not a pooled synthesis" in publication_audit
+    assert "Primary target — Ecological Indicators" in venue_audit
+    assert "Stretch target — Methods in Ecology and Evolution, conditional only" in venue_audit
+
     integrated = _read(archive["manuscript"])
     assert "INTEGRATED SOURCE ARCHIVE — NOT AN ACTIVE SUBMISSION MANUSCRIPT" in integrated
 
     ownership = _read("manuscript/PUBLICATION_LANES.md")
     assert "Active lane 1 — warning validity" in ownership
     assert "Active lane 2 — model state validity and process portability" in ownership
-    assert "Deferred empirical programme — four natural-data gate lines" in ownership
+    assert "Independent development programme — four natural-data gate lines" in ownership
     assert "not an active submission manuscript" in ownership
 
     for router_path in ("README.md", "manuscript/README.md"):
@@ -119,11 +157,11 @@ def main() -> int:
     builder = _read("scripts/build_submission_bundle.py")
     for path in (*active_paths, "manuscript/publication_lanes.json", "manuscript/PUBLICATION_LANES.md"):
         assert Path(path).name in builder, f"submission bundle omits {path}"
-    assert Path(natural_path).name not in builder, "deferred natural-data programme leaked into active submission bundle"
+    assert Path(natural_path).name not in builder, "independent natural-data programme leaked into active EGWE submission bundle"
 
     print(
-        "Publication-lane validation passed: 2 active manuscripts, "
-        "1 deferred four-line natural-data programme, 1 integrated source archive; "
+        "Publication-lane validation passed: 2 active EGWE manuscripts, "
+        "1 independent natural-data development programme, 1 integrated source archive; "
         "warning, state, and empirical claim ownership are disjoint."
     )
     return 0

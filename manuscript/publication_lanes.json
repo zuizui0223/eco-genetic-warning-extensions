@@ -1,5 +1,5 @@
 {
-  "schema_version": 2,
+  "schema_version": 3,
   "active_lanes": {
     "warning_validity": {
       "manuscript": "manuscript/warning_validity.md",
@@ -30,10 +30,13 @@
       "claim_ceiling": "Finite and closure-specific tests do not establish state completeness, operator equivalence, directional long-horizon risk, or validated predictive warning."
     }
   },
-  "deferred_programs": {
+  "independent_development_programs": {
     "natural_data_four_gate_program": {
       "manuscript": "manuscript/natural_data_four_gate_program.md",
-      "status": "deferred_venue_and_structure_pending",
+      "status": "development_go_primary_ecological_indicators",
+      "publication_structure": "one_methodological_empirical_synthesis_without_cross_system_effect_pooling",
+      "primary_target": "Ecological Indicators",
+      "conditional_stretch_target": "Methods in Ecology and Evolution only after a separate new-method gate with reusable implementation and simulation benchmarks",
       "owned_claims": [
         "residual_context_redundancy",
         "missing_process_coordinate",
@@ -47,6 +50,9 @@
         "candidate_proxy_fails_endpoint_relevant_adequacy",
         "preprocessing_erases_mechanistic_information"
       ],
+      "gate_registry": "manuscript/natural_data_gate_registry.json",
+      "publication_audit": "manuscript/NATURAL_DATA_PUBLICATION_AUDIT_2026-09-01.md",
+      "venue_audit": "manuscript/NATURAL_DATA_VENUE_AUDIT_2026-09-01.md",
       "claim_ceiling": "Heterogeneous natural systems are not pooled and do not validate the warning rules or the synthetic state closure."
     }
   },
