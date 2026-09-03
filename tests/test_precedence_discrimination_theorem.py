@@ -10,6 +10,7 @@ from eco_genetic_warning_extensions.precedence_discrimination import (
 )
 
 ROOT = Path(__file__).resolve().parents[1]
+SOURCE_ENSEMBLES = {"inherited_202611", "fresh_202911"}
 
 
 def pairwise_auc(event_scores, non_event_scores):
@@ -83,12 +84,18 @@ def test_all_non_events_positive_is_sharp_chance_discrimination_endpoint():
     assert math.isclose(audit.positive_predictive_value, 35 / 83)
 
 
-def test_locked_warning_table_realizes_sharp_endpoint_for_all_six_rules_in_both_ensembles():
+def test_locked_warning_table_realizes_sharp_endpoint_for_all_six_rules_in_both_source_ensembles():
     path = ROOT / "manuscript/tables/warning_validity_audit.csv"
     with path.open(newline="", encoding="utf-8") as handle:
-        rows = list(csv.DictReader(handle))
+        all_rows = list(csv.DictReader(handle))
 
+    # The publication table also contains a six-row combined_descriptive block.
+    # The theorem application is source-ensemble specific: inherited and fresh
+    # were generated independently and are never pooled for replication claims.
+    rows = [row for row in all_rows if row["ensemble"] in SOURCE_ENSEMBLES]
+    assert len(all_rows) == 18
     assert len(rows) == 12
+
     grouped = {}
     for row in rows:
         grouped.setdefault(row["ensemble"], []).append(row)
@@ -106,9 +113,13 @@ def test_locked_warning_table_realizes_sharp_endpoint_for_all_six_rules_in_both_
         assert float(row["full_horizon_binary_auc"]) == audit.binary_auc == 0.5
         assert math.isclose(float(row["full_horizon_ppv"]), audit.positive_predictive_value)
 
+    assert set(grouped) == SOURCE_ENSEMBLES
     assert {len(v) for v in grouped.values()} == {6}
     denominators = {
         ensemble: (int(items[0]["events"]), int(items[0]["right_censored_non_events"]))
         for ensemble, items in grouped.items()
     }
-    assert set(denominators.values()) == {(35, 48), (33, 49)}
+    assert denominators == {
+        "inherited_202611": (35, 48),
+        "fresh_202911": (33, 49),
+    }
