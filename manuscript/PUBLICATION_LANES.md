@@ -21,7 +21,7 @@ This document is the human-readable publication router. Its machine-readable cou
 
 The filename is retained for provenance and bundle stability, but its active contents are now model-only. The prior combined state-plus-empirical narrative remains recoverable from repository history and the integrated source archive.
 
-## Migrated independent programme — four natural-data gate lines
+## Independent development programme — four natural-data gate lines (migrated to EGWEE)
 
 **Authoritative repository from 2026-09-04:** [`zuizui0223/egwee`](https://github.com/zuizui0223/egwee).
 
