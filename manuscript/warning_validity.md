@@ -1,7 +1,7 @@
 # Event-conditioned temporal precedence is not predictive warning validity
 
-**Publication status:** active warning-validity manuscript.  This manuscript is
-the sole active publication lane for the full-denominator warning result.  It
+**Publication status:** active warning-validity manuscript. This manuscript is
+the sole active publication lane for the full-denominator warning result. It
 does not make a joint-state or cross-system convergence claim.
 
 ## Abstract
@@ -39,23 +39,48 @@ among trajectories in which both threshold and event are observed. Predictive
 warning validity additionally requires the rule not to fire indiscriminately in
 trajectories that remain event-free through the same administrative horizon.
 
-The distinction matters for genetic early-warning studies because diversity
-decline is biologically plausible under deterioration and can therefore look
-compelling in event-only sequences. A perfect lead count is not, by itself,
-evidence of specificity, risk separation, or prospective discrimination. More
-strongly, the event-only denominator does not contain the information needed to
-fix specificity: holding every event trajectory and its perfect lead relation
+Early-warning research has established both why advance signals are attractive
+and why their validation is difficult. Critical-transition theory identifies
+conditions under which changes in system dynamics can precede abrupt shifts
+(Scheffer et al. 2009), and experimental deterioration studies have demonstrated
+pre-extinction signals in controlled populations (Drake & Griffen 2010). But
+regime shifts can also occur without warning (Hastings & Wysham 2010), the power
+to detect warning signals can be sharply limited (Boettiger & Hastings 2012),
+and stochastic transitions can defeat generic early-warning expectations
+(Boettiger & Hastings 2013). Natural-system evaluations therefore emphasize
+prospective performance of specified indicators rather than temporal ordering
+alone (Gsell et al. 2016).
+
+Genetic diversity is nevertheless a biologically reasonable quantity to monitor.
+Conservation genetics has long proposed genetic monitoring as a management tool
+(Schwartz et al. 2007), genetic diversity can affect ecological performance
+(Hughes et al. 2008), and genomic variation can be important for biodiversity
+and ecosystem function (Stange et al. 2021). Those biological motivations do
+not by themselves validate any particular diversity threshold as a predictive
+warning. A candidate rule still has to discriminate future-event trajectories
+from comparable non-event trajectories under a declared horizon and eligibility
+contract.
+
+The distinction is especially important here because diversity decline is
+biologically plausible under deterioration and can therefore look compelling in
+event-only sequences. A perfect lead count is not, by itself, evidence of
+specificity, risk separation, or prospective discrimination. More strongly, the
+event-only denominator does not contain the information needed to fix
+specificity: holding every event trajectory and its perfect lead relation
 constant, marker occurrence among non-events can vary from none to all. For a
-binary horizon marker this allows AUC to vary from 1 to 0.5 while event-
-conditioned precedence remains perfect. We test the sharp lower endpoint of that
-possibility using two frozen ensembles in which the loss process was defined
-before warning values were opened and all baseline-eligible non-events were
-retained.
+binary horizon marker this allows AUC to vary from 1 to 0.5 while
+event-conditioned precedence remains perfect. We test the sharp lower endpoint
+of that possibility using two frozen ensembles in which the loss process was
+defined before warning values were opened and all baseline-eligible non-events
+were retained.
 
 Our question is deliberately narrow: do six already frozen relative-diversity
 rules distinguish trajectories with realised functional-trait loss from those
 without loss by a common horizon? No threshold, seed, schedule, eligibility
-rule, or endpoint was changed for this audit.
+rule, or endpoint was changed for this audit. The contribution is therefore not
+a new generic early-warning statistic. It is a frozen-rule validity audit plus an
+exact statement of what perfect event-conditioned precedence does and does not
+identify about full-denominator discrimination.
 
 ## Methods
 
@@ -196,10 +221,23 @@ side mathematically unspecified. Predictive discrimination cannot be recovered
 from the event denominator because its missing quantity is precisely how often
 the same rule fires when the event does not occur.
 
+This result complements, rather than contradicts, the broader early-warning
+literature. Early-warning signals can exist under some dynamics (Scheffer et al.
+2009; Drake & Griffen 2010), can be weak or absent under others (Hastings &
+Wysham 2010; Boettiger & Hastings 2013), and can be difficult to detect with
+finite noisy data (Boettiger & Hastings 2012; Gsell et al. 2016). Our result
+addresses a different failure mode: even when a predeclared threshold has
+perfect observed lead ordering, the rule can still have no prospective
+horizon-level discrimination if it fires just as reliably in non-events.
+
 Loss-process calibration remains necessary: a warning cannot be interpreted
 without a declared target event, eligibility rule, and horizon. Calibration is
 not sufficient, however, because selecting only trajectories with both warning
 and loss removes the observations needed to estimate false-positive behaviour.
+The same principle applies to biologically motivated genetic monitoring: the
+importance of genetic or genomic variation (Schwartz et al. 2007; Hughes et al.
+2008; Stange et al. 2021) motivates what may be worth measuring, not the
+predictive validity of a particular frozen threshold.
 
 ### Claim boundary
 
@@ -228,3 +266,23 @@ The derived JSON and publication table are
 `manuscript/tables/warning_validity_audit.csv`. The audit implementation,
 denominator-theorem helper and tests are version controlled. Frozen trajectories
 and results were not modified for this manuscript split.
+
+## References
+
+Boettiger, C. & Hastings, A. (2012). Quantifying limits to detection of early warning for critical transitions. *Journal of the Royal Society Interface*, **9**, 2527–2539. doi:10.1098/rsif.2012.0125
+
+Boettiger, C. & Hastings, A. (2013). No early warning signals for stochastic transitions: insights from large deviation theory. *Proceedings of the Royal Society B*, **280**, 20131372. doi:10.1098/rspb.2013.1372
+
+Drake, J.M. & Griffen, B.D. (2010). Early warning signals of extinction in deteriorating environments. *Nature*, **467**, 456–459. doi:10.1038/nature09389
+
+Gsell, A.S., Scharfenberger, U., Özkundakci, D., Walters, A.W., Hansson, L.-A., Janssen, A.B.G., Nõges, P., Reid, P.C., Schindler, D.E., van Donk, E., Dakos, V. & Adrian, R. (2016). Evaluating early-warning indicators of critical transitions in natural aquatic ecosystems. *Proceedings of the National Academy of Sciences USA*, **113**, E8089–E8095. doi:10.1073/pnas.1608242113
+
+Hastings, A. & Wysham, D.B. (2010). Regime shifts in ecological systems can occur with no warning. *Ecology Letters*, **13**, 464–472. doi:10.1111/j.1461-0248.2010.01439.x
+
+Hughes, A.R., Inouye, B.D., Johnson, M.T.J., Underwood, N. & Vellend, M. (2008). Ecological consequences of genetic diversity. *Ecology Letters*, **11**, 609–623. doi:10.1111/j.1461-0248.2008.01179.x
+
+Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V., Held, H., van Nes, E.H., Rietkerk, M. & Sugihara, G. (2009). Early-warning signals for critical transitions. *Nature*, **461**, 53–59. doi:10.1038/nature08227
+
+Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
+
+Stange, M., Barrett, R.D.H. & Hendry, A.P. (2021). The importance of genomic variation for biodiversity, ecosystems and people. *Nature Reviews Genetics*, **22**, 89–105. doi:10.1038/s41576-020-00288-7
