@@ -52,7 +52,7 @@ In the separately locked 1,500-pair propagation cohort, neither condition had a 
 
 The nested replication prefixes separated effect magnitude from precision. At generation 20, the estimated excess risk was +5.4 points at 500 pairs (95% CI -0.46 to +11.26), +5.9 at 1,000 pairs (+1.83 to +9.97), and +5.33 at 1,500 pairs (+2.04 to +8.62). At generation 40, the corresponding estimates were +4.4 points (-1.29 to +10.09), +6.4 (+2.44 to +10.36), and +5.2 (+1.96 to +8.44). Thus the 500-pair intervals could span zero while the effect-size estimates remained similar and the larger paired samples narrowed uncertainty.
 
-Under this declared deterioration path, the directional contrast was therefore essentially absent at the 5- and 10-generation readouts, had reached about five percentage points by generation 20, and remained of similar magnitude at generation 40. The experiment supports a quantitative propagation timescale **between the 10- and 20-generation readouts**; it does not establish generation 20 as a universal or exact biological cutoff and does not establish generation 20 as a true cutoff.
+Under this declared deterioration path, the directional contrast was essentially absent at the 5- and 10-generation readouts, had reached about five percentage points by generation 20, and remained of similar magnitude at generation 40. The fixed readouts therefore locate the emergence of the detected contrast only coarsely, between generations 10 and 20; they do not identify generation 20 as a universal or exact biological cutoff.
 
 ### A scalar connectivity label did not transport across seeds or mechanisms
 
@@ -85,6 +85,10 @@ The natural-data programme asks the next question: what happens when candidate e
 ### Claim boundary
 
 The model results are finite and closure-specific. Non-significant tests do not establish equivalence. The original 500-pair Phase-V comparison remains a frozen, imprecise 60-generation result; the post-Phase-V experiment is a separate, prospectively locked extension and is not relabelled as part of the original preregistration. The propagation experiment supports an approximately five-point anti-aligned excess loss risk by the declared generation-20 readout, maintained at generation 40, after little contrast at generations 5–10. It does not establish generation 20 as a true cutoff, a universal temporal threshold, or a natural-system timescale. Failure of one historical connectivity pattern to reproduce or transport does not establish that connectivity is irrelevant. This manuscript **makes no claim that the frozen relative-diversity thresholds are validated predictive warnings**; that full-denominator validity audit is owned exclusively by `manuscript/warning_validity.md`.
+
+## Conclusion
+
+Matching common ecological and genetic marginals did not guarantee the same future under the declared eco-genetic closure. Cross-layer alignment changed the exact next interaction transition, and a separately prospectively locked experiment showed that this hidden state distinction propagated from little functional-loss risk contrast at generations 5–10 to an approximately five-percentage-point contrast at generations 20–40. State representation is therefore meaningful only relative to a prediction target, forecast horizon and biological operator. These finite results establish a representation and propagation principle, not a universal temporal cutoff, natural-system timescale, or validated warning rule.
 
 ## Data and code availability
 
