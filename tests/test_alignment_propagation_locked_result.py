@@ -61,9 +61,13 @@ def test_manuscript_uses_effect_size_timescale_not_significance_cutoff() -> None
     flat = " ".join(state.lower().split())
     # The manuscript may mention a cutoff only to reject that interpretation.
     assert "does not establish generation 20 as a true cutoff" in flat
-    assert (
-        "does not establish a universal temporal cutoff" in flat
-        or "do not establish a universal temporal cutoff" in flat
+    assert any(
+        phrase in flat
+        for phrase in (
+            "does not establish a universal temporal cutoff",
+            "do not establish a universal temporal cutoff",
+            "not a universal temporal cutoff",
+        )
     )
     assert "generation 20 is the true cutoff" not in flat
     assert "generation 20 is a universal onset" not in flat

@@ -4,10 +4,10 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-MAIN = ROOT / "manuscript/main_text.md"
+MANUSCRIPT = ROOT / "manuscript/state_validity_and_empirical_measurement_gates.md"
 COMPLIANCE = ROOT / "manuscript/ecology_letters_compliance.md"
-ALLOCATION = ROOT / "manuscript/display_allocation.md"
-CAPTIONS = ROOT / "manuscript/table_captions.md"
+ALLOCATION = ROOT / "manuscript/state_validity_display_allocation.md"
+COVER = ROOT / "manuscript/cover_letter.md"
 
 
 def _words(text: str) -> list[str]:
@@ -25,45 +25,65 @@ def _section(text: str, start: str, end: str) -> str:
         raise AssertionError(f"missing section boundary: {start!r} -> {end!r}") from exc
 
 
+def _first_prose_paragraph(section: str) -> str:
+    for block in re.split(r"\n\s*\n", section.strip()):
+        stripped = block.strip()
+        if not stripped or stripped.startswith("#"):
+            continue
+        return stripped
+    raise AssertionError("Introduction has no prose paragraph")
+
+
 def main() -> int:
-    manuscript = MAIN.read_text(encoding="utf-8")
+    manuscript = MANUSCRIPT.read_text(encoding="utf-8")
     compliance = COMPLIANCE.read_text(encoding="utf-8")
     allocation = ALLOCATION.read_text(encoding="utf-8")
-    captions = CAPTIONS.read_text(encoding="utf-8")
+    cover = COVER.read_text(encoding="utf-8")
 
     abstract = _section(manuscript, "## Abstract", "## Introduction")
+    introduction = _section(manuscript, "## Introduction", "## Methods")
     main_text = _section(manuscript, "## Introduction", "## Data and code availability")
+    conclusion = _section(manuscript, "## Conclusion", "## Data and code availability")
+
     abstract_words = len(_words(abstract))
     main_words = len(_words(main_text))
+    problem_words = len(_words(_first_prose_paragraph(introduction)))
+    conclusion_words = len(_words(conclusion))
 
-    assert abstract_words <= 150, f"abstract exceeds 150 words: {abstract_words}"
-    assert main_words <= 5000, f"main text exceeds 5000 words: {main_words}"
+    assert abstract_words <= 150, f"state abstract exceeds 150 words: {abstract_words}"
+    assert main_words <= 5000, f"state main text exceeds 5000 words: {main_words}"
+    assert problem_words < 100, f"opening problem statement is not under 100 words: {problem_words}"
+    assert conclusion_words < 200, f"conclusion is not under 200 words: {conclusion_words}"
 
     running_title_match = re.search(r"Running title:\s*\*\*(.+?)\*\*", compliance)
-    assert running_title_match, "running title is not declared"
+    assert running_title_match, "state running title is not declared"
     running_title = running_title_match.group(1).strip()
     assert len(running_title) < 45, f"running title is {len(running_title)} characters"
 
     keywords_match = re.search(r"Keywords:\s*\*\*(.+?)\*\*", compliance)
-    assert keywords_match, "keywords are not declared"
+    assert keywords_match, "state keywords are not declared"
     keywords = [item.strip() for item in keywords_match.group(1).split(";") if item.strip()]
     assert len(keywords) <= 10, f"keyword count exceeds 10: {len(keywords)}"
 
-    assert "Main display items: **Figures 1–6 only**" in compliance
+    assert "Main display items: **2 figures**" in compliance
     assert "Main tables: **none**" in compliance
     assert "Text boxes: **none**" in compliance
-    assert "no main-text tables or text boxes" in allocation
-    for number in range(1, 7):
-        assert f"### Figure {number}" in allocation
-    for number in range(1, 6):
-        assert f"## Table S{number}." in captions
-    assert "## Table 1." not in captions
-    assert "## Table 2." not in captions
+    assert "exactly two figures" in allocation
+    assert "### Figure 1" in allocation
+    assert "### Figure 2" in allocation
+    assert "### Figure 3" not in allocation
+
+    title = manuscript.splitlines()[0].removeprefix("# ").strip()
+    assert title == "Matching eco-genetic summaries can hide different ecological futures"
+    assert title in cover
+    for forbidden in ("35/35", "48/48", "33/33", "49/49", "Honshu", "Oenothera", "Eschscholzia"):
+        assert forbidden not in cover, f"non-state claim leaked into cover letter: {forbidden}"
 
     print(
-        f"Ecology Letters compliance passed: abstract={abstract_words}, "
-        f"estimated_main_text={main_words}, displays=6, keywords={len(keywords)}, "
-        f"running_title_chars={len(running_title)}"
+        "State Ecology Letters compliance passed: "
+        f"abstract={abstract_words}, main_text={main_words}, "
+        f"problem_statement={problem_words}, conclusion={conclusion_words}, "
+        f"displays=2, keywords={len(keywords)}, running_title_chars={len(running_title)}"
     )
     return 0
 

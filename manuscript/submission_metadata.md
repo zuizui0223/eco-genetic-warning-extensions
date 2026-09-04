@@ -6,30 +6,26 @@ This file separates fields already fixed by the manuscript/repository from field
 
 - **Active warning-validity title:** Event-conditioned temporal precedence is not predictive warning validity
 - **Warning-validity source:** `manuscript/warning_validity.md`
-- **Provisional running title:** Temporal precedence is not warning validity
-- **Active state-validity title:** Joint state representation and empirical measurement gates define eco-genetic predictability
+- **Warning provisional running title:** Temporal precedence is not warning validity
+- **Active state-validity title:** Matching eco-genetic summaries can hide different ecological futures
 - **State-validity source:** `manuscript/state_validity_and_empirical_measurement_gates.md`
-- **Provisional running title:** Future-relevant eco-genetic states
+- **State provisional running title:** Hidden eco-genetic state structure
+- **State-validity intended first venue:** Ecology Letters [final author approval required]
 - **Article type:** [author/venue approval required separately for each lane]
 - **Keywords:** [final lane-specific keywords require author approval]
 - **Corresponding author:** [name, complete postal address, telephone, email]
 
-The two titles above are synchronized to `manuscript/publication_lanes.json`.
-Final title, article type, and author approval are required independently for
-each lane.  `manuscript/main_text.md` is the integrated source archive and is
-not a title-page source.
+The state-validity title above is synchronized to the active manuscript. The warning lane retains its independent title and claim ownership. `manuscript/main_text.md` is the integrated source archive and is not a title-page source.
 
 ## Active-lane title-page counts
 
-Final journal-tokenizer counts, display allocations, and venue limits must be
-computed independently after each active manuscript receives its lane-specific
-references, figures, and supplement.  The split must not reuse the archived
-integrated count as if it described either active submission.
+Final journal-tokenizer counts, display allocations, and venue limits must be computed independently after each active manuscript receives its lane-specific references, figures, and supplement. The split must not reuse the archived integrated count as if it described either active submission.
+
+The state-validity lane now has a dedicated external bibliography at `manuscript/state_validity_references.md`. Its final word/display count must be recomputed after the lane-specific figure and supplement pass.
 
 ## Historical integrated-source counts
 
-For provenance only, repository-tokenizer counts for the archived Phase
-R/S/T-integrated source were:
+For provenance only, repository-tokenizer counts for the archived Phase R/S/T-integrated source were:
 
 - **Abstract:** 150 words
 - **Main text (Introduction through Limits):** 4,985 words
@@ -39,9 +35,7 @@ R/S/T-integrated source were:
 - **Text boxes:** 0
 - **Running title length:** 31 characters including spaces
 
-These historical values do not certify either active lane.  Each final converted
-submission must be counted again because journal software may tokenize equations
-and hyphenation differently.
+These historical values do not certify either active lane. Each final converted submission must be counted again because journal software may tokenize equations and hyphenation differently.
 
 ## Authors and affiliations
 
@@ -83,17 +77,21 @@ Replace placeholders with author initials only after all authors approve the con
 
 [The authors declare no competing interests / specify interests.]
 
-## Data availability — pre-DOI wording
+## Data availability — state-validity lane, pre-DOI wording
 
-All finite-model outputs used for the manuscript, including the complete 9,600-row post-review fragmentation-gradient record, cell and pooled summaries, Stage III trajectory-endpoint records, high-precision condition evidence, process-resolved Phase R/S movement closures, Phase T dynamic-partner closure, publication tables, figures, protocol locks, workflow identifiers, artifact digests, and checksummed submission manifests are preserved in the coordinated `eco-genetic-criticality` and `eco-genetic-warning-extensions` repositories. The historical scientific parent state is pinned at commit `dd8ee379d0d3518194c767d16402042525bc00dc`; the post-review fragmentation-gradient archive is preserved at parent commit `076ab3e28078cfd7cbe1b67ab544c8d1e9066c54`; and the Phase R/S/T-integrated manuscript source state is preserved in extension history from commit `5198d37652f711c7c4793dc21f8d4ec2eae053f1`. Before submission, this repository-level wording must be replaced with the permanent archived release and DOI citation(s).
+The state-validity manuscript uses version-controlled finite-model outputs from the coordinated `eco-genetic-criticality` and `eco-genetic-warning-extensions` repositories. The parent scientific closure is pinned at `dd8ee379d0d3518194c767d16402042525bc00dc`. The original aligned/anti-aligned Phase-V result remains fixed in `artifacts/cross_layer_alignment/phase_v_locked_summary.json`. The separately prospectively locked post-Phase-V propagation experiment is defined by `experiments/alignment_propagation_protocol.json`, with the compact complete result in `artifacts/alignment_propagation/locked_summary.json` and the interpretation/provenance record in `docs/ALIGNMENT_PROPAGATION_RESULT_2026-09-04.md`. Process-portability summaries remain version controlled under their declared Phase-U/R/S/T artifacts. Before submission, this repository-level wording must be replaced with permanent archived release and DOI citation(s).
 
-## Code availability — pre-DOI wording
+## Code availability — state-validity lane, pre-DOI wording
 
-All analysis, simulation, validation, figure-generation, and submission-bundle code is version controlled in the two repositories above. Historical model behaviour remains pinned to parent scientific commit `dd8ee379d0d3518194c767d16402042525bc00dc`, while the post-review fragmentation sensitivity and Phase R/S/T robustness closures are retained as explicitly separate finite evidence layers. The extension workflow reconstructs a checksummed submission bundle from the fixed parent scientific state, the versioned post-review gradient archive, immutable Stage III inputs, and the current manuscript/claim ledgers. Before submission, cite the permanent software/data archive DOI(s), approved licence(s), frozen release version(s), and minimal reproduction entry point.
+All code required for the constructive state comparison, original Phase-V provenance, post-Phase-V propagation experiment, paired effect-size reporting, and process-portability analyses is version controlled in the parent and extension repositories. The propagation implementation is `src/eco_genetic_warning_extensions/alignment_propagation_experiment.py`; its locked protocol prohibits post-outcome changes to state values, forcing, seeds, horizons, pair-count grid, or significance-based horizon selection. Before submission, cite permanent software/data archive DOI(s), approved licence(s), frozen release version(s), and a minimal state-validity reproduction entry point.
+
+## Warning-validity lane availability
+
+The warning-validity manuscript retains its own trajectory-endpoint table, source manifest, audit JSON, and warning-specific reproducibility path. These records are not part of the state-validity claim package merely because both manuscripts share the extension repository.
 
 ## Ethics and permits
 
-Not applicable to the present finite-model study unless additional empirical material is introduced.
+Not applicable to the present finite-model state-validity study unless additional empirical material is introduced.
 
 ## AI or automated-tool disclosure
 
@@ -124,4 +122,4 @@ Policy last checked against current Wiley author guidance on 2026-08-26; re-chec
 - [ ] Data and code statements point to permanent archived records/DOIs rather than repository commits alone.
 - [ ] Software/data licences and release versions approved.
 - [ ] AI/automated-tool disclosure verified against current journal/Wiley policy and approved by all authors.
-- [ ] Final converted submission file re-counted and title-page counts updated if needed.
+- [ ] State-validity final converted submission file re-counted with its lane-specific references, figures and supplement.

@@ -10,16 +10,19 @@ This document is the human-readable publication router. Its machine-readable cou
 - **Sole scientific spine:** event-conditioned temporal precedence is not predictive warning validity.
 - **Required paired reporting:** 35/35 with 48/48, and 33/33 with 49/49.
 - **Required classification:** full-horizon specificity 0 and binary-marker AUC 0.5 in both frozen ensembles.
-- **Not owned:** joint-state sufficiency, natural residual-context tests, or a general claim that genetic diversity carries no information.
+- **Not owned:** joint-state sufficiency, horizon-dependent alignment propagation, natural residual-context tests, or a general claim that genetic diversity carries no information.
 
-## Active lane 2 — model state validity and process portability
+## Active lane 2 — model state validity, propagation, and process portability
 
 - **Submission manuscript:** `state_validity_and_empirical_measurement_gates.md`
-- **Owned claims:** joint state representation; next-transition insufficiency; process-specific portability and bounded negative results.
-- **Sole scientific spine:** coarse marginal equality does not guarantee transition equality, and one scalar connectivity label cannot be transported across distinct biological operators without an identification argument.
-- **Not owned:** natural-data measurement gates, cross-origin empirical synthesis, positive predictive-warning validity, or reinterpretation of the frozen 5%, 10%, and 20% diversity thresholds.
+- **Current working title:** **Matching eco-genetic summaries can hide different ecological futures**.
+- **Owned claims:** joint state representation; next-transition insufficiency; separately prospectively locked horizon-dependent functional-loss risk propagation; process-specific portability and bounded negative results.
+- **Sole scientific spine:** coarse marginal equality does not guarantee transition equality; under the fixed aligned/anti-aligned contrast, the hidden state distinction is already transition-relevant and propagates from little loss-risk contrast at generations 5–10 to about five percentage points by generations 20–40; scalar connectivity labels cannot be transported across distinct biological operators without an identification argument.
+- **Required propagation reporting:** preserve the original 500-pair generation-60 result as frozen and imprecise; report the separate post-Phase-V 1,500-pair primary curve at generations 5/10/20/40; do not select a horizon by significance.
+- **Claim ceiling:** no universal generation-20 cutoff, no natural-system timescale, no complete-state sufficiency claim, no operator equivalence, and no predictive-warning validation.
+- **Not owned:** natural-data measurement gates, cross-origin empirical synthesis, warning denominator results, or reinterpretation of the frozen 5%, 10%, and 20% diversity thresholds.
 
-The filename is retained for provenance and bundle stability, but its active contents are now model-only. The prior combined state-plus-empirical narrative remains recoverable from repository history and the integrated source archive.
+The filename is retained for provenance and bundle stability, but its active contents are model-only. The prior combined state-plus-empirical narrative remains recoverable from repository history and the integrated source archive.
 
 ## Migrated independent programme — four natural-data gate lines
 
@@ -52,6 +55,7 @@ The archive may be used to trace provenance or recover shared prose, but it must
 
 - Parent and extension trajectories are never pooled.
 - Frozen endpoints, seeds, schedules, and denominators are not retuned.
+- The original Phase-V 500-pair result and the separately prospectively locked post-Phase-V propagation experiment remain distinct evidence layers.
 - Phase U/N/T negative results are precision-bounded nulls, not equivalence.
 - Access failures, metadata STOPs, `not_identifiable`, and `not_estimable` outcomes remain visible.
 - No lane may repair a locked source mismatch after seeing its consequence.

@@ -19,23 +19,23 @@ def test_ecology_letters_compliance_gate() -> None:
     assert checker.main() == 0
 
 
-def test_cover_letter_centres_ecological_contribution() -> None:
+def test_cover_letter_centres_state_predictability_contribution() -> None:
     text = (ROOT / "manuscript/cover_letter.md").read_text(encoding="utf-8")
-    assert "eco-genetic closure" in text
-    assert "functional-trait loss" in text
-    assert "not an intrinsic property of the diversity statistic" in text
-    assert "ecological and conceptual rather than a model sensitivity analysis" in text
+    assert "Matching eco-genetic summaries can hide different ecological futures" in text
+    assert "0.2543" in text
+    assert "+5.33" in text
+    assert "+5.20" in text
+    assert "forecast horizon" in text
     assert "[AUTHOR CONFIRMATION:" in text
+    for forbidden in ("35/35", "48/48", "33/33", "49/49", "Honshu", "Oenothera"):
+        assert forbidden not in text
 
 
-def test_letter_allocation_has_six_figures_and_no_main_tables() -> None:
-    allocation = (ROOT / "manuscript/display_allocation.md").read_text(encoding="utf-8")
-    captions = (ROOT / "manuscript/table_captions.md").read_text(encoding="utf-8")
-    assert "exactly six main display items" in allocation
-    assert "no main-text tables or text boxes" in allocation
-    for number in range(1, 7):
-        assert f"### Figure {number}" in allocation
-    for number in range(1, 6):
-        assert f"## Table S{number}." in captions
-    assert "## Table 1." not in captions
-    assert "## Table 2." not in captions
+def test_state_letter_allocation_has_two_figures_and_no_integrated_leakage() -> None:
+    allocation = (ROOT / "manuscript/state_validity_display_allocation.md").read_text(encoding="utf-8")
+    assert "exactly two figures" in allocation
+    assert "### Figure 1" in allocation
+    assert "### Figure 2" in allocation
+    assert "### Figure 3" not in allocation
+    assert "35/35" in allocation  # explicit exclusion firewall, not a state result display
+    assert "Do not include" in allocation

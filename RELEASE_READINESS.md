@@ -4,42 +4,44 @@ This ledger separates repository facts that are already fixed from metadata deci
 
 ## Ready now
 
-- [x] extension scientific/manuscript state is synchronized through the natural measurement/representation boundary, including the locked *Campanula americana* result and response-firewalled rescaling diagnostic
-- [x] two active manuscript paths and their disjoint claim ownership are fixed in `manuscript/publication_lanes.json`
+- [x] two active EGWE manuscript paths and their disjoint claim ownership are fixed in `manuscript/publication_lanes.json`
 - [x] warning-validity title is **Event-conditioned temporal precedence is not predictive warning validity**
-- [x] state-validity title is **Joint state representation and empirical measurement gates define eco-genetic predictability**
-- [x] the former integrated `manuscript/main_text.md` is explicitly retained as a non-submission source archive
-- [x] `manuscript/cover_letter.md` is synchronized to the current title and state-defined reproducibility argument
-- [x] `manuscript/submission_metadata.md` contains a reviewable AI/automated-tool disclosure draft and explicit author-approval checklist; final wording and exact materially used tool/model versions remain author-controlled
+- [x] state-validity title is **Matching eco-genetic summaries can hide different ecological futures**
+- [x] state-validity manuscript is separated from warning-validity and migrated natural-data claims
+- [x] state-validity external bibliography is isolated in `manuscript/state_validity_references.md`
+- [x] state-validity Ecology Letters cover letter is lane-specific and no longer contains warning denominators or natural-data results
+- [x] the original Phase-V 500-pair generation-60 contrast remains frozen rather than retrospectively rewritten
+- [x] the separately prospectively locked post-Phase-V propagation experiment reports all declared horizons `5, 10, 20, 40` and nested paired prefixes `500, 1000, 1500`
+- [x] the primary 1,500-pair propagation curve reports anti-aligned minus aligned loss-risk differences of `0.0`, `+0.33`, `+5.33`, and `+5.20` percentage points at generations 5, 10, 20 and 40
+- [x] claim ceiling explicitly prohibits a universal generation-20 cutoff or natural-system timescale
+- [x] the former integrated `manuscript/main_text.md` remains a non-submission source archive
+- [x] natural-data four-gate reader-facing development is authoritative in `zuizui0223/egwee`
+- [x] `manuscript/submission_metadata.md` contains lane-specific state-validity availability wording plus a reviewable AI/automated-tool disclosure draft
 - [x] parent scientific commit used by the extension is pinned: `dd8ee379d0d3518194c767d16402042525bc00dc`
-- [x] parent maintenance `main` is release-green at `bfd61af1fe2b30593ce5f5e8bd1ae990b8ee42a6`
-- [x] software licence is MIT in both repositories
-- [x] package version is `0.1.0` in both repositories
-- [x] no GitHub Release has been created in either repository
-- [x] no `CITATION.cff` has been generated before author approval
+- [x] software licence is MIT in both model repositories
+- [x] package version is `0.1.0` in both model repositories
+- [x] no final immutable citation/release record is created before author approval
 - [x] third-party raw data are not committed; source provenance and compact derived results are retained where analyses ran
-- [x] scientific stop rules prohibit outcome-informed simulator or empirical retuning
+- [x] scientific stop rules prohibit outcome-informed simulator, warning or empirical retuning
 
-### Current merged-main validation
+### Current scientific source of truth
 
-Extension #117 was merged as `9f002c811d9d59e53b3e65a4bf9fea77a781116b` and synchronized the cover letter plus submission metadata without changing scientific evidence or package version.
+The state-validity lane uses two explicitly separate evidence layers.
 
-Merged-main gates on that state:
+1. **Original Phase V:** fixed 500 paired trajectories at generation 60; anti-aligned minus aligned loss-risk difference `+4.4` percentage points with paired 95% CI approximately `[-1.2, +10.0]`. This remains an imprecise frozen result, not an equivalence claim.
+2. **Post-Phase-V propagation experiment:** separately locked before outcome access; one common forcing path, fixed readouts at generations 5/10/20/40, and nested 500/1000/1500 paired prefixes. In the primary 1,500-pair curve, the generation-20 and generation-40 contrasts are `+5.33` pp [2.04, 8.62] and `+5.20` pp [1.96, 8.44].
 
-- Protocol invariant CI: **success** (`32925893927`)
-- Two-repository reproducibility contract: **success** (`32925894071`)
-- Paper completion sprint: **success** (`32925893924`)
+The propagation protocol and result are recorded in `experiments/alignment_propagation_protocol.json`, `artifacts/alignment_propagation/locked_summary.json`, and `docs/ALIGNMENT_PROPAGATION_RESULT_2026-09-04.md`.
 
-The two-repository workflow completed invariant/manuscript tests, repository/evidence-lock verification, both distribution/source-archive builds, clean-wheel smoke tests, checksums and artifact upload. The Paper completion workflow completed scientific-lock verification, locked publication-data materialization, both distribution/source-archive builds, manuscript/figure/table bundle creation, provenance assembly, complete-package validation and submission-bundle upload.
+### Repository validation
 
-Parent release-maintenance gates on `bfd61af1fe2b30593ce5f5e8bd1ae990b8ee42a6`:
+The EG-series publication roadmap is merged and assigns distinct ownership to mechanism/state separation (EGC), state representation/propagation (EGWE state), warning validity (EGWE warning), and natural-data measurement gates (EGWEE).
 
-- ordinary CI: **success** (`32921087236`)
-- Submission reproducibility: **success** (`32921087208`)
+Final validation for this state-validity submission branch must be rerun after title, cover-letter, metadata and reference synchronization. The scientific propagation outputs themselves are already locked and are not rerun by editorial changes.
 
 ## Author approval required before citation/release metadata can be finalized
 
-- [ ] final manuscript title approved by all authors
+- [ ] final state-validity manuscript title approved by all authors
 - [ ] complete author names and order
 - [ ] affiliations and corresponding author
 - [ ] author ORCIDs
@@ -69,14 +71,16 @@ Parent release-maintenance gates on `bfd61af1fe2b30593ce5f5e8bd1ae990b8ee42a6`:
 
 ### `eco-genetic-criticality`
 
-Mechanistic parent: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and inherited conditional warning benchmark. The canonical scientific state remains the pinned historical scientific commit even when release-maintenance commits advance `main`.
+Mechanistic parent: theorem-guided interaction/fragmentation framework, finite-model evidence ledger, and biological-state separation. Its standalone manuscript does not own forecast sufficiency or predictive warning validity.
 
 ### `eco-genetic-warning-extensions`
 
-Condition-recovery, warning replication/portability, state representation,
-natural state sufficiency, two active manuscript lanes, integrated source
-archive, submission metadata, and submission-bundle repository.
+Owns two active manuscript lanes: state representation/horizon-dependent propagation/process portability, and warning predictive validity. The integrated source archive remains provenance only.
+
+### `egwee`
+
+Owns the independent natural-data measurement/representation/residual-context/identifiability four-gate manuscript.
 
 ## Release gate
 
-Do not create a final citation record, immutable release tag, GitHub Release or archive DOI until the author-controlled metadata above are explicitly approved. Scientific and repository-level reproducibility work is release-ready; remaining blockers are authorship/citation metadata, disclosure/licensing decisions and archival approval, not unresolved simulator tuning.
+Do not create a final citation record, immutable release tag, GitHub Release or archive DOI until the author-controlled metadata above are explicitly approved. Remaining immutable-release blockers are authorship/citation metadata, disclosure/licensing decisions and archival approval, not unresolved simulator tuning.
