@@ -6,24 +6,29 @@ does not make a joint-state or cross-system convergence claim.
 
 ## Abstract
 
-Early-warning rules are often evaluated only among trajectories that later
-experience the target event. We separate that event-conditioned ordering object
-from full-denominator discrimination exactly. For a binary horizon marker,
-perfect event-conditioned precedence forces sensitivity to one but leaves
-non-event specificity unconstrained; binary-marker AUC is therefore
+We evaluated six predeclared and frozen baseline-relative genetic-diversity
+thresholds against the full baseline-eligible denominator for the first time
+under their frozen protocol, rather than only among trajectories that later
+experienced functional-trait loss. We separate that event-conditioned ordering
+object from full-denominator discrimination exactly. For a binary horizon
+marker, perfect event-conditioned precedence forces sensitivity to one but
+leaves non-event specificity unconstrained; binary-marker AUC is therefore
 `(1 + specificity)/2` and can range from chance to perfect without changing the
-perfect lead result. We then audited six frozen baseline-relative genetic-
-diversity thresholds in two independently seeded finite-model ensembles without
-changing endpoints or rerunning trajectories. Every threshold preceded every
-observed functional-trait loss in the inherited and fresh ensembles (35/35 and
-33/33), but every threshold also fired in every non-event trajectory by the
-common horizon (48/48 and 49/49). The two ensembles therefore attain the sharp
-worst-discrimination endpoint permitted by perfect precedence: sensitivity 1,
-specificity 0, and binary-marker AUC 0.5. Event-conditioned temporal precedence
-can thus reproduce perfectly while supplying no horizon-level discrimination.
-The result invalidates these six rules as predictive warnings in the tested
-state; it does not show that genetic diversity contains no predictive
-information or that no alternative warning statistic could succeed.
+perfect lead result. The two independently seeded finite-model ensembles were
+audited without changing endpoints or rerunning trajectories. Every threshold
+preceded every observed functional-trait loss in the inherited and fresh
+ensembles (35/35 and 33/33), but every threshold also fired in every non-event
+trajectory by the common horizon (48/48 and 49/49). Across the six repeated
+threshold endpoints, these correspond to 408 event-threshold lead records and
+582 non-event-threshold firing records; thresholds within a trajectory are
+repeated endpoints, not independent biological replicates. The two ensembles
+therefore attain the sharp worst-discrimination endpoint permitted by perfect
+precedence: sensitivity 1, specificity 0, and binary-marker AUC 0.5.
+Event-conditioned temporal precedence can thus reproduce perfectly while
+supplying no horizon-level discrimination. The result invalidates these six
+rules as predictive warnings in the tested state; it does not show that genetic
+diversity contains no predictive information or that no alternative warning
+statistic could succeed.
 
 ## Introduction
 
@@ -149,6 +154,12 @@ was 1.0, specificity was 0, and binary-marker AUC was 0.5. Positive predictive
 value equalled event prevalence, 0.422 in the inherited ensemble and 0.402 in
 the fresh ensemble; negative predictive value was undefined because no
 trajectory remained marker-negative.
+
+Summed across the six repeated threshold endpoints, the audit contains 408
+event-threshold lead records and 582 non-event-threshold firing records. These
+counts are descriptive endpoint records only: the six thresholds evaluated on
+one trajectory are repeated measurements and are not treated as 990 independent
+biological trajectories.
 
 Fixed ramp-end AUC ranged from `0.500` to `0.538` in the inherited ensemble and
 from `0.500` to `0.510` in the fresh ensemble. These secondary fixed-time
