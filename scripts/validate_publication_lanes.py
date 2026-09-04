@@ -149,7 +149,8 @@ def main() -> int:
     ownership = _read("manuscript/PUBLICATION_LANES.md")
     assert "Active lane 1 — warning validity" in ownership
     assert "Active lane 2 — model state validity and process portability" in ownership
-    assert "Independent development programme — four natural-data gate lines" in ownership
+    assert "Migrated independent programme — four natural-data gate lines" in ownership
+    assert "zuizui0223/egwee" in ownership
     assert "not an active submission manuscript" in ownership
 
     for router_path in ("README.md", "manuscript/README.md"):
@@ -165,7 +166,7 @@ def main() -> int:
 
     print(
         "Publication-lane validation passed: 2 active EGWE manuscripts, "
-        "1 independent natural-data development programme, 1 integrated source archive; "
+        "1 migrated natural-data development programme, 1 integrated source archive; "
         "warning, state, and empirical claim ownership are disjoint."
     )
     return 0
