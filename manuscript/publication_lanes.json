@@ -24,10 +24,11 @@
       "owned_claims": [
         "joint_state_representation",
         "next_transition_insufficiency",
+        "horizon_dependent_loss_risk_propagation",
         "process_specific_portability"
       ],
-      "sole_spine": "coarse marginal equality does not guarantee transition equality and scalar process labels do not transport across distinct operators",
-      "claim_ceiling": "Finite and closure-specific tests do not establish state completeness, operator equivalence, directional long-horizon risk, or validated predictive warning."
+      "sole_spine": "coarse marginal equality does not guarantee transition equality; under the locked aligned/anti-aligned contrast that hidden state distinction propagated from little loss-risk contrast at generations 5-10 to about five percentage points by generations 20-40; scalar process labels also do not transport across distinct operators",
+      "claim_ceiling": "Finite and closure-specific tests do not establish a universal propagation cutoff, state completeness, operator equivalence, a natural-system timescale, or validated predictive warning."
     }
   },
   "independent_development_programs": {
