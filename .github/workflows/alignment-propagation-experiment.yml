@@ -1,0 +1,64 @@
+name: Alignment propagation experiment
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "experiments/alignment_propagation_protocol.json"
+      - "src/eco_genetic_warning_extensions/alignment_propagation_experiment.py"
+      - "scripts/run_alignment_propagation_experiment.py"
+      - "tests/test_alignment_propagation_protocol.py"
+      - ".github/workflows/alignment-propagation-experiment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  locked-propagation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install locked parent and extension
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e '.[dev]'
+      - name: Verify prospective protocol before opening outcomes
+        run: python -m pytest tests/test_alignment_propagation_protocol.py -q
+      - name: Run one 40-generation trajectory family and read all declared horizons
+        run: |
+          mkdir -p artifacts/alignment_propagation/reproduced
+          python scripts/run_alignment_propagation_experiment.py \
+            --summary artifacts/alignment_propagation/reproduced/alignment_propagation_summary.json \
+            --attempts artifacts/alignment_propagation/reproduced/alignment_propagation_attempts.json
+      - name: Verify reproduced result equals locked 12-cell result
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          locked = json.loads(Path('artifacts/alignment_propagation/locked_summary.json').read_text())['result']
+          reproduced = json.loads(Path('artifacts/alignment_propagation/reproduced/alignment_propagation_summary.json').read_text())
+          assert reproduced == locked
+          print('locked alignment propagation result reproduced exactly')
+          PY
+      - name: Upload reproduction outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: alignment-propagation-reproduction-${{ github.sha }}
+          path: artifacts/alignment_propagation/reproduced
+          if-no-files-found: error

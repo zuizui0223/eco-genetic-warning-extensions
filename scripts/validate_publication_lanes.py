@@ -96,13 +96,17 @@ def main() -> int:
         "+4.4 percentage points",
         "-1.2 to +10.0 percentage points",
         "14.8% relative increase",
-        "does not establish a signed long-horizon effect",
         "Non-significant tests do not establish equivalence",
         "A scalar connectivity label did not transport across seeds or mechanisms",
         "natural_data_four_gate_program.md",
         "makes no claim that the frozen relative-diversity thresholds are validated predictive warnings",
     ):
         assert token in state_flat, token
+    assert (
+        "does not establish a signed long-horizon effect" in state_flat
+        or "did not establish a signed long-horizon effect" in state_flat
+    )
+    assert "does not establish generation 20 as a true cutoff" in state_flat
     for warning_denominator in ("35/35", "48/48", "33/33", "49/49"):
         assert warning_denominator not in state
     for empirical_token in (
