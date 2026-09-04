@@ -93,7 +93,11 @@ def main() -> int:
     state_flat = _flat(state)
     for token in (
         "0.2543",
-        "not a directional long-horizon loss-incidence effect",
+        "+4.4 percentage points",
+        "-1.2 to +10.0 percentage points",
+        "14.8% relative increase",
+        "does not establish a signed long-horizon effect",
+        "Non-significant tests do not establish equivalence",
         "A scalar connectivity label did not transport across seeds or mechanisms",
         "natural_data_four_gate_program.md",
         "makes no claim that the frozen relative-diversity thresholds are validated predictive warnings",
