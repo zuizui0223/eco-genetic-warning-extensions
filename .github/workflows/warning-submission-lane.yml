@@ -1,0 +1,71 @@
+name: Warning-validity submission lane
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "manuscript/warning_validity.md"
+      - "manuscript/tables/warning_validity_audit.csv"
+      - "artifacts/warning_validity/**"
+      - "artifacts/prepublication_review/warning_validity_audit.json"
+      - "docs/PRECEDENCE_DISCRIMINATION_THEOREM_2026-09-03.md"
+      - "scripts/build_warning_submission_bundle.py"
+      - "tests/test_warning_submission_lane.py"
+      - ".github/workflows/warning-submission-lane.yml"
+  push:
+    branches: [main]
+    paths:
+      - "manuscript/warning_validity.md"
+      - "manuscript/tables/warning_validity_audit.csv"
+      - "artifacts/warning_validity/**"
+      - "artifacts/prepublication_review/warning_validity_audit.json"
+      - "docs/PRECEDENCE_DISCRIMINATION_THEOREM_2026-09-03.md"
+      - "scripts/build_warning_submission_bundle.py"
+      - "tests/test_warning_submission_lane.py"
+      - ".github/workflows/warning-submission-lane.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  warning-only-bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test runner and package
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e .
+
+      - name: Verify warning-lane citations and fail-closed bundle boundary
+        run: python -m pytest tests/test_warning_submission_lane.py tests/test_precedence_discrimination_theorem.py tests/test_warning_validity_audit.py -q
+
+      - name: Build warning-only submission lane
+        run: |
+          python scripts/build_warning_submission_bundle.py \
+            --repo-root . \
+            --output artifacts/warning_submission_lane
+
+      - name: Verify excluded lanes are absent
+        run: |
+          test ! -e artifacts/warning_submission_lane/manuscript/state_validity_and_empirical_measurement_gates.md
+          test ! -e artifacts/warning_submission_lane/manuscript/main_text.md
+          ! grep -R "0.2543\|+5.33\|alignment_propagation\|natural_data_four_gate_program" artifacts/warning_submission_lane/manuscript
+          grep -q "specificity was 0" artifacts/warning_submission_lane/manuscript/manuscript.md
+          grep -q "binary-marker AUC was 0.5" artifacts/warning_submission_lane/manuscript/manuscript.md
+
+      - name: Print bundle manifest
+        run: cat artifacts/warning_submission_lane/manifest.json
+
+      - name: Upload warning-only submission artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: warning-validity-submission-${{ github.sha }}
+          path: artifacts/warning_submission_lane
+          if-no-files-found: error
