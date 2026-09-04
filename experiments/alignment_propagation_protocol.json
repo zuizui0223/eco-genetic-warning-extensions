@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "experiment_id": "alignment-propagation-post-phase-v-v1",
+  "status": "prospective_locked_before_run",
+  "purpose": "Quantify how the aligned versus anti-aligned state contrast propagates to realised functional-loss incidence across fixed future horizons, while separately showing how uncertainty contracts as paired replication increases.",
+  "relationship_to_phase_v": {
+    "legacy_result": "The original preregistered Phase V remains frozen at 60 generations and 500 paired trajectories.",
+    "legacy_summary": "artifacts/cross_layer_alignment/phase_v_locked_summary.json",
+    "legacy_scientific_head": "260a03220bf09d5f4a4d8cb55ec21062bf120c55",
+    "legacy_parent_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "not_a_rerun": true,
+    "no_change_to_locked_phase_v": true
+  },
+  "state_and_dynamics": {
+    "conditions": ["aligned", "anti_aligned"],
+    "master_seeds": [20300110, 20300111, 20300112, 20300113, 20300114],
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "population": [40, 40, 40, 40],
+    "interaction_values": [0.65, 0.75, 0.85, 0.95],
+    "bundle_values": [0.20, 0.40, 0.60, 0.80],
+    "trait_grid_size": 31,
+    "density_capacity": 40.0,
+    "area_reference": 1.0,
+    "interaction_feedback": 4.5,
+    "q_feedback_weights": [0.6, 0.3, 0.1],
+    "inheritance_weight": 0.5,
+    "migration_rate": 0.0,
+    "symmetric_allele_mutation_rate": 0.0
+  },
+  "future_forcing": {
+    "reference_schedule_generations": 60,
+    "barrier_start": 0.50,
+    "barrier_end_at_generation_60": 0.65,
+    "rule": "At generation g, barrier = 0.50 + (0.65-0.50)*g/60. Horizons truncate this one common per-generation forcing path; the schedule is not rescaled to end at 0.65 at shorter horizons.",
+    "maximum_simulated_horizon": 40,
+    "report_horizons": [5, 10, 20, 40]
+  },
+  "paired_replication": {
+    "replicates_per_seed_max": 300,
+    "nested_replicates_per_seed": [100, 200, 300],
+    "nested_total_pairs": [500, 1000, 1500],
+    "primary_pair_count": 1500,
+    "precision_diagnostic_pair_counts": [500, 1000],
+    "pairing": "Aligned and anti-aligned trajectories use the same deterministic trajectory seed for each master-seed/replicate index, exactly as in Phase V."
+  },
+  "estimands": {
+    "primary": "For each horizon at 1500 pairs, anti-aligned minus aligned realised functional-loss risk difference with a paired large-sample 95% confidence interval.",
+    "secondary": [
+      "The same paired risk difference and interval at nested 500- and 1000-pair prefixes as a precision audit.",
+      "Discordant pair counts and exact McNemar p values as secondary descriptions, not acceptance gates.",
+      "Loss-time direction among trajectories observed by the maximum horizon as a descriptive timing layer."
+    ],
+    "no_significance_search": "No horizon or pair count is selected post hoc by the smallest p value. All 4 x 3 cells are reported."
+  },
+  "planning_power": {
+    "target_absolute_risk_difference": 0.05,
+    "planning_discordance_probability": 0.412,
+    "source_of_discordance_probability": "Legacy Phase-V locked counts: (114+92)/500.",
+    "approximate_two_sided_normal_power": {
+      "500": 0.416,
+      "1000": 0.695,
+      "1500": 0.857
+    },
+    "role": "Planning only; power is not an acceptance criterion and is not recomputed after seeing propagation outcomes."
+  },
+  "decision_language": {
+    "allowed": "Report the effect-size trajectory and interval at every declared horizon. If intervals contract around a horizon-dependent pattern, describe the supported propagation timescale quantitatively.",
+    "forbidden": [
+      "Do not call a horizon the true cutoff solely because p crosses 0.05.",
+      "Do not alter the forcing schedule, state values, seeds, horizons or pair-count grid after outcomes are opened.",
+      "Do not pool nested pair-count prefixes as independent experiments.",
+      "Do not relabel this post-Phase-V experiment as preregistered Phase V."
+    ]
+  }
+}
