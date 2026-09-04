@@ -92,20 +92,19 @@ def main() -> int:
     state = _read(lanes["state_validity"]["manuscript"])
     state_flat = _flat(state)
     for token in (
+        "Matching eco-genetic summaries can hide different ecological futures",
         "0.2543",
         "+4.4 percentage points",
         "-1.2 to +10.0 percentage points",
         "14.8% relative increase",
+        "+5.33 points",
+        "+5.20 points",
         "Non-significant tests do not establish equivalence",
         "A scalar connectivity label did not transport across seeds or mechanisms",
         "natural_data_four_gate_program.md",
         "makes no claim that the frozen relative-diversity thresholds are validated predictive warnings",
     ):
         assert token in state_flat, token
-    assert (
-        "does not establish a signed long-horizon effect" in state_flat
-        or "did not establish a signed long-horizon effect" in state_flat
-    )
     assert "does not establish generation 20 as a true cutoff" in state_flat
     for warning_denominator in ("35/35", "48/48", "33/33", "49/49"):
         assert warning_denominator not in state
@@ -152,7 +151,8 @@ def main() -> int:
 
     ownership = _read("manuscript/PUBLICATION_LANES.md")
     assert "Active lane 1 — warning validity" in ownership
-    assert "Active lane 2 — model state validity and process portability" in ownership
+    assert "Active lane 2 — model state validity, propagation, and process portability" in ownership
+    assert "Matching eco-genetic summaries can hide different ecological futures" in ownership
     assert "Migrated independent programme — four natural-data gate lines" in ownership
     assert "zuizui0223/egwee" in ownership
     assert "not an active submission manuscript" in ownership
