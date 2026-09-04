@@ -1,81 +1,69 @@
-# Ecology Letters compliance gate
+# Ecology Letters compliance gate — state-validity lane
 
 ## Selected article type
 
-**Letter.** The manuscript reports original model-based ecological research and should remain positioned as a general ecological contribution rather than a software, protocol, or sensitivity-analysis paper.
+**Letter.** The active state-validity manuscript is positioned as an ecological predictability paper: a constructive state-representation result plus a separately prospectively locked forecast-horizon propagation experiment. It is not submitted as a warning-validity paper, natural-data synthesis, software paper, or omnibus EG-series manuscript.
 
-## Current journal limits checked 16 August 2026
+## Journal limits used by this repository gate
 
-The official Ecology Letters author guidance specifies for a Letter:
+The state-lane checker enforces the current Letter constraints already recorded for this submission programme:
 
 - maximum main text: **5,000 words**;
-- maximum combined display items: **6 figures, tables, or text boxes**;
+- maximum combined main display items: **6**;
 - maximum abstract: **150 words**;
+- opening problem statement: **under 100 words**;
+- succinct conclusion: **under 200 words**;
 - running title: **fewer than 45 characters including spaces**;
-- keywords: **up to 10**;
-- title page must report article type, abstract word count, main-text word count, reference count, and numbers of figures, tables, and text boxes;
-- the graphical abstract is required at major or minor revision, with a 2–3 sentence summary of no more than 500 characters and a legible 50 mm × 60 mm image.
+- keywords: **up to 10**.
 
-## Locked submission allocation
+The final converted submission must be recounted at portal submission because journal software can tokenize equations and hyphenation differently.
 
-- Article type: Letter.
-- Main display items: **Figures 1–6 only**.
+## Locked state-lane allocation
+
+- Article type: **Letter**.
+- Active title: **Matching eco-genetic summaries can hide different ecological futures**.
+- Main display items: **2 figures**.
 - Main tables: **none**.
-- Supplementary tables: **Tables S1–S5**.
-- Supplementary figures: **Figure S1** for the fresh fixed-area fragmentation gradient.
 - Text boxes: **none**.
-- Running title: **Eco-genetic closure and warning**.
-- Keywords: **early warning; eco-evolutionary dynamics; fragmentation; functional extinction; genetic diversity; genetic monitoring; interaction feedback; mutation bias; recurrent transition; trait loss**.
+- Running title: **Eco-genetic states and forecast horizons**.
+- Keywords: **ecological forecasting; eco-evolutionary dynamics; forecast horizon; fragmentation; genetic diversity; multilayer networks; state representation**.
 
-The six-figure allocation exactly reaches the Letter display-item ceiling. The post-review fragmentation gradient is therefore kept in Supporting Information as Figure S1 rather than added to the main display count.
+### Main displays
+
+1. **Figure 1:** matching declared marginals but different exact next transitions; maximum patchwise difference `0.2543`.
+2. **Figure 2:** primary 1,500-pair loss-risk propagation at generations 5/10/20/40 plus nested 500/1,000/1,500-pair precision diagnostics.
+
+Operator-specific portability remains supporting material. Warning-denominator figures, natural-data four-gate systems, Stage-III displays, historical R1–R4 calibration figures, and the EGC fragmentation-gradient figure are excluded from this lane.
 
 ## Automated gates
 
-`scripts/check_ecology_letters_compliance.py` checks:
+`scripts/check_ecology_letters_compliance.py` checks the active state manuscript rather than the archived integrated source. It verifies:
 
 1. abstract length is at most 150 words;
 2. estimated main-text length is at most 5,000 words;
-3. the allocation declares exactly six main figures and no main tables or text boxes;
-4. running title is shorter than 45 characters;
-5. keyword count is at most 10;
-6. all main and supplementary display labels are unique.
+3. the first prose paragraph of the Introduction is under 100 words and functions as the opening problem statement;
+4. the explicit Conclusion is under 200 words;
+5. the state-specific display allocation contains exactly two main figures and no third figure;
+6. running title is shorter than 45 characters;
+7. keyword count is at most 10;
+8. manuscript and state-only cover letter titles match;
+9. warning denominators and named natural-data systems do not leak into the state cover letter.
 
-The script is a repository guard, not a replacement for the word count produced by the final Word or journal submission file. Template conversion must repeat the counts because equations, hyphenation, and journal software can tokenize words differently.
+The dedicated `State-validity submission bundle` workflow separately verifies that the bundle is reconstructed from locked state/protocol evidence, contains the two deterministic SVG figures, and excludes warning, natural-data, Stage-III, and fragmentation-gradient paths.
 
-## Current merged-main counts
+## Scientific boundaries preserved by the format gate
 
-After the completed fragmentation-gradient integration, the merged manuscript remains within the Letter limits under the repository tokenizer:
+- The original Phase-V 500-pair generation-60 result remains frozen and imprecise: anti-aligned minus aligned `+4.4` percentage points, paired 95% interval approximately `[-1.2,+10.0]`.
+- The separately prospectively locked post-Phase-V primary 1,500-pair curve is reported at all fixed horizons: generation 5 `0.0` pp; generation 10 `+0.33` pp; generation 20 `+5.33` pp; generation 40 `+5.20` pp.
+- Generation 20 is not presented as a universal cutoff.
+- The state result does not explain or repair the separate warning-validity failure.
+- Natural systems are not presented as external validation of the finite synthetic closure.
 
-- abstract: **137 words**;
-- estimated main text (Introduction through Conclusion): **4,416 words**;
-- references: **21**;
-- main display items: **6 figures**;
-- main tables: **0**;
-- text boxes: **0**;
-- supplementary figure added by the D sensitivity: **Figure S1**;
-- keywords: **10**;
-- running title: **31 characters**.
+## Remaining author-controlled submission items
 
-The current main-text title is **“Eco-genetic regimes govern when genetic early warning can be validated”** and `manuscript/submission_metadata.md` is synchronized to that title. Final author approval of the title remains separate from this technical consistency check.
-
-## Completed non-author checks
-
-- [x] Complete repository invariant/compliance checks passed on the identification/gradient-integrated state.
-- [x] Rebuilt submission-bundle workflow passed on merged `main` after D integration.
-- [x] Figures 1–6 were regenerated and visually checked at journal width in colour and grayscale.
-- [x] Supplementary Figure S1 was visually checked without smoothing away the non-monotonic realised-trait response.
-- [x] Figure 1–6 calls, captions, and file names were synchronized.
-- [x] The checksummed merged-main submission bundle contains the 9,600-row gradient record and separate historical/post-review parent provenance layers.
-- [x] The merged-main submission manifest was independently verified with zero missing, mismatched, or unmanifested files.
-
-## Remaining submission/revision checks
-
-- Rebuild the supervisor/submission DOCX **from scratch** from the frozen manuscript and current six main figures plus Supporting Information; do not reuse a previous Word package containing orphaned media.
-- Generate final title-page counts from that clean converted submission file and update the counts if Word/journal tokenization differs.
-- Prepare the 50 mm × 60 mm graphical-abstract asset at major/minor revision stage.
-- Replace repository/commit-based data and code wording with permanent archive DOI(s) after the author approves release metadata, licences, and versions.
-- Recheck Ecology Letters/Wiley submission and automated-tool disclosure policies immediately before portal submission because journal requirements can change.
-
-## Source of truth
-
-The limits above were rechecked against the official Wiley Ecology Letters author guidance on 16 August 2026. Recheck immediately before submission.
+- final title approval;
+- author list/order, affiliations, ORCIDs, corresponding-author metadata;
+- CRediT, funding, acknowledgements and competing-interest statements;
+- final AI/automated-tool disclosure;
+- permanent release/archive DOI and approved licences;
+- final portal/Word counts and journal-policy recheck at actual submission.
