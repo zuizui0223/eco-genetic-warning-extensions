@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "protocol": "post-review cross-layer alignment propagation audit",
+  "provenance": {
+    "preregistration_commit": "8c4745e411fe2107b490dc4f59b2acc966928196",
+    "amendment_001_commit": "9f7e1d3bab2d3ca88509208c0f46e4a2021e186c",
+    "historical_phase_v_commit": "260a03220bf09d5f4a4d8cb55ec21062bf120c55",
+    "upstream_scientific_commit": "dd8ee379d0d3518194c767d16402042525bc00dc",
+    "result_confirming_head": "dd5b93ae46ff437e335f6b19b410999406e5f692",
+    "workflow_run": 33839614856,
+    "artifact_id": 9924462968,
+    "artifact_digest": "sha256:92876a7275b403efe78d232918b3f7554446ed37d46f91d6028bc7109f1dfb44"
+  },
+  "design": {
+    "pairs": 500,
+    "conditions": ["aligned", "anti_aligned"],
+    "horizons": [1, 2, 5, 10, 20, 40, 60],
+    "bootstrap_draws": 10000,
+    "bootstrap_seed": 20260904,
+    "warning_blind": true,
+    "independent_replication": false
+  },
+  "reproduction_gate": {
+    "decision": "reproduction_gate_passed",
+    "opening_maximum_patchwise_generation1_interaction_difference": 0.25433292878878405,
+    "terminal_aligned_loss_count": 339,
+    "terminal_anti_aligned_loss_count": 361,
+    "terminal_aligned_only_loss": 92,
+    "terminal_anti_aligned_only_loss": 114,
+    "terminal_both_loss": 247,
+    "terminal_both_no_loss": 47
+  },
+  "interaction_representation_memory": {
+    "classification": "attenuating_representation_memory",
+    "half_level": 0.12716646439439203,
+    "half_retention_horizon": 10,
+    "median_maximum_patchwise_difference": [
+      {"horizon": 1, "median": 0.25433292878878405, "lower_95": 0.25433292878878405, "upper_95": 0.25433292878878405},
+      {"horizon": 2, "median": 0.345528880454414, "lower_95": 0.34380317380587344, "upper_95": 0.347265557658533},
+      {"horizon": 5, "median": 0.16176205272897382, "lower_95": 0.15712781131745943, "upper_95": 0.1663543247619925},
+      {"horizon": 10, "median": 0.09031271355384143, "lower_95": 0.08461178802323249, "upper_95": 0.09582098588544957},
+      {"horizon": 20, "median": 0.0760597619326383, "lower_95": 0.05355063359023031, "upper_95": 0.09858023738937541},
+      {"horizon": 40, "median": 0.08621514302100522, "lower_95": 0.0017616482869812003, "upper_95": 0.09207795616454141},
+      {"horizon": 60, "median": 0.06960105198231362, "lower_95": 0.0, "upper_95": 0.0730453545207293}
+    ]
+  },
+  "loss_horizon_family": {
+    "classification": "no_detected_horizon_family_loss_incidence_separation",
+    "simultaneous_half_width_95": 0.066,
+    "horizons": [
+      {"horizon": 1, "aligned_loss_rate": 0.0, "anti_aligned_loss_rate": 0.0, "risk_difference": 0.0, "simultaneous_lower_95": -0.066, "simultaneous_upper_95": 0.066, "discordant_status_fraction": 0.0},
+      {"horizon": 2, "aligned_loss_rate": 0.0, "anti_aligned_loss_rate": 0.0, "risk_difference": 0.0, "simultaneous_lower_95": -0.066, "simultaneous_upper_95": 0.066, "discordant_status_fraction": 0.0},
+      {"horizon": 5, "aligned_loss_rate": 0.0, "anti_aligned_loss_rate": 0.0, "risk_difference": 0.0, "simultaneous_lower_95": -0.066, "simultaneous_upper_95": 0.066, "discordant_status_fraction": 0.0},
+      {"horizon": 10, "aligned_loss_rate": 0.016, "anti_aligned_loss_rate": 0.02, "risk_difference": -0.004, "simultaneous_lower_95": -0.07, "simultaneous_upper_95": 0.062, "discordant_status_fraction": 0.036},
+      {"horizon": 20, "aligned_loss_rate": 0.338, "anti_aligned_loss_rate": 0.392, "risk_difference": -0.054, "simultaneous_lower_95": -0.12, "simultaneous_upper_95": 0.012, "discordant_status_fraction": 0.45},
+      {"horizon": 40, "aligned_loss_rate": 0.668, "anti_aligned_loss_rate": 0.712, "risk_difference": -0.044, "simultaneous_lower_95": -0.11, "simultaneous_upper_95": 0.022, "discordant_status_fraction": 0.424},
+      {"horizon": 60, "aligned_loss_rate": 0.678, "anti_aligned_loss_rate": 0.722, "risk_difference": -0.044, "simultaneous_lower_95": -0.11, "simultaneous_upper_95": 0.022, "discordant_status_fraction": 0.412}
+    ]
+  },
+  "claim_ceiling": {
+    "supported": "Cross-layer alignment strongly changes near-term interaction transitions, with transient amplification followed by attenuation below the preregistered half-retention level at generation 10; paired cumulative-loss status remains highly sensitive after loss onset, while no signed marginal loss-incidence separation is detected across the fixed horizon family.",
+    "not_supported": [
+      "a universal ten-generation ecological timescale",
+      "equivalence of aligned and anti-aligned long-horizon risk",
+      "warning failure caused by missing cross-layer alignment",
+      "alignment rescues or validates the frozen warning thresholds",
+      "independent replication of Phase V"
+    ]
+  }
+}
