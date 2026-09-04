@@ -4,7 +4,11 @@
     "warning_validity": {
       "manuscript": "manuscript/warning_validity.md",
       "status": "active",
-      "owned_claims": ["P3", "P4", "S27"],
+      "owned_claims": [
+        "P3",
+        "P4",
+        "S27"
+      ],
       "sole_spine": "event-conditioned temporal precedence is not predictive warning validity",
       "required_denominators": {
         "inherited_event_leads": "35/35",
