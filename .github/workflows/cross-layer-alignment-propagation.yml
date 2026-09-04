@@ -1,0 +1,114 @@
+name: Cross-layer alignment propagation audit
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'src/eco_genetic_warning_extensions/cross_layer_alignment_phase_v.py'
+      - 'src/eco_genetic_warning_extensions/cross_layer_alignment_propagation.py'
+      - 'scripts/run_cross_layer_alignment_propagation.py'
+      - 'tests/test_cross_layer_alignment_propagation.py'
+      - 'docs/CROSS_LAYER_ALIGNMENT_PROPAGATION_PREREGISTRATION.md'
+      - 'docs/CROSS_LAYER_ALIGNMENT_PROPAGATION_AMENDMENT_001.md'
+      - 'artifacts/cross_layer_alignment/phase_v_locked_summary.json'
+      - 'pyproject.toml'
+      - '.github/workflows/cross-layer-alignment-propagation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  propagation-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pinned parent and propagation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e '.[dev,analysis]'
+
+      - name: Validate preregistration implementation
+        run: python -m pytest -q tests/test_cross_layer_alignment_propagation.py
+
+      - name: Run exact Phase-V propagation replay
+        run: |
+          python scripts/run_cross_layer_alignment_propagation.py \
+            --locked-summary artifacts/cross_layer_alignment/phase_v_locked_summary.json \
+            --output artifacts/cross_layer_alignment/propagation_audit.json
+
+      - name: Validate reproduction gate and output contract
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          path = Path('artifacts/cross_layer_alignment/propagation_audit.json')
+          data = json.loads(path.read_text())
+          assert data['historical_phase_v_commit'] == '260a03220bf09d5f4a4d8cb55ec21062bf120c55'
+          assert data['upstream_scientific_commit'] == 'dd8ee379d0d3518194c767d16402042525bc00dc'
+          assert data['preregistration_commit'] == '8c4745e411fe2107b490dc4f59b2acc966928196'
+          assert data['amendment_001_commit'] == '9f7e1d3bab2d3ca88509208c0f46e4a2021e186c'
+          assert data['fixed_horizons'] == [1, 2, 5, 10, 20, 40, 60]
+          assert data['bootstrap_draws'] == 10000
+          assert data['bootstrap_seed'] == 20260904
+          assert data['warning_blind'] is True
+          assert data['reproduction_gate']['passed'] is True
+          assert data['reproduction_gate']['decision'] == 'reproduction_gate_passed'
+          assert data['reproduction_gate']['terminal_replay']['aligned_loss_count'] == 339
+          assert data['reproduction_gate']['terminal_replay']['anti_aligned_loss_count'] == 361
+          assert data['reproduction_gate']['terminal_replay']['aligned_only_loss'] == 92
+          assert data['reproduction_gate']['terminal_replay']['anti_aligned_only_loss'] == 114
+          assert data['reproduction_gate']['terminal_replay']['both_loss'] == 247
+          assert data['reproduction_gate']['terminal_replay']['both_no_loss'] == 47
+          assert len(data['pair_records']) == 500
+          assert set(data['state_distance_curves']) == {
+              'interaction_max_abs',
+              'interaction_mean_abs',
+              'population_mean_abs',
+              'effective_size_mean_abs',
+              'high_allele_frequency_mean_abs',
+              'high_trait_mass_mean_abs',
+              'h_alpha_abs',
+              'h_gamma_abs',
+              'fst_abs',
+          }
+          assert data['decision']['interaction_representation_memory'] in {
+              'short_representation_memory',
+              'attenuating_representation_memory',
+              'persistent_representation_memory',
+              'nonmonotone_representation_memory',
+              'representation_memory_not_identifiable',
+          }
+          assert data['decision']['loss_horizon_family'] in {
+              'horizon_family_loss_incidence_separation_detected',
+              'no_detected_horizon_family_loss_incidence_separation',
+          }
+          print(json.dumps({
+              'decision': data['decision'],
+              'interaction_memory': data['interaction_memory'],
+              'loss_horizon_family': data['loss_horizon_family'],
+          }, indent=2))
+          PY
+
+      - name: Upload propagation audit
+        uses: actions/upload-artifact@v4
+        with:
+          name: cross-layer-alignment-propagation-audit
+          path: artifacts/cross_layer_alignment/propagation_audit.json
+          if-no-files-found: error
