@@ -4,7 +4,7 @@
 
 ## Abstract
 
-Ecological forecasts depend on whether measured summaries preserve the state governing what happens next. In a finite multipatch model, two states with identical census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma`, and `F_ST` but opposite patchwise cross-layer alignment had next interaction transitions differing by 0.2543. A fixed 500-pair campaign did not establish a directional long-horizon loss-risk effect. Portability tests further showed that one historical allele-mixing pattern did not reproduce in fresh seeds or transfer to whole-individual and pollen-only movement closures. These results separate transition-sufficient state representation from coarse marginal similarity and from scalar labels attached to different biological operators. They do not establish state completeness, operator equivalence, or predictive warning validity.
+Ecological forecasts depend on whether measured summaries preserve the state governing what happens next. In a finite multipatch model, two states with identical census, interaction, allele-frequency and trait marginals, `H_alpha`, `H_gamma`, and `F_ST` but opposite patchwise cross-layer alignment had next interaction transitions differing by 0.2543. In the fixed 500-pair long-horizon campaign, anti-alignment increased observed loss incidence by 4.4 percentage points relative to alignment, but the paired 95% interval ranged from -1.2 to +10.0 percentage points, so effects up to about a 15% relative increase over the aligned baseline rate remained compatible with the locked data. Portability tests further showed that one historical allele-mixing pattern did not reproduce in fresh seeds or transfer to whole-individual and pollen-only movement closures. These results separate transition-sufficient state representation from coarse marginal similarity and from scalar labels attached to different biological operators. They do not establish state completeness, operator equivalence, or predictive warning validity.
 
 ## Introduction
 
@@ -22,6 +22,8 @@ Under the declared parent closure, the simulator is Markov in its complete expli
 
 The primary certificate compared the exact one-generation transition before a long-horizon outcome was inspected. A single preregistered 60-generation deterioration schedule then compared 500 paired aligned and anti-aligned trajectories. No warning endpoints, replacement seeds, alternative alignment permutations, or altered schedules were opened after the result.
 
+For the paired long-horizon loss contrast, the estimand is the anti-aligned minus aligned risk difference. With 114 aligned-no-loss/anti-loss pairs, 92 aligned-loss/anti-no-loss pairs, and 500 total pairs, the observed difference is `(114-92)/500 = 0.044`. We report a paired large-sample 95% interval using the variance of the paired difference variable `D in {-1,0,1}`: `Var(D) = (114+92)/500 - 0.044^2`, divided by 500 for the variance of the mean. This gives a 95% interval of approximately `[-0.012, 0.100]`. The interval is descriptive for the locked campaign and is not a post-hoc acceptance rule.
+
 ### Frozen portability and negative model tests
 
 The historical allele-frequency-mixing screen used the operator `p_i'=(1-m)p_i+m*p_bar`. This is allele-frequency mixing, not demographic, individual, pollen, seed, or pollinator movement. Its historical `m=.10` between-block pattern was tested once in an independently seeded fixed Phase-U ensemble. Distinct preregistered closures then represented post-recruitment whole-individual dispersal and paternal pollen-only gene flow in the historical seed family. A separate matched-expected-support experiment compared constant, even-dynamic, and dominant-dynamic partner architectures. These tests withheld warning outcomes and retained their prospective stop rules.
@@ -32,7 +34,7 @@ The historical allele-frequency-mixing screen used the operator `p_i'=(1-m)p_i+m
 
 The aligned and anti-aligned states had identical declared coarse marginal signatures, while cross-layer covariance changed from `+0.025` to `-0.025`. Their exact opening transitions differed patchwise, with a maximum generation-1 interaction difference of **0.2543**. The declared marginals and standard diversity statistics were therefore not transition-sufficient representations of the local dynamics.
 
-Across the fixed 500 paired trajectories, realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`). There were 92 aligned-loss/anti-no-loss and 114 aligned-no-loss/anti-loss switches; exact McNemar `p=.143`. The campaign established transition-level representation insufficiency, **not a directional long-horizon loss-incidence effect**.
+Across the fixed 500 paired trajectories, realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`). The observed anti-aligned minus aligned loss-risk difference was therefore **+4.4 percentage points**. The 114 aligned-no-loss/anti-loss and 92 aligned-loss/anti-no-loss discordant pairs give a paired large-sample **95% CI of approximately -1.2 to +10.0 percentage points**; exact McNemar `p=.143`. Relative to the aligned baseline risk of `0.678`, the upper confidence limit corresponds to about a **14.8% relative increase**. The locked campaign therefore does not establish a signed long-horizon effect, but it also does not exclude effects of roughly this magnitude. The supported conclusion remains transition-level representation insufficiency with a quantitatively unresolved long-horizon risk contrast, not equivalence or absence of effect.
 
 ### A scalar connectivity label did not transport across seeds or mechanisms
 
@@ -44,7 +46,7 @@ In the historical family, whole-individual dispersal at `d=.10` produced pooled 
 
 ### State is joint and endpoint-relative
 
-The constructive pair shows why matching standard marginals cannot establish dynamic equivalence. Spatial co-location among interaction support, genetic support, and realised traits can be future-relevant even when every declared layer-wise summary agrees. The weaker long-horizon result is equally important: transition insufficiency does not license a universal signed risk claim.
+The constructive pair shows why matching standard marginals cannot establish dynamic equivalence. Spatial co-location among interaction support, genetic support, and realised traits can be future-relevant even when every declared layer-wise summary agrees. The long-horizon comparison is weaker and should be read by its interval rather than by `p=.143` alone: the observed difference was +4.4 points, but values from a small benefit of alignment to an anti-alignment increase of about 10 points remain compatible with this 500-pair campaign. Transition insufficiency therefore does not license a universal signed risk claim, while failure to reject the long-horizon null does not establish a negligible effect.
 
 ### Process state is operator-specific
 
@@ -56,7 +58,7 @@ The natural-data programme asks the next question: what happens when candidate e
 
 ### Claim boundary
 
-The model results are finite and closure-specific. Non-significant tests do not establish equivalence. Transition insufficiency does not prove a directional long-horizon risk effect. Failure of one historical connectivity pattern to reproduce or transport does not establish that connectivity is irrelevant. This manuscript makes no claim that the frozen relative-diversity thresholds are validated predictive warnings; that full-denominator validity audit is owned exclusively by `manuscript/warning_validity.md`.
+The model results are finite and closure-specific. Non-significant tests do not establish equivalence. The 500-pair long-horizon comparison leaves a roughly -1.2 to +10.0 percentage-point interval around the anti-aligned minus aligned risk difference and therefore cannot exclude a moderate directional effect. Transition insufficiency does not prove a directional long-horizon risk effect. Failure of one historical connectivity pattern to reproduce or transport does not establish that connectivity is irrelevant. This manuscript makes no claim that the frozen relative-diversity thresholds are validated predictive warnings; that full-denominator validity audit is owned exclusively by `manuscript/warning_validity.md`.
 
 ## Data and code availability
 
