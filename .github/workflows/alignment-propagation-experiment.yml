@@ -1,0 +1,89 @@
+name: Alignment propagation experiment
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - "experiments/alignment_propagation_protocol.json"
+      - "src/eco_genetic_warning_extensions/alignment_propagation_experiment.py"
+      - "scripts/run_alignment_propagation_experiment.py"
+      - "tests/test_alignment_propagation_protocol.py"
+      - ".github/workflows/alignment-propagation-experiment.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  locked-propagation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Checkout exact parent scientific commit
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: dd8ee379d0d3518194c767d16402042525bc00dc
+          path: upstream
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install locked parent and extension
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e upstream
+          python -m pip install -e '.[dev]'
+
+      - name: Verify prospective protocol before opening outcomes
+        run: python -m pytest tests/test_alignment_propagation_protocol.py -q
+
+      - name: Verify protocol hash and frozen Phase-V artifact unchanged
+        run: |
+          mkdir -p artifacts/alignment_propagation
+          sha256sum experiments/alignment_propagation_protocol.json | tee artifacts/alignment_propagation/protocol.sha256
+          sha256sum artifacts/cross_layer_alignment/phase_v_locked_summary.json | tee artifacts/alignment_propagation/legacy_phase_v_summary.sha256
+
+      - name: Run one 40-generation trajectory family and read all declared horizons
+        run: |
+          python scripts/run_alignment_propagation_experiment.py \
+            --summary artifacts/alignment_propagation/alignment_propagation_summary.json \
+            --attempts artifacts/alignment_propagation/alignment_propagation_attempts.json \
+            | tee artifacts/alignment_propagation/run.log
+
+      - name: Verify all 12 cells and primary 1500-pair horizon curve exist
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p = json.loads(Path('artifacts/alignment_propagation/alignment_propagation_summary.json').read_text())
+          assert p['status'] == 'completed_post_phase_v_propagation_experiment'
+          assert p['legacy_phase_v_unchanged'] is True
+          assert p['horizons'] == [5, 10, 20, 40]
+          assert p['nested_total_pairs'] == [500, 1000, 1500]
+          assert len(p['cells']) == 12
+          assert len(p['primary_horizon_cells']) == 4
+          assert {c['n_pairs'] for c in p['primary_horizon_cells']} == {1500}
+          assert [c['horizon'] for c in p['primary_horizon_cells']] == [5, 10, 20, 40]
+          print(json.dumps(p['primary_horizon_cells'], indent=2))
+          PY
+
+      - name: Write result checksums
+        run: |
+          sha256sum artifacts/alignment_propagation/alignment_propagation_summary.json \
+                    artifacts/alignment_propagation/alignment_propagation_attempts.json \
+                    >> artifacts/alignment_propagation/RESULTS.sha256
+
+      - name: Upload locked propagation outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: alignment-propagation-post-phase-v-v1
+          path: artifacts/alignment_propagation
+          if-no-files-found: error
