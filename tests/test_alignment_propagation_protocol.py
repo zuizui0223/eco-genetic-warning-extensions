@@ -25,7 +25,7 @@ def test_protocol_is_locked_and_nested() -> None:
     assert len(contract.master_seeds) == 5
     assert [len(contract.master_seeds) * r for r in contract.nested_replicates_per_seed] == [500, 1000, 1500]
     assert protocol["paired_replication"]["primary_pair_count"] == 1500
-    assert protocol["decision_language"]["no_significance_search"].startswith("No horizon")
+    assert protocol["estimands"]["no_significance_search"].startswith("No horizon")
 
 
 def test_short_horizons_truncate_one_common_forcing_path() -> None:
