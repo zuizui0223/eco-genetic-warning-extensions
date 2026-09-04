@@ -44,17 +44,21 @@ def test_state_validity_reports_interval_not_p_value_only() -> None:
 def test_warning_abstract_leads_with_frozen_full_denominator_design() -> None:
     text = WARNING.read_text(encoding="utf-8")
     abstract = text.split("## Abstract", 1)[1].split("## Introduction", 1)[0].strip()
-    assert abstract.startswith(
-        "We evaluated six predeclared and frozen baseline-relative genetic-diversity\n"
-        "thresholds against the full baseline-eligible denominator for the first time\n"
+    flat = " ".join(abstract.split())
+    assert flat.startswith(
+        "We evaluated six predeclared and frozen baseline-relative genetic-diversity "
+        "thresholds against the full baseline-eligible denominator for the first time "
         "under their frozen protocol"
     )
-    assert "without changing endpoints or rerunning trajectories" in abstract
-    assert "35/35 and\n33/33" in abstract
-    assert "48/48 and 49/49" in abstract
-    assert "408 event-threshold lead records" in abstract
-    assert "582 non-event-threshold firing records" in abstract
-    assert "not independent biological replicates" in abstract
+    for required in (
+        "without changing endpoints or rerunning trajectories",
+        "35/35 and 33/33",
+        "48/48 and 49/49",
+        "408 event-threshold lead records",
+        "582 non-event-threshold firing records",
+        "not independent biological replicates",
+    ):
+        assert required in flat
 
 
 def test_warning_endpoint_record_counts_match_frozen_trajectory_denominators() -> None:
