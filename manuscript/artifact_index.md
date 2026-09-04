@@ -7,7 +7,7 @@ Protocol and Phase identifiers are retained because they are necessary for prove
 | role | path | evidence effect |
 |---|---|---|
 | active warning-validity manuscript | `manuscript/warning_validity.md` | none; presents the frozen full-denominator audit |
-| active state-validity manuscript | `manuscript/state_validity_and_empirical_measurement_gates.md` | none; presents locked representation, portability, and empirical-gate results |
+| active state-validity manuscript | `manuscript/state_validity_and_empirical_measurement_gates.md` | none; presents locked representation, propagation-horizon, and process-portability results |
 | machine-readable lane registry | `manuscript/publication_lanes.json` | claim ownership only |
 | integrated source archive | `manuscript/main_text.md` | none; retained for historical validation and provenance, not submission |
 
@@ -25,7 +25,7 @@ The split does not regenerate, replace, or reinterpret any artifact listed below
 | Historical frontier recovery | low-replicate Phase C/D R1–R4 screen | `artifacts/frontier_refinement/phase_c_summary.json`, `phase_d_summary.json` |
 | Historical connectivity condition | low-replicate paired Phase E | run `32376912392`, artifact `9409687687` |
 | Historical aggregate interaction support | low-replicate Phase F | run `32441549848`, artifact `9432854668` |
-| Historical reduced-form partner loss | low-replicate Phase G | run `32450362310`, artifact `9435520830` |
+| Historical reduced-form partner loss | low-replicate paired Phase G | run `32450362310`, artifact `9435520830` |
 | R4/R3 finite-sample audit | exact gate validity and cross-campaign headline audit | Phase J/L; L run `32557903970`, artifact `9471949092` |
 | Conflicting seed-family precision replay | exact Phase-H/I seed families, 100 attempts/block | Phase K run `32557289628`, artifact `9471883061` |
 | Historical-family connectivity precision replay | exact Phase-E seeds, all migration levels, 100 attempts/block | Phase M run `32558147960`, artifact `9472067167`, digest `sha256:0b15ca5a3b7f40a24332f8bcc14fad01036ed2d3fb4c0ff7ff181208a5d940d6` |
@@ -38,6 +38,7 @@ The split does not regenerate, replace, or reinterpret any artifact listed below
 | Dynamic partner architecture | constant/even/dominant conditions; common availability draws; 100 attempts/block | Phase T run `32614486507`, artifact `9486577103`, digest `sha256:44f54e4b8ac313e01ea43444a84351012f308a69ccbcc4d0bf253cfa8ed9dc1c` |
 | Fresh allele-only connectivity replication | preregistered independent seeds `20291010–20291014`, paired `m=0/.10`, 100 attempts/block | Phase U run `32615044162`, artifact `9486740313`, digest `sha256:f561cb23d8040469db673acbdb329ec0e89bcefef30572dfb63bc8c829801756` |
 | Full-denominator symmetric warning audit | all baseline-eligible saved trajectories; six unchanged relative endpoints; non-events retained | parent run `28500796310`, artifact `8003007618`; Phase V run `32636847803`, artifact `9492587604`; compact record SHA-256 `65295c612042557abb46115a2c408b883f0b516c8d5af974423b895f54a7c7ab` |
+| Cross-layer alignment propagation audit | exact historical Phase-V 500-pair replay at horizons `1/2/5/10/20/40/60`; interaction half-retention at `h=10`; no detected signed loss-incidence separation across simultaneous horizon family; paired loss-status discordance retained | preregistration `8c4745e`; amendment `9f7e1d3`; run `33839614856`, artifact `9924462968`, digest `sha256:92876a7275b403efe78d232918b3f7554446ed37d46f91d6028bc7109f1dfb44`; compact summary `artifacts/cross_layer_alignment/propagation_locked_summary.json` |
 | Precision-bounded null audit | whole-trajectory paired risk-difference intervals for Phase U/N/T | immutable Phase U/N/T aggregate artifacts; `artifacts/prepublication_review/precision_bounded_null_audit.json` |
 | Eschscholzia F typo sensitivity STOP | prospective one-key sensitivity found a second metadata mismatch before model fitting | protocol commit `ae0d70a`; `artifacts/empirical/eschscholzia_f_typo_sensitivity_stop.json` |
 | Protocol 003 validation | 200 fresh trajectories across separately calibrated domains | run `29417632137` |
@@ -49,6 +50,8 @@ Historical artifacts are never overwritten. The high-precision layer is additive
 Phase M remains an exact historical-family result. Its `m=.10` condition had equal-rate `p=.0205` in that family. Phase U then asked one prospectively fixed question in one independent fresh five-seed ensemble. The fresh `m=.10` condition had equal-rate `p=.745` and therefore did **not** replicate the historical heterogeneity observation. The historical result is retained, but its permitted interpretation is now seed-family contingent rather than a reproducible parameter-specific effect.
 
 Phases R/S/T are prospective closure tests. R/S showed that the historical-family `m=.10` pattern did not appear under whole-individual or pollen-only operators; T showed that matched-expected-support temporal partner variance/concentration did not generate a detected loss-process effect. These layers narrow interpretation rather than rescue a preferred result.
+
+The cross-layer propagation audit is likewise additive. It replays, rather than replaces, the historical Phase-V alignment campaign. The replay exactly reproduces the generation-1 certificate and generation-60 paired loss table before reading intermediate horizons. Its new result is a fixed-grid propagation boundary: interaction-state divergence transiently amplifies and then attenuates below the preregistered half-retention level by generation 10, whereas no signed cumulative-loss incidence separation is detected over the full simultaneous horizon family. Large paired trajectory-status discordance after loss onset is retained as a distinct trajectory-identity result, not promoted to a marginal risk effect or used to explain the separate warning-validity failure.
 
 ## Current high-precision condition map
 
@@ -136,6 +139,9 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 - Phase Q `interaction kappa` is aggregate feedback, not network richness/connectance.
 - Phase N/T do not constitute a full multispecies dynamic-network model.
 - Adaptive rewiring remains unopened after the Phase-T negative result.
+- The propagation replay is not an independent Phase-V replication and does not define a universal ten-generation ecological memory scale.
+- A paired trajectory-status difference is not the same estimand as a signed marginal loss-incidence effect.
+- The propagation result must not be used to claim that warning failure was caused by omitted alignment or that alignment rescues the frozen warning rules.
 - Protocol 003 supports bounded portability, not a direction-only causal claim.
 - Endpoint records from the same trajectory are correlated; uncertainty resamples whole trajectories.
 - Event-conditional 35/35 and 33/33 lead counts must be reported with the 48/48 and 49/49 non-event firing counts; they do not validate prediction.
@@ -145,4 +151,4 @@ Paired McNemar p values `.896/.762/.883`; the adaptive-rewiring gate remains clo
 
 ## Publication display rule
 
-The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 now combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T remain robustness/boundary layers rather than additional headline displays.
+The six-display limit is controlled by `manuscript/display_allocation.md`. Figure 5 now combines the historical Phase-M sweep with the fresh Phase-U replication. R/S/T and the propagation replay remain robustness/representation-boundary layers rather than automatically becoming additional headline displays; any display reallocation requires a manuscript-specific decision without altering the locked scientific result.
