@@ -111,7 +111,6 @@ def build_bundle(root: Path, out: Path) -> None:
         "manuscript/submission_metadata.md": "manuscript/submission_metadata.md",
         "manuscript/state_validity_display_allocation.md": "manuscript/display_allocation.md",
         "manuscript/PUBLICATION_LANES.md": "provenance/PUBLICATION_LANES.md",
-        "manuscript/EG_SERIES_PUBLICATION_ROADMAP_2026-09-04.md": "provenance/EG_SERIES_PUBLICATION_ROADMAP_2026-09-04.md",
     }
     for source, destination in manuscript_files.items():
         _copy(root, out, source, destination)
