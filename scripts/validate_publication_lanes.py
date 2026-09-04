@@ -93,7 +93,11 @@ def main() -> int:
     state_flat = _flat(state)
     for token in (
         "0.2543",
-        "not a directional long-horizon loss-incidence effect",
+        "+4.4 percentage points",
+        "-1.2 to +10.0 percentage points",
+        "14.8% relative increase",
+        "does not establish a signed long-horizon effect",
+        "Non-significant tests do not establish equivalence",
         "A scalar connectivity label did not transport across seeds or mechanisms",
         "natural_data_four_gate_program.md",
         "makes no claim that the frozen relative-diversity thresholds are validated predictive warnings",
@@ -145,7 +149,8 @@ def main() -> int:
     ownership = _read("manuscript/PUBLICATION_LANES.md")
     assert "Active lane 1 — warning validity" in ownership
     assert "Active lane 2 — model state validity and process portability" in ownership
-    assert "Independent development programme — four natural-data gate lines" in ownership
+    assert "Migrated independent programme — four natural-data gate lines" in ownership
+    assert "zuizui0223/egwee" in ownership
     assert "not an active submission manuscript" in ownership
 
     for router_path in ("README.md", "manuscript/README.md"):
@@ -161,7 +166,7 @@ def main() -> int:
 
     print(
         "Publication-lane validation passed: 2 active EGWE manuscripts, "
-        "1 independent natural-data development programme, 1 integrated source archive; "
+        "1 migrated natural-data development programme, 1 integrated source archive; "
         "warning, state, and empirical claim ownership are disjoint."
     )
     return 0
