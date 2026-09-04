@@ -21,9 +21,13 @@ This document is the human-readable publication router. Its machine-readable cou
 
 The filename is retained for provenance and bundle stability, but its active contents are now model-only. The prior combined state-plus-empirical narrative remains recoverable from repository history and the integrated source archive.
 
-## Independent development programme — four natural-data gate lines
+## Migrated independent programme — four natural-data gate lines
 
-- **Working manuscript:** `natural_data_four_gate_program.md`
+**Authoritative repository from 2026-09-04:** [`zuizui0223/egwee`](https://github.com/zuizui0223/egwee).
+
+- **Authoritative manuscript spine:** `egwee/manuscript/natural_data_ecological_indicators_spine.md`.
+- **Authoritative machine-readable empirical router:** `egwee/manuscript/natural_data_gate_registry.json`.
+- **Migration provenance:** `egwee/MIGRATION_MANIFEST.md`.
 - **Status:** development GO as one methodological empirical synthesis; remains outside both active EGWE submission bundles.
 - **Primary target:** **Ecological Indicators**.
 - **Conditional stretch target:** **Methods in Ecology and Evolution** only if a separate method-development gate produces a reusable implementation and simulation/benchmark evidence sufficient to support a genuinely new-method claim.
@@ -33,17 +37,14 @@ The filename is retained for provenance and bundle stability, but its active con
 - **Line 3:** a plausible process proxy fails endpoint-relevant adequacy — *Eschscholzia californica* and Mallorca carob.
 - **Line 4:** preprocessing erases the mechanistic distinction — *Campanula americana*.
 - **Cross-origin gate:** `cross_origin_convergence_not_identifiable_from_existing_archives` remains a STOP, not an ecological null.
-- **Machine-readable empirical router:** `natural_data_gate_registry.json`.
-- **Publication decision:** `NATURAL_DATA_PUBLICATION_AUDIT_2026-09-01.md`.
-- **Venue decision:** `NATURAL_DATA_VENUE_AUDIT_2026-09-01.md`.
+
+The local files `natural_data_four_gate_program.md`, `natural_data_gate_registry.json`, the 2026-09-01 natural-data publication/venue/nearest-neighbour audits, and the historical empirical audit files are retained in EGWE for **provenance and validator stability only**. They are no longer the reader-facing development surface. New natural-data manuscript development, figures, evidence routing, or claim refinement belongs in `egwee`.
 
 These four lines are not permitted to serve as external validation of the warning statistic or the synthetic model closure. Their common contribution is methodological: proposed ecological state measurements can fail at empirically distinct gates before residual geography, habitat, origin, or history is interpretable.
 
-Development GO does **not** make this manuscript part of the current EGWE submission bundle. A separate submission package should be opened only after the independent manuscript, nearest-neighbour literature audit, and gate figures are complete.
-
 ## Integrated source archive
 
-`main_text.md` preserves the integrated pre-split narrative because historical tests, display allocations, and submission-bundle contracts depend on it. It is an **integrated source archive, not an active submission manuscript**. New reader-facing claim development must enter exactly one active lane or the explicitly independent natural-data development programme.
+`main_text.md` preserves the integrated pre-split narrative because historical tests, display allocations, and submission-bundle contracts depend on it. It is an **integrated source archive, not an active submission manuscript**. New EGWE reader-facing claim development must enter exactly one active EGWE lane; new natural-data four-gate development belongs in `zuizui0223/egwee`.
 
 The archive may be used to trace provenance or recover shared prose, but it must not be supplied as a third manuscript, cited as the current publication source of truth, or used to weaken a lane-specific claim ceiling.
 
@@ -55,4 +56,4 @@ The archive may be used to trace provenance or recover shared prose, but it must
 - Access failures, metadata STOPs, `not_identifiable`, and `not_estimable` outcomes remain visible.
 - No lane may repair a locked source mismatch after seeing its consequence.
 - Natural datasets remain at their declared resolution and are not pooled to manufacture external validation.
-- `claim_evidence_map.md` and `artifact_index.md` remain shared evidence gates; the lane router changes ownership, not scientific results.
+- `claim_evidence_map.md` and `artifact_index.md` remain shared evidence gates for EGWE-owned claims; natural-data four-gate evidence ownership is now routed through `egwee`.
