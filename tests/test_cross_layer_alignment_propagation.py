@@ -4,7 +4,9 @@ import json
 from pathlib import Path
 from types import SimpleNamespace
 
-import numpy as np
+import pytest
+
+np = pytest.importorskip("numpy")
 
 from eco_genetic_warning_extensions.cross_layer_alignment_phase_v import (
     one_step_state_sufficiency_certificate,
