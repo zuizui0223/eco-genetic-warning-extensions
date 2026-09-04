@@ -35,10 +35,14 @@ def test_state_validity_reports_interval_not_p_value_only() -> None:
         "+4.4 percentage points",
         "-1.2 to +10.0 percentage points",
         "14.8% relative increase",
-        "does not exclude effects",
         "Non-significant tests do not establish equivalence",
     ):
         assert required in text
+    flat = " ".join(text.split())
+    assert (
+        "does not exclude effects of roughly this magnitude" in flat
+        or "did not exclude effects of roughly this magnitude" in flat
+    )
 
 
 def test_warning_abstract_leads_with_frozen_full_denominator_design() -> None:
