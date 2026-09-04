@@ -1,0 +1,55 @@
+name: State-validity submission bundle
+
+on:
+  pull_request:
+    paths:
+      - 'manuscript/state_validity_and_empirical_measurement_gates.md'
+      - 'manuscript/state_validity_references.md'
+      - 'manuscript/state_validity_display_allocation.md'
+      - 'manuscript/cover_letter.md'
+      - 'manuscript/submission_metadata.md'
+      - 'manuscript/PUBLICATION_LANES.md'
+      - 'artifacts/cross_layer_alignment/phase_v_locked_summary.json'
+      - 'artifacts/alignment_propagation/locked_summary.json'
+      - 'experiments/alignment_propagation_protocol.json'
+      - 'docs/ALIGNMENT_PROPAGATION_RESULT_2026-09-04.md'
+      - 'src/eco_genetic_warning_extensions/state_validity_submission_figures.py'
+      - 'scripts/build_state_validity_submission_bundle.py'
+      - 'tests/test_state_validity_submission_bundle.py'
+      - '.github/workflows/state-validity-submission.yml'
+  workflow_dispatch:
+
+jobs:
+  build-state-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install package and test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e '.[dev]'
+      - name: Run state-submission contract tests
+        run: python -m pytest -q tests/test_state_validity_submission_bundle.py
+      - name: Build state-only bundle
+        run: |
+          python scripts/build_state_validity_submission_bundle.py \
+            --repo-root . \
+            --output state_validity_submission
+      - name: Verify manifest and forbidden-path firewall
+        run: |
+          test -s state_validity_submission/MANIFEST.sha256
+          test -s state_validity_submission/figures/figure1_state_counterexample.svg
+          test -s state_validity_submission/figures/figure2_horizon_propagation.svg
+          if find state_validity_submission -type f | grep -E 'warning_validity|natural_data|empirical_|stage3_|fragmentation_gradient'; then
+            echo 'Forbidden non-state evidence leaked into submission bundle' >&2
+            exit 1
+          fi
+      - name: Upload state-validity submission artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: state-validity-submission
+          path: state_validity_submission/
+          if-no-files-found: error
