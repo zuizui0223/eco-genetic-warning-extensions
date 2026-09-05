@@ -32,6 +32,8 @@ Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N.,
 
 Moriarty, P.E., Hodgson, E.E., Froehlich, H.E., Hennessey, S.M., Marshall, K.N., Oken, K.L., Siple, M.C., Ko, S., Koehn, L.E., Pierce, B.D. & Stawitz, C.C. (2018). The need for validation of ecological indices. *Ecological Indicators*, **84**, 546–552. doi:10.1016/j.ecolind.2017.09.028
 
+Ovaskainen, O. et al. (2026). A digital twin for real-time biodiversity forecasting with citizen science data. *Nature Ecology & Evolution*, **10**, 481–495. doi:10.1038/s41559-025-02966-3
+
 Petchey, O.L., Pontarp, M., Massie, T.M., Kéfi, S., Ozgul, A., Weilenmann, M., Palamara, G.M., Altermatt, F., Matthews, B., Levine, J.M., Childs, D.Z., McGill, B.J., Schaepman, M.E., Schmid, B., Spaak, P., Beckerman, A.P., Pennekamp, F. & Pearse, I.S. (2015). The ecological forecast horizon, and examples of its uses and determinants. *Ecology Letters*, **18**, 597–611. doi:10.1111/ele.12443
 
 Pilosof, S., Porter, M.A., Pascual, M. & Kéfi, S. (2017). The multilayer nature of ecological networks. *Nature Ecology & Evolution*, **1**, 0101. doi:10.1038/s41559-017-0101
@@ -41,6 +43,8 @@ Scheffer, M., Bascompte, J., Brock, W.A., Brovkin, V., Carpenter, S.R., Dakos, V
 Schielzeth, H. (2010). Simple means to improve the interpretability of regression coefficients. *Methods in Ecology and Evolution*, **1**, 103–113. doi:10.1111/j.2041-210X.2010.00012.x
 
 Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promising tool for conservation and management. *Trends in Ecology & Evolution*, **22**, 25–33. doi:10.1016/j.tree.2006.08.009
+
+Song, C. & Levine, J.M. (2025). Rigorous validation of ecological models against empirical time series. *Nature Ecology & Evolution*, **9**, 2265–2278. doi:10.1038/s41559-025-02864-8
 
 Stange, M., Barrett, R.D.H. & Hendry, A.P. (2021). The importance of genomic variation for biodiversity, ecosystems and people. *Nature Reviews Genetics*, **22**, 89–105. doi:10.1038/s41576-020-00288-7
 
