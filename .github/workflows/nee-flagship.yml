@@ -13,6 +13,7 @@ on:
       - 'manuscript/NEE_FLAGSHIP_TARGET_AUDIT_2026-09-05.md'
       - 'manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md'
       - 'scripts/check_nee_flagship_compliance.py'
+      - 'scripts/build_nee_flagship_figures.py'
       - '.github/workflows/nee-flagship.yml'
   workflow_dispatch:
 
@@ -76,6 +77,23 @@ jobs:
                   assert path.is_file(), f'missing {repo}:{rel}'
           print('Pinned flagship source commits and required paths: PASS')
           PY
+
+      - name: Generate five flagship figures from locked evidence
+        run: |
+          mkdir -p nee_flagship_packet/figures
+          python flagship/scripts/build_nee_flagship_figures.py \
+            --egwe-root flagship \
+            --egc-root egc_source \
+            --egwee-root egwee_source \
+            --output nee_flagship_packet/figures
+          test -s nee_flagship_packet/figures/figure1_predictive_validity_stack.svg
+          test -s nee_flagship_packet/figures/figure2_state_separation.svg
+          test -s nee_flagship_packet/figures/figure3_hidden_state_futures.svg
+          test -s nee_flagship_packet/figures/figure4_precedence_discrimination.svg
+          test -s nee_flagship_packet/figures/figure5_natural_measurement_gates.svg
+          grep -q '0.2543' nee_flagship_packet/figures/figure3_hidden_state_futures.svg
+          grep -q 'AUC = 0.5' nee_flagship_packet/figures/figure4_precedence_discrimination.svg
+          grep -q 'Cross-study synthesis: not_identifiable / STOP' nee_flagship_packet/figures/figure5_natural_measurement_gates.svg
 
       - name: Assemble review-facing flagship packet
         run: |
