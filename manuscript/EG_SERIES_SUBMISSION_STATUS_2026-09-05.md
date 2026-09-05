@@ -6,12 +6,15 @@ This file is the current **operational submission-status source of truth**. It s
 
 All four publication claims now have independent reader-facing manuscripts and reproducible submission-package routes. No new simulation or natural-data refit is required by the active claim set.
 
+A second, optional development track is now open: an **EG grand synthesis / flagship** that asks one higher-order question — *what must be preserved, observed, and validated before ecological deterioration is forecastable?* This track does not replace or delay the four submission-ready manuscripts. Its dependency audit is `manuscript/GRAND_SYNTHESIS_DEPENDENCY_AUDIT_2026-09-05.md` and its initial manuscript spine is `manuscript/grand_synthesis_flagship.md`.
+
 | Paper | Repository | Current submission state | Primary route |
 | --- | --- | --- | --- |
 | EGC — mechanism / biological-state separation | `zuizui0223/eco-genetic-criticality` | **submission package complete on main** | **Theoretical Ecology**; *The American Naturalist* stretch |
 | EGWE — state validity / representation / propagation | `zuizui0223/eco-genetic-warning-extensions` | **state-only Ecology Letters package complete on main** | **Ecology Letters** first submission |
 | EGWE — warning validity | `zuizui0223/eco-genetic-warning-extensions` | **warning-only submission lane complete on main** | independent early-warning / predictive-validity paper; venue recheck before portal submission |
 | EGWEE — empirical measurement / representation gates | `zuizui0223/egwee` | **Ecological Indicators package complete on main** | **Ecological Indicators** |
+| Optional EG flagship — predictive-validity hierarchy | `zuizui0223/eco-genetic-warning-extensions` | **dependency audit + manuscript spine opened; source papers preserved** | **Ecology Letters** current-evidence integrated target; **Nature Ecology & Evolution** dream target only after a decisive prospective natural bridge |
 
 ## Paper I — EGC
 
@@ -81,6 +84,21 @@ The authoritative `zuizui0223/egwee` repository now includes:
 
 Scientific ceiling remains an ordered empirical interpretation framework. The systems are not pooled into one ecological effect, and the cross-origin STOP remains non-identifiability rather than an ecological null.
 
+## Optional grand synthesis / flagship
+
+**Working title:** *Prediction requires the right state: from biological distinction to warning validity*
+
+The flagship treats the four papers as four tests of one **predictive-validity stack**, not as a causal chain:
+
+1. common disturbance does not imply one biological state;
+2. matching common state marginals does not imply matching futures;
+3. perfect temporal precedence does not imply predictive discrimination;
+4. a plausible natural proxy does not automatically earn empirical state status.
+
+The positive integrated claim is that ecological predictability requires a validated chain from biological state, through target-relevant representation and full-denominator warning validation, to empirically adequate measurement and identifiability.
+
+The current evidence is sufficient for an integrated hierarchy/counterexample paper, but **not** for an end-to-end natural validation of the synthetic closure. The decisive ceiling-raising addition would be one prospectively synchronized natural system measuring joint/process state, event and non-event outcomes through a common future horizon, full-denominator warning performance, and residual origin/history after the candidate state has earned endpoint relevance.
+
 ## Series story to preserve
 
 ```text
@@ -96,10 +114,17 @@ One-sentence programme claim:
 
 ## Next work is editorial / submission-facing, not scientific reopening
 
+For the four independent papers:
+
 1. author-controlled metadata: author order, affiliations, ORCIDs, corresponding author, CRediT, funding, acknowledgements and competing interests;
 2. permanent archive DOI / reviewer-accessible snapshots for code and derived evidence;
-3. final visual QA of generated figures at journal dimensions;
-4. live journal-policy recheck immediately before each portal submission;
-5. actual portal submission in the chosen order.
+3. live journal-policy recheck immediately before each portal submission;
+4. actual portal submission in the chosen order.
+
+For the optional flagship:
+
+1. develop the five-display integrated manuscript without changing any locked source result;
+2. decide whether to submit the current hierarchy/counterexample version or first collect one decisive end-to-end prospective natural bridge;
+3. do not delay the four ready papers unless the flagship becomes demonstrably stronger than the sum of the parts.
 
 No active paper requires an additional parameter scan, warning-threshold search, endpoint rescue, proxy substitution, cross-origin pooling, or post-result scaling change.
