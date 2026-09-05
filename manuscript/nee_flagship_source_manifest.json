@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "purpose": "Pin the exact repository states used by the optional Nature Ecology & Evolution flagship. This manifest does not transfer claim ownership among the source papers.",
+  "flagship_repository": {
+    "repository": "zuizui0223/eco-genetic-warning-extensions",
+    "base_main_commit": "2760ef027192c5c243acc20bfd85484949166b73"
+  },
+  "sources": [
+    {
+      "layer": "biological_state_distinction",
+      "repository": "zuizui0223/eco-genetic-criticality",
+      "commit": "b7ee738767c92307d6d23a85a3eeb857faf6ddfb",
+      "required_paths": [
+        "manuscript/main_text.md",
+        "manuscript/references.md",
+        "docs/H3_FRAGMENTATION_GRADIENT_SENSITIVITY_RESULTS.md",
+        "artifacts/h3_fragmentation_gradient/h3_fragmentation_gradient_pooled_summary.csv",
+        "artifacts/h3_fragmentation_gradient/MANIFEST.sha256"
+      ]
+    },
+    {
+      "layer": "representation_and_warning",
+      "repository": "zuizui0223/eco-genetic-warning-extensions",
+      "commit": "2760ef027192c5c243acc20bfd85484949166b73",
+      "required_paths": [
+        "manuscript/state_validity_and_empirical_measurement_gates.md",
+        "manuscript/warning_validity.md",
+        "manuscript/state_validity_references.md",
+        "artifacts/alignment_propagation/locked_summary.json",
+        "artifacts/warning_validity/trajectory_endpoint_records.csv",
+        "artifacts/warning_validity/source_manifest.json"
+      ]
+    },
+    {
+      "layer": "natural_measurement_and_identifiability",
+      "repository": "zuizui0223/egwee",
+      "commit": "cdaf155817153fb10115116808aa89ca87831c9e",
+      "required_paths": [
+        "manuscript/natural_data_ecological_indicators_spine.md",
+        "manuscript/natural_data_gate_registry.json",
+        "manuscript/unreachable_six_systems.json",
+        "manuscript/references.md",
+        "manuscript/SUBMISSION_READINESS_2026-09-05.md"
+      ]
+    }
+  ],
+  "claim_firewalls": [
+    "Fragmentation is not claimed to cause the aligned/anti-aligned construction.",
+    "Omitted cross-layer alignment is not claimed to cause warning-threshold failure.",
+    "The seven natural analyses are not treated as external validation of the finite synthetic closure.",
+    "Natural systems are not pooled into one ecological effect.",
+    "Generation 20 is not treated as a universal biological threshold.",
+    "The four standalone manuscripts remain frozen fallbacks and must not be simultaneously submitted if substantially overlapping with an active flagship submission."
+  ]
+}
