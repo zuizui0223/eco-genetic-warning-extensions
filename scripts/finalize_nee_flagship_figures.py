@@ -12,12 +12,10 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
 
 def fix_figure2(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
-    # Rotate the panel-A y-axis label instead of allowing it to extend beyond the canvas.
     old = '<text x="35.0" y="390.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal">% supported outcomes</text>'
     new = '<text x="28.0" y="390.0" text-anchor="middle" transform="rotate(-90 28 390)" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal">% supported outcomes</text>'
     text = replace_once(text, old, new, "figure2 y-axis label")
 
-    # Give the three panel-B series a direct graphical key as well as text labels.
     replacements = [
         (
             '<text x="875.0" y="655.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal">interaction</text>',
@@ -42,7 +40,6 @@ def fix_figure2(path: Path) -> None:
 
 def fix_figure3(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
-    # Move row labels outside the patch boxes so the boxes do not occlude the text.
     text = replace_once(
         text,
         '<text x="45.0" y="244.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="14" font-weight="bold">aligned</text>',
@@ -55,11 +52,10 @@ def fix_figure3(path: Path) -> None:
         '<text x="5.0" y="364.0" text-anchor="start" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">anti-aligned</text>',
         "figure3 anti-aligned label",
     )
-    # Keep the risk-axis label out of the plotting area.
     text = replace_once(
         text,
         '<text x="800.0" y="400.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="normal">anti-aligned − aligned risk (pp)</text>',
-        '<text x="805.0" y="400.0" text-anchor="end" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="normal">anti-aligned - aligned risk (pp)</text>',
+        '<text x="780.0" y="400.0" text-anchor="middle" transform="rotate(-90 780 400)" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="normal">anti-aligned - aligned risk (pp)</text>',
         "figure3 risk-axis label",
     )
     path.write_text(text, encoding="utf-8")
@@ -67,7 +63,6 @@ def fix_figure3(path: Path) -> None:
 
 def fix_figure4(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
-    # Use ASCII in the theorem panel so journal preview fonts cannot drop glyphs.
     replacements = [
         ("specificity = (n₀ − f) / n₀", "specificity = (n0 - f) / n0", "figure4 specificity formula"),
         ("specificity ∈ [0,1] ⇒ AUC ∈ [0.5,1]", "specificity in [0,1] -> AUC in [0.5,1]", "figure4 range formula"),
