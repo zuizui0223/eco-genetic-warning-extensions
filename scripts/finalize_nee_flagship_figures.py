@@ -10,6 +10,27 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
     return text.replace(old, new, 1)
 
 
+def fix_figure1(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    # Remove the extra grey message under representation->signal so the figure
+    # contains exactly four constructive non-implications in total.
+    block = (
+        '<rect x="712" y="345" width="236" height="68" rx="10" fill="#f5f5f5" stroke="#777"/>\n'
+        '<text x="830.0" y="370.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">early timing ≠ predictive</text>\n'
+        '<text x="830.0" y="389.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">discrimination</text>\n'
+    )
+    text = replace_once(text, block, "", "figure1 extra implication")
+    text = replace_once(
+        text,
+        '<text x="1115.0" y="370.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">signal relevance is target-</text>\n'
+        '<text x="1115.0" y="389.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">and horizon-specific</text>',
+        '<text x="1115.0" y="370.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">perfect precedence ≠ predictive</text>\n'
+        '<text x="1115.0" y="389.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="bold">discrimination</text>',
+        "figure1 warning implication",
+    )
+    path.write_text(text, encoding="utf-8")
+
+
 def fix_figure2(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
     old = '<text x="35.0" y="390.0" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="13" font-weight="normal">% supported outcomes</text>'
@@ -78,6 +99,7 @@ def main() -> None:
     parser.add_argument("--figures", required=True)
     args = parser.parse_args()
     root = Path(args.figures)
+    fix_figure1(root / "figure1_predictive_validity_stack.svg")
     fix_figure2(root / "figure2_state_separation.svg")
     fix_figure3(root / "figure3_hidden_state_futures.svg")
     fix_figure4(root / "figure4_precedence_discrimination.svg")
