@@ -13,7 +13,6 @@ MANIFEST = ROOT / "manuscript/nee_flagship_source_manifest.json"
 
 
 def words(text: str) -> list[str]:
-    # Count prose tokens conservatively; markdown punctuation is ignored.
     text = re.sub(r"```.*?```", " ", text, flags=re.S)
     text = re.sub(r"`([^`]*)`", r"\1", text)
     text = re.sub(r"https?://\S+", " URL ", text)
@@ -46,30 +45,29 @@ def main() -> None:
         assert h in article, h
 
     abstract = section(article, "Abstract", "Results")
-    # The unheaded introduction lies between the abstract and Results, so remove it
-    # from the abstract span by splitting at the first paragraph after the abstract.
-    # The abstract is the first paragraph after its heading.
     abstract = abstract.strip().split("\n\n", 1)[0]
     abstract_n = len(words(abstract))
-    assert abstract_n <= 200, f"abstract={abstract_n} words"
 
-    results_start = article.index("## Results\n")
     methods_start = article.index("## Methods\n")
-    # Main text includes the unheaded introduction plus Results and Discussion,
-    # but excludes title, abstract, Methods and reference list.
     after_abstract_heading = article.index("## Abstract\n") + len("## Abstract\n")
     first_double = article.index("\n\n", after_abstract_heading)
     intro_start = first_double + 2
     main_text = article[intro_start:methods_start]
     main_n = len(words(main_text))
-    assert main_n <= 3500, f"main_text={main_n} words"
 
     figures = re.findall(r"^## Figure (\d+)\s", display, flags=re.M)
+    ref_entries = [p for p in refs.split("\n\n") if p.strip() and not p.lstrip().startswith("#")]
+
+    # Print counts before any subsequent claim-contract assertion so CI logs remain diagnostic.
+    print(f"NEE abstract words: {abstract_n}")
+    print(f"NEE main-text words: {main_n}")
+    print(f"Main displays: {len(figures)}")
+    print(f"Core references: {len(ref_entries)}")
+
+    assert abstract_n <= 200, f"abstract={abstract_n} words"
+    assert main_n <= 3500, f"main_text={main_n} words"
     assert figures == ["1", "2", "3", "4", "5"], figures
     assert len(figures) <= 6
-
-    # NEE Articles normally recommend no more than ~50 references.
-    ref_entries = [p for p in refs.split("\n\n") if p.strip() and not p.lstrip().startswith("#")]
     assert len(ref_entries) <= 50, len(ref_entries)
 
     assert manifest["schema_version"] == 1
@@ -82,11 +80,20 @@ def main() -> None:
     }
     assert len(manifest["claim_firewalls"]) >= 6
 
-    # Load-bearing headline values must be present once in the integrated draft.
-    for token in ("1,037/1,037", "0.2543", "+5.33", "35/35", "48/48", "specificity 0", "8.88e-16"):
-        assert token in article, token
+    # Load-bearing scientific content: allow reader-facing prose rather than one exact notation.
+    required_patterns = {
+        "EGC denominator": r"1,037/1,037",
+        "state certificate": r"0\.2543",
+        "propagation": r"\+5\.33",
+        "event leads": r"35/35",
+        "inherited non-events": r"all 48 inherited non-event trajectories|48/48",
+        "fresh non-events": r"all 49 fresh non-event trajectories|49/49",
+        "warning specificity": r"specificity 0|specificity zero",
+        "representation collapse": r"8\.88e-16",
+    }
+    for label, pattern in required_patterns.items():
+        assert re.search(pattern, article, flags=re.I), label
 
-    # Forbidden causal shortcuts.
     forbidden = (
         "fragmentation caused the anti-aligned",
         "alignment caused warning failure",
@@ -97,10 +104,6 @@ def main() -> None:
     for token in forbidden:
         assert token.casefold() not in lower, token
 
-    print(f"NEE abstract words: {abstract_n}")
-    print(f"NEE main-text words: {main_n}")
-    print(f"Main displays: {len(figures)}")
-    print(f"Core references: {len(ref_entries)}")
     print("NEE flagship compliance: PASS")
 
 
