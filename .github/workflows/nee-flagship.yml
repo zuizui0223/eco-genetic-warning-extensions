@@ -1,0 +1,99 @@
+name: NEE flagship validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'manuscript/nee_flagship_article.md'
+      - 'manuscript/nee_flagship_display_plan.md'
+      - 'manuscript/nee_flagship_references.md'
+      - 'manuscript/nee_flagship_source_manifest.json'
+      - 'manuscript/NEE_FLAGSHIP_TARGET_AUDIT_2026-09-05.md'
+      - 'manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md'
+      - 'scripts/check_nee_flagship_compliance.py'
+      - '.github/workflows/nee-flagship.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-flagship:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout flagship repository
+        uses: actions/checkout@v4
+        with:
+          path: flagship
+
+      - name: Checkout pinned EGC source
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: egc_source
+
+      - name: Checkout pinned EGWEE source
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/egwee
+          ref: cdaf155817153fb10115116808aa89ca87831c9e
+          path: egwee_source
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Check NEE Article format and claim firewall
+        working-directory: flagship
+        run: python scripts/check_nee_flagship_compliance.py
+
+      - name: Verify pinned source commits and required evidence paths
+        run: |
+          python - <<'PY'
+          import json, subprocess
+          from pathlib import Path
+
+          root = Path('flagship')
+          manifest = json.loads((root/'manuscript/nee_flagship_source_manifest.json').read_text())
+          expected = {
+              'zuizui0223/eco-genetic-criticality': (Path('egc_source'), 'b7ee738767c92307d6d23a85a3eeb857faf6ddfb'),
+              'zuizui0223/egwee': (Path('egwee_source'), 'cdaf155817153fb10115116808aa89ca87831c9e'),
+          }
+          for source in manifest['sources']:
+              repo = source['repository']
+              if repo == 'zuizui0223/eco-genetic-warning-extensions':
+                  # Current PR contains the flagship draft; required scientific source files
+                  # must still exist in the checkout inherited from the pinned main base.
+                  base = root
+                  assert source['commit'] == '2760ef027192c5c243acc20bfd85484949166b73'
+              else:
+                  base, sha = expected[repo]
+                  got = subprocess.check_output(['git','-C',str(base),'rev-parse','HEAD'], text=True).strip()
+                  assert got == sha, (repo, got, sha)
+              for rel in source['required_paths']:
+                  path = base / rel
+                  assert path.is_file(), f'missing {repo}:{rel}'
+          print('Pinned flagship source commits and required paths: PASS')
+          PY
+
+      - name: Assemble review-facing flagship packet
+        run: |
+          mkdir -p nee_flagship_packet/manuscript nee_flagship_packet/provenance
+          cp flagship/manuscript/nee_flagship_article.md nee_flagship_packet/manuscript/main_text.md
+          cp flagship/manuscript/nee_flagship_references.md nee_flagship_packet/manuscript/references.md
+          cp flagship/manuscript/nee_flagship_display_plan.md nee_flagship_packet/manuscript/display_plan.md
+          cp flagship/manuscript/NEE_FLAGSHIP_TARGET_AUDIT_2026-09-05.md nee_flagship_packet/provenance/target_audit.md
+          cp flagship/manuscript/nee_flagship_source_manifest.json nee_flagship_packet/provenance/source_manifest.json
+          cp flagship/manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md nee_flagship_packet/provenance/prospective_natural_bridge.md
+          cp egc_source/manuscript/references.md nee_flagship_packet/provenance/egc_references.md
+          cp egwee_source/manuscript/references.md nee_flagship_packet/provenance/egwee_references.md
+          (cd nee_flagship_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
+          test -s nee_flagship_packet/MANIFEST.sha256
+
+      - name: Upload NEE flagship packet
+        uses: actions/upload-artifact@v4
+        with:
+          name: nee-flagship-review-packet
+          path: nee_flagship_packet/
+          if-no-files-found: error
