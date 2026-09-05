@@ -18,6 +18,7 @@ on:
       - 'scripts/check_nee_flagship_compliance.py'
       - 'scripts/build_nee_flagship_figures.py'
       - 'scripts/finalize_nee_flagship_figures.py'
+      - 'scripts/materialize_nee_flagship_submission_article.py'
       - '.github/workflows/nee-flagship.yml'
   workflow_dispatch:
 
@@ -104,10 +105,30 @@ jobs:
           grep -q 'AUC = 0.5' nee_flagship_packet/figures/figure4_precedence_discrimination.svg
           grep -q 'Cross-study synthesis: not_identifiable / STOP' nee_flagship_packet/figures/figure5_natural_measurement_gates.svg
 
+      - name: Materialize submission article with current nearest-neighbour positioning
+        run: |
+          mkdir -p nee_flagship_packet/manuscript
+          python flagship/scripts/materialize_nee_flagship_submission_article.py \
+            --source flagship/manuscript/nee_flagship_article.md \
+            --output nee_flagship_packet/manuscript/main_text.md
+          grep -q 'Song & Levine 2025' nee_flagship_packet/manuscript/main_text.md
+          grep -q 'Ovaskainen et al. 2026' nee_flagship_packet/manuscript/main_text.md
+          python - <<'PY'
+          import re
+          from pathlib import Path
+          text = Path('nee_flagship_packet/manuscript/main_text.md').read_text()
+          methods = text.index('## Methods\n')
+          start = text.index('## Abstract\n') + len('## Abstract\n')
+          first_double = text.index('\n\n', start)
+          main = text[first_double + 2:methods]
+          n = len(re.findall(r"[A-Za-z0-9_α-ωΑ-Ω]+(?:[-–—'][A-Za-z0-9_α-ωΑ-Ω]+)*", main))
+          assert n <= 3500, n
+          print('Materialized NEE main-text words:', n)
+          PY
+
       - name: Assemble review-facing flagship packet
         run: |
           mkdir -p nee_flagship_packet/manuscript nee_flagship_packet/provenance
-          cp flagship/manuscript/nee_flagship_article.md nee_flagship_packet/manuscript/main_text.md
           cp flagship/manuscript/nee_flagship_references.md nee_flagship_packet/manuscript/references.md
           cp flagship/manuscript/nee_flagship_display_plan.md nee_flagship_packet/manuscript/display_plan.md
           cp flagship/manuscript/nee_flagship_cover_letter.md nee_flagship_packet/manuscript/cover_letter.md
@@ -122,6 +143,7 @@ jobs:
           cp egwee_source/manuscript/references.md nee_flagship_packet/provenance/egwee_references.md
           (cd nee_flagship_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_flagship_packet/MANIFEST.sha256
+          test -s nee_flagship_packet/manuscript/main_text.md
           test -s nee_flagship_packet/manuscript/cover_letter.md
           test -s nee_flagship_packet/manuscript/submission_metadata.md
 
