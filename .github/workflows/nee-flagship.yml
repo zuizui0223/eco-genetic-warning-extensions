@@ -8,6 +8,8 @@ on:
       - 'manuscript/nee_flagship_display_plan.md'
       - 'manuscript/nee_flagship_references.md'
       - 'manuscript/nee_flagship_source_manifest.json'
+      - 'manuscript/nee_flagship_cover_letter.md'
+      - 'manuscript/nee_flagship_submission_metadata.md'
       - 'manuscript/NEE_FLAGSHIP_TARGET_AUDIT_2026-09-05.md'
       - 'manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md'
       - 'scripts/check_nee_flagship_compliance.py'
@@ -63,8 +65,6 @@ jobs:
           for source in manifest['sources']:
               repo = source['repository']
               if repo == 'zuizui0223/eco-genetic-warning-extensions':
-                  # Current PR contains the flagship draft; required scientific source files
-                  # must still exist in the checkout inherited from the pinned main base.
                   base = root
                   assert source['commit'] == '2760ef027192c5c243acc20bfd85484949166b73'
               else:
@@ -83,6 +83,8 @@ jobs:
           cp flagship/manuscript/nee_flagship_article.md nee_flagship_packet/manuscript/main_text.md
           cp flagship/manuscript/nee_flagship_references.md nee_flagship_packet/manuscript/references.md
           cp flagship/manuscript/nee_flagship_display_plan.md nee_flagship_packet/manuscript/display_plan.md
+          cp flagship/manuscript/nee_flagship_cover_letter.md nee_flagship_packet/manuscript/cover_letter.md
+          cp flagship/manuscript/nee_flagship_submission_metadata.md nee_flagship_packet/manuscript/submission_metadata.md
           cp flagship/manuscript/NEE_FLAGSHIP_TARGET_AUDIT_2026-09-05.md nee_flagship_packet/provenance/target_audit.md
           cp flagship/manuscript/nee_flagship_source_manifest.json nee_flagship_packet/provenance/source_manifest.json
           cp flagship/manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md nee_flagship_packet/provenance/prospective_natural_bridge.md
@@ -90,6 +92,8 @@ jobs:
           cp egwee_source/manuscript/references.md nee_flagship_packet/provenance/egwee_references.md
           (cd nee_flagship_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_flagship_packet/MANIFEST.sha256
+          test -s nee_flagship_packet/manuscript/cover_letter.md
+          test -s nee_flagship_packet/manuscript/submission_metadata.md
 
       - name: Upload NEE flagship packet
         uses: actions/upload-artifact@v4
