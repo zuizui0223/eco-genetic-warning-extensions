@@ -44,6 +44,22 @@ Schwartz, M.K., Luikart, G. & Waples, R.S. (2007). Genetic monitoring as a promi
 
 Stange, M., Barrett, R.D.H. & Hendry, A.P. (2021). The importance of genomic variation for biodiversity, ecosystems and people. *Nature Reviews Genetics*, **22**, 89–105. doi:10.1038/s41576-020-00288-7
 
-## Natural-system source records
+## Natural-system sources
 
-The seven natural-data source studies and repositories remain cited in the authoritative `zuizui0223/egwee/manuscript/references.md`. The flagship submission bundle should pin and include that bibliography rather than duplicate all dataset-specific citations here.
+Reji Chacko, M., Moretti, M. & Frey, D. (2025). A comprehensive dataset on pollinator diversity, visitation rates, individual-based traits, and pollination success across four plant species in an urban garden experiment. EnviDat. doi:10.16904/envidat.676
+
+Sookhan, N., MacIvor, J.S. & Onuferko, T.M. (2025). Mixed effects of urbanization on pollination services among four native plant species [Dataset]. Dryad. doi:10.5061/dryad.b8gtht7r4
+
+Rhodes, M.K., Fant, J.B. & Skogen, K.A. (2017). Pollinator identity and spatial isolation influence multiple paternity in an annual plant. *Molecular Ecology*, **26**, 4296–4308. doi:10.1111/mec.14115
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017). Pollinator data from pan traps located in habitats comprising different floral cover in Buckinghamshire, UK. NERC Environmental Information Data Centre. doi:10.5285/01906784-6742-44bf-b244-a4b63bed8d82
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017). The seed set of supplemented and pollinator exposed flowers from *Eschscholzia californica* plants located within habitats comprising different floral cover. NERC Environmental Information Data Centre. doi:10.5285/8caf2d8a-564d-4f2e-a797-174165a83796
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017). The seed set of *Eschscholzia californica* plants introduced into habitats comprising different floral cover. NERC Environmental Information Data Centre. doi:10.5285/5b400b69-b828-45e8-b04e-7ccbfdb0987f
+
+Evans, T.M., Heard, M.S., Vanbergen, A.J., Cavers, S. & Ennos, R. (2017). Paternity of *Eschscholzia californica* plants introduced to habitats comprising different floral cover. NERC Environmental Information Data Centre. doi:10.5285/7b721c07-bc38-4815-8669-4675867663d0
+
+Gómez-Martínez, C. et al. (2025). Data for: Landscape conservation and orchard management influence carob tree yield through changes in pollinator communities. Zenodo. doi:10.5281/zenodo.13939480
+
+Koski, M.H., Ison, J.L., Padilla, A., Pham, A.Q. & Galloway, L.F. (2018). Linking pollinator efficiency to patterns of pollen limitation: small bees exploit the plant–pollinator mutualism. *Proceedings of the Royal Society B*, **285**, 20180635. doi:10.1098/rspb.2018.0635
