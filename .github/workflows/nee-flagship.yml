@@ -14,6 +14,7 @@ on:
       - 'manuscript/PROSPECTIVE_CIRSIUM_NATURAL_BRIDGE_PROTOCOL.md'
       - 'scripts/check_nee_flagship_compliance.py'
       - 'scripts/build_nee_flagship_figures.py'
+      - 'scripts/finalize_nee_flagship_figures.py'
       - '.github/workflows/nee-flagship.yml'
   workflow_dispatch:
 
@@ -86,11 +87,16 @@ jobs:
             --egc-root egc_source \
             --egwee-root egwee_source \
             --output nee_flagship_packet/figures
+          python flagship/scripts/finalize_nee_flagship_figures.py \
+            --figures nee_flagship_packet/figures
           test -s nee_flagship_packet/figures/figure1_predictive_validity_stack.svg
           test -s nee_flagship_packet/figures/figure2_state_separation.svg
           test -s nee_flagship_packet/figures/figure3_hidden_state_futures.svg
           test -s nee_flagship_packet/figures/figure4_precedence_discrimination.svg
           test -s nee_flagship_packet/figures/figure5_natural_measurement_gates.svg
+          grep -q 'rotate(-90 28 390)' nee_flagship_packet/figures/figure2_state_separation.svg
+          grep -q 'anti-aligned - aligned risk (pp)' nee_flagship_packet/figures/figure3_hidden_state_futures.svg
+          grep -q 'specificity in \[0,1\] -&gt; AUC in \[0.5,1\]' nee_flagship_packet/figures/figure4_precedence_discrimination.svg
           grep -q '0.2543' nee_flagship_packet/figures/figure3_hidden_state_futures.svg
           grep -q 'AUC = 0.5' nee_flagship_packet/figures/figure4_precedence_discrimination.svg
           grep -q 'Cross-study synthesis: not_identifiable / STOP' nee_flagship_packet/figures/figure5_natural_measurement_gates.svg
