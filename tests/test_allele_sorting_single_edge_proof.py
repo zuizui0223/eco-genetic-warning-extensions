@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import math
 from pathlib import Path
+from statistics import fmean
 
 import pytest
 
@@ -61,12 +62,48 @@ def test_operator_formula_has_exact_switch_and_strict_q_monotonicity() -> None:
             assert selected_frequency_q_derivative(p, q) > 0.0
 
 
+def test_one_selection_step_strictly_increases_q_logit_p_covariance() -> None:
+    q = (0.55, 0.65, 0.75, 0.90)
+    p = (0.70, 0.45, 0.30, 0.20)
+
+    def logit(x: float) -> float:
+        return math.log(x / (1.0 - x))
+
+    def cov(x, y) -> float:
+        mx, my = fmean(x), fmean(y)
+        return fmean((a - mx) * (b - my) for a, b in zip(x, y))
+
+    before = cov(q, tuple(logit(x) for x in p))
+    after_p = tuple(selected_frequency(pi, qi) for pi, qi in zip(p, q))
+    after = cov(q, tuple(logit(x) for x in after_p))
+    increment = after - before
+
+    g = tuple(math.log(0.75 + 0.4 * qi) for qi in q)
+    exact_increment = cov(q, g)
+    assert exact_increment > 0.0
+    assert math.isclose(increment, exact_increment, rel_tol=0.0, abs_tol=1e-12)
+
+
 def test_theorem_document_is_present() -> None:
     path = Path(__file__).resolve().parents[1] / "docs" / "ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md"
     text = path.read_text(encoding="utf-8")
     assert "logit}(p^+)" in text
     assert "q=0.625" in text
-    assert "does **not** by itself prove" in text
+    assert "Cov}(q,\\operatorname{logit}p^+)" in text
+    assert "does **not** prove" in text
+
+
+def test_locked_result_is_materialized_and_resolved() -> None:
+    path = Path(__file__).resolve().parents[1] / "artifacts" / "allele_sorting_single_edge" / "locked_result.json"
+    import json
+
+    payload = json.loads(path.read_text(encoding="utf-8"))
+    assert payload["source"]["workflow_run"] == 34016797940
+    assert payload["source"]["artifact_id"] == 9984306657
+    primary = payload["primary_generation_40_DID"]
+    assert primary["n_paired_keys"] == 6000
+    assert primary["decision"] == "resolved_positive_sorting_contribution"
+    assert primary["paired_ci95"][0] > 0.0
 
 
 def test_parent_certificate_matches_pinned_equations_when_parent_installed() -> None:
