@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from math import exp, log
+from math import exp, floor, log
 from statistics import fmean
 from typing import Iterable
 
@@ -86,6 +86,39 @@ def direct_recoupling_headroom_shift(
     return 0.4 * area_ratio * density * (bundle - q)
 
 
+def continuous_static_crossing_generation(
+    support: float,
+    *,
+    density: float = 1.0,
+    theta_start: float = 0.50,
+    theta_slope_per_generation: float = 0.15 / 60.0,
+    target_q: float = 0.625,
+    kappa: float = 4.5,
+    area_ratio: float = 1.0,
+) -> float:
+    """Return g* at which frozen-state headroom equals zero under linear forcing.
+
+    This is a static benchmark: support and density are held fixed while theta_g
+    increases linearly. It is not a dynamic trajectory prediction.
+    """
+    if theta_slope_per_generation <= 0.0:
+        raise ValueError("theta_slope_per_generation must be positive")
+    return (
+        area_ratio * density * support
+        - theta_start
+        - target_offset(target_q, kappa)
+    ) / theta_slope_per_generation
+
+
+def first_static_unsafe_generation(
+    support: float,
+    **kwargs: float,
+) -> int:
+    """First positive integer generation with negative frozen-state headroom."""
+    crossing = continuous_static_crossing_generation(support, **kwargs)
+    return max(1, floor(crossing) + 1)
+
+
 def _population_variance(values: Iterable[float]) -> float:
     vals = tuple(float(x) for x in values)
     mean = fmean(vals)
@@ -108,6 +141,8 @@ def initial_matched_marginal_certificate() -> dict[str, object]:
     for label, bundle in (("AA", ascending), ("RR", reversed_bundle)):
         support = tuple(support_signal(x, b, b) for x, b in zip(q, bundle))
         headroom = tuple(x - threshold for x in support)
+        crossing = tuple(continuous_static_crossing_generation(x) for x in support)
+        first_unsafe = tuple(first_static_unsafe_generation(x) for x in support)
         out["conditions"][label] = {
             "support": support,
             "support_mean": fmean(support),
@@ -118,5 +153,7 @@ def initial_matched_marginal_certificate() -> dict[str, object]:
             "positive_headroom_patch_count": sum(x >= 0.0 for x in headroom),
             "maximum_headroom": max(headroom),
             "minimum_headroom": min(headroom),
+            "frozen_state_continuous_crossing_generation": crossing,
+            "frozen_state_first_unsafe_generation": first_unsafe,
         }
     return out
