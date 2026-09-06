@@ -4,7 +4,7 @@ import json
 import math
 from pathlib import Path
 from statistics import fmean
-from typing import Any, Iterable
+from typing import Any
 
 from eco_genetic_warning_extensions.pathway_edge_decomposition import (
     _loss_indicator,
@@ -34,7 +34,6 @@ def operator_certificate(protocol: dict[str, Any]) -> dict[str, Any]:
     from causal_model.multipatch_criticality_dynamics import DynamicsParameters, trait_fitness
 
     params = DynamicsParameters(patch_areas=(1.0,))
-    # W(1;q) = fitness_intercept + fitness_slope*q for the pinned endpoint trait.
     fitness_intercept = params.low_base - params.low_cost + params.high_base
     fitness_slope = params.high_interaction_benefit
     multiplier_intercept = 1.0 + params.selection_strength * (fitness_intercept - params.viability_threshold)
@@ -43,7 +42,6 @@ def operator_certificate(protocol: dict[str, Any]) -> dict[str, Any]:
         raise RuntimeError("pinned allele-selection multiplier is not increasing in q")
     q_switch = (1.0 - multiplier_intercept) / multiplier_slope
 
-    # Verify against the actual parent fitness function at the endpoints.
     for q in (0.0, 0.25, 0.625, 1.0):
         actual = 1.0 + params.selection_strength * (trait_fitness(1.0, q, params) - params.viability_threshold)
         expected = multiplier_intercept + multiplier_slope * q
@@ -77,10 +75,9 @@ def selected_frequency_q_derivative(p: float, q: float) -> float:
     return 0.4 * p * (1.0 - p) / (1.0 + p * (w - 1.0)) ** 2
 
 
-def _seed(master_seed: int, replicate: int) -> int:
-    # One common random-number seed for all four trajectories attached to a key:
-    # baseline/deletion x AA/RR. No condition-specific offset is used.
-    return (master_seed * 1_000_003 + replicate * 101 + 43) % (2**31 - 1)
+def _proof_seed(master_seed: int, replicate: int) -> int:
+    # This exactly matches the audited pathway helper at intervention_index=0.
+    return (master_seed * 1_000_003 + replicate * 101 + 29) % (2**31 - 1)
 
 
 def _simulate_one_focused(
@@ -91,9 +88,8 @@ def _simulate_one_focused(
     master_seed: int,
     replicate: int,
 ) -> dict[str, Any]:
-    # Reuse the already-audited q-only life-cycle implementation, but force the
-    # same intervention index so all proof conditions share the same trajectory
-    # seed within a paired key.
+    # Force intervention_index=0 for both proof conditions. Thus baseline/deletion
+    # and AA/RR all use one common stochastic stream for each paired key.
     record = _simulate_one(
         protocol,
         proof_condition,
@@ -103,11 +99,9 @@ def _simulate_one_focused(
         replicate,
         intervention_index=0,
     )
-    expected_seed = _seed(master_seed, replicate)
-    # The pathway helper uses the same affine seed rule with constant 29. We
-    # overwrite the seed contract here only after verifying determinism below.
-    # A dedicated seed field is retained for proof pairing; stochastic draws are
-    # common across proof conditions because intervention_index is fixed.
+    expected_seed = _proof_seed(master_seed, replicate)
+    if int(record["trajectory_seed"]) != expected_seed:
+        raise RuntimeError("focused proof RNG seed drifted from common-random-number contract")
     record["proof_key_seed"] = expected_seed
     return record
 
@@ -183,12 +177,7 @@ def _did_summary(records: list[dict[str, Any]], horizon: int) -> dict[str, Any]:
     }
 
 
-def _metric_difference(
-    records: list[dict[str, Any]],
-    proof_condition: str,
-    horizon: int,
-    metric: str,
-) -> dict[str, Any]:
+def _metric_difference(records: list[dict[str, Any]], proof_condition: str, horizon: int, metric: str) -> dict[str, Any]:
     by = {
         (r["condition"], int(r["master_seed"]), int(r["replicate"])): r
         for r in records
@@ -205,7 +194,6 @@ def _metric_difference(
 
 
 def summarise(protocol: dict[str, Any], records: list[dict[str, Any]]) -> dict[str, Any]:
-    horizons = (20, 40)
     proof_conditions = tuple(protocol["conditions"])
     metrics = (
         "mean_allele_frequency",
@@ -216,10 +204,10 @@ def summarise(protocol: dict[str, Any], records: list[dict[str, Any]]) -> dict[s
         "max_q",
     )
     risks = {
-        condition: {str(h): _risk_summary(records, condition, h) for h in horizons}
+        condition: {str(h): _risk_summary(records, condition, h) for h in (20, 40)}
         for condition in proof_conditions
     }
-    did = {str(h): _did_summary(records, h) for h in horizons}
+    did = {str(h): _did_summary(records, h) for h in (20, 40)}
     mediators = {
         condition: {
             str(h): {metric: _metric_difference(records, condition, h, metric) for metric in metrics}
