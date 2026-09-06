@@ -92,7 +92,7 @@ Cross-layer covariance was `+0.025` in the aligned state and `-0.025` in the ant
 
 The exact one-generation certificate was evaluated before a long-horizon outcome was inspected. A single preregistered 60-generation deterioration schedule then compared 500 paired aligned and anti-aligned trajectories. No warning endpoints, replacement seeds, alternative alignment permutations, or altered schedules were opened after the result.
 
-For the paired generation-60 loss contrast, the estimand is anti-aligned minus aligned risk. With 114 aligned-no-loss/anti-loss pairs, 92 aligned-loss/anti-no-loss pairs, and 500 total pairs, the observed paired difference is `(114-92)/500 = 0.044`. A paired large-sample 95% interval uses the variance of `D in {-1,0,1}`, giving approximately `[-0.012, 0.100]`. This interval is descriptive for the locked campaign and is not a post-result acceptance rule.
+For the paired generation-60 loss contrast, the estimand is anti-aligned minus aligned risk. With 114 aligned-no-loss/anti-loss pairs, 92 aligned-loss/anti-no-loss pairs, and 500 total pairs, the observed paired difference is `(114-92)/500 = 0.044`. A paired large-sample 95% interval uses the variance of `D in {-1,0,1}`, giving approximately `[-0.012, 0.100]`. Relative to the aligned baseline risk of `0.678`, the upper confidence limit corresponds to about a **14.8% relative increase**. This interval is descriptive for the locked campaign and is not a post-result acceptance rule. **Non-significant tests do not establish equivalence.**
 
 ### Horizon-specific propagation experiment
 
@@ -136,7 +136,7 @@ The aligned and anti-aligned states therefore agree in habitat area, census, int
 
 Proposition 1 therefore applies directly: no map defined only on the declared coarse summaries can reproduce the exact next interaction field for both states. The failure is not statistical uncertainty, a small-sample result, or a long-horizon simulation pattern. It is an exact identification failure of the coarse representation under the stated transition map.
 
-The original fixed 500-pair generation-60 campaign then provided a finite downstream comparison. Realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`), an observed difference of **+4.4 percentage points**. The paired large-sample 95% interval was approximately **-1.2 to +10.0 percentage points** and exact McNemar `p=.143`. This campaign therefore did not establish a signed generation-60 effect, but neither did it establish equivalence.
+The original fixed 500-pair generation-60 campaign then provided a finite downstream comparison. Realised functional loss occurred in 339 aligned trajectories (`0.678`) and 361 anti-aligned trajectories (`0.722`), an observed difference of **+4.4 percentage points**. The paired large-sample **95% CI of approximately -1.2 to +10.0 percentage points** and exact McNemar `p=.143` did not establish a signed generation-60 effect. Relative to the aligned baseline, the upper confidence limit corresponds to the same **14.8% relative increase** ceiling noted above. **Non-significant tests do not establish equivalence.**
 
 ### The hidden state distinction propagated to a later functional endpoint
 
@@ -144,9 +144,9 @@ In the separately locked 1,500-pair propagation experiment, neither state had re
 
 The nested prefixes separate magnitude from precision. At generation 20, estimated differences were +5.4 points at 500 pairs, +5.9 at 1,000, and +5.33 at 1,500; intervals narrowed with increasing pair count. At generation 40, the corresponding estimates were +4.4, +6.4 and +5.2 points. The principal effect of replication was therefore improved precision rather than a qualitative reversal of the estimated later-horizon contrast.
 
-Under this one declared deterioration path, the exact state distinction is immediate at the transition level, nearly absent in the coarse functional-loss endpoint at generations 5–10, and visible at about five percentage points by generations 20–40. The result demonstrates propagation across scales of description; it does not establish generation 20 as a universal biological threshold.
+Under this one declared deterioration path, the exact state distinction is immediate at the transition level, nearly absent in the coarse functional-loss endpoint at generations 5–10, and visible at about five percentage points by generations 20–40. The result demonstrates propagation across scales of description; it **does not establish generation 20 as a true cutoff**, a universal biological threshold, or a natural-system timescale.
 
-### A scalar connectivity label did not identify distinct movement operators
+### A scalar connectivity label did not transport across seeds or mechanisms
 
 The historical allele-frequency-mixing screen showed one `m=.10` between-block pattern (`p=.0205`) in its original seed family. The single preregistered fresh Phase-U ensemble did not reproduce it (`p=.745`; paired McNemar `p=.694`).
 
@@ -164,7 +164,7 @@ This interpretation is narrower than saying that “interactions matter” or th
 
 ### Functional vulnerability can be hidden by persistence and marginal summaries
 
-The parent fragmentation programme showed that potential viability, realised occupancy, interaction support, effective size and realised trait mass can separate under the same structural change. The present state counterexample adds a different form of hidden vulnerability: even after the component marginals are matched, their spatial coordination can encode different futures.
+The parent fragmentation programme showed that potential viability, realised occupancy, interaction support, effective size and realised high-trait mass can separate under the same structural change. The present state counterexample adds a different form of hidden vulnerability: even after the component marginals are matched, their spatial coordination can encode different futures.
 
 Natural systems illustrate why this distinction is ecologically plausible without validating the model. In *Crepis sancta*, local resource loss is associated with reduced pollinator activity and reproduction despite nonzero wider movement, illustrating an uncompensated route from local support to function (Cheptou & Avendaño 2006; Dornier & Cheptou 2013). On Miyake-jima, reduced floral resources after volcanic disturbance were accompanied by broader *Zosterops* movement, increased pollen immigration and maintained pollination, illustrating movement-mediated compensation rather than monotone decline (Abe & Hasegawa 2008; Abe et al. 2013). These systems differ not simply in how much habitat or biodiversity remains, but in how movement and interaction reorganize functional support.
 
@@ -186,13 +186,15 @@ For the present manuscript, the implication is conceptual. `Urban`, `island`, `f
 
 The portability tests reinforce the same principle in a different form. A number such as `0.10` does not have an operator-free ecological meaning. Allele-frequency mixing, whole-individual movement, paternal pollen flow and partner movement change different parts of the state and can therefore generate different transition distributions. Any common lower-dimensional “connectivity” coordinate requires an identification argument showing that it preserves the distinctions relevant to the target.
 
-### Relation to warning validity
+### Relation to warning validity and natural-data work
 
-The separate full-denominator warning audit addresses another inferential target. Nothing in the constructive state pair shows that the frozen diversity thresholds failed because cross-layer alignment was omitted, and no warning rule was rerun using alignment. The safe connection is therefore conceptual: a marginal component can change consistently without uniquely identifying the future functional trajectory if the target also depends on omitted joint organization. This manuscript does not claim that the state representation developed here repairs or validates the warning rules.
+The separate full-denominator warning audit addresses another inferential target. Nothing in the constructive state pair shows that the frozen diversity thresholds failed because cross-layer alignment was omitted, and no warning rule was rerun using alignment. The safe connection is therefore conceptual: a marginal component can change consistently without uniquely identifying the future functional trajectory if the target also depends on omitted joint organization. This manuscript **makes no claim that the frozen relative-diversity thresholds are validated predictive warnings**.
+
+Natural-data measurement-gate development also remains outside this submission lane. Its historical local router is `natural_data_four_gate_program.md`, with the authoritative reader-facing programme maintained separately. Natural examples discussed here therefore remain background and ecological interpretation, not a fourth evidence block in the state manuscript.
 
 ### Claim boundary
 
-The exact proposition is conditional on the declared transition map and the constructed admissible states. The propagation result is finite and specific to one locked deterioration path. The original 500-pair generation-60 comparison remains imprecise; the later 1,500-pair experiment is a separate prospectively locked extension. Generation 20 is not a universal cutoff. Failure of one historical connectivity pattern to reproduce or transport does not establish that connectivity is irrelevant. The natural systems discussed above are ecological interpretations and hypothesis-generating analogues, not external validation of the finite closure.
+The exact proposition is conditional on the declared transition map and the constructed admissible states. The propagation result is finite and specific to one locked deterioration path. The original 500-pair generation-60 comparison remains imprecise; the later 1,500-pair experiment is a separate prospectively locked extension. The propagation experiment **does not establish generation 20 as a true cutoff**. Failure of one historical connectivity pattern to reproduce or transport does not establish that connectivity is irrelevant. The natural systems discussed above are ecological interpretations and hypothesis-generating analogues, not external validation of the finite closure.
 
 ## Conclusion
 
