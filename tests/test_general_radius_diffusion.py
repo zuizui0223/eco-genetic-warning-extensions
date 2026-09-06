@@ -1,8 +1,10 @@
 from eco_genetic_warning_extensions.general_radius_diffusion import (
+    boundary_influence_fraction,
     continuum_coefficients,
     diffusion_coefficient_general_radius,
     finite_operator_generator_residual,
     translation_invariant_interior,
+    translation_invariant_interior_count,
 )
 from eco_genetic_warning_extensions.small_jump_trait_bins import (
     diffusion_coefficient_from_small_jump,
@@ -28,8 +30,6 @@ def test_general_radius_interior_stencil_is_exact_for_j1_j2_j3_when_destination_
 
 
 def test_source_boundary_renormalization_extends_boundary_influence_to_2j_bins():
-    # For J=3, index 4 is directly >J from the left boundary but some source
-    # bins feeding index 4 still have truncated mutation neighbourhoods.
     assert not translation_invariant_interior(4, 15, 3)
     try:
         finite_operator_generator_residual(
@@ -43,6 +43,13 @@ def test_source_boundary_renormalization_extends_boundary_influence_to_2j_bins()
         assert "2*radius_bins" in str(exc)
     else:
         raise AssertionError("boundary-influenced destination should not use invariant stencil")
+
+
+def test_translation_invariant_interior_count_is_n_minus_4j():
+    assert translation_invariant_interior_count(15, 3) == 3
+    assert translation_invariant_interior_count(13, 3) == 1
+    assert translation_invariant_interior_count(12, 3) == 0
+    assert abs(boundary_influence_fraction(20, 3) - 0.6) < 1e-12
 
 
 def test_j1_general_formula_recovers_existing_small_jump_diffusion_coefficient():
