@@ -2,11 +2,17 @@ from __future__ import annotations
 
 import math
 
+import pytest
+
 from eco_genetic_warning_extensions.pathway_edge_decomposition import (
     _parameters,
     barrier_schedule,
     load_protocol,
 )
+
+
+def _require_parent() -> None:
+    pytest.importorskip("causal_model.multipatch_criticality_dynamics")
 
 
 def test_protocol_is_locked_and_finite() -> None:
@@ -20,6 +26,7 @@ def test_protocol_is_locked_and_finite() -> None:
 
 
 def test_all_interventions_keep_direct_tg_to_q_deleted() -> None:
+    _require_parent()
     p = load_protocol()
     for name, intervention in p["interventions"].items():
         params = _parameters(p, intervention, "AA", seed=1, generations=40)
@@ -30,6 +37,7 @@ def test_all_interventions_keep_direct_tg_to_q_deleted() -> None:
 
 
 def test_declared_edge_deletions_map_to_expected_parameters() -> None:
+    _require_parent()
     p = load_protocol()
     base = _parameters(p, p["interventions"]["baseline_indirect"], "AA", seed=1, generations=40)
     no_g = _parameters(p, p["interventions"]["delete_allele_recruitment"], "AA", seed=1, generations=40)
@@ -54,6 +62,7 @@ def test_barrier_schedule_is_original_reference_path() -> None:
 
 
 def test_baseline_q_only_generation1_is_assignment_invariant() -> None:
+    _require_parent()
     from causal_model.multipatch_criticality_dynamics import sigmoid
 
     p = load_protocol()
