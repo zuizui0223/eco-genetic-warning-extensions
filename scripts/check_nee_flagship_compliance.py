@@ -61,6 +61,10 @@ def main() -> None:
     ref_entries = [p for p in refs.split("\n\n") if p.strip() and not p.lstrip().startswith("#")]
     assert len(ref_entries) <= 50, len(ref_entries)
 
+    # Require only claims that remain load-bearing in the final main-text spine.
+    # The older joint-local-selection +7.27-pp intermediate result remains in
+    # provenance/Extended Data but has been superseded in main text by the
+    # focused single-edge causal proof.
     required = (
         "K > 4",
         "1,037/1,037",
@@ -75,8 +79,6 @@ def main() -> None:
         "+4.40 points",
         "+13.20 points",
         "+12.73 points",
-        "+7.27",
-        "selection-mediated spatial sorting",
         "recruitment-mediated buffering",
         "failure gate and amplifier",
         "q*=0.625",
@@ -131,7 +133,7 @@ def main() -> None:
         assert forbidden not in lower, forbidden
     assert "does not establish q-dependent allele sorting as a universal natural mechanism" in lower
     assert "does not assert a universal natural recruitment or recoupling law" in lower
-    assert "derived paired contrasts, not separately preregistered primary estimands" in lower
+    assert "not a separately predeclared primary estimand" in lower
 
     assert manifest["schema_version"] == 6
     assert len(manifest["load_bearing_sources"]) == 5
@@ -153,6 +155,8 @@ def main() -> None:
     assert recruitment["decision"] == "resolved_countervailing_buffer"
     assert recruitment["generation_20"]["baseline_minus_deletion_DID"] < 0
     assert recruitment["generation_40"]["baseline_minus_deletion_DID"] < 0
+    # Preserve the earlier joint-block result in provenance even though the
+    # focused single-edge proof supersedes it in the main manuscript.
     joint = edge["edge_deletions"]["joint_local_allele_and_trait_selection"]
     assert joint["generation_40"]["DID_ci95"][0] > 0
 
