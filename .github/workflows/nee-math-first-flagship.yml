@@ -110,7 +110,7 @@ jobs:
           grep -q 'sorting' nee_packet/figures/figure1_mathematical_boundaries.svg
           grep -q '1,037/1,037' nee_packet/figures/figure2_state_separation.svg
           grep -q '0.2543' nee_packet/figures/figure3_relational_state.svg
-          grep -q '13.20' nee_packet/figures/figure3_relational_state.svg
+          grep -q 'DID -9.00 / -8.33 pp' nee_packet/figures/figure3_relational_state.svg
           grep -q '7.27' nee_packet/figures/figure3_relational_state.svg
           grep -q 'no losses by g20' nee_packet/figures/figure3_relational_state.svg
           grep -q 'AUC=0.5' nee_packet/figures/figure4_warning_discrimination.svg
