@@ -2,23 +2,47 @@ from eco_genetic_warning_extensions.general_radius_diffusion import (
     continuum_coefficients,
     diffusion_coefficient_general_radius,
     finite_operator_generator_residual,
+    translation_invariant_interior,
 )
 from eco_genetic_warning_extensions.small_jump_trait_bins import (
     diffusion_coefficient_from_small_jump,
 )
 
 
-def test_general_radius_interior_stencil_is_exact_for_j1_j2_j3():
-    f = (0.03, 0.06, 0.10, 0.16, 0.20, 0.18, 0.13, 0.08, 0.04, 0.02)
+def test_general_radius_interior_stencil_is_exact_for_j1_j2_j3_when_destination_is_2j_deep():
+    f = (
+        0.01, 0.02, 0.03, 0.05, 0.08,
+        0.11, 0.14, 0.16, 0.14, 0.10,
+        0.07, 0.04, 0.025, 0.015, 0.005,
+    )
     for radius in (1, 2, 3):
+        assert translation_invariant_interior(7, len(f), radius)
         residual = finite_operator_generator_residual(
             f,
-            index=4,
+            index=7,
             mutation_rate=0.2,
             radius_bins=radius,
             time_step=0.5,
         )
         assert abs(residual) < 1e-12
+
+
+def test_source_boundary_renormalization_extends_boundary_influence_to_2j_bins():
+    # For J=3, index 4 is directly >J from the left boundary but some source
+    # bins feeding index 4 still have truncated mutation neighbourhoods.
+    assert not translation_invariant_interior(4, 15, 3)
+    try:
+        finite_operator_generator_residual(
+            tuple(range(1, 16)),
+            index=4,
+            mutation_rate=0.2,
+            radius_bins=3,
+            time_step=0.5,
+        )
+    except ValueError as exc:
+        assert "2*radius_bins" in str(exc)
+    else:
+        raise AssertionError("boundary-influenced destination should not use invariant stencil")
 
 
 def test_j1_general_formula_recovers_existing_small_jump_diffusion_coefficient():
@@ -51,7 +75,6 @@ def test_diffusion_coefficient_matches_jump_second_moment_for_radius_three():
 
 
 def test_fixed_diffusion_scaling_makes_fourth_order_term_shrink_as_h_squared():
-    # dt proportional to h^2 keeps D fixed for fixed mu and J.
     coarse = continuum_coefficients(
         mutation_rate=0.2,
         radius_bins=2,
