@@ -10,6 +10,7 @@ ARTICLE = ROOT / "manuscript/nee_flagship_article.md"
 DISPLAY = ROOT / "manuscript/nee_flagship_display_plan.md"
 REFERENCES = ROOT / "manuscript/nee_flagship_references.md"
 MANIFEST = ROOT / "manuscript/nee_flagship_source_manifest.json"
+MECHANISM = ROOT / "artifacts/relational_mechanism_decomposition/locked_result.json"
 
 
 def words(text: str) -> list[str]:
@@ -28,8 +29,9 @@ def main() -> None:
     display = DISPLAY.read_text(encoding="utf-8")
     refs = REFERENCES.read_text(encoding="utf-8")
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
+    mechanism = json.loads(MECHANISM.read_text(encoding="utf-8"))
 
-    title = "Relational eco-genetic state governs functional vulnerability under fragmentation"
+    title = "Competing eco-genetic pathways govern functional vulnerability under fragmentation"
     assert article.startswith(f"# {title}\n")
     for heading in ("## Abstract", "## Results", "## Discussion", "## Methods"):
         assert heading in article, heading
@@ -62,14 +64,19 @@ def main() -> None:
         "1,037/1,037",
         "T_I=g\\circ\\phi",
         "0.2543",
+        "49-fold difference",
         "+5.33",
         "+5.20",
+        "6.23 points",
+        "4.70 points",
+        "+7.13 percentage points",
+        "+6.93 points",
         "35 observed losses",
         "48 inherited non-event",
-        "33 observed losses",
-        "49 fresh non-event",
-        "specificity 0",
-        "binary-marker AUC 0.5",
+        "33 losses",
+        "49 fresh non-events",
+        "specificity `0`",
+        "binary-marker AUC `0.5`",
     )
     for token in required:
         assert token in article, token
@@ -101,24 +108,34 @@ def main() -> None:
         "alignment caused warning failure",
         "fragmentation caused the anti-aligned",
         "generation 20 is a universal",
+        "positive alignment is universally protective",
+        "support variance is a universal risk score",
     ):
         assert forbidden not in lower, forbidden
 
-    assert manifest["schema_version"] == 2
-    assert len(manifest["load_bearing_sources"]) == 2
+    assert manifest["schema_version"] == 3
+    assert len(manifest["load_bearing_sources"]) == 3
     assert len(manifest["projection_sources"]) == 1
-    assert len(manifest["claim_firewalls"]) >= 8
+    assert len(manifest["claim_firewalls"]) >= 10
+
+    assert mechanism["status"] == "locked_from_successful_prospective_workflow_artifact"
+    assert mechanism["source"]["workflow_run"] == 34012983845
+    assert mechanism["source"]["artifact_id"] == 9983093178
+    assert abs(mechanism["analytic_headline"]["AA_RR_support_variance_ratio"] - 49.0) < 1e-12
+    assert mechanism["full_feedback_AA_vs_RR"]["generation_20"]["paired_ci95"][0] < 0 < mechanism["full_feedback_AA_vs_RR"]["generation_20"]["paired_ci95"][1]
+    assert mechanism["full_feedback_factorial"]["generation_20"]["mismatched_minus_matched_risk"] > 0
+    assert mechanism["q_only_intervention"]["generation_20"]["RR_minus_AA_risk_difference"] > 0
 
     print(f"NEE abstract words: {abstract_n}")
     print(f"NEE main-text words: {main_n}")
     print(f"Main displays: {len(figures)}")
     print(f"References: {len(ref_entries)}")
-    print("Math-first NEE flagship compliance: PASS")
+    print("Mechanistic NEE flagship compliance: PASS")
 
 
 if __name__ == "__main__":
     try:
         main()
     except AssertionError as exc:
-        print(f"Math-first NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
+        print(f"Mechanistic NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
         raise

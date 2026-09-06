@@ -1,59 +1,79 @@
-# NEE flagship display plan — math-first synthesis
+# NEE flagship display plan — competing relational pathways
 
 ## Principle
 
-The main figures must carry the mathematical and finite-model argument. Natural examples are not main evidence blocks and do not receive a main-data figure.
+The main figures carry the mathematical and finite-model mechanism. Natural examples remain Background/Discussion projections and receive no main-data panel.
 
-## Figure 1 — Three mathematical boundaries on ecological state and prediction
+## Figure 1 — Three mechanistic boundaries on functional vulnerability
 
-One conceptual figure defines the paper before any dataset is shown.
+One conceptual figure defines the paper before individual experiments.
 
-- Boundary A: fragmentation can separate biological states that are often conflated.
-- Boundary B: a coarse representation `phi` is transition-sufficient only if `T_I = g o phi`; the constructive pair shows failure of this factorization.
-- Boundary C: perfect event-conditioned precedence fixes sensitivity but leaves specificity free; `AUC = (1 + specificity)/2` for the binary horizon marker.
+- Boundary A: fragmentation separates biological states that are often conflated.
+- Boundary B: matched marginal states can differ because relational covariance changes local support and multiple downstream pathways can oppose one another.
+- Boundary C: perfect event-conditioned precedence fixes sensitivity but leaves specificity free.
 
-Footer: these are distinct mathematical statements, not a demonstrated causal chain among the three empirical results.
+The central synthesis box is now:
+
+`matching-dependent recruitment <-> feedback-mediated compensation -> functional fate`
+
+Footer: the three evidence blocks are not assumed to form one universal causal chain; the pathway competition is established within the declared finite closure.
 
 ## Figure 2 — Fragmentation separates functional support from persistence
 
 Source: pinned EGC fragmentation gradient.
 
-Panel A: potential high-trait viability versus realised occupancy.
-- one patch: viability 1,037/1,037;
-- every tested subdivision: viability 0/1,037;
-- realised occupancy at generation 30 approximately 99.6–100%.
+Panel A:
+- one patch potential high-trait viability: 1,037/1,037;
+- every tested subdivision: 0/1,037;
+- realised high-trait occupancy remains approximately 99.6–100% at generation 30.
 
 Panel B: retained interaction, local effective size and realised high-trait mass across 1,2,3,4,6,8,12,16 patches.
 
-Take-home: the same structural fragmentation does not define one biological deterioration coordinate.
+Take-home: one structural disturbance does not define one biological deterioration coordinate.
 
-## Figure 3 — Identical marginals, different transition and later risk
+## Figure 3 — Relational covariance opens competing pathways
 
-Source: pinned EGWE state-validity evidence.
+### Panel A — exact immediate mechanism
 
-Panel A: aligned versus anti-aligned state construction with identical declared marginals.
+Original matched-marginal construction:
+- mean support identical: 0.68 versus 0.68;
+- support variance: 0.0245 versus 0.0005, **49 x** difference;
+- maximum exact next-interaction difference: **0.2543**.
 
-Panel B: exact next interaction transition; maximum patchwise difference 0.2543.
+Display the variance identity linking fixed marginals to cross-layer covariance.
 
-Panel C: primary 1,500-pair horizon curve:
-- g5 0.0 pp;
-- g10 +0.33 pp [-0.44,+1.11];
-- g20 +5.33 pp [+2.04,+8.62];
-- g40 +5.20 pp [+1.96,+8.44].
+### Panel B — prospectively locked full-feedback factorial
 
-Take-home: relational organization can be transition-relevant even when standard ecological and genetic summaries agree.
+Loss risk by trait/allele assignment:
 
-## Figure 4 — A perfectly early marker can fail to distinguish fate
+| horizon | AA | AR | RA | RR |
+|---|---:|---:|---:|---:|
+| g20 | .373 | .452 | .411 | .365 |
+| g40 | .672 | .741 | .703 | .678 |
+
+Highlight the predeclared interaction / coherence contrast:
+- trait-allele mismatched minus matched: **+6.23 pp** at g20, 95% CI `[+4.32,+8.15]`;
+- **+4.70 pp** at g40, `[+2.90,+6.50]`.
+
+Do not frame AA versus RR as a reproduced directional effect; new full-feedback AA-RR differences are -0.8 pp and +0.6 pp at g20/g40 with intervals spanning zero.
+
+### Panel C — q-only intervention
+
+Removing direct trait/allele input to q:
+- g1 q field identical between AA and RR;
+- RR-AA loss risk **+7.13 pp** at g20 `[+3.91,+10.36]`;
+- **+6.93 pp** at g40 `[+3.79,+10.08]`;
+- aligned states retain greater upper-tail high-trait mass and more realised refugia later.
+
+Take-home: direct eco-genetic feedback to q is not necessary; indirect recruitment/selection transmits mismatch, while full feedback can compensate it.
+
+## Figure 4 — A perfectly early marginal marker can fail to distinguish fate
 
 Source: frozen warning-validity audit.
 
-Panel A: inherited full denominator.
-- event leads 35/35;
-- non-event firing 48/48.
+Panel A: inherited full denominator, event leads 35/35 and non-event firing 48/48.
 
-Panel B: fresh full denominator.
-- event leads 33/33;
-- non-event firing 49/49.
+Panel B: fresh full denominator, event leads 33/33 and non-event firing 49/49.
 
 Panel C: exact denominator identity:
 - perfect precedence -> sensitivity = 1;
@@ -61,17 +81,17 @@ Panel C: exact denominator identity:
 - binary `AUC = (1 + specificity)/2`;
 - observed specificity = 0 -> AUC = 0.5.
 
-Take-home: temporal erosion can be stress-sensitive without being fate-discriminating.
+Take-home: marginal erosion can be stress-sensitive without discriminating among pathway-dependent fates.
 
 ## Extended Data / Supplementary information
 
 1. Exact canonical interaction-map turning points and barrier interval.
 2. Full fragmentation-gradient paired summaries.
-3. Complete aligned/anti-aligned matched-summary certificate.
-4. 500/1000/1500 propagation precision grid.
-5. Operator-specific connectivity portability results.
-6. All six warning endpoints and full denominator metrics.
-7. Exact precedence-discrimination proof.
-8. Evidence-role map distinguishing load-bearing tests from ecological projection.
-9. Literature-based ecological projection table: uncompensated loss, movement compensation, cohort lag, coordinated deterioration.
-10. Natural measurement stress-test summary from EGWEE, labelled non-validating empirical projection.
+3. Complete matched-marginal transition certificate.
+4. Original 500/1000/1500 propagation precision grid and its non-universal-direction claim boundary.
+5. Full six-condition relational mechanism decomposition and trajectory metrics.
+6. Operator-specific connectivity portability results.
+7. All six warning endpoints and full-denominator metrics.
+8. Exact precedence-discrimination proof.
+9. Evidence-role map distinguishing load-bearing tests from ecological projection.
+10. Literature-based ecological projection table: uncompensated loss, movement compensation, cohort lag and coordinated deterioration.

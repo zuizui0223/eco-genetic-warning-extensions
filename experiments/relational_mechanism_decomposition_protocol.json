@@ -1,0 +1,102 @@
+{
+  "experiment_id": "relational_mechanism_decomposition_v1",
+  "status": "prospective_locked_before_run",
+  "scientific_question": "Why do matched eco-genetic marginals with different cross-layer alignment produce different transitions and later functional-loss risks under the declared fragmentation dynamics?",
+  "mechanistic_hypothesis": {
+    "causal_chain": [
+      "cross_layer_covariance",
+      "local_support_variance",
+      "nonlinear_interaction_transition",
+      "high_support_functional_refugia",
+      "last_refuge_loss"
+    ],
+    "analytic_identity": "For S_j = alpha*q_j + beta*T_j + gamma*G_j, fixed layer-wise marginals fix mean(S) but not var(S); var(S) changes through covariance terms. In the locked aligned/anti construction T_j=G_j=B_j, so var(S)=alpha^2 var(q)+(beta+gamma)^2 var(B)+2 alpha (beta+gamma) cov(q,B).",
+    "directional_prediction": "Positive alignment should increase spatial support variance and preserve a stronger upper-tail refuge under a rising barrier, whereas negative alignment should homogenize support and make all-patch realised high-trait loss more synchronous once the barrier approaches the common support range.",
+    "claim_boundary": "The experiment tests this mechanism only for the declared finite closure and forcing path. It does not establish spatial heterogeneity as universally protective or cross-layer alignment as a universal risk score."
+  },
+  "locked_parent_state": {
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "bundle_values": [0.20, 0.40, 0.60, 0.80],
+    "trait_grid_size": 31,
+    "interaction_feedback": 4.5,
+    "interaction_barrier_start": 0.50,
+    "interaction_barrier_generation60": 0.65,
+    "q_feedback_alpha": 0.6,
+    "q_feedback_beta_trait": 0.3,
+    "q_feedback_gamma_allele": 0.1,
+    "genotype_trait_recruitment": "two_kernel_recruitment",
+    "inheritance_weight": 0.5,
+    "migration_rate": 0.0,
+    "high_trait_viability_q_threshold_at_z1": 0.625
+  },
+  "conditions": {
+    "AA_full": {
+      "trait_assignment": "ascending",
+      "allele_assignment": "ascending",
+      "q_feedback": [0.6, 0.3, 0.1]
+    },
+    "AR_full": {
+      "trait_assignment": "ascending",
+      "allele_assignment": "descending",
+      "q_feedback": [0.6, 0.3, 0.1]
+    },
+    "RA_full": {
+      "trait_assignment": "descending",
+      "allele_assignment": "ascending",
+      "q_feedback": [0.6, 0.3, 0.1]
+    },
+    "RR_full": {
+      "trait_assignment": "descending",
+      "allele_assignment": "descending",
+      "q_feedback": [0.6, 0.3, 0.1]
+    },
+    "AA_q_only": {
+      "trait_assignment": "ascending",
+      "allele_assignment": "ascending",
+      "q_feedback": [1.0, 0.0, 0.0]
+    },
+    "RR_q_only": {
+      "trait_assignment": "descending",
+      "allele_assignment": "descending",
+      "q_feedback": [1.0, 0.0, 0.0]
+    }
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_schedule": "0.50 + 0.15*t/60 for t=1..40",
+    "report_horizons": [1, 5, 10, 20, 40]
+  },
+  "replication": {
+    "master_seeds": [202801, 202802, 202803, 202804, 202805],
+    "replicates_per_seed": 300,
+    "total_trajectories_per_condition": 1500,
+    "paired_seed_mapping": "same trajectory seed for all six conditions within each master-seed/replicate block"
+  },
+  "primary_mechanism_estimands": [
+    "baseline support mean and population variance by condition",
+    "generation-specific support variance across patches",
+    "generation-specific maximum support and maximum interaction q",
+    "number of patches with q >= 0.625",
+    "number of patches with realised high-trait occupancy",
+    "last-refuge loss time: first generation with zero realised high-trait occupied patches",
+    "paired functional-loss risk difference at generations 20 and 40"
+  ],
+  "primary_comparisons": [
+    "AA_full versus RR_full: total alignment mechanism",
+    "AA_full, AR_full, RA_full, RR_full: trait-alignment and allele-alignment factorial decomposition",
+    "AA_q_only versus RR_q_only: necessity of direct eco-genetic feedback into q for the alignment effect"
+  ],
+  "decision_rules": {
+    "support_variance_mechanism_supported": "AA_full and RR_full have equal baseline support mean; AA_full has larger support variance exactly as predicted by the covariance identity; the difference persists in upper-tail refuge metrics before the later loss-risk separation.",
+    "refuge_path_supported": "AA_full shows a larger or longer-lived upper-tail q/support refuge and later last-refuge loss than RR_full, in the same direction as the generation-20/40 loss-risk difference.",
+    "direct_q_feedback_necessary": "AA_q_only versus RR_q_only removes or materially attenuates the AA-RR difference in q/refuge/loss metrics relative to the full-feedback comparison.",
+    "trait_vs_allele_decomposition": "Use the four full-feedback factorial cells descriptively and with paired contrasts; do not relabel a post-result strongest cell as a new primary condition."
+  },
+  "stop_rules": [
+    "No new alignment permutations, barrier schedules, thresholds, endpoint definitions, weights, migration settings, or extra horizons may be added after outcomes are opened.",
+    "If q=0.625 is inconsistent with the declared z=1 viability equation in the pinned parent model, stop before simulation and report protocol invalid.",
+    "Do not infer universal ecological protection from support variance or refugia even if the declared model supports the mechanism."
+  ]
+}
