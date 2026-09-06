@@ -1,5 +1,5 @@
 {
-  "schema_version": 4,
+  "schema_version": 5,
   "purpose": "Pin the evidence architecture for the sorting-buffering Nature Ecology & Evolution flagship.",
   "load_bearing_sources": [
     {
@@ -54,6 +54,22 @@
         "artifacts/pathway_edge_decomposition/locked_result.json",
         "docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md"
       ]
+    },
+    {
+      "layer": "prospective_allele_sorting_single_edge_proof",
+      "source_type": "locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34016797940,
+      "job": 101441868527,
+      "artifact_id": 9984306657,
+      "artifact_digest": "sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d",
+      "prospective_protocol_commit": "2e8d46eb820f88599479321c1e66b309f8c1f16a",
+      "scientific_head": "c6bfada980871c6aaaf883fc00381a2cca6cbcd3",
+      "required_flagship_paths": [
+        "experiments/allele_sorting_single_edge_protocol.json",
+        "artifacts/allele_sorting_single_edge/locked_result.json",
+        "docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md",
+        "docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md"
+      ]
     }
   ],
   "projection_sources": [
@@ -81,7 +97,8 @@
     "The original locked +5 percentage-point propagation result is not interpreted as a universally reproducible directional alignment effect.",
     "Support variance, alignment and refugia are not treated as universal directional risk scores.",
     "Allele-linked recruitment is not claimed to generate the AA matching advantage; the locked edge-deletion experiment identifies it as a countervailing buffer in the q-only closure.",
-    "Local ecological selection is resolved only as a joint late sorting block; local q-dependent allele selection is a leading single-edge candidate but remains individually unresolved by the preregistered risk-DID rule.",
+    "Local ecological selection is resolved as a joint late sorting block, and the focused 6,000-pair experiment separately resolves local q-dependent allele selection as a single-edge causal contributor within the q-only closure.",
+    "The exact q-dependent allele-sorting theorem and q*=0.625 switch are properties of the declared closure, not universal natural laws.",
     "Density-to-q feedback is treated as a failure/amplification gate; the zero-event generation-20 deletion is not interpreted as clean matching-specific mediation.",
     "Sorting, buffering and the observed horizons are bounded properties of the declared finite closure, not universal natural laws.",
     "Urban, island, forest fragment and volcanic disturbance are upstream histories, not identified regimes by themselves.",

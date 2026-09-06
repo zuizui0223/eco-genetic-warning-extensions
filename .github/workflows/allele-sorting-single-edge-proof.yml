@@ -1,0 +1,81 @@
+name: Allele sorting single-edge proof
+
+# The scientific result was locked by workflow run 34016797940 at
+# scientific head c6bfada980871c6aaaf883fc00381a2cca6cbcd3.
+# Subsequent manuscript/provenance edits must not create replacement ensembles.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned parent simulator
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned parent and extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e .
+
+      - name: Verify theorem and prospective contract
+        run: python -m pytest -q tests/test_allele_sorting_single_edge_proof.py
+
+      - name: Reproduce exactly the locked 6000-pair focused proof
+        run: |
+          mkdir -p allele_sorting_output
+          python scripts/run_allele_sorting_single_edge_proof.py \
+            --summary allele_sorting_output/summary.json \
+            --records allele_sorting_output/records.json
+
+      - name: Verify output schema without directional outcome gating
+        run: |
+          python - <<'PY'
+          import json, math
+          from pathlib import Path
+          s=json.loads(Path('allele_sorting_output/summary.json').read_text())
+          assert s['status']=='completed_from_locked_protocol'
+          assert s['experiment_id']=='allele_sorting_single_edge_proof_v1'
+          c=s['operator_certificate']
+          assert math.isclose(c['q_switch'],0.625,abs_tol=1e-12)
+          assert math.isclose(c['allele_multiplier_intercept'],0.75,abs_tol=1e-12)
+          assert math.isclose(c['allele_multiplier_slope'],0.4,abs_tol=1e-12)
+          for condition in ('baseline_local_allele_selection','delete_local_allele_selection'):
+            assert s['risk_pairs'][condition]['40']['n_pairs']==6000
+          p=s['primary_generation_40_DID']
+          assert p['n_paired_keys']==6000
+          assert p['decision'] in {
+            'resolved_positive_sorting_contribution',
+            'resolved_countervailing_contribution',
+            'unresolved_stop',
+          }
+          print(json.dumps({
+            'operator_certificate': c,
+            'risk_pairs': s['risk_pairs'],
+            'primary_generation_40_DID': p,
+            'secondary_generation_20_DID': s['secondary_generation_20_DID'],
+          }, indent=2))
+          PY
+
+      - name: Upload reproduced focused proof result
+        uses: actions/upload-artifact@v4
+        with:
+          name: allele-sorting-single-edge-proof-reproduction
+          path: allele_sorting_output/
+          if-no-files-found: error
