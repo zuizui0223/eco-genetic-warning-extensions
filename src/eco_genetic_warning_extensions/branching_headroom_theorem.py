@@ -53,6 +53,27 @@ def allele_logodds_increment_from_next_q(q_next: float) -> float:
     return log(0.75 + 0.4 * q_next)
 
 
+def selected_high_allele(p: float, q_next: float) -> float:
+    if not 0.0 <= p <= 1.0:
+        raise ValueError("p must lie in [0,1]")
+    w = 0.75 + 0.4 * q_next
+    return p * w / (1.0 - p + p * w)
+
+
+def allele_selection_delta(p: float, q_next: float) -> float:
+    return selected_high_allele(p, q_next) - p
+
+
+def branch_growth_increment(p: float, q_next: float) -> float:
+    """Smooth demographic-exponent shift relative to q*=0.625 and neutral allele state.
+
+    The declared demographic exponent contains 0.4*q_next + 0.1*p_selected.
+    Holding all other terms fixed, this function subtracts the reference
+    0.4*q_star + 0.1*p.
+    """
+    return 0.4 * (q_next - Q_STAR) + 0.1 * allele_selection_delta(p, q_next)
+
+
 def recoupling_headroom_shift(q: float, b: float, density: float) -> float:
     return BETA_BUNDLE * density * (b - q)
 
@@ -71,6 +92,8 @@ def opening_certificate() -> dict[str, object]:
     rr_s = tuple(support_from_bundle(x, b) for x, b in zip(q, rr_b))
     aa_h = tuple(headroom(x, b, 1.0, theta1) for x, b in zip(q, aa_b))
     rr_h = tuple(headroom(x, b, 1.0, theta1) for x, b in zip(q, rr_b))
+    aa_q1 = tuple(next_q(x, b, 1.0, theta1) for x, b in zip(q, aa_b))
+    rr_q1 = tuple(next_q(x, b, 1.0, theta1) for x, b in zip(q, rr_b))
     return {
         "q_star": Q_STAR,
         "switch_offset": switch_offset(),
@@ -79,6 +102,10 @@ def opening_certificate() -> dict[str, object]:
         "RR_support": rr_s,
         "AA_headroom": aa_h,
         "RR_headroom": rr_h,
+        "AA_next_q": aa_q1,
+        "RR_next_q": rr_q1,
+        "AA_allele_logodds_increment": tuple(allele_logodds_increment_from_next_q(x) for x in aa_q1),
+        "RR_allele_logodds_increment": tuple(allele_logodds_increment_from_next_q(x) for x in rr_q1),
         "AA_frozen_crossing": tuple(frozen_support_crossing_generation(s) for s in aa_s),
         "RR_frozen_crossing": tuple(frozen_support_crossing_generation(s) for s in rr_s),
     }
