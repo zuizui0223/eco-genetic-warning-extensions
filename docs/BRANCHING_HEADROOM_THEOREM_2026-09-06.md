@@ -114,7 +114,51 @@ which is the local geometric form of the resolved density failure gate.
 
 Allele-linked recruitment acts one stage upstream by contracting trait–allele mismatch. With locked inheritance weight `h=0.5`, recruit high-trait mass is `r=(m+p)/2`.
 
-## 4. Opening-state AA/RR geometry
+## 4. Exact branch-amplification corollary
+
+The selected high-allele frequency can be written
+
+\[
+p_s=\frac{p(0.75+0.4q^+)}{1-p+p(0.75+0.4q^+)}.
+\]
+
+Subtracting the pre-selection frequency gives
+
+\[
+\boxed{
+p_s-p=
+\frac{0.4p(1-p)(q^+-0.625)}
+{1+0.4p(q^+-0.625)}.
+}
+\]
+
+For every interior `0<p<1`, the denominator is positive. Hence
+
+\[
+\operatorname{sign}(p_s-p)
+=\operatorname{sign}(q^+-0.625)
+=\operatorname{sign}(H).
+\]
+
+The smooth demographic exponent contains the terms `0.4 q^+ + 0.1 p_s`. Relative to the route-surface reference `0.4 q^* + 0.1 p`, define
+
+\[
+\Delta r_{branch}=0.4(q^+-q^*)+0.1(p_s-p).
+\]
+
+Both summands have the sign of `H`, so
+
+\[
+\boxed{
+\operatorname{sign}(\Delta r_{branch})=\operatorname{sign}(H)
+}
+\]
+
+for nonzero headroom. Thus crossing the route surface does not only change ecological viability and allele-selection direction; it shifts the ecological and genetic contributions to smooth demographic growth in the **same direction**. Integer rounding can flatten a small demographic response locally but cannot reverse the sign of the underlying smooth contribution.
+
+Below carrying capacity, higher population increases future density and therefore future headroom. The already proven positive q–N–q loop consequently supplies a downstream amplification path. This does not make `H` a sufficient predictor of final loss because recruitment and direct recoupling can repair subsequent state; it proves that the declared life cycle contains a coherent local reinforcement mechanism on either side of the moving surface.
+
+## 5. Opening-state AA/RR geometry
 
 The locked matched-marginal construction has `q=(0.65,0.75,0.85,0.95)`, AA bundle `B=(0.20,0.40,0.60,0.80)`, RR bundle `B=(0.80,0.60,0.40,0.20)`, and density one at opening. Therefore
 
@@ -134,9 +178,33 @@ H_{AA}=(-0.1460168,-0.0060168,+0.1339832,+0.2739832),
 H_{RR}=(+0.0939832,+0.0739832,+0.0539832,+0.0339832).
 \]
 
-AA begins with **two patches below the route surface but two strong positive-headroom cores**. RR begins with **all four patches above the surface, but only shallow headroom**. This is the exact opening form of the earlier equalization-versus-refuge contrast.
+The corresponding next interaction states are
 
-## 5. Frozen-support crossing times under the locked forcing slope
+\[
+q^+_{AA}=(0.4635,0.6186,0.7528,0.8512),
+\]
+
+\[
+q^+_{RR}=(0.7178,0.6993,0.6800,0.6601).
+\]
+
+The deterministic high-allele log-odds increments are approximately
+
+\[
+(-0.0668,-0.0026,+0.0499,+0.0866)
+\]
+
+for AA and
+
+\[
+(+0.0365,+0.0293,+0.0218,+0.0139)
+\]
+
+for RR.
+
+AA therefore begins with **two patches below the route surface but two strong positive-headroom cores**. RR begins with **all four patches above the surface, but only shallow headroom**. This is the exact opening form of the earlier equalization-versus-refuge contrast: RR has broader short-term positive routing, whereas AA concentrates deeper positive routing in fewer cores.
+
+## 6. Frozen-support crossing times under the locked forcing slope
 
 The locked barrier schedule is `theta_g=0.50+0.0025g`. If density and local support were held fixed only for diagnostic purposes, the route surface reaches a patch at
 
@@ -151,7 +219,7 @@ For opening support at density one:
 
 This is **not** the simulated trajectory because q, B and density evolve. It is an exact opening-state diagnostic. It explains why equalized RR support can look safer early while lacking the deep headroom of the strongest AA cores under a rising boundary.
 
-## 6. Relation to the resolved causal evidence
+## 7. Relation to the resolved causal evidence
 
 The theorem organizes, rather than replaces, the prospective interventions:
 
@@ -164,4 +232,4 @@ The resolved endpoint evidence remains unchanged: focused 6,000-pair allele-sele
 
 ## Claim ceiling
 
-`H` is an exact coordinate only for the declared finite closure, weights, interaction map and shared `q*=0.625` switch. Frozen-support crossing times are opening-state diagnostics, not forecasts of natural generations. No universal ecological headroom threshold is claimed.
+`H` is an exact coordinate only for the declared finite closure, weights, interaction map and shared `q*=0.625` switch. Frozen-support crossing times are opening-state diagnostics, not forecasts of natural generations. `H` is not claimed to be a sufficient final-loss predictor because repair operators can change later state. No universal ecological headroom threshold is claimed.
