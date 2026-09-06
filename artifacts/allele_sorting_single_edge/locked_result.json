@@ -1,0 +1,336 @@
+{
+  "claim_boundary": "A positive result establishes single-edge endpoint-level causality only for the declared finite q-only closure. It does not establish a universal natural sorting law, and the operator theorem remains distinct from the finite endpoint experiment.",
+  "experiment_id": "allele_sorting_single_edge_proof_v1",
+  "mediators": {
+    "baseline_local_allele_selection": {
+      "1": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.005027130205711042,
+          "paired_ci95": [0.00439471749141931, 0.0056595429200027745]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.03024480904708935,
+          "paired_ci95": [0.027719957697468125, 0.03276966039671058]
+        },
+        "max_q": {"AA_minus_RR": 0.0, "paired_ci95": [0.0, 0.0]},
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.00036209949106060315,
+          "paired_ci95": [-0.0006133506792281861, 0.0013375496613493923]
+        },
+        "mean_q": {"AA_minus_RR": 0.0, "paired_ci95": [0.0, 0.0]},
+        "realised_refugia_count": {
+          "AA_minus_RR": -0.0055,
+          "paired_ci95": [-0.007587226287321199, -0.003412773712678801]
+        }
+      },
+      "5": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.014213648074245048,
+          "paired_ci95": [0.01277091290060584, 0.015656383247884258]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.0852948787409701,
+          "paired_ci95": [0.07930083794768338, 0.09128891953425682]
+        },
+        "max_q": {
+          "AA_minus_RR": 0.02700842956759839,
+          "paired_ci95": [0.026878475495486134, 0.027138383639710644]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.008997143633127614,
+          "paired_ci95": [0.0065663359956318525, 0.011427951270623375]
+        },
+        "mean_q": {
+          "AA_minus_RR": 0.004861039350357564,
+          "paired_ci95": [0.004822199353261185, 0.0048998793474539434]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": -0.15316666666666667,
+          "paired_ci95": [-0.17223350248256958, -0.13409983085076377]
+        }
+      },
+      "10": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.011931912482896012,
+          "paired_ci95": [0.009869567957813656, 0.01399425700797837]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.0595499591503268,
+          "paired_ci95": [0.049657433874431535, 0.06944248442622206]
+        },
+        "max_q": {
+          "AA_minus_RR": 0.00034792019580571993,
+          "paired_ci95": [0.0003068935602355067, 0.00038894683137593314]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.019312883218146375,
+          "paired_ci95": [0.01573939426799814, 0.02288637216829461]
+        },
+        "mean_q": {
+          "AA_minus_RR": 9.425233334238803e-05,
+          "paired_ci95": [7.897160257965962e-05, 0.00010953306410511643]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": -0.014333333333333333,
+          "paired_ci95": [-0.03932225002291419, 0.010655583356247517]
+        }
+      },
+      "20": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.013203651562672178,
+          "paired_ci95": [0.010441848146851253, 0.015965454978493103]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.06711460278555867,
+          "paired_ci95": [0.05308417356926537, 0.08114503200185197]
+        },
+        "max_q": {
+          "AA_minus_RR": 0.00025587780340100447,
+          "paired_ci95": [0.00020523032038791475, 0.0003065252864140942]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.02110231227392605,
+          "paired_ci95": [0.01688923417135477, 0.02531539037649733]
+        },
+        "mean_q": {
+          "AA_minus_RR": 7.969324024869836e-05,
+          "paired_ci95": [6.424147410786019e-05, 9.514500638953654e-05]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": 0.09483333333333334,
+          "paired_ci95": [0.0701792194239034, 0.11948744724276328]
+        }
+      },
+      "40": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.012375740245013284,
+          "paired_ci95": [0.00937931736074549, 0.015372163129281077]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.06439514861500155,
+          "paired_ci95": [0.048707448802069946, 0.08008284842793315]
+        },
+        "max_q": {
+          "AA_minus_RR": 0.0001570963360114062,
+          "paired_ci95": [0.00012092585897974616, 0.0001932668130430662]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.01822615812406834,
+          "paired_ci95": [0.013971344663855485, 0.0224809715842812]
+        },
+        "mean_q": {
+          "AA_minus_RR": 4.391921358807495e-05,
+          "paired_ci95": [3.4220476429928584e-05, 5.361795074622132e-05]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": 0.08033333333333334,
+          "paired_ci95": [0.06262761137491789, 0.09803905529174879]
+        }
+      }
+    },
+    "delete_local_allele_selection": {
+      "1": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.0004726093132090077,
+          "paired_ci95": [-0.00015937223037266622, 0.0011045908567906817]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.03024480904708935,
+          "paired_ci95": [0.027719957697468125, 0.03276966039671058]
+        },
+        "max_q": {"AA_minus_RR": 0.0, "paired_ci95": [0.0, 0.0]},
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.0005810586745596349,
+          "paired_ci95": [-0.00039446170967076934, 0.001556579058790039]
+        },
+        "mean_q": {"AA_minus_RR": 0.0, "paired_ci95": [0.0, 0.0]},
+        "realised_refugia_count": {
+          "AA_minus_RR": -0.0055,
+          "paired_ci95": [-0.007587226287321199, -0.003412773712678801]
+        }
+      },
+      "5": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": 0.0004697925745884165,
+          "paired_ci95": [-0.000977868196419396, 0.0019174533455962289]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.043495918615984425,
+          "paired_ci95": [0.037493702445637725, 0.049498134786331124]
+        },
+        "max_q": {
+          "AA_minus_RR": 0.026590779943834,
+          "paired_ci95": [0.026457022576846827, 0.02672453731082117]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.0028437411153872804,
+          "paired_ci95": [0.000411542773889214, 0.005275939456885347]
+        },
+        "mean_q": {
+          "AA_minus_RR": 0.004764629489594419,
+          "paired_ci95": [0.004724973270558752, 0.004804285708630086]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": -0.07016666666666667,
+          "paired_ci95": [-0.08907956223897608, -0.05125377109435726]
+        }
+      },
+      "10": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": -0.0009908992986354705,
+          "paired_ci95": [-0.0030399339386209833, 0.0010581353413500424]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": 0.00017647447868036092,
+          "paired_ci95": [-0.009755189889793488, 0.010108138847154209]
+        },
+        "max_q": {
+          "AA_minus_RR": 6.80627674378212e-05,
+          "paired_ci95": [2.673557021855096e-05, 0.00010938996465709145]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.00160724902534113,
+          "paired_ci95": [-0.00197575575504285, 0.0051902538057251105]
+        },
+        "mean_q": {
+          "AA_minus_RR": 2.6537352983900088e-05,
+          "paired_ci95": [1.1146120745256538e-05, 4.192858522254364e-05]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": 0.022,
+          "paired_ci95": [-0.0026585641322477913, 0.04665856413224779]
+        }
+      },
+      "20": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": -0.0003100250696184774,
+          "paired_ci95": [-0.003039719422150544, 0.002419669282913589]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": -0.000984842826019297,
+          "paired_ci95": [-0.014933322003432548, 0.012963636351393953]
+        },
+        "max_q": {
+          "AA_minus_RR": -1.1895510394714328e-05,
+          "paired_ci95": [-6.22837590302893e-05, 3.849273824086065e-05]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": 0.0009086782426952704,
+          "paired_ci95": [-0.0032418888690002434, 0.0050592453543907845]
+        },
+        "mean_q": {
+          "AA_minus_RR": -6.009688267410625e-07,
+          "paired_ci95": [-1.5864588448754523e-05, 1.4662650795272398e-05]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": 0.0135,
+          "paired_ci95": [-0.011435769247056223, 0.038435769247056224]
+        }
+      },
+      "40": {
+        "allele_frequency_variance": {
+          "AA_minus_RR": -0.0008134946003758853,
+          "paired_ci95": [-0.0037739737005736103, 0.0021469844998218395]
+        },
+        "max_high_trait_mass": {
+          "AA_minus_RR": -0.004392580921257392,
+          "paired_ci95": [-0.01988792060762177, 0.011102758765106987]
+        },
+        "max_q": {
+          "AA_minus_RR": -6.4319578471357824e-06,
+          "paired_ci95": [-4.222427863681317e-05, 2.9360362942541604e-05]
+        },
+        "mean_allele_frequency": {
+          "AA_minus_RR": -0.0004626626820318771,
+          "paired_ci95": [-0.00463756172490045, 0.0037122363608366954]
+        },
+        "mean_q": {
+          "AA_minus_RR": -5.821238269841332e-07,
+          "paired_ci95": [-1.012674035359652e-05, 8.962492699628253e-06]
+        },
+        "realised_refugia_count": {
+          "AA_minus_RR": 0.0013333333333333333,
+          "paired_ci95": [-0.015959822459861155, 0.01862648912652782]
+        }
+      }
+    }
+  },
+  "operator_certificate": {
+    "allele_multiplier_intercept": 0.75,
+    "allele_multiplier_slope": 0.4,
+    "derivative": "0.4 p(1-p) / [1 + p((0.75+0.4q)-1)]^2",
+    "fitness_intercept": 0.5,
+    "fitness_slope": 0.8,
+    "log_odds_increment": "log(0.75 + 0.4 q)",
+    "q_switch": 0.625,
+    "strictly_increasing_for": "0<p<1 and 0<=q<=1",
+    "theorem_path": "docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md"
+  },
+  "primary_generation_40_DID": {
+    "baseline_minus_deletion_DID": 0.06883333333333333,
+    "decision": "resolved_positive_sorting_contribution",
+    "horizon": 40,
+    "n_paired_keys": 6000,
+    "paired_ci95": [0.057995306745004895, 0.07967135992166177]
+  },
+  "risk_pairs": {
+    "baseline_local_allele_selection": {
+      "20": {
+        "AA_loss_rate": 0.36783333333333335,
+        "RR_loss_rate": 0.43716666666666665,
+        "RR_minus_AA_risk_difference": 0.06933333333333333,
+        "condition": "baseline_local_allele_selection",
+        "horizon": 20,
+        "n_pairs": 6000,
+        "paired_ci95": [0.05272276451094987, 0.08594390215571679]
+      },
+      "40": {
+        "AA_loss_rate": 0.6803333333333333,
+        "RR_loss_rate": 0.7468333333333333,
+        "RR_minus_AA_risk_difference": 0.0665,
+        "condition": "baseline_local_allele_selection",
+        "horizon": 40,
+        "n_pairs": 6000,
+        "paired_ci95": [0.05065461707331284, 0.08234538292668717]
+      }
+    },
+    "delete_local_allele_selection": {
+      "20": {
+        "AA_loss_rate": 0.4075,
+        "RR_loss_rate": 0.409,
+        "RR_minus_AA_risk_difference": 0.0015,
+        "condition": "delete_local_allele_selection",
+        "horizon": 20,
+        "n_pairs": 6000,
+        "paired_ci95": [-0.015276253053381294, 0.018276253053381295]
+      },
+      "40": {
+        "AA_loss_rate": 0.723,
+        "RR_loss_rate": 0.7206666666666667,
+        "RR_minus_AA_risk_difference": -0.0023333333333333335,
+        "condition": "delete_local_allele_selection",
+        "horizon": 40,
+        "n_pairs": 6000,
+        "paired_ci95": [-0.018034934233098498, 0.013368267566431832]
+      }
+    }
+  },
+  "schema_version": 1,
+  "secondary_generation_20_DID": {
+    "baseline_minus_deletion_DID": 0.06783333333333333,
+    "decision": "resolved_positive_sorting_contribution",
+    "horizon": 20,
+    "n_paired_keys": 6000,
+    "paired_ci95": [0.05478440945963262, 0.08088225720703403]
+  },
+  "source": {
+    "artifact_digest": "sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d",
+    "artifact_id": 9984306657,
+    "job": 101441868527,
+    "protocol_commit": "2e8d46eb820f88599479321c1e66b309f8c1f16a",
+    "scientific_head": "c6bfada980871c6aaaf883fc00381a2cca6cbcd3",
+    "workflow_run": 34016797940
+  },
+  "status": "locked_from_successful_prospective_workflow_artifact",
+  "stop_rule": "Run exactly the two declared conditions with the fixed state, forcing, 12 master seeds, 500 replicates per seed, horizons and endpoint. Do not add seeds, extend replication, open alternative q substitutions, change thresholds, inspect alternative endpoints, or add further interventions after the first outcome file is produced."
+}
