@@ -5,7 +5,9 @@ import math
 from eco_genetic_warning_extensions.branching_headroom_theorem import (
     Q_STAR,
     allele_logodds_increment_from_next_q,
+    allele_selection_delta,
     barrier,
+    branch_growth_increment,
     frozen_support_crossing_generation,
     headroom,
     next_q,
@@ -39,6 +41,26 @@ def test_zero_headroom_hits_shared_switch_exactly() -> None:
     assert math.isclose(allele_logodds_increment_from_next_q(Q_STAR), 0.0, abs_tol=1e-12)
 
 
+def test_headroom_sign_also_sets_selection_and_smooth_growth_direction() -> None:
+    for q in (0.65, 0.75, 0.85, 0.95):
+        for b in (0.2, 0.4, 0.6, 0.8):
+            h = headroom(q, b, 1.0, barrier(1))
+            qn = next_q(q, b, 1.0, barrier(1))
+            for p in (0.2, 0.5, 0.8):
+                dp = allele_selection_delta(p, qn)
+                dg = branch_growth_increment(p, qn)
+                assert (h > 0) == (dp > 0)
+                assert (h < 0) == (dp < 0)
+                assert (h > 0) == (dg > 0)
+                assert (h < 0) == (dg < 0)
+
+
+def test_branch_growth_increment_is_zero_on_route_surface() -> None:
+    for p in (0.2, 0.5, 0.8):
+        assert math.isclose(allele_selection_delta(p, Q_STAR), 0.0, abs_tol=1e-12)
+        assert math.isclose(branch_growth_increment(p, Q_STAR), 0.0, abs_tol=1e-12)
+
+
 def test_direct_recoupling_moves_headroom_by_exact_amount() -> None:
     for q, b, d in ((0.8, 0.3, 1.0), (0.4, 0.8, 0.7), (0.6, 0.6, 0.5)):
         full = d * support_from_bundle(q, b)
@@ -57,6 +79,11 @@ def test_opening_equalization_refuge_geometry() -> None:
     assert sum(x > 0 for x in rr) == 4
     assert max(aa) > max(rr)
     assert min(aa) < 0 < min(rr)
+
+    assert tuple(round(x, 4) for x in cert["AA_next_q"]) == (0.4635, 0.6186, 0.7528, 0.8512)
+    assert tuple(round(x, 4) for x in cert["RR_next_q"]) == (0.7178, 0.6993, 0.68, 0.6601)
+    assert tuple(round(x, 4) for x in cert["AA_allele_logodds_increment"]) == (-0.0668, -0.0026, 0.0499, 0.0866)
+    assert tuple(round(x, 4) for x in cert["RR_allele_logodds_increment"]) == (0.0365, 0.0293, 0.0218, 0.0139)
 
 
 def test_frozen_crossing_times_show_shallow_rr_headroom() -> None:
