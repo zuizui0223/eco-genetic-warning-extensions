@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "derived_from_successful_prospective_workflow_artifact_no_new_simulation",
+  "source": {
+    "workflow_run": 34012983845,
+    "job": 101431872354,
+    "artifact_id": 9983093178,
+    "artifact_digest": "sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac",
+    "scientific_head": "d28da102d9b520dce459dd69da794913c77ecd38",
+    "paired_seed_mapping": "same trajectory seed for all six conditions within each master-seed/replicate block",
+    "records": 9000,
+    "paired_keys": 1500
+  },
+  "operator_certificate": {
+    "support": "S=0.6q+0.3T+0.1G=0.6q+0.4B",
+    "bundle": "B=0.75T+0.25G",
+    "support_minus_bundle": "S-B=0.6(q-B)",
+    "support_mismatch_reduction_fraction": 0.4,
+    "support_minus_q": "S-q=0.4(B-q)",
+    "next_q_logit_shift": "logit(q_full_next)-logit(q_qonly_next)=0.4*kappa*area_ratio*density*(B-q)",
+    "locked_next_q_logit_shift": "1.8*density*(B-q)",
+    "locked_transition_displacement_bound": "abs(q_full_next-q_qonly_next)<=0.45*density*abs(B-q)"
+  },
+  "generation_20": {
+    "AA": {
+      "full_feedback_loss_rate": 0.37333333333333335,
+      "q_only_loss_rate": 0.37933333333333336,
+      "q_only_minus_full_feedback_benefit": 0.006,
+      "paired_ci95": [-0.027091796594072036, 0.03909179659407203]
+    },
+    "RR": {
+      "full_feedback_loss_rate": 0.36533333333333334,
+      "q_only_loss_rate": 0.45066666666666666,
+      "q_only_minus_full_feedback_benefit": 0.08533333333333333,
+      "paired_ci95": [0.05213505846574012, 0.11853160820092654]
+    },
+    "RR_minus_AA_buffering_benefit_DID": 0.07933333333333334,
+    "DID_ci95": [0.0328703121782225, 0.12579635448844417]
+  },
+  "generation_40": {
+    "AA": {
+      "full_feedback_loss_rate": 0.672,
+      "q_only_loss_rate": 0.6866666666666666,
+      "q_only_minus_full_feedback_benefit": 0.014666666666666666,
+      "paired_ci95": [-0.017181530946874836, 0.04651486428020817]
+    },
+    "RR": {
+      "full_feedback_loss_rate": 0.678,
+      "q_only_loss_rate": 0.756,
+      "q_only_minus_full_feedback_benefit": 0.078,
+      "paired_ci95": [0.047911819180300796, 0.1080881808196992]
+    },
+    "RR_minus_AA_buffering_benefit_DID": 0.06333333333333334,
+    "DID_ci95": [0.01845223687929922, 0.10821442978736745]
+  },
+  "interpretation": "Direct trait/allele feedback into q is an exact support-stage recoupling operator. In the locked paired ensemble it preferentially buffered the reversed arrangement at generations 20 and 40. The paired contrast is derived from a prospectively locked intervention family but was not a separately predeclared primary estimand.",
+  "claim_ceiling": "Exact only for the declared finite support weights and transition. The derived paired contrasts do not establish a universal natural recoupling law."
+}
