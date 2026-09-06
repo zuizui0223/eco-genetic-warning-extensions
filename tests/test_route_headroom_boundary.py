@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import math
+from pathlib import Path
+
+import pytest
 
 from eco_genetic_warning_extensions.route_headroom_boundary import (
     direct_recoupling_headroom_shift,
@@ -80,3 +83,28 @@ def test_headroom_is_monotone_in_density_and_support_components() -> None:
     assert route_headroom(0.7, 0.51, 0.5, 0.7, 0.55) > base
     assert route_headroom(0.7, 0.5, 0.51, 0.7, 0.55) > base
     assert route_headroom(0.7, 0.5, 0.5, 0.71, 0.55) > base
+
+
+def test_support_signal_matches_pinned_parent_when_parent_is_installed() -> None:
+    parent = pytest.importorskip("causal_model.multipatch_criticality_dynamics")
+    params = parent.DynamicsParameters(
+        patch_areas=(1.0,),
+        q_feedback_alpha=0.6,
+        q_feedback_beta_trait=0.3,
+        q_feedback_gamma_allele=0.1,
+    )
+    for q, trait, allele in ((0.65, 0.2, 0.2), (0.8, 0.6, 0.4), (0.95, 0.8, 0.8)):
+        got = parent.interaction_support_signal(q, trait, allele, params)
+        expected = support_signal(q, trait, allele)
+        assert math.isclose(got, expected, abs_tol=1e-12)
+
+
+def test_route_headroom_document_preserves_claim_ceiling() -> None:
+    root = Path(__file__).resolve().parents[1]
+    text = (root / "docs" / "ROUTE_HEADROOM_BOUNDARY_THEOREM_2026-09-06.md").read_text()
+    lower = text.casefold()
+    assert "h_j(t;c)" in text
+    assert "0.1135168053" in text
+    assert "coverage–reserve trade-off" in text
+    assert "not, by itself, an exact predictor" in lower
+    assert "not universal natural thresholds" in lower
