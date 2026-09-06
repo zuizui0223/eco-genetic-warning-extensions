@@ -14,7 +14,7 @@ on:
       - 'docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md'
       - 'docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md'
-      - 'docs/RECRUITMENT_BUFFER_THEOREM_2026-09-06.md'
+      - 'docs/RECRUITMENT_BUFFER_OPERATOR_THEOREM_2026-09-06.md'
       - 'docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md'
       - 'docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md'
       - 'docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md'
@@ -156,7 +156,7 @@ jobs:
           cp flagship/docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md nee_packet/provenance/allele_sorting_operator_theorem.md
           cp flagship/docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md nee_packet/provenance/allele_sorting_result.md
           cp flagship/experiments/allele_sorting_single_edge_protocol.json nee_packet/provenance/allele_sorting_protocol.json
-          cp flagship/docs/RECRUITMENT_BUFFER_THEOREM_2026-09-06.md nee_packet/provenance/recruitment_buffer_theorem.md
+          cp flagship/docs/RECRUITMENT_BUFFER_OPERATOR_THEOREM_2026-09-06.md nee_packet/provenance/recruitment_buffer_theorem.md
           cp flagship/docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md nee_packet/provenance/direct_feedback_recoupling_theorem.md
           cp flagship/artifacts/direct_feedback_recoupling/locked_derived_result.json nee_packet/provenance/direct_feedback_recoupling_result.json
           cp flagship/docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md nee_packet/provenance/density_feedback_gate_theorem.md
