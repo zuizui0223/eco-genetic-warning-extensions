@@ -68,6 +68,7 @@ def test_manuscript_uses_effect_size_timescale_not_significance_cutoff() -> None
             "do not establish a universal temporal cutoff",
             "not a universal temporal cutoff",
             "not a universal biological threshold",
+            "does not establish generation 20 as a true cutoff, a universal biological threshold",
         )
     )
     assert "generation 20 is the true cutoff" not in flat
