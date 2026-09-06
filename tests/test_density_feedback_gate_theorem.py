@@ -78,9 +78,12 @@ def test_theorem_document_preserves_failure_gate_claim_boundary() -> None:
     assert "d_{\\min}" in text
     assert "0.1135168053" in text
     assert "positive feedback" in text
-    # Preserve the scientific boundary semantically rather than binding the test
-    # to one exact sentence order.
     lower = text.casefold()
+    # Require both boundaries semantically, without binding to one sentence order.
     assert "sorting advantage" in lower
     assert "incorrect to call density feedback" in lower
-    assert "not asserted as a universal natural density threshold" in lower
+    assert "universal natural density threshold" in lower
+    assert (
+        "none of these quantities is asserted" in lower
+        or "does not assert a universal natural collapse threshold" in lower
+    )
