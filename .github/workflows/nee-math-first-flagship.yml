@@ -7,6 +7,7 @@ on:
       - 'manuscript/nee_flagship_*'
       - 'scripts/check_nee_flagship_compliance.py'
       - 'scripts/build_nee_flagship_figures.py'
+      - 'scripts/finalize_nee_math_first_figures.py'
       - '.github/workflows/nee-math-first-flagship.yml'
   workflow_dispatch:
 
@@ -78,10 +79,14 @@ jobs:
             --egc-root egc_source \
             --egwe-root egwe_source \
             --output nee_packet/figures
+          python flagship/scripts/finalize_nee_math_first_figures.py \
+            --figures nee_packet/figures
           test "$(find nee_packet/figures -name '*.svg' | wc -l)" -eq 4
           grep -q 'Three boundaries on functional vulnerability' nee_packet/figures/figure1_mathematical_boundaries.svg
           grep -q '1,037/1,037' nee_packet/figures/figure2_state_separation.svg
+          grep -q 'stroke-dasharray="8 5"' nee_packet/figures/figure2_state_separation.svg
           grep -q '0.2543' nee_packet/figures/figure3_relational_state.svg
+          grep -q '>10</text>' nee_packet/figures/figure3_relational_state.svg
           grep -q 'AUC=0.5' nee_packet/figures/figure4_warning_discrimination.svg
 
       - name: Assemble review-facing packet
