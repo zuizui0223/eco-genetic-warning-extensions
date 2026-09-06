@@ -75,7 +75,7 @@ def main() -> None:
         "+4.40 points",
         "+13.20 points",
         "+12.73 points",
-        "+7.27 points",
+        "+7.27",
         "selection-mediated spatial sorting",
         "recruitment-mediated buffering",
         "failure gate and amplifier",
