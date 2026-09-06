@@ -1,4 +1,4 @@
-# NEE flagship submission metadata — sorting–buffering synthesis
+# NEE flagship submission metadata — four-operator mechanism
 
 ## Manuscript identity
 
@@ -16,10 +16,11 @@
 
 1. EGC exact interaction-state geometry + fresh fixed-area fragmentation gradient.
 2. EGWE transition-sufficiency counterexample + original locked propagation experiment.
-3. Prospectively locked relational mechanism decomposition: covariance-to-support variance, trait × allele factorial and q-only intervention.
-4. Prospectively locked pathway edge decomposition: fresh q-only replication plus edge deletions resolving recruitment-mediated buffering, joint selection-mediated sorting and the density-feedback failure gate.
-5. Exact q-dependent allele-sorting operator theorem + prospectively locked focused 6,000-pair single-edge causal proof.
-6. EGWE exact warning-denominator identity + full-denominator frozen-rule audit.
+3. Prospectively locked six-condition relational mechanism experiment.
+4. Prospectively locked pathway edge decomposition.
+5. Exact q-dependent allele-sorting theorem + prospectively locked focused 6,000-pair single-edge proof.
+6. Exact recruitment-buffer, direct-feedback-recoupling and density-gate derivations, each tied only to already locked intervention artifacts.
+7. EGWE exact warning-denominator identity + frozen full-denominator audit.
 
 ### Ecological projection only
 
@@ -30,34 +31,40 @@
 - urban–island comparison
 - EGWEE natural-data measurement stress tests
 
-These projection sources do not validate the finite closure.
+These sources motivate interpretation and future measurement design. They do not validate the finite closure.
 
 ## Mechanistic claim
 
-The manuscript does **not** claim that positive alignment, support variance or one refuge statistic is universally protective.
+The manuscript does **not** claim that positive alignment, support variance, one refuge statistic or one landscape class is universally protective.
 
-The current bounded mechanism is:
+The bounded causal architecture is:
 
-- cross-layer covariance changes the immediate transition by changing where support is concentrated at fixed marginals;
-- trait and allele organization are strongly non-additive under full feedback;
-- after direct trait/allele input to q is removed, an AA advantage reproduces on fresh seeds (`+4.20` and `+4.40 pp` at generations 20 and 40);
-- deleting allele-linked recruitment enlarges the RR disadvantage (`+13.20` and `+12.73 pp`), identifying recruitment as a **buffer of mismatch**, not the source of the sorting advantage;
-- deleting both local ecological selection edges removes the late AA advantage (generation-40 DID `+7.27 pp`, CI `+2.67,+11.87`), resolving a joint **selection-mediated sorting** contribution;
-- the exact single-edge operator is `logit(p+) - logit(p) = log(0.75+0.4q)`, so q-dependent allele selection is strictly increasing in q and switches sign at `q*=0.625`, the same threshold as declared high-trait potential viability;
-- for spatially varying q, one deterministic allele-selection step strictly increases `Cov(q,logit p)`;
-- in a separately locked **6,000-pair** focused experiment, baseline generation-40 `RR-AA` loss risk was `+6.65 pp` while deleting only local `q -> allele selection` reduced it to `-0.23 pp`; the preregistered DID was **+6.883 pp**, 95% CI **+5.800,+7.967**, resolving the single edge as a causal contributor to late functional fate in the q-only closure;
-- deleting the single edge also collapsed generation-40 AA–RR differences in allele-frequency variance, mean allele frequency, maximum high-trait mass and refuge count to intervals containing zero;
-- removing density from q prevents all losses by generation 20, identifying density feedback as a **failure/amplification gate**, not clean matching-specific mediation;
-- direct trait/allele feedback into q is an additional buffering/recoupling route.
+1. **Immediate divergence from covariance.** With conventional marginals fixed, cross-layer covariance changes support variance 49-fold and produces a maximum exact next-q difference of 0.2543.
+2. **Sorting.** The exact local operator is `logit(p+) - logit(p)=log(0.75+0.4q)`. It switches at `q*=0.625` and increases q–allele spatial sorting whenever q varies. In the separately locked 6,000-pair proof, the g40 baseline `RR-AA` contrast was `+6.65 pp`; deleting only local q-dependent allele selection reduced it to `-0.23 pp`; preregistered DID **+6.883 pp**, 95% CI **+5.800,+7.967**.
+3. **Recruitment buffering.** Under locked h=.5, `r=(m+p)/2`, so trait–allele mismatch contracts exactly 50% before selection. Deleting recruitment gives preregistered DIDs **-9.00 pp** at g20 and **-8.33 pp** at g40, resolving a countervailing buffer.
+4. **Direct recoupling.** Define `B=.75T+.25G`; then `S=.6q+.4B`, so q–bundle mismatch contracts 40% at the support stage. Relative to q-only, the exact next-q logit shift is `1.8*d*(B-q)` under locked weights. Secondary paired contrasts from the prospectively locked six-condition experiment show RR direct-feedback benefits of **+8.53 pp** at g20 and **+7.80 pp** at g40, with RR-minus-AA benefit differences **+7.93 pp** `[+3.29,+12.58]` and **+6.33 pp** `[+1.85,+10.82]`. These are derived contrasts, not separately preregistered primary estimands.
+5. **Failure gate.** Below capacity, density loss lowers next q and q supports demography, creating a positive q–N–q loop. Retaining `q+>=.625` requires `d*q >= theta + 0.1135168053`; required d*q rises from 0.6160 near the start to 0.7135 by g40. Deleting density from q leaves 0/1,500 g20 losses in both states and reduces g40 cumulative loss by **57.47** and **59.60 pp**. Density feedback is a failure/amplification gate, not the sorting edge.
+6. **Warning consequence.** Frozen diversity thresholds can precede every loss while firing in every non-event; specificity 0 and binary AUC 0.5.
 
-The positive ecological synthesis is therefore **q-dependent eco-genetic sorting versus buffering under feedback-amplified deterioration**.
+Positive synthesis:
+
+`cross-layer covariance -> q-dependent sorting opposed by recruitment buffering and direct recoupling -> density-feedback collapse gate`.
+
+## Claim ceilings
+
+- q-dependent allele sorting is not asserted as a universal natural mechanism.
+- the two-kernel recruitment identity is not Mendelian inheritance and is not a universal natural recruitment law.
+- direct feedback is not claimed always to increase q; it shifts q according to the sign of `B-q`.
+- direct-feedback paired benefit contrasts are secondary derivations from an already prospectively locked intervention family, not separately preregistered primary estimands.
+- the density headroom threshold and generations are model-specific; density feedback is not claimed to cause the directional sorting advantage.
+- natural examples remain Discussion-level projections only.
 
 ## Working NEE format contract
 
 - abstract <= 200 words;
 - main text <= 3,500 words excluding Methods, references and figure legends;
 - <= 6 main display items; current plan = 4 figures;
-- natural projection examples excluded from the Results section;
+- natural projection examples excluded from Results;
 - approximately <= 50 references as a working journal guideline.
 
 ## Authors and declarations — explicit author input required
@@ -76,4 +83,4 @@ Do not infer authorship/order from repository ownership or commits.
 
 ## Submission overlap rule
 
-The standalone EGC, state-validity, warning-validity and EGWEE packages remain internal fallbacks. Do not simultaneously submit substantially overlapping versions while this flagship is active at a journal.
+Standalone EGC, state-validity, warning-validity and EGWEE packages remain internal fallbacks. Do not simultaneously submit substantially overlapping versions while this flagship is active at a journal.

@@ -1,6 +1,6 @@
 {
-  "schema_version": 5,
-  "purpose": "Pin the evidence architecture for the sorting-buffering Nature Ecology & Evolution flagship.",
+  "schema_version": 6,
+  "purpose": "Pin the evidence architecture for the four-operator Nature Ecology & Evolution flagship.",
   "load_bearing_sources": [
     {
       "layer": "fragmentation_state_separation",
@@ -37,8 +37,13 @@
       "required_flagship_paths": [
         "experiments/relational_mechanism_decomposition_protocol.json",
         "artifacts/relational_mechanism_decomposition/locked_result.json",
-        "docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md"
-      ]
+        "docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md",
+        "docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md",
+        "artifacts/direct_feedback_recoupling/locked_derived_result.json",
+        "src/eco_genetic_warning_extensions/direct_feedback_recoupling_theorem.py",
+        "scripts/derive_direct_feedback_recoupling.py"
+      ],
+      "derived_claim_boundary": "The direct-feedback theorem is an exact derivation of the declared support operator. Its full-vs-q-only paired benefits are secondary contrasts derived from the already prospectively locked six-condition records, not a separately preregistered primary estimand."
     },
     {
       "layer": "prospective_pathway_edge_decomposition",
@@ -52,8 +57,14 @@
       "required_flagship_paths": [
         "experiments/pathway_edge_decomposition_protocol.json",
         "artifacts/pathway_edge_decomposition/locked_result.json",
-        "docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md"
-      ]
+        "docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md",
+        "docs/RECRUITMENT_BUFFER_OPERATOR_THEOREM_2026-09-06.md",
+        "src/eco_genetic_warning_extensions/recruitment_buffer_theorem.py",
+        "docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md",
+        "artifacts/density_feedback_gate/locked_derived_result.json",
+        "src/eco_genetic_warning_extensions/density_feedback_gate_theorem.py"
+      ],
+      "derived_claim_boundary": "Recruitment and density theorems derive exact operators from the declared closure and reuse only the already locked pathway artifact for endpoint contrasts; no new outcome ensemble was opened."
     },
     {
       "layer": "prospective_allele_sorting_single_edge_proof",
@@ -72,6 +83,9 @@
       ]
     }
   ],
+  "mechanistic_synthesis_paths": [
+    "docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md"
+  ],
   "projection_sources": [
     {
       "role": "natural_measurement_stress_tests",
@@ -89,19 +103,22 @@
     }
   ],
   "claim_firewalls": [
-    "Natural examples do not validate the simulator or the finite mechanism decompositions.",
+    "Natural examples do not validate the simulator or finite mechanism decompositions.",
     "EGWEE natural analyses are not a coequal mechanistic Result.",
     "Fragmentation is not claimed to cause the original aligned/anti-aligned construction.",
     "Omitted alignment is not claimed to cause warning-threshold failure.",
     "Generation 20 is not a universal biological threshold or natural-system timescale.",
     "The original locked +5 percentage-point propagation result is not interpreted as a universally reproducible directional alignment effect.",
     "Support variance, alignment and refugia are not treated as universal directional risk scores.",
-    "Allele-linked recruitment is not claimed to generate the AA matching advantage; the locked edge-deletion experiment identifies it as a countervailing buffer in the q-only closure.",
-    "Local ecological selection is resolved as a joint late sorting block, and the focused 6,000-pair experiment separately resolves local q-dependent allele selection as a single-edge causal contributor within the q-only closure.",
-    "The exact q-dependent allele-sorting theorem and q*=0.625 switch are properties of the declared closure, not universal natural laws.",
-    "Density-to-q feedback is treated as a failure/amplification gate; the zero-event generation-20 deletion is not interpreted as clean matching-specific mediation.",
-    "Sorting, buffering and the observed horizons are bounded properties of the declared finite closure, not universal natural laws.",
-    "Urban, island, forest fragment and volcanic disturbance are upstream histories, not identified regimes by themselves.",
+    "q-dependent allele sorting is resolved only within the declared finite closure and is not asserted as a universal natural mechanism.",
+    "The q*=0.625 sorting/viability switch is model-specific.",
+    "Allele-linked recruitment is a countervailing buffer in the locked q-only closure; the exact two-kernel contraction is not Mendelian inheritance or a universal natural recruitment law.",
+    "Direct eco-genetic feedback is a recoupling operator, not a claim that feedback always increases q.",
+    "Direct-feedback RR buffering benefits are secondary paired contrasts derived from an already prospectively locked six-condition experiment, not separately preregistered primary estimands.",
+    "Density-to-q feedback is a failure/amplification gate, not the source of the directional sorting advantage.",
+    "The density headroom boundary and observed generations are model-specific, not universal natural thresholds or timescales.",
+    "Sorting, buffering, recoupling and failure-gate roles are bounded properties of the declared finite closure.",
+    "Urban, island, forest fragment and volcanic disturbance are upstream histories, not mechanistic regimes by themselves.",
     "No natural systems are pooled to manufacture one ecological effect.",
     "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship."
   ]
