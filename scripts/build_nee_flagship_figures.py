@@ -37,7 +37,6 @@ def fig2(egc,path):
     assert int(rows[0]['projection_supported'])==1037
     L=start(1500,800,'Fragmentation separates functional support from persistence','Fixed-area fragmentation gradient with distinct biological-state responses.')
     L += [t(750,42,'Fragmentation separates functional support from persistence',28,weight='bold'),t(350,90,'A  Potential viability and realised occupancy',18,weight='bold'),t(1110,90,'B  Retained state ratios',18,weight='bold')]
-    # Panel A
     left,right,top,bottom=90,670,150,610
     for p in [0,25,50,75,100]:
         y=bottom-p/100*(bottom-top); L.append(f'<line x1="{left}" y1="{y}" x2="{right}" y2="{y}" stroke="#ddd"/>'); L.append(t(left-8,y+4,p,11,anchor='end'))
@@ -48,7 +47,6 @@ def fig2(egc,path):
         y=bottom-p/100*(bottom-top); pts.append((x,y)); L.append(f'<circle cx="{x}" cy="{y}" r="5" fill="white" stroke="#111"/>'); L.append(t(x,bottom+23,n,11))
     L.append('<polyline points="'+' '.join(f'{x},{y}' for x,y in pts)+'" fill="none" stroke="#111" stroke-width="2.3"/>')
     L += [t(380,132,'realised occupancy at generation 30 ~99.6-100%',12),t(30,390,'supported outcomes (%)',12,rotate=-90),t(380,665,'number of isolated equal patches',12),t(380,710,'potential viability: 1,037/1,037 -> 0/1,037 after first split',14,weight='bold')]
-    # Panel B
     l,r,tt,b=820,1430,150,610
     keys=[('final_interaction_mean_ratio_to_n1_median','interaction',''),('final_effective_size_mean_ratio_to_n1_median','local effective size','8 5'),('realised_high_trait_mass_mean_ratio_to_n1_median','realised high-trait mass','3 4')]
     for q in [0,.25,.5,.75,1]:
@@ -75,7 +73,6 @@ def fig3(root,path):
         L.append(t(55,y+4,label,13,anchor='start',weight='bold'))
         for i,(x,v) in enumerate(zip(xs,vals),1): box(L,x-45,y-30,90,60,f'P{i}',f'q1={v:.3f}')
     L += [t(355,470,f"max |T_I(XA)-T_I(XB)| = {c['maximum_patchwise_generation1_difference']:.4f}",16,weight='bold'),t(355,505,'therefore no g exists with T_I = g o phi for the retained marginals',13)]
-    # propagation
     l,r,top,b=825,1430,150,610; ymin,ymax=-.02,.10
     y0=b-(0-ymin)/(ymax-ymin)*(b-top); L.append(f'<line x1="{l}" y1="{y0}" x2="{r}" y2="{y0}" stroke="#777"/>')
     hx={5:900,10:1035,20:1200,40:1380}; pts=[]
@@ -98,12 +95,12 @@ def fig4(root,path):
     L += [t(750,42,'A perfectly early marginal signal can fail to distinguish ecological fate',27,weight='bold')]
     def cm(cx,label,ev,ne):
         L.append(t(cx,100,label,18,weight='bold')); x0=cx-140; y0=170; cw=115; rh=100
-        L += [t(cx,y0-30,'marker fired by horizon',12,weight='bold'),t(x0+cw*.5,y0-8,'yes',11),t(x0+cw*1.5,y0-8,'no',11),t(x0-10,y0+55,'loss',11,anchor='end'),t(x0-10,y0+155,'non-loss',11,anchor='end')]
+        L.extend([t(cx,y0-30,'marker fired by horizon',12,weight='bold'),t(x0+cw*.5,y0-8,'yes',11),t(x0+cw*1.5,y0-8,'no',11),t(x0-10,y0+55,'loss',11,anchor='end'),t(x0-10,y0+155,'non-loss',11,anchor='end')])
         vals=[[ev,0],[ne,0]]
         for i in range(2):
             for j in range(2):
                 x=x0+j*cw; y=y0+i*rh; L.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{rh}" fill="white" stroke="#222"/>'); L.append(t(x+cw/2,y+58,vals[i][j],25,weight='bold'))
-        L += [t(cx,415,f'event leads {ev}/{ev}; non-event firing {ne}/{ne}',13,weight='bold'),t(cx,445,'sensitivity=1; specificity=0; AUC=0.5',13)]
+        L.extend([t(cx,415,f'event leads {ev}/{ev}; non-event firing {ne}/{ne}',13,weight='bold'),t(cx,445,'sensitivity=1; specificity=0; AUC=0.5',13)])
     cm(350,'A  inherited ensemble',35,48); cm(750,'B  fresh ensemble',33,49)
     box(L,1035,155,390,330,'C  Exact denominator result','event-only ordering leaves non-event firing free')
     L += [t(1230,270,'perfect precedence -> sensitivity = 1',14),t(1230,320,'specificity = (n0 - f) / n0',15,weight='bold'),t(1230,370,'binary AUC = (1 + specificity) / 2',15,weight='bold'),t(1230,425,'observed f = n0 -> AUC = 0.5',15,weight='bold'),t(750,620,'stress-sensitive != fate-discriminating',19,weight='bold'),t(750,655,'all six frozen H_alpha/H_gamma rules reach the same horizon classification endpoint',12)]
