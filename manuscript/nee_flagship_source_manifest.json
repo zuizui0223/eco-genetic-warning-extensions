@@ -58,7 +58,7 @@
         "experiments/pathway_edge_decomposition_protocol.json",
         "artifacts/pathway_edge_decomposition/locked_result.json",
         "docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md",
-        "docs/RECRUITMENT_BUFFER_THEOREM_2026-09-06.md",
+        "docs/RECRUITMENT_BUFFER_OPERATOR_THEOREM_2026-09-06.md",
         "src/eco_genetic_warning_extensions/recruitment_buffer_theorem.py",
         "docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md",
         "artifacts/density_feedback_gate/locked_derived_result.json",
