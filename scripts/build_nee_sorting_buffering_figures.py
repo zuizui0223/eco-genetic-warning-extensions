@@ -171,7 +171,7 @@ def fig4(root, path):
                 x, y = x0 + j * cw, y0 + i * rh
                 L.append(f'<rect x="{x}" y="{y}" width="{cw}" height="{rh}" fill="white" stroke="#222"/>')
                 L.append(t(x + cw / 2, y + 58, vals[i][j], 25, weight='bold'))
-        L += [t(cx, 415, f'event leads {events}/{events}; non-event firing {non_events}/{non_events}', 13, weight='bold'), t(cx, 445, 'sensitivity=1; specificity=0; AUC=0.5', 13)]
+        L.extend([t(cx, 415, f'event leads {events}/{events}; non-event firing {non_events}/{non_events}', 13, weight='bold'), t(cx, 445, 'sensitivity=1; specificity=0; AUC=0.5', 13)])
 
     cm(350, 'A  inherited ensemble', 35, 48)
     cm(750, 'B  fresh ensemble', 33, 49)
