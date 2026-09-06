@@ -1,0 +1,60 @@
+{
+  "schema_version": 2,
+  "purpose": "Pin the evidence architecture for the math-first Nature Ecology & Evolution flagship.",
+  "flagship_base": {
+    "repository": "zuizui0223/eco-genetic-warning-extensions",
+    "main_commit": "c69204d09d029426370e4e4769d0b97c29fd5db7"
+  },
+  "load_bearing_sources": [
+    {
+      "layer": "fragmentation_state_separation",
+      "repository": "zuizui0223/eco-genetic-criticality",
+      "commit": "b7ee738767c92307d6d23a85a3eeb857faf6ddfb",
+      "required_paths": [
+        "manuscript/main_text.md",
+        "docs/H3_FRAGMENTATION_GRADIENT_SENSITIVITY_RESULTS.md",
+        "artifacts/h3_fragmentation_gradient/h3_fragmentation_gradient_pooled_summary.csv",
+        "artifacts/h3_fragmentation_gradient/MANIFEST.sha256"
+      ]
+    },
+    {
+      "layer": "relational_state_and_warning",
+      "repository": "zuizui0223/eco-genetic-warning-extensions",
+      "commit": "c69204d09d029426370e4e4769d0b97c29fd5db7",
+      "required_paths": [
+        "manuscript/state_validity_and_empirical_measurement_gates.md",
+        "manuscript/warning_validity.md",
+        "artifacts/cross_layer_alignment/phase_v_locked_summary.json",
+        "artifacts/alignment_propagation/locked_summary.json",
+        "artifacts/warning_validity/trajectory_endpoint_records.csv",
+        "artifacts/warning_validity/source_manifest.json"
+      ]
+    }
+  ],
+  "projection_sources": [
+    {
+      "role": "natural_measurement_stress_tests",
+      "repository": "zuizui0223/egwee",
+      "commit": "cdaf155817153fb10115116808aa89ca87831c9e",
+      "required_paths": [
+        "manuscript/natural_data_ecological_indicators_spine.md",
+        "manuscript/natural_data_gate_registry.json",
+        "background/empirical_e3_crepis_audit.md",
+        "background/empirical_e4_miyake_audit.md",
+        "background/empirical_e5_conospermum_audit.md",
+        "background/empirical_e6_spondias_audit.md"
+      ],
+      "claim_ceiling": "Discussion and prospective measurement design only; not external validation of the synthetic closure."
+    }
+  ],
+  "claim_firewalls": [
+    "Natural examples do not validate the simulator or the aligned/anti-aligned mechanism.",
+    "EGWEE natural analyses are not a fourth coequal mechanistic Result.",
+    "Fragmentation is not claimed to cause the aligned/anti-aligned construction.",
+    "Omitted alignment is not claimed to cause warning-threshold failure.",
+    "Generation 20 is not a universal biological threshold or natural-system timescale.",
+    "Urban, island, forest fragment and volcanic disturbance are upstream histories, not identified regimes by themselves.",
+    "No natural systems are pooled to manufacture one ecological effect.",
+    "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship."
+  ]
+}
