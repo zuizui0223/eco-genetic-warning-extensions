@@ -1,9 +1,17 @@
 """General-radius interior generator for local trait-bin mutation.
 
-For a symmetric mutation radius J, an interior destination bin receives mutated
-mass uniformly from +/-1,...,+/-J source bins.  The finite-bin mutation operator
-therefore has an exact nonlocal stencil representation in the strict interior.
-Its leading continuum coefficient is the jump-variance diffusion coefficient.
+For a symmetric mutation radius J, the translation-invariant stencil is exact
+only when the destination is at least ``2J`` bins from each finite boundary.
+The reason is subtle but important: the implemented mutation kernel is
+normalised per *source* bin.  A destination ``i`` receives mass from sources
+``i-J,...,i+J``; every one of those sources must itself have a full ``2J``
+neighbourhood for the inflow weights to equal ``mu/(2J)``.  Hence source-side
+boundary renormalisation propagates J additional bins beyond the direct jump
+radius.
+
+Within that 2J-deep interior the finite-bin mutation operator has an exact
+nonlocal stencil representation, whose leading continuum coefficient is the
+jump-variance diffusion coefficient.
 """
 from __future__ import annotations
 
@@ -31,7 +39,7 @@ def diffusion_coefficient_general_radius(
     grid_spacing: float,
     time_step: float,
 ) -> float:
-    """Return D for the leading interior continuum term.
+    """Return D for the leading translation-invariant interior continuum term.
 
         D = mu h^2 (J+1)(2J+1) / (12 Delta t).
     """
@@ -55,7 +63,7 @@ def continuum_coefficients(
     grid_spacing: float,
     time_step: float,
 ) -> ContinuumCoefficients:
-    """Return the f'' and f'''' coefficients of the interior Taylor expansion."""
+    """Return the f'' and f'''' coefficients of the 2J-deep Taylor expansion."""
     mu = float(mutation_rate)
     J = int(radius_bins)
     h = float(grid_spacing)
@@ -71,6 +79,23 @@ def continuum_coefficients(
     return ContinuumCoefficients(mu, J, h, dt, D, c4)
 
 
+def translation_invariant_interior(index: int, n_bins: int, radius_bins: int) -> bool:
+    """Whether source-normalised mutation has a full symmetric stencil at index.
+
+    A destination is translation invariant only if every source within J bins
+    also has all 2J mutation destinations.  This requires depth >= 2J from each
+    represented trait boundary.
+    """
+    i = int(index)
+    n = int(n_bins)
+    J = int(radius_bins)
+    if J < 1:
+        raise ValueError("radius_bins must be at least 1")
+    if n < 1 or not 0 <= i < n:
+        raise IndexError("index outside represented trait bins")
+    return i >= 2 * J and i + 2 * J < n
+
+
 def exact_interior_generator(
     distribution: Sequence[float],
     *,
@@ -79,7 +104,7 @@ def exact_interior_generator(
     radius_bins: int,
     time_step: float,
 ) -> float:
-    """Exact finite-bin mutation generator at a strict interior bin."""
+    """Exact finite-bin generator in the translation-invariant 2J-deep interior."""
     f = normalise_distribution(distribution)
     i = int(index)
     J = int(radius_bins)
@@ -91,8 +116,11 @@ def exact_interior_generator(
         raise ValueError("mutation_rate must lie in [0, 1]")
     if dt <= 0.0:
         raise ValueError("time_step must be positive")
-    if i - J < 0 or i + J >= len(f):
-        raise ValueError("index must be at least radius_bins from both boundaries")
+    if not translation_invariant_interior(i, len(f), J):
+        raise ValueError(
+            "index must be at least 2*radius_bins from both boundaries because "
+            "source-side boundary renormalisation changes incoming mutation weights"
+        )
     return mu / (2.0 * J * dt) * sum(
         f[i - k] + f[i + k] - 2.0 * f[i]
         for k in range(1, J + 1)
@@ -107,7 +135,7 @@ def finite_operator_generator_residual(
     radius_bins: int,
     time_step: float,
 ) -> float:
-    """Finite mutation update minus its exact strict-interior stencil generator."""
+    """Finite mutation update minus its exact 2J-deep interior stencil generator."""
     f = normalise_distribution(distribution)
     moved = local_trait_mutation(
         f,
