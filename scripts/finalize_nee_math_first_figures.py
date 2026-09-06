@@ -14,14 +14,19 @@ def replace_once(text: str, old: str, new: str, label: str) -> str:
 def finalize_figure3(path: Path) -> None:
     text = path.read_text(encoding="utf-8")
 
-    # Replace the long synthesis subtitle with two readable lines.
+    # Legacy mechanistic Figure 3 needs a layout-only subtitle split and horizon legend.
+    # The newer sorting-buffering Figure 3 already carries its own labels and must not
+    # be rewritten by this compatibility finalizer.
+    legacy_phrase = "matching-dependent recruitment is opposed by feedback-mediated compensation"
+    if legacy_phrase not in text:
+        return
+
     old = (
         '<text x="1240.0" y="670" text-anchor="middle" '
         'font-family="Arial,Helvetica,sans-serif" font-size="12" font-weight="normal">'
         'matching-dependent recruitment is opposed by feedback-mediated compensation</text>'
     )
     if old not in text:
-        # Python may serialize the integer-valued x coordinate without .0.
         old = old.replace('x="1240.0"', 'x="1240"')
     new = (
         '<text x="1240" y="666" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" '
@@ -31,7 +36,6 @@ def finalize_figure3(path: Path) -> None:
     )
     text = replace_once(text, old, new, "figure3 synthesis subtitle")
 
-    # Add an explicit horizon legend for the solid/dashed factorial curves.
     legend = (
         '<line x1="820" y1="126" x2="855" y2="126" stroke="#111" stroke-width="2"/>'
         '<text x="865" y="130" text-anchor="start" font-family="Arial,Helvetica,sans-serif" '
