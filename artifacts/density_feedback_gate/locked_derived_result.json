@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "status": "derived_from_locked_pathway_edge_artifact",
+  "source": {
+    "workflow_run": 34014537015,
+    "job": 101435935218,
+    "artifact_id": 9983623440,
+    "artifact_digest": "sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842",
+    "scientific_head": "1502e9c9c82ce45755593f0acdfe2da1a4d34b95",
+    "protocol_commit": "76ff259df512a8afda521226ae5d24c0339a4033",
+    "records_file": "records.json"
+  },
+  "derivation": {
+    "comparison": "baseline_indirect loss indicator minus delete_density_to_q loss indicator, paired by locked master_seed/replicate key within assignment",
+    "interval": "mean plus/minus 1.96 standard errors of the paired 0/1 difference vector, matching the pathway programme's _mean_ci convention",
+    "new_simulation": false
+  },
+  "generation_20": {
+    "AA": {
+      "n_paired_keys": 1500,
+      "baseline_loss_rate": 0.38333333333333336,
+      "delete_density_loss_rate": 0.0,
+      "baseline_minus_deletion_risk": 0.38333333333333336,
+      "paired_ci95": [0.3587200934391403, 0.4079465732275264]
+    },
+    "RR": {
+      "n_paired_keys": 1500,
+      "baseline_loss_rate": 0.42533333333333334,
+      "delete_density_loss_rate": 0.0,
+      "baseline_minus_deletion_risk": 0.42533333333333334,
+      "paired_ci95": [0.4003052283418773, 0.45036143832478936]
+    }
+  },
+  "generation_40": {
+    "AA": {
+      "n_paired_keys": 1500,
+      "baseline_loss_rate": 0.6873333333333334,
+      "delete_density_loss_rate": 0.11266666666666666,
+      "baseline_minus_deletion_risk": 0.5746666666666667,
+      "paired_ci95": [0.5464914881440299, 0.6028418451893034]
+    },
+    "RR": {
+      "n_paired_keys": 1500,
+      "baseline_loss_rate": 0.7313333333333333,
+      "delete_density_loss_rate": 0.13533333333333333,
+      "baseline_minus_deletion_risk": 0.596,
+      "paired_ci95": [0.5673277612584989, 0.624672238741501]
+    }
+  },
+  "interpretation": "Deleting N->q eliminates every generation-20 loss in the locked ensemble and reduces generation-40 cumulative loss by roughly 57-60 percentage points. This supports a system-level failure/amplification gate. It is not interpreted as the source of the AA-RR sorting differential."
+}
