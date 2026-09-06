@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "status": "locked_from_successful_prospective_workflow_artifact",
+  "source": {
+    "workflow_run": 34012983845,
+    "job": 101431872354,
+    "artifact_id": 9983093178,
+    "artifact_digest": "sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac",
+    "head_sha": "d28da102d9b520dce459dd69da794913c77ecd38"
+  },
+  "analytic_headline": {
+    "AA_RR_support_mean_difference": 0.0,
+    "AA_support_variance": 0.0245,
+    "RR_support_variance": 0.0005,
+    "AA_RR_support_variance_difference": 0.024,
+    "AA_RR_support_variance_ratio": 49.0
+  },
+  "full_feedback_AA_vs_RR": {
+    "generation_20": {
+      "AA_loss_rate": 0.37333333333333335,
+      "RR_loss_rate": 0.36533333333333334,
+      "RR_minus_AA_risk_difference": -0.008,
+      "paired_ci95": [-0.041566433010772334, 0.025566433010772334]
+    },
+    "generation_40": {
+      "AA_loss_rate": 0.672,
+      "RR_loss_rate": 0.678,
+      "RR_minus_AA_risk_difference": 0.006,
+      "paired_ci95": [-0.02692556287277241, 0.03892556287277241]
+    },
+    "decision": "The independent prospective full-feedback ensemble did not reproduce a stable directional AA-versus-RR long-horizon loss difference. Alignment is not a monotone scalar risk score."
+  },
+  "full_feedback_factorial": {
+    "generation_20": {
+      "risk": {"AA": 0.37333333333333335, "AR": 0.452, "RA": 0.41133333333333333, "RR": 0.36533333333333334},
+      "trait_reversal_main_effect": -0.024333333333333332,
+      "trait_reversal_ci95": [-0.04449247358546921, -0.004174193081197451],
+      "allele_reversal_main_effect": 0.01633333333333333,
+      "allele_reversal_ci95": [-0.010529127109985346, 0.04319579377665201],
+      "trait_by_allele_interaction": -0.12466666666666666,
+      "interaction_ci95": [-0.16299146597814662, -0.0863418673551867],
+      "mismatched_minus_matched_risk": 0.06233333333333333,
+      "mismatch_ci95": [0.04317093367759335, 0.08149573298907331]
+    },
+    "generation_40": {
+      "risk": {"AA": 0.672, "AR": 0.7406666666666667, "RA": 0.7033333333333334, "RR": 0.678},
+      "trait_reversal_main_effect": -0.015666666666666666,
+      "trait_reversal_ci95": [-0.03322187645394249, 0.001888543120609161],
+      "allele_reversal_main_effect": 0.021666666666666667,
+      "allele_reversal_ci95": [-0.005122423619998033, 0.04845575695333137],
+      "trait_by_allele_interaction": -0.094,
+      "interaction_ci95": [-0.1300756958343296, -0.05792430416567041],
+      "mismatched_minus_matched_risk": 0.047,
+      "mismatch_ci95": [0.028962152082835205, 0.0650378479171648]
+    },
+    "decision": "Trait and allele assignment are strongly non-additive. Cells in which trait and allele bundles are spatially mismatched have higher average functional-loss risk than cells in which those two layers remain matched."
+  },
+  "q_only_intervention": {
+    "generation_20": {
+      "AA_loss_rate": 0.37933333333333336,
+      "RR_loss_rate": 0.45066666666666666,
+      "RR_minus_AA_risk_difference": 0.07133333333333333,
+      "paired_ci95": [0.039077787400315284, 0.10358887926635138],
+      "AA_minus_RR_max_high_trait_mass": 0.07297341269841269,
+      "max_high_trait_mass_ci95": [0.04545844461735589, 0.10048838077946949],
+      "AA_minus_RR_realised_refugia_count": 0.08466666666666667,
+      "realised_refugia_ci95": [0.03614081058608096, 0.13319252274725238]
+    },
+    "generation_40": {
+      "AA_loss_rate": 0.6866666666666666,
+      "RR_loss_rate": 0.756,
+      "RR_minus_AA_risk_difference": 0.06933333333333333,
+      "paired_ci95": [0.03789749318632679, 0.10076917348033987],
+      "AA_minus_RR_max_high_trait_mass": 0.06949080298786181,
+      "max_high_trait_mass_ci95": [0.038473692574953006, 0.10050791340077062],
+      "AA_minus_RR_realised_refugia_count": 0.07,
+      "realised_refugia_ci95": [0.03331603553550197, 0.10668396446449804]
+    },
+    "generation_1_q_difference": 0.0,
+    "generation_1_support_mean_difference": 0.0,
+    "decision": "Removing direct trait and allele contributions to the q-support signal does not remove the long-horizon relational effect. It exposes a robust AA advantage, so indirect allele-linked recruitment, interaction-dependent trait selection and demographic-density feedback are sufficient to transmit the spatial mismatch."
+  },
+  "mechanistic_interpretation": {
+    "immediate_transition": "At fixed marginal means, cross-layer covariance changes spatial support variance exactly; this accounts for the immediate transition non-sufficiency and the 0.2543 next-q separation.",
+    "matching_pathway": "When high allele frequency and high-trait resident mass co-occur in patches where interaction state makes the high trait fit, allele-linked recruitment and interaction-dependent selection replenish high-trait mass more effectively.",
+    "compensation_pathway": "When the eco-genetic bundle is placed in weak-interaction patches, direct trait/allele feedback into q raises those weak patches and can compensate the recruitment disadvantage by equalizing local interaction support.",
+    "pathway_competition": "Long-term fate is the net result of matching-dependent recruitment versus feedback-mediated compensation, not a monotone function of one alignment or support-variance score.",
+    "trait_allele_coherence": "Breaking trait-allele concordance is especially costly because the allele-linked recruitment kernel and resident trait state no longer reinforce the same local phenotype distribution."
+  },
+  "claim_ceiling": "For the declared finite closure, relational effects are pathway-dependent and non-additive. Do not treat alignment, support variance or refugia as universal directional risk scores, and do not reinterpret the original locked +5 pp propagation result as a universally reproducible alignment-protection effect."
+}
