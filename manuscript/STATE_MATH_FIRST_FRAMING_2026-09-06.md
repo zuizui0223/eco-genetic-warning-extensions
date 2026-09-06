@@ -31,3 +31,7 @@ The mathematical rewrite remains inside the Ecology Letters state-lane envelope:
 ## Claim ceiling
 
 The paper establishes transition non-sufficiency of the declared coarse representation and finite downstream propagation under one deterioration path. It does not establish a universal ecological state vector, a natural-system timescale, a universal generation-20 threshold, a portable connectivity parameter, or a validated genetic warning rule.
+
+## Invariant contract
+
+Repository tests guard the scientific meaning rather than one historical sentence form. In particular, the manuscript must reject both a true generation-20 cutoff and any universal biological/temporal threshold interpretation, and it must retain the full paired interval around the original 500-pair contrast rather than report a p value alone.
