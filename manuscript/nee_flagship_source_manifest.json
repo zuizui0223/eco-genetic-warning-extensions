@@ -1,10 +1,6 @@
 {
-  "schema_version": 2,
-  "purpose": "Pin the evidence architecture for the math-first Nature Ecology & Evolution flagship.",
-  "flagship_base": {
-    "repository": "zuizui0223/eco-genetic-warning-extensions",
-    "main_commit": "c69204d09d029426370e4e4769d0b97c29fd5db7"
-  },
+  "schema_version": 3,
+  "purpose": "Pin the evidence architecture for the mechanistic Nature Ecology & Evolution flagship.",
   "load_bearing_sources": [
     {
       "layer": "fragmentation_state_separation",
@@ -29,6 +25,20 @@
         "artifacts/warning_validity/trajectory_endpoint_records.csv",
         "artifacts/warning_validity/source_manifest.json"
       ]
+    },
+    {
+      "layer": "prospective_relational_mechanism_decomposition",
+      "source_type": "locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34012983845,
+      "job": 101431872354,
+      "artifact_id": 9983093178,
+      "artifact_digest": "sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac",
+      "prospective_protocol_head": "d28da102d9b520dce459dd69da794913c77ecd38",
+      "required_flagship_paths": [
+        "experiments/relational_mechanism_decomposition_protocol.json",
+        "artifacts/relational_mechanism_decomposition/locked_result.json",
+        "docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md"
+      ]
     }
   ],
   "projection_sources": [
@@ -48,11 +58,14 @@
     }
   ],
   "claim_firewalls": [
-    "Natural examples do not validate the simulator or the aligned/anti-aligned mechanism.",
-    "EGWEE natural analyses are not a fourth coequal mechanistic Result.",
-    "Fragmentation is not claimed to cause the aligned/anti-aligned construction.",
+    "Natural examples do not validate the simulator or the finite mechanism decomposition.",
+    "EGWEE natural analyses are not a coequal mechanistic Result.",
+    "Fragmentation is not claimed to cause the original aligned/anti-aligned construction.",
     "Omitted alignment is not claimed to cause warning-threshold failure.",
     "Generation 20 is not a universal biological threshold or natural-system timescale.",
+    "The original locked +5 percentage-point propagation result is not interpreted as a universally reproducible directional alignment effect.",
+    "Support variance, alignment and refugia are not treated as universal directional risk scores.",
+    "The prospective mechanism result supports pathway competition and non-additivity only for the declared closure.",
     "Urban, island, forest fragment and volcanic disturbance are upstream histories, not identified regimes by themselves.",
     "No natural systems are pooled to manufacture one ecological effect.",
     "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship."
