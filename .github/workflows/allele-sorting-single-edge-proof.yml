@@ -1,15 +1,9 @@
 name: Allele sorting single-edge proof
 
+# The scientific result was locked by workflow run 34016797940 at
+# scientific head c6bfada980871c6aaaf883fc00381a2cca6cbcd3.
+# Subsequent manuscript/provenance edits must not create replacement ensembles.
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - 'docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md'
-      - 'experiments/allele_sorting_single_edge_protocol.json'
-      - 'src/eco_genetic_warning_extensions/allele_sorting_single_edge_proof.py'
-      - 'scripts/run_allele_sorting_single_edge_proof.py'
-      - 'tests/test_allele_sorting_single_edge_proof.py'
-      - '.github/workflows/allele-sorting-single-edge-proof.yml'
   workflow_dispatch:
 
 permissions:
@@ -40,10 +34,10 @@ jobs:
           python -m pip install -e upstream
           python -m pip install -e .
 
-      - name: Verify theorem and prospective contract before simulation
+      - name: Verify theorem and prospective contract
         run: python -m pytest -q tests/test_allele_sorting_single_edge_proof.py
 
-      - name: Run exactly the locked 6000-pair focused proof
+      - name: Reproduce exactly the locked 6000-pair focused proof
         run: |
           mkdir -p allele_sorting_output
           python scripts/run_allele_sorting_single_edge_proof.py \
@@ -79,9 +73,9 @@ jobs:
           }, indent=2))
           PY
 
-      - name: Upload locked focused proof result
+      - name: Upload reproduced focused proof result
         uses: actions/upload-artifact@v4
         with:
-          name: allele-sorting-single-edge-proof
+          name: allele-sorting-single-edge-proof-reproduction
           path: allele_sorting_output/
           if-no-files-found: error
