@@ -1,14 +1,9 @@
-name: Relational mechanism decomposition
+name: Relational mechanism decomposition — locked reproduction
 
+# The prospective scientific run is complete and frozen at workflow run 34012983845,
+# artifact 9983093178. This workflow is retained only for explicit manual reproduction;
+# PR synchronization must not silently generate new scientific ensembles.
 on:
-  pull_request:
-    branches: [main]
-    paths:
-      - 'experiments/relational_mechanism_decomposition_protocol.json'
-      - 'src/eco_genetic_warning_extensions/relational_mechanism_decomposition.py'
-      - 'scripts/run_relational_mechanism_decomposition.py'
-      - 'tests/test_relational_mechanism_decomposition.py'
-      - '.github/workflows/relational-mechanism-decomposition.yml'
   workflow_dispatch:
 
 permissions:
@@ -37,7 +32,7 @@ jobs:
           python -m pip install -e .
       - name: Verify analytic mechanism before simulation
         run: python -m pytest -q tests/test_relational_mechanism_decomposition.py
-      - name: Run locked prospective mechanism experiment
+      - name: Reproduce locked prospective mechanism experiment
         run: |
           mkdir -p mechanism_output
           python scripts/run_relational_mechanism_decomposition.py \
@@ -55,19 +50,10 @@ jobs:
           assert math.isclose(h['AA_RR_support_variance_ratio'],49.0,abs_tol=1e-12)
           assert len(s['paired_primary'])==4
           assert set(s['factorial_loss_decomposition'])=={'20','40'}
-          print(json.dumps({
-            'analytic_headline': h,
-            'paired_primary': s['paired_primary'],
-            'factorial_loss_decomposition': s['factorial_loss_decomposition'],
-            'AA_full_cells': s['trajectory_cells']['AA_full'],
-            'RR_full_cells': s['trajectory_cells']['RR_full'],
-            'AA_q_only_cells': s['trajectory_cells']['AA_q_only'],
-            'RR_q_only_cells': s['trajectory_cells']['RR_q_only'],
-          }, indent=2))
           PY
-      - name: Upload locked mechanism results
+      - name: Upload reproduced mechanism results
         uses: actions/upload-artifact@v4
         with:
-          name: relational-mechanism-decomposition
+          name: relational-mechanism-decomposition-reproduction
           path: mechanism_output/
           if-no-files-found: error
