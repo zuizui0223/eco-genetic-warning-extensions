@@ -11,6 +11,7 @@ DISPLAY = ROOT / "manuscript/nee_flagship_display_plan.md"
 REFERENCES = ROOT / "manuscript/nee_flagship_references.md"
 MANIFEST = ROOT / "manuscript/nee_flagship_source_manifest.json"
 MECHANISM = ROOT / "artifacts/relational_mechanism_decomposition/locked_result.json"
+EDGE = ROOT / "artifacts/pathway_edge_decomposition/locked_result.json"
 
 
 def words(text: str) -> list[str]:
@@ -30,8 +31,9 @@ def main() -> None:
     refs = REFERENCES.read_text(encoding="utf-8")
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     mechanism = json.loads(MECHANISM.read_text(encoding="utf-8"))
+    edge = json.loads(EDGE.read_text(encoding="utf-8"))
 
-    title = "Competing eco-genetic pathways govern functional vulnerability under fragmentation"
+    title = "Eco-genetic sorting and buffering shape functional vulnerability under fragmentation"
     assert article.startswith(f"# {title}\n")
     for heading in ("## Abstract", "## Results", "## Discussion", "## Methods"):
         assert heading in article, heading
@@ -69,8 +71,14 @@ def main() -> None:
         "+5.20",
         "6.23 points",
         "4.70 points",
-        "+7.13 percentage points",
-        "+6.93 points",
+        "+4.20 points",
+        "+4.40 points",
+        "+13.20 points",
+        "+12.73 points",
+        "+7.27 points",
+        "selection-mediated spatial sorting",
+        "recruitment-mediated buffering",
+        "failure gate and amplifier",
         "35 observed losses",
         "48 inherited non-event",
         "33 losses",
@@ -81,20 +89,10 @@ def main() -> None:
     for token in required:
         assert token in article, token
 
-    # Natural examples and natural-data programmes must stay outside load-bearing Results.
     for token in (
-        "Crepis",
-        "Miyake",
-        "Zosterops",
-        "Conospermum",
-        "Spondias",
-        "Honshu",
-        "Zurich",
-        "Toronto",
-        "Oenothera",
-        "Eschscholzia",
-        "Mallorca",
-        "Campanula americana",
+        "Crepis", "Miyake", "Zosterops", "Conospermum", "Spondias",
+        "Honshu", "Zurich", "Toronto", "Oenothera", "Eschscholzia",
+        "Mallorca", "Campanula americana",
     ):
         assert token not in results, f"natural projection leaked into Results: {token}"
 
@@ -110,32 +108,51 @@ def main() -> None:
         "generation 20 is a universal",
         "positive alignment is universally protective",
         "support variance is a universal risk score",
+        "matching-dependent recruitment pathway",
+        "allele-linked recruitment generates the matching advantage",
+        "density feedback causes the matching advantage",
     ):
         assert forbidden not in lower, forbidden
 
-    assert manifest["schema_version"] == 3
-    assert len(manifest["load_bearing_sources"]) == 3
+    assert manifest["schema_version"] == 4
+    assert len(manifest["load_bearing_sources"]) == 4
     assert len(manifest["projection_sources"]) == 1
-    assert len(manifest["claim_firewalls"]) >= 10
+    assert len(manifest["claim_firewalls"]) >= 13
 
     assert mechanism["status"] == "locked_from_successful_prospective_workflow_artifact"
     assert mechanism["source"]["workflow_run"] == 34012983845
     assert mechanism["source"]["artifact_id"] == 9983093178
     assert abs(mechanism["analytic_headline"]["AA_RR_support_variance_ratio"] - 49.0) < 1e-12
-    assert mechanism["full_feedback_AA_vs_RR"]["generation_20"]["paired_ci95"][0] < 0 < mechanism["full_feedback_AA_vs_RR"]["generation_20"]["paired_ci95"][1]
     assert mechanism["full_feedback_factorial"]["generation_20"]["mismatched_minus_matched_risk"] > 0
-    assert mechanism["q_only_intervention"]["generation_20"]["RR_minus_AA_risk_difference"] > 0
+
+    assert edge["status"] == "locked_from_successful_prospective_workflow_artifact"
+    assert edge["source"]["workflow_run"] == 34014537015
+    assert edge["source"]["artifact_id"] == 9983623440
+    assert edge["fresh_q_only_baseline"]["generation_20"]["RR_minus_AA_risk_difference"] > 0
+    assert edge["fresh_q_only_baseline"]["generation_40"]["RR_minus_AA_risk_difference"] > 0
+    allele = edge["edge_deletions"]["allele_linked_recruitment"]
+    assert allele["decision"] == "resolved_countervailing_buffer"
+    assert allele["generation_20"]["baseline_minus_deletion_DID"] < 0
+    assert allele["generation_40"]["baseline_minus_deletion_DID"] < 0
+    joint = edge["edge_deletions"]["joint_local_allele_and_trait_selection"]
+    assert joint["generation_40"]["DID_ci95"][0] > 0
+    assert joint["decision"] == "resolved_matching_contribution_at_generation_40"
+    local_a = edge["edge_deletions"]["local_allele_selection"]
+    assert local_a["decision"] == "single_edge_risk_contribution_unresolved"
+    density = edge["edge_deletions"]["density_to_q_feedback"]
+    assert density["generation_20"]["AA_loss_rate"] == 0.0
+    assert density["generation_20"]["RR_loss_rate"] == 0.0
 
     print(f"NEE abstract words: {abstract_n}")
     print(f"NEE main-text words: {main_n}")
     print(f"Main displays: {len(figures)}")
     print(f"References: {len(ref_entries)}")
-    print("Mechanistic NEE flagship compliance: PASS")
+    print("Sorting-buffering NEE flagship compliance: PASS")
 
 
 if __name__ == "__main__":
     try:
         main()
     except AssertionError as exc:
-        print(f"Mechanistic NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
+        print(f"Sorting-buffering NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
         raise

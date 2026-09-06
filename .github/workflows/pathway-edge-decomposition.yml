@@ -1,0 +1,74 @@
+name: Pathway edge decomposition
+
+# The prospective scientific run was completed once on PR #153:
+# run 34014537015, job 101435935218, artifact 9983623440.
+# This workflow is manual-only after that run so manuscript/provenance edits
+# cannot silently generate replacement scientific ensembles.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  pathway-decomposition:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned parent simulator
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned parent and extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e .
+
+      - name: Verify prospective edge-deletion contract
+        run: python -m pytest -q tests/test_pathway_edge_decomposition.py
+
+      - name: Reproduce exactly the locked pathway decomposition
+        run: |
+          mkdir -p pathway_output
+          python scripts/run_pathway_edge_decomposition.py \
+            --summary pathway_output/summary.json \
+            --records pathway_output/records.json
+
+      - name: Verify output schema without directional outcome gating
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('pathway_output/summary.json').read_text())
+          assert s['status']=='completed_from_locked_protocol'
+          expected={
+            'baseline_indirect','delete_allele_recruitment','delete_resident_inheritance',
+            'delete_local_trait_selection','delete_local_allele_selection',
+            'delete_state_dependent_demography','delete_density_to_q',
+            'delete_both_local_selection_edges',
+          }
+          assert set(s['risk_pairs'])==expected
+          assert set(s['edge_deletion_difference_in_differences'])==expected-{'baseline_indirect'}
+          for intervention in expected:
+            for h in ('20','40'):
+              assert s['risk_pairs'][intervention][h]['n_pairs']==1500
+          print('Locked pathway schema: PASS')
+          PY
+
+      - name: Upload reproduction artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: pathway-edge-decomposition-reproduction
+          path: pathway_output/
+          if-no-files-found: error

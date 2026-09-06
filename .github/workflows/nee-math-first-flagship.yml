@@ -6,10 +6,13 @@ on:
     paths:
       - 'manuscript/nee_flagship_*'
       - 'artifacts/relational_mechanism_decomposition/**'
+      - 'artifacts/pathway_edge_decomposition/**'
       - 'docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md'
+      - 'docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'experiments/relational_mechanism_decomposition_protocol.json'
+      - 'experiments/pathway_edge_decomposition_protocol.json'
       - 'scripts/check_nee_flagship_compliance.py'
-      - 'scripts/build_nee_flagship_figures.py'
+      - 'scripts/build_nee_sorting_buffering_figures.py'
       - 'scripts/finalize_nee_math_first_figures.py'
       - '.github/workflows/nee-math-first-flagship.yml'
   workflow_dispatch:
@@ -66,11 +69,16 @@ jobs:
             'zuizui0223/eco-genetic-warning-extensions': (Path('egwe_source'),'c69204d09d029426370e4e4769d0b97c29fd5db7'),
             'zuizui0223/egwee': (Path('egwee_projection'),'cdaf155817153fb10115116808aa89ca87831c9e'),
           }
+          locked={
+            'prospective_relational_mechanism_decomposition': (34012983845,9983093178,'sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac'),
+            'prospective_pathway_edge_decomposition': (34014537015,9983623440,'sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842'),
+          }
           for source in manifest['load_bearing_sources']:
             if source.get('source_type') == 'locked_workflow_artifact_materialized_in_flagship_repository':
-              assert source['workflow_run'] == 34012983845
-              assert source['artifact_id'] == 9983093178
-              assert source['artifact_digest'] == 'sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac'
+              run, artifact, digest = locked[source['layer']]
+              assert source['workflow_run'] == run
+              assert source['artifact_id'] == artifact
+              assert source['artifact_digest'] == digest
               for rel in source['required_flagship_paths']:
                 assert (Path('flagship')/rel).is_file(), f'missing flagship mechanism path: {rel}'
               continue
@@ -85,25 +93,26 @@ jobs:
             assert got==expected,(source['repository'],got,expected)
             for rel in source['required_paths']:
               assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
-          print('Pinned scientific sources + locked mechanism artifact: PASS')
+          print('Pinned scientific sources + both locked mechanism artifacts: PASS')
           PY
 
       - name: Generate four main figures from locked evidence
         run: |
           mkdir -p nee_packet/figures
-          python flagship/scripts/build_nee_flagship_figures.py \
+          python flagship/scripts/build_nee_sorting_buffering_figures.py \
             --egc-root egc_source \
             --egwe-root egwe_source \
-            --mechanism-root flagship \
+            --flagship-root flagship \
             --output nee_packet/figures
           python flagship/scripts/finalize_nee_math_first_figures.py \
             --figures nee_packet/figures
           test "$(find nee_packet/figures -name '*.svg' | wc -l)" -eq 4
-          grep -q 'matching pathway' nee_packet/figures/figure1_mathematical_boundaries.svg
+          grep -q 'sorting' nee_packet/figures/figure1_mathematical_boundaries.svg
           grep -q '1,037/1,037' nee_packet/figures/figure2_state_separation.svg
           grep -q '0.2543' nee_packet/figures/figure3_relational_state.svg
-          grep -q '6.23 pp' nee_packet/figures/figure3_relational_state.svg
-          grep -q '7.13 pp' nee_packet/figures/figure3_relational_state.svg
+          grep -q 'DID -9.00 / -8.33 pp' nee_packet/figures/figure3_relational_state.svg
+          grep -q '7.27' nee_packet/figures/figure3_relational_state.svg
+          grep -q 'no losses by g20' nee_packet/figures/figure3_relational_state.svg
           grep -q 'AUC=0.5' nee_packet/figures/figure4_warning_discrimination.svg
 
       - name: Assemble review-facing packet
@@ -118,6 +127,9 @@ jobs:
           cp flagship/artifacts/relational_mechanism_decomposition/locked_result.json nee_packet/provenance/relational_mechanism_locked_result.json
           cp flagship/docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md nee_packet/provenance/relational_mechanism_result.md
           cp flagship/experiments/relational_mechanism_decomposition_protocol.json nee_packet/provenance/relational_mechanism_protocol.json
+          cp flagship/artifacts/pathway_edge_decomposition/locked_result.json nee_packet/provenance/pathway_edge_locked_result.json
+          cp flagship/docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md nee_packet/provenance/pathway_edge_result.md
+          cp flagship/experiments/pathway_edge_decomposition_protocol.json nee_packet/provenance/pathway_edge_protocol.json
           cp egwee_projection/manuscript/natural_data_gate_registry.json nee_packet/provenance/egwee_projection_gate_registry.json
           (cd nee_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_packet/MANIFEST.sha256
@@ -125,6 +137,6 @@ jobs:
       - name: Upload NEE mechanistic review packet
         uses: actions/upload-artifact@v4
         with:
-          name: nee-mechanistic-review-packet
+          name: nee-sorting-buffering-review-packet
           path: nee_packet/
           if-no-files-found: error

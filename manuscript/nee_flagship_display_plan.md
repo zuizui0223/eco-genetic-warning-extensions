@@ -1,22 +1,25 @@
-# NEE flagship display plan — competing relational pathways
+# NEE flagship display plan — sorting–buffering mechanism
 
 ## Principle
 
 The main figures carry the mathematical and finite-model mechanism. Natural examples remain Background/Discussion projections and receive no main-data panel.
 
-## Figure 1 — Three mechanistic boundaries on functional vulnerability
+## Figure 1 — From fragmentation to pathway balance
 
 One conceptual figure defines the paper before individual experiments.
 
-- Boundary A: fragmentation separates biological states that are often conflated.
-- Boundary B: matched marginal states can differ because relational covariance changes local support and multiple downstream pathways can oppose one another.
+- Boundary A: fragmentation separates biological states that are often conflated (`persistence != functional support`).
+- Boundary B: matched marginal states can differ immediately because cross-layer covariance changes where support is concentrated.
+- Mechanistic resolution: local ecological selection can **sort** compatible state into persistent local cores, while recruitment and direct feedback can **buffer** mismatch.
 - Boundary C: perfect event-conditioned precedence fixes sensitivity but leaves specificity free.
 
-The central synthesis box is now:
+Central synthesis:
 
-`matching-dependent recruitment <-> feedback-mediated compensation -> functional fate`
+`selection-mediated sorting  <->  recruitment / feedback-mediated buffering`
 
-Footer: the three evidence blocks are not assumed to form one universal causal chain; the pathway competition is established within the declared finite closure.
+with `density -> q` shown separately as a failure/amplification gate rather than a directional matching pathway.
+
+Footer: natural examples are ecological projections; no landscape label or scalar alignment score is treated as a universal mechanism.
 
 ## Figure 2 — Fragmentation separates functional support from persistence
 
@@ -31,41 +34,46 @@ Panel B: retained interaction, local effective size and realised high-trait mass
 
 Take-home: one structural disturbance does not define one biological deterioration coordinate.
 
-## Figure 3 — Relational covariance opens competing pathways
+## Figure 3 — Relational covariance is resolved into sorting and buffering
 
 ### Panel A — exact immediate mechanism
 
 Original matched-marginal construction:
-- mean support identical: 0.68 versus 0.68;
-- support variance: 0.0245 versus 0.0005, **49 x** difference;
+- mean support identical: `0.68` versus `0.68`;
+- support variance: `0.0245` versus `0.0005`, **49 ×** difference;
 - maximum exact next-interaction difference: **0.2543**.
 
 Display the variance identity linking fixed marginals to cross-layer covariance.
 
-### Panel B — prospectively locked full-feedback factorial
+### Panel B — pathway competition under full feedback
 
-Loss risk by trait/allele assignment:
+Compactly retain the first prospective decomposition:
+- trait–allele mismatched minus matched loss risk: **+6.23 pp** at g20 and **+4.70 pp** at g40;
+- full-feedback AA versus RR has no stable directional effect;
+- direct T/G -> q feedback therefore can offset mismatch rather than define a universal alignment direction.
 
-| horizon | AA | AR | RA | RR |
-|---|---:|---:|---:|---:|
-| g20 | .373 | .452 | .411 | .365 |
-| g40 | .672 | .741 | .703 | .678 |
+This panel establishes non-additivity and motivates edge decomposition; it is not the final causal result.
 
-Highlight the predeclared interaction / coherence contrast:
-- trait-allele mismatched minus matched: **+6.23 pp** at g20, 95% CI `[+4.32,+8.15]`;
-- **+4.70 pp** at g40, `[+2.90,+6.50]`.
+### Panel C — prospectively locked edge deletion
 
-Do not frame AA versus RR as a reproduced directional effect; new full-feedback AA-RR differences are -0.8 pp and +0.6 pp at g20/g40 with intervals spanning zero.
+Show RR−AA loss risk (pp) under the fresh q-only baseline and the most diagnostic deletions at g20/g40:
 
-### Panel C — q-only intervention
+| intervention | g20 | g40 | interpretation |
+|---|---:|---:|---|
+| fresh q-only baseline | +4.20 | +4.40 | indirect AA advantage reproduced |
+| delete allele-linked recruitment | +13.20 | +12.73 | recruitment normally buffers mismatch |
+| delete both local selection edges | +0.60 | −2.87 | late sorting advantage removed |
+| delete density -> q | 0.00 | +2.27 | collapse strongly delayed / failure gate |
 
-Removing direct trait/allele input to q:
-- g1 q field identical between AA and RR;
-- RR-AA loss risk **+7.13 pp** at g20 `[+3.91,+10.36]`;
-- **+6.93 pp** at g40 `[+3.79,+10.08]`;
-- aligned states retain greater upper-tail high-trait mass and more realised refugia later.
+Annotate preregistered DIDs:
+- allele-recruitment deletion: **−9.00 pp** g20 and **−8.33 pp** g40, resolved countervailing buffer;
+- joint local-selection deletion: **+7.27 pp** g40 `[+2.67,+11.87]`, resolved sorting contribution;
+- density deletion: zero events in both conditions by g20, so treat as a failure gate rather than clean matching-specific mediation.
 
-Take-home: direct eco-genetic feedback to q is not necessary; indirect recruitment/selection transmits mismatch, while full feedback can compensate it.
+Below the plot, show the baseline temporal signature:
+`stronger focal-state concentration in fewer patches at g5 -> more retained refugia in AA by g20/g40`.
+
+Take-home: **local ecological selection sorts compatible state; allele-linked recruitment buffers mismatch; density feedback gates system-wide collapse.** Local q-dependent allele selection is the leading single-edge sorting candidate but remains individually unresolved by the preregistered risk criterion.
 
 ## Figure 4 — A perfectly early marginal marker can fail to distinguish fate
 
@@ -81,17 +89,17 @@ Panel C: exact denominator identity:
 - binary `AUC = (1 + specificity)/2`;
 - observed specificity = 0 -> AUC = 0.5.
 
-Take-home: marginal erosion can be stress-sensitive without discriminating among pathway-dependent fates.
+Take-home: marginal erosion can be stress-sensitive without discriminating whether sorting is outrunning buffering.
 
 ## Extended Data / Supplementary information
 
 1. Exact canonical interaction-map turning points and barrier interval.
 2. Full fragmentation-gradient paired summaries.
 3. Complete matched-marginal transition certificate.
-4. Original 500/1000/1500 propagation precision grid and its non-universal-direction claim boundary.
-5. Full six-condition relational mechanism decomposition and trajectory metrics.
-6. Operator-specific connectivity portability results.
-7. All six warning endpoints and full-denominator metrics.
-8. Exact precedence-discrimination proof.
-9. Evidence-role map distinguishing load-bearing tests from ecological projection.
-10. Literature-based ecological projection table: uncompensated loss, movement compensation, cohort lag and coordinated deterioration.
+4. Original 500/1000/1500 propagation precision grid and its non-universal-direction boundary.
+5. Full six-condition relational mechanism decomposition.
+6. Full eight-intervention pathway edge decomposition and all generation 1/5/10/20/40 mediator trajectories.
+7. Single-edge risk DIDs showing q-dependent allele selection remains individually unresolved.
+8. Operator-specific connectivity portability results.
+9. All six warning endpoints and full-denominator metrics plus exact precedence-discrimination proof.
+10. Evidence-role map and literature-based ecological projection table: limited buffering, movement recoupling, temporal memory and coordinated deterioration.

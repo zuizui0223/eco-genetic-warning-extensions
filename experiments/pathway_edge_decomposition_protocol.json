@@ -1,0 +1,136 @@
+{
+  "experiment_id": "pathway_edge_decomposition_v1",
+  "status": "prospective_locked_before_run",
+  "locked_at_utc": "2026-09-06T05:30:00Z",
+  "scientific_parent": {
+    "repository": "zuizui0223/eco-genetic-criticality",
+    "commit": "b7ee738767c92307d6d23a85a3eeb857faf6ddfb"
+  },
+  "starting_flagship_commit": "06a7a99ab9fba16d5b38cee48c34fb3a566ab004",
+  "prior_locked_mechanism_result": {
+    "workflow_run": 34012983845,
+    "artifact_id": 9983093178,
+    "artifact_digest": "sha256:843a6bdc4a4d4e9de10ce6346cca27a1a863b1780573f000c0f1ab164a81c7ac",
+    "use": "Motivates the q-only indirect pathway; no outcomes from the new experiment were available when this protocol was written."
+  },
+  "question": "Which life-cycle links transmit the AA-versus-RR functional-loss difference after direct trait/allele feedback into q has been removed?",
+  "fixed_state": {
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "AA_trait_assignment": [0.20, 0.40, 0.60, 0.80],
+    "AA_allele_assignment": [0.20, 0.40, 0.60, 0.80],
+    "RR_trait_assignment": [0.80, 0.60, 0.40, 0.20],
+    "RR_allele_assignment": [0.80, 0.60, 0.40, 0.20],
+    "q_feedback": [1.0, 0.0, 0.0],
+    "migration_rate": 0.0,
+    "mutation_rate": 0.0
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_start": 0.50,
+    "barrier_end_at_generation_60": 0.65,
+    "reference_schedule_generations": 60,
+    "report_horizons": [1, 5, 10, 20, 40]
+  },
+  "replication": {
+    "master_seeds": [310031, 420041, 530053, 640063, 750077],
+    "replicates_per_seed": 300,
+    "pairs_per_intervention": 1500,
+    "common_random_number_pairing": "AA and RR use the same master-seed/replicate key within every intervention; the same keys are reused across interventions for difference-in-differences."
+  },
+  "interventions": {
+    "baseline_indirect": {
+      "description": "Existing q-only indirect mechanism: two-kernel allele-linked recruitment, resident inheritance weight 0.5, local q-dependent allele selection, local q-dependent trait selection, state-dependent demography, density in q update.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_allele_recruitment": {
+      "description": "Delete G -> recruit trait distribution while retaining resident trait inheritance and all other edges.",
+      "allele_linked_recruitment": false,
+      "resident_inheritance_weight": 1.0,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_resident_inheritance": {
+      "description": "Delete resident T -> recruit trait distribution while retaining pure allele-linked recruitment.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.0,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_local_trait_selection": {
+      "description": "Delete the local spatial q -> trait-selection edge by applying the within-condition spatial mean q to trait viability selection in every patch; allele selection remains local-q dependent.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "spatial_mean_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_local_allele_selection": {
+      "description": "Delete the local spatial q -> allele-selection edge by applying the within-condition spatial mean q to allele viability selection in every patch; trait selection remains local-q dependent.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "spatial_mean_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_state_dependent_demography": {
+      "description": "Delete q and selected-allele contributions to population growth by setting interaction_growth=0 and high_allele_growth=0; density regulation remains.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": false,
+      "density_in_q_update": true
+    },
+    "delete_density_to_q": {
+      "description": "Delete N -> q feedback by setting the density multiplier in the q update to one; demographic dynamics and finite sampling remain active.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": false
+    },
+    "delete_both_local_selection_edges": {
+      "description": "Delete both local spatial q -> allele-selection and q -> trait-selection edges using within-condition spatial mean q for both; other indirect edges remain.",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "allele_selection_mode": "spatial_mean_q",
+      "trait_selection_mode": "spatial_mean_q",
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    }
+  },
+  "primary_endpoint": {
+    "definition": "Existing tau_trait_realised endpoint: first generation at which realised high-trait occupancy is absent from every patch.",
+    "primary_horizons": [20, 40],
+    "effect": "RR minus AA cumulative loss risk within each intervention."
+  },
+  "primary_mechanism_estimand": {
+    "definition": "For each edge-deletion intervention, (RR-AA risk difference under baseline_indirect) minus (RR-AA risk difference under the deletion), paired by master-seed/replicate key.",
+    "positive_interpretation": "Deleting the edge attenuates the AA matching advantage; the edge supports the matching pathway.",
+    "negative_interpretation": "Deleting the edge increases the AA advantage or removes a countervailing RR benefit; the edge opposes the matching pathway / contributes compensation.",
+    "resolved_rule": "Call a directional pathway contribution resolved only when the paired 95% confidence interval for the difference-in-differences excludes zero. Otherwise label unresolved."
+  },
+  "secondary_mediators": [
+    "mean and maximum realised high-trait mass",
+    "realised high-trait refuge count",
+    "mean and maximum q",
+    "mean population and population variance",
+    "mean high-allele frequency and allele-frequency variance"
+  ],
+  "claim_boundary": "This experiment identifies necessary or countervailing links only within the declared finite closure. It does not establish a universal natural mechanism, does not reopen the previous full-feedback AA/RR directional result, and does not authorize parameter, threshold, horizon, migration, endpoint or intervention searches after outcomes are read.",
+  "stop_rule": "Run exactly the eight declared interventions at the fixed state, forcing, horizons and replication. No additional edge deletions, combinations, seeds, parameter values or alternative outcomes may be opened after the first outcome file is produced."
+}

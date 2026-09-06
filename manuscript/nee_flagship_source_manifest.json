@@ -1,6 +1,6 @@
 {
-  "schema_version": 3,
-  "purpose": "Pin the evidence architecture for the mechanistic Nature Ecology & Evolution flagship.",
+  "schema_version": 4,
+  "purpose": "Pin the evidence architecture for the sorting-buffering Nature Ecology & Evolution flagship.",
   "load_bearing_sources": [
     {
       "layer": "fragmentation_state_separation",
@@ -39,6 +39,21 @@
         "artifacts/relational_mechanism_decomposition/locked_result.json",
         "docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md"
       ]
+    },
+    {
+      "layer": "prospective_pathway_edge_decomposition",
+      "source_type": "locked_workflow_artifact_materialized_in_flagship_repository",
+      "workflow_run": 34014537015,
+      "job": 101435935218,
+      "artifact_id": 9983623440,
+      "artifact_digest": "sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842",
+      "prospective_protocol_commit": "76ff259df512a8afda521226ae5d24c0339a4033",
+      "scientific_head": "1502e9c9c82ce45755593f0acdfe2da1a4d34b95",
+      "required_flagship_paths": [
+        "experiments/pathway_edge_decomposition_protocol.json",
+        "artifacts/pathway_edge_decomposition/locked_result.json",
+        "docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md"
+      ]
     }
   ],
   "projection_sources": [
@@ -58,14 +73,17 @@
     }
   ],
   "claim_firewalls": [
-    "Natural examples do not validate the simulator or the finite mechanism decomposition.",
+    "Natural examples do not validate the simulator or the finite mechanism decompositions.",
     "EGWEE natural analyses are not a coequal mechanistic Result.",
     "Fragmentation is not claimed to cause the original aligned/anti-aligned construction.",
     "Omitted alignment is not claimed to cause warning-threshold failure.",
     "Generation 20 is not a universal biological threshold or natural-system timescale.",
     "The original locked +5 percentage-point propagation result is not interpreted as a universally reproducible directional alignment effect.",
     "Support variance, alignment and refugia are not treated as universal directional risk scores.",
-    "The prospective mechanism result supports pathway competition and non-additivity only for the declared closure.",
+    "Allele-linked recruitment is not claimed to generate the AA matching advantage; the locked edge-deletion experiment identifies it as a countervailing buffer in the q-only closure.",
+    "Local ecological selection is resolved only as a joint late sorting block; local q-dependent allele selection is a leading single-edge candidate but remains individually unresolved by the preregistered risk-DID rule.",
+    "Density-to-q feedback is treated as a failure/amplification gate; the zero-event generation-20 deletion is not interpreted as clean matching-specific mediation.",
+    "Sorting, buffering and the observed horizons are bounded properties of the declared finite closure, not universal natural laws.",
     "Urban, island, forest fragment and volcanic disturbance are upstream histories, not identified regimes by themselves.",
     "No natural systems are pooled to manufacture one ecological effect.",
     "Substantially overlapping fallback manuscripts must not be simultaneously submitted with an active flagship."
