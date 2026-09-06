@@ -39,10 +39,6 @@ def diffusion_coefficient_general_radius(
     grid_spacing: float,
     time_step: float,
 ) -> float:
-    """Return D for the leading translation-invariant interior continuum term.
-
-        D = mu h^2 (J+1)(2J+1) / (12 Delta t).
-    """
     mu = float(mutation_rate)
     J = int(radius_bins)
     h = float(grid_spacing)
@@ -63,7 +59,6 @@ def continuum_coefficients(
     grid_spacing: float,
     time_step: float,
 ) -> ContinuumCoefficients:
-    """Return the f'' and f'''' coefficients of the 2J-deep Taylor expansion."""
     mu = float(mutation_rate)
     J = int(radius_bins)
     h = float(grid_spacing)
@@ -80,12 +75,7 @@ def continuum_coefficients(
 
 
 def translation_invariant_interior(index: int, n_bins: int, radius_bins: int) -> bool:
-    """Whether source-normalised mutation has a full symmetric stencil at index.
-
-    A destination is translation invariant only if every source within J bins
-    also has all 2J mutation destinations.  This requires depth >= 2J from each
-    represented trait boundary.
-    """
+    """Whether source-normalised mutation has a full symmetric stencil at index."""
     i = int(index)
     n = int(n_bins)
     J = int(radius_bins)
@@ -96,6 +86,31 @@ def translation_invariant_interior(index: int, n_bins: int, radius_bins: int) ->
     return i >= 2 * J and i + 2 * J < n
 
 
+def translation_invariant_interior_count(n_bins: int, radius_bins: int) -> int:
+    """Number of destinations with the exact translation-invariant stencil.
+
+    Valid indices are ``2J,...,n-1-2J``.  Hence the count is
+
+        max(0, n - 4J).
+
+    At least one invariant interior bin exists iff ``n >= 4J+1``.
+    """
+    n = int(n_bins)
+    J = int(radius_bins)
+    if n < 1:
+        raise ValueError("n_bins must be positive")
+    if J < 1:
+        raise ValueError("radius_bins must be at least 1")
+    return max(0, n - 4 * J)
+
+
+def boundary_influence_fraction(n_bins: int, radius_bins: int) -> float:
+    """Fraction of represented bins influenced by source-boundary renormalisation."""
+    n = int(n_bins)
+    interior = translation_invariant_interior_count(n, radius_bins)
+    return 1.0 - interior / n
+
+
 def exact_interior_generator(
     distribution: Sequence[float],
     *,
@@ -104,7 +119,6 @@ def exact_interior_generator(
     radius_bins: int,
     time_step: float,
 ) -> float:
-    """Exact finite-bin generator in the translation-invariant 2J-deep interior."""
     f = normalise_distribution(distribution)
     i = int(index)
     J = int(radius_bins)
@@ -135,7 +149,6 @@ def finite_operator_generator_residual(
     radius_bins: int,
     time_step: float,
 ) -> float:
-    """Finite mutation update minus its exact 2J-deep interior stencil generator."""
     f = normalise_distribution(distribution)
     moved = local_trait_mutation(
         f,
