@@ -6,7 +6,9 @@ from pathlib import Path
 import pytest
 
 from eco_genetic_warning_extensions.route_headroom_boundary import (
+    continuous_static_crossing_generation,
     direct_recoupling_headroom_shift,
+    first_static_unsafe_generation,
     initial_matched_marginal_certificate,
     next_q_from_state,
     route_headroom,
@@ -57,6 +59,23 @@ def test_initial_AA_RR_certificate_exhibits_coverage_reserve_tradeoff() -> None:
 
     assert math.isclose(aa["maximum_headroom"], 0.2739831947186687, abs_tol=1e-12)
     assert math.isclose(rr["maximum_headroom"], 0.09398319471866867, abs_tol=1e-12)
+
+
+def test_frozen_support_benchmark_converts_coverage_to_endurance() -> None:
+    cert = initial_matched_marginal_certificate()
+    aa = cert["conditions"]["AA"]
+    rr = cert["conditions"]["RR"]
+
+    assert aa["frozen_state_first_unsafe_generation"] == (1, 1, 55, 111)
+    assert rr["frozen_state_first_unsafe_generation"] == (39, 31, 23, 15)
+
+    # By generation 40, the frozen RR support field would have no patch left
+    # above the moving q*=0.625 boundary, whereas AA would retain two.
+    assert sum(g > 40 for g in aa["frozen_state_first_unsafe_generation"]) == 2
+    assert sum(g > 40 for g in rr["frozen_state_first_unsafe_generation"]) == 0
+
+    assert math.isclose(continuous_static_crossing_generation(0.75), 54.59327788746747, abs_tol=1e-12)
+    assert first_static_unsafe_generation(0.75) == 55
 
 
 def test_direct_recoupling_shift_is_exact_headroom_difference_from_q_only() -> None:
