@@ -62,8 +62,7 @@
         "src/eco_genetic_warning_extensions/recruitment_buffer_theorem.py",
         "docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md",
         "artifacts/density_feedback_gate/locked_derived_result.json",
-        "src/eco_genetic_warning_extensions/density_feedback_gate_theorem.py",
-        "scripts/derive_density_feedback_gate.py"
+        "src/eco_genetic_warning_extensions/density_feedback_gate_theorem.py"
       ],
       "derived_claim_boundary": "Recruitment and density theorems derive exact operators from the declared closure and reuse only the already locked pathway artifact for endpoint contrasts; no new outcome ensemble was opened."
     },
