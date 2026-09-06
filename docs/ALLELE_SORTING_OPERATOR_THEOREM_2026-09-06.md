@@ -1,6 +1,6 @@
 # Exact local allele-sorting theorem for the q-only closure
 
-Status: **operator-level theorem for the declared finite closure**. This document is written and committed before the focused endpoint experiment is opened.
+Status: **operator-level theorem for the declared finite closure**. Theorem 1 and the focused endpoint protocol were written and committed before the focused endpoint experiment was opened. The spatial covariance corollary below was derived and recorded in PR #154 while the locked workflow was still in progress, before the outcome artifact was opened.
 
 ## Setup
 
@@ -89,8 +89,56 @@ Therefore the closure contains an exact eco-genetic consistency relation: patche
 
 This coincidence is algebraic for the declared life cycle; it is not asserted as a universal natural law.
 
-## What this theorem proves — and what it does not
+## Theorem 2 — one selection step increases spatial q–allele sorting
 
-It proves exactly that the local `q -> allele selection` operator is a spatial sorting operator and that its direction switches at the same q threshold as potential high-trait viability.
+Let
 
-It does **not** by itself prove that this single edge is necessary for the later all-patch realised-high-trait loss contrast. The previous prospectively locked 1,500-pair edge-deletion experiment made this the leading single-edge candidate but left the preregistered generation-40 risk difference-in-differences unresolved because its 95% interval slightly crossed zero. A separate focused prospective precision experiment is therefore required for endpoint-level causal attribution.
+\[
+u_i=\operatorname{logit}(p_i)
+\]
+
+for patch `i`, and define
+
+\[
+g(q)=\log(0.75+0.4q).
+\]
+
+Theorem 1 gives
+
+\[
+u_i^+=u_i+g(q_i).
+\]
+
+Therefore
+
+\[
+\operatorname{Cov}(q,u^+)-\operatorname{Cov}(q,u)
+=\operatorname{Cov}(q,g(q)).
+\]
+
+For equally weighted patches,
+
+\[
+\operatorname{Cov}(q,g(q))
+=\frac{1}{2n^2}\sum_{i,j}(q_i-q_j)\{g(q_i)-g(q_j)\}.
+\]
+
+Because `g` is strictly increasing, every summand is nonnegative. If q is nonconstant across patches, at least one pair has `q_i != q_j`, so at least one summand is strictly positive. Hence
+
+\[
+\boxed{
+\operatorname{Cov}(q,\operatorname{logit}p^+)
+>
+\operatorname{Cov}(q,\operatorname{logit}p)
+}
+\]
+
+whenever q varies spatially and allele frequencies are interior.
+
+Thus local q-dependent allele selection is not merely monotone patchwise: a single deterministic selection step **strictly increases spatial association between interaction state and high-allele log odds** whenever ecological state is spatially heterogeneous.
+
+## What these theorems prove — and what they do not
+
+They prove exactly that the local `q -> allele selection` operator is a spatial sorting operator, that its direction switches at the same q threshold as potential high-trait viability, and that one deterministic selection step increases q–allele spatial sorting whenever q varies among patches.
+
+The theorem alone does **not** prove that this single edge changes the later all-patch realised-high-trait loss endpoint. That endpoint claim is tested separately in the prospectively locked 6,000-pair focused intervention and is recorded in `docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md`.
