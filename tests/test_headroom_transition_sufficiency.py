@@ -25,14 +25,12 @@ def test_headroom_vector_exactly_factorizes_next_interaction_transition() -> Non
 
 def test_same_headroom_implies_same_next_interaction_even_with_different_states() -> None:
     theta = 0.55
-    # Patchwise support*density is 0.7 in both explicit states.
-    h1 = headroom_from_explicit_state((0.5,), (1.0,), (1.0,), (1.0,), theta)
-    # support=.6*.75+.3*.5+.1*.5=.65; choose density to match .7 is impossible >1,
-    # so use an explicit higher support and lower density pair instead.
-    h2 = headroom_from_explicit_state((1.0,), (1.0,), (1.0,), (0.7,), theta)
-    h3 = headroom_from_explicit_state((0.5,), (1.0,), (1.0,), (1.0,), theta)
-    assert math.isclose(h2[0], h3[0], abs_tol=1e-12)
-    assert interaction_field_from_headroom(h2) == interaction_field_from_headroom(h3)
+    # State A has support 1 at density .7; state B has support .7 at density 1.
+    # Both therefore have the same density-weighted support and the same H.
+    h_a = headroom_from_explicit_state((1.0,), (1.0,), (1.0,), (0.7,), theta)
+    h_b = headroom_from_explicit_state((0.5,), (1.0,), (1.0,), (1.0,), theta)
+    assert math.isclose(h_a[0], h_b[0], abs_tol=1e-12)
+    assert interaction_field_from_headroom(h_a) == interaction_field_from_headroom(h_b)
 
 
 def test_matched_marginal_AA_RR_have_different_headroom_and_transition() -> None:
