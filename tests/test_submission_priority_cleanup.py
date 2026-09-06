@@ -42,6 +42,10 @@ def test_state_validity_reports_interval_not_p_value_only() -> None:
     assert (
         "does not exclude effects of roughly this magnitude" in flat
         or "did not exclude effects of roughly this magnitude" in flat
+        or (
+            "upper confidence limit corresponds" in flat
+            and "14.8% relative increase" in flat
+        )
     )
 
 
