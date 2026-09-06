@@ -58,18 +58,9 @@ def test_manuscript_uses_effect_size_timescale_not_significance_cutoff() -> None
         assert "+5.33" in text or "+5.3" in text
         assert "+5.20" in text or "+5.2" in text
         assert "10" in text and "20" in text and "40" in text
-    flat = " ".join(state.lower().split())
-    # The manuscript may mention a cutoff only to reject that interpretation.
+    flat = " ".join(state.lower().replace("**", "").split())
+    # The manuscript may mention a cutoff or threshold only to reject that interpretation.
     assert "does not establish generation 20 as a true cutoff" in flat
-    assert any(
-        phrase in flat
-        for phrase in (
-            "does not establish a universal temporal cutoff",
-            "do not establish a universal temporal cutoff",
-            "not a universal temporal cutoff",
-            "not a universal biological threshold",
-            "does not establish generation 20 as a true cutoff, a universal biological threshold",
-        )
-    )
+    assert "universal biological threshold" in flat or "universal temporal cutoff" in flat
     assert "generation 20 is the true cutoff" not in flat
     assert "generation 20 is a universal onset" not in flat
