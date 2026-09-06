@@ -1,6 +1,6 @@
 # References — state-validity manuscript core set
 
-This file contains the load-bearing external references for the standalone state-validity manuscript. It is intentionally narrower than the integrated `manuscript/references.md` archive and excludes warning-validity and natural-data references that do not belong to this lane.
+This file contains the load-bearing external references for the standalone state-validity manuscript. Forecasting, multilayer and fragmentation references support the mathematical framing. Natural-system references are used only as ecological background and Discussion anchors; they are not treated as external validation of the finite eco-genetic closure.
 
 Clark, J.S., Carpenter, S.R., Barber, M., Collins, S., Dobson, A., Foley, J.A., Lodge, D.M., Pascual, M., Pielke, R. Jr., Pizer, W., Pringle, C., Reid, W.V., Rose, K.A., Sala, O., Schlesinger, W.H., Wall, D.H. & Wear, D. (2001). Ecological forecasts: an emerging imperative. *Science*, **293**, 657–660. doi:10.1126/science.293.5530.657
 
@@ -13,3 +13,19 @@ Pilosof, S., Porter, M.A., Pascual, M. & Kéfi, S. (2017). The multilayer nature
 Legrand, D., Cote, J., Fronhofer, E.A., Holt, R.D., Ronce, O., Schtickzelle, N., Travis, J.M.J. & Clobert, J. (2017). Eco-evolutionary dynamics in fragmented landscapes. *Ecography*, **40**, 9–25. doi:10.1111/ecog.02537
 
 Govaert, L., Fronhofer, E.A., Lion, S., Eizaguirre, C., Bonte, D., Egas, M., Hendry, A.P., De Brito Martins, A., Melián, C.J., Raeymaekers, J.A.M., Ratikainen, I.I., Sæther, B.-E., Schweitzer, J.A. & Matthews, B. (2019). Eco-evolutionary feedbacks—Theoretical models and perspectives. *Functional Ecology*, **33**, 13–30. doi:10.1111/1365-2435.13241
+
+Cheptou, P.-O. & Avendaño V, L.G. (2006). Pollination processes and the Allee effect in highly fragmented populations: consequences for the mating system in urban environments. *New Phytologist*, **172**, 774–783. doi:10.1111/j.1469-8137.2006.01880.x
+
+Dornier, A. & Cheptou, P.-O. (2013). Inferring contemporary dispersal processes in plant metapopulations: comparison of direct and indirect estimates of dispersal for the annual species *Crepis sancta*. *Heredity*, **111**, 1–7. doi:10.1038/hdy.2013.3
+
+Abe, H. & Hasegawa, M. (2008). Impact of volcanic activity on a plant-pollinator module in an island ecosystem: the example of the association of *Camellia japonica* and *Zosterops japonica*. *Ecological Research*, **23**, 141–150. doi:10.1007/s11284-007-0345-4
+
+Abe, H., Ueno, S., Takahashi, T., Tsumura, Y. & Hasegawa, M. (2013). Resilient plant–bird interactions in a volcanic island ecosystem: pollination of Japanese Camellia mediated by the Japanese White-eye. *PLoS ONE*, **8**, e62696. doi:10.1371/journal.pone.0062696
+
+Delnevo, N., van Etten, E.J., Byrne, M. & Stock, W.D. (2019). Floral display and habitat fragmentation: Effects on the reproductive success of the threatened mass-flowering *Conospermum undulatum* (Proteaceae). *Ecology and Evolution*, **9**, 11494–11503. doi:10.1002/ece3.5653
+
+Delnevo, N., Piotti, A., Carbognani, M., van Etten, E.J., Stock, W.D., Field, D.L. & Byrne, M. (2021). Genetic and ecological consequences of recent habitat fragmentation in a narrow endemic plant species within an urban context. *Biodiversity and Conservation*, **30**, 3457–3478. doi:10.1007/s10531-021-02256-x
+
+Delnevo, N., Piotti, A., van Etten, E.J., Stock, W.D., Field, D.L. & Byrne, M. (2026). Exchanging Genes Within a City: Analysis of Pollen Flow Patterns in a Narrow Endemic Plant Species Threatened by Urbanisation. *Ecology and Evolution*, **16**, e73406. doi:10.1002/ece3.73406
+
+Cristóbal-Pérez, E.J., Fuchs, E.J., Martén-Rodríguez, S. & Quesada, M. (2021). Habitat fragmentation negatively affects effective gene flow via pollen, and male and female fitness in the dioecious tree, *Spondias purpurea* (Anacardiaceae). *Biological Conservation*, **256**, 109007. doi:10.1016/j.biocon.2021.109007
