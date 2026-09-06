@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "experiment_id": "allele_sorting_single_edge_proof_v1",
+  "status": "prospective_locked_before_run",
+  "locked_at_utc": "2026-09-06T06:30:00Z",
+  "starting_main_commit": "ebadd2cbfd842c3f920540e64eb1b89c8b62521e",
+  "scientific_parent": {
+    "repository": "zuizui0223/eco-genetic-criticality",
+    "commit": "b7ee738767c92307d6d23a85a3eeb857faf6ddfb"
+  },
+  "prior_evidence_used_only_for_precision_design": {
+    "workflow_run": 34014537015,
+    "artifact_id": 9983623440,
+    "generation_40_single_edge_DID": 0.04066666666666666,
+    "generation_40_DID_ci95": [-0.003784797851039419, 0.08511813118437275],
+    "note": "The prior result made q-dependent allele selection the leading single-edge candidate but did not satisfy the preregistered risk-resolution rule. It is used only to size a fixed precision follow-up, not to tune any state, forcing, endpoint or threshold."
+  },
+  "operator_theorem": {
+    "path": "docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md",
+    "headline": "For 0<p<1, local allele selection satisfies logit(p_plus)-logit(p)=log(0.75+0.4q), which is strictly increasing in q and switches sign at q=0.625.",
+    "claim_boundary": "Operator-level theorem only; endpoint-level causality is tested separately below."
+  },
+  "question": "Does the single local q -> high-allele selection edge make a reproducible positive causal contribution to the late AA-versus-RR functional-loss contrast after direct trait/allele feedback to q has been removed?",
+  "fixed_state": {
+    "patch_areas": [1.0, 1.0, 1.0, 1.0],
+    "initial_population": [40, 40, 40, 40],
+    "initial_interaction": [0.65, 0.75, 0.85, 0.95],
+    "AA_trait_assignment": [0.20, 0.40, 0.60, 0.80],
+    "AA_allele_assignment": [0.20, 0.40, 0.60, 0.80],
+    "RR_trait_assignment": [0.80, 0.60, 0.40, 0.20],
+    "RR_allele_assignment": [0.80, 0.60, 0.40, 0.20],
+    "q_feedback": [1.0, 0.0, 0.0],
+    "migration_rate": 0.0,
+    "mutation_rate": 0.0
+  },
+  "forcing": {
+    "generations": 40,
+    "barrier_start": 0.50,
+    "barrier_end_at_generation_60": 0.65,
+    "reference_schedule_generations": 60,
+    "report_horizons": [1, 5, 10, 20, 40]
+  },
+  "conditions": {
+    "baseline_local_allele_selection": {
+      "allele_selection_mode": "local_q",
+      "trait_selection_mode": "local_q",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    },
+    "delete_local_allele_selection": {
+      "allele_selection_mode": "spatial_mean_q",
+      "trait_selection_mode": "local_q",
+      "allele_linked_recruitment": true,
+      "resident_inheritance_weight": 0.5,
+      "state_dependent_demography": true,
+      "density_in_q_update": true
+    }
+  },
+  "replication": {
+    "master_seeds": [860089, 970111, 1080121, 1190147, 1300159, 1410173, 1520189, 1630201, 1740217, 1850231, 1960247, 2070259],
+    "replicates_per_seed": 500,
+    "pairs_per_condition": 6000,
+    "total_trajectories": 24000,
+    "common_random_number_pairing": "Within each master-seed/replicate key, AA and RR share the same trajectory seed within a condition, and the same key is reused across the baseline and deletion conditions for the difference-in-differences.",
+    "seed_exclusion": "None of these master seeds appears in the previous pathway-edge experiment."
+  },
+  "precision_rationale": {
+    "prior_n_pairs": 1500,
+    "prior_generation_40_DID_ci_halfwidth_approx": 0.04445,
+    "new_n_pairs": 6000,
+    "fixed_scaling_expectation": "Quadrupling paired replication is expected to halve the standard-error scale, targeting an approximately 0.0222 risk-difference halfwidth if variance is similar. No sequential stopping or sample-size extension is permitted."
+  },
+  "primary_endpoint": {
+    "definition": "Existing tau_trait_realised endpoint: first generation at which realised high-trait occupancy is absent from every patch.",
+    "primary_horizon": 40,
+    "secondary_horizon": 20
+  },
+  "primary_estimand": {
+    "definition": "DID_40 = (RR-AA cumulative loss risk under baseline_local_allele_selection) - (RR-AA cumulative loss risk under delete_local_allele_selection), paired over the same 6000 keys.",
+    "resolved_positive_rule": "If the two-sided paired 95% confidence interval for DID_40 lies strictly above zero, conclude that local q-dependent allele selection makes a positive causal contribution to the late sorting advantage within the declared closure.",
+    "resolved_negative_rule": "If the two-sided paired 95% confidence interval lies strictly below zero, conclude that the edge is countervailing rather than sorting at the endpoint.",
+    "unresolved_rule": "If the interval includes zero, retain single-edge endpoint causality as unresolved and stop."
+  },
+  "secondary_mechanistic_readouts": [
+    "AA-RR difference in mean high-allele frequency",
+    "AA-RR difference in allele-frequency variance",
+    "AA-RR difference in maximum realised high-trait mass",
+    "AA-RR difference in realised high-trait refuge count",
+    "AA-RR difference in mean and maximum q"
+  ],
+  "stop_rule": "Run exactly the two declared conditions with the fixed state, forcing, 12 master seeds, 500 replicates per seed, horizons and endpoint. Do not add seeds, extend replication, open alternative q substitutions, change thresholds, inspect alternative endpoints, or add further interventions after the first outcome file is produced.",
+  "claim_boundary": "A positive result establishes single-edge endpoint-level causality only for the declared finite q-only closure. It does not establish a universal natural sorting law, and the operator theorem remains distinct from the finite endpoint experiment."
+}
