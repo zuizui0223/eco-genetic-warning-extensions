@@ -1,0 +1,78 @@
+name: Headroom mediation follow-up
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'experiments/headroom_mediation_followup_protocol.json'
+      - 'src/eco_genetic_warning_extensions/headroom_mediation_followup.py'
+      - 'tests/test_headroom_mediation_followup.py'
+      - 'scripts/run_headroom_mediation_followup.py'
+      - '.github/workflows/headroom-mediation-followup.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  headroom-mediation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Checkout extension
+        uses: actions/checkout@v4
+
+      - name: Checkout pinned parent simulator
+        uses: actions/checkout@v4
+        with:
+          repository: zuizui0223/eco-genetic-criticality
+          ref: b7ee738767c92307d6d23a85a3eeb857faf6ddfb
+          path: upstream
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install pinned parent and extension
+        run: |
+          python -m pip install --upgrade pip pytest
+          python -m pip install -e upstream
+          python -m pip install -e .
+
+      - name: Verify locked protocol and instrumentation invariants
+        run: python -m pytest -q tests/test_headroom_mediation_followup.py tests/test_branching_headroom_theorem.py
+
+      - name: Run exactly the locked 6000-pair headroom mediation follow-up
+        run: |
+          mkdir -p headroom_mediation_output
+          python scripts/run_headroom_mediation_followup.py \
+            --summary headroom_mediation_output/summary.json \
+            --records headroom_mediation_output/records.json
+
+      - name: Verify output schema without directional outcome gating
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          s=json.loads(Path('headroom_mediation_output/summary.json').read_text())
+          assert s['status']=='completed_from_locked_protocol'
+          assert s['experiment_id']=='headroom_mediation_followup_v1'
+          loss=s['primary_generation_40_loss_DID']
+          head=s['primary_generation_20_max_headroom_DID']
+          assert loss['n_paired_keys']==6000
+          assert head['n_paired_keys']==6000
+          assert s['decision'] in {'resolved_selection_headroom_fate_pathway','unresolved_stop'}
+          assert len(loss['paired_ci95'])==2
+          assert len(head['paired_ci95'])==2
+          print(json.dumps({
+            'primary_generation_40_loss_DID': loss,
+            'primary_generation_20_max_headroom_DID': head,
+            'decision': s['decision'],
+          }, indent=2))
+          PY
+
+      - name: Upload locked headroom mediation result
+        uses: actions/upload-artifact@v4
+        with:
+          name: headroom-mediation-followup
+          path: headroom_mediation_output/
+          if-no-files-found: error
