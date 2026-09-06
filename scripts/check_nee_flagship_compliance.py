@@ -120,9 +120,12 @@ def main() -> None:
         "matching-dependent recruitment pathway",
         "allele-linked recruitment generates the matching advantage",
         "density feedback causes the matching advantage",
-        "q-dependent allele sorting is a universal natural mechanism",
     ):
         assert forbidden not in lower, forbidden
+
+    # Require the bounded natural-system claim explicitly. Do not reject the
+    # phrase "universal natural mechanism" when it occurs inside a negation.
+    assert "does not establish that q-dependent allele sorting is a universal natural mechanism" in lower
 
     assert manifest["schema_version"] == 5
     assert len(manifest["load_bearing_sources"]) == 5
