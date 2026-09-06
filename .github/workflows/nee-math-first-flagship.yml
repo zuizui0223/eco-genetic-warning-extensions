@@ -8,15 +8,22 @@ on:
       - 'artifacts/relational_mechanism_decomposition/**'
       - 'artifacts/pathway_edge_decomposition/**'
       - 'artifacts/allele_sorting_single_edge/**'
+      - 'artifacts/direct_feedback_recoupling/**'
+      - 'artifacts/density_feedback_gate/**'
       - 'docs/RELATIONAL_MECHANISM_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/PATHWAY_EDGE_DECOMPOSITION_RESULT_2026-09-06.md'
       - 'docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md'
       - 'docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md'
+      - 'docs/RECRUITMENT_BUFFER_THEOREM_2026-09-06.md'
+      - 'docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md'
+      - 'docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md'
+      - 'docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md'
       - 'experiments/relational_mechanism_decomposition_protocol.json'
       - 'experiments/pathway_edge_decomposition_protocol.json'
       - 'experiments/allele_sorting_single_edge_protocol.json'
       - 'scripts/check_nee_flagship_compliance.py'
       - 'scripts/build_nee_sorting_buffering_figures.py'
+      - 'scripts/build_nee_four_operator_figure3.py'
       - 'scripts/finalize_nee_math_first_figures.py'
       - '.github/workflows/nee-math-first-flagship.yml'
   workflow_dispatch:
@@ -92,13 +99,15 @@ jobs:
             assert got==expected,(source['repository'],got,expected)
             for rel in source['required_paths']:
               assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
+          for rel in manifest['mechanistic_synthesis_paths']:
+            assert (Path('flagship')/rel).is_file(), f'missing synthesis path: {rel}'
           for source in manifest['projection_sources']:
             root, expected=roots[source['repository']]
             got=subprocess.check_output(['git','-C',str(root),'rev-parse','HEAD'],text=True).strip()
             assert got==expected,(source['repository'],got,expected)
             for rel in source['required_paths']:
               assert (root/rel).is_file(), f"missing {source['repository']}:{rel}"
-          print('Pinned scientific sources + three locked mechanism artifacts: PASS')
+          print('Pinned scientific sources + derived operator proofs: PASS')
           PY
 
       - name: Generate four main figures from locked evidence
@@ -111,15 +120,21 @@ jobs:
             --output nee_packet/figures
           python flagship/scripts/finalize_nee_math_first_figures.py \
             --figures nee_packet/figures
+          python flagship/scripts/build_nee_four_operator_figure3.py \
+            --egwe-root egwe_source \
+            --flagship-root flagship \
+            --output nee_packet/figures/figure3_relational_state.svg
           test "$(find nee_packet/figures -name '*.svg' | wc -l)" -eq 4
           grep -q 'q-dependent allele sorting' nee_packet/figures/figure1_mathematical_boundaries.svg
           grep -q '1,037/1,037' nee_packet/figures/figure2_state_separation.svg
           grep -q '0.2543' nee_packet/figures/figure3_relational_state.svg
           grep -q 'q\*=0.625' nee_packet/figures/figure3_relational_state.svg
-          grep -q 'DID = -9.00 / -8.33 pp' nee_packet/figures/figure3_relational_state.svg
-          grep -q '7.27' nee_packet/figures/figure3_relational_state.svg
-          grep -q '6,000-pair' nee_packet/figures/figure3_relational_state.svg
           grep -q '+6.883 pp' nee_packet/figures/figure3_relational_state.svg
+          grep -q 'contracts 50%' nee_packet/figures/figure3_relational_state.svg
+          grep -q 'contracts 40%' nee_packet/figures/figure3_relational_state.svg
+          grep -q '+8.53 / +7.80 pp' nee_packet/figures/figure3_relational_state.svg
+          grep -q '0.1135168053' nee_packet/figures/figure3_relational_state.svg
+          grep -q '57.47 pp / 59.60 pp' nee_packet/figures/figure3_relational_state.svg
           grep -q 'AUC=0.5' nee_packet/figures/figure4_warning_discrimination.svg
 
       - name: Assemble review-facing packet
@@ -141,6 +156,12 @@ jobs:
           cp flagship/docs/ALLELE_SORTING_OPERATOR_THEOREM_2026-09-06.md nee_packet/provenance/allele_sorting_operator_theorem.md
           cp flagship/docs/ALLELE_SORTING_SINGLE_EDGE_RESULT_2026-09-06.md nee_packet/provenance/allele_sorting_result.md
           cp flagship/experiments/allele_sorting_single_edge_protocol.json nee_packet/provenance/allele_sorting_protocol.json
+          cp flagship/docs/RECRUITMENT_BUFFER_THEOREM_2026-09-06.md nee_packet/provenance/recruitment_buffer_theorem.md
+          cp flagship/docs/DIRECT_FEEDBACK_RECOUPLING_THEOREM_2026-09-06.md nee_packet/provenance/direct_feedback_recoupling_theorem.md
+          cp flagship/artifacts/direct_feedback_recoupling/locked_derived_result.json nee_packet/provenance/direct_feedback_recoupling_result.json
+          cp flagship/docs/DENSITY_FEEDBACK_FAILURE_GATE_THEOREM_2026-09-06.md nee_packet/provenance/density_feedback_gate_theorem.md
+          cp flagship/artifacts/density_feedback_gate/locked_derived_result.json nee_packet/provenance/density_feedback_gate_result.json
+          cp flagship/docs/MECHANISTIC_OPERATOR_SYNTHESIS_2026-09-06.md nee_packet/provenance/mechanistic_operator_synthesis.md
           cp egwee_projection/manuscript/natural_data_gate_registry.json nee_packet/provenance/egwee_projection_gate_registry.json
           (cd nee_packet && find . -type f -print0 | sort -z | xargs -0 sha256sum > MANIFEST.sha256)
           test -s nee_packet/MANIFEST.sha256
@@ -148,6 +169,6 @@ jobs:
       - name: Upload NEE mechanistic review packet
         uses: actions/upload-artifact@v4
         with:
-          name: nee-resolved-sorting-review-packet
+          name: nee-four-operator-review-packet
           path: nee_packet/
           if-no-files-found: error
