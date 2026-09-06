@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-from math import exp, log
+from math import exp, floor, log
+from statistics import fmean
 
 
 DEFAULT_KAPPA = 4.5
@@ -24,12 +25,7 @@ def logit(p: float) -> float:
     return log(p / (1.0 - p))
 
 
-def target_headroom(
-    theta: float,
-    *,
-    target_q: float = DEFAULT_TARGET_Q,
-    kappa: float = DEFAULT_KAPPA,
-) -> float:
+def target_headroom(theta: float, *, target_q: float = DEFAULT_TARGET_Q, kappa: float = DEFAULT_KAPPA) -> float:
     """Required density-weighted support for q_next to reach target_q."""
     if kappa <= 0.0:
         raise ValueError("kappa must be positive")
@@ -176,6 +172,73 @@ def critical_bundle_for_target(
         raise ValueError("beta_trait + gamma_allele must be positive")
     required_support = target_headroom(theta, target_q=target_q, kappa=kappa) / (area_ratio * density)
     return (required_support - alpha * interaction) / lam
+
+
+def continuous_static_crossing_generation(
+    support: float,
+    *,
+    density: float = 1.0,
+    theta_start: float = 0.50,
+    theta_slope_per_generation: float = 0.15 / 60.0,
+    target_q: float = DEFAULT_TARGET_Q,
+    kappa: float = DEFAULT_KAPPA,
+    area_ratio: float = 1.0,
+) -> float:
+    """Frozen-state g* where the route margin reaches zero under linear forcing."""
+    if theta_slope_per_generation <= 0.0:
+        raise ValueError("theta_slope_per_generation must be positive")
+    return (
+        area_ratio * density * support
+        - theta_start
+        - logit(target_q) / kappa
+    ) / theta_slope_per_generation
+
+
+def first_static_unsafe_generation(support: float, **kwargs: float) -> int:
+    """First positive integer generation with negative frozen-state margin."""
+    crossing = continuous_static_crossing_generation(support, **kwargs)
+    return max(1, floor(crossing) + 1)
+
+
+def _population_variance(values: tuple[float, ...]) -> float:
+    mean = fmean(values)
+    return fmean((value - mean) ** 2 for value in values)
+
+
+def initial_matched_marginal_certificate() -> dict[str, object]:
+    """Exact AA/RR opening coverage-reserve certificate for the locked construction."""
+    q = (0.65, 0.75, 0.85, 0.95)
+    ascending = (0.20, 0.40, 0.60, 0.80)
+    reversed_bundle = tuple(reversed(ascending))
+    theta = 0.50 + 0.15 / 60.0
+    boundary = target_headroom(theta)
+    conditions: dict[str, object] = {}
+    for label, bundle in (("AA", ascending), ("RR", reversed_bundle)):
+        support = tuple(support_signal(x, b, b) for x, b in zip(q, bundle))
+        margin = tuple(value - boundary for value in support)
+        conditions[label] = {
+            "support": support,
+            "support_mean": fmean(support),
+            "support_variance": _population_variance(support),
+            "margin": margin,
+            "margin_mean": fmean(margin),
+            "margin_variance": _population_variance(margin),
+            "positive_margin_patch_count": sum(value >= 0.0 for value in margin),
+            "maximum_margin": max(margin),
+            "minimum_margin": min(margin),
+            "frozen_state_continuous_crossing_generation": tuple(
+                continuous_static_crossing_generation(value) for value in support
+            ),
+            "frozen_state_first_unsafe_generation": tuple(
+                first_static_unsafe_generation(value) for value in support
+            ),
+        }
+    return {
+        "theta_generation_1": theta,
+        "target_q": DEFAULT_TARGET_Q,
+        "target_support_boundary_at_density_1": boundary,
+        "conditions": conditions,
+    }
 
 
 def classify_margin(margin: float, *, tolerance: float = 1e-12) -> str:
