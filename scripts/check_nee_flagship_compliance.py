@@ -12,6 +12,7 @@ REFERENCES = ROOT / "manuscript/nee_flagship_references.md"
 MANIFEST = ROOT / "manuscript/nee_flagship_source_manifest.json"
 MECHANISM = ROOT / "artifacts/relational_mechanism_decomposition/locked_result.json"
 EDGE = ROOT / "artifacts/pathway_edge_decomposition/locked_result.json"
+FOCUSED = ROOT / "artifacts/allele_sorting_single_edge/locked_result.json"
 
 
 def words(text: str) -> list[str]:
@@ -32,6 +33,7 @@ def main() -> None:
     manifest = json.loads(MANIFEST.read_text(encoding="utf-8"))
     mechanism = json.loads(MECHANISM.read_text(encoding="utf-8"))
     edge = json.loads(EDGE.read_text(encoding="utf-8"))
+    focused = json.loads(FOCUSED.read_text(encoding="utf-8"))
 
     title = "Eco-genetic sorting and buffering shape functional vulnerability under fragmentation"
     assert article.startswith(f"# {title}\n")
@@ -79,6 +81,13 @@ def main() -> None:
         "selection-mediated spatial sorting",
         "recruitment-mediated buffering",
         "failure gate and amplifier",
+        "q*=0.625",
+        "6,000 paired AA/RR keys per condition",
+        "+6.65 points",
+        "-0.23 points",
+        "+6.883",
+        "+5.800,+7.967",
+        "resolved single-edge causal contributor",
         "35 observed losses",
         "48 inherited non-event",
         "33 losses",
@@ -111,13 +120,14 @@ def main() -> None:
         "matching-dependent recruitment pathway",
         "allele-linked recruitment generates the matching advantage",
         "density feedback causes the matching advantage",
+        "q-dependent allele sorting is a universal natural mechanism",
     ):
         assert forbidden not in lower, forbidden
 
-    assert manifest["schema_version"] == 4
-    assert len(manifest["load_bearing_sources"]) == 4
+    assert manifest["schema_version"] == 5
+    assert len(manifest["load_bearing_sources"]) == 5
     assert len(manifest["projection_sources"]) == 1
-    assert len(manifest["claim_firewalls"]) >= 13
+    assert len(manifest["claim_firewalls"]) >= 15
 
     assert mechanism["status"] == "locked_from_successful_prospective_workflow_artifact"
     assert mechanism["source"]["workflow_run"] == 34012983845
@@ -136,23 +146,36 @@ def main() -> None:
     assert allele["generation_40"]["baseline_minus_deletion_DID"] < 0
     joint = edge["edge_deletions"]["joint_local_allele_and_trait_selection"]
     assert joint["generation_40"]["DID_ci95"][0] > 0
-    assert joint["decision"] == "resolved_matching_contribution_at_generation_40"
-    local_a = edge["edge_deletions"]["local_allele_selection"]
-    assert local_a["decision"] == "single_edge_risk_contribution_unresolved"
     density = edge["edge_deletions"]["density_to_q_feedback"]
     assert density["generation_20"]["AA_loss_rate"] == 0.0
     assert density["generation_20"]["RR_loss_rate"] == 0.0
+
+    assert focused["status"] == "locked_from_successful_prospective_workflow_artifact"
+    assert focused["source"]["workflow_run"] == 34016797940
+    assert focused["source"]["job"] == 101441868527
+    assert focused["source"]["artifact_id"] == 9984306657
+    assert focused["source"]["artifact_digest"] == "sha256:61a07cc6a8680a59185537b03abdca85d0f172a65d068ee9661dd9f2fb448c2d"
+    assert abs(focused["operator_certificate"]["q_switch"] - 0.625) < 1e-12
+    primary = focused["primary_generation_40_DID"]
+    assert primary["decision"] == "resolved_positive_sorting_contribution"
+    assert primary["n_paired_keys"] == 6000
+    assert primary["paired_ci95"][0] > 0
+    assert abs(primary["baseline_minus_deletion_DID"] - 0.06883333333333333) < 1e-12
+    baseline40 = focused["risk_pairs"]["baseline_local_allele_selection"]["40"]
+    deletion40 = focused["risk_pairs"]["delete_local_allele_selection"]["40"]
+    assert baseline40["RR_minus_AA_risk_difference"] > 0
+    assert deletion40["paired_ci95"][0] < 0 < deletion40["paired_ci95"][1]
 
     print(f"NEE abstract words: {abstract_n}")
     print(f"NEE main-text words: {main_n}")
     print(f"Main displays: {len(figures)}")
     print(f"References: {len(ref_entries)}")
-    print("Sorting-buffering NEE flagship compliance: PASS")
+    print("Resolved-allele-sorting NEE flagship compliance: PASS")
 
 
 if __name__ == "__main__":
     try:
         main()
     except AssertionError as exc:
-        print(f"Sorting-buffering NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
+        print(f"Resolved-allele-sorting NEE flagship compliance: FAIL — {exc}", file=sys.stderr)
         raise
