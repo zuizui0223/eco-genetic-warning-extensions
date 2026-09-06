@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "status": "locked_from_successful_prospective_workflow_artifact",
+  "source": {
+    "workflow_run": 34014537015,
+    "job": 101435935218,
+    "artifact_id": 9983623440,
+    "artifact_digest": "sha256:45b38de7514dac8df356579156d994fbc5728e8924308299b2b73571b3595842",
+    "scientific_head": "1502e9c9c82ce45755593f0acdfe2da1a4d34b95",
+    "protocol_commit": "76ff259df512a8afda521226ae5d24c0339a4033"
+  },
+  "fresh_q_only_baseline": {
+    "generation_20": {
+      "AA_loss_rate": 0.38333333333333336,
+      "RR_loss_rate": 0.42533333333333334,
+      "RR_minus_AA_risk_difference": 0.042,
+      "paired_ci95": [0.008563869916960287, 0.07543613008303972]
+    },
+    "generation_40": {
+      "AA_loss_rate": 0.6873333333333334,
+      "RR_loss_rate": 0.7313333333333333,
+      "RR_minus_AA_risk_difference": 0.044,
+      "paired_ci95": [0.011793887093957005, 0.07620611290604298]
+    },
+    "decision": "The indirect q-only AA advantage reproduced on five fresh master seeds, although at approximately four rather than seven percentage points."
+  },
+  "edge_deletions": {
+    "allele_linked_recruitment": {
+      "generation_20": {
+        "deletion_RR_minus_AA": 0.132,
+        "deletion_ci95": [0.10612518168193047, 0.15787481831806954],
+        "baseline_minus_deletion_DID": -0.09,
+        "DID_ci95": [-0.13289307991043314, -0.047106920089566864]
+      },
+      "generation_40": {
+        "deletion_RR_minus_AA": 0.12733333333333333,
+        "deletion_ci95": [0.10183045051169787, 0.15283621615496878],
+        "baseline_minus_deletion_DID": -0.08333333333333333,
+        "DID_ci95": [-0.12529485055367587, -0.04137181611299079]
+      },
+      "decision": "resolved_countervailing_buffer",
+      "interpretation": "Deleting allele-linked recruitment greatly increased both absolute loss and the RR disadvantage. Allele-linked recruitment therefore buffers mismatch rather than generating the AA matching advantage."
+    },
+    "resident_trait_inheritance": {
+      "generation_20_DID": -0.004666666666666667,
+      "generation_20_ci95": [-0.051921038227781574, 0.04258770489444824],
+      "generation_40_DID": 0.019333333333333334,
+      "generation_40_ci95": [-0.02732929622742198, 0.06599596289408866],
+      "decision": "unresolved_not_required_by_this_test"
+    },
+    "local_trait_selection": {
+      "generation_20_DID": -0.0026666666666666666,
+      "generation_20_ci95": [-0.049503802924757236, 0.04417046959142391],
+      "generation_40_DID": -0.0033333333333333335,
+      "generation_40_ci95": [-0.0494535558716989, 0.04278688920503223],
+      "decision": "unresolved_no_detected_contribution"
+    },
+    "local_allele_selection": {
+      "generation_20_deletion_RR_minus_AA": 0.024666666666666667,
+      "generation_20_DID": 0.017333333333333333,
+      "generation_20_ci95": [-0.029239688368357983, 0.06390635503502465],
+      "generation_40_deletion_RR_minus_AA": 0.0033333333333333335,
+      "generation_40_DID": 0.04066666666666666,
+      "generation_40_ci95": [-0.003784797851039419, 0.08511813118437275],
+      "decision": "single_edge_risk_contribution_unresolved",
+      "mediator_note": "Deleting local allele selection reduced AA-RR high-trait-mass, allele-frequency and refuge differences to values whose paired CIs included zero at generations 20 and 40, making it the leading single-edge sorting candidate without meeting the predeclared risk-resolution rule."
+    },
+    "joint_local_allele_and_trait_selection": {
+      "generation_20": {
+        "deletion_RR_minus_AA": 0.006,
+        "baseline_minus_deletion_DID": 0.036,
+        "DID_ci95": [-0.011777338843898262, 0.08377733884389826]
+      },
+      "generation_40": {
+        "deletion_RR_minus_AA": -0.028666666666666667,
+        "baseline_minus_deletion_DID": 0.07266666666666667,
+        "DID_ci95": [0.02665593048622416, 0.11867740284710918]
+      },
+      "decision": "resolved_matching_contribution_at_generation_40",
+      "interpretation": "Local ecological selection as a joint block is required for the late AA matching advantage. The single-edge evidence points toward q-dependent allele sorting, but does not individually resolve it by the predeclared risk criterion."
+    },
+    "state_dependent_demography": {
+      "generation_20_DID": -0.002,
+      "generation_20_ci95": [-0.04918248748134979, 0.04518248748134979],
+      "generation_40_DID": 0.010666666666666666,
+      "generation_40_ci95": [-0.035617115228329714, 0.05695044856166304],
+      "decision": "unresolved_not_required_by_this_test"
+    },
+    "density_to_q_feedback": {
+      "generation_20": {
+        "AA_loss_rate": 0.0,
+        "RR_loss_rate": 0.0,
+        "deletion_RR_minus_AA": 0.0,
+        "baseline_minus_deletion_DID": 0.042,
+        "DID_ci95": [0.008563869916960287, 0.07543613008303972]
+      },
+      "generation_40": {
+        "AA_loss_rate": 0.11266666666666666,
+        "RR_loss_rate": 0.13533333333333333,
+        "deletion_RR_minus_AA": 0.02266666666666667,
+        "baseline_minus_deletion_DID": 0.021333333333333333,
+        "DID_ci95": [-0.017777594748933274, 0.06044426141559994]
+      },
+      "decision": "system_level_failure_gate_at_generation_20_matching_specific_contribution_unresolved_later",
+      "interpretation": "Removing density from q prevents all functional loss by generation 20 and greatly delays collapse, so N->q feedback enables the deterioration regime. Because the generation-20 endpoint becomes degenerate, this is not treated as clean matching-specific mediation; at generation 40 the differential attenuation is unresolved."
+    }
+  },
+  "baseline_temporal_signature": {
+    "generation_5": {
+      "AA_minus_RR_max_high_trait_mass": 0.0744,
+      "ci95": [0.0626, 0.0862],
+      "AA_minus_RR_realised_refugia_count": -0.1813,
+      "refugia_ci95": [-0.2188, -0.1439]
+    },
+    "generation_10": {
+      "AA_minus_RR_max_high_trait_mass": 0.0434,
+      "ci95": [0.0237, 0.063],
+      "AA_minus_RR_realised_refugia_count": -0.0587,
+      "refugia_ci95": [-0.109, -0.0083]
+    },
+    "generation_20": {
+      "AA_minus_RR_max_high_trait_mass": 0.0422,
+      "ci95": [0.0137, 0.0707],
+      "AA_minus_RR_realised_refugia_count": 0.0767,
+      "refugia_ci95": [0.0285, 0.1248]
+    },
+    "generation_40": {
+      "AA_minus_RR_max_high_trait_mass": 0.0426,
+      "ci95": [0.0109, 0.0743],
+      "AA_minus_RR_realised_refugia_count": 0.0533,
+      "refugia_ci95": [0.0181, 0.0886]
+    },
+    "interpretation": "AA initially concentrates more high-trait mass into fewer occupied patches; by generations 20-40 it retains both the upper-tail mass advantage and more realised refugia. This concentration-to-persistence crossover is a trajectory signature, not by itself a causal certificate."
+  },
+  "updated_mechanistic_model": {
+    "sorting": "Local ecological selection as a joint block creates the late matching advantage; secondary mediator evidence points primarily toward q-dependent allele sorting, while the single-edge risk contrast remains unresolved.",
+    "buffering": "Allele-linked recruitment is strongly protective overall and disproportionately buffers the reversed/mismatched state; removing it triples the AA-RR loss contrast.",
+    "failure_gate": "Density-dependent N->q feedback controls whether the forcing trajectory enters early system-wide functional loss, but is not resolved as the unique source of the late AA-RR differential.",
+    "synthesis": "Within the q-only closure, long-horizon relational fate is better described as selection-mediated spatial sorting opposed by recruitment-mediated buffering, under a density-feedback failure gate. This replaces the earlier interpretation that allele-linked recruitment itself generated the matching advantage."
+  },
+  "claim_ceiling": "These pathway assignments apply to the declared finite q-only closure. Local allele selection is the leading single-edge sorting candidate but remains unresolved by the preregistered risk-DID rule. Do not call density feedback a matching-specific mediator at generation 20 because deletion eliminates all events. Do not generalize sorting, buffering or the observed horizons as universal natural laws."
+}
