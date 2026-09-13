@@ -19,7 +19,7 @@ def main() -> None:
         "Fixed-area fragmentation separates potential viability from realised occupancy, while matched marginals can still conceal a 49-fold difference in support variance and a 0.2543 difference in exact next interaction state."
     )
     abstract_new = abstract_old + (
-        " Independently, four covariance-aware natural fragmentation systems rejected general exchangeability of biological layer responses (Fisher chi-square(8)=27.70, p=5.35e-4)."
+        " Natural systems likewise rejected layer exchangeability (Fisher chi-square(8)=27.70, p=5.35e-4)."
     )
     article = replace_once(article, abstract_old, abstract_new, "abstract natural Q1")
 
