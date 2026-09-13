@@ -1,5 +1,5 @@
 name: Apply EGWEE Q1 integration
-# rerun 3: abstract at journal cap
+# rerun 4: replace stale natural projection paragraphs
 
 on:
   push:
