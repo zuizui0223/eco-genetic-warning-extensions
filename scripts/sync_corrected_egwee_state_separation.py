@@ -85,11 +85,6 @@ def main() -> None:
     text = text.replace('assert abs(natural_q1["combined_p"] - 0.0005347329) < 1e-12', 'assert abs(natural_q1["primary_combined_p"] - 0.00621) < 1e-12\n    assert abs(natural_q1["gradient_generalisation_cluster_p"] - 0.00256953) < 1e-12')
     check.write_text(text, encoding="utf-8")
 
-    wf = ROOT / ".github/workflows/nee-math-first-flagship.yml"
-    text = wf.read_text(encoding="utf-8")
-    text = text.replace("63906a64fab01562dc49ab99907a733b403ea80a", EGWEE_COMMIT)
-    wf.write_text(text, encoding="utf-8")
-
 
 if __name__ == "__main__":
     main()
