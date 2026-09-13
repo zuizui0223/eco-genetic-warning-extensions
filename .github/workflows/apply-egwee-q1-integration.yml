@@ -1,0 +1,35 @@
+name: Apply EGWEE Q1 integration
+
+on:
+  push:
+    branches:
+      - agent/integrate-egwee-natural-q1
+    paths:
+      - '.github/workflows/apply-egwee-q1-integration.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  apply:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: agent/integrate-egwee-natural-q1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply fixed integration
+        run: python scripts/apply_egwee_q1_integration.py
+      - name: Validate flagship compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Commit generated manuscript changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_article.md scripts/check_nee_flagship_compliance.py
+          git diff --cached --check
+          git commit -m 'Integrate EGWEE natural Q1 into NEE flagship'
+          git push origin HEAD:agent/integrate-egwee-natural-q1
