@@ -27,7 +27,7 @@
 
 ### Independent natural Q1 evidence
 
-EGWEE contributes three independent primary fragmented-versus-reference clusters / 9 primary effects, plus one separate ML015 gradient generalisation cluster. Cluster-level synthesis rejects general layer exchangeability (primary Fisher chi-square(6)=18.0086, p=0.00621; separate ML015 gradient cluster p=0.00256953) without pooling incompatible effect-size magnitudes. This supports the portability of the state-separation problem, not the finite operators.
+EGWEE contributes three independent primary fragmented-versus-reference clusters / 9 primary effects, plus one separate ML015 gradient generalisation cluster. The primary corpus rejects layer exchangeability (Fisher chi-square(6)=18.0086, p=0.00621), but leave-one-primary-cluster-out sensitivity identifies ML001 as influential: omitting ML001 gives p=0.15119, while omitting ML002 or ML003 retains p<0.006. ML015 remains separate gradient evidence (cluster p=0.00256953) and is not used to rescue the primary denominator. This supports a bounded natural state-separation result, not universal robustness or the finite operators.
 
 ### Natural Q2 portability boundary
 
