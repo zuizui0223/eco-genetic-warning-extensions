@@ -1,4 +1,5 @@
 name: Sync corrected EGWEE state separation
+# rerun after correcting stale natural-Q1 compliance tokens
 
 on:
   push:
