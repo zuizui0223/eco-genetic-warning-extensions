@@ -1,5 +1,5 @@
 name: Apply EGWEE Q1 integration
-# rerun 2: abstract compressed to <=200 words
+# rerun 3: abstract at journal cap
 
 on:
   push:
