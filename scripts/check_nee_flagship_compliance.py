@@ -107,14 +107,21 @@ def main() -> None:
     for token in required:
         assert token in article, token
 
+    for token in ("Fisher chi-square(8)=27.70", "p=5.35e-4", "p=0.000535", "delta NLL M1-M0=-0.0003211"):
+        assert token in article, token
+
+    # Natural data may now enter Results only through the completed EGWEE Q1 synthesis.
     for token in (
-        "Crepis", "Miyake", "Zosterops", "Conospermum", "Spondias",
+        "Crepis", "Miyake", "Zosterops", "Conospermum",
         "Honshu", "Zurich", "Toronto", "Oenothera", "Eschscholzia",
         "Mallorca", "Campanula americana",
     ):
-        assert token not in results, f"natural projection leaked into Results: {token}"
-    for token in ("Crepis", "Miyake", "Conospermum", "Spondias", "urban–island"):
-        assert token in discussion or token in article[: article.index("## Results")], token
+        assert token not in results, f"non-Q1 natural projection leaked into Results: {token}"
+    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo", "p=0.000535"):
+        assert token in results, f"natural Q1 synthesis missing from Results: {token}"
+    # Qualitative natural anchors are superseded in the flagship by the formal EGWEE Q1 synthesis.
+    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo"):
+        assert token in results or token in article[: article.index("## Results")], token
 
     lower = article.casefold()
     for forbidden in (
@@ -135,7 +142,7 @@ def main() -> None:
     assert "does not assert a universal natural recruitment or recoupling law" in lower
     assert "not a separately predeclared primary estimand" in lower
 
-    assert manifest["schema_version"] == 7
+    assert manifest["schema_version"] == 8
     assert len(manifest["load_bearing_sources"]) == 8
     layers = {entry["layer"] for entry in manifest["load_bearing_sources"]}
     for required in (
@@ -144,8 +151,15 @@ def main() -> None:
         "prospective_continuous_last_refuge_warning_holdout",
     ):
         assert required in layers
-    assert len(manifest["projection_sources"]) == 1
-    assert len(manifest["claim_firewalls"]) >= 18
+    natural_q1 = manifest["natural_state_separation_source"]
+    assert natural_q1["decision"] == "reject_general_layer_exchangeability"
+    assert natural_q1["n_independent_clusters"] == 4
+    assert natural_q1["n_primary_effects"] == 12
+    assert abs(natural_q1["combined_p"] - 0.0005347329) < 1e-12
+    natural_q2 = manifest["natural_q2_boundary"]
+    assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
+    assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]
+    assert len(manifest["claim_firewalls"]) >= 12
     for rel in manifest["mechanistic_synthesis_paths"]:
         assert (ROOT / rel).is_file(), rel
 
