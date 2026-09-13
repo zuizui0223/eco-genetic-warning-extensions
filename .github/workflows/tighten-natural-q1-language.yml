@@ -1,0 +1,35 @@
+name: Tighten natural Q1 language
+
+on:
+  push:
+    branches:
+      - fix/tighten-natural-q1-language
+    paths:
+      - '.github/workflows/tighten-natural-q1-language.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  tighten:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/tighten-natural-q1-language
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Tighten natural Q1 wording
+        run: python scripts/tighten_natural_q1_language.py
+      - name: Validate flagship compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Commit wording correction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_article.md
+          git diff --cached --check
+          git commit -m 'Tighten bounded natural Q1 language'
+          git push origin HEAD:fix/tighten-natural-q1-language
