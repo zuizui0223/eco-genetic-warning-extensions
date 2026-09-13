@@ -25,16 +25,13 @@
 9. EGWE exact warning-denominator identity + frozen full-denominator diversity audit.
 10. Prospectively locked 12,000-trajectory last-refuge warning holdout, with continuous route-margin discrimination and co-timed max-q comparator.
 
-### Ecological projection only
+### Independent natural Q1 evidence
 
-- *Crepis sancta*
-- Miyake-jima *Camellia–Zosterops*
-- *Conospermum undulatum*
-- *Spondias purpurea*
-- urban–island comparison
-- EGWEE natural-data measurement stress tests
+EGWEE contributes four independent covariance-aware multilayer fragmentation clusters / 12 primary effects. Cluster-level synthesis rejects general layer exchangeability (Fisher chi-square(8)=27.70024526, p=0.0005347329) without pooling incompatible effect-size magnitudes. This supports the portability of the state-separation problem, not the finite operators.
 
-These sources motivate interpretation and future measurement design. They do not validate the finite closure.
+### Natural Q2 portability boundary
+
+The first locked natural prospective strongest-refuge test did not detect incremental future-occupancy information after contemporaneous marginals: delta NLL M1-M0=-0.0003211, species-bootstrap 95% CI [-0.0009825,+0.0003422]. The secondary persistence-only direction is not promoted.
 
 ## Mechanistic claim
 
@@ -64,14 +61,14 @@ Positive synthesis:
 - the sorting–headroom pathway is prospectively resolved only in the declared q-only closure and is not a universal natural mediation law.
 - the density headroom threshold and generations are model-specific; density feedback is not claimed to cause the directional sorting advantage.
 - last-refuge warning AUC, observation generation and route-margin weights are finite-closure results, not universal natural warning performance or thresholds.
-- natural examples remain Discussion-level projections only.
+- natural Q1 state separation is independently supported by EGWEE; natural Q2 strongest-refuge portability is not established.
 
 ## Working NEE format contract
 
 - abstract <= 200 words;
 - main text <= 3,500 words excluding Methods, references and figure legends;
 - <= 6 main display items; current plan = 4 figures;
-- natural projection examples excluded from Results;
+- natural data enter Results only through the completed EGWEE Question-1 state-separation synthesis;
 - approximately <= 50 references as a working journal guideline.
 
 ## Authors and declarations — explicit author input required

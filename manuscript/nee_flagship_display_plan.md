@@ -2,7 +2,7 @@
 
 ## Principle
 
-The main figures carry only exact mathematics and locked finite-model evidence. Natural systems remain Introduction/Discussion projections and receive no main-data panel.
+The four main figures remain focused on exact mathematics and locked finite-model mechanism. The completed EGWEE state-separation synthesis enters Question 1 as independent numerical evidence in text; it receives no new main-data panel, and the natural strongest-refuge null remains a Discussion portability boundary.
 
 ## Figure 1 — From fragmentation to causal pathway balance
 
@@ -193,4 +193,4 @@ No single row is a universal natural warning variable; each statement is bounded
 12. Fresh 24,000-trajectory sorting–headroom follow-up and continuous-reserve mediator trajectories.
 13. All six diversity-warning endpoints and full-denominator metrics.
 14. Fresh continuous last-refuge warning holdout, max-q comparator and seed-block AUC differences.
-15. Evidence-role map and literature-based ecological projection table: limited buffering, movement recoupling, temporal memory and coordinated deterioration.
+15. EGWEE four-cluster state-separation synthesis, evidence-role map and natural-Q2 strongest-refuge null boundary.
