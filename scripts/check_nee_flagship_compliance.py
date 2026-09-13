@@ -107,7 +107,7 @@ def main() -> None:
     for token in required:
         assert token in article, token
 
-    for token in ("Fisher chi-square(8)=27.70", "p=5.35e-4", "p=0.000535", "delta NLL M1-M0=-0.0003211"):
+    for token in ("Fisher chi-square(6)=18.01", "p=0.00621", "p=0.00257", "delta NLL M1-M0=-0.0003211"):
         assert token in article, token
 
     # Natural data may now enter Results only through the completed EGWEE Q1 synthesis.
@@ -117,7 +117,7 @@ def main() -> None:
         "Mallorca", "Campanula americana",
     ):
         assert token not in results, f"non-Q1 natural projection leaked into Results: {token}"
-    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo", "p=0.000535"):
+    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo", "p=0.00621", "p=0.00257"):
         assert token in results, f"natural Q1 synthesis missing from Results: {token}"
     # Qualitative natural anchors are superseded in the flagship by the formal EGWEE Q1 synthesis.
     for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo"):
@@ -152,10 +152,11 @@ def main() -> None:
     ):
         assert required in layers
     natural_q1 = manifest["natural_state_separation_source"]
-    assert natural_q1["decision"] == "reject_general_layer_exchangeability"
-    assert natural_q1["n_independent_clusters"] == 4
-    assert natural_q1["n_primary_effects"] == 12
-    assert abs(natural_q1["combined_p"] - 0.0005347329) < 1e-12
+    assert natural_q1["decision"] == "reject_primary_binary_layer_exchangeability_with_separate_gradient_support"
+    assert natural_q1["n_independent_primary_clusters"] == 3
+    assert natural_q1["n_primary_effects"] == 9
+    assert abs(natural_q1["primary_combined_p"] - 0.00621) < 1e-12
+    assert abs(natural_q1["gradient_generalisation_cluster_p"] - 0.00256953) < 1e-12
     natural_q2 = manifest["natural_q2_boundary"]
     assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
     assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]

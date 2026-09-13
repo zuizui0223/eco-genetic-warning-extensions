@@ -193,4 +193,4 @@ No single row is a universal natural warning variable; each statement is bounded
 12. Fresh 24,000-trajectory sorting–headroom follow-up and continuous-reserve mediator trajectories.
 13. All six diversity-warning endpoints and full-denominator metrics.
 14. Fresh continuous last-refuge warning holdout, max-q comparator and seed-block AUC differences.
-15. EGWEE four-cluster state-separation synthesis, evidence-role map and natural-Q2 strongest-refuge null boundary.
+15. EGWEE three-primary-cluster state-separation synthesis, evidence-role map and natural-Q2 strongest-refuge null boundary.
