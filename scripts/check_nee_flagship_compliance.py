@@ -157,6 +157,12 @@ def main() -> None:
     assert natural_q1["n_primary_effects"] == 9
     assert abs(natural_q1["primary_combined_p"] - 0.00621) < 1e-12
     assert abs(natural_q1["gradient_generalisation_cluster_p"] - 0.00256953) < 1e-12
+    loo = natural_q1["primary_leave_one_cluster_out"]
+    assert loo["influential_cluster_dependency_detected"] is True
+    assert loo["influential_cluster"] == "ML001"
+    assert abs(loo["omit_ML001_combined_p"] - 0.15119208) < 1e-8
+    assert "omitting ML001" in article
+    assert "p=0.151" in article
     natural_q2 = manifest["natural_q2_boundary"]
     assert natural_q2["status"] == "no_detected_incremental_strongest_refuge_information"
     assert natural_q2["species_bootstrap_95_ci"][0] < 0 < natural_q2["species_bootstrap_95_ci"][1]

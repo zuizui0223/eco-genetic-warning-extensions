@@ -141,7 +141,7 @@
   "natural_state_separation_source": {
     "role": "independent_natural_q1_evidence",
     "repository": "zuizui0223/egwee",
-    "commit": "165dad4d3c132e0982b4e5e722fb6405e7cca957",
+    "commit": "74d5336242bfaa4ccbbf54f0343c8d058c161d79",
     "required_paths": [
       "manuscript/STATE_SEPARATION_SYNTHESIS_RESULT_2026-09-13.md",
       "manuscript/META_ANALYSIS_PROTOCOL_AMENDMENT_2026-09-13_STATE_SEPARATION_SYNTHESIS.md",
@@ -150,13 +150,20 @@
     ],
     "n_primary_effects": 9,
     "decision": "reject_primary_binary_layer_exchangeability_with_separate_gradient_support",
-    "claim_ceiling": "Primary natural inference uses only ML001-ML003 fragmented-versus-reference Hedges-g clusters. ML015 Eucalyptus wandoo is separate Fisher-z gradient generalisation evidence and is not included in the primary Fisher combination; neither effect magnitudes nor p-values are combined across those effect families.",
+    "claim_ceiling": "Primary natural inference uses only ML001-ML003 fragmented-versus-reference Hedges-g clusters. ML015 Eucalyptus wandoo is separate Fisher-z gradient generalisation evidence and is not included in the primary Fisher combination; neither effect magnitudes nor p-values are combined across those effect families. The full primary corpus rejects exchangeability, but that rejection is not leave-one-primary-cluster-out robust because omitting ML001 gives p=0.15119.",
     "n_independent_primary_clusters": 3,
     "primary_fisher_statistic": 18.0086,
     "primary_fisher_df": 6,
     "primary_combined_p": 0.00621,
     "gradient_generalisation_cluster": "ML015",
-    "gradient_generalisation_cluster_p": 0.00256953
+    "gradient_generalisation_cluster_p": 0.00256953,
+    "primary_leave_one_cluster_out": {
+      "omit_ML001_combined_p": 0.15119208,
+      "omit_ML002_combined_p": 0.00517793,
+      "omit_ML003_combined_p": 0.00582814,
+      "influential_cluster_dependency_detected": true,
+      "influential_cluster": "ML001"
+    }
   },
   "natural_q2_boundary": {
     "role": "prospective_natural_strongest_refuge_boundary",
