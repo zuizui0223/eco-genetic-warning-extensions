@@ -1,0 +1,40 @@
+name: Sync corrected EGWEE state separation
+
+on:
+  push:
+    branches:
+      - fix/sync-corrected-egwee-state-separation
+    paths:
+      - '.github/workflows/sync-corrected-egwee-state-separation.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/sync-corrected-egwee-state-separation
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply corrected EGWEE source boundary
+        run: python scripts/sync_corrected_egwee_state_separation.py
+      - name: Validate flagship compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Check for superseded four-cluster claim
+        run: |
+          ! grep -R "27.70024526\|0.0005347329\|chi-square(8)=27.70" manuscript/nee_flagship_* README.md manuscript/README.md manuscript/PUBLICATION_LANES.md manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md
+          grep -q "primary Fisher chi-square(6)=18.0086" manuscript/nee_flagship_submission_metadata.md
+          grep -q "separate ML015 gradient" manuscript/nee_flagship_submission_metadata.md
+      - name: Commit synchronized correction
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_source_manifest.json manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md manuscript/nee_flagship_display_plan.md manuscript/NEE_EGWEE_Q1_INTEGRATION_2026-09-13.md README.md manuscript/README.md manuscript/PUBLICATION_LANES.md manuscript/EG_SERIES_SUBMISSION_STATUS_2026-09-08.md scripts/check_nee_flagship_compliance.py .github/workflows/nee-math-first-flagship.yml
+          git diff --cached --check
+          git commit -m 'Sync NEE to corrected EGWEE family boundary'
+          git push origin HEAD:fix/sync-corrected-egwee-state-separation
