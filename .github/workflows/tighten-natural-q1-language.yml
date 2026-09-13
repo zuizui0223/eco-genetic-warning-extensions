@@ -1,4 +1,5 @@
 name: Tighten natural Q1 language
+# rerun after abstract trim
 
 on:
   push:
