@@ -23,6 +23,17 @@ jobs:
           python-version: '3.12'
       - name: Apply corrected EGWEE source boundary
         run: python scripts/sync_corrected_egwee_state_separation.py
+      - name: Keep abstract within journal cap
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          p=Path('manuscript/nee_flagship_article.md')
+          t=p.read_text(encoding='utf-8')
+          old='Three primary natural binary/contrast systems rejected layer exchangeability (Fisher chi-square(6)=18.01, p=0.00621), with separate gradient support.'
+          new='Natural systems rejected layer exchangeability (primary p=0.00621; separate gradient p=0.00257).'
+          assert old in t
+          p.write_text(t.replace(old,new,1),encoding='utf-8')
+          PY
       - name: Validate flagship compliance
         run: python scripts/check_nee_flagship_compliance.py
       - name: Check for superseded four-cluster claim
