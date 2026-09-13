@@ -27,28 +27,39 @@ def main() -> None:
         "This distinction matters because contrasting natural outcomes need not imply contradictory fragmentation effects. Local interaction limitation can remain uncompensated; movement can reorganize and restore pollen transfer; current mating processes can deteriorate while adult genetic state retains historical connectivity; and ecological and genetic deterioration can sometimes move together. We use *Crepis sancta*, Miyake-jima *Camellia–Zosterops*, *Conospermum undulatum* and *Spondias purpurea* only to motivate these possibilities. They are not validation data for the finite model."
     )
     intro_new = (
-        "Natural fragmentation studies provide an independent test of the premise that biological layers cannot generally be collapsed onto one deterioration coordinate. A covariance-aware synthesis of four independent multilayer systems (*Serapias lingua*, *Brosimum alicastrum*, *Spondias purpurea* and *Eucalyptus wandoo*) rejected exchangeability of within-system fragmentation responses across interaction or movement, reproductive and genetic layers (Fisher chi-square(8)=27.70, p=5.35e-4). The synthesis combines cluster-level evidence rather than pooling incompatible Hedges-g and standardized-gradient magnitudes. We therefore use natural data to test the general state-separation premise, while reserving operator-level causal explanation for the declared finite model."
+        "Natural fragmentation provides an independent test of the same premise. A covariance-aware synthesis of four multilayer systems (*Serapias*, *Brosimum*, *Spondias* and *Eucalyptus wandoo*) rejected exchangeability of within-system fragmentation responses (Fisher chi-square(8)=27.70, p=5.35e-4) without pooling incompatible effect-size magnitudes. Natural data therefore test state separation; operator-level causation remains a finite-model question."
     )
     article = replace_once(article, intro_old, intro_new, "introduction natural synthesis")
 
     q2_heading = "### Question 2 — Given state separation, what determines divergent futures and predicts fate?\n"
     natural_q1 = (
         "### Independent natural systems also rejected layer exchangeability\n\n"
-        "We then asked whether the state-separation premise was confined to the finite closure. EGWEE retained four independent natural fragmentation clusters with paired within-system dependence: *Serapias lingua* (C/F/G_adult), *Brosimum alicastrum* (C/F), *Spondias purpurea* (C/G_adult/G_offspring) and *Eucalyptus wandoo* (I/F/G_adult). All admitted layer pairs were compared using stored within-cluster covariance, pairwise p-values were Bonferroni-adjusted within cluster, and only the four independent cluster-level p-values were combined across systems. Serapias (p=0.00355) and E. wandoo (p=0.00786) individually rejected exchangeability; Brosimum (p=0.199) and Spondias (p=0.174) did not. Across all four systems, Fisher chi-square(8)=27.700, p=0.000535, rejecting general layer exchangeability. In E. wandoo, the same fragmentation-severity axis increased pollen-tube quantity while reducing seeds per fruit (I-F z=3.009, p=0.00262). These data do not establish a universal ordering; they show that biological fragmentation responses are not generally interchangeable measurements of one scalar deterioration state.\n\n"
+        "EGWEE retained four independent covariance-aware fragmentation clusters: *Serapias lingua* (C/F/G_adult), *Brosimum alicastrum* (C/F), *Spondias purpurea* (C/G_adult/G_offspring) and *Eucalyptus wandoo* (I/F/G_adult). Cluster-level evidence rejected general layer exchangeability (Fisher chi-square(8)=27.700, p=0.000535). In *E. wandoo*, the same fragmentation-severity axis increased pollen-tube quantity while reducing seeds per fruit (I-F z=3.009, p=0.00262). Thus natural fragmentation responses are not generally interchangeable measurements of one scalar deterioration state; this result does not imply a universal ordering or common effect magnitude.\n\n"
     )
     article = replace_once(article, q2_heading, natural_q1 + q2_heading, "Q1 natural result insertion")
 
     q2_transition = (
         q2_heading
-        + "\nThe natural synthesis establishes that state separation is not merely a peculiarity of the finite construction. It does not identify why separated states diverge or which hidden organization predicts fate. Those are mechanistic questions, which we address in the finite closure where state variables and life-cycle operators can be intervened on exactly.\n"
+        + "\nNatural data establish that state separation is not peculiar to the finite construction; the finite closure is then used to identify why separated states diverge.\n"
     )
     article = replace_once(article, q2_heading, q2_transition, "Q1-to-Q2 transition")
 
-    discussion_marker = "## Discussion\n\n"
-    discussion_insert = (
-        "The evidence now separates three levels of inference. First, the portable empirical result is that biological fragmentation responses are not generally exchangeable across layers: four independent covariance-aware natural systems reject the general layer-exchangeability null. Second, the finite closure supplies a mechanistic explanation for how relational state can matter, through cross-layer covariance, q-dependent sorting, recruitment buffering, direct recoupling and density feedback. Third, the first locked natural prospective transfer of the specific strongest-refuge predictor did not detect incremental future-occupancy information after contemporaneous marginals (delta NLL M1-M0=-0.0003211, species-bootstrap 95% CI [-0.0009825,+0.0003422]). We retain that null as a portability boundary rather than promoting the secondary persistence-only direction or treating the finite AUC 0.9273 as naturally validated.\n\n"
+    old_natural_discussion = (
+        "This framework gives a sharper interpretation to contrasting natural systems without treating them as validation data. In *Crepis sancta*, low local flowering density is associated with reduced pollinator activity and reproduction despite broader movement, consistent with insufficient buffering. On Miyake-jima, reduced floral resources are accompanied by broader *Zosterops* movement and pollen mixing, a plausible real-world analogue of recoupling in which movement repairs local functional mismatch. In *Conospermum undulatum*, current pollen connectivity and reproduction can deteriorate while adult neutral genetics retain a historical signal, adding a memory axis that the current finite closure does not model explicitly. *Spondias purpurea* illustrates more coordinated decline across visitation, pollen flow, reproductive function and younger-cohort genetics. These systems motivate measurements of sorting, buffering, recoupling and memory; they do not replicate the simulator.\n\n"
+        "The same logic revises the earlier urban–island comparison. `Urban`, `island`, forest fragment and volcanic disturbance are upstream histories, not mechanistic states. Different histories can generate similar or different balances of local selection, recruitment, movement, mating opportunity and demographic feedback. Existing Honshu–Izu and Zurich archives cannot establish a universal urban–island convergence law because study identity, taxa, state coordinates and endpoints are not harmonized. A prospective comparison should instead ask which operator is active and whether buffering and recoupling keep pace with local sorting and demographic headroom loss."
     )
-    article = replace_once(article, discussion_marker, discussion_marker + discussion_insert, "discussion three-level boundary")
+    new_natural_discussion = (
+        "The natural and finite results therefore carry different inferential loads. EGWEE supplies the portable empirical result that fragmentation responses are not generally exchangeable across biological layers; it does not validate the model's sorting, buffering, recoupling or density operators. Conversely, the first locked natural prospective transfer of the specific strongest-refuge predictor was null after contemporaneous marginals (delta NLL M1-M0=-0.0003211, species-bootstrap 95% CI [-0.0009825,+0.0003422]). We retain that result as a portability boundary rather than promoting its secondary persistence-only direction or treating the finite AUC 0.9273 as naturally validated."
+    )
+    article = replace_once(article, old_natural_discussion, new_natural_discussion, "discussion natural synthesis replacement")
+
+    methods_old = (
+        "Published natural systems and the separate natural-data measurement programme are Discussion-level projections only."
+    )
+    methods_new = (
+        "EGWEE supplies independent natural evidence for Question 1 only; the natural strongest-refuge test remains a null portability boundary, and all operator-level causal claims remain finite-closure results."
+    )
+    article = replace_once(article, methods_old, methods_new, "methods evidence architecture")
     ARTICLE.write_text(article, encoding="utf-8")
 
     check = CHECK.read_text(encoding="utf-8")
@@ -68,6 +79,12 @@ def main() -> None:
     anchor = '    for token in required:\n        assert token in article, token\n'
     addition = anchor + '\n    for token in ("Fisher chi-square(8)=27.70", "p=5.35e-4", "p=0.000535", "delta NLL M1-M0=-0.0003211"):\n        assert token in article, token\n'
     check = replace_once(check, anchor, addition, "article natural evidence requirements")
+    check = replace_once(
+        check,
+        '    for token in ("Crepis", "Miyake", "Conospermum", "Spondias", "urban–island"):\n        assert token in discussion or token in article[: article.index("## Results")], token\n',
+        '    # Qualitative natural anchors are superseded in the flagship by the formal EGWEE Q1 synthesis.\n    for token in ("Serapias", "Brosimum", "Spondias", "Eucalyptus wandoo"):\n        assert token in results or token in article[: article.index("## Results")], token\n',
+        "natural projection presence contract",
+    )
     CHECK.write_text(check, encoding="utf-8")
 
 
