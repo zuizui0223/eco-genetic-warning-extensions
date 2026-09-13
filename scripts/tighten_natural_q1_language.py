@@ -16,7 +16,7 @@ def main() -> None:
     text = replace_once(
         text,
         "Natural systems rejected exchangeability (primary p=0.00621; gradient p=0.00257).",
-        "Three-system evidence rejected exchangeability (p=0.00621); gradient support was separate (p=0.00257).",
+        "Three-system evidence rejected exchangeability (p=0.00621); separate gradient support p=0.00257.",
         "abstract natural-Q1 wording",
     )
     text = replace_once(
