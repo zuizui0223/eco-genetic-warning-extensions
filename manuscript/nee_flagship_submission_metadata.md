@@ -4,7 +4,7 @@
 
 - **Target journal:** Nature Ecology & Evolution
 - **Content type:** Article
-- **Title:** Eco-genetic sorting and buffering shape functional vulnerability under fragmentation
+- **Title:** Fragmentation separates biological states and local coupling shapes functional fate
 - **Primary manuscript:** `manuscript/nee_flagship_article.md`
 - **References:** `manuscript/nee_flagship_references.md`
 - **Display plan:** `manuscript/nee_flagship_display_plan.md`

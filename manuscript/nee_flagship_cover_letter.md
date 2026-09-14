@@ -2,7 +2,7 @@
 
 Dear Editors,
 
-Please consider our Article, **“Eco-genetic sorting and buffering shape functional vulnerability under fragmentation,”** for publication in *Nature Ecology & Evolution*.
+Please consider our Article, **“Fragmentation separates biological states and local coupling shapes functional fate,”** for publication in *Nature Ecology & Evolution*.
 
 Fragmentation ecology often tracks habitat geometry, abundance, interactions and genetic diversity as separate indicators of deterioration. Our study asks a mechanistic question: **why can systems retaining the same marginal ecological and genetic quantities nevertheless reach different functional outcomes?** We combine exact results with prospectively locked intervention experiments to identify the life-cycle operators that sort, buffer, recouple and amplify those differences.
 

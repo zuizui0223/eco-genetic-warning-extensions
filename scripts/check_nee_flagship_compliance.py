@@ -39,7 +39,7 @@ def main() -> None:
     recoupling = json.loads(RECOUPLING.read_text(encoding="utf-8"))
     density_derived = json.loads(DENSITY.read_text(encoding="utf-8"))
 
-    title = "Eco-genetic sorting and buffering shape functional vulnerability under fragmentation"
+    title = "Fragmentation separates biological states and local coupling shapes functional fate"
     assert article.startswith(f"# {title}\n")
     for heading in ("## Abstract", "## Results", "## Discussion", "## Methods"):
         assert heading in article, heading
