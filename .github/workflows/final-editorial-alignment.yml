@@ -1,0 +1,35 @@
+name: Final editorial alignment
+
+on:
+  push:
+    branches:
+      - edit/final-title-abstract-fig1
+    paths:
+      - '.github/workflows/final-editorial-alignment.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  edit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: edit/final-title-abstract-fig1
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply final editorial alignment
+        run: python scripts/final_editorial_alignment.py
+      - name: Validate flagship compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Commit editorial changes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_article.md manuscript/nee_flagship_cover_letter.md manuscript/nee_flagship_submission_metadata.md scripts/check_nee_flagship_compliance.py scripts/build_nee_sorting_buffering_figures.py scripts/_apply_nee_two_question_generalization_reframe.py
+          git diff --cached --check
+          git commit -m 'Align NEE title abstract and Figure 1 with final story'
+          git push origin HEAD:edit/final-title-abstract-fig1
