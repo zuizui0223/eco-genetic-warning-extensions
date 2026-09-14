@@ -1,0 +1,35 @@
+name: Strengthen Q2 causal chain
+
+on:
+  push:
+    branches:
+      - fix/strengthen-q2-causal-chain
+    paths:
+      - '.github/workflows/strengthen-q2-causal-chain.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  edit:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/strengthen-q2-causal-chain
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Apply Q2 causal-chain edit
+        run: python scripts/strengthen_q2_causal_chain.py
+      - name: Validate flagship compliance
+        run: python scripts/check_nee_flagship_compliance.py
+      - name: Commit manuscript edit
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add manuscript/nee_flagship_article.md
+          git diff --cached --check
+          git commit -m 'Strengthen Q2 causal chain in NEE flagship'
+          git push origin HEAD:fix/strengthen-q2-causal-chain
