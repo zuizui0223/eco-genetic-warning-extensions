@@ -47,8 +47,8 @@ def box(lines, x, y, w, h, label, sub=""):
 def fig1(path):
     L = start(
         1500, 780,
-        "Sorting and buffering mechanism",
-        "State separation, q-dependent allele sorting, buffering and warning discrimination.",
+        "State separation and operator balance under fragmentation",
+        "State separation, hidden cross-layer organization, operator balance and fate discrimination.",
     )
     L.append(t(750, 45, "Fragmentation changes pathway balance, not one deterioration score", 28, weight="bold"))
     box(L, 65, 155, 340, 115, "State separation", "persistence != functional support")
@@ -64,7 +64,7 @@ def fig1(path):
     box(L, 400, 430, 700, 125, "Positive synthesis", "fate reflects sorting, buffering, recoupling and remaining refuge reserve")
     L += [
         t(750, 610, "density -> interaction feedback acts as a collapse/amplification gate", 15, weight="bold"),
-        t(750, 665, "Natural systems enter only as ecological projections of limited buffering, recoupling or memory.", 13),
+        t(750, 665, "Natural systems test state separation; operator-level causation remains finite-model evidence.", 13),
         t(750, 725, "No landscape label, alignment score or natural allele-sorting law is assumed universal.", 12),
     ]
     done(L, path)
