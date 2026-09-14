@@ -1,4 +1,5 @@
 name: Strengthen Q2 causal chain
+# rerun after trimming to journal cap
 
 on:
   push:
