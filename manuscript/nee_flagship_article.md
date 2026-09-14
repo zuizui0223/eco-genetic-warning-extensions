@@ -73,7 +73,7 @@ Thus, with fixed layer marginals, cross-layer covariance changes where support i
 
 #### Four life-cycle operators explained divergence, repair and collapse entry
 
-The first prospective mechanism experiment crossed trait assignment and allele assignment under full feedback. Trait–allele mismatched states had functional-loss risk **6.23 points** above matched states at generation 20 and **4.70 points** above them at generation 40, but the directional AA-versus-RR contrast itself was not stable. Removing direct trait/allele input into q exposed an indirect AA advantage, and a fresh edge-decomposition experiment reproduced that q-only contrast at **+4.20 points** at generation 20 and **+4.40 points** at generation 40. We then decomposed the responsible operators.
+The first prospective mechanism experiment crossed trait and allele assignment under full feedback. Trait–allele mismatch raised functional-loss risk by **6.23 points** at generation 20 and **4.70 points** at generation 40, but the directional AA-versus-RR contrast was unstable. Removing direct trait/allele input into q exposed an indirect AA advantage, and fresh edge decomposition reproduced it at **+4.20 points** at generation 20 and **+4.40 points** at generation 40. We therefore decomposed the process chain that creates, repairs and amplifies local functional differences.
 
 ##### q-dependent allele selection is the sorting operator
 
@@ -204,7 +204,7 @@ The same distinction survives even for a mechanistically exact transition coordi
 M=d(0.6q+0.3T+0.1G)-\left(\theta+\frac{\operatorname{logit}(0.625)}{4.5}\right).
 \]
 
-Its sign exactly determines whether the next interaction state lies above or below `q*=0.625`, and the canonical prospective audit found **0 mismatches across 1,920,000 patch-generations**. Yet the frozen generation-20 binary marker `all M<0` preceded all **3,943** generation-40 losses and also fired in all **2,057** non-events, again giving sensitivity 1, specificity 0 and AUC 0.5. **Transition-exactness therefore does not imply fate-predictiveness.** Thresholding can discard the relevant reserve depth even when the underlying coordinate is mechanistically exact.
+Its sign exactly determines whether the next interaction state lies above or below `q*=0.625`; the canonical prospective audit found **0 mismatches across 1,920,000 patch-generations**. The maximum patchwise margin therefore links operator balance to whether any local refuge retains positive one-step reserve. Yet the frozen generation-20 binary marker `all M<0` preceded all **3,943** generation-40 losses and also fired in all **2,057** non-events, again giving sensitivity 1, specificity 0 and AUC 0.5. **Transition-exactness therefore does not imply fate-predictiveness.** Thresholding can discard the relevant reserve depth even when the underlying coordinate is mechanistically exact.
 
 We then asked whether these failures meant that no early fate information existed, or only that marginal and thresholded representations were the wrong summaries. Before opening any new outcome, we froze a full-feedback holdout using twelve entirely new master seeds, 500 replicates per seed and both AA and RR assignments, for **12,000 trajectories**. The observation used only snapshot generation 9 plus the already fixed generation-10 forcing value. For each patch we calculated
 
