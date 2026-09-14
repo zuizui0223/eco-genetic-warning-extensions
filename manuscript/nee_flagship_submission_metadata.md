@@ -83,7 +83,11 @@ Do not infer authorship/order from repository ownership or commits.
 - Funding: [pending]
 - Acknowledgements: [pending]
 - Competing interests: [pending]
-- AI/automated-tool disclosure: [pending author review]
+- AI/automated-tool disclosure: [submission hard stop — journal-specific policy clarification required; see `NEE_AI_POLICY_AUDIT_2026-09-15.md`]
+
+## Journal-policy eligibility gate
+
+The scientific and reproducibility package is mechanically complete, but NEE portal submission remains blocked pending resolution of the journal-specific generative-AI policy ambiguity recorded in `manuscript/NEE_AI_POLICY_AUDIT_2026-09-15.md`. Do not treat disclosure drafting alone as proof of policy compliance.
 
 ## Publication governance — flagship-first
 

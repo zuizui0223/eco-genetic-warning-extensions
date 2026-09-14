@@ -56,6 +56,7 @@
 - [ ] Funding and acknowledgements approved.
 - [ ] Competing-interests statement approved.
 - [ ] AI/automated-tool disclosure reviewed and approved.
+- [ ] NEE journal-specific AI-policy eligibility clarified; current ambiguity is a submission hard stop (`NEE_AI_POLICY_AUDIT_2026-09-15.md`).
 - [ ] Permanent archive DOI / reviewer-accessible code and evidence snapshots created.
 - [ ] Current Nature Ecology & Evolution policy checked immediately before submission.
 - [ ] Final portal files inspected after journal-template conversion.
