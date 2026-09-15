@@ -1,0 +1,8 @@
+from pathlib import Path
+
+path = Path('manuscript/nee_flagship_article.md')
+text = path.read_text()
+start = text.index('## Abstract\n\n') + len('## Abstract\n\n')
+end = text.index('\n\nEcological fragmentation', start)
+abstract = """Fragmentation can separate biological states, but the same marginal amounts need not imply the same future. We combine exact results, prospectively locked finite experiments and bounded natural evidence to identify what conventional state summaries miss. Fixed-area fragmentation separated potential viability from realised occupancy, and matched ecological and genetic marginals concealed a 49-fold difference in support variance and a 0.2543 difference in exact next interaction state. Three-system natural evidence rejected layer exchangeability (p=0.00621), with separate gradient support (p=0.00257). Within the finite closure, q-dependent allele selection causally contributed to late functional fate (DID=+6.883 percentage points, 95% CI +5.800,+7.967), while recruitment buffered trait–allele mismatch, direct feedback recoupled local states and density feedback supplied a collapse gate. Finally, transition-exactness was not fate information: marginal diversity thresholds preceded every loss yet did not discriminate fate, whereas a prospectively locked continuous strongest-refuge margin measured before generation 10 ranked generation-40 loss (AUC 0.9273, 95% CI 0.9243,0.9304). Functional vulnerability therefore depends on hidden local organization, the operators that transform it and the depth of the strongest remaining refuge."""
+path.write_text(text[:start] + abstract + text[end:])
