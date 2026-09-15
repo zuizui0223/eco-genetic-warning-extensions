@@ -26,3 +26,4 @@ jobs:
           git diff --cached --check
           git commit -m 'Sharpen three-message hierarchy in NEE flagship'
           git push origin HEAD:editorial/three-message-hierarchy
+# rerun 2
