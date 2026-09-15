@@ -1,0 +1,37 @@
+name: One-shot abstract three-message alignment
+on:
+  push:
+    branches: [editorial/abstract-three-message]
+    paths:
+      - scripts/one_shot_abstract_three_message.py
+      - .github/workflows/one-shot-abstract-three-message.yml
+permissions:
+  contents: write
+jobs:
+  align:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: editorial/abstract-three-message
+      - name: Align abstract
+        run: python scripts/one_shot_abstract_three_message.py
+      - name: Check abstract word count
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          t=Path('manuscript/nee_flagship_article.md').read_text()
+          a=t.split('## Abstract\n\n',1)[1].split('\n\nEcological fragmentation',1)[0]
+          n=len(a.replace('`','').split())
+          print('abstract words', n)
+          assert n <= 200
+          PY
+      - name: Commit result
+        run: |
+          git config user.name github-actions[bot]
+          git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+          git add manuscript/nee_flagship_article.md
+          if ! git diff --cached --quiet; then
+            git commit -m 'Align abstract with three-message hierarchy'
+            git push origin HEAD:editorial/abstract-three-message
+          fi
